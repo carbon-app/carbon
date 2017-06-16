@@ -40,7 +40,7 @@ class CodeImage extends React.Component {
   }
 
   render () {
-    let code = this.props.children || this.state.droppedContent || DEFAULT_CODE
+    let code = this.state.droppedContent || this.props.children || DEFAULT_CODE
     const split = code.split(EOL)
     if (split.length > MAX_LINES) code = [...split.slice(0, MAX_LINES - 1), '', '...'].join(EOL)
 
