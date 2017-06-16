@@ -2,7 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 
 import CodeImage from '../components/codeImage'
-import api from '../api'
+import api from '../lib/api'
 
 const code = `
 const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -17,22 +17,34 @@ const unfold = (f, seed) => {
   return go(f, seed, [])
 }`
 
-export default (props) => {
-  return (
-    <div>
-      <style jsx>{`
-        div {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-      `}
-      </style>
-      <h1> Welcome to Code Image</h1>
-      <CodeImage>
-        {code}
-      </CodeImage>
-    </div>
-  )
+export default class extends React.Component {
+  /* pathname, asPath, err, req, res */
+  static async getInitialProps ({ asPath }) {
+    try {
+      const content = await api.getGist(asPath)
+      return { content }
+    } catch (e) {
+      console.log(e)
+      return {}
+    }
+  }
+  render () {
+    return (
+      <div>
+        <style jsx>{`
+          div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+        `}
+        </style>
+        <h1>Welcome to Code Image</h1>
+        <CodeImage>
+          {this.props.content || code}
+        </CodeImage>
+      </div>
+    )
+  }
 }

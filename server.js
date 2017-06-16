@@ -22,17 +22,15 @@ app.prepare()
   server.use(morgan('tiny'))
 
   // if root, render webpage from next
-  server.get('/', (req, res) => {
-    return app.render(req, res, '/', req.query)
-  })
+  server.get('*', (req, res) => 
+    app.render(req, res, '/', req.query))
+
+  // otherwise, try and get gist
+  server.get('*', handle)
 
   // api endpoints
   server.post('/upload', bodyParser.json(), wrap(require('./handlers/upload')))
 
-  // otherwise, try and get gist
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
 
   server.listen(3000, (err) => {
     if (err) throw err

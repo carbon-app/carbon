@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "node server.js",
-    "next": "next"
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "axios": "^0.16.2",
