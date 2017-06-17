@@ -6,7 +6,7 @@ class Dropdown extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      listVisible: false,
+      isVisible: false,
       selected: props.selected || props.list[0]
     }
     this.select = this.select.bind(this)
@@ -18,11 +18,11 @@ class Dropdown extends React.Component {
   }
 
   toggle() {
-    this.setState({ listVisible: !this.state.listVisible })
+    this.setState({ isVisible: !this.state.isVisible })
   }
 
   handleClickOutside() {
-    this.setState({ listVisible: false });
+    this.setState({ isVisible: false });
   }
 
   renderListItems() {
@@ -62,7 +62,7 @@ class Dropdown extends React.Component {
 
     return (
       <div className="dropdown-container" style={{ minWidth: MIN_WIDTH * 14 }} onClick={this.toggle}>
-        <div className={`dropdown-display ${this.state.listVisible ? 'list-visible' : ''}`}>
+        <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
           <span>{ this.state.selected.name }</span>
           <div className="arrow-down"><ArrowDown /></div>
         </div>
@@ -75,11 +75,11 @@ class Dropdown extends React.Component {
             right: 16px;
           }
 
-          .list-visible > .arrow-down {
+          .is-visible > .arrow-down {
             transform: rotate(180deg);
           }
 
-          .list-visible {
+          .is-visible {
             border-radius: 3px 3px 0px 0px !important;
           }
 
@@ -106,7 +106,7 @@ class Dropdown extends React.Component {
             background: #131313;
           }
 
-          .list-visible + .dropdown-list {
+          .is-visible + .dropdown-list {
             display: block;
           }
 
