@@ -4,7 +4,7 @@ import { NativeTypes } from 'react-dnd-html5-backend'
 import { DropTarget } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 
-const padding = '50px 50px'
+const margin = '45px 54px'
 
 const DEFAULT_CODE = `
 const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
@@ -47,7 +47,7 @@ class CodeImage extends React.Component {
     return this.props.connectDropTarget(
       <div id='section'>
         <div id='container' ref={(container) => { this.container = container }}>
-          <pre>
+          <pre className='hyper'>
             <code onClick={this.save}>
               {code}
             </code>
@@ -55,23 +55,30 @@ class CodeImage extends React.Component {
         </div>
         <style jsx>{`
           #section {
-            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
           }
           #container {
-            background: green;
-            padding: ${padding};
+            height: 100%;
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
           }
-          pre {
-            background: white;
-            padding: 10px;
-            box-shadow: 10px 10px 12px -5px rgba(0,0,0,0.17);
+
+          .hyper {
+            border: 1px solid #393939;
+            border-radius: 5px;
+            background: black;
+            padding: 18px 24px;
+            margin: ${margin}
+            color: white;
+
           }
+
+          .bw {}
         `}</style>
       </div>
     )
