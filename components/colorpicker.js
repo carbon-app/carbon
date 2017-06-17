@@ -62,6 +62,7 @@ export default class extends React.Component {
           }
 
           .colorpicker-picker {
+            position: absolute;
             margin-left: -32px;
             margin-top: 9px;
           }
