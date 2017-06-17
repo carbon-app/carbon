@@ -1,7 +1,8 @@
 import React from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
 import { BlockPicker } from 'react-color'
 
-export default class extends React.Component {
+class ColorPicker extends React.Component {
   constructor() {
     super()
     this.state = { isVisible: false, bgcolor: '#565656' }
@@ -11,6 +12,10 @@ export default class extends React.Component {
 
   toggle() {
     this.setState({ isVisible: !this.state.isVisible })
+  }
+
+  handleClickOutside() {
+    this.setState({ isVisible: false });
   }
 
   handlePickColor(color) {
@@ -71,3 +76,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default enhanceWithClickOutside(ColorPicker)
