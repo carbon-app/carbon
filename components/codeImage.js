@@ -3,6 +3,8 @@ import React from 'react'
 import { NativeTypes } from 'react-dnd-html5-backend'
 import { DropTarget } from 'react-dnd'
 import domtoimage from 'dom-to-image'
+import highlight from 'highlight.js'
+import CodeMirror from 'react-codemirror'
 
 const padding = '50px 50px'
 
@@ -22,9 +24,13 @@ const unfold = (f, seed) => {
 const MAX_LINES = 40
 
 class CodeImage extends React.Component {
-  constructor () {
-    super()
-    this.state = {}
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      code: this.props.children
+    }
+    
     this.save = this.save.bind(this)
   }
 
@@ -39,6 +45,22 @@ class CodeImage extends React.Component {
       })
   }
 
+  highlight () {
+    highlight.initHighlighting.called = false
+    highlight.initHighlighting()
+  }
+
+  componentDidMount () {
+    // highlight
+    this.highlight()
+
+    //highlight when content changes
+    this.editor.addEventListener('input', () => {
+      console.log('edit')
+      this.highlight()
+    })
+  }
+
   render () {
     let code = this.state.droppedContent || this.props.children || DEFAULT_CODE
     const split = code.split(EOL)
@@ -46,13 +68,18 @@ class CodeImage extends React.Component {
 
     return this.props.connectDropTarget(
       <div id='section'>
+        <link rel='stylesheet' href='https://highlightjs.org/static/demo/styles/default.css'/>
         <div id='container' ref={(container) => { this.container = container }}>
-          <pre>
-            <code onClick={this.save}>
-              {code}
-            </code>
-          </pre>
+
+          <div contentEditable="true" ref={(editor) => { this.editor = editor}}>
+            <pre>
+              <code>
+                {this.props.initCode}
+              </code>
+            </pre>
+          </div>
         </div>
+        <button onClick={this.highlight}/>
         <style jsx>{`
           #section {
             width: 100%;
@@ -63,9 +90,7 @@ class CodeImage extends React.Component {
           #container {
             background: green;
             padding: ${padding};
-            display: flex;
-            justify-content: center;
-            align-items: center;
+           
           }
           pre {
             background: white;

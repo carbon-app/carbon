@@ -14,11 +14,14 @@
     "dom-to-image": "^2.5.2",
     "express": "^4.15.3",
     "form-data": "^2.2.0",
+    "highlight.js": "^9.12.0",
     "morgan": "^1.8.2",
     "next": "^2.4.3",
     "react": "^15.5.4",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-codemirror": "^1.0.0",
+    "react-syntax-highlight": "^0.0.6"
   }
 }
