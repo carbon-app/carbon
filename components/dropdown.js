@@ -1,7 +1,8 @@
 import React from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
 import ArrowDown from './svg/arrowdown'
 
-export default class extends React.Component {
+class Dropdown extends React.Component {
   constructor(props) {
     super()
     this.state = {
@@ -18,6 +19,10 @@ export default class extends React.Component {
 
   toggle() {
     this.setState({ listVisible: !this.state.listVisible })
+  }
+
+  handleClickOutside() {
+    this.setState({ listVisible: false });
   }
 
   renderListItems() {
@@ -51,8 +56,12 @@ export default class extends React.Component {
   }
 
   render() {
+    // find longest list value in number of characters
+    const MIN_WIDTH = this.props.list.reduce((max, { name }) =>
+      (name.length > max ? name.length : max), 0)
+
     return (
-      <div className="dropdown-container" onClick={this.toggle}>
+      <div className="dropdown-container" style={{ minWidth: MIN_WIDTH * 14 }} onClick={this.toggle}>
         <div className={`dropdown-display ${this.state.listVisible ? 'list-visible' : ''}`}>
           <span>{ this.state.selected.name }</span>
           <div className="arrow-down"><ArrowDown /></div>
@@ -62,7 +71,8 @@ export default class extends React.Component {
         </div>
         <style jsx>{`
           .arrow-down {
-            margin-left: 16px;
+            position: absolute;
+            right: 16px;
           }
 
           .list-visible > .arrow-down {
@@ -85,7 +95,7 @@ export default class extends React.Component {
             user-select: none;
             padding: 8px 16px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             position: relative;
             z-index: 1;
@@ -105,9 +115,13 @@ export default class extends React.Component {
             margin-top: -2px;
             border: 0.5px solid #333;
             border-radius: 0px 0px 3px 3px;
+            max-height: 350px;
+            overflow-y: scroll;
           }
         `}</style>
       </div>
     )
   }
 }
+
+export default enhanceWithClickOutside(Dropdown)

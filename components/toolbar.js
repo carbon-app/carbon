@@ -13,19 +13,68 @@ const themes = [
 ]
 
 const langauges = [
-  {
-    name: 'javascript'
-  },
-  {
-    name: 'python'
-  },
-  {
-    name: 'c'
-  },
-  {
-    name: 'shitty ass java'
-  }
-]
+  'Auto Detect',
+  'Plain Text',
+  'AppleScript',
+  'BoxNote',
+  'C',
+  'C#',
+  'CSS',
+  'CSV',
+  'Closure',
+  'CoffeeScript',
+  'Cold Fusion',
+  'Crystal',
+  'Cypher',
+  'D',
+  'Dart',
+  'Diff',
+  'Docker',
+  'Erlang',
+  'F#',
+  'Fortran',
+  'Gherkin',
+  'Go',
+  'Groovy',
+  'HTML',
+  'Haskell',
+  'Haxe',
+  'Java',
+  'JavaScript',
+  'JSON',
+  'Julia',
+  'Kotlin',
+  'LaTex',
+  'Lisp',
+  'Lua',
+  'MATLAB',
+  'MUMPS',
+  'Markdown (raw)',
+  'OCaml',
+  'Objective-C',
+  'PHP',
+  'Pascal',
+  'Perl',
+  'Pig',
+  'Post',
+  'Puppet',
+  'Python',
+  'R',
+  'Ruby',
+  'Rust',
+  'SQL',
+  'Sass',
+  'Scheme',
+  'Smalltalk',
+  'Swift',
+  'TSV',
+  'VB.NET',
+  'VBScript',
+  'Velocity',
+  'Verilog',
+  'XML',
+  'YAML'
+].map(name => ({ name }))
 
 export default class extends React.Component {
   constructor() {
