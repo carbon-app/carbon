@@ -1,6 +1,7 @@
 import React from 'react'
 import Dropdown from './dropdown'
 import ColorPicker from './colorpicker'
+import Settings from './settings'
 
 const themes = [
   {
@@ -37,8 +38,9 @@ export default class extends React.Component {
         <Dropdown list={themes} />
         <Dropdown list={langauges} />
         <ColorPicker />
-        <div className="settings"></div>
-        <div className="toolbarbtn"><span>Copy Imgur Link</span></div>
+        <Settings />
+        <div className="toolbarbtn copy"><span>Copy Imgur Link</span></div>
+        <div className="toolbarbtn dl"><span>Save Image</span></div>
         <style jsx>{`
           #toolbar {
             width: 100%;

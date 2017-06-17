@@ -1,5 +1,5 @@
 import React from 'react'
-import ArrowDown from './arrowdown'
+import ArrowDown from './svg/arrowdown'
 
 export default class extends React.Component {
   constructor(props) {
