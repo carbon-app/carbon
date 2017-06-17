@@ -1,7 +1,8 @@
 import React from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
 import ArrowDown from './arrowdown'
 
-export default class extends React.Component {
+class Dropdown extends React.Component {
   constructor(props) {
     super()
     this.state = {
@@ -18,6 +19,10 @@ export default class extends React.Component {
 
   toggle() {
     this.setState({ listVisible: !this.state.listVisible })
+  }
+
+  handleClickOutside() {
+    this.setState({ listVisible: false });
   }
 
   renderListItems() {
@@ -118,3 +123,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default enhanceWithClickOutside(Dropdown)

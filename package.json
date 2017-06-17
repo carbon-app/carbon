@@ -17,6 +17,7 @@
     "morgan": "^1.8.2",
     "next": "^2.4.3",
     "react": "^15.5.4",
+    "react-click-outside": "^2.3.1",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^15.5.4"
