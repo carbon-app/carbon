@@ -19,56 +19,40 @@ const DEFAULT_SETTINGS = {
   language: 'javascript'
 }
 
-class CodeImage extends React.Component {
-  constructor (props) {
-    super(props)
+const CodeImage = (props) => {
+  const config = Object.assign(DEFAULT_SETTINGS, props.config)
 
-    this.state = {
-      code: this.props.children
-    }
+  const options = {
+    lineNumbers: false,
+    mode: config.language,
+    theme: config.theme,
+    scrollBarStyle: null,
+    viewportMargin: Infinity,
+    lineWrapping: true
   }
 
-  updateCode (newCode) {
-    this.setState({ code: newCode })
+  // create styles
+  const containerStyle = {
+    background: config.background,
+    padding: `${config.paddingVertical} ${config.paddingHorizontal}`
   }
 
-  render () {
-    const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
-
-    const options = { 
-      lineNumbers: false,
-      mode: config.language, 
-      theme: config.theme, 
-      scrollBarStyle: null, 
-      viewportMargin: Infinity,
-      lineWrapping: true
-    }
-    
-    // create styles
-    const containerStyle = {
-      background: config.background,
-      padding: `${config.paddingVertical} ${config.paddingHorizontal}`
-    }
-
-    return (
-      <div id='section'>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css'/>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/dracula.min.css'/>
-        <div id='container' style={containerStyle}>
-          { true ? <WindowControls /> : null }
-          <CodeMirror className="CodeMirrorContainer" value={this.state.code} onChange={this.updateCode} options={options} />
-        </div>
-        <style jsx>{`
-          #section {
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        `}</style>
+  return (
+    <div id="section">
+      <div id="container" style={containerStyle}>
+        { true ? <WindowControls /> : null }
+        <CodeMirror className="CodeMirrorContainer" value={props.children} options={options} />
       </div>
-    )
-  }
+      <style jsx>{`
+        #section {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      `}</style>
+    </div>
+  )
 }
 
 export default CodeImage
