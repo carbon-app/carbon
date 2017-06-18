@@ -59,9 +59,9 @@ class Dropdown extends React.Component {
     // find longest list value in number of characters
     const MIN_WIDTH = this.props.list.reduce((max, { name }) =>
       (name.length > max ? name.length : max), 0)
-
+    console.log(MIN_WIDTH);
     return (
-      <div className="dropdown-container" style={{ minWidth: MIN_WIDTH * 14 }} onClick={this.toggle}>
+      <div className="dropdown-container" style={{ minWidth: MIN_WIDTH * 16 }} onClick={this.toggle}>
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
           <span>{ this.state.selected.name }</span>
           <div className="arrow-down"><ArrowDown /></div>

@@ -50,7 +50,6 @@ const langauges = [
   'Lua',
   'MATLAB',
   'MUMPS',
-  'Markdown (raw)',
   'OCaml',
   'Objective-C',
   'PHP',
