@@ -73,7 +73,7 @@ class Index extends React.Component {
               onBGChange={color => this.setState({ bgColor: color })}
               bg={this.state.bgColor}
             />
-            <CodeImage bg={this.state.bgColor}>
+            <CodeImage config={{ bg: this.state.bgColor}}>
               {this.props.content || DEFAULT_CODE}
             </CodeImage>
           </div>
