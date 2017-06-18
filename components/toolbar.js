@@ -2,6 +2,7 @@ import React from 'react'
 import Dropdown from './dropdown'
 import ColorPicker from './colorpicker'
 import Settings from './settings'
+import Button from './button'
 
 const themes = [
   {
@@ -88,8 +89,8 @@ export default class extends React.Component {
         <Dropdown list={langauges} />
         <ColorPicker />
         <Settings />
-        <div className="toolbar-btn copy"><span>Copy Imgur Link</span></div>
-        <div className="toolbar-btn dl"><span>Save Image</span></div>
+        <Button title="Copy Imgur Link" bg="#84ACFC" style={{ borderRadius: '3px 0px 0px 3px' }}/>
+        <Button title="Save Image" bg="#C3E98D" />
         <style jsx>{`
           #toolbar {
             width: 100%;
@@ -98,28 +99,6 @@ export default class extends React.Component {
             display: flex;
             position: relative;
             z-index: 1;
-          }
-
-          .toolbar-btn {
-            height: 37px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 16px;
-            color: #000;
-            border: 0.5px solid #333;
-            border-radius: 3px;
-          }
-
-          .copy {
-            background: #84ACFC;
-            border-radius: 3px 0px 0px 3px;
-          }
-
-          .dl {
-            background: #C3E98D;
-            border-radius: 0px 3px 3px 0px;
-            border-left: 0px;
           }
         `}</style>
       </div>
