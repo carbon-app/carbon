@@ -14,12 +14,14 @@ class Index extends React.Component {
   /* pathname, asPath, err, req, res */
   static async getInitialProps ({ asPath }) {
     try {
-      const content = await api.getGist(asPath)
-      return { content }
+      if (asPath !== '/') {
+        const content = await api.getGist(asPath)
+        return { content }
+      }
     } catch (e) {
       console.log(e)
-      return {}
     }
+    return {}
   }
 
   constructor()  {
