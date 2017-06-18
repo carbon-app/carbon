@@ -12,8 +12,9 @@ export default () => (
     <style jsx>{`
       div {
         position: absolute;
-        margin-left: -2px;
-        margin-top: -14px;
+        margin-left: 18px;
+        margin-top: 12px;
+        z-index: 1;
       }
     `}
     </style>

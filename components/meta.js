@@ -27,6 +27,13 @@ export default () => (
       #toolbar>div:last-child {
         margin-right: 0px;
       }
+
+      .CodeMirrorContainer .CodeMirror {
+        height: auto;
+        min-width: 680px;
+        padding: 40px 18px 24px;
+        border-radius: 3px;
+      }
     `}</style>
   </div>
 )

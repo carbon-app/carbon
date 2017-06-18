@@ -9,16 +9,22 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
   require('../lib/constants')
 }
 
-const margin = '45px 54px'
-const padding = '50px 50px'
+const DEFAULT_SETTINGS = {
+  paddingVertical: '50px',
+  paddingHorizontal: '50px',
+  marginVertical: '45px',
+  marginHorizontal: '45px',
+  background: '#fed0ec',
+  theme: 'dracula',
+  language: 'javascript'
+}
 
 class CodeImage extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      code: this.props.children,
-      config: this.props.config || {}
+      code: this.props.children
     }
   }
 
@@ -27,17 +33,30 @@ class CodeImage extends React.Component {
   }
 
   render () {
-    const options = { lineNumbers: false, mode: 'javascript', theme: 'dracula'}
+    const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
+
+    const options = { 
+      lineNumbers: false,
+      mode: config.language, 
+      theme: config.theme, 
+      scrollBarStyle: null, 
+      viewportMargin: Infinity,
+      lineWrapping: true
+    }
+    
+    // create styles
+    const containerStyle = {
+      background: config.background,
+      padding: `${config.paddingVertical} ${config.paddingHorizontal}`
+    }
 
     return (
       <div id='section'>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css'/>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/dracula.min.css'/>
-        <div id='container' style={Object.assign({ background: this.state.config.bg }, this.props.style)}>
+        <div id='container' style={containerStyle}>
           { true ? <WindowControls /> : null }
-          <div id='anotherContainer'>
-            <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
-          </div>
+          <CodeMirror className="CodeMirrorContainer" value={this.state.code} onChange={this.updateCode} options={options} />
         </div>
         <style jsx>{`
           #section {
@@ -46,29 +65,6 @@ class CodeImage extends React.Component {
             justify-content: center;
             align-items: center;
           }
-          #anotherContainer {
-            background: white;
-            min-width: 700px;
-            min-height: 400px;
-            margin: 0px;
-            padding: 15px;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .hyper {
-            border: 1px solid #393939;
-            border-radius: 5px;
-            background: black;
-            padding: 26px 18px;
-            margin: ${margin}
-            color: white;
-          }
-
-          .bw {}
         `}</style>
       </div>
     )

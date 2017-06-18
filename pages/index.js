@@ -26,8 +26,8 @@ class Index extends React.Component {
     super()
     this.state = {
       bgColor: '#111111',
-      theme: THEMES[0],
-      language: LANGUAGES[0]
+      theme: THEMES[0].id,
+      language: 'javascript' // TODO LANGUAGES[0]
     }
   }
 
@@ -60,7 +60,7 @@ class Index extends React.Component {
               save={this.save}
               upload={this.upload}
               onBGChange={color => this.setState({ bgColor: color })}
-              onThemeChange={theme => this.setState({ theme })}
+              onThemeChange={theme => this.setState({ theme: theme.id })}
               onLanguageChange={language => this.setState({ language })}
               bg={this.state.bgColor}
             />
