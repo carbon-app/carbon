@@ -15,10 +15,11 @@ class ColorPicker extends React.Component {
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: false })
   }
 
   handlePickColor(color) {
+    this.setState({ isVisible: false })
     this.props.onChange(color.hex)
   }
 
