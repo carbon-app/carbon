@@ -30,7 +30,6 @@ class Index extends React.Component {
   }
 
   save () {
-    // save
     domtoimage.toJpeg(document.getElementById('container'))
       .then((dataUrl) => {
         const link = document.createElement('a')
@@ -38,6 +37,13 @@ class Index extends React.Component {
         link.href = dataUrl
         link.click()
       })
+  }
+
+  upload () {
+    domtoimage.toBlob(document.getElementById('container'))
+      .then(api.uploadImage)
+      .then(res => res.data.link)
+      .then(console.log)
   }
 
   render () {
@@ -48,6 +54,7 @@ class Index extends React.Component {
           <div id="editor">
             <Toolbar
               save={this.save}
+              upload={this.upload}
               onBGChange={color => this.setState({ bgColor: color })}
               bg={this.state.bgColor}
             />

@@ -87,7 +87,7 @@ const Toolbar = (props) => (
     />
     <Settings />
     <Button
-      onClick={props.copyLink}
+      onClick={props.upload}
       title="Copy Imgur Link"
       bg="#84ACFC"
       style={{ borderRadius: '3px 0px 0px 3px' }}
