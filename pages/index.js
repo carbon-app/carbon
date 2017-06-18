@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-dnd'
 import Axios from 'axios'
 import domtoimage from 'dom-to-image'
 
-
+import Logo from '../components/svg/logo'
 import Meta from '../components/meta'
 import Toolbar from '../components/toolbar'
 import CodeImage from '../components/codeImage'
@@ -52,7 +52,10 @@ class Index extends React.Component {
     return (
         <div className="main">
           <Meta />
-          <h1>Welcome to Code Image</h1>
+          <div className="header">
+            <Logo />
+            <h1>The easiest way to create images from source code. Start typing, or drag a file into the text area to get started.</h1>
+          </div>
           <div id="editor">
             <Toolbar
               save={this.save}
@@ -64,11 +67,32 @@ class Index extends React.Component {
               {this.props.content}
             </CodeImage>
           </div>
+          <div className="footer">
+            <span>a project by <a href="https://twitter.com/dawn_labs">@dawn_labs ¬</a></span>
+          </div>
           <style jsx>{`
+            .main {
+              display: flex;
+              justify-content: space-between;
+              padding: 64px;
+              height: 100vh;
+            }
+
+            .header {
+              margin-top: 56px;
+              width: 776px;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+            }
+
             h1 {
+              max-width: 570px;
+              font-size: 24px;
+              line-height: 1.5;
               color: #fff;
             }
-            
+
             div {
               display: flex;
               flex-direction: column;
@@ -80,6 +104,15 @@ class Index extends React.Component {
               height: 460px;
               background: #151515;
               padding: 16px;
+            }
+
+            .footer {
+              color: #506874;
+            }
+
+            .footer a {
+              color: #C694E8;
+              text-decoration: none;
             }
           `}
           </style>
