@@ -3,6 +3,7 @@ import React from 'react'
 import { NativeTypes } from 'react-dnd-html5-backend'
 import { DropTarget } from 'react-dnd'
 import domtoimage from 'dom-to-image'
+import WindowControls from '../components/svg/controls'
 
 const margin = '45px 54px'
 
@@ -36,6 +37,9 @@ class CodeImage extends React.Component {
       <div id='section'>
         <div id='container' style={Object.assign({ background: this.props.bg }, this.props.style)}>
           <pre className='hyper'>
+            <div className="window-controls">
+              <WindowControls />
+            </div>
             <code>{code}</code>
           </pre>
         </div>
@@ -54,14 +58,19 @@ class CodeImage extends React.Component {
             align-items: center;
           }
 
+          .window-controls {
+            position: absolute;
+            margin-left: -2px;
+            margin-top: -14px;
+          }
+
           .hyper {
             border: 1px solid #393939;
             border-radius: 5px;
             background: black;
-            padding: 18px 24px;
+            padding: 26px 18px;
             margin: ${margin}
             color: white;
-
           }
 
           .bw {}
