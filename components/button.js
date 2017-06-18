@@ -8,13 +8,13 @@ export default (props) => (
     <style jsx>{`
       div {
         cursor: pointer;
-        height: 37px;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 0 16px;
         color: #000;
-        border: 0.5px solid #333;
+        border: 0.5px solid #000;
         border-radius: 3px;
       }
       div:last-of-type {

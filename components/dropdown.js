@@ -31,10 +31,10 @@ class Dropdown extends React.Component {
         <span>{ item.name }</span>
         <style jsx>{`
           .dropdown-list-item {
-            background: #000;
+            background: #131313;
             user-select: none;
             padding: 8px 16px;
-            border-bottom: 0.5px solid #333;
+            border-bottom: 0.5px solid #000;
           }
 
           .selected {
@@ -42,13 +42,17 @@ class Dropdown extends React.Component {
             color: #fff;
           }
 
-          .dropdown-list-item:not(.selected):hover {
-            background: #131313;
+          .selected:hover {
+            background: #506874 !important;
+          }
+
+          .dropdown-list-item:hover {
+            background: #222;
           }
 
           .dropdown-list-item:last-of-type {
             border-bottom: none;
-            border-radius: 0px 0px 3px 3px;
+            border-radius: 0px 0px 2px 2px;
           }
         `}</style>
       </div>
@@ -84,13 +88,13 @@ class Dropdown extends React.Component {
           }
 
           .dropdown-container {
-            height: 36px;
+            height: 100%;
             cursor: pointer;
-            color: #fff;
           }
 
           .dropdown-display {
-            border: 0.5px solid #333;
+            height: 100%;
+            border: 1px solid #000;
             border-radius: 3px;
             user-select: none;
             padding: 8px 16px;
@@ -99,7 +103,6 @@ class Dropdown extends React.Component {
             align-items: center;
             position: relative;
             z-index: 1;
-            background: #000;
           }
 
           .dropdown-display:hover {
@@ -113,7 +116,7 @@ class Dropdown extends React.Component {
           .dropdown-list {
             display: none;
             margin-top: -2px;
-            border: 0.5px solid #333;
+            border: 0.5px solid #000;
             border-radius: 0px 0px 3px 3px;
             max-height: 350px;
             overflow-y: scroll;

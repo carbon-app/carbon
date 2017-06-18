@@ -68,6 +68,7 @@ class Index extends React.Component {
             h1 {
               color: #fff;
             }
+            
             div {
               display: flex;
               flex-direction: column;

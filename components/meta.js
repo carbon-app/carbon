@@ -19,6 +19,14 @@ export default () => (
         padding: 0;
         box-sizing: border-box;
       }
+
+      #toolbar > div {
+        margin-right: 8px; // TODO fix hack
+      }
+
+      #toolbar>div:last-child {
+        margin-right: 0px;
+      }
     `}</style>
   </div>
 )

@@ -29,7 +29,7 @@ class Settings extends React.Component {
         </div>
         <style jsx>{`
           .settings-container {
-            height: 37px;
+            height: 100%;
             width: 37px;
             display: flex;
             align-items: center;
@@ -43,12 +43,11 @@ class Settings extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 0.5px solid #333;
+            border: 0.5px solid #000;
             border-radius: 3px;
             user-select: none;
             position: relative;
             z-index: 1;
-            background: #000;
             cursor: pointer;
           }
 

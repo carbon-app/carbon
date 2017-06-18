@@ -37,15 +37,14 @@ class ColorPicker extends React.Component {
         </div>
         <style jsx>{`
           .colorpicker-container {
-            height: 37px; // TODO fix
+            height: 100%;
           }
 
           .colorpicker-display {
             display: flex;
             height: 100%;
             width: 72px;
-            background: #000;
-            border: 0.5px solid #333;
+            border: 0.5px solid #000;
             border-radius: 3px;
           }
 
@@ -55,7 +54,6 @@ class ColorPicker extends React.Component {
             justify-content: center;
             user-select: none;
             cursor: default;
-            color: #fff;
             height: 100%;
             width: 36px;
           }
