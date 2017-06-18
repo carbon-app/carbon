@@ -77,31 +77,30 @@ const langauges = [
   'YAML'
 ].map(name => ({ name }))
 
-export default class extends React.Component {
-  constructor() {
-    super()
-  }
+const Toolbar = (props) => (
+  <div id="toolbar">
+    <Dropdown list={themes} />
+    <Dropdown list={langauges} />
+    <ColorPicker />
+    <Settings />
+    <Button
+      onClick={props.copyLink}
+      title="Copy Imgur Link"
+      bg="#84ACFC"
+      style={{ borderRadius: '3px 0px 0px 3px' }}
+    />
+    <Button onClick={props.save} title="Save Image" bg="#C3E98D" />
+    <style jsx>{`
+      #toolbar {
+        width: 100%;
+        height: 40px; // TODO fix
+        margin-bottom: 16px;
+        display: flex;
+        position: relative;
+        z-index: 1;
+      }
+    `}</style>
+  </div>
+)
 
-  render() {
-    return (
-      <div id="toolbar">
-        <Dropdown list={themes} />
-        <Dropdown list={langauges} />
-        <ColorPicker />
-        <Settings />
-        <Button title="Copy Imgur Link" bg="#84ACFC" style={{ borderRadius: '3px 0px 0px 3px' }}/>
-        <Button title="Save Image" bg="#C3E98D" />
-        <style jsx>{`
-          #toolbar {
-            width: 100%;
-            height: 40px; // TODO fix
-            margin-bottom: 16px;
-            display: flex;
-            position: relative;
-            z-index: 1;
-          }
-        `}</style>
-      </div>
-    )
-  }
-}
+export default Toolbar

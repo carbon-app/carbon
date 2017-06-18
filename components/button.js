@@ -1,12 +1,13 @@
 import React from 'react'
 
 export default (props) => (
-  <div className="toolbar-btn" style={Object.assign({
+  <div onClick={props.onClick} className="toolbar-btn" style={Object.assign({
     background: props.bg
   }, props.style)}>
     <span>{props.title}</span>
     <style jsx>{`
       div {
+        cursor: pointer;
         height: 37px;
         display: flex;
         align-items: center;

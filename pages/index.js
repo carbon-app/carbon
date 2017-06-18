@@ -2,6 +2,8 @@ import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import Axios from 'axios'
+import domtoimage from 'dom-to-image'
+
 
 import Meta from '../components/meta'
 import Toolbar from '../components/toolbar'
@@ -19,13 +21,25 @@ class Index extends React.Component {
       return {}
     }
   }
+
+  save () {
+    // save
+    domtoimage.toJpeg(document.getElementById('container'))
+      .then((dataUrl) => {
+        const link = document.createElement('a')
+        link.download = 'my-image-name.jpeg'
+        link.href = dataUrl
+        link.click()
+      })
+  }
+
   render () {
     return (
         <div className="main">
           <Meta />
           <h1>Welcome to Code Image</h1>
           <div id="editor">
-            <Toolbar />
+            <Toolbar save={this.save} />
             <CodeImage>
               {this.props.content}
             </CodeImage>
