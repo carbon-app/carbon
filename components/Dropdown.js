@@ -1,6 +1,6 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
-import ArrowDown from './svg/arrowdown'
+import ArrowDown from './svg/Arrowdown'
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -14,7 +14,10 @@ class Dropdown extends React.Component {
   }
 
   select(item) {
-    this.setState({ selected: item })
+    if (this.state.selected !== item) {
+      this.props.onChange(item)
+      this.setState({ selected: item })
+    }
   }
 
   toggle() {
@@ -63,7 +66,7 @@ class Dropdown extends React.Component {
     // find longest list value in number of characters
     const MIN_WIDTH = this.props.list.reduce((max, { name }) =>
       (name.length > max ? name.length : max), 0)
-    console.log(MIN_WIDTH);
+
     return (
       <div className="dropdown-container" style={{ minWidth: MIN_WIDTH * 16 }} onClick={this.toggle}>
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>

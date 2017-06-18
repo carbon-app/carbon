@@ -4,28 +4,33 @@ import { DragDropContext } from 'react-dnd'
 import Axios from 'axios'
 import domtoimage from 'dom-to-image'
 
-import Logo from '../components/svg/logo'
-import Meta from '../components/meta'
-import Toolbar from '../components/toolbar'
-import CodeImage from '../components/codeImage'
+import Logo from '../components/svg/Logo'
+import Meta from '../components/Meta'
+import Toolbar from '../components/Toolbar'
+import CodeImage from '../components/CodeImage'
 import api from '../lib/api'
+import { THEMES, LANGUAGES, DEFAULT_CODE } from '../lib/constants'
 
 class Index extends React.Component {
   /* pathname, asPath, err, req, res */
   static async getInitialProps ({ asPath }) {
     try {
-      const content = await api.getGist(asPath)
-      return { content }
+      if (asPath !== '/') {
+        const content = await api.getGist(asPath)
+        return { content }
+      }
     } catch (e) {
       console.log(e)
-      return {}
     }
+    return {}
   }
 
   constructor()  {
     super()
     this.state = {
-      bgColor: '#111111'
+      bgColor: '#111111',
+      theme: THEMES[0].id,
+      language: 'javascript' // TODO LANGUAGES[0]
     }
   }
 
@@ -61,10 +66,12 @@ class Index extends React.Component {
               save={this.save}
               upload={this.upload}
               onBGChange={color => this.setState({ bgColor: color })}
+              onThemeChange={theme => this.setState({ theme: theme.id })}
+              onLanguageChange={language => this.setState({ language })}
               bg={this.state.bgColor}
             />
-            <CodeImage bg={this.state.bgColor}>
-              {this.props.content}
+            <CodeImage config={this.state}>
+              {this.droppedContent || this.props.content || DEFAULT_CODE}
             </CodeImage>
           </div>
           <div className="footer">
