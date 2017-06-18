@@ -3,83 +3,12 @@ import Dropdown from './dropdown'
 import ColorPicker from './colorpicker'
 import Settings from './settings'
 import Button from './button'
-
-const themes = [
-  {
-    name: 'dracula'
-  },
-  {
-    name: 'solarized'
-  }
-]
-
-const langauges = [
-  'Auto Detect',
-  'Plain Text',
-  'AppleScript',
-  'BoxNote',
-  'C',
-  'C#',
-  'CSS',
-  'CSV',
-  'Closure',
-  'CoffeeScript',
-  'Cold Fusion',
-  'Crystal',
-  'Cypher',
-  'D',
-  'Dart',
-  'Diff',
-  'Docker',
-  'Erlang',
-  'F#',
-  'Fortran',
-  'Gherkin',
-  'Go',
-  'Groovy',
-  'HTML',
-  'Haskell',
-  'Haxe',
-  'Java',
-  'JavaScript',
-  'JSON',
-  'Julia',
-  'Kotlin',
-  'LaTex',
-  'Lisp',
-  'Lua',
-  'MATLAB',
-  'MUMPS',
-  'OCaml',
-  'Objective-C',
-  'PHP',
-  'Pascal',
-  'Perl',
-  'Pig',
-  'Post',
-  'Puppet',
-  'Python',
-  'R',
-  'Ruby',
-  'Rust',
-  'SQL',
-  'Sass',
-  'Scheme',
-  'Smalltalk',
-  'Swift',
-  'TSV',
-  'VB.NET',
-  'VBScript',
-  'Velocity',
-  'Verilog',
-  'XML',
-  'YAML'
-].map(name => ({ name }))
+import { THEMES, LANGUAGES } from '../lib/constants'
 
 const Toolbar = (props) => (
   <div id="toolbar">
-    <Dropdown list={themes} />
-    <Dropdown list={langauges} />
+    <Dropdown list={THEMES} />
+    <Dropdown list={LANGUAGES} />
     <ColorPicker
       onChange={props.onBGChange}
       bg={props.bg}
