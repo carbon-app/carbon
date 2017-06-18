@@ -7,8 +7,8 @@ import { THEMES, LANGUAGES } from '../lib/constants'
 
 const Toolbar = (props) => (
   <div id="toolbar">
-    <Dropdown list={THEMES} />
-    <Dropdown list={LANGUAGES} />
+    <Dropdown list={THEMES} onChange={props.onThemeChange}/>
+    <Dropdown list={LANGUAGES} onChange={props.onLanguageChange}/>
     <ColorPicker
       onChange={props.onBGChange}
       bg={props.bg}

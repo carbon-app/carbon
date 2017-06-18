@@ -14,7 +14,10 @@ class Dropdown extends React.Component {
   }
 
   select(item) {
-    this.setState({ selected: item })
+    if (this.state.selected !== item) {
+      this.props.onChange(item)
+      this.setState({ selected: item })
+    }
   }
 
   toggle() {

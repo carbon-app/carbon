@@ -4,24 +4,11 @@ import { DragDropContext } from 'react-dnd'
 import Axios from 'axios'
 import domtoimage from 'dom-to-image'
 
-
 import Meta from '../components/meta'
 import Toolbar from '../components/toolbar'
 import CodeImage from '../components/codeImage'
 import api from '../lib/api'
-
-const DEFAULT_CODE = `const pluckDeep = key => obj => key.split('.').reduce((accum, key) => accum[key], obj)
-
-const compose = (...fns) => res => fns.reduce((accum, next) => next(accum), res)
-
-const unfold = (f, seed) => {
-  const go = (f, seed, acc) => {
-    const res = f(seed)
-    return res ? go(f, res[1], acc.concat([res[0]])) : acc
-  }
-  return go(f, seed, [])
-}
-  `
+import { THEMES, LANGUAGES, DEFAULT_CODE } from '../lib/constants'
 
 class Index extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -38,7 +25,9 @@ class Index extends React.Component {
   constructor()  {
     super()
     this.state = {
-      bgColor: '#111111'
+      bgColor: '#111111',
+      theme: THEMES[0],
+      language: LANGUAGES[0]
     }
   }
 
@@ -71,10 +60,12 @@ class Index extends React.Component {
               save={this.save}
               upload={this.upload}
               onBGChange={color => this.setState({ bgColor: color })}
+              onThemeChange={theme => this.setState({ theme })}
+              onLanguageChange={language => this.setState({ language })}
               bg={this.state.bgColor}
             />
-            <CodeImage config={{ bg: this.state.bgColor}}>
-              {this.props.content || DEFAULT_CODE}
+            <CodeImage config={this.state}>
+              {this.droppedContent || this.props.content || DEFAULT_CODE}
             </CodeImage>
           </div>
           <style jsx>{`
