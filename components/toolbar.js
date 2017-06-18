@@ -81,7 +81,10 @@ const Toolbar = (props) => (
   <div id="toolbar">
     <Dropdown list={themes} />
     <Dropdown list={langauges} />
-    <ColorPicker />
+    <ColorPicker
+      onChange={props.onBGChange}
+      bg={props.bg}
+    />
     <Settings />
     <Button
       onClick={props.copyLink}

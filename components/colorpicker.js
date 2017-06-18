@@ -5,7 +5,7 @@ import { BlockPicker } from 'react-color'
 class ColorPicker extends React.Component {
   constructor() {
     super()
-    this.state = { isVisible: false, bgcolor: '#565656' }
+    this.state = { isVisible: false }
     this.toggle = this.toggle.bind(this)
     this.handlePickColor = this.handlePickColor.bind(this)
   }
@@ -19,7 +19,7 @@ class ColorPicker extends React.Component {
   }
 
   handlePickColor(color) {
-    this.setState({ bgcolor: color.hex })
+    this.props.onChange(color.hex)
   }
 
   render() {
@@ -29,10 +29,10 @@ class ColorPicker extends React.Component {
           <div className="colorpicker-label">
             <span>BG</span>
           </div>
-          <div className="bg-color" style={{background: this.state.bgcolor}} onClick={this.toggle}></div>
+          <div className="bg-color" style={{background: this.props.bg}} onClick={this.toggle}></div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
-          <BlockPicker color={this.state.bgcolor} onChangeComplete={this.handlePickColor} />
+          <BlockPicker color={this.props.bg} onChangeComplete={this.handlePickColor} />
         </div>
         <style jsx>{`
           .colorpicker-container {

@@ -22,6 +22,13 @@ class Index extends React.Component {
     }
   }
 
+  constructor()  {
+    super()
+    this.state = {
+      bgColor: '#111111'
+    }
+  }
+
   save () {
     // save
     domtoimage.toJpeg(document.getElementById('container'))
@@ -39,8 +46,12 @@ class Index extends React.Component {
           <Meta />
           <h1>Welcome to Code Image</h1>
           <div id="editor">
-            <Toolbar save={this.save} />
-            <CodeImage>
+            <Toolbar
+              save={this.save}
+              onBGChange={color => this.setState({ bgColor: color })}
+              bg={this.state.bgColor}
+            />
+            <CodeImage bg={this.state.bgColor}>
               {this.props.content}
             </CodeImage>
           </div>

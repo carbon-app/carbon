@@ -25,18 +25,6 @@ class CodeImage extends React.Component {
   constructor () {
     super()
     this.state = {}
-    this.save = this.save.bind(this)
-  }
-
-  save () {
-    // save
-    domtoimage.toJpeg(this.container)
-      .then((dataUrl) => {
-        const link = document.createElement('a')
-        link.download = 'my-image-name.jpeg'
-        link.href = dataUrl
-        link.click()
-      })
   }
 
   render () {
@@ -46,11 +34,9 @@ class CodeImage extends React.Component {
 
     return this.props.connectDropTarget(
       <div id='section'>
-        <div id='container' ref={(container) => { this.container = container }}>
+        <div id='container' style={Object.assign({ background: this.props.bg }, this.props.style)}>
           <pre className='hyper'>
-            <code onClick={this.save}>
-              {code}
-            </code>
+            <code>{code}</code>
           </pre>
         </div>
         <style jsx>{`
