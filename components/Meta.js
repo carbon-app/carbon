@@ -53,6 +53,10 @@ export default () => (
         padding: 40px 18px 24px;
         border-radius: 3px;
       }
+
+      .cm-s-dracula .CodeMirror-cursor {
+          border-left: solid 2px #159588;
+      }
     `}</style>
   </div>
 )
