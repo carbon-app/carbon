@@ -6,9 +6,7 @@ import WindowControls from '../components/svg/controls'
 
 // hack to only call modes on browser
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
-  require('codemirror/mode/javascript/javascript');
-  require('codemirror/mode/xml/xml');
-  require('codemirror/mode/markdown/markdown');
+  require('../lib/constants')
 }
 
 const margin = '45px 54px'
@@ -19,7 +17,8 @@ class CodeImage extends React.Component {
     super(props)
 
     this.state = {
-      code: this.props.children
+      code: this.props.children,
+      config: this.props.config || {}
     }
   }
 
@@ -28,15 +27,14 @@ class CodeImage extends React.Component {
   }
 
   render () {
-    const options = { lineNumbers: false, mode: 'javascript' }
+    const options = { lineNumbers: false, mode: 'javascript', theme: 'dracula'}
 
     return (
       <div id='section'>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css'/>
-        <div id='container' style={Object.assign({ background: this.props.bg }, this.props.style)}>
-          <div className="window-controls">
-            <WindowControls />
-          </div>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/dracula.min.css'/>
+        <div id='container' style={Object.assign({ background: this.state.config.bg }, this.props.style)}>
+          { true ? <WindowControls /> : null }
           <div id='anotherContainer'>
             <CodeMirror value={this.state.code} onChange={this.updateCode} options={options} />
           </div>
@@ -59,12 +57,6 @@ class CodeImage extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
-          }
-
-          .window-controls {
-            position: absolute;
-            margin-left: -2px;
-            margin-top: -14px;
           }
 
           .hyper {
