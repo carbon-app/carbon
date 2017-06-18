@@ -1,8 +1,8 @@
 import React from 'react'
-import Dropdown from './dropdown'
-import ColorPicker from './colorpicker'
-import Settings from './settings'
-import Button from './button'
+import Dropdown from './Dropdown'
+import ColorPicker from './Colorpicker'
+import Settings from './Settings'
+import Button from './Button'
 import { THEMES, LANGUAGES } from '../lib/constants'
 
 const Toolbar = (props) => (

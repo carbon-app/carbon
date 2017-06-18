@@ -4,9 +4,9 @@ import { DragDropContext } from 'react-dnd'
 import Axios from 'axios'
 import domtoimage from 'dom-to-image'
 
-import Meta from '../components/meta'
-import Toolbar from '../components/toolbar'
-import CodeImage from '../components/codeImage'
+import Meta from '../components/Meta'
+import Toolbar from '../components/Toolbar'
+import CodeImage from '../components/CodeImage'
 import api from '../lib/api'
 import { THEMES, LANGUAGES, DEFAULT_CODE } from '../lib/constants'
 

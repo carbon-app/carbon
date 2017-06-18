@@ -2,7 +2,7 @@ import { EOL } from 'os'
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import CodeMirror from 'react-codemirror'
-import WindowControls from '../components/svg/controls'
+import WindowControls from '../components/svg/Controls'
 
 // hack to only call modes on browser
 if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {

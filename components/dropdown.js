@@ -1,6 +1,6 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
-import ArrowDown from './svg/arrowdown'
+import ArrowDown from './svg/Arrowdown'
 
 class Dropdown extends React.Component {
   constructor(props) {

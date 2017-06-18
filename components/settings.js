@@ -1,6 +1,6 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
-import SettingsIcon from './svg/settings'
+import SettingsIcon from './svg/Settings'
 
 class Settings extends React.Component {
   constructor(props) {
