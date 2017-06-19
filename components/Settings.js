@@ -1,6 +1,10 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import SettingsIcon from './svg/Settings'
+import ThemeSelect from './ThemeSelect'
+import Slider from './Slider'
+import Toggle from './Toggle'
+import { PALETTE } from '../lib/constants'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -26,23 +30,11 @@ class Settings extends React.Component {
           <SettingsIcon />
         </div>
         <div className="settings-settings">
-          <div className="window-theme">
-            <span className="label">Theme</span>
-            <div className="themes">
-              <div className="theme"></div>
-              <div className="theme"></div>
-              <div className="theme"></div>
-            </div>
-          </div>
-          <div className="toggle">
-            <span className="label">Drop shadow</span>
-          </div>
-          <div className="toggle">
-            <span className="label">Window controls</span>
-          </div>
-          <div className="slider">
-            <span className="label">Padding (horizontal)</span>
-          </div>
+          <ThemeSelect onChange={this.props.onChange} />
+          <Toggle label="Drop shadow" onChange={this.props.onChange}/>
+          <Toggle label="Window controls" onChange={this.props.onChange}/>
+          <Slider label="Padding (vertical)" onChange={this.props.onChange}/>
+          <Slider label="Padding (horizontal)" onChange={this.props.onChange}/>
         </div>
         <style jsx>{`
           .settings-container {
@@ -80,14 +72,12 @@ class Settings extends React.Component {
 
           .settings-settings {
             display: none;
-            border: 0.5px solid #333;
-            height: 208px;
-            width: 152px;
-            padding: 8px;
+            border: 0.5px solid #000;
+            width: 184px;
             border-radius: 3px;
             position: absolute;
             margin-top: 120px;
-            background: #000;
+            background: ${PALETTE.EDITOR_BG};
           }
         `}</style>
       </div>

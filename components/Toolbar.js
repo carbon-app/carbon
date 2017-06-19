@@ -13,7 +13,7 @@ const Toolbar = (props) => (
       onChange={props.onBGChange}
       bg={props.bg}
     />
-    <Settings />
+    <Settings onChange={props.onSettingsChange} />
     <div className="buttons">
       <Button
         onClick={props.upload}
