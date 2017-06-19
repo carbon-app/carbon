@@ -58,8 +58,10 @@ class Index extends React.Component {
         <div className="main">
           <Meta />
           <div className="header">
-            <Logo />
-            <h1>The easiest way to create images from source code. Start typing, or drag a file into the text area to get started.</h1>
+            <div className="header-content">
+              <Logo />
+              <h1>The easiest way to create images from source code. Start typing, or drag a file into the text area to get started.</h1>
+            </div>
           </div>
           <div id="editor">
             <Toolbar
@@ -80,40 +82,38 @@ class Index extends React.Component {
           <style jsx>{`
             .main {
               display: flex;
-              justify-content: space-between;
-              padding: 64px;
+              flex-direction: column;
+              align-items: center;
               height: 100vh;
+              min-width: 848px;
             }
 
             .header {
-              margin-top: 56px;
-              width: 776px;
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
+              margin: 40px 0 32px;
+              width: 704px;
             }
 
-            h1 {
-              max-width: 570px;
-              font-size: 24px;
+            .header-content {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .header-content h1 {
+              max-width: 472px;
+              font-size: 20px;
               line-height: 1.5;
               color: #fff;
             }
 
-            div {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-            }
-
             #editor {
-              height: 460px;
               background: #151515;
               padding: 16px;
             }
 
             .footer {
+              font-size: 14px;
+              margin: 32px 0;
               color: #506874;
             }
 

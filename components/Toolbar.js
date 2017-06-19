@@ -30,7 +30,7 @@ const Toolbar = (props) => (
         margin-bottom: 16px;
         display: flex;
         position: relative;
-        z-index: 1;
+        z-index: 3;
         font-size: 14px;
         color: #4F6875;
       }
