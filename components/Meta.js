@@ -48,6 +48,11 @@ export default () => (
         margin-right: 0px;
       }
 
+      .selected svg {
+        border-radius: 3px;
+        border: solid 2px #fff;
+      }
+
       .CodeMirrorContainer .CodeMirror {
         height: auto;
         min-width: 680px;
