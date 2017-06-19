@@ -11,9 +11,9 @@ export default () => (
     </svg>
     <style jsx>{`
       div {
-        position: absolute;
+        position: relative;
+        top: +30px;
         margin-left: 18px;
-        margin-top: 12px;
         z-index: 1;
       }
     `}

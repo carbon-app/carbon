@@ -34,7 +34,8 @@ const CodeImage = (props) => {
   // create styles
   const containerStyle = {
     background: config.background,
-    padding: `${config.paddingVertical} ${config.paddingHorizontal}`
+    padding: `${config.paddingVertical} ${config.paddingHorizontal}`,
+    paddingTop: `calc(${config.paddingVertical} - 19px)` // TODO fix hack: accomodates for space taken up by window controls
   }
 
   return (
