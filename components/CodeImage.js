@@ -61,8 +61,7 @@ const DEFAULT_SETTINGS = {
         <Spinner />
         <style jsx>{`
           div {
-            width: 680px;
-            height: 500px;
+            height: 352px;
           }
         `}
         </style>
@@ -71,6 +70,7 @@ const DEFAULT_SETTINGS = {
     if (this.state.loading === false) {
       content = (
         <div id="container" style={containerStyle}>
+          { true ? <WindowControls /> : null }
           <CodeMirror className="CodeMirrorContainer" value={this.props.children} options={options} />
         </div>
       )
