@@ -14,6 +14,7 @@ export default () => (
       <meta charSet="utf-8" />
       <link rel="shortcut icon" href="/static/favicon.ico" />
       <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />
+      <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
     </Head>
     <style jsx>{`
       .meta {

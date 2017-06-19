@@ -36,11 +36,10 @@ class Index extends React.Component {
 
   save () {
     // domtoimage.toPng(document.getElementById('container'))
-    domtoimage.toJpeg(document.getElementById('container'))
+    domtoimage.toPng(document.getElementById('container'))
       .then((dataUrl) => {
         const link = document.createElement('a')
-        // link.download = 'snippet.png'
-        link.download = 'snippet.jpeg'
+        link.download = 'snippet.png'
         link.href = dataUrl
         link.click()
       })

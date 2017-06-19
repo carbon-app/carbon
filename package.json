@@ -19,12 +19,14 @@
     "morgan": "^1.8.2",
     "next": "^2.4.3",
     "react": "^15.5.4",
-    "react-codemirror": "^1.0.0",
     "react-click-outside": "^2.3.1",
+    "react-codemirror": "^1.0.0",
     "react-color": "^2.12.1",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^15.5.4",
+    "react-spinkit": "^3.0.0",
+    "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^0.0.6"
   }
 }
