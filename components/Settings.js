@@ -26,6 +26,23 @@ class Settings extends React.Component {
           <SettingsIcon />
         </div>
         <div className="settings-settings">
+          <div className="window-theme">
+            <span className="label">Theme</span>
+            <div className="themes">
+              <div className="theme"></div>
+              <div className="theme"></div>
+              <div className="theme"></div>
+            </div>
+          </div>
+          <div className="toggle">
+            <span className="label">Drop shadow</span>
+          </div>
+          <div className="toggle">
+            <span className="label">Window controls</span>
+          </div>
+          <div className="slider">
+            <span className="label">Padding (horizontal)</span>
+          </div>
         </div>
         <style jsx>{`
           .settings-container {
@@ -35,6 +52,8 @@ class Settings extends React.Component {
             align-items: center;
             justify-content: center;
             border-radius: 3px;
+            color: #fff;
+            font-size: 12px;
           }
 
           .settings-display {
@@ -62,8 +81,9 @@ class Settings extends React.Component {
           .settings-settings {
             display: none;
             border: 0.5px solid #333;
-            height: 200px;
-            width: 200px;
+            height: 208px;
+            width: 152px;
+            padding: 8px;
             border-radius: 3px;
             position: absolute;
             margin-top: 120px;
