@@ -1,10 +1,15 @@
 import Head from 'next/head'
+import { THEMES } from '../lib/constants'
 
 export default () => (
   <div className="meta">
     <Head>
       <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css' />
-      <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/dracula.min.css'/>
+      {
+        THEMES.map(theme => (
+          <link rel="stylesheet" href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/${theme.id}.min.css`}/>
+        ))
+      }
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta charSet="utf-8" />
       <link rel="shortcut icon" href="/static/favicon.ico" />
