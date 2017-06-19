@@ -1,6 +1,7 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import ArrowDown from './svg/Arrowdown'
+import { PALETTE } from '../lib/constants'
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Dropdown extends React.Component {
         <span>{ item.name }</span>
         <style jsx>{`
           .dropdown-list-item {
-            background: #131313;
+            background: ${PALETTE.EDITOR_BG};
             user-select: none;
             padding: 8px 16px;
             border-bottom: 0.5px solid #000;

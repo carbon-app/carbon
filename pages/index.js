@@ -9,7 +9,7 @@ import Meta from '../components/Meta'
 import Toolbar from '../components/Toolbar'
 import CodeImage from '../components/CodeImage'
 import api from '../lib/api'
-import { THEMES, LANGUAGES, DEFAULT_CODE } from '../lib/constants'
+import { THEMES, LANGUAGES, PALETTE, DEFAULT_CODE } from '../lib/constants'
 
 class Index extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -69,7 +69,8 @@ class Index extends React.Component {
               onBGChange={color => this.setState({ background: color })}
               onThemeChange={theme => this.setState({ theme: theme.id })}
               onLanguageChange={language => this.setState({ language })}
-              bg={this.state.bgColor}
+              onSettingsChange={settings => this.setState({ settings })}
+              bg={this.state.background}
             />
             <CodeImage config={this.state}>
               {this.droppedContent || this.props.content || DEFAULT_CODE}
@@ -106,7 +107,7 @@ class Index extends React.Component {
             }
 
             #editor {
-              background: #151515;
+              background: ${PALETTE.EDITOR_BG};
               padding: 16px;
             }
 
