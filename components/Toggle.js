@@ -10,6 +10,7 @@ export default class extends React.Component {
 
   toggle() {
     this.setState({ isEnabled: !this.state.isEnabled })
+    this.props.onChange(this.state.isEnabled)
   }
 
   render() {

@@ -25,16 +25,16 @@ class Settings extends React.Component {
 
   render() {
     return (
-      <div className="settings-container" onClick={this.toggle}>
-        <div className={`settings-display ${this.state.isVisible ? 'is-visible' : ''}`}>
+      <div className="settings-container">
+        <div className={`settings-display ${this.state.isVisible ? 'is-visible' : ''}`} onClick={this.toggle}>
           <SettingsIcon />
         </div>
         <div className="settings-settings">
           <ThemeSelect onChange={this.props.onChange} />
-          <Toggle label="Drop shadow" onChange={this.props.onChange}/>
-          <Toggle label="Window controls" onChange={this.props.onChange}/>
-          <Slider label="Padding (vertical)" onChange={this.props.onChange}/>
-          <Slider label="Padding (horizontal)" onChange={this.props.onChange}/>
+          <Toggle label="Drop shadow" onChange={this.props.onChange.bind(null, 'dropShadow')}/>
+          <Toggle label="Window controls" onChange={this.props.onChange.bind(null, 'windowControls')}/>
+          <Slider label="Padding (vertical)" initialValue={16} onChange={this.props.onChange.bind(null, 'paddingVertical')}/>
+          <Slider label="Padding (horizontal)" initialValue={32} onChange={this.props.onChange.bind(null, 'paddingHorizontal')}/>
         </div>
         <style jsx>{`
           .settings-container {
@@ -76,7 +76,7 @@ class Settings extends React.Component {
             width: 184px;
             border-radius: 3px;
             position: absolute;
-            margin-top: 120px;
+            margin-top: 132px;
             background: ${PALETTE.EDITOR_BG};
           }
         `}</style>

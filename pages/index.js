@@ -30,7 +30,11 @@ class Index extends React.Component {
     this.state = {
       background: '#111111',
       theme: THEMES[0].id,
-      language: 'javascript' // TODO LANGUAGES[0]
+      language: 'javascript', // TODO LANGUAGES[0]
+      dropShadow: false,
+      windowControls: true,
+      paddingVertical: '48px',
+      paddingHorizontal: '32px'
     }
   }
 
@@ -69,7 +73,7 @@ class Index extends React.Component {
               onBGChange={color => this.setState({ background: color })}
               onThemeChange={theme => this.setState({ theme: theme.id })}
               onLanguageChange={language => this.setState({ language })}
-              onSettingsChange={settings => this.setState({ settings })}
+              onSettingsChange={(key, value) => this.setState({ key: value })}
               bg={this.state.background}
             />
             <CodeImage config={this.state}>

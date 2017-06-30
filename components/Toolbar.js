@@ -32,7 +32,7 @@ const Toolbar = (props) => (
         position: relative;
         z-index: 3;
         font-size: 14px;
-        color: #4F6875;
+        color: #fff;
       }
 
       .buttons {
