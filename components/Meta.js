@@ -6,8 +6,8 @@ export default () => (
     <Head>
       <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css' />
       {
-        THEMES.map(theme => (
-          <link rel="stylesheet" href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/${theme.id}.min.css`}/>
+        THEMES.map((theme, i) => (
+          <link key={i} rel="stylesheet" href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/${theme.id}.min.css`}/>
         ))
       }
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -57,7 +57,7 @@ export default () => (
         height: auto;
         min-width: 680px;
         padding: 40px 18px 24px;
-        border-radius: 3px;
+        border-radius: 5px;
       }
 
       .cm-s-dracula .CodeMirror-cursor {
