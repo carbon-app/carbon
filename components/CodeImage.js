@@ -70,8 +70,12 @@ const DEFAULT_SETTINGS = {
     if (this.state.loading === false) {
       content = (
         <div id="container" style={containerStyle}>
-          { true ? <WindowControls /> : null }
-          <CodeMirror className="CodeMirrorContainer" value={this.props.children} options={options} />
+          { config.windowControls ? <WindowControls /> : null }
+          <CodeMirror
+            className={`CodeMirror__container ${config.dropShadow ? 'dropshadow' : ''}`}
+            value={this.props.children}
+            options={options}
+          />
         </div>
       )
     }

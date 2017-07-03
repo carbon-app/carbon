@@ -53,7 +53,12 @@ export default () => (
         border: solid 2px #fff;
       }
 
-      .CodeMirrorContainer .CodeMirror {
+      .CodeMirror__container.dropshadow {
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.3);
+        border-radius: 5px;
+      }
+
+      .CodeMirror__container .CodeMirror {
         height: auto;
         min-width: 680px;
         padding: 40px 18px 24px;

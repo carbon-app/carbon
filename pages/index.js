@@ -73,7 +73,7 @@ class Index extends React.Component {
               onBGChange={color => this.setState({ background: color })}
               onThemeChange={theme => this.setState({ theme: theme.id })}
               onLanguageChange={language => this.setState({ language })}
-              onSettingsChange={(key, value) => this.setState({ key: value })}
+              onSettingsChange={(key, value) => this.setState({ [key]: value })}
               bg={this.state.background}
             />
             <CodeImage config={this.state}>
