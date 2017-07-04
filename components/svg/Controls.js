@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default () => (
-  <div>
+  <div className="window-controls">
     <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
       <g fill="none" fillRule="evenodd" transform="translate(1 1)">
         <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" strokeWidth=".5"/>
@@ -11,6 +11,7 @@ export default () => (
     </svg>
     <style jsx>{`
       div {
+        margin-top: -19px;
         position: relative;
         top: +30px;
         margin-left: 18px;

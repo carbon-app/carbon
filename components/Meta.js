@@ -61,8 +61,12 @@ export default () => (
       .CodeMirror__container .CodeMirror {
         height: auto;
         min-width: 680px;
-        padding: 40px 18px 24px;
+        padding: 24px 18px;
         border-radius: 5px;
+      }
+
+      .window-controls + .CodeMirror__container > .CodeMirror {
+        padding-top: 40px;
       }
 
       .cm-s-dracula .CodeMirror-cursor {

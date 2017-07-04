@@ -51,8 +51,7 @@ const DEFAULT_SETTINGS = {
     // create styles
     const containerStyle = {
       background: config.background,
-      padding: `${config.paddingVertical} ${config.paddingHorizontal}`,
-      paddingTop: `calc(${config.paddingVertical} - 19px)` // TODO fix hack: accomodates for space taken up by window controls
+      padding: `${config.paddingVertical} ${config.paddingHorizontal}`
     }
 
     // set content to spinner if loading, else editor
