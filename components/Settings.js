@@ -20,7 +20,7 @@ class Settings extends React.Component {
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: false })
   }
 
   render() {

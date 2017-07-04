@@ -8,7 +8,9 @@ export default class extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ value: e.target.value })
+    this.setState({ value: e.target.value }, () => {
+      this.props.onChange(`${this.state.value}px`)
+    })
   }
 
   render() {
