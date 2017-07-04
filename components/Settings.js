@@ -38,9 +38,10 @@ class Settings extends React.Component {
         </div>
         <style jsx>{`
           .settings-container {
+            display: flex;
+            position: relative;
             height: 100%;
             width: 37px;
-            display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 3px;
@@ -72,11 +73,12 @@ class Settings extends React.Component {
 
           .settings-settings {
             display: none;
+            position: absolute;
+            top: 48px;
+            left: 0;
             border: 0.5px solid #000;
             width: 184px;
             border-radius: 3px;
-            position: absolute;
-            margin-top: 132px;
             background: ${PALETTE.EDITOR_BG};
           }
         `}</style>

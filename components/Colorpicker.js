@@ -1,6 +1,6 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
-import { BlockPicker } from 'react-color'
+import { TwitterPicker } from 'react-color'
 
 class ColorPicker extends React.Component {
   constructor() {
@@ -33,7 +33,7 @@ class ColorPicker extends React.Component {
           <div className="bg-color" style={{background: this.props.bg}} onClick={this.toggle}></div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
-          <BlockPicker color={this.props.bg} onChangeComplete={this.handlePickColor} />
+          <TwitterPicker color={this.props.bg} onChangeComplete={this.handlePickColor} />
         </div>
         <style jsx>{`
           .colorpicker-container {
@@ -67,8 +67,8 @@ class ColorPicker extends React.Component {
 
           .colorpicker-picker {
             position: absolute;
-            margin-left: -32px;
-            margin-top: 9px;
+            margin-left: 32px;
+            margin-top: 10px;
           }
         `}</style>
       </div>

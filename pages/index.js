@@ -86,15 +86,17 @@ class Index extends React.Component {
           <style jsx>{`
             .main {
               display: flex;
+              justify-content: center;
               flex-direction: column;
               align-items: center;
               height: 100vh;
               min-width: 848px;
+              min-height: 704px;
             }
 
             .header {
-              margin: 40px 0 32px;
-              width: 704px;
+              margin: 40px 0 48px;
+              width: 648px;
             }
 
             .header-content {
