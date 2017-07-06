@@ -3,6 +3,7 @@ import Dropdown from './Dropdown'
 import ColorPicker from './Colorpicker'
 import Settings from './Settings'
 import Button from './Button'
+import CopyButton from './CopyButton'
 import { THEMES, LANGUAGES } from '../lib/constants'
 
 const Toolbar = (props) => (
@@ -15,12 +16,7 @@ const Toolbar = (props) => (
     />
     <Settings onChange={props.onSettingsChange} />
     <div className="buttons">
-      <Button
-        onClick={props.upload}
-        title="Copy Imgur Link"
-        bg="#84ACFC"
-        style={{ borderRadius: '3px 0px 0px 3px' }}
-      />
+      <CopyButton />
       <Button onClick={props.save} title="Save Image" bg="#C3E98D" />
     </div>
     <style jsx>{`

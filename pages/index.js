@@ -52,7 +52,8 @@ class Index extends React.Component {
   upload () {
     domtoimage.toBlob(document.getElementById('container'))
       .then(api.uploadImage)
-      .then(res => res.data.link)
+      .then(res => res.data.id)
+      .then(id => `http://i.imgur.com/${id}`)
       .then(console.log)
   }
 
