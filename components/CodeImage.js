@@ -5,11 +5,6 @@ import CodeMirror from 'react-codemirror'
 import WindowControls from '../components/svg/Controls'
 import Spinner from 'react-spinner'
 
-// hack to only call modes on browser
-if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
-  require('../lib/constants')
-}
-
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
   paddingHorizontal: '50px',

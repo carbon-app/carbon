@@ -4,6 +4,7 @@ import { DragDropContext } from 'react-dnd'
 import Axios from 'axios'
 import domtoimage from 'dom-to-image'
 
+import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Logo from '../components/svg/Logo'
 import Meta from '../components/Meta'
 import Toolbar from '../components/Toolbar'
@@ -67,20 +68,28 @@ class Index extends React.Component {
               <h1>The easiest way to create images from source code. Start typing, or drag a file into the text area to get started.</h1>
             </div>
           </div>
-          <div id="editor">
-            <Toolbar
-              save={this.save}
-              upload={this.upload}
-              onBGChange={color => this.setState({ background: color })}
-              onThemeChange={theme => this.setState({ theme: theme.id })}
-              onLanguageChange={language => this.setState({ language })}
-              onSettingsChange={(key, value) => this.setState({ [key]: value })}
-              bg={this.state.background}
-            />
-            <CodeImage config={this.state}>
-              {this.droppedContent || this.props.content || DEFAULT_CODE}
-            </CodeImage>
-          </div>
+          <ReadFileDropContainer
+            onDrop={(droppedContent) => {
+              console.log(droppedContent)
+              this.setState({ droppedContent })
+            }}
+          >
+            <div id="editor">
+              <Toolbar
+                save={this.save}
+                upload={this.upload}
+                onBGChange={color => this.setState({ background: color })}
+                onThemeChange={theme => this.setState({ theme: theme.id })}
+                onLanguageChange={language => this.setState({ language })}
+                onSettingsChange={(key, value) => this.setState({ [key]: value })}
+                bg={this.state.background}
+                enabled={this.state}
+              />
+              <CodeImage config={this.state}>
+                {this.state.droppedContent || this.props.content || DEFAULT_CODE}
+              </CodeImage>
+            </div>
+          </ReadFileDropContainer>
           <div className="footer">
             <span>a project by <a href="https://twitter.com/dawn_labs">@dawn_labs ¬</a></span>
           </div>
