@@ -14,7 +14,7 @@ const Toolbar = (props) => (
       onChange={props.onBGChange}
       bg={props.bg}
     />
-    <Settings onChange={props.onSettingsChange} />
+    <Settings onChange={props.onSettingsChange} enabled={props.enabled} />
     <div className="buttons">
       <CopyButton />
       <Button onClick={props.save} title="Save Image" bg="#C3E98D" />

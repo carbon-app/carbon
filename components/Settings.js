@@ -31,8 +31,14 @@ class Settings extends React.Component {
         </div>
         <div className="settings-settings">
           <ThemeSelect onChange={this.props.onChange} />
-          <Toggle label="Drop shadow" onChange={this.props.onChange.bind(null, 'dropShadow')}/>
-          <Toggle label="Window controls" enabled onChange={this.props.onChange.bind(null, 'windowControls')}/>
+          <Toggle label="Drop shadow"
+            enabled={this.props.enabled.dropShadow}
+            onChange={this.props.onChange.bind(null, 'dropShadow')}
+          />
+          <Toggle label="Window controls"
+            enabled={this.props.enabled.windowControls}
+            onChange={this.props.onChange.bind(null, 'windowControls')}
+          />
           <Slider label="Padding (vertical)" initialValue={16} onChange={this.props.onChange.bind(null, 'paddingVertical')}/>
           <Slider label="Padding (horizontal)" initialValue={32} onChange={this.props.onChange.bind(null, 'paddingHorizontal')}/>
         </div>
