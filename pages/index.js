@@ -7,6 +7,7 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Meta from '../components/Meta'
 import Toolbar from '../components/Toolbar'
+import { WINDOW_THEMES } from '../components/ThemeSelect'
 import CodeImage from '../components/CodeImage'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -33,6 +34,7 @@ class Index extends React.Component {
       background: '#111111',
       theme: THEMES[0].id,
       language: 'javascript', // TODO LANGUAGES[0]
+      windowTheme: WINDOW_THEMES[0],
       dropShadow: false,
       windowControls: true,
       paddingVertical: '48px',
@@ -41,7 +43,6 @@ class Index extends React.Component {
   }
 
   save () {
-    // domtoimage.toPng(document.getElementById('container'))
     domtoimage.toPng(document.getElementById('container'))
       .then((dataUrl) => {
         const link = document.createElement('a')

@@ -15,8 +15,7 @@ const DEFAULT_SETTINGS = {
   language: 'javascript'
 }
 
- class CodeImage extends React.Component {
-
+class CodeImage extends React.Component {
   constructor (props) {
     super(props)
 
@@ -66,7 +65,7 @@ const DEFAULT_SETTINGS = {
         <div id="container" style={containerStyle}>
           { config.windowControls ? <WindowControls /> : null }
           <CodeMirror
-            className={`CodeMirror__container ${config.dropShadow ? 'dropshadow' : ''}`}
+            className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow ? 'dropshadow' : ''}`}
             value={this.props.children}
             options={options}
           />

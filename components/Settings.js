@@ -30,7 +30,7 @@ class Settings extends React.Component {
           <SettingsIcon />
         </div>
         <div className="settings-settings">
-          <ThemeSelect onChange={this.props.onChange} />
+          <ThemeSelect onChange={this.props.onChange.bind(null, 'windowTheme')} />
           <Toggle label="Drop shadow"
             enabled={this.props.enabled.dropShadow}
             onChange={this.props.onChange.bind(null, 'dropShadow')}

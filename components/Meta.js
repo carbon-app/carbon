@@ -71,6 +71,14 @@ export default () => (
         font-size: 0.7rem;
       }
 
+      .window-theme__sharp > .CodeMirror {
+        border-radius: 0px;
+      }
+
+      .window-theme__bw > .CodeMirror {
+        border: 2px solid #fff;
+      }
+
       .window-controls + .CodeMirror__container > .CodeMirror {
         padding-top: 40px;
       }

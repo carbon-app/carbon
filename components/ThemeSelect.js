@@ -1,12 +1,13 @@
 import React from 'react'
-import { Hyper, BW, None } from './svg/Themes'
+import { None, BW, Sharp } from './svg/WindowThemes'
 
-const THEME_IMGS = [None, Hyper, BW]
+const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
+export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 export default class extends React.Component {
   constructor(props) {
     super()
-    this.state = { selected: props.selected || THEME_IMGS[0] }
+    this.state = { selected: props.selected || WINDOW_THEMES[0] }
     this.select = this.select.bind(this)
   }
 
@@ -18,27 +19,34 @@ export default class extends React.Component {
   }
 
   renderThemes() {
-    return THEME_IMGS.map((Img, i) => (
-      <div className={`theme ${this.state.selected === Img ? "selected" : ""}`}
-        key={i} onClick={this.select.bind(null, Img)}>
-        <Img/>
-        <style jsx>{`
-          .theme {
-            margin-right: 8px;
-          }
+    return WINDOW_THEMES.map((theme, i) => {
+      const Img = WINDOW_THEMES_MAP[theme]
+      return (
+        <div
+          className={`theme ${this.state.selected === theme ? "selected" : ""}`}
+          key={i}
+          onClick={this.select.bind(null, theme)}
+        >
+          <Img />
+          <style jsx>{`
+            .theme {
+              cursor: pointer;
+              margin-right: 8px;
+            }
 
-          .theme:last-of-type {
-            margin-right: 0px;
-          }
-        `}</style>
-      </div>
-    ))
+            .theme:last-of-type {
+              margin-right: 0px;
+            }
+          `}</style>
+        </div>
+      )
+    })
   }
 
   render() {
     return (
       <div className="window-theme">
-        <span className="label">Theme</span>
+        <span className="label">Window Theme</span>
         <div className="themes">
           { this.renderThemes() }
         </div>
