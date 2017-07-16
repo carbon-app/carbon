@@ -1,6 +1,6 @@
 import React from 'react'
 import Dropdown from './Dropdown'
-import ColorPicker from './Colorpicker'
+import ColorPicker from './ColorPicker'
 import Settings from './Settings'
 import Button from './Button'
 import CopyButton from './CopyButton'
