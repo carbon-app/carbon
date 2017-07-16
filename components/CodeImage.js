@@ -2,7 +2,7 @@ import { EOL } from 'os'
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import CodeMirror from 'react-codemirror'
-import WindowControls from '../components/svg/Controls'
+import WindowControls from '../components/WindowControls'
 import Spinner from 'react-spinner'
 
 const DEFAULT_SETTINGS = {
@@ -63,7 +63,7 @@ class CodeImage extends React.Component {
     if (this.state.loading === false) {
       content = (
         <div id="container" style={containerStyle}>
-          { config.windowControls ? <WindowControls /> : null }
+          { config.windowControls ? <WindowControls theme={config.windowTheme} /> : null }
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow ? 'dropshadow' : ''}`}
             value={this.props.children}
