@@ -5,8 +5,8 @@ import Button from './Button'
 import api from '../lib/api'
 
 // constants
-const BUTTON_COLOR = '#84ACFC'
-const BUTTON_STYLE = { borderRadius: '3px 0px 0px 3px' }
+const BUTTON_COLOR = '#F6A623'
+const BUTTON_STYLE = { marginRight: '8px' }
 const DEBOUNCE_DURATION = 10000
 
 const STATUS = {
@@ -84,7 +84,7 @@ class CopyButton extends React.Component {
     return (
       <div >
         { this.state.link ? <input id="linkTarget" type="hidden" value="https://github.com/zenorocha/clipboard.js.git" /> : null }
-        <Button onClick={this.handleClick} title={textMap[this.state.status]} bg={BUTTON_COLOR} style={BUTTON_STYLE}/>
+        <Button onClick={this.handleClick} title={textMap[this.state.status]} color={BUTTON_COLOR} style={BUTTON_STYLE} />
       </div>
     )
   }

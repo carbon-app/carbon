@@ -27,7 +27,6 @@ export default class extends React.Component {
             position: relative;
             height: 32px;
             overflow: hidden;
-            border-bottom: solid 1px #000;
           }
 
           .slider:last-of-type {

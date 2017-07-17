@@ -1,6 +1,7 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import { TwitterPicker } from 'react-color'
+import { PALETTE } from '../lib/constants'
 
 class ColorPicker extends React.Component {
   constructor() {
@@ -44,7 +45,7 @@ class ColorPicker extends React.Component {
             display: flex;
             height: 100%;
             width: 72px;
-            border: 0.5px solid #000;
+            border: 0.5px solid ${PALETTE.SECONDARY};
             border-radius: 3px;
           }
 
@@ -56,6 +57,7 @@ class ColorPicker extends React.Component {
             cursor: default;
             height: 100%;
             width: 36px;
+            border-right: 0.5px solid ${PALETTE.SECONDARY};
           }
 
           .bg-color {

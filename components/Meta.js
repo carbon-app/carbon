@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { THEMES } from '../lib/constants'
+import { THEMES, PALETTE } from '../lib/constants'
 
 export default () => (
   <div className="meta">
@@ -23,7 +23,7 @@ export default () => (
     `}</style>
     <style jsx global>{`
       body {
-        font-family: Hack, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         background: #000;
       }
 
@@ -46,6 +46,10 @@ export default () => (
 
       #toolbar>div:last-child {
         margin-right: 0px;
+      }
+
+      .settings-settings > div {
+        border-bottom: solid 1px ${PALETTE.SECONDARY};
       }
 
       .selected svg {

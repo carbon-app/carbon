@@ -1,6 +1,7 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import ArrowDown from './svg/Arrowdown'
+import Checkmark from './svg/Checkmark'
 import { PALETTE } from '../lib/constants'
 
 class Dropdown extends React.Component {
@@ -31,27 +32,18 @@ class Dropdown extends React.Component {
 
   renderListItems() {
     return this.props.list.map((item, i) => (
-      <div className={`dropdown-list-item ${this.state.selected === item ? "selected" : ""}`} key={i} onClick={this.select.bind(null, item)}>
+      <div className="dropdown-list-item" key={i} onClick={this.select.bind(null, item)}>
         <span>{ item.name }</span>
+        { this.state.selected === item ? <Checkmark /> : null }
         <style jsx>{`
           .dropdown-list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             background: ${PALETTE.EDITOR_BG};
             user-select: none;
             padding: 8px 16px;
-            border-bottom: 0.5px solid #000;
-          }
-
-          .selected {
-            background: #506874;
-            color: #fff;
-          }
-
-          .selected:hover {
-            background: #506874 !important;
-          }
-
-          .dropdown-list-item:hover {
-            background: #222;
+            border-bottom: 0.5px solid ${PALETTE.SECONDARY};
           }
 
           .dropdown-list-item:last-of-type {
@@ -98,7 +90,7 @@ class Dropdown extends React.Component {
 
           .dropdown-display {
             height: 100%;
-            border: 1px solid #000;
+            border: 1px solid ${PALETTE.SECONDARY};
             border-radius: 3px;
             user-select: none;
             padding: 8px 16px;
@@ -119,8 +111,8 @@ class Dropdown extends React.Component {
 
           .dropdown-list {
             display: none;
-            margin-top: -2px;
-            border: 0.5px solid #000;
+            margin-top: -1px;
+            border: 0.5px solid ${PALETTE.SECONDARY};
             border-radius: 0px 0px 3px 3px;
             max-height: 350px;
             overflow-y: scroll;

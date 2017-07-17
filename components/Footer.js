@@ -7,7 +7,7 @@ const Footer = (props) => (
       div {
         font-size: 14px;
         margin: 32px 0;
-        color: #506874;
+        color: rgba(255, 255, 255, 0.5);
       }
       a {
         color: #C694E8;

@@ -101,6 +101,8 @@ class Index extends React.Component {
 
             #editor {
               background: ${PALETTE.EDITOR_BG};
+              border: 3px solid ${PALETTE.SECONDARY};
+              border-radius: 8px;
               padding: 16px;
             }
           `}

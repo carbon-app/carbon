@@ -45,7 +45,6 @@ export default class extends React.Component {
         <style jsx>{`
           .window-theme {
             padding: 8px;
-            border-bottom: solid 1px #000;
           }
 
           .window-theme span {

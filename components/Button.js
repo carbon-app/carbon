@@ -1,8 +1,11 @@
 import React from 'react'
+import { PALETTE } from '../lib/constants'
 
 export default (props) => (
   <div onClick={props.onClick} className="toolbar-btn" style={Object.assign({
-    background: props.bg
+    background: PALETTE.EDITOR_BG,
+    color: props.color,
+    border: `0.5px solid ${props.color}`
   }, props.style)}>
     <span>{props.title}</span>
     <style jsx>{`
@@ -13,13 +16,8 @@ export default (props) => (
         align-items: center;
         justify-content: center;
         padding: 0 16px;
-        color: #000;
-        border: 0.5px solid #000;
         border-radius: 3px;
-      }
-      div:last-of-type {
-        border-radius: 0px 3px 3px 0px;
-        border-left: 0px;
+        user-select: none;
       }
     `}</style>
   </div>

@@ -27,7 +27,6 @@ export default class extends React.Component {
             cursor: pointer;
             user-select: none;
             padding: 8px;
-            border-bottom: solid 1px #000;
           }
         `}</style>
       </div>

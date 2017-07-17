@@ -61,7 +61,7 @@ class Settings extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 0.5px solid #000;
+            border: 0.5px solid ${PALETTE.SECONDARY};
             border-radius: 3px;
             user-select: none;
             position: relative;
@@ -82,7 +82,7 @@ class Settings extends React.Component {
             position: absolute;
             top: 48px;
             left: 0;
-            border: 0.5px solid #000;
+            border: 0.5px solid ${PALETTE.SECONDARY};
             width: 184px;
             border-radius: 3px;
             background: ${PALETTE.EDITOR_BG};
