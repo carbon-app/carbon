@@ -52,6 +52,10 @@ export default () => (
         border-bottom: solid 1px ${PALETTE.SECONDARY};
       }
 
+      .settings-settings > div:first-child {
+        border-bottom: none;
+      }
+
       .selected svg {
         border-radius: 3px;
         border: solid 2px #fff;
