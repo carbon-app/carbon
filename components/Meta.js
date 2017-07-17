@@ -67,6 +67,8 @@ export default () => (
         min-width: 680px;
         padding: 24px 18px;
         border-radius: 5px;
+        font-family: Hack, monospace !important;
+        font-size: 0.7rem;
       }
 
       .window-controls + .CodeMirror__container > .CodeMirror {
