@@ -1,6 +1,7 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import { TwitterPicker } from 'react-color'
+import WindowPointer from './WindowPointer'
 import { PALETTE } from '../lib/constants'
 
 class ColorPicker extends React.Component {
@@ -20,7 +21,6 @@ class ColorPicker extends React.Component {
   }
 
   handlePickColor(color) {
-    this.setState({ isVisible: false })
     this.props.onChange(color.hex)
   }
 
@@ -34,7 +34,8 @@ class ColorPicker extends React.Component {
           <div className="bg-color" style={{background: this.props.bg}} onClick={this.toggle}></div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
-          <TwitterPicker color={this.props.bg} onChangeComplete={this.handlePickColor} />
+          <WindowPointer fromLeft="15px" />
+          <TwitterPicker color={this.props.bg} onChangeComplete={this.handlePickColor} triangle="hide" />
         </div>
         <style jsx>{`
           .colorpicker-container {
@@ -69,8 +70,8 @@ class ColorPicker extends React.Component {
 
           .colorpicker-picker {
             position: absolute;
-            margin-left: 32px;
-            margin-top: 10px;
+            margin-left: 36px;
+            margin-top: 4px;
           }
         `}</style>
       </div>

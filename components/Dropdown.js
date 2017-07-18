@@ -101,10 +101,6 @@ class Dropdown extends React.Component {
             z-index: 1;
           }
 
-          .dropdown-display:hover {
-            background: #131313;
-          }
-
           .is-visible + .dropdown-list {
             display: block;
           }

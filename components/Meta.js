@@ -52,9 +52,13 @@ export default () => (
         border-bottom: solid 1px ${PALETTE.SECONDARY};
       }
 
+      .settings-settings > div:first-child {
+        border-bottom: none;
+      }
+
       .selected svg {
         border-radius: 3px;
-        border: solid 2px #fff;
+        border: solid 2px ${PALETTE.SECONDARY};
       }
 
       .CodeMirror__container.dropshadow {
@@ -71,12 +75,47 @@ export default () => (
         font-size: 0.7rem;
       }
 
+      .window-theme__sharp > .CodeMirror {
+        border-radius: 0px;
+      }
+
+      .window-theme__bw > .CodeMirror {
+        border: 2px solid ${PALETTE.SECONDARY};
+      }
+
       .window-controls + .CodeMirror__container > .CodeMirror {
         padding-top: 40px;
       }
 
       .cm-s-dracula .CodeMirror-cursor {
           border-left: solid 2px #159588;
+      }
+
+      /* Colorpicker overrides */
+      .twitter-picker {
+        width: 278px !important;
+        border: 0.5px solid ${PALETTE.SECONDARY} !important;
+        border-radius: 3px !important;
+        background: #1A1A1A !important;
+      }
+
+      .colorpicker-picker > div > div:nth-child(3) > div:nth-child(11) {
+        background: #1A1A1A !important;
+        border: 0.5px solid ${PALETTE.SECONDARY} !important;
+        border-right: none !important;
+        border-radius: 3px 0 0 3px !important;
+        color: ${PALETTE.SECONDARY} !important;
+      }
+
+      #toolbar > div.colorpicker-container > div.colorpicker-picker > div > div:nth-child(3) > div:nth-child(12) > input {
+        background: rgba(255, 255, 255, 0.165) !important;
+        height: 30px !important;
+        width: 108px !important;
+        color: #fff !important;
+      }
+
+      #toolbar > div.colorpicker-container > div.colorpicker-picker > div > div:nth-child(3) > span > div {
+        border-radius: 2px !important;
       }
     `}</style>
   </div>

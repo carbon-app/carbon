@@ -4,6 +4,7 @@ import SettingsIcon from './svg/Settings'
 import ThemeSelect from './ThemeSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
+import WindowPointer from './WindowPointer';
 import { PALETTE } from '../lib/constants'
 
 class Settings extends React.Component {
@@ -30,7 +31,8 @@ class Settings extends React.Component {
           <SettingsIcon />
         </div>
         <div className="settings-settings">
-          <ThemeSelect onChange={this.props.onChange} />
+          <WindowPointer fromLeft="15px" />
+          <ThemeSelect onChange={this.props.onChange.bind(null, 'windowTheme')} />
           <Toggle label="Drop shadow"
             enabled={this.props.enabled.dropShadow}
             onChange={this.props.onChange.bind(null, 'dropShadow')}
@@ -69,10 +71,6 @@ class Settings extends React.Component {
             cursor: pointer;
           }
 
-          .settings-display:hover {
-            background: #131313;
-          }
-
           .is-visible + .settings-settings {
             display: block;
           }
@@ -80,7 +78,7 @@ class Settings extends React.Component {
           .settings-settings {
             display: none;
             position: absolute;
-            top: 48px;
+            top: 44px;
             left: 0;
             border: 0.5px solid ${PALETTE.SECONDARY};
             width: 184px;
