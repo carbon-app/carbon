@@ -5,6 +5,7 @@ export default () => (
   <div className="meta">
     <Head>
       <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css' />
+      <link rel="stylesheet" href="/static/type-system.css" />
       {
         THEMES.map((theme, i) => (
           <link key={i} rel="stylesheet" href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/${theme.id}.min.css`}/>
