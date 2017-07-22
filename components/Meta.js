@@ -25,7 +25,12 @@ export default () => (
     <style jsx global>{`
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        color: #fff;
         background: #000;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 500;
       }
 
       *, *:after, *:before {

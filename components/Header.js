@@ -4,13 +4,13 @@ import Logo from './svg/Logo'
 const Header = (props) => (
   <div className="header">
     <div className="header-content">
-      <Logo />
-      <h1>The easiest way to create images from source code. Start typing, or drag a file into the text area to get started.</h1>
+      <a href="/"><Logo /></a>
+      <h2>The easiest way to create images from source code. Start typing, or drag a file into the text area to get started.</h2>
     </div>
     <style jsx>{`
       .header {
-        margin: 40px 0 48px;
-        width: 648px;
+        margin: 36px 0 72px;
+        width: 632px;
       }
 
       .header-content {
@@ -19,11 +19,13 @@ const Header = (props) => (
         align-items: center;
       }
 
-      h1 {
-        max-width: 472px;
-        font-size: 20px;
-        line-height: 1.5;
-        color: #fff;
+      .header-content a {
+        height: 128px;
+      }
+
+      h2 {
+        margin-top: 0;
+        max-width: 456px;
       }
     `}</style>
   </div>
