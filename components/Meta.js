@@ -5,6 +5,7 @@ export default () => (
   <div className="meta">
     <Head>
       <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css' />
+      <link rel="stylesheet" href="/static/type-system.css" />
       {
         THEMES.map((theme, i) => (
           <link key={i} rel="stylesheet" href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/${theme.id}.min.css`}/>
@@ -24,7 +25,12 @@ export default () => (
     <style jsx global>{`
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        background: #000;
+        color: #fff;
+        background: #121212;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: 500;
       }
 
       *, *:after, *:before {
@@ -37,7 +43,8 @@ export default () => (
       }
 
       ::selection {
-          background-color: rgba(256, 256, 256, 0.165);
+        background: rgba(255,255,255,.99);
+        color: #121212;
       }
 
       #toolbar > div {
