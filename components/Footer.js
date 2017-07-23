@@ -6,7 +6,7 @@ const Footer = (props) => (
   <div className="footer">
     <div>
       <Link href="/about"><a>about</a></Link>
-      <a href="#">send feedback</a>
+      <a href="mailto:hi@dawnlabs.io?subject=Carbon%20Feedback&anp;body=">send feedback</a>
       <a href="#">tweet</a>
       <a href="#">star</a>
     </div>

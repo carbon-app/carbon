@@ -28,10 +28,10 @@ class Editor extends React.Component {
   constructor()  {
     super()
     this.state = {
-      background: '#111111',
+      background: '#ABB8C3',
       theme: THEMES[0].id,
       language: 'javascript', // TODO LANGUAGES[0]
-      dropShadow: false,
+      dropShadow: true,
       windowControls: true,
       paddingVertical: '48px',
       paddingHorizontal: '32px'
