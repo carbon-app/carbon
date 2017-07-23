@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { PALETTE } from '../lib/constants'
 
 const Footer = (props) => (
   <div className="footer">
@@ -19,7 +20,7 @@ const Footer = (props) => (
         text-align: center;
         font-size: 14px;
         margin: 16px 0;
-        color: #777;
+        color: ${PALETTE.GRAY};
       }
 
       a {

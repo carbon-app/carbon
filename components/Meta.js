@@ -26,7 +26,7 @@ export default () => (
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         color: #fff;
-        background: #000;
+        background: #121212;
       }
 
       h1, h2, h3, h4, h5, h6 {
@@ -43,7 +43,8 @@ export default () => (
       }
 
       ::selection {
-          background-color: rgba(256, 256, 256, 0.165);
+        background: rgba(255,255,255,.99);
+        color: #121212;
       }
 
       #toolbar > div {
