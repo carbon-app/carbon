@@ -59,7 +59,7 @@ class Editor extends React.Component {
 
   render () {
     return (
-        <Page>
+        <Page enableHeroText>
           {/* TODO this doesn't update the render */}
           <ReadFileDropContainer
             onDrop={(droppedContent) => {
