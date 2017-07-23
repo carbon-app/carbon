@@ -27,7 +27,9 @@ export default () => (
       </div>
       <div className="mb4">
         <h2>I want to make this better.</h2>
-        <p>Please do.</p>
+        <p>
+          <a href="https://github.com/dawnlabs/carbon">Please do.</a>
+        </p>
       </div>
     </div>
     <style jsx>{`
@@ -41,6 +43,12 @@ export default () => (
 
       .about {
         max-width: 632px;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        border-bottom: 1px solid #fff;
       }
     `}</style>
   </Page>
