@@ -4,7 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 
 export default ({ children, enableHeroText }) => (
-  <div className="main">
+  <div className="main mt4 mb4">
     <Meta />
     <Header enableHeroText={enableHeroText} />
     <div className="page">

@@ -1,4 +1,3 @@
-
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -22,7 +21,7 @@ app.prepare()
   server.use(morgan('tiny'))
 
   // if root, render webpage from next
-  server.get('*', (req, res) => 
+  server.get('*', (req, res) =>
     app.render(req, res, '/', req.query))
 
   // otherwise, try and get gist
