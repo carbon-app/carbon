@@ -17,7 +17,7 @@ export default () => (
         <p className="mb1 mt2">There are a few different ways to import code into Carbon:</p>
         <ul className="mt0 mb3">
           <li>Drag a file into the editor</li>
-          <li>Append a GitHub gist id to the url (<a href="#">example</a>)</li>
+          <li>Append a GitHub gist id to the url (<a className="link" href="#">example</a>)</li>
           <li>Paste your code directly</li>
         </ul>
         <h4 className="mb0">Customization</h4>
@@ -28,12 +28,12 @@ export default () => (
       <div className="mb4">
         <h2>I want to make this better.</h2>
         <p>
-          <a href="https://github.com/dawnlabs/carbon">Please do.</a>
+          <a className="link" href="https://github.com/dawnlabs/carbon">Please do.</a>
         </p>
       </div>
     </div>
     <style jsx>{`
-      h4 {
+      p, li {
         color: ${PALETTE.GRAY};
       }
 
@@ -43,12 +43,6 @@ export default () => (
 
       .about {
         max-width: 632px;
-      }
-
-      a {
-        color: #fff;
-        text-decoration: none;
-        border-bottom: 1px solid #fff;
       }
     `}</style>
   </Page>

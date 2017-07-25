@@ -42,6 +42,21 @@ export default () => (
         text-rendering: optimizeLegibility;
       }
 
+      .link {
+        color: #fff;
+        text-decoration: none;
+        padding-bottom: 2px;
+        background: linear-gradient(to right, rgba(255,255,255, 0.7) 0%, rgba(255,255,255, 0.7) 100%);
+        background-size: 1px 1px;
+        background-position: 0 100%;
+        background-repeat: repeat-x;
+      }
+
+      .link:hover {
+        color: ${PALETTE.PRIMARY};
+        background: none;
+      }
+
       ::selection {
         background: rgba(255,255,255,.99);
         color: #121212;
