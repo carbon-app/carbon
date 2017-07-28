@@ -1,6 +1,8 @@
+<p align="center"><img width=30% src="https://user-images.githubusercontent.com/10369094/28703163-144f1780-7317-11e7-8677-dd8a3a1f7d0b.png"></p>
+
 ## Introduction
 
-You know [all](TODO) [of](TODO) [those](TODO) [code](TODO) [screenshots](TODO) you see on Twitter? Although the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess. 🎨
+You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those](https://twitter.com/notquiteleo/status/873483329345028096) [code](https://twitter.com/thejameskyle/status/884986927954497536) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Although the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess. 🎨
 
 Visit [dawnlabs.io/carbon](http://dawnlabs.io/carbon) or read [our post](TODO) to learn more about the project.
 
@@ -12,18 +14,18 @@ Visit [dawnlabs.io/carbon](http://dawnlabs.io/carbon) or read [our post](TODO) t
 
 ## Usage
 
-##### Import
+#### Import
 
 There are a few different ways to import code into Carbon:
 - Drag a file onto the editor
 - Append a GitHub gist id to the url  (e.g. `www.dawnlabs.io/carbon/GIST_ID_HERE`)
 - Paste your code directly
 
-##### Customization
+#### Customization
 
 Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.
 
-##### Export/Sharing
+#### Export/Sharing
 
 After you've customized your image you can copy an Imgur link to the image, or save it directly.
 
