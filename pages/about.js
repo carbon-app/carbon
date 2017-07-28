@@ -9,7 +9,7 @@ export default () => (
     <div className="about">
       <div className="mb4">
         <h2>What does this do?</h2>
-        <p>You know all of those code screenshots you see on Twitter? Although the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon is the easiest way to create beautiful images of your source code.  So what are you waiting for? Go you can impress all of your followers with your newfound design prowess. 🎨</p>
+        <p>You know all of those code screenshots you see on Twitter? Although the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon is the easiest way to create beautiful images of your source code.  So what are you waiting for? Go impress all of your followers with your newfound design prowess. <span>🎨</span></p>
       </div>
       <div className="mb4">
         <h2>How do I use it?</h2>
@@ -25,7 +25,7 @@ export default () => (
         <h4 className="mb0">Export/Sharing</h4>
         <p className="mt2">After you've customized your image you can copy an Imgur link to the image, or save it directly.</p>
       </div>
-      <div className="mb4">
+      <div>
         <h2>I want to make this better.</h2>
         <p>
           <a className="link" href="https://github.com/dawnlabs/carbon">Please do.</a>
@@ -35,6 +35,10 @@ export default () => (
     <style jsx>{`
       p, li {
         color: ${PALETTE.GRAY};
+      }
+
+      span {
+        color: #fff;
       }
 
       ul {

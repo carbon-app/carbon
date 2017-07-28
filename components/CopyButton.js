@@ -5,7 +5,7 @@ import Button from './Button'
 import api from '../lib/api'
 
 // constants
-const BUTTON_COLOR = '#F6A623'
+const BUTTON_COLOR = '#c198fb'
 const BUTTON_STYLE = { marginRight: '8px' }
 const DEBOUNCE_DURATION = 10000
 

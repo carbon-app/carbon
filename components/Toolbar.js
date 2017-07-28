@@ -17,7 +17,7 @@ const Toolbar = (props) => (
     <Settings onChange={props.onSettingsChange} enabled={props.enabled} />
     <div className="buttons">
       <CopyButton />
-      <Button onClick={props.save} title="Save Image" color="#84ACFC" />
+      <Button onClick={props.save} title="Save Image" color="#57b5f9" />
     </div>
     <style jsx>{`
       #toolbar {
