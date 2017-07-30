@@ -15,7 +15,7 @@ export default DropTarget(NativeTypes.FILE, { drop }, (connect, monitor) => ({
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
   item: monitor.getItem()
-}))(CodeImage)
+}))(Carbon)
 
 
 let code = this.props.content

@@ -1,9 +1,9 @@
 import React from 'react'
-import { PALETTE } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 
 export default (props) => (
   <div onClick={props.onClick} className="toolbar-btn" style={Object.assign({
-    background: PALETTE.EDITOR_BG,
+    background: COLORS.BLACK,
     color: props.color,
     border: `0.5px solid ${props.color}`
   }, props.style)}>

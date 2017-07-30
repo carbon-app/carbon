@@ -31,6 +31,14 @@ const Toolbar = (props) => (
         color: #fff;
       }
 
+      #toolbar > :global(div) {
+        margin-right: 8px;
+      }
+
+      #toolbar > :global(div):last-child {
+        margin-right: 0px;
+      }
+
       .buttons {
         display: flex;
         margin-left: auto;

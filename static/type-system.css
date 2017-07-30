@@ -23,7 +23,6 @@
 }
 
 body {
-  font-family: -apple-system, sans-serif;
   font-size: var(--h4);
   line-height: var(--lh);
   margin: 2rem;
@@ -86,4 +85,3 @@ h5, h6  { font-size: var(--h5) }
 
 .mx { max-width: var(--mx) }
 .bold { font-weight: bold }
-

@@ -2,7 +2,7 @@ import Page from '../components/Page'
 import Meta from '../components/Meta'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { PALETTE } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 
 export default () => (
   <Page>
@@ -34,7 +34,7 @@ export default () => (
     </div>
     <style jsx>{`
       p, li {
-        color: ${PALETTE.GRAY};
+        color: ${COLORS.GRAY};
       }
 
       span {

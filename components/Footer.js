@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { PALETTE } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 
 const Footer = (props) => (
   <div className="mt3">
@@ -14,7 +14,7 @@ const Footer = (props) => (
       div > div {
         text-align: center;
         font-size: 14px;
-        color: ${PALETTE.GRAY};
+        color: ${COLORS.GRAY};
       }
 
       a {
@@ -26,7 +26,7 @@ const Footer = (props) => (
       }
 
       .dawn-link {
-        color: ${PALETTE.PRIMARY};
+        color: ${COLORS.PRIMARY};
         text-decoration: none;
       }
 

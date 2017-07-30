@@ -7,9 +7,9 @@ import domtoimage from 'dom-to-image'
 import Page from '../components/Page'
 import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Toolbar from '../components/Toolbar'
-import CodeImage from '../components/CodeImage'
+import Carbon from '../components/Carbon'
 import api from '../lib/api'
-import { THEMES, LANGUAGES, PALETTE, DEFAULT_CODE } from '../lib/constants'
+import { THEMES, LANGUAGES, COLORS, DEFAULT_CODE } from '../lib/constants'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -78,15 +78,15 @@ class Editor extends React.Component {
                 bg={this.state.background}
                 enabled={this.state}
               />
-              <CodeImage config={this.state}>
+              <Carbon config={this.state}>
                 {this.state.droppedContent || this.props.content || DEFAULT_CODE}
-              </CodeImage>
+              </Carbon>
             </div>
           </ReadFileDropContainer>
           <style jsx>{`
             #editor {
-              background: ${PALETTE.EDITOR_BG};
-              border: 3px solid ${PALETTE.SECONDARY};
+              background: ${COLORS.BLACK};
+              border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;
               padding: 16px;
             }

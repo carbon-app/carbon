@@ -2,7 +2,7 @@ import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import ArrowDown from './svg/Arrowdown'
 import Checkmark from './svg/Checkmark'
-import { PALETTE } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -40,10 +40,10 @@ class Dropdown extends React.Component {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: ${PALETTE.EDITOR_BG};
+            background: ${COLORS.BLACK};
             user-select: none;
             padding: 8px 16px;
-            border-bottom: 0.5px solid ${PALETTE.SECONDARY};
+            border-bottom: 0.5px solid ${COLORS.SECONDARY};
           }
 
           .dropdown-list-item:last-of-type {
@@ -90,7 +90,7 @@ class Dropdown extends React.Component {
 
           .dropdown-display {
             height: 100%;
-            border: 1px solid ${PALETTE.SECONDARY};
+            border: 1px solid ${COLORS.SECONDARY};
             border-radius: 3px;
             user-select: none;
             padding: 8px 16px;
@@ -108,7 +108,7 @@ class Dropdown extends React.Component {
           .dropdown-list {
             display: none;
             margin-top: -1px;
-            border: 0.5px solid ${PALETTE.SECONDARY};
+            border: 0.5px solid ${COLORS.SECONDARY};
             border-radius: 0px 0px 3px 3px;
             max-height: 350px;
             overflow-y: scroll;

@@ -2,7 +2,7 @@ import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import { TwitterPicker } from 'react-color'
 import WindowPointer from './WindowPointer'
-import { PALETTE } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 
 class ColorPicker extends React.Component {
   constructor() {
@@ -46,7 +46,7 @@ class ColorPicker extends React.Component {
             display: flex;
             height: 100%;
             width: 72px;
-            border: 0.5px solid ${PALETTE.SECONDARY};
+            border: 0.5px solid ${COLORS.SECONDARY};
             border-radius: 3px;
           }
 
@@ -58,7 +58,7 @@ class ColorPicker extends React.Component {
             cursor: default;
             height: 100%;
             width: 36px;
-            border-right: 0.5px solid ${PALETTE.SECONDARY};
+            border-right: 0.5px solid ${COLORS.SECONDARY};
           }
 
           .bg-color {
@@ -72,6 +72,33 @@ class ColorPicker extends React.Component {
             position: absolute;
             margin-left: 36px;
             margin-top: 4px;
+          }
+
+          /* react-color overrides */
+          .colorpicker-picker :global(.twitter-picker) {
+            width: 278px !important;
+            border: 0.5px solid ${COLORS.SECONDARY} !important;
+            border-radius: 3px !important;
+            background: #1A1A1A !important;
+          }
+
+          .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(11)) {
+            background: #1A1A1A !important;
+            border: 0.5px solid ${COLORS.SECONDARY} !important;
+            border-right: none !important;
+            border-radius: 3px 0 0 3px !important;
+            color: ${COLORS.SECONDARY} !important;
+          }
+
+          .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(12) > input) {
+            background: rgba(255, 255, 255, 0.165) !important;
+            height: 30px !important;
+            width: 108px !important;
+            color: #fff !important;
+          }
+
+          .colorpicker-picker > :global(div > div:nth-child(3) > span > div) {
+            border-radius: 2px !important;
           }
         `}</style>
       </div>

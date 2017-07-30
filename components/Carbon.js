@@ -2,8 +2,9 @@ import { EOL } from 'os'
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import CodeMirror from 'react-codemirror'
-import WindowControls from '../components/WindowControls'
 import Spinner from 'react-spinner'
+import WindowControls from '../components/WindowControls'
+import { COLORS } from '../lib/constants'
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
@@ -15,7 +16,7 @@ const DEFAULT_SETTINGS = {
   language: 'javascript'
 }
 
-class CodeImage extends React.Component {
+class Carbon extends React.Component {
   constructor (props) {
     super(props)
 
@@ -69,6 +70,37 @@ class CodeImage extends React.Component {
             value={this.props.children}
             options={options}
           />
+          <style jsx>{`
+            #container :global(.cm-s-dracula .CodeMirror-cursor) {
+              border-left: solid 2px #159588;
+            }
+
+            #container :global(.CodeMirror__container.dropshadow) {
+              box-shadow: 0px 3px 15px rgba(0,0,0,0.3);
+              border-radius: 5px;
+            }
+
+            #container :global(.CodeMirror__container .CodeMirror) {
+              height: auto;
+              min-width: 680px;
+              padding: 24px 18px;
+              border-radius: 5px;
+              font-family: Hack, monospace !important;
+              font-size: 0.7rem;
+            }
+
+            #container :global(.window-theme__sharp > .CodeMirror) {
+              border-radius: 0px;
+            }
+
+            #container :global(.window-theme__bw > .CodeMirror) {
+              border: 2px solid ${COLORS.SECONDARY};
+            }
+
+            #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
+              padding-top: 40px;
+            }
+          `}</style>
         </div>
       )
     }
@@ -89,4 +121,4 @@ class CodeImage extends React.Component {
   }
 }
 
-export default CodeImage
+export default Carbon

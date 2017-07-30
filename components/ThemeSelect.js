@@ -1,5 +1,6 @@
 import React from 'react'
 import { None, BW, Sharp } from './svg/WindowThemes'
+import { COLORS } from '../lib/constants'
 
 const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
 export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
@@ -36,6 +37,11 @@ export default class extends React.Component {
 
             .theme:last-of-type {
               margin-right: 0px;
+            }
+
+            .selected :global(svg) {
+              border-radius: 3px;
+              border: solid 2px ${COLORS.SECONDARY};
             }
           `}</style>
         </div>

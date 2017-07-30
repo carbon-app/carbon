@@ -5,7 +5,7 @@ import ThemeSelect from './ThemeSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer';
-import { PALETTE } from '../lib/constants'
+import { COLORS } from '../lib/constants'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class Settings extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 0.5px solid ${PALETTE.SECONDARY};
+            border: 0.5px solid ${COLORS.SECONDARY};
             border-radius: 3px;
             user-select: none;
             position: relative;
@@ -80,11 +80,20 @@ class Settings extends React.Component {
             position: absolute;
             top: 44px;
             left: 0;
-            border: 0.5px solid ${PALETTE.SECONDARY};
+            border: 0.5px solid ${COLORS.SECONDARY};
             width: 184px;
             border-radius: 3px;
-            background: ${PALETTE.EDITOR_BG};
+            background: ${COLORS.BLACK};
           }
+
+          .settings-settings > :global(div) {
+            border-bottom: solid 1px ${COLORS.SECONDARY};
+          }
+
+          .settings-settings > :global(div):first-child {
+            border-bottom: none;
+          }
+
         `}</style>
       </div>
     )
