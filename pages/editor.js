@@ -39,8 +39,18 @@ class Editor extends React.Component {
   }
 
   save () {
-    // domtoimage.toPng(document.getElementById('container'))
-    domtoimage.toPng(document.getElementById('container'))
+    const node = document.getElementById('section')
+
+    const config = {
+      style: {
+        transform: 'scale(2)',
+        'transform-origin': 'center'
+      },
+      width: node.offsetWidth * 2,
+      height: node.offsetHeight * 2
+    }
+
+    domtoimage.toPng(node, config)
       .then((dataUrl) => {
         const link = document.createElement('a')
         link.download = 'snippet.png'
