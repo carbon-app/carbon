@@ -27,6 +27,7 @@
     "react-dom": "^15.5.4",
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
-    "react-syntax-highlight": "^0.0.6"
+    "react-syntax-highlight": "^0.0.6",
+    "twitter": "^1.7.1"
   }
 }
