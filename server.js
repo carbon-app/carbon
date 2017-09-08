@@ -29,7 +29,7 @@ app.prepare()
 
   // api endpoints
   server.post('/upload', bodyParser.json(), wrap(require('./handlers/upload')))
-
+  server.post('/twitter', bodyParser.json(), require('./handlers/twitter'))
 
   server.listen(3000, (err) => {
     if (err) throw err
