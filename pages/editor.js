@@ -72,10 +72,7 @@ class Editor extends React.Component {
         <Page enableHeroText>
           {/* TODO this doesn't update the render */}
           <ReadFileDropContainer
-            onDrop={(droppedContent) => {
-              console.log(droppedContent)
-              this.setState({ droppedContent })
-            }}
+            onDrop={droppedContent => this.setState({ droppedContent })}
           >
             <div id="editor">
               <Toolbar

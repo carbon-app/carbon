@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@skidding/react-codemirror@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@skidding/react-codemirror/-/react-codemirror-1.0.1.tgz#ce7927a10248e2369f8bce03669b92d88fead797"
+  dependencies:
+    classnames "^2.2.5"
+    codemirror "^5.18.2"
+    create-react-class "^15.5.1"
+    lodash.isequal "^4.5.0"
+    prop-types "^15.5.4"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -1063,6 +1073,10 @@ co@^4.6.0:
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
+
+codemirror@5.29.0, codemirror@^5.13.4:
+  version "5.29.0"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.29.0.tgz#e68de1350e2f0ce804a3930576d0ae318736e967"
 
 codemirror@^5.18.2, codemirror@^5.26.0:
   version "5.26.0"
@@ -2129,7 +2143,7 @@ lodash-es@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
 
-lodash.debounce@^4.0.8:
+lodash.debounce@^4.0.4:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
@@ -2777,16 +2791,19 @@ react-click-outside@^2.3.1:
   dependencies:
     hoist-non-react-statics "^1.2.0"
 
-react-codemirror@^1.0.0:
+react-codemirror2@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-codemirror/-/react-codemirror-1.0.0.tgz#91467b53b1f5d80d916a2fd0b4c7adb85a9001ba"
+  resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-1.0.0.tgz#b529a6c5c91219f92c751f43a17721cdaf36b05f"
   dependencies:
-    classnames "^2.2.5"
-    codemirror "^5.18.2"
-    create-react-class "^15.5.1"
-    lodash.debounce "^4.0.8"
-    lodash.isequal "^4.5.0"
-    prop-types "^15.5.4"
+    codemirror "5.29.0"
+
+react-codemirror@0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-codemirror/-/react-codemirror-0.2.6.tgz#e71e35717ce6effae68df1dbf2b5a75b84a44f84"
+  dependencies:
+    classnames "^2.2.3"
+    codemirror "^5.13.4"
+    lodash.debounce "^4.0.4"
 
 react-color@^2.12.1:
   version "2.12.1"
