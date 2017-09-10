@@ -20,6 +20,9 @@ app.prepare()
 
   server.use(morgan('tiny'))
 
+  server.get('/about', (req, res) =>
+    app.render(req, res, '/about'))
+
   // if root, render webpage from next
   server.get('*', (req, res) =>
     app.render(req, res, '/', req.query))
