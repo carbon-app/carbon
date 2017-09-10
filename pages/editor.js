@@ -70,7 +70,6 @@ class Editor extends React.Component {
   render () {
     return (
         <Page enableHeroText>
-          {/* TODO this doesn't update the render */}
           <ReadFileDropContainer
             onDrop={droppedContent => this.setState({ droppedContent })}
           >
@@ -80,7 +79,7 @@ class Editor extends React.Component {
                 upload={this.upload}
                 onBGChange={color => this.setState({ background: color })}
                 onThemeChange={theme => this.setState({ theme: theme.id })}
-                onLanguageChange={language => this.setState({ language })}
+                onLanguageChange={language => this.setState({ language: language.module })}
                 onSettingsChange={(key, value) => this.setState({ [key]: value })}
                 bg={this.state.background}
                 enabled={this.state}
