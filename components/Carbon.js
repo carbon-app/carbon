@@ -4,7 +4,7 @@ import domtoimage from 'dom-to-image'
 import CodeMirror from 'react-codemirror'
 import Spinner from 'react-spinner'
 import WindowControls from '../components/WindowControls'
-import { COLORS } from '../lib/constants'
+import { COLORS, DEFAULT_LANGUAGE } from '../lib/constants'
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
@@ -13,7 +13,7 @@ const DEFAULT_SETTINGS = {
   marginHorizontal: '45px',
   background: '#fed0ec',
   theme: 'dracula',
-  language: 'javascript'
+  language: DEFAULT_LANGUAGE
 }
 
 class Carbon extends React.Component {
@@ -23,6 +23,8 @@ class Carbon extends React.Component {
     this.state = {
       loading: true
     }
+
+    this.detectLanguage = this.detectLanguage.bind(this)
   }
 
   componentDidMount() {
@@ -31,12 +33,23 @@ class Carbon extends React.Component {
     })
   }
 
+  detectLanguage () {
+    return 'javascript'
+  }
+
   render () {
     const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
 
+    let language
+    if (config.language.name === 'Auto') {
+      language = this.detectLanguage(this.props.children)
+    } else {
+      language = config.language.module || 'plaintext'
+    }
+
     const options = {
       lineNumbers: false,
-      mode: config.language,
+      mode: language,
       theme: config.theme,
       scrollBarStyle: null,
       viewportMargin: Infinity,
