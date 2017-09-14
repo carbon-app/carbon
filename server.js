@@ -3,14 +3,14 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const next = require('next')
 
+const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
 function wrap (handler) {
   return (req, res) => handler(req, res).catch((err) => {
-    console.log('error handler triggereedddd')
-    console.log(err)
+    console.log('ERR:', err)
   })
 }
 
@@ -24,7 +24,7 @@ app.prepare()
     app.render(req, res, '/about'))
 
   // if root, render webpage from next
-  server.get('*', (req, res) =>
+  server.get('/*', (req, res) =>
     app.render(req, res, '/', req.query))
 
   // otherwise, try and get gist
@@ -34,8 +34,8 @@ app.prepare()
   server.post('/upload', bodyParser.json(), wrap(require('./handlers/upload')))
 
 
-  server.listen(3000, (err) => {
+  server.listen(port, (err) => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.log(`> Ready on http://localhost:${port}`)
   })
 })
