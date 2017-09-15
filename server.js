@@ -31,7 +31,6 @@ app.prepare()
   server.get('*', handle)
 
   // api endpoints
-  server.post('/upload', bodyParser.json(), wrap(require('./handlers/upload')))
   server.post('/twitter', bodyParser.json({ limit: '5mb' }), require('./handlers/twitter'))
 
   server.listen(port, (err) => {

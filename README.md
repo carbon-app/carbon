@@ -10,7 +10,7 @@ Visit [dawnlabs.io/carbon](http://dawnlabs.io/carbon) or read [our post](TODO) t
 
 * **Import from GitHub gist**. Simply append a GitHub gist id to the url
 * **Customization**. Customize things like your image's syntax theme, window style, and more
-* **Share quickly**. Save your image or copy a Imgur link to it with one click
+* **Share quickly**. Save your image or Tweet a link with one click
 
 ## Usage
 
@@ -27,7 +27,7 @@ Once you've got all of your code into Carbon, you can customize your image by ch
 
 #### Export/Sharing
 
-After you've customized your image you can copy an Imgur link to the image, or save it directly.
+After you've customized your image you can either Tweet a link to the image, or save it directly.
 
 ## Contribute
 

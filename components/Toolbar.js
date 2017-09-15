@@ -3,7 +3,6 @@ import Dropdown from './Dropdown'
 import ColorPicker from './ColorPicker'
 import Settings from './Settings'
 import Button from './Button'
-import CopyButton from './CopyButton'
 import { THEMES, LANGUAGES } from '../lib/constants'
 
 const Toolbar = (props) => (

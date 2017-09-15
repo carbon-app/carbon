@@ -23,7 +23,7 @@ export default () => (
         <h4 className="mb0">Customization</h4>
         <p className="mt2 mb3">Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.</p>
         <h4 className="mb0">Export/Sharing</h4>
-        <p className="mt2">After you've customized your image you can copy an Imgur link to the image, or save it directly.</p>
+        <p className="mt2">After you've customized your image you can Tweet a link to the image, or save it directly.</p>
       </div>
       <div>
         <h2>I want to make this better.</h2>
