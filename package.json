@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -17,8 +17,8 @@
     "form-data": "^2.2.0",
     "highlight.js": "^9.12.0",
     "morgan": "^1.8.2",
-    "next": "^2.4.3",
-    "react": "^15.5.4",
+    "next": "^3.2.2",
+    "react": "^15.6.1",
     "react-click-outside": "^2.3.1",
     "react-codemirror": "0.2.6",
     "react-color": "^2.12.1",
@@ -29,5 +29,13 @@
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^0.0.6",
     "twitter": "^1.7.1"
+  },
+  "now": {
+    "env": {
+      "TWITTER_CONSUMER_KEY": "@twitter-consumer-key",
+      "TWITTER_CONSUMER_SECRET":"@twitter-consumer-secret",
+      "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
+      "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret"
+    }
   }
 }
