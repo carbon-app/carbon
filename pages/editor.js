@@ -1,7 +1,6 @@
 import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
-import Axios from 'axios'
 import domtoimage from 'dom-to-image'
 
 import Page from '../components/Page'
@@ -34,11 +33,15 @@ class Editor extends React.Component {
       dropShadow: true,
       windowControls: true,
       paddingVertical: '48px',
-      paddingHorizontal: '32px'
+      paddingHorizontal: '32px',
+      uploading: false
     }
+
+    this.save = this.save.bind(this)
+    this.upload = this.upload.bind(this)
   }
 
-  save () {
+  getCarbonImage () {
     const node = document.getElementById('section')
 
     const config = {
@@ -50,40 +53,41 @@ class Editor extends React.Component {
       height: node.offsetHeight * 2
     }
 
-    domtoimage.toPng(node, config)
-      .then((dataUrl) => {
-        const link = document.createElement('a')
-        link.download = 'snippet.png'
-        link.href = dataUrl
-        link.click()
-      })
+    return  domtoimage.toPng(node, config)
+  }
+
+  save () {
+    this.getCarbonImage()
+    .then((dataUrl) => {
+      const link = document.createElement('a')
+      link.download = 'snippet.png'
+      link.href = dataUrl
+      link.click()
+    })
   }
 
   upload () {
-    domtoimage.toBlob(document.getElementById('container'))
-      .then(api.uploadImage)
-      .then(res => res.data.id)
-      .then(id => `http://i.imgur.com/${id}`)
-      .then(console.log)
+    this.setState({ uploading: true })
+    this.getCarbonImage()
+    .then(api.tweet)
+    .then(() => this.setState({ uploading: false }))
+    .catch(console.error)
   }
 
   render () {
     return (
         <Page enableHeroText>
-          {/* TODO this doesn't update the render */}
           <ReadFileDropContainer
-            onDrop={(droppedContent) => {
-              console.log(droppedContent)
-              this.setState({ droppedContent })
-            }}
+            onDrop={droppedContent => this.setState({ droppedContent })}
           >
             <div id="editor">
               <Toolbar
                 save={this.save}
                 upload={this.upload}
+                uploading={this.state.uploading}
                 onBGChange={color => this.setState({ background: color })}
                 onThemeChange={theme => this.setState({ theme: theme.id })}
-                onLanguageChange={language => this.setState({ language })}
+                onLanguageChange={language => this.setState({ language: language.module })}
                 onSettingsChange={(key, value) => this.setState({ [key]: value })}
                 bg={this.state.background}
                 enabled={this.state}

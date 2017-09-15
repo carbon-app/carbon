@@ -16,7 +16,7 @@ const Toolbar = (props) => (
     />
     <Settings onChange={props.onSettingsChange} enabled={props.enabled} />
     <div className="buttons">
-      <CopyButton />
+      <Button className="tweetButton" onClick={props.upload} title={props.uploading ? 'loading...' : 'Tweet Image'} color="#0084b4" style={{ marginRight: '8px' }} />
       <Button onClick={props.save} title="Save Image" color="#57b5f9" />
     </div>
     <style jsx>{`
