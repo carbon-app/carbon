@@ -71,7 +71,10 @@ class Editor extends React.Component {
     this.getCarbonImage()
     .then(api.tweet)
     .then(() => this.setState({ uploading: false }))
-    .catch(console.error)
+    .catch((err) => {
+      console.error(err)
+      this.setState({ uploading: false })
+    })
   }
 
   render () {
