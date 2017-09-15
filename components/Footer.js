@@ -2,14 +2,29 @@ import React from 'react'
 import Link from 'next/link'
 import { COLORS } from '../lib/constants'
 
-const Footer = (props) => (
+const Footer = props => (
   <div className="mt3">
     <div className="mt3">
-      <Link href="/about"><a className="link">about</a></Link>
-      <a className="link" href="mailto:hi@dawnlabs.io?subject=Carbon%20Feedback&anp;body=">send feedback</a>
-      <a className="link" href="https://github.com/dawnlabs/carbon">source</a>
+      <Link href="/about">
+        <a className="link">about</a>
+      </Link>
+      <a
+        className="link"
+        href="mailto:hi@dawnlabs.io?subject=Carbon%20Feedback&anp;body="
+      >
+        send feedback
+      </a>
+      <a className="link" href="https://github.com/dawnlabs/carbon">
+        source
+      </a>
     </div>
-    <div className="mt3 mb2">a project by <a className="dawn-link" href="https://twitter.com/dawn_labs">@dawn_labs</a> ¬</div>
+    <div className="mt3 mb2">
+      a project by{' '}
+      <a className="dawn-link" href="https://twitter.com/dawn_labs">
+        @dawn_labs
+      </a>{' '}
+      ¬
+    </div>
     <style jsx>{`
       div > div {
         text-align: center;

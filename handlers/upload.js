@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const error = {
       code: 1,
       title: 'no image provided',
-      detail: '\'image\' key must be set to a base64 encoded image'
+      detail: "'image' key must be set to a base64 encoded image"
     }
     res.status(400).json({ errors: [error] })
   }

@@ -12,7 +12,7 @@ import { THEMES, LANGUAGES, COLORS, DEFAULT_CODE } from '../lib/constants'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
-  static async getInitialProps ({ asPath }) {
+  static async getInitialProps({ asPath }) {
     try {
       if (asPath !== '/') {
         const content = await api.getGist(asPath)
@@ -24,7 +24,7 @@ class Editor extends React.Component {
     return {}
   }
 
-  constructor()  {
+  constructor() {
     super()
     this.state = {
       background: '#ABB8C3',
@@ -41,7 +41,7 @@ class Editor extends React.Component {
     this.upload = this.upload.bind(this)
   }
 
-  getCarbonImage () {
+  getCarbonImage() {
     const node = document.getElementById('section')
 
     const config = {
@@ -53,12 +53,11 @@ class Editor extends React.Component {
       height: node.offsetHeight * 2
     }
 
-    return  domtoimage.toPng(node, config)
+    return domtoimage.toPng(node, config)
   }
 
-  save () {
-    this.getCarbonImage()
-    .then((dataUrl) => {
+  save() {
+    this.getCarbonImage().then(dataUrl => {
       const link = document.createElement('a')
       link.download = 'snippet.png'
       link.href = dataUrl
@@ -66,41 +65,43 @@ class Editor extends React.Component {
     })
   }
 
-  upload () {
+  upload() {
     this.setState({ uploading: true })
     this.getCarbonImage()
-    .then(api.tweet)
-    .then(() => this.setState({ uploading: false }))
-    .catch((err) => {
-      console.error(err)
-      this.setState({ uploading: false })
-    })
+      .then(api.tweet)
+      .then(() => this.setState({ uploading: false }))
+      .catch(err => {
+        console.error(err)
+        this.setState({ uploading: false })
+      })
   }
 
-  render () {
+  render() {
     return (
-        <Page enableHeroText>
-          <ReadFileDropContainer
-            onDrop={droppedContent => this.setState({ droppedContent })}
-          >
-            <div id="editor">
-              <Toolbar
-                save={this.save}
-                upload={this.upload}
-                uploading={this.state.uploading}
-                onBGChange={color => this.setState({ background: color })}
-                onThemeChange={theme => this.setState({ theme: theme.id })}
-                onLanguageChange={language => this.setState({ language: language.module })}
-                onSettingsChange={(key, value) => this.setState({ [key]: value })}
-                bg={this.state.background}
-                enabled={this.state}
-              />
-              <Carbon config={this.state}>
-                {this.state.droppedContent || this.props.content || DEFAULT_CODE}
-              </Carbon>
-            </div>
-          </ReadFileDropContainer>
-          <style jsx>{`
+      <Page enableHeroText>
+        <ReadFileDropContainer
+          onDrop={droppedContent => this.setState({ droppedContent })}
+        >
+          <div id="editor">
+            <Toolbar
+              save={this.save}
+              upload={this.upload}
+              uploading={this.state.uploading}
+              onBGChange={color => this.setState({ background: color })}
+              onThemeChange={theme => this.setState({ theme: theme.id })}
+              onLanguageChange={language =>
+                this.setState({ language: language.module })}
+              onSettingsChange={(key, value) => this.setState({ [key]: value })}
+              bg={this.state.background}
+              enabled={this.state}
+            />
+            <Carbon config={this.state}>
+              {this.state.droppedContent || this.props.content || DEFAULT_CODE}
+            </Carbon>
+          </div>
+        </ReadFileDropContainer>
+        <style jsx>
+          {`
             #editor {
               background: ${COLORS.BLACK};
               border: 3px solid ${COLORS.SECONDARY};
@@ -108,8 +109,8 @@ class Editor extends React.Component {
               padding: 16px;
             }
           `}
-          </style>
-        </Page>
+        </style>
+      </Page>
     )
   }
 }

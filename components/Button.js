@@ -1,12 +1,19 @@
 import React from 'react'
 import { COLORS } from '../lib/constants'
 
-export default (props) => (
-  <div onClick={props.onClick} className="toolbar-btn" style={Object.assign({
-    background: COLORS.BLACK,
-    color: props.color,
-    border: `0.5px solid ${props.color}`
-  }, props.style)}>
+export default props => (
+  <div
+    onClick={props.onClick}
+    className="toolbar-btn"
+    style={Object.assign(
+      {
+        background: COLORS.BLACK,
+        color: props.color,
+        border: `0.5px solid ${props.color}`
+      },
+      props.style
+    )}
+  >
     <span>{props.title}</span>
     <style jsx>{`
       div {

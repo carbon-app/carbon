@@ -17,7 +17,7 @@ const DEFAULT_SETTINGS = {
 }
 
 class Carbon extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -31,7 +31,7 @@ class Carbon extends React.Component {
     })
   }
 
-  render () {
+  render() {
     const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
 
     const options = {
@@ -53,20 +53,25 @@ class Carbon extends React.Component {
     let content = (
       <div>
         <Spinner />
-        <style jsx>{`
-          div {
-            height: 352px;
-          }
-        `}
+        <style jsx>
+          {`
+            div {
+              height: 352px;
+            }
+          `}
         </style>
       </div>
     )
     if (this.state.loading === false) {
       content = (
         <div id="container" style={containerStyle}>
-          { config.windowControls ? <WindowControls theme={config.windowTheme} /> : null }
+          {config.windowControls ? (
+            <WindowControls theme={config.windowTheme} />
+          ) : null}
           <CodeMirror
-            className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow ? 'dropshadow' : ''}`}
+            className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow
+              ? 'dropshadow'
+              : ''}`}
             value={this.props.children}
             options={options}
           />
@@ -76,7 +81,7 @@ class Carbon extends React.Component {
             }
 
             #container :global(.CodeMirror__container.dropshadow) {
-              box-shadow: 0px 3px 15px rgba(0,0,0,0.3);
+              box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
               border-radius: 5px;
             }
 
@@ -97,7 +102,8 @@ class Carbon extends React.Component {
               border: 2px solid ${COLORS.SECONDARY};
             }
 
-            #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
+            #container
+              :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 40px;
             }
           `}</style>
@@ -107,7 +113,7 @@ class Carbon extends React.Component {
 
     return (
       <div id="section">
-        { content }
+        {content}
         <style jsx>{`
           #section {
             height: 100%;
