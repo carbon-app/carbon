@@ -35,41 +35,41 @@ class CopyButton extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  uploadImage () {
-    return domtoimage.toBlob(document.getElementById('container'))
+  uploadImage() {
+    return domtoimage
+      .toBlob(document.getElementById('container'))
       .then(api.uploadImage)
       .then(res => res.data.id)
       .then(id => `http://i.imgur.com/${id}`)
   }
 
-  handleIdleClick () {
+  handleIdleClick() {
     // set to loading
     this.setState({
       status: STATUS.LOADING
     })
 
     // upload code image and update state
-    this.uploadImage()
-      .then(link => {
-        console.log('link')
-        this.setState({
-          status: STATUS.DEBOUNCED,
-          link
-        })
-
-        setTimeout(() => {
-          this.setState({
-            status: STATUS.IDLE
-          })
-        }, DEBOUNCE_DURATION)
+    this.uploadImage().then(link => {
+      console.log('link')
+      this.setState({
+        status: STATUS.DEBOUNCED,
+        link
       })
+
+      setTimeout(() => {
+        this.setState({
+          status: STATUS.IDLE
+        })
+      }, DEBOUNCE_DURATION)
+    })
   }
 
-  handleDebounceClick () {
+  handleDebounceClick() {
     // copy link to clipboard
   }
 
-  handleClick () {
+  handleClick() {
     console.log('called!')
     switch (this.state.status) {
       case STATUS.IDLE:
@@ -80,11 +80,22 @@ class CopyButton extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
-      <div >
-        { this.state.link ? <input id="linkTarget" type="hidden" value="https://github.com/zenorocha/clipboard.js.git" /> : null }
-        <Button onClick={this.handleClick} title={textMap[this.state.status]} color={BUTTON_COLOR} style={BUTTON_STYLE} />
+      <div>
+        {this.state.link ? (
+          <input
+            id="linkTarget"
+            type="hidden"
+            value="https://github.com/zenorocha/clipboard.js.git"
+          />
+        ) : null}
+        <Button
+          onClick={this.handleClick}
+          title={textMap[this.state.status]}
+          color={BUTTON_COLOR}
+          style={BUTTON_STYLE}
+        />
       </div>
     )
   }

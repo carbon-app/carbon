@@ -1,6 +1,5 @@
 const Twitter = require('twitter')
 
-console.log(process.env);
 const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -8,9 +7,13 @@ const client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
 
-const uploadImage = (data) => client.post('media/upload', { media_data: data })
-const uploadTweet = (media) => client.post('statuses/update', { status: 'carbon copy', media_ids: media.media_id_string })
-const extractImageUrl = (response) => response.entities.media[0].display_url
+const uploadImage = data => client.post('media/upload', { media_data: data })
+const uploadTweet = media =>
+  client.post('statuses/update', {
+    status: 'carbon copy',
+    media_ids: media.media_id_string
+  })
+const extractImageUrl = response => response.entities.media[0].display_url
 
 const respondSuccess = (res, url) => res.json({ url })
 const respondFail = (res, err) => {
