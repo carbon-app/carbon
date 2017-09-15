@@ -20,6 +20,9 @@ app.prepare()
 
   server.use(morgan('tiny'))
 
+  server.get('/about', (req, res) =>
+    app.render(req, res, '/about'))
+
   // if root, render webpage from next
   server.get('*', (req, res) =>
     app.render(req, res, '/', req.query))
@@ -29,7 +32,7 @@ app.prepare()
 
   // api endpoints
   server.post('/upload', bodyParser.json(), wrap(require('./handlers/upload')))
-  server.post('/twitter', bodyParser.json(), require('./handlers/twitter'))
+  server.post('/twitter', bodyParser.json({ limit: '5mb' }), require('./handlers/twitter'))
 
   server.listen(3000, (err) => {
     if (err) throw err
