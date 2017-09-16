@@ -14,51 +14,30 @@ const spec = {
 
 const collect = (connect, monitor) => ({ connectDropTarget: connect.dropTarget(), isOver: monitor.isOver() })
 
-class ReadFileDropContainer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { isFileOver: false }
-  }
+const ReadFileDropContainer = props => props.connectDropTarget(
+  <div className="dnd-container">
+    { props.isOver ? <div className="dnd-overlay">Drop your file here to import</div> : null }
+    {props.children}
+    <style jsx>{`
+      .dnd-container {
+        position: relative;
+      }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.isOver && nextProps.isOver) {
-      this.setState({ isFileOver: true })
-    }
-
-    if (this.props.isOver && !nextProps.isOver) {
-      this.setState({ isFileOver: false })
-    }
-  }
-
-  render() {
-    const content = (
-      <div className="dnd-container">
-        { this.state.isFileOver ? <div className="dnd-overlay">Drop your file here to import</div> : null }
-        { this.props.children }
-        <style jsx>{`
-          .dnd-container {
-            position: relative;
-          }
-
-          .dnd-overlay {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            z-index: 999;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.85);
-          }
-        `}</style>
-      </div>
-    )
-
-    return this.props.connectDropTarget(content)
-  }
-}
+      .dnd-overlay {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.85);
+      }
+    `}</style>
+  </div>
+)
 
 export default DropTarget(NativeTypes.FILE, spec, collect)(ReadFileDropContainer)
