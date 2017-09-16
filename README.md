@@ -17,7 +17,7 @@ Visit [dawnlabs.io/carbon](http://dawnlabs.io/carbon) or read [our post](TODO) t
 #### Import
 
 There are a few different ways to import code into Carbon:
-- Drag a file onto the editor
+- Drop a file onto the editor
 - Append a GitHub gist id to the url  (e.g. `www.dawnlabs.io/carbon/GIST_ID_HERE`)
 - Paste your code directly
 
