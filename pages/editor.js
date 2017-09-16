@@ -6,6 +6,7 @@ import domtoimage from 'dom-to-image'
 import Page from '../components/Page'
 import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Toolbar from '../components/Toolbar'
+import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import { THEMES, LANGUAGES, COLORS, DEFAULT_CODE } from '../lib/constants'
@@ -95,9 +96,11 @@ class Editor extends React.Component {
             <ReadFileDropContainer
               onDrop={droppedContent => this.setState({ droppedContent })}
             >
-              <Carbon config={this.state}>
-                {this.state.droppedContent || this.props.content || DEFAULT_CODE}
-              </Carbon>
+              <Overlay>
+                <Carbon config={this.state}>
+                  {this.state.droppedContent || this.props.content || DEFAULT_CODE}
+                </Carbon>
+              </Overlay>
             </ReadFileDropContainer>
           </div>
 
