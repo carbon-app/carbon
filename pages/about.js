@@ -16,7 +16,7 @@ export default () => (
         <h4 className="mb0">Import</h4>
         <p className="mb1 mt2">There are a few different ways to import code into Carbon:</p>
         <ul className="mt0 mb3">
-          <li>Drag a file into the editor</li>
+          <li>Drop a file into the editor</li>
           <li>Append a GitHub gist id to the url (<a className="link" href="/0db00e81d5416c339181e59481c74b59">example</a>)</li>
           <li>Paste your code directly</li>
         </ul>
@@ -43,6 +43,7 @@ export default () => (
 
       ul {
         list-style-position: inside;
+        list-style-type: circle;
       }
 
       .about {

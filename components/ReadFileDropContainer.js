@@ -12,8 +12,17 @@ const spec = {
   }
 }
 
-const collect = connect => ({ connectDropTarget: connect.dropTarget() })
+const collect = (connect, monitor) => ({ connectDropTarget: connect.dropTarget(), isOver: monitor.isOver() })
 
-const ReadFileDropContainer = props => props.connectDropTarget(props.children)
+const ReadFileDropContainer = props => props.connectDropTarget(
+  <div>
+    {
+      React.Children.only(React.Children.map(
+        props.children,
+        child => React.cloneElement(child, { isOver: props.isOver }),
+      )[0])
+    }
+  </div>
+)
 
 export default DropTarget(NativeTypes.FILE, spec, collect)(ReadFileDropContainer)

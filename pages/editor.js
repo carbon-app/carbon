@@ -6,6 +6,7 @@ import domtoimage from 'dom-to-image'
 import Page from '../components/Page'
 import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Toolbar from '../components/Toolbar'
+import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import { THEMES, DEFAULT_LANGUAGE, COLORS, DEFAULT_CODE } from '../lib/constants'
@@ -86,26 +87,28 @@ class Editor extends React.Component {
   render () {
     return (
         <Page enableHeroText>
-          <ReadFileDropContainer
-            onDrop={droppedContent => this.setState({ code: droppedContent })}
-          >
-            <div id="editor">
-              <Toolbar
-                save={this.save}
-                upload={this.upload}
-                uploading={this.state.uploading}
-                onBGChange={color => this.setState({ background: color })}
-                onThemeChange={theme => this.setState({ theme: theme.id })}
-                onLanguageChange={language => this.setState({ language: language.module })}
-                onSettingsChange={(key, value) => this.setState({ [key]: value })}
-                bg={this.state.background}
-                enabled={this.state}
-              />
-              <Carbon config={this.state} updateCode={this.updateCode}>
-                {this.state.code}
-              </Carbon>
-            </div>
-          </ReadFileDropContainer>
+          <div id="editor">
+            <Toolbar
+              save={this.save}
+              upload={this.upload}
+              uploading={this.state.uploading}
+              onBGChange={color => this.setState({ background: color })}
+              onThemeChange={theme => this.setState({ theme: theme.id })}
+              onLanguageChange={language => this.setState({ language: language.module })}
+              onSettingsChange={(key, value) => this.setState({ [key]: value })}
+              bg={this.state.background}
+              enabled={this.state}
+            />
+            <ReadFileDropContainer
+              onDrop={droppedContent => this.setState({ code: droppedContent })}
+            >
+              <Overlay title="Drop your file here to import">
+                <Carbon config={this.state} updateCode={this.updateCode}>
+                  {this.state.code}
+                </Carbon>
+              </Overlay>
+            </ReadFileDropContainer>
+          </div>
           <style jsx>{`
             #editor {
               background: ${COLORS.BLACK};
