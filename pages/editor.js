@@ -8,7 +8,7 @@ import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Toolbar from '../components/Toolbar'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
-import { THEMES, LANGUAGES, COLORS, DEFAULT_CODE } from '../lib/constants'
+import { THEMES, LANGUAGES, DEFAULT_LANGUAGE, COLORS, DEFAULT_CODE } from '../lib/constants'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -29,7 +29,7 @@ class Editor extends React.Component {
     this.state = {
       background: '#ABB8C3',
       theme: THEMES[0].id,
-      language: 'javascript', // TODO LANGUAGES[0]
+      language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
       paddingVertical: '48px',

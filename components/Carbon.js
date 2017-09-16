@@ -1,10 +1,11 @@
 import { EOL } from 'os'
+import * as hljs from 'highlight.js'
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import CodeMirror from 'react-codemirror'
 import Spinner from 'react-spinner'
 import WindowControls from '../components/WindowControls'
-import { COLORS } from '../lib/constants'
+import { COLORS, DEFAULT_LANGUAGE, LANGUAGE_HASH } from '../lib/constants'
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
@@ -13,7 +14,7 @@ const DEFAULT_SETTINGS = {
   marginHorizontal: '45px',
   background: '#fed0ec',
   theme: 'dracula',
-  language: 'javascript'
+  language: DEFAULT_LANGUAGE
 }
 
 class Carbon extends React.Component {
@@ -21,14 +22,39 @@ class Carbon extends React.Component {
     super(props)
 
     this.state = {
-      loading: true
+      loading: true,
+      language: props.config.language
     }
+
+    this.handleLanguageChange = this.handleLanguageChange.bind(this)
   }
 
   componentDidMount() {
     this.setState({
       loading: false
     })
+
+    this.handleLanguageChange(this.props.children)
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.handleLanguageChange(newProps.children, { customProps: newProps })
+  }
+
+  handleLanguageChange(newCode, config) {
+    const props = (config && config.customProps) || this.props
+
+    if (props.config.language.name === 'Auto') {
+      // try to set the language
+      const detectedLanguage = hljs.highlightAuto(newCode).language
+      const languageModule = LANGUAGE_HASH[detectedLanguage]
+
+      if (languageModule) {
+        this.setState({ language: languageModule })
+      }
+    } else {
+      this.setState({ language: props.config.language })
+    }
   }
 
   render () {
@@ -36,7 +62,7 @@ class Carbon extends React.Component {
 
     const options = {
       lineNumbers: false,
-      mode: config.language,
+      mode: this.state.language ? this.state.language.module : 'plaintext',
       theme: config.theme,
       scrollBarStyle: null,
       viewportMargin: Infinity,
@@ -67,6 +93,7 @@ class Carbon extends React.Component {
           { config.windowControls ? <WindowControls theme={config.windowTheme} /> : null }
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow ? 'dropshadow' : ''}`}
+            onChange={this.handleLanguageChange}
             value={this.props.children}
             options={options}
           />
