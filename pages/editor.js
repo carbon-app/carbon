@@ -80,26 +80,27 @@ class Editor extends React.Component {
   render () {
     return (
         <Page enableHeroText>
-          <ReadFileDropContainer
-            onDrop={droppedContent => this.setState({ droppedContent })}
-          >
-            <div id="editor">
-              <Toolbar
-                save={this.save}
-                upload={this.upload}
-                uploading={this.state.uploading}
-                onBGChange={color => this.setState({ background: color })}
-                onThemeChange={theme => this.setState({ theme: theme.id })}
-                onLanguageChange={language => this.setState({ language: language.module })}
-                onSettingsChange={(key, value) => this.setState({ [key]: value })}
-                bg={this.state.background}
-                enabled={this.state}
-              />
+          <div id="editor">
+            <Toolbar
+              save={this.save}
+              upload={this.upload}
+              uploading={this.state.uploading}
+              onBGChange={color => this.setState({ background: color })}
+              onThemeChange={theme => this.setState({ theme: theme.id })}
+              onLanguageChange={language => this.setState({ language: language.module })}
+              onSettingsChange={(key, value) => this.setState({ [key]: value })}
+              bg={this.state.background}
+              enabled={this.state}
+            />
+            <ReadFileDropContainer
+              onDrop={droppedContent => this.setState({ droppedContent })}
+            >
               <Carbon config={this.state}>
                 {this.state.droppedContent || this.props.content || DEFAULT_CODE}
               </Carbon>
-            </div>
-          </ReadFileDropContainer>
+            </ReadFileDropContainer>
+          </div>
+
           <style jsx>{`
             #editor {
               background: ${COLORS.BLACK};
