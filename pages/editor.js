@@ -34,11 +34,13 @@ class Editor extends React.Component {
       windowControls: true,
       paddingVertical: '48px',
       paddingHorizontal: '32px',
-      uploading: false
+      uploading: false,
+      code: DEFAULT_CODE
     }
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
+    this.updateCode = this.updateCode.bind(this)
   }
 
   getCarbonImage () {
@@ -54,6 +56,10 @@ class Editor extends React.Component {
     }
 
     return  domtoimage.toPng(node, config)
+  }
+
+  updateCode (code) {
+    this.setState({ code })
   }
 
   save () {
@@ -95,8 +101,8 @@ class Editor extends React.Component {
                 bg={this.state.background}
                 enabled={this.state}
               />
-              <Carbon config={this.state}>
-                {this.state.droppedContent || this.props.content || DEFAULT_CODE}
+              <Carbon config={this.state} updateCode={this.updateCode}>
+                {this.state.droppedContent || this.props.content || this.state.code}
               </Carbon>
             </div>
           </ReadFileDropContainer>

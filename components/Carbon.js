@@ -23,10 +23,11 @@ class Carbon extends React.Component {
 
     this.state = {
       loading: true,
-      language: props.config.language
+      language: props.config.language,
     }
 
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
+    this.codeUpdated = this.codeUpdated.bind(this)
   }
 
   componentDidMount() {
@@ -39,6 +40,11 @@ class Carbon extends React.Component {
 
   componentWillReceiveProps (newProps) {
     this.handleLanguageChange(newProps.children, { customProps: newProps })
+  }
+
+  codeUpdated (newCode) {
+    this.handleLanguageChange(newCode)
+    this.props.updateCode(newCode)
   }
 
   handleLanguageChange(newCode, config) {
@@ -93,7 +99,7 @@ class Carbon extends React.Component {
           { config.windowControls ? <WindowControls theme={config.windowTheme} /> : null }
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow ? 'dropshadow' : ''}`}
-            onChange={this.handleLanguageChange}
+            onChange={this.codeUpdated}
             value={this.props.children}
             options={options}
           />
