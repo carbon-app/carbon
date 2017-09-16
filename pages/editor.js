@@ -24,8 +24,8 @@ class Editor extends React.Component {
     return {}
   }
 
-  constructor()  {
-    super()
+  constructor(props)  {
+    super(props)
     this.state = {
       background: '#ABB8C3',
       theme: THEMES[0].id,
@@ -35,7 +35,7 @@ class Editor extends React.Component {
       paddingVertical: '48px',
       paddingHorizontal: '32px',
       uploading: false,
-      code: DEFAULT_CODE
+      code: props.content || DEFAULT_CODE
     }
 
     this.save = this.save.bind(this)
@@ -87,7 +87,7 @@ class Editor extends React.Component {
     return (
         <Page enableHeroText>
           <ReadFileDropContainer
-            onDrop={droppedContent => this.setState({ droppedContent })}
+            onDrop={droppedContent => this.setState({ code: droppedContent })}
           >
             <div id="editor">
               <Toolbar
@@ -102,7 +102,7 @@ class Editor extends React.Component {
                 enabled={this.state}
               />
               <Carbon config={this.state} updateCode={this.updateCode}>
-                {this.state.droppedContent || this.props.content || this.state.code}
+                {this.state.code}
               </Carbon>
             </div>
           </ReadFileDropContainer>
