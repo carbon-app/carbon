@@ -1,6 +1,6 @@
 const Overlay = props => (
   <div className="dnd-container">
-    { props.isOver ? <div className="dnd-overlay">Drop your file here to import</div> : null }
+    { props.isOver ? <div className="dnd-overlay">{props.title}</div> : null }
     { props.children }
     <style jsx>{`
       .dnd-container {

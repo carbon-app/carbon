@@ -9,7 +9,7 @@ import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
-import { THEMES, LANGUAGES, COLORS, DEFAULT_CODE } from '../lib/constants'
+import { THEMES, DEFAULT_LANGUAGE, COLORS, DEFAULT_CODE } from '../lib/constants'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -25,21 +25,23 @@ class Editor extends React.Component {
     return {}
   }
 
-  constructor()  {
-    super()
+  constructor(props)  {
+    super(props)
     this.state = {
       background: '#ABB8C3',
       theme: THEMES[0].id,
-      language: 'javascript', // TODO LANGUAGES[0]
+      language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
       paddingVertical: '48px',
       paddingHorizontal: '32px',
-      uploading: false
+      uploading: false,
+      code: props.content || DEFAULT_CODE
     }
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
+    this.updateCode = this.updateCode.bind(this)
   }
 
   getCarbonImage () {
@@ -55,6 +57,10 @@ class Editor extends React.Component {
     }
 
     return  domtoimage.toPng(node, config)
+  }
+
+  updateCode (code) {
+    this.setState({ code })
   }
 
   save () {
@@ -94,16 +100,15 @@ class Editor extends React.Component {
               enabled={this.state}
             />
             <ReadFileDropContainer
-              onDrop={droppedContent => this.setState({ droppedContent })}
+              onDrop={droppedContent => this.setState({ code: droppedContent })}
             >
-              <Overlay>
-                <Carbon config={this.state}>
-                  {this.state.droppedContent || this.props.content || DEFAULT_CODE}
+              <Overlay title="Drop your file here to import">
+                <Carbon config={this.state} updateCode={this.updateCode}>
+                  {this.state.code}
                 </Carbon>
               </Overlay>
             </ReadFileDropContainer>
           </div>
-
           <style jsx>{`
             #editor {
               background: ${COLORS.BLACK};
