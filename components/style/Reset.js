@@ -92,7 +92,7 @@ export default () =>
     .link {
       color: #fff;
       text-decoration: none;
-      padding-bottom: 2px;
+      padding-bottom: 3px;
       background: linear-gradient(to right, rgba(255,255,255, 0.7) 0%, rgba(255,255,255, 0.7) 100%);
       background-size: 1px 1px;
       background-position: 0 100%;

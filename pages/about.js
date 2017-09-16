@@ -43,6 +43,7 @@ export default () => (
 
       ul {
         list-style-position: inside;
+        list-style-type: circle;
       }
 
       .about {
