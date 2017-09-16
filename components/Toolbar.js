@@ -1,23 +1,7 @@
 import React from 'react'
-import Dropdown from './Dropdown'
-import ColorPicker from './ColorPicker'
-import Settings from './Settings'
-import Button from './Button'
-import { THEMES, LANGUAGES } from '../lib/constants'
-
 const Toolbar = (props) => (
   <div id="toolbar">
-    <Dropdown list={THEMES} onChange={props.onThemeChange}/>
-    <Dropdown list={LANGUAGES} onChange={props.onLanguageChange}/>
-    <ColorPicker
-      onChange={props.onBGChange}
-      bg={props.bg}
-    />
-    <Settings onChange={props.onSettingsChange} enabled={props.enabled} />
-    <div className="buttons">
-      <Button className="tweetButton" onClick={props.upload} title={props.uploading ? 'Loading...' : 'Tweet Image'} color="#57b5f9" style={{ marginRight: '8px' }} />
-      <Button onClick={props.save} title="Save Image" color="#c198fb" />
-    </div>
+    {props.children}
     <style jsx>{`
       #toolbar {
         width: 100%;
