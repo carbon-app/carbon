@@ -3526,9 +3526,9 @@ to-fast-properties@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
 
-tohash@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tohash/-/tohash-1.0.0.tgz#cd740231ca16821e3744f2f18ff9727382eeb091"
+tohash@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tohash/-/tohash-1.0.2.tgz#9e66e497da0cfd77ba85f9663065adf2d8c99981"
 
 touch@3.1.0:
   version "3.1.0"

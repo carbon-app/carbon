@@ -29,7 +29,7 @@
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^0.0.6",
-    "tohash": "^1.0.0",
+    "tohash": "^1.0.2",
     "twitter": "^1.7.1"
   },
   "now": {
