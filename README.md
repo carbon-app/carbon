@@ -4,7 +4,7 @@
 
 You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those](https://twitter.com/notquiteleo/status/873483329345028096) [code](https://twitter.com/thejameskyle/status/884986927954497536) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Although the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess. 🎨
 
-Visit [dawnlabs.io/carbon](http://dawnlabs.io/carbon) or read [our post](TODO) to learn more about the project.
+Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](TODO) to learn more about the project.
 
 ## Features
 
@@ -18,7 +18,7 @@ Visit [dawnlabs.io/carbon](http://dawnlabs.io/carbon) or read [our post](TODO) t
 
 There are a few different ways to import code into Carbon:
 - Drop a file onto the editor
-- Append a GitHub gist id to the url  (e.g. `www.dawnlabs.io/carbon/GIST_ID_HERE`)
+- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/GIST_ID_HERE`)
 - Paste your code directly
 
 #### Customization
