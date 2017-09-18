@@ -8,7 +8,7 @@ const client = new Twitter({
 })
 
 const uploadImage = (data) => client.post('media/upload', { media_data: data })
-const uploadTweet = (media) => client.post('statuses/update', { status: 'carbon copy', media_ids: media.media_id_string })
+const uploadTweet = (media) => client.post('statuses/update', { status: 'Carbon Copy', media_ids: media.media_id_string })
 const extractImageUrl = (response) => response.entities.media[0].display_url
 
 const respondSuccess = (res, url) => res.json({ url })
