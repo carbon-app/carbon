@@ -1,5 +1,7 @@
 const Twitter = require('twitter')
 
+const RATE_LIMIT_CODE = 420
+
 const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -10,10 +12,18 @@ const client = new Twitter({
 const uploadImage = (data) => client.post('media/upload', { media_data: data })
 const uploadTweet = (media) => client.post('statuses/update', { status: 'Carbon Copy', media_ids: media.media_id_string })
 const extractImageUrl = (response) => response.entities.media[0].display_url
+const extractErrorCode = (errors) => errors[0].code
 
 const respondSuccess = (res, url) => res.json({ url })
 const respondFail = (res, err) => {
-  console.error(`Error: ${err.message || err}`)
+  const errorCode = extractErrorCode(err)
+
+  // check for rate limit
+  if (errorCode === RATE_LIMIT_CODE) {
+    return res.status(420).send()
+  }
+
+  console.error(`Error: ${errorCode || err.message}`)
   res.status(500).send()
 }
 
