@@ -1,4 +1,5 @@
 const Twitter = require('twitter')
+const morph = require('morphmorph')
 
 const RATE_LIMIT_CODE = 420
 
@@ -11,8 +12,8 @@ const client = new Twitter({
 
 const uploadImage = (data) => client.post('media/upload', { media_data: data })
 const uploadTweet = (media) => client.post('statuses/update', { status: 'Carbon Copy', media_ids: media.media_id_string })
-const extractImageUrl = (response) => response.entities.media[0].display_url
-const extractErrorCode = (errors) => errors[0].code
+const extractImageUrl = morph.get('entities.media.0.display_url')
+const extractErrorCode = morph.get('0.code')
 
 const respondSuccess = (res, url) => res.json({ url })
 const respondFail = (res, err) => {

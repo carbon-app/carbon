@@ -18,6 +18,7 @@
     "form-data": "^2.2.0",
     "highlight.js": "^9.12.0",
     "morgan": "^1.8.2",
+    "morphmorph": "0.0.2",
     "next": "^3.2.2",
     "react": "^15.6.1",
     "react-click-outside": "^2.3.1",
