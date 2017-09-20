@@ -1,4 +1,5 @@
 const Twitter = require('twitter')
+const uid = require('uid-promise')
 
 const client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -8,12 +9,14 @@ const client = new Twitter({
 })
 
 const uploadImage = (data) => client.post('media/upload', { media_data: data })
-const uploadTweet = (media) => client.post('statuses/update', { status: 'Carbon Copy', media_ids: media.media_id_string })
+const uploadTweet = async (media) =>
+  client.post('statuses/update', { status: `Carbon Copy #${await uid(8)}`, media_ids: media.media_id_string })
+
 const extractImageUrl = (response) => response.entities.media[0].display_url
 
 const respondSuccess = (res, url) => res.json({ url })
 const respondFail = (res, err) => {
-  console.error(`Error: ${err.message || err}`)
+  console.error(`Error: ${err.message || JSON.stringify(err, null, 2)}`)
   res.status(500).send()
 }
 

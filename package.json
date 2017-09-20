@@ -30,7 +30,8 @@
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^0.0.6",
     "tohash": "^1.0.2",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "uid-promise": "^1.0.0"
   },
   "now": {
     "env": {
