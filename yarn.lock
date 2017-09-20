@@ -2407,6 +2407,10 @@ morgan@^1.8.2:
     on-finished "~2.3.0"
     on-headers "~1.0.1"
 
+morphmorph@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/morphmorph/-/morphmorph-0.0.2.tgz#b2401b5e976ca4f4e068b730145aa64634aaa689"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -3602,10 +3606,6 @@ uglifyjs-webpack-plugin@^0.4.6:
 uid-number@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
-
-uid-promise@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/uid-promise/-/uid-promise-1.0.0.tgz#68ef7c70a19dea4d637c7e3df2e0e548106f1a37"
 
 unfetch@3.0.0:
   version "3.0.0"
