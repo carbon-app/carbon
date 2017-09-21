@@ -10,8 +10,13 @@ const client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
 
-const uploadImage = (data) => client.post('media/upload', { media_data: data })
-const uploadTweet = (media) => client.post('statuses/update', { status: 'Carbon Copy', media_ids: media.media_id_string })
+const uploadImage = data => client.post('media/upload', { media_data: data })
+const uploadTweet = (media = {}) =>
+  client.post('statuses/update', {
+    status: `Carbon Copy #${media.media_id_string.slice(0, 8)}`,
+    media_ids: media.media_id_string
+  })
+
 const extractImageUrl = morph.get('entities.media.0.display_url')
 const extractErrorCode = morph.get('0.code')
 
@@ -24,7 +29,7 @@ const respondFail = (res, err) => {
     return res.status(420).send()
   }
 
-  console.error(`Error: ${errorCode || err.message}`)
+  console.error(`Error: ${err.message || JSON.stringify(err, null, 2)}`)
   res.status(500).send()
 }
 
