@@ -3,6 +3,8 @@ import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
+import debounce from 'lodash.debounce'
+import ms from 'ms'
 
 // Ours
 import Page from '../components/Page'
@@ -111,7 +113,7 @@ class Editor extends React.Component {
               <div className="buttons">
                 <Button
                   className="tweetButton"
-                  onClick={this.upload}
+                  onClick={debounce(this.upload, ms('5s'), {leading: true, trailing: false})}
                   title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
                   color="#57b5f9"
                   style={{ marginRight: '8px' }}
