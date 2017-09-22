@@ -2,7 +2,7 @@
 
 ## Introduction
 
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those](https://twitter.com/notquiteleo/status/873483329345028096) [code](https://twitter.com/thejameskyle/status/884986927954497536) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Although the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess. 🎨
+You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those](https://twitter.com/notquiteleo/status/873483329345028096) [code](https://twitter.com/thejameskyle/status/884986927954497536) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess. 🎨
 
 Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](TODO) to learn more about the project.
 
@@ -35,7 +35,7 @@ If you have discovered a bug or have a feature suggestion, feel free to create a
 
 If you'd like to make some changes yourself, see the following:
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
-2. Build the webpack bundle and start the application: `yarn build && yarn start`
+2. Build and start the application: `yarn build && yarn start`
 3. Finally, submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) with your changes!
 
 ## Authors
