@@ -121,12 +121,16 @@ class Editor extends React.Component {
               </div>
             </Toolbar>
 
-            <ReadFileDropContainer onDrop={droppedContent => this.setState({ code: droppedContent })}>
-              <Overlay title="Drop your file here to import">
-                <Carbon config={this.state} updateCode={this.updateCode}>
-                  {this.state.code}
-                </Carbon>
-              </Overlay>
+            <ReadFileDropContainer onDrop={([code]) => this.setState({ code })}>
+              {
+                ({ isOver }) => (
+                  <Overlay isOver={isOver} title="Drop your file here to import">
+                    <Carbon config={this.state} updateCode={this.updateCode}>
+                      {this.state.code}
+                    </Carbon>
+                  </Overlay>
+                )
+              }
             </ReadFileDropContainer>
           </div>
           <style jsx>{`
