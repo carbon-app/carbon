@@ -111,6 +111,10 @@ class Carbon extends React.Component {
               border-left: solid 2px #159588;
             }
 
+            #container :global(.cm-s-solarized) {
+              box-shadow: none;
+            }
+
             #container :global(.CodeMirror__container.dropshadow) {
               box-shadow: 0px 3px 15px rgba(0,0,0,0.3);
               border-radius: 5px;
