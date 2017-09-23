@@ -123,7 +123,7 @@ class Carbon extends React.Component {
             #container :global(.CodeMirror__container .CodeMirror) {
               height: auto;
               min-width: 680px;
-              padding: 24px 18px;
+              padding: 18px 18px;
               border-radius: 5px;
               font-family: Hack, monospace !important;
               font-size: 0.7rem;
@@ -138,7 +138,7 @@ class Carbon extends React.Component {
             }
 
             #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
-              padding-top: 40px;
+              padding-top: 48px;
             }
           `}</style>
         </div>

@@ -6,9 +6,9 @@ export default ({ theme }) => (
     { theme === 'bw' ? <ControlsBW /> : <Controls /> }
     <style jsx>{`
       div {
-        margin-top: -19px;
+        margin-top: -24px;
         position: relative;
-        top: +30px;
+        top: 34px;
         margin-left: 18px;
         z-index: 1;
       }
