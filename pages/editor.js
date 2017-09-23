@@ -27,7 +27,8 @@ class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
   static async getInitialProps ({ asPath }) {
     try {
-      if (asPath !== '/') {
+      // TODO make this check generic
+      if (asPath && asPath !== '/' && asPath !== '/favicon.ico') {
         const content = await api.getGist(asPath)
         return { content }
       }
