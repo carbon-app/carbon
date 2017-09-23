@@ -21,7 +21,7 @@ export default () => (
       <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css' />
       {
         THEMES.map((theme, i) => (
-          <link key={i} rel="stylesheet" href={theme.link || `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/theme/${theme.id}.min.css`}/>
+          <link key={i} rel="stylesheet" href={theme.link || `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`}/>
         ))
       }
       <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />
