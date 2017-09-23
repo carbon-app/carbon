@@ -1,28 +1,60 @@
-import React from 'react'
-import { DropTarget } from 'react-dnd'
-import { NativeTypes } from 'react-dnd-html5-backend'
+const { createElement, Component } = require('react')
+const { DropTarget } = require('react-dnd')
+const { NativeTypes } = require('react-dnd-html5-backend')
 
 const spec = {
-  drop (props, monitor) {
+  drop(props, monitor, component) {
     const bundle = monitor.getItem()
-    const file = bundle.files[0]
-    const reader = new FileReader()
-    reader.onload = event => props.onDrop(event.target.result)
-    reader.readAsText(file, 'UTF-8');
+    Promise.all(
+      bundle.files.map(file => {
+        const reader = new FileReader()
+        return new Promise((resolve, reject) => {
+          reader.onload = event => resolve(event.target.result)
+          reader.readAsText(file, 'UTF-8');
+        })
+      })
+    ).then(contents => {
+      bundle.contents = contents
+      component.setState(state => ({
+        lastContent: contents,
+        history: [bundle, ...state.history]
+      }))
+      props.onDrop(contents)
+    })
   }
 }
 
-const collect = (connect, monitor) => ({ connectDropTarget: connect.dropTarget(), isOver: monitor.isOver() })
+const collect = (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget(),
+  monitor,
+  isOver: monitor.isOver(),
+  canDrop: monitor.canDrop()
+})
 
-const ReadFileDropContainer = props => props.connectDropTarget(
-  <div>
-    {
-      React.Children.only(React.Children.map(
-        props.children,
-        child => React.cloneElement(child, { isOver: props.isOver }),
-      )[0])
+class ReadFileDropContainer extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      lastContent: null,
+      history: []
     }
-  </div>
-)
+  }
+  render () {
+    return this.props.connectDropTarget(
+      createElement(
+        'div',
+        null,
+        this.props.children({
+          __monitor__: this.props.monitor,
+          isOver: this.props.isOver,
+          canDrop: this.props.canDrop,
+          content: this.state.lastContent,
+          history: this.state.history,
+        })
+      )
+    )
+  }
+}
 
-export default DropTarget(NativeTypes.FILE, spec, collect)(ReadFileDropContainer)
+module.exports = exports.default = DropTarget(NativeTypes.FILE, spec, collect)(ReadFileDropContainer)
