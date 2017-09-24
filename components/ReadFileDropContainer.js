@@ -6,13 +6,15 @@ const spec = {
   drop(props, monitor, component) {
     const bundle = monitor.getItem()
     Promise.all(
-      bundle.files.map(file => {
-        const reader = new FileReader()
-        return new Promise((resolve, reject) => {
-          reader.onload = event => resolve(event.target.result)
-          reader.readAsText(file, 'UTF-8');
+      bundle.files
+        .filter(props.filter || (i => i))
+        .map(file => {
+          const reader = new FileReader()
+          return new Promise((resolve, reject) => {
+            reader.onload = event => resolve(event.target.result)
+            reader.readAsText(file, 'UTF-8');
+          })
         })
-      })
     ).then(contents => {
       bundle.contents = contents
       component.setState(state => ({
