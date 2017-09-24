@@ -123,8 +123,8 @@ class Editor extends React.Component {
 
             <ReadFileDropContainer onDrop={([code]) => this.setState({ code })}>
               {
-                ({ isOver }) => (
-                  <Overlay isOver={isOver} title="Drop your file here to import">
+                ({ isOver, canDrop }) => (
+                  <Overlay isOver={isOver || canDrop} title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}>
                     <Carbon config={this.state} updateCode={this.updateCode}>
                       {this.state.code}
                     </Carbon>
