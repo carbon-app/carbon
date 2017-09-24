@@ -4,24 +4,26 @@ const { NativeTypes } = require('react-dnd-html5-backend')
 
 const spec = {
   drop(props, monitor, component) {
-    const bundle = monitor.getItem()
+    const {files} = monitor.getItem()
     Promise.all(
-      bundle.files
+      files
         .filter(props.filter || (i => i))
         .map(file => {
           const reader = new FileReader()
           return new Promise((resolve, reject) => {
-            reader.onload = event => resolve(event.target.result)
+            reader.onload = event => {
+              file.content = event.target.result
+              resolve(file)
+            }
             reader.readAsText(file, 'UTF-8');
           })
         })
-    ).then(contents => {
-      bundle.contents = contents
+    ).then(files => {
       component.setState(state => ({
-        lastContent: contents,
-        history: [bundle, ...state.history]
+        lastContent: files,
+        history: [files, ...state.history]
       }))
-      props.onDrop(contents)
+      props.onDrop(files)
     })
   }
 }
@@ -51,7 +53,7 @@ class ReadFileDropContainer extends Component {
           __monitor__: this.props.monitor,
           isOver: this.props.isOver,
           canDrop: this.props.canDrop,
-          content: this.state.lastContent,
+          files: this.state.lastContent,
           history: this.state.history,
         })
       )
