@@ -121,7 +121,7 @@ class Editor extends React.Component {
               </div>
             </Toolbar>
 
-            <ReadFileDropContainer onDrop={([code]) => this.setState({ code })}>
+            <ReadFileDropContainer onDrop={([file]) => this.setState({ code: file.content })}>
               {
                 ({ isOver, canDrop }) => (
                   <Overlay isOver={isOver || canDrop} title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}>
