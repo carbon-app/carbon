@@ -14,6 +14,7 @@
     "body-parser": "^1.17.2",
     "codemirror": "^5.26.0",
     "dom-to-image": "^2.5.2",
+    "dropperx": "^0.0.3",
     "express": "^4.15.3",
     "form-data": "^2.2.0",
     "highlight.js": "^9.12.0",

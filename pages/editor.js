@@ -3,10 +3,10 @@ import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
+import ReadFileDropContainer from 'dropperx'
 
 // Ours
 import Page from '../components/Page'
-import ReadFileDropContainer from '../components/ReadFileDropContainer'
 import Button from '../components/Button'
 import Dropdown from '../components/Dropdown'
 import ColorPicker from '../components/ColorPicker'

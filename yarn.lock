@@ -1315,6 +1315,14 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
+dropperx@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/dropperx/-/dropperx-0.0.3.tgz#4744bb49a79a7b7e4f0a4ecf13894f84c4e8a413"
+  dependencies:
+    react ">=15"
+    react-dnd ">=2"
+    react-dnd-html5-backend ">=2.4"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -2950,13 +2958,13 @@ react-deep-force-update@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz#4f7f6c12c3e7de42f345992a3c518236fa1ecad3"
 
-react-dnd-html5-backend@^2.4.1:
+react-dnd-html5-backend@>=2.4, react-dnd-html5-backend@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-2.4.1.tgz#439d2bcaf8bd8b87a51386beb51c128826182ddd"
   dependencies:
     lodash "^4.2.0"
 
-react-dnd@^2.4.0:
+react-dnd@>=2, react-dnd@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-2.4.0.tgz#96f0042cd4cd375b4f0c3413f6ec84d267b7d792"
   dependencies:
@@ -3012,7 +3020,7 @@ react-syntax-highlight@^0.0.6:
   dependencies:
     highlight.js "^9.10.0"
 
-react@^15.6.1:
+react@>=15, react@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
   dependencies:
