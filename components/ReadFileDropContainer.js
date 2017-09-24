@@ -1,23 +1,21 @@
-const { createElement, Component } = require('react')
-const { DropTarget } = require('react-dnd')
-const { NativeTypes } = require('react-dnd-html5-backend')
+import { createElement, Component } from 'react'
+import { DropTarget } from 'react-dnd'
+import { NativeTypes } from 'react-dnd-html5-backend'
 
 const spec = {
   drop(props, monitor, component) {
-    const {files} = monitor.getItem()
+    const { files } = monitor.getItem()
+    const reader = new FileReader()
     Promise.all(
       files
         .filter(props.filter || (i => i))
-        .map(file => {
-          const reader = new FileReader()
-          return new Promise((resolve, reject) => {
-            reader.onload = event => {
-              file.content = event.target.result
-              resolve(file)
-            }
-            reader.readAsText(file, 'UTF-8');
-          })
-        })
+        .map(file => new Promise((resolve, reject) => {
+          reader.onload = event => {
+            file.content = event.target.result
+            resolve(file)
+          }
+          reader.readAsText(file, 'UTF-8')
+        }))
     ).then(files => {
       component.setState(state => ({
         lastContent: files,
@@ -44,7 +42,7 @@ class ReadFileDropContainer extends Component {
       history: []
     }
   }
-  render () {
+  render() {
     return this.props.connectDropTarget(
       createElement(
         'div',
@@ -54,11 +52,11 @@ class ReadFileDropContainer extends Component {
           isOver: this.props.isOver,
           canDrop: this.props.canDrop,
           files: this.state.lastContent,
-          history: this.state.history,
+          history: this.state.history
         })
       )
     )
   }
 }
 
-module.exports = exports.default = DropTarget(NativeTypes.FILE, spec, collect)(ReadFileDropContainer)
+export default DropTarget(NativeTypes.FILE, spec, collect)(ReadFileDropContainer)
