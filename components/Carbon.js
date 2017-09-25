@@ -127,6 +127,7 @@ class Carbon extends React.Component {
               border-radius: 5px;
               font-family: Hack, monospace !important;
               font-size: 0.7rem;
+              user-select: none;
             }
 
             #container :global(.window-theme__sharp > .CodeMirror) {

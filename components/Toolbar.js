@@ -21,11 +21,6 @@ const Toolbar = (props) => (
       #toolbar > :global(div):last-child {
         margin-right: 0px;
       }
-
-      .buttons {
-        display: flex;
-        margin-left: auto;
-      }
     `}</style>
   </div>
 )
