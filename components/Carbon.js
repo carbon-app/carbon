@@ -126,7 +126,7 @@ class Carbon extends React.Component {
               padding: 18px 18px;
               border-radius: 5px;
               font-family: Hack, monospace !important;
-              font-size: 0.7rem;
+              font-size: 0.8rem;
               user-select: none;
             }
 
