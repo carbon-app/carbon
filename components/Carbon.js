@@ -130,6 +130,10 @@ class Carbon extends React.Component {
               user-select: none;
             }
 
+            #container :global(.CodeMirror-scroll) {
+              overflow: hidden !important;
+            }
+
             #container :global(.window-theme__sharp > .CodeMirror) {
               border-radius: 0px;
             }
