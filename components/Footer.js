@@ -9,7 +9,7 @@ const Footer = (props) => (
       <a className="link" href="https://github.com/dawnlabs/carbon/issues/new">send feedback</a>
       <a className="link" href="https://github.com/dawnlabs/carbon">source</a>
     </div>
-    <div className="mt3 mb2">a project by <a className="dawn-link" href="https://twitter.com/dawn_labs">@dawn_labs</a> ¬</div>
+    <div className="mt3 mb2">a project by <a className="dawn-link" href="https://dawnlabs.io">Dawn Labs</a> ¬</div>
     <style jsx>{`
       div > div {
         text-align: center;
