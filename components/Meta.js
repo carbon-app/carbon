@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { THEMES, COLORS } from '../lib/constants'
+import { THEMES_ARRAY, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
 import Typography from './style/Typography'
 
@@ -20,8 +20,13 @@ export default () => (
       <link rel="shortcut icon" href="/static/favicon.ico" />
       <link rel="stylesheet" href='//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css' />
       {
+<<<<<<< HEAD
         THEMES.map((theme, i) => (
           <link key={i} rel="stylesheet" href={theme.link || `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`}/>
+=======
+        THEMES_ARRAY.map((theme, i) => (
+          <link key={i} rel="stylesheet" href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`}/>
+>>>>>>> Default theme
         ))
       }
       <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />

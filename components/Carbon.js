@@ -16,7 +16,7 @@ const DEFAULT_SETTINGS = {
   marginVertical: '45px',
   marginHorizontal: '45px',
   background: '#fed0ec',
-  theme: 'dracula',
+  theme: 'seti',
   language: DEFAULT_LANGUAGE
 }
 
@@ -116,7 +116,7 @@ class Carbon extends React.Component {
             }
 
             #container :global(.CodeMirror__container.dropshadow) {
-              box-shadow: 0px 3px 15px rgba(0,0,0,0.3);
+              box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
               border-radius: 5px;
             }
 
