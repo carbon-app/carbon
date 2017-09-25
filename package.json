@@ -34,7 +34,8 @@
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^0.0.6",
     "tohash": "^1.0.2",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "uglifyjs-webpack-plugin": "1.0.0-beta.1"
   },
   "now": {
     "env": {
@@ -43,5 +44,6 @@
       "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
       "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret"
     }
-  }
+  },
+  "devDependencies": {}
 }
