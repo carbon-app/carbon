@@ -83,7 +83,9 @@ class Editor extends React.Component {
       const link = document.createElement('a')
       link.download = 'carbon.png'
       link.href = dataUrl
+      document.body.appendChild(link)
       link.click()
+      link.remove()
     })
   }
 
