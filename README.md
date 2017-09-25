@@ -1,4 +1,4 @@
-<p align="center"><img width=30% src="https://user-images.githubusercontent.com/10369094/30172712-36d9d2d0-93bb-11e7-856e-cde8c9d877cf.png"></p>
+<p align="center"><img width=30% src="https://user-images.githubusercontent.com/10369094/30791447-5cd614e4-a167-11e7-8b9d-a3b77ae7cc40.png"></p>
 
 ## Introduction
 
@@ -11,6 +11,10 @@ Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](TODO) to learn m
 * **Import from GitHub gist**. Simply append a GitHub gist id to the url
 * **Customization**. Customize things like your image's syntax theme, window style, and more
 * **Share quickly**. Save your image or Tweet a link with one click
+
+## Example
+
+<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Usage
 
