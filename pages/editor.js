@@ -81,7 +81,7 @@ class Editor extends React.Component {
     this.getCarbonImage()
     .then((dataUrl) => {
       const link = document.createElement('a')
-      link.download = 'snippet.png'
+      link.download = 'carbon.png'
       link.href = dataUrl
       link.click()
     })
