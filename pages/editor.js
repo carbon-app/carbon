@@ -16,6 +16,7 @@ import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import {
+  THEMES_ARRAY,
   THEMES,
   LANGUAGES,
   DEFAULT_LANGUAGE,
@@ -42,7 +43,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       background: '#ABB8C3',
-      theme: THEMES[0].id,
+      theme: THEMES.seti.id,
       language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
@@ -102,7 +103,7 @@ class Editor extends React.Component {
         <Page enableHeroText>
           <div id="editor">
             <Toolbar>
-              <Dropdown list={THEMES} onChange={theme => this.setState({ theme: theme.id })}/>
+              <Dropdown selected={THEMES[this.state.theme]} list={THEMES_ARRAY} onChange={theme => this.setState({ theme: theme.id })}/>
               <Dropdown list={LANGUAGES} onChange={language => this.setState({ language: language.module })}/>
               <ColorPicker
                 onChange={color => this.setState({ background: color })}
