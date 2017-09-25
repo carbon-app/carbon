@@ -140,6 +140,11 @@ class Editor extends React.Component {
               border-radius: 8px;
               padding: 16px;
             }
+
+            .buttons {
+              display: flex;
+              margin-left: auto;
+            }
           `}
           </style>
         </Page>
