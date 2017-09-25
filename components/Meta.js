@@ -1,7 +1,17 @@
 import Head from 'next/head'
+import Router from 'next/router'
 import { THEMES, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
 import Typography from './style/Typography'
+
+const GA_TRACKING_ID = 'UA-106958506-1'
+
+Router.onRouteChangeComplete = () => {
+  if (process.env.NODE_ENV === 'production') {
+    ReactGA.initialize(GA_TRACKING_ID)
+    ReactGA.pageview(window.location.pathname)
+  }
+}
 
 export default () => (
   <div className="meta">
@@ -26,6 +36,15 @@ export default () => (
       }
       <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />
       <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+      <script dangerouslySetInnerHTML={{ __html: `
+        window.dataLayer = window.dataLayer || []
+        function gtag(){
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        gtag('config', '${GA_TRACKING_ID}')
+      `}} />
     </Head>
     <Reset />
     <Typography />
