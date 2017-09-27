@@ -37,7 +37,8 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "uglifyjs-webpack-plugin": "1.0.0-beta.1"
+    "uglifyjs-webpack-plugin": "1.0.0-beta.1",
+    "webpack": "^3.6.0"
   },
   "now": {
     "env": {
@@ -52,11 +53,7 @@
     "type": "git",
     "url": "git+https://github.com/dawnlabs/carbon.git"
   },
-  "authors": [
-    "Mike Fix",
-    "Brian Dennis",
-    "Jake Dexheimer"
-  ],
+  "author": "Dawn Labs <@dawnlabs>",
   "bugs": {
     "url": "https://github.com/dawnlabs/carbon/issues"
   },
