@@ -34,7 +34,9 @@
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^0.0.6",
     "tohash": "^1.0.2",
-    "twitter": "^1.7.1",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
     "uglifyjs-webpack-plugin": "1.0.0-beta.1"
   },
   "now": {
@@ -45,5 +47,18 @@
       "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret"
     }
   },
-  "devDependencies": {}
+  "description": "<p align=\"center\"><img width=30% src=\"https://user-images.githubusercontent.com/10369094/30791447-5cd614e4-a167-11e7-8b9d-a3b77ae7cc40.png\"></p>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawnlabs/carbon.git"
+  },
+  "authors": [
+    "Mike Fix",
+    "Brian Dennis",
+    "Jake Dexheimer"
+  ],
+  "bugs": {
+    "url": "https://github.com/dawnlabs/carbon/issues"
+  },
+  "homepage": "https://dawnlabs.io/carbon"
 }
