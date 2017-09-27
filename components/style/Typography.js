@@ -30,7 +30,7 @@ export default () =>
     body {
       font-size: var(--h4);
       line-height: var(--lh);
-      margin: 2rem;
+      margin: 2rem 0;
     }
 
     h1, h2, h3 {

@@ -92,8 +92,6 @@ class ColorPicker extends React.Component {
 
           .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(12) > input) {
             background: rgba(255, 255, 255, 0.165) !important;
-            height: 30px !important;
-            width: 108px !important;
             color: #fff !important;
           }
 
