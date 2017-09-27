@@ -47,7 +47,7 @@
       "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret"
     }
   },
-  "description": "<p align=\"center\"><img width=30% src=\"https://user-images.githubusercontent.com/10369094/30791447-5cd614e4-a167-11e7-8b9d-a3b77ae7cc40.png\"></p>",
+  "description": "Create and share beautiful images of your source code",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dawnlabs/carbon.git"
