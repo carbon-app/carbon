@@ -1,5 +1,5 @@
-import React from 'react';
-import { Controls, ControlsBW } from './svg/Controls';
+import React from 'react'
+import { Controls, ControlsBW } from './svg/Controls'
 
 export default ({ theme }) => (
   <div className="window-controls">
@@ -16,4 +16,4 @@ export default ({ theme }) => (
       `}
     </style>
   </div>
-);
+)

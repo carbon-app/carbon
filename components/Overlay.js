@@ -22,6 +22,6 @@ const Overlay = props => (
       }
     `}</style>
   </div>
-);
+)
 
-export default Overlay;
+export default Overlay

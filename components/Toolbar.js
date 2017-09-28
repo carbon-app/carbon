@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 const Toolbar = props => (
   <div id="toolbar">
     {props.children}
@@ -23,6 +23,6 @@ const Toolbar = props => (
       }
     `}</style>
   </div>
-);
+)
 
-export default Toolbar;
+export default Toolbar

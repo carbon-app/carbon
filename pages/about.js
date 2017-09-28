@@ -1,8 +1,8 @@
-import Page from '../components/Page';
-import Meta from '../components/Meta';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { COLORS } from '../lib/constants';
+import Page from '../components/Page'
+import Meta from '../components/Meta'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import { COLORS } from '../lib/constants'
 
 export default () => (
   <Page>
@@ -71,4 +71,4 @@ export default () => (
       }
     `}</style>
   </Page>
-);
+)

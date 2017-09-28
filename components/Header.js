@@ -1,5 +1,5 @@
-import React from 'react';
-import Logo from './svg/Logo';
+import React from 'react'
+import Logo from './svg/Logo'
 
 const Header = ({ enableHeroText }) => (
   <div className="header mb4">
@@ -34,6 +34,6 @@ const Header = ({ enableHeroText }) => (
       }
     `}</style>
   </div>
-);
+)
 
-export default Header;
+export default Header

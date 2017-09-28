@@ -1,20 +1,20 @@
 // Theirs
-import React from 'react';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
-import domtoimage from 'dom-to-image';
-import ReadFileDropContainer from 'dropperx';
+import React from 'react'
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
+import domtoimage from 'dom-to-image'
+import ReadFileDropContainer from 'dropperx'
 
 // Ours
-import Page from '../components/Page';
-import Button from '../components/Button';
-import Dropdown from '../components/Dropdown';
-import ColorPicker from '../components/ColorPicker';
-import Settings from '../components/Settings';
-import Toolbar from '../components/Toolbar';
-import Overlay from '../components/Overlay';
-import Carbon from '../components/Carbon';
-import api from '../lib/api';
+import Page from '../components/Page'
+import Button from '../components/Button'
+import Dropdown from '../components/Dropdown'
+import ColorPicker from '../components/ColorPicker'
+import Settings from '../components/Settings'
+import Toolbar from '../components/Toolbar'
+import Overlay from '../components/Overlay'
+import Carbon from '../components/Carbon'
+import api from '../lib/api'
 import {
   THEMES_ARRAY,
   THEMES,
@@ -22,7 +22,7 @@ import {
   DEFAULT_LANGUAGE,
   COLORS,
   DEFAULT_CODE
-} from '../lib/constants';
+} from '../lib/constants'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -30,17 +30,17 @@ class Editor extends React.Component {
     try {
       // TODO fix this hack
       if (asPath.length > 30) {
-        const content = await api.getGist(asPath);
-        return { content };
+        const content = await api.getGist(asPath)
+        return { content }
       }
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-    return {};
+    return {}
   }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       background: '#ABB8C3',
       theme: THEMES.seti.id,
@@ -51,15 +51,15 @@ class Editor extends React.Component {
       paddingHorizontal: '32px',
       uploading: false,
       code: props.content || DEFAULT_CODE
-    };
+    }
 
-    this.save = this.save.bind(this);
-    this.upload = this.upload.bind(this);
-    this.updateCode = this.updateCode.bind(this);
+    this.save = this.save.bind(this)
+    this.upload = this.upload.bind(this)
+    this.updateCode = this.updateCode.bind(this)
   }
 
   getCarbonImage() {
-    const node = document.getElementById('section');
+    const node = document.getElementById('section')
 
     const config = {
       style: {
@@ -68,35 +68,35 @@ class Editor extends React.Component {
       },
       width: node.offsetWidth * 2,
       height: node.offsetHeight * 2
-    };
+    }
 
-    return domtoimage.toPng(node, config);
+    return domtoimage.toPng(node, config)
   }
 
   updateCode(code) {
-    this.setState({ code });
+    this.setState({ code })
   }
 
   save() {
     this.getCarbonImage().then(dataUrl => {
-      const link = document.createElement('a');
-      link.download = 'carbon.png';
-      link.href = dataUrl;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    });
+      const link = document.createElement('a')
+      link.download = 'carbon.png'
+      link.href = dataUrl
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+    })
   }
 
   upload() {
-    this.setState({ uploading: true });
+    this.setState({ uploading: true })
     this.getCarbonImage()
       .then(api.tweet)
       .then(() => this.setState({ uploading: false }))
       .catch(err => {
-        console.error(err);
-        this.setState({ uploading: false });
-      });
+        console.error(err)
+        this.setState({ uploading: false })
+      })
   }
 
   render() {
@@ -162,8 +162,8 @@ class Editor extends React.Component {
           `}
         </style>
       </Page>
-    );
+    )
   }
 }
 
-export default DragDropContext(HTML5Backend)(Editor);
+export default DragDropContext(HTML5Backend)(Editor)

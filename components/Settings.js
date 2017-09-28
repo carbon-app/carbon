@@ -1,27 +1,27 @@
-import React from 'react';
-import enhanceWithClickOutside from 'react-click-outside';
-import SettingsIcon from './svg/Settings';
-import ThemeSelect from './ThemeSelect';
-import Slider from './Slider';
-import Toggle from './Toggle';
-import WindowPointer from './WindowPointer';
-import { COLORS } from '../lib/constants';
+import React from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
+import SettingsIcon from './svg/Settings'
+import ThemeSelect from './ThemeSelect'
+import Slider from './Slider'
+import Toggle from './Toggle'
+import WindowPointer from './WindowPointer'
+import { COLORS } from '../lib/constants'
 
 class Settings extends React.Component {
   constructor(props) {
-    super();
+    super()
     this.state = {
       isVisible: false
-    };
-    this.toggle = this.toggle.bind(this);
+    }
+    this.toggle = this.toggle.bind(this)
   }
 
   toggle() {
-    this.setState({ isVisible: !this.state.isVisible });
+    this.setState({ isVisible: !this.state.isVisible })
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: false })
   }
 
   render() {
@@ -108,8 +108,8 @@ class Settings extends React.Component {
           }
         `}</style>
       </div>
-    );
+    )
   }
 }
 
-export default enhanceWithClickOutside(Settings);
+export default enhanceWithClickOutside(Settings)

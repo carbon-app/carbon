@@ -1,33 +1,33 @@
-import React from 'react';
-import enhanceWithClickOutside from 'react-click-outside';
-import ArrowDown from './svg/Arrowdown';
-import Checkmark from './svg/Checkmark';
-import { COLORS } from '../lib/constants';
+import React from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
+import ArrowDown from './svg/Arrowdown'
+import Checkmark from './svg/Checkmark'
+import { COLORS } from '../lib/constants'
 
 class Dropdown extends React.Component {
   constructor(props) {
-    super();
+    super()
     this.state = {
       isVisible: false,
       selected: props.selected || props.list[0]
-    };
-    this.select = this.select.bind(this);
-    this.toggle = this.toggle.bind(this);
+    }
+    this.select = this.select.bind(this)
+    this.toggle = this.toggle.bind(this)
   }
 
   select(item) {
     if (this.state.selected !== item) {
-      this.props.onChange(item);
-      this.setState({ selected: item });
+      this.props.onChange(item)
+      this.setState({ selected: item })
     }
   }
 
   toggle() {
-    this.setState({ isVisible: !this.state.isVisible });
+    this.setState({ isVisible: !this.state.isVisible })
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: false })
   }
 
   renderListItems() {
@@ -52,7 +52,7 @@ class Dropdown extends React.Component {
           }
         `}</style>
       </div>
-    ));
+    ))
   }
 
   render() {
@@ -60,7 +60,7 @@ class Dropdown extends React.Component {
     const MIN_WIDTH = this.props.list.reduce(
       (max, { name }) => (name.length > max ? name.length : max),
       0
-    );
+    )
 
     return (
       <div
@@ -121,8 +121,8 @@ class Dropdown extends React.Component {
           }
         `}</style>
       </div>
-    );
+    )
   }
 }
 
-export default enhanceWithClickOutside(Dropdown);
+export default enhanceWithClickOutside(Dropdown)

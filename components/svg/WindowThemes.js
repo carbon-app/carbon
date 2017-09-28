@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export const Sharp = () => (
   <svg
@@ -47,7 +47,7 @@ export const Sharp = () => (
       </g>
     </g>
   </svg>
-);
+)
 
 export const BW = () => (
   <svg
@@ -79,7 +79,7 @@ export const BW = () => (
       </g>
     </g>
   </svg>
-);
+)
 
 export const None = () => (
   <svg
@@ -110,4 +110,4 @@ export const None = () => (
       </g>
     </g>
   </svg>
-);
+)

@@ -1,7 +1,7 @@
-import Head from 'next/head';
-import { THEMES_ARRAY, COLORS } from '../lib/constants';
-import Reset from './style/Reset';
-import Typography from './style/Typography';
+import Head from 'next/head'
+import { THEMES_ARRAY, COLORS } from '../lib/constants'
+import Reset from './style/Reset'
+import Typography from './style/Typography'
 
 export default () => (
   <div className="meta">
@@ -52,4 +52,4 @@ export default () => (
       }
     `}</style>
   </div>
-);
+)
