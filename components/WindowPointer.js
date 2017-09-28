@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default ({ fromLeft }) => (
   <div style={{ left: fromLeft }}>
@@ -16,4 +16,4 @@ export default ({ fromLeft }) => (
       }
     `}</style>
   </div>
-)
+);

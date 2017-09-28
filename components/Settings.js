@@ -1,48 +1,61 @@
-import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
-import SettingsIcon from './svg/Settings'
-import ThemeSelect from './ThemeSelect'
-import Slider from './Slider'
-import Toggle from './Toggle'
+import React from 'react';
+import enhanceWithClickOutside from 'react-click-outside';
+import SettingsIcon from './svg/Settings';
+import ThemeSelect from './ThemeSelect';
+import Slider from './Slider';
+import Toggle from './Toggle';
 import WindowPointer from './WindowPointer';
-import { COLORS } from '../lib/constants'
+import { COLORS } from '../lib/constants';
 
 class Settings extends React.Component {
   constructor(props) {
-    super()
+    super();
     this.state = {
       isVisible: false
-    }
-    this.toggle = this.toggle.bind(this)
+    };
+    this.toggle = this.toggle.bind(this);
   }
 
   toggle() {
-    this.setState({ isVisible: !this.state.isVisible })
+    this.setState({ isVisible: !this.state.isVisible });
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false })
+    this.setState({ isVisible: false });
   }
 
   render() {
     return (
       <div className="settings-container">
-        <div className={`settings-display ${this.state.isVisible ? 'is-visible' : ''}`} onClick={this.toggle}>
+        <div
+          className={`settings-display ${this.state.isVisible ? 'is-visible' : ''}`}
+          onClick={this.toggle}
+        >
           <SettingsIcon />
         </div>
         <div className="settings-settings">
           <WindowPointer fromLeft="15px" />
           <ThemeSelect onChange={this.props.onChange.bind(null, 'windowTheme')} />
-          <Toggle label="Drop shadow"
+          <Toggle
+            label="Drop shadow"
             enabled={this.props.enabled.dropShadow}
             onChange={this.props.onChange.bind(null, 'dropShadow')}
           />
-          <Toggle label="Window controls"
+          <Toggle
+            label="Window controls"
             enabled={this.props.enabled.windowControls}
             onChange={this.props.onChange.bind(null, 'windowControls')}
           />
-          <Slider label="Padding (vertical)" initialValue={16} onChange={this.props.onChange.bind(null, 'paddingVertical')}/>
-          <Slider label="Padding (horizontal)" initialValue={32} onChange={this.props.onChange.bind(null, 'paddingHorizontal')}/>
+          <Slider
+            label="Padding (vertical)"
+            initialValue={16}
+            onChange={this.props.onChange.bind(null, 'paddingVertical')}
+          />
+          <Slider
+            label="Padding (horizontal)"
+            initialValue={32}
+            onChange={this.props.onChange.bind(null, 'paddingHorizontal')}
+          />
         </div>
         <style jsx>{`
           .settings-container {
@@ -93,11 +106,10 @@ class Settings extends React.Component {
           .settings-settings > :global(div):first-child {
             border-bottom: none;
           }
-
         `}</style>
       </div>
-    )
+    );
   }
 }
 
-export default enhanceWithClickOutside(Settings)
+export default enhanceWithClickOutside(Settings);
