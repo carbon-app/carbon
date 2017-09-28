@@ -1,27 +1,27 @@
-import React from 'react';
-import enhanceWithClickOutside from 'react-click-outside';
-import { TwitterPicker } from 'react-color';
-import WindowPointer from './WindowPointer';
-import { COLORS } from '../lib/constants';
+import React from 'react'
+import enhanceWithClickOutside from 'react-click-outside'
+import { TwitterPicker } from 'react-color'
+import WindowPointer from './WindowPointer'
+import { COLORS } from '../lib/constants'
 
 class ColorPicker extends React.Component {
   constructor() {
-    super();
-    this.state = { isVisible: false };
-    this.toggle = this.toggle.bind(this);
-    this.handlePickColor = this.handlePickColor.bind(this);
+    super()
+    this.state = { isVisible: false }
+    this.toggle = this.toggle.bind(this)
+    this.handlePickColor = this.handlePickColor.bind(this)
   }
 
   toggle() {
-    this.setState({ isVisible: !this.state.isVisible });
+    this.setState({ isVisible: !this.state.isVisible })
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: false })
   }
 
   handlePickColor(color) {
-    this.props.onChange(color.hex);
+    this.props.onChange(color.hex)
   }
 
   render() {
@@ -104,8 +104,8 @@ class ColorPicker extends React.Component {
           }
         `}</style>
       </div>
-    );
+    )
   }
 }
 
-export default enhanceWithClickOutside(ColorPicker);
+export default enhanceWithClickOutside(ColorPicker)

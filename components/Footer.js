@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import { COLORS } from '../lib/constants';
+import React from 'react'
+import Link from 'next/link'
+import { COLORS } from '../lib/constants'
 
 const Footer = props => (
   <div className="mt3">
@@ -47,6 +47,6 @@ const Footer = props => (
       }
     `}</style>
   </div>
-);
+)
 
-export default Footer;
+export default Footer

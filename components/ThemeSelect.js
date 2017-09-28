@@ -1,27 +1,27 @@
-import React from 'react';
-import { None, BW, Sharp } from './svg/WindowThemes';
-import { COLORS } from '../lib/constants';
+import React from 'react'
+import { None, BW, Sharp } from './svg/WindowThemes'
+import { COLORS } from '../lib/constants'
 
-const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW };
-export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP);
+const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
+export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 export default class extends React.Component {
   constructor(props) {
-    super();
-    this.state = { selected: props.selected || WINDOW_THEMES[0] };
-    this.select = this.select.bind(this);
+    super()
+    this.state = { selected: props.selected || WINDOW_THEMES[0] }
+    this.select = this.select.bind(this)
   }
 
   select(theme) {
     if (this.state.selected !== theme) {
-      this.props.onChange(theme);
-      this.setState({ selected: theme });
+      this.props.onChange(theme)
+      this.setState({ selected: theme })
     }
   }
 
   renderThemes() {
     return WINDOW_THEMES.map((theme, i) => {
-      const Img = WINDOW_THEMES_MAP[theme];
+      const Img = WINDOW_THEMES_MAP[theme]
       return (
         <div
           className={`theme ${this.state.selected === theme ? 'selected' : ''}`}
@@ -45,8 +45,8 @@ export default class extends React.Component {
             }
           `}</style>
         </div>
-      );
-    });
+      )
+    })
   }
 
   render() {
@@ -71,6 +71,6 @@ export default class extends React.Component {
           }
         `}</style>
       </div>
-    );
+    )
   }
 }

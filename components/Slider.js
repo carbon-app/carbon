@@ -1,21 +1,21 @@
-import React from 'react';
+import React from 'react'
 
 export default class extends React.Component {
   constructor(props) {
-    super();
-    this.state = { value: props.initialValue || 0 };
-    this.handleChange = this.handleChange.bind(this);
+    super()
+    this.state = { value: props.initialValue || 0 }
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value }, () => {
-      this.props.onChange(`${this.state.value}px`);
-    });
+      this.props.onChange(`${this.state.value}px`)
+    })
   }
 
   render() {
-    const minValue = this.props.minValue || 0;
-    const maxValue = this.props.maxValue || 100;
+    const minValue = this.props.minValue || 0
+    const maxValue = this.props.maxValue || 100
 
     return (
       <div className="slider">
@@ -70,6 +70,6 @@ export default class extends React.Component {
           }
         `}</style>
       </div>
-    );
+    )
   }
 }

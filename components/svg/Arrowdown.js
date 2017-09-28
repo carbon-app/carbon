@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6">
@@ -9,4 +9,4 @@ export default () => (
       transform="translate(-89 -14)"
     />
   </svg>
-);
+)

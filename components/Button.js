@@ -1,5 +1,5 @@
-import React from 'react';
-import { COLORS } from '../lib/constants';
+import React from 'react'
+import { COLORS } from '../lib/constants'
 
 export default props => (
   <button
@@ -30,4 +30,4 @@ export default props => (
       }
     `}</style>
   </button>
-);
+)
