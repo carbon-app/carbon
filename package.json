@@ -7,7 +7,9 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "deploy": "now --public"
+    "deploy": "now --public",
+    "prettier": "prettier --config .prettierrc --write 'components/**/*.js' 'handlers/**/*.js' 'lib/**/*.js' 'pages/**/*.js' 'server.js'",
+    "lint": "prettier --config .prettierrc -l 'components/**/*.js' 'handlers/**/*.js' 'lib/**/*.js' 'pages/**/*.js' 'server.js'"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -37,6 +39,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "prettier": "^1.7.2",
     "uglifyjs-webpack-plugin": "1.0.0-beta.1",
     "webpack": "^3.6.0"
   },

@@ -1,5 +1,5 @@
-import React from 'react'
-const Toolbar = (props) => (
+import React from 'react';
+const Toolbar = props => (
   <div id="toolbar">
     {props.children}
     <style jsx>{`
@@ -23,6 +23,6 @@ const Toolbar = (props) => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Toolbar
+export default Toolbar;

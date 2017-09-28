@@ -1,27 +1,27 @@
-import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
-import { TwitterPicker } from 'react-color'
-import WindowPointer from './WindowPointer'
-import { COLORS } from '../lib/constants'
+import React from 'react';
+import enhanceWithClickOutside from 'react-click-outside';
+import { TwitterPicker } from 'react-color';
+import WindowPointer from './WindowPointer';
+import { COLORS } from '../lib/constants';
 
 class ColorPicker extends React.Component {
   constructor() {
-    super()
-    this.state = { isVisible: false }
-    this.toggle = this.toggle.bind(this)
-    this.handlePickColor = this.handlePickColor.bind(this)
+    super();
+    this.state = { isVisible: false };
+    this.toggle = this.toggle.bind(this);
+    this.handlePickColor = this.handlePickColor.bind(this);
   }
 
   toggle() {
-    this.setState({ isVisible: !this.state.isVisible })
+    this.setState({ isVisible: !this.state.isVisible });
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false })
+    this.setState({ isVisible: false });
   }
 
   handlePickColor(color) {
-    this.props.onChange(color.hex)
+    this.props.onChange(color.hex);
   }
 
   render() {
@@ -31,11 +31,15 @@ class ColorPicker extends React.Component {
           <div className="colorpicker-label">
             <span>BG</span>
           </div>
-          <div className="bg-color" style={{background: this.props.bg}} onClick={this.toggle}></div>
+          <div className="bg-color" style={{ background: this.props.bg }} onClick={this.toggle} />
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
-          <TwitterPicker color={this.props.bg} onChangeComplete={this.handlePickColor} triangle="hide" />
+          <TwitterPicker
+            color={this.props.bg}
+            onChangeComplete={this.handlePickColor}
+            triangle="hide"
+          />
         </div>
         <style jsx>{`
           .colorpicker-container {
@@ -79,11 +83,11 @@ class ColorPicker extends React.Component {
             width: 278px !important;
             border: 0.5px solid ${COLORS.SECONDARY} !important;
             border-radius: 3px !important;
-            background: #1A1A1A !important;
+            background: #1a1a1a !important;
           }
 
           .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(11)) {
-            background: #1A1A1A !important;
+            background: #1a1a1a !important;
             border: 0.5px solid ${COLORS.SECONDARY} !important;
             border-right: none !important;
             border-radius: 3px 0 0 3px !important;
@@ -100,8 +104,8 @@ class ColorPicker extends React.Component {
           }
         `}</style>
       </div>
-    )
+    );
   }
 }
 
-export default enhanceWithClickOutside(ColorPicker)
+export default enhanceWithClickOutside(ColorPicker);
