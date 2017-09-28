@@ -8,7 +8,8 @@ import toHash from 'tohash'
 import WindowControls from '../components/WindowControls'
 import { COLORS, DEFAULT_LANGUAGE, LANGUAGES } from '../lib/constants'
 
-const LANGUAGE_HASH = toHash(LANGUAGES, 'module')
+const LANGUAGE_MODE_HASH = toHash(LANGUAGES, 'mode')
+const LANGUAGE_NAME_HASH = toHash(LANGUAGES, 'short')
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
@@ -56,10 +57,11 @@ class Carbon extends React.Component {
     if (props.config.language === 'auto') {
       // try to set the language
       const detectedLanguage = hljs.highlightAuto(newCode).language
-      const languageModule = LANGUAGE_HASH[detectedLanguage]
+      const languageMode =
+        LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
 
-      if (languageModule) {
-        this.setState({ language: languageModule.module })
+      if (languageMode) {
+        this.setState({ language: languageMode.mime ? languageMode.mime : languageMode.mode })
       }
     } else {
       this.setState({ language: props.config.language })
