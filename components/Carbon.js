@@ -115,6 +115,9 @@ class Carbon extends React.Component {
             }
 
             #container :global(.cm-s-solarized) {
+              background-color: #fdf6e3;
+              color: #657b83;
+              text-shadow: #eee8d5 0 1px;
               box-shadow: none;
             }
 
