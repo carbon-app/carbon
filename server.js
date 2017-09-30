@@ -29,7 +29,12 @@ app.prepare().then(() => {
   server.get('*', handle)
 
   // api endpoints
-  server.post('/twitter', bodyParser.json({ limit: '5mb' }), require('./handlers/twitter'))
+  server.post(
+    '/twitter',
+    bodyParser.json({ limit: '5mb' }),
+    require('./middleware/security'),
+    require('./handlers/twitter')
+  )
 
   server.listen(port, err => {
     if (err) throw err
