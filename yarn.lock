@@ -2877,7 +2877,7 @@ morgan@^1.8.2:
     on-finished "~2.3.0"
     on-headers "~1.0.1"
 
-morphmorph@0.0.2:
+morphmorph@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/morphmorph/-/morphmorph-0.0.2.tgz#b2401b5e976ca4f4e068b730145aa64634aaa689"
 
