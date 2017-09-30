@@ -111,8 +111,7 @@ class Editor extends React.Component {
             />
             <Dropdown
               list={LANGUAGES}
-              onChange={language =>
-                this.setState({ language: language.mime || language.mode })}
+              onChange={language => this.setState({ language: language.mime || language.mode })}
             />
             <ColorPicker
               onChange={color => this.setState({ background: color })}
