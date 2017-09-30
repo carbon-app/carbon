@@ -39,8 +39,9 @@ If you have discovered a bug or have a feature suggestion, feel free to create a
 
 If you'd like to make some changes yourself, see the following:
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your own GitHub account and then [clone](https://help.github.com/articles/cloning-a-repository/) it to your local device
-2. Build and start the application: `yarn build && yarn start`
-3. Finally, submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) with your changes!
+2. Run `npm install` to download required packages.
+3. Build and start the application: `yarn build && yarn start`
+4. Finally, submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) with your changes!
 
 ## Authors
 Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
