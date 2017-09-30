@@ -58,6 +58,36 @@ class Editor extends React.Component {
     this.updateCode = this.updateCode.bind(this)
   }
 
+  componentDidMount() {
+    const cachedState = localStorage.getItem('state')
+
+    if (cachedState) {
+      const {
+        background,
+        theme,
+        language,
+        dropShadow,
+        windowControls,
+        paddingVertical,
+        paddingHorizontal
+      } = JSON.parse(cachedState)
+
+      this.setState({
+        background,
+        theme,
+        language,
+        dropShadow,
+        windowControls,
+        paddingVertical,
+        paddingHorizontal
+      })
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('state', JSON.stringify(this.state))
+  }
+
   getCarbonImage() {
     const node = document.getElementById('section')
 
@@ -111,8 +141,7 @@ class Editor extends React.Component {
             />
             <Dropdown
               list={LANGUAGES}
-              onChange={language =>
-                this.setState({ language: language.mime || language.mode })}
+              onChange={language => this.setState({ language: language.mime || language.mode })}
             />
             <ColorPicker
               onChange={color => this.setState({ background: color })}
