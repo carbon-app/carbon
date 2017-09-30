@@ -60,7 +60,7 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
-    const state = getState(window)
+    const state = getState(localStorage)
     if (state) {
       this.setState(state)
     }
@@ -69,7 +69,7 @@ class Editor extends React.Component {
   componentDidUpdate() {
     const s = Object.assign({}, this.state)
     delete s.code
-    saveState(window, s)
+    saveState(localStorage, s)
   }
 
   getCarbonImage () {
