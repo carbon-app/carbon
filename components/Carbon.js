@@ -2,10 +2,10 @@ import { EOL } from 'os'
 import * as hljs from 'highlight.js'
 import React from 'react'
 import domtoimage from 'dom-to-image'
-import CodeMirror from 'react-codemirror'
 import Spinner from 'react-spinner'
 import toHash from 'tohash'
 import WindowControls from '../components/WindowControls'
+import CodeMirror from '../lib/react-codemirror'
 import { COLORS, DEFAULT_LANGUAGE, LANGUAGES } from '../lib/constants'
 
 const LANGUAGE_MODE_HASH = toHash(LANGUAGES, 'mode')
