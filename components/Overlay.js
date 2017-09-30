@@ -1,7 +1,7 @@
 const Overlay = props => (
   <div className="dnd-container">
-    { props.isOver ? <div className="dnd-overlay">{props.title}</div> : null }
-    { props.children }
+    {props.isOver ? <div className="dnd-overlay">{props.title}</div> : null}
+    {props.children}
     <style jsx>{`
       .dnd-container {
         position: relative;

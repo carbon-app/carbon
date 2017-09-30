@@ -31,11 +31,15 @@ class ColorPicker extends React.Component {
           <div className="colorpicker-label">
             <span>BG</span>
           </div>
-          <div className="bg-color" style={{background: this.props.bg}} onClick={this.toggle}></div>
+          <div className="bg-color" style={{ background: this.props.bg }} onClick={this.toggle} />
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
-          <TwitterPicker color={this.props.bg} onChangeComplete={this.handlePickColor} triangle="hide" />
+          <TwitterPicker
+            color={this.props.bg}
+            onChangeComplete={this.handlePickColor}
+            triangle="hide"
+          />
         </div>
         <style jsx>{`
           .colorpicker-container {
@@ -79,11 +83,11 @@ class ColorPicker extends React.Component {
             width: 278px !important;
             border: 0.5px solid ${COLORS.SECONDARY} !important;
             border-radius: 3px !important;
-            background: #1A1A1A !important;
+            background: #1a1a1a !important;
           }
 
           .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(11)) {
-            background: #1A1A1A !important;
+            background: #1a1a1a !important;
             border: 0.5px solid ${COLORS.SECONDARY} !important;
             border-right: none !important;
             border-radius: 3px 0 0 3px !important;

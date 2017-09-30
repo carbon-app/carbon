@@ -27,14 +27,14 @@ class Dropdown extends React.Component {
   }
 
   handleClickOutside() {
-    this.setState({ isVisible: false });
+    this.setState({ isVisible: false })
   }
 
   renderListItems() {
     return this.props.list.map((item, i) => (
       <div className="dropdown-list-item" key={i} onClick={this.select.bind(null, item)}>
-        <span>{ item.name }</span>
-        { this.state.selected === item ? <Checkmark /> : null }
+        <span>{item.name}</span>
+        {this.state.selected === item ? <Checkmark /> : null}
         <style jsx>{`
           .dropdown-list-item {
             display: flex;
@@ -57,18 +57,24 @@ class Dropdown extends React.Component {
 
   render() {
     // find longest list value in number of characters
-    const MIN_WIDTH = this.props.list.reduce((max, { name }) =>
-      (name.length > max ? name.length : max), 0)
+    const MIN_WIDTH = this.props.list.reduce(
+      (max, { name }) => (name.length > max ? name.length : max),
+      0
+    )
 
     return (
-      <div className="dropdown-container" style={{ minWidth: MIN_WIDTH * 16 }} onClick={this.toggle}>
+      <div
+        className="dropdown-container"
+        style={{ minWidth: MIN_WIDTH * 16 }}
+        onClick={this.toggle}
+      >
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
-          <span>{ this.state.selected.name }</span>
-          <div className="arrow-down"><ArrowDown /></div>
+          <span>{this.state.selected.name}</span>
+          <div className="arrow-down">
+            <ArrowDown />
+          </div>
         </div>
-        <div className="dropdown-list">
-          { this.renderListItems() }
-        </div>
+        <div className="dropdown-list">{this.renderListItems()}</div>
         <style jsx>{`
           .arrow-down {
             position: absolute;

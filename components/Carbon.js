@@ -8,7 +8,8 @@ import toHash from 'tohash'
 import WindowControls from '../components/WindowControls'
 import { COLORS, DEFAULT_LANGUAGE, LANGUAGES } from '../lib/constants'
 
-const LANGUAGE_HASH = toHash(LANGUAGES, 'module')
+const LANGUAGE_MODE_HASH = toHash(LANGUAGES, 'mode')
+const LANGUAGE_NAME_HASH = toHash(LANGUAGES, 'short')
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
@@ -21,12 +22,12 @@ const DEFAULT_SETTINGS = {
 }
 
 class Carbon extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
       loading: true,
-      language: props.config.language,
+      language: props.config.language
     }
 
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
@@ -41,11 +42,11 @@ class Carbon extends React.Component {
     this.handleLanguageChange(this.props.children)
   }
 
-  componentWillReceiveProps (newProps) {
+  componentWillReceiveProps(newProps) {
     this.handleLanguageChange(newProps.children, { customProps: newProps })
   }
 
-  codeUpdated (newCode) {
+  codeUpdated(newCode) {
     this.handleLanguageChange(newCode)
     this.props.updateCode(newCode)
   }
@@ -56,17 +57,18 @@ class Carbon extends React.Component {
     if (props.config.language === 'auto') {
       // try to set the language
       const detectedLanguage = hljs.highlightAuto(newCode).language
-      const languageModule = LANGUAGE_HASH[detectedLanguage]
+      const languageMode =
+        LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
 
-      if (languageModule) {
-        this.setState({ language: languageModule.module })
+      if (languageMode) {
+        this.setState({ language: languageMode.mime || languageMode.mode })
       }
     } else {
       this.setState({ language: props.config.language })
     }
   }
 
-  render () {
+  render() {
     const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
 
     const options = {
@@ -88,20 +90,23 @@ class Carbon extends React.Component {
     let content = (
       <div>
         <Spinner />
-        <style jsx>{`
-          div {
-            height: 352px;
-          }
-        `}
+        <style jsx>
+          {`
+            div {
+              height: 352px;
+            }
+          `}
         </style>
       </div>
     )
     if (this.state.loading === false) {
       content = (
         <div id="container" style={containerStyle}>
-          { config.windowControls ? <WindowControls theme={config.windowTheme} /> : null }
+          {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
           <CodeMirror
-            className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow ? 'dropshadow' : ''}`}
+            className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow
+              ? 'dropshadow'
+              : ''}`}
             onChange={this.codeUpdated}
             value={this.props.children}
             options={options}
@@ -112,6 +117,9 @@ class Carbon extends React.Component {
             }
 
             #container :global(.cm-s-solarized) {
+              background-color: #fdf6e3;
+              color: #657b83;
+              text-shadow: #eee8d5 0 1px;
               box-shadow: none;
             }
 
@@ -152,7 +160,7 @@ class Carbon extends React.Component {
 
     return (
       <div id="section">
-        { content }
+        {content}
         <style jsx>{`
           #section {
             height: 100%;
