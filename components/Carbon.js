@@ -61,7 +61,7 @@ class Carbon extends React.Component {
         LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
 
       if (languageMode) {
-        this.setState({ language: languageMode.mime ? languageMode.mime : languageMode.mode })
+        this.setState({ language: languageMode.mime || languageMode.mode })
       }
     } else {
       this.setState({ language: props.config.language })
