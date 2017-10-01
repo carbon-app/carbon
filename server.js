@@ -21,6 +21,7 @@ app.prepare().then(() => {
   server.use(morgan('tiny'))
 
   server.get('/about', (req, res) => app.render(req, res, '/about'))
+  server.get('/preconfigured-editor', (req, res) => app.render(req, res, '/preconfigured-editor'))
 
   // if root, render webpage from next
   server.get('/*', (req, res) => app.render(req, res, '/', req.query))
