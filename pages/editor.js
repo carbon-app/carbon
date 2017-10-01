@@ -23,6 +23,7 @@ import {
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
+import { getState, saveState } from '../lib/util'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -50,7 +51,7 @@ class Editor extends React.Component {
       paddingVertical: '48px',
       paddingHorizontal: '32px',
       uploading: false,
-      code: props.content || DEFAULT_CODE
+      code: props.content
     }
 
     this.save = this.save.bind(this)
@@ -58,7 +59,20 @@ class Editor extends React.Component {
     this.updateCode = this.updateCode.bind(this)
   }
 
-  getCarbonImage() {
+  componentDidMount() {
+    const state = getState(localStorage)
+    if (state) {
+      this.setState(state)
+    }
+  }
+
+  componentDidUpdate() {
+    const s = Object.assign({}, this.state)
+    delete s.code
+    saveState(localStorage, s)
+  }
+
+  getCarbonImage () {
     const node = document.getElementById('section')
 
     const config = {
@@ -140,7 +154,7 @@ class Editor extends React.Component {
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
                 <Carbon config={this.state} updateCode={this.updateCode}>
-                  {this.state.code}
+                  {this.state.code || DEFAULT_CODE}
                 </Carbon>
               </Overlay>
             )}
