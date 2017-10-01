@@ -24,10 +24,10 @@ import {
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
-import { getState, saveState, memoizeCallback } from '../lib/util'
+import { getState, saveState, memoizeFirst } from '../lib/util'
 
 // Only called once per href
-const loadCSS = memoizeCallback((href, cb) => {
+const loadCSS = memoizeFirst(href => {
   const ss = window.document.createElement('link')
   const head = window.document.getElementsByTagName('head')[0]
 
