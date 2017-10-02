@@ -67,7 +67,7 @@ class ColorPicker extends React.Component {
 
           .bg-color {
             cursor: pointer;
-            height: 100%;
+            height: 99.9%;
             width: 36px;
             border-radius: 0px 2px 2px 0px;
           }
