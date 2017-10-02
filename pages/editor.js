@@ -143,8 +143,10 @@ class Editor extends React.Component {
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
               />
-              <Button onClick={this.save} title="Save Image" color="#c198fb" />
+              <Button onClick={this.save} title="Save Image" color="#c198fb" class="saveButton"/>
             </div>
+            <style>
+            </style>
           </Toolbar>
 
           <ReadFileDropContainer onDrop={([file]) => this.setState({ code: file.content })}>
@@ -173,6 +175,12 @@ class Editor extends React.Component {
               display: flex;
               margin-left: auto;
             }
+            .tweetButton:hover {
+              background-color: #57b5f9;
+              }
+            .saveButton:hover {
+              background-color: #c198fb;
+              }
           `}
         </style>
       </Page>
