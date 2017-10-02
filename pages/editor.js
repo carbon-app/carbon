@@ -72,7 +72,7 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage () {
+  getCarbonImage() {
     const node = document.getElementById('section')
 
     const config = {
