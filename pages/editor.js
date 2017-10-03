@@ -67,7 +67,7 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate() {
-    const s = Object.assign({}, this.state)
+    const s = { ...this.state }
     delete s.code
     saveState(localStorage, s)
   }
