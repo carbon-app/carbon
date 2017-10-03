@@ -24,7 +24,7 @@ export default class extends React.Component {
       const Img = WINDOW_THEMES_MAP[theme]
       return (
         <div
-          className={`theme ${this.state.selected === theme ? "selected" : ""}`}
+          className={`theme ${this.state.selected === theme ? 'selected' : ''}`}
           key={i}
           onClick={this.select.bind(null, theme)}
         >
@@ -53,9 +53,7 @@ export default class extends React.Component {
     return (
       <div className="window-theme">
         <span className="label">Window Theme</span>
-        <div className="themes">
-          { this.renderThemes() }
-        </div>
+        <div className="themes">{this.renderThemes()}</div>
         <style jsx>{`
           .window-theme {
             padding: 8px;

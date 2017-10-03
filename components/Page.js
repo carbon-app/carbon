@@ -7,9 +7,7 @@ export default ({ children, enableHeroText }) => (
   <div className="main mt4 mb4">
     <Meta />
     <Header enableHeroText={enableHeroText} />
-    <div className="page">
-      { children }
-    </div>
+    <div className="page">{children}</div>
 
     <Footer />
 

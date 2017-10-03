@@ -20,8 +20,19 @@ export default class extends React.Component {
     return (
       <div className="slider">
         <span className="label">{this.props.label}</span>
-        <input type="range" defaultValue={this.state.value} onChange={this.handleChange} min={minValue} max={maxValue} />
-        <div className="slider-bg" style={{ transform: `translate3d(${(this.state.value * 1.0 / maxValue) * 100}%, 0px, 0px)` }}></div>
+        <input
+          type="range"
+          defaultValue={this.state.value}
+          onChange={this.handleChange}
+          min={minValue}
+          max={maxValue}
+        />
+        <div
+          className="slider-bg"
+          style={{
+            transform: `translate3d(${this.state.value * 1.0 / maxValue * 100}%, 0px, 0px)`
+          }}
+        />
         <style jsx>{`
           .slider {
             position: relative;
@@ -57,7 +68,6 @@ export default class extends React.Component {
             width: 100%;
             background: rgba(255, 255, 255, 0.165);
           }
-
         `}</style>
       </div>
     )

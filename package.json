@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "deploy": "now --public"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "deploy": "now --public",
+    "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
+    "lint": "prettier --config .prettierrc -l *.js {components,handlers,lib,pages}/*.js",
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -21,12 +24,12 @@
     "highlight.js": "^9.12.0",
     "lodash.debounce": "^4.0.8",
     "morgan": "^1.8.2",
-    "morphmorph": "0.0.2",
+    "morphmorph": "^0.0.2",
     "ms": "^2.0.0",
     "next": "^3.2.2",
     "react": "^15.6.1",
     "react-click-outside": "^2.3.1",
-    "react-codemirror": "0.2.6",
+    "react-codemirror2": "^2.0.2",
     "react-color": "^2.12.1",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
@@ -38,6 +41,10 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "cross-env": "^5.0.5",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3",
+    "prettier": "^1.7.2",
     "uglifyjs-webpack-plugin": "1.0.0-beta.1",
     "webpack": "^3.6.0"
   },
@@ -48,6 +55,12 @@
       "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
       "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret"
     }
+  },
+  "lint-staged": {
+    " *.js": [
+      "prettier",
+      "git add"
+    ]
   },
   "description": "Create and share beautiful images of your source code",
   "repository": {

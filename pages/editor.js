@@ -23,10 +23,11 @@ import {
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
+import { getState, saveState } from '../lib/util'
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
-  static async getInitialProps ({ asPath }) {
+  static async getInitialProps({ asPath }) {
     try {
       // TODO fix this hack
       if (asPath.length > 30) {
@@ -39,7 +40,7 @@ class Editor extends React.Component {
     return {}
   }
 
-  constructor(props)  {
+  constructor(props) {
     super(props)
     this.state = {
       background: '#ABB8C3',
@@ -50,7 +51,7 @@ class Editor extends React.Component {
       paddingVertical: '48px',
       paddingHorizontal: '32px',
       uploading: false,
-      code: props.content || DEFAULT_CODE
+      code: props.content
     }
 
     this.save = this.save.bind(this)
@@ -58,7 +59,20 @@ class Editor extends React.Component {
     this.updateCode = this.updateCode.bind(this)
   }
 
-  getCarbonImage () {
+  componentDidMount() {
+    const state = getState(localStorage)
+    if (state) {
+      this.setState(state)
+    }
+  }
+
+  componentDidUpdate() {
+    const s = Object.assign({}, this.state)
+    delete s.code
+    saveState(localStorage, s)
+  }
+
+  getCarbonImage() {
     const node = document.getElementById('section')
 
     const config = {
@@ -70,16 +84,15 @@ class Editor extends React.Component {
       height: node.offsetHeight * 2
     }
 
-    return  domtoimage.toPng(node, config)
+    return domtoimage.toPng(node, config)
   }
 
-  updateCode (code) {
+  updateCode(code) {
     this.setState({ code })
   }
 
-  save () {
-    this.getCarbonImage()
-    .then((dataUrl) => {
+  save() {
+    this.getCarbonImage().then(dataUrl => {
       const link = document.createElement('a')
       link.download = 'carbon.png'
       link.href = dataUrl
@@ -89,54 +102,66 @@ class Editor extends React.Component {
     })
   }
 
-  upload () {
+  upload() {
     this.setState({ uploading: true })
     this.getCarbonImage()
-    .then(api.tweet)
-    .then(() => this.setState({ uploading: false }))
-    .catch((err) => {
-      console.error(err)
-      this.setState({ uploading: false })
-    })
+      .then(api.tweet)
+      .then(() => this.setState({ uploading: false }))
+      .catch(err => {
+        console.error(err)
+        this.setState({ uploading: false })
+      })
   }
 
-  render () {
+  render() {
     return (
-        <Page enableHeroText>
-          <div id="editor">
-            <Toolbar>
-              <Dropdown selected={THEMES[this.state.theme]} list={THEMES_ARRAY} onChange={theme => this.setState({ theme: theme.id })}/>
-              <Dropdown list={LANGUAGES} onChange={language => this.setState({ language: language.module })}/>
-              <ColorPicker
-                onChange={color => this.setState({ background: color })}
-                bg={this.state.background}
+      <Page enableHeroText>
+        <div id="editor">
+          <Toolbar>
+            <Dropdown
+              selected={THEMES[this.state.theme]}
+              list={THEMES_ARRAY}
+              onChange={theme => this.setState({ theme: theme.id })}
+            />
+            <Dropdown
+              list={LANGUAGES}
+              onChange={language => this.setState({ language: language.mime || language.mode })}
+            />
+            <ColorPicker
+              onChange={color => this.setState({ background: color })}
+              bg={this.state.background}
+            />
+            <Settings
+              onChange={(key, value) => this.setState({ [key]: value })}
+              enabled={this.state}
+            />
+            <div className="buttons">
+              <Button
+                className="tweetButton"
+                onClick={this.upload}
+                title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                color="#57b5f9"
+                style={{ marginRight: '8px' }}
               />
-              <Settings onChange={(key, value) => this.setState({ [key]: value })} enabled={this.state} />
-              <div className="buttons">
-                <Button
-                  className="tweetButton"
-                  onClick={this.upload}
-                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-                <Button onClick={this.save} title="Save Image" color="#c198fb" />
-              </div>
-            </Toolbar>
+              <Button onClick={this.save} title="Save Image" color="#c198fb" />
+            </div>
+          </Toolbar>
 
-            <ReadFileDropContainer onDrop={([file]) => this.setState({ code: file.content })}>
-              {
-                ({ isOver, canDrop }) => (
-                  <Overlay isOver={isOver || canDrop} title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}>
-                    <Carbon config={this.state} updateCode={this.updateCode}>
-                      {this.state.code}
-                    </Carbon>
-                  </Overlay>
-                )
-              }
-            </ReadFileDropContainer>
-          </div>
-          <style jsx>{`
+          <ReadFileDropContainer onDrop={([file]) => this.setState({ code: file.content })}>
+            {({ isOver, canDrop }) => (
+              <Overlay
+                isOver={isOver || canDrop}
+                title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
+              >
+                <Carbon config={this.state} updateCode={this.updateCode}>
+                  {this.state.code || DEFAULT_CODE}
+                </Carbon>
+              </Overlay>
+            )}
+          </ReadFileDropContainer>
+        </div>
+        <style jsx>
+          {`
             #editor {
               background: ${COLORS.BLACK};
               border: 3px solid ${COLORS.SECONDARY};
@@ -149,8 +174,8 @@ class Editor extends React.Component {
               margin-left: auto;
             }
           `}
-          </style>
-        </Page>
+        </style>
+      </Page>
     )
   }
 }

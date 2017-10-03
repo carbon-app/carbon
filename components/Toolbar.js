@@ -1,5 +1,5 @@
 import React from 'react'
-const Toolbar = (props) => (
+const Toolbar = props => (
   <div id="toolbar">
     {props.children}
     <style jsx>{`
