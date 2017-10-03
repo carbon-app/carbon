@@ -46,6 +46,10 @@ class Dropdown extends React.Component {
             border-bottom: 0.5px solid ${COLORS.SECONDARY};
           }
 
+          .dropdown-list-item:hover {
+            background: ${COLORS.HOVER};
+          }
+
           .dropdown-list-item:last-of-type {
             border-bottom: none;
             border-radius: 0px 0px 2px 2px;
@@ -105,6 +109,10 @@ class Dropdown extends React.Component {
             align-items: center;
             position: relative;
             z-index: 1;
+          }
+
+          .dropdown-display:hover {
+            background: ${COLORS.HOVER};
           }
 
           .is-visible + .dropdown-list {

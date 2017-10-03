@@ -24,6 +24,10 @@ export default props => (
         user-select: none;
       }
 
+      button:hover {
+        background: ${COLORS.HOVER} !important;
+      }
+
       button > span {
         font-size: 14px;
         line-height: 1;

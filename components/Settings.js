@@ -84,6 +84,10 @@ class Settings extends React.Component {
             cursor: pointer;
           }
 
+          .settings-display:hover {
+            background: ${COLORS.HOVER};
+          }
+
           .is-visible + .settings-settings {
             display: block;
           }
