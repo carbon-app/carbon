@@ -43,7 +43,7 @@ class Editor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      background: '#ABB8C3',
+      background: 'rgba(171, 184, 195, 1)',
       theme: THEMES.seti.id,
       language: DEFAULT_LANGUAGE,
       dropShadow: true,
