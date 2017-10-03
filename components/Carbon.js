@@ -16,7 +16,7 @@ const DEFAULT_SETTINGS = {
   paddingHorizontal: '50px',
   marginVertical: '45px',
   marginHorizontal: '45px',
-  background: '#fed0ec',
+  background: 'rgba(171, 184, 195, 1)',
   theme: 'seti',
   language: DEFAULT_LANGUAGE
 }
