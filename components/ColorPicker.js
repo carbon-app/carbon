@@ -61,14 +61,14 @@ class ColorPicker extends React.Component {
             user-select: none;
             cursor: default;
             height: 100%;
-            width: 36px;
+            padding: 0 8px;
             border-right: 0.5px solid ${COLORS.SECONDARY};
           }
 
           .bg-color {
             cursor: pointer;
-            height: 100%;
-            width: 36px;
+            height: 98%;
+            width: 100%;
             border-radius: 0px 2px 2px 0px;
           }
 
