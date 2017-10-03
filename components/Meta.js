@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { THEMES_ARRAY, COLORS, DEFAULT_THEME } from '../lib/constants'
+import { THEMES, COLORS, DEFAULT_THEME } from '../lib/constants'
 import Reset from './style/Reset'
 import Typography from './style/Typography'
 

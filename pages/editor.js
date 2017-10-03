@@ -16,9 +16,11 @@ import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import {
-  THEMES_ARRAY,
   THEMES,
+  THEMES_HASH,
   LANGUAGES,
+  LANGUAGE_MIME_HASH,
+  LANGUAGE_MODE_HASH,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   COLORS,
@@ -137,13 +139,14 @@ class Editor extends React.Component {
   }
 
   render() {
+    console.log(this.state.language)
     return (
       <Page enableHeroText>
         <div id="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES[this.state.theme]}
-              list={THEMES_ARRAY}
+              selected={THEMES_HASH[this.state.theme]}
+              list={THEMES}
               onChange={theme => {
                 loadCSS(
                   `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`
@@ -152,6 +155,9 @@ class Editor extends React.Component {
               }}
             />
             <Dropdown
+              selected={
+                LANGUAGE_MIME_HASH[this.state.language] || LANGUAGE_MODE_HASH[this.state.language]
+              }
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
