@@ -6,19 +6,17 @@ import { COLORS } from '../lib/constants'
 
 class Dropdown extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
-      isVisible: false,
-      selected: props.selected || props.list[0]
+      isVisible: false
     }
     this.select = this.select.bind(this)
     this.toggle = this.toggle.bind(this)
   }
 
   select(item) {
-    if (this.state.selected !== item) {
+    if (this.props.selected !== item) {
       this.props.onChange(item)
-      this.setState({ selected: item })
     }
   }
 
@@ -34,7 +32,7 @@ class Dropdown extends React.Component {
     return this.props.list.map((item, i) => (
       <div className="dropdown-list-item" key={i} onClick={this.select.bind(null, item)}>
         <span>{item.name}</span>
-        {this.state.selected === item ? <Checkmark /> : null}
+        {this.props.selected === item ? <Checkmark /> : null}
         <style jsx>{`
           .dropdown-list-item {
             display: flex;
@@ -73,7 +71,7 @@ class Dropdown extends React.Component {
         onClick={this.toggle}
       >
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
-          <span>{this.state.selected.name}</span>
+          <span>{this.props.selected.name}</span>
           <div className="arrow-down">
             <ArrowDown />
           </div>

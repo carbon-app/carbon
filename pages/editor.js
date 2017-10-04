@@ -16,14 +16,34 @@ import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import {
-  THEMES_ARRAY,
   THEMES,
+  THEMES_HASH,
   LANGUAGES,
+  LANGUAGE_MIME_HASH,
+  LANGUAGE_MODE_HASH,
   DEFAULT_LANGUAGE,
+  DEFAULT_THEME,
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
-import { getState, saveState } from '../lib/util'
+import { getState, saveState, memoizeFirst } from '../lib/util'
+
+// Only called once per href
+const loadCSS = memoizeFirst(href => {
+  const ss = window.document.createElement('link')
+  const head = window.document.getElementsByTagName('head')[0]
+
+  ss.rel = 'stylesheet'
+  ss.href = href
+
+  // temporarily, set media to something non-matching to ensure it'll
+  // fetch without blocking render
+  ss.media = '__non_blocking__'
+
+  head.appendChild(ss)
+
+  ss.media = 'all'
+})
 
 class Editor extends React.Component {
   /* pathname, asPath, err, req, res */
@@ -44,7 +64,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       background: '#ABB8C3',
-      theme: THEMES.seti.id,
+      theme: DEFAULT_THEME,
       language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
@@ -62,7 +82,12 @@ class Editor extends React.Component {
   componentDidMount() {
     const state = getState(localStorage)
     if (state) {
+      loadCSS(`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${state.theme}.min.css`)
       this.setState(state)
+    } else {
+      loadCSS(
+        `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${this.state.theme}.min.css`
+      )
     }
   }
 
@@ -114,16 +139,25 @@ class Editor extends React.Component {
   }
 
   render() {
+    console.log(this.state.language)
     return (
       <Page enableHeroText>
         <div id="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES[this.state.theme]}
-              list={THEMES_ARRAY}
-              onChange={theme => this.setState({ theme: theme.id })}
+              selected={THEMES_HASH[this.state.theme]}
+              list={THEMES}
+              onChange={theme => {
+                loadCSS(
+                  `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`
+                )
+                this.setState({ theme: theme.id })
+              }}
             />
             <Dropdown
+              selected={
+                LANGUAGE_MIME_HASH[this.state.language] || LANGUAGE_MODE_HASH[this.state.language]
+              }
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />

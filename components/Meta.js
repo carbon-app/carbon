@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { THEMES_ARRAY, COLORS } from '../lib/constants'
+import { THEMES, COLORS, DEFAULT_THEME } from '../lib/constants'
 import Reset from './style/Reset'
 import Typography from './style/Typography'
 
@@ -31,16 +31,10 @@ export default () => (
         rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
       />
-      {THEMES_ARRAY.map((theme, i) => (
-        <link
-          key={i}
-          rel="stylesheet"
-          href={
-            theme.link ||
-            `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`
-          }
-        />
-      ))}
+      {/* TODO <link
+        rel="stylesheet"
+        href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${DEFAULT_THEME}.min.css`}
+      /> */}
       <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />
       <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
     </Head>
