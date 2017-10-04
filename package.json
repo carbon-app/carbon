@@ -11,7 +11,7 @@
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc -l *.js {components,handlers,lib,pages}/*.js",
     "precommit": "lint-staged && npm run contrib:add && npm run contrib:build",
-    "contrib:add": "node ./scripts/contributors.js",
+    "contrib:add": "./node_modules/.bin/all-contributors add",
     "contrib:build": "./node_modules/.bin/all-contributors generate"
   },
   "dependencies": {
