@@ -10,7 +10,9 @@
     "deploy": "now --public",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc -l *.js {components,handlers,lib,pages}/*.js",
-    "precommit": "lint-staged && node ./scripts/contributors.js"
+    "precommit": "lint-staged && npm run contrib:add && npm run contrib:build",
+    "contrib:add": "node ./scripts/contributors.js",
+    "contrib:build": "./node_modules/.bin/all-contributors generate"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -40,6 +42,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "all-contributors-cli": "^4.5.0",
     "cross-env": "^5.0.5",
     "got": "^7.1.0",
     "husky": "^0.14.3",
