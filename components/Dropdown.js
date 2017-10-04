@@ -69,7 +69,7 @@ class Dropdown extends React.Component {
     return (
       <div
         className="dropdown-container"
-        style={{ minWidth: MIN_WIDTH * 16 }}
+        style={{ minWidth: MIN_WIDTH * 14 }}
         onClick={this.toggle}
       >
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
