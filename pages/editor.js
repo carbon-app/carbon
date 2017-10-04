@@ -48,6 +48,7 @@ class Editor extends React.Component {
       language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
+      widthAdjustment: true,
       paddingVertical: '48px',
       paddingHorizontal: '32px',
       uploading: false,

@@ -83,6 +83,7 @@ class Carbon extends React.Component {
     // create styles
     const containerStyle = {
       background: config.background,
+      minWidth: config.widthAdjustment ? '90px' : '680px',
       padding: `${config.paddingVertical} ${config.paddingHorizontal}`
     }
 
@@ -123,6 +124,10 @@ class Carbon extends React.Component {
               box-shadow: none;
             }
 
+            #container :global(.CodeMirror__container) {
+              min-width: inherit;
+            }
+
             #container :global(.CodeMirror__container.dropshadow) {
               box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
               border-radius: 5px;
@@ -130,7 +135,7 @@ class Carbon extends React.Component {
 
             #container :global(.CodeMirror__container .CodeMirror) {
               height: auto;
-              min-width: 680px;
+              min-width: inherit;
               padding: 18px 18px;
               border-radius: 5px;
               font-family: Hack, monospace !important;

@@ -46,6 +46,11 @@ class Settings extends React.Component {
             enabled={this.props.enabled.windowControls}
             onChange={this.props.onChange.bind(null, 'windowControls')}
           />
+          <Toggle
+            label="Width adjustment"
+            enabled={this.props.enabled.widthAdjustment}
+            onChange={this.props.onChange.bind(null, 'widthAdjustment')}
+          />
           <Slider
             label="Padding (vertical)"
             initialValue={16}
