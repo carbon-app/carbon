@@ -173,6 +173,15 @@ class Carbon extends React.Component {
             justify-content: center;
             align-items: center;
           }
+
+          #section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.01);
+          }
         `}</style>
       </div>
     )
