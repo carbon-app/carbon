@@ -69,7 +69,7 @@ class Carbon extends React.Component {
   }
 
   render() {
-    const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
+    const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
     const options = {
       lineNumbers: false,
