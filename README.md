@@ -6,6 +6,8 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](h
 
 Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs.io/blog/carbon/) to learn more about the project.
 
+[![Build Status](https://travis-ci.org/dawnlabs/carbon.svg?branch=master)](https://travis-ci.org/dawnlabs/carbon)
+[![Dependencies](https://david-dm.org/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
