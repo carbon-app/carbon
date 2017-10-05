@@ -82,6 +82,7 @@ class Carbon extends React.Component {
 
     // create styles
     const containerStyle = {
+      position: 'relative',
       background: config.background,
       minWidth: config.widthAdjustment ? '90px' : '680px',
       padding: `${config.paddingVertical} ${config.paddingHorizontal}`
@@ -112,7 +113,38 @@ class Carbon extends React.Component {
             value={this.props.children}
             options={options}
           />
+          <div id="container-bg">
+            <div className="alpha" />
+            <div className="bg" style={{ background: config.background }} />
+          </div>
           <style jsx>{`
+            #container #container-bg {
+              background: #fff;
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+            }
+
+            #container .bg {
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+            }
+
+            #container .alpha {
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+              background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
+                left center;
+            }
+
             #container :global(.cm-s-dracula .CodeMirror-cursor) {
               border-left: solid 2px #159588;
             }
@@ -126,6 +158,8 @@ class Carbon extends React.Component {
 
             #container :global(.CodeMirror__container) {
               min-width: inherit;
+              position: relative;
+              z-index: 1;
             }
 
             #container :global(.CodeMirror__container.dropshadow) {

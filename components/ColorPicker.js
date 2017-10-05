@@ -32,7 +32,10 @@ class ColorPicker extends React.Component {
           <div className="colorpicker-label">
             <span>BG</span>
           </div>
-          <div className="bg-color" style={{ background: this.props.bg }} onClick={this.toggle} />
+          <div className="bg-color-container" onClick={this.toggle}>
+            <div className="bg-color-alpha" />
+            <div className="bg-color" style={{ background: this.props.bg }} />
+          </div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
@@ -62,11 +65,33 @@ class ColorPicker extends React.Component {
             border-right: 0.5px solid ${COLORS.SECONDARY};
           }
 
-          .bg-color {
-            cursor: pointer;
-            height: 98%;
-            width: 100%;
+          .bg-color-container {
+            position: relative;
+            width: 34px;
+            margin-bottom: 1px;
+            background: #fff;
             border-radius: 0px 2px 2px 0px;
+            cursor: pointer;
+          }
+
+          .bg-color {
+            border-radius: 0px 2px 2px 0px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+          }
+
+          .bg-color-alpha {
+            border-radius: 0px 2px 2px 0px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
+              left center;
           }
 
           .colorpicker-picker {
@@ -95,11 +120,8 @@ class ColorPicker extends React.Component {
             color: #fff !important;
           }
 
-          .colorpicker-picker
-            > :global(.sketch-picker
-              > div:nth-child(2)
-              > div:nth-child(1)
-              > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
+          /* prettier-ignore */
+          .colorpicker-picker :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
             background: #fff;
           }
         `}</style>
