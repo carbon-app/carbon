@@ -8,7 +8,7 @@ Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs
 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/npm/l/kcd-scripts.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
 
 ## Features
 
