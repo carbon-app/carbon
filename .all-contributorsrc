@@ -1,0 +1,160 @@
+{
+  "projectName": "carbon",
+  "projectOwner": "dawnlabs",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "briandennis",
+      "name": "briandennis",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/10078572?v=4",
+      "profile": "https://github.com/briandennis",
+      "contributions": [
+        "code",
+        "doc",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "mfix22",
+      "name": "mfix22",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8397708?v=4",
+      "profile": "https://github.com/mfix22",
+      "contributions": [
+        "question",
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "jakedex",
+      "name": "jakedex",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10369094?v=4",
+      "profile": "https://github.com/jakedex",
+      "contributions": [
+        "question",
+        "code",
+        "design",
+        "video"
+      ]
+    },
+    {
+      "login": "andrewda",
+      "name": "andrewda",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10191084?v=4",
+      "profile": "https://github.com/andrewda",
+      "contributions": [
+        "question",
+        "code",
+        "bug",
+        "review"
+      ]
+    },
+    {
+      "login": "yeskunall",
+      "name": "yeskunall",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14703164?v=4",
+      "profile": "https://github.com/yeskunall",
+      "contributions": [
+        "code",
+        "doc",
+        "tool",
+        "bug"
+      ]
+    },
+    {
+      "login": "stoshfabricius",
+      "name": "stoshfabricius",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2652676?v=4",
+      "profile": "https://github.com/stoshfabricius",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jkling38",
+      "name": "jkling38",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11639896?v=4",
+      "profile": "https://github.com/jkling38",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "otobrglez",
+      "name": "otobrglez",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/225946?v=4",
+      "profile": "https://github.com/otobrglez",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "darahak",
+      "name": "darahak",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11488612?v=4",
+      "profile": "https://github.com/darahak",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "dom96",
+      "name": "dom96",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/246651?v=4",
+      "profile": "https://github.com/dom96",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "elrumordelaluz",
+      "name": "elrumordelaluz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/784056?v=4",
+      "profile": "https://github.com/elrumordelaluz",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "cjb",
+      "name": "cjb",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/21217?v=4",
+      "profile": "https://github.com/cjb",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Krzysztof-Cieslak",
+      "name": "Krzysztof-Cieslak",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5427083?v=4",
+      "profile": "https://github.com/Krzysztof-Cieslak",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "fernahh",
+      "name": "fernahh",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2369851?v=4",
+      "profile": "https://github.com/fernahh",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "g3r4n",
+      "name": "g3r4n",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10941033?v=4",
+      "profile": "https://github.com/g3r4n",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}

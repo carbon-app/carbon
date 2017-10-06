@@ -11,7 +11,7 @@ export default ({ theme }) => (
           position: relative;
           top: 34px;
           margin-left: 18px;
-          z-index: 1;
+          z-index: 2;
         }
       `}
     </style>

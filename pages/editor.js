@@ -43,11 +43,12 @@ class Editor extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      background: '#ABB8C3',
+      background: 'rgba(171, 184, 195, 1)',
       theme: THEMES.seti.id,
       language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
+      widthAdjustment: true,
       paddingVertical: '48px',
       paddingHorizontal: '32px',
       uploading: false,
@@ -67,7 +68,7 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate() {
-    const s = Object.assign({}, this.state)
+    const s = { ...this.state }
     delete s.code
     saveState(localStorage, s)
   }
@@ -80,6 +81,7 @@ class Editor extends React.Component {
         transform: 'scale(2)',
         'transform-origin': 'center'
       },
+      filter: n => n.id !== 'container-bg',
       width: node.offsetWidth * 2,
       height: node.offsetHeight * 2
     }

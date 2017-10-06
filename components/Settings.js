@@ -46,6 +46,11 @@ class Settings extends React.Component {
             enabled={this.props.enabled.windowControls}
             onChange={this.props.onChange.bind(null, 'windowControls')}
           />
+          <Toggle
+            label="Width adjustment"
+            enabled={this.props.enabled.widthAdjustment}
+            onChange={this.props.onChange.bind(null, 'widthAdjustment')}
+          />
           <Slider
             label="Padding (vertical)"
             initialValue={16}
@@ -82,6 +87,10 @@ class Settings extends React.Component {
             position: relative;
             z-index: 1;
             cursor: pointer;
+          }
+
+          .settings-display:hover {
+            background: ${COLORS.HOVER};
           }
 
           .is-visible + .settings-settings {

@@ -1,8 +1,9 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
-import { TwitterPicker } from 'react-color'
+import { SketchPicker } from 'react-color'
 import WindowPointer from './WindowPointer'
 import { COLORS } from '../lib/constants'
+import { parseRGBA } from '../lib/util'
 
 class ColorPicker extends React.Component {
   constructor() {
@@ -21,7 +22,7 @@ class ColorPicker extends React.Component {
   }
 
   handlePickColor(color) {
-    this.props.onChange(color.hex)
+    this.props.onChange(parseRGBA(color.rgb))
   }
 
   render() {
@@ -31,15 +32,14 @@ class ColorPicker extends React.Component {
           <div className="colorpicker-label">
             <span>BG</span>
           </div>
-          <div className="bg-color" style={{ background: this.props.bg }} onClick={this.toggle} />
+          <div className="bg-color-container" onClick={this.toggle}>
+            <div className="bg-color-alpha" />
+            <div className="bg-color" style={{ background: this.props.bg }} />
+          </div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
-          <TwitterPicker
-            color={this.props.bg}
-            onChangeComplete={this.handlePickColor}
-            triangle="hide"
-          />
+          <SketchPicker color={this.props.bg} onChangeComplete={this.handlePickColor} />
         </div>
         <style jsx>{`
           .colorpicker-container {
@@ -61,15 +61,37 @@ class ColorPicker extends React.Component {
             user-select: none;
             cursor: default;
             height: 100%;
-            width: 36px;
+            padding: 0 8px;
             border-right: 0.5px solid ${COLORS.SECONDARY};
           }
 
-          .bg-color {
-            cursor: pointer;
-            height: 100%;
-            width: 36px;
+          .bg-color-container {
+            position: relative;
+            width: 34px;
+            margin-bottom: 1px;
+            background: #fff;
             border-radius: 0px 2px 2px 0px;
+            cursor: pointer;
+          }
+
+          .bg-color {
+            border-radius: 0px 2px 2px 0px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+          }
+
+          .bg-color-alpha {
+            border-radius: 0px 2px 2px 0px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
+              left center;
           }
 
           .colorpicker-picker {
@@ -79,28 +101,28 @@ class ColorPicker extends React.Component {
           }
 
           /* react-color overrides */
-          .colorpicker-picker :global(.twitter-picker) {
-            width: 278px !important;
+          .colorpicker-picker :global(.sketch-picker) {
             border: 0.5px solid ${COLORS.SECONDARY} !important;
             border-radius: 3px !important;
             background: #1a1a1a !important;
           }
 
-          .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(11)) {
-            background: #1a1a1a !important;
-            border: 0.5px solid ${COLORS.SECONDARY} !important;
-            border-right: none !important;
-            border-radius: 3px 0 0 3px !important;
+          .colorpicker-picker > :global(.sketch-picker > div:nth-child(3) > div > div > span) {
             color: ${COLORS.SECONDARY} !important;
           }
 
-          .colorpicker-picker > :global(div > div:nth-child(3) > div:nth-child(12) > input) {
-            background: rgba(255, 255, 255, 0.165) !important;
+          .colorpicker-picker > :global(.sketch-picker > div:nth-child(3) > div > div > input) {
+            width: 100% !important;
+            box-shadow: none;
+            outline: none;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.165);
             color: #fff !important;
           }
 
-          .colorpicker-picker > :global(div > div:nth-child(3) > span > div) {
-            border-radius: 2px !important;
+          /* prettier-ignore */
+          .colorpicker-picker :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
+            background: #fff;
           }
         `}</style>
       </div>

@@ -16,7 +16,7 @@ const DEFAULT_SETTINGS = {
   paddingHorizontal: '50px',
   marginVertical: '45px',
   marginHorizontal: '45px',
-  background: '#fed0ec',
+  background: 'rgba(171, 184, 195, 1)',
   theme: 'seti',
   language: DEFAULT_LANGUAGE
 }
@@ -69,7 +69,7 @@ class Carbon extends React.Component {
   }
 
   render() {
-    const config = Object.assign(DEFAULT_SETTINGS, this.props.config)
+    const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
     const options = {
       lineNumbers: false,
@@ -82,7 +82,9 @@ class Carbon extends React.Component {
 
     // create styles
     const containerStyle = {
+      position: 'relative',
       background: config.background,
+      minWidth: config.widthAdjustment ? '90px' : '680px',
       padding: `${config.paddingVertical} ${config.paddingHorizontal}`
     }
 
@@ -111,7 +113,38 @@ class Carbon extends React.Component {
             value={this.props.children}
             options={options}
           />
+          <div id="container-bg">
+            <div className="alpha" />
+            <div className="bg" style={{ background: config.background }} />
+          </div>
           <style jsx>{`
+            #container #container-bg {
+              background: #fff;
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+            }
+
+            #container .bg {
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+            }
+
+            #container .alpha {
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+              background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
+                left center;
+            }
+
             #container :global(.cm-s-dracula .CodeMirror-cursor) {
               border-left: solid 2px #159588;
             }
@@ -123,6 +156,12 @@ class Carbon extends React.Component {
               box-shadow: none;
             }
 
+            #container :global(.CodeMirror__container) {
+              min-width: inherit;
+              position: relative;
+              z-index: 1;
+            }
+
             #container :global(.CodeMirror__container.dropshadow) {
               box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
               border-radius: 5px;
@@ -130,7 +169,7 @@ class Carbon extends React.Component {
 
             #container :global(.CodeMirror__container .CodeMirror) {
               height: auto;
-              min-width: 680px;
+              min-width: inherit;
               padding: 18px 18px;
               border-radius: 5px;
               font-family: Hack, monospace !important;
@@ -167,6 +206,15 @@ class Carbon extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
+          }
+
+          #section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.01);
           }
         `}</style>
       </div>
