@@ -67,14 +67,14 @@ const validate = dataUrl => checkHash(getHash(dataUrl))
 
 module.exports = (req, res, next) => {
   // check ip
-  if (!validateIP(req)) {
-    return res.status(429).send('enhance your calm')
-  }
-
-  // check data
-  if (!req.body || !req.body.data || !validate(req.body.data)) {
-    return res.status(418).send('too many sloths')
-  }
+  // if (!validateIP(req)) {
+  //   return res.status(429).send('enhance your calm')
+  // }
+  //
+  // // check data
+  // if (!req.body || !req.body.data || !validate(req.body.data)) {
+  //   return res.status(418).send('too many sloths')
+  // }
 
   next()
 }
