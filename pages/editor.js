@@ -4,6 +4,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer from 'dropperx'
+import Morph from 'morphmorph'
 
 // Ours
 import Page from '../components/Page'
@@ -23,37 +24,45 @@ import {
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
+import { mappings, reverseMappings, replaceQuery } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
+const mapper = new Morph()
+
 class Editor extends React.Component {
-  /* pathname, asPath, err, req, res */
-  static async getInitialProps({ asPath }) {
+  static async getInitialProps({ asPath, query }) {
+    const queryParams = mapper.map(mappings, query)
+    const initialState = Object.keys(queryParams).length ? queryParams : null
     try {
       // TODO fix this hack
       if (asPath.length > 30) {
         const content = await api.getGist(asPath)
-        return { content }
+        return { content, intialState }
       }
     } catch (e) {
       console.log(e)
     }
-    return {}
+    return { initialState }
   }
 
   constructor(props) {
     super(props)
-    this.state = {
-      background: 'rgba(171, 184, 195, 1)',
-      theme: THEMES.seti.id,
-      language: DEFAULT_LANGUAGE,
-      dropShadow: true,
-      windowControls: true,
-      widthAdjustment: true,
-      paddingVertical: '48px',
-      paddingHorizontal: '32px',
-      uploading: false,
-      code: props.content
-    }
+    this.state = Object.assign(
+      {
+        background: 'rgba(171, 184, 195, 1)',
+        theme: THEMES.seti.id,
+        language: DEFAULT_LANGUAGE,
+        dropShadow: true,
+        windowControls: true,
+        widthAdjustment: true,
+        paddingVertical: '48px',
+        paddingHorizontal: '32px',
+        uploading: false,
+        code: props.content,
+        _initialState: this.props.intialState
+      },
+      this.props.intialState
+    )
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
@@ -61,13 +70,18 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
-    const state = getState(localStorage)
-    if (state) {
-      this.setState(state)
+    // Load from localStorage instead of query params
+    if (!this.state._initialState) {
+      const state = getState(localStorage)
+      if (state) {
+        this.setState(state)
+      }
     }
   }
 
   componentDidUpdate() {
+    const mappedState = mapper.map(reverseMappings, this.state)
+    replaceQuery(mappedState)
     const s = { ...this.state }
     delete s.code
     saveState(localStorage, s)
