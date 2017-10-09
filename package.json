@@ -32,7 +32,7 @@
     "prop-types": "^15.6.0",
     "react": "^15.6.1",
     "react-click-outside": "^2.3.1",
-    "react-codemirror2": "^2.0.2",
+    "react-codemirror": "^1.0.0",
     "react-color": "^2.12.1",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
