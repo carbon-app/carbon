@@ -29,15 +29,21 @@ import { getState, saveState } from '../lib/util'
 
 const mapper = new Morph()
 
+const removeQueryString = str => {
+  const qI = str.indexOf('?')
+  return str.slice(0, qI)
+}
+
 class Editor extends React.Component {
   static async getInitialProps({ asPath, query }) {
+    const path = removeQueryString(asPath)
     const queryParams = mapper.map(mappings, query)
     const initialState = Object.keys(queryParams).length ? queryParams : null
     try {
       // TODO fix this hack
-      if (asPath.length > 30) {
-        const content = await api.getGist(asPath)
-        return { content, intialState }
+      if (path.length > 30) {
+        const content = await api.getGist(path)
+        return { content, initialState }
       }
     } catch (e) {
       console.log(e)
@@ -59,9 +65,9 @@ class Editor extends React.Component {
         paddingHorizontal: '32px',
         uploading: false,
         code: props.content,
-        _initialState: this.props.intialState
+        _initialState: this.props.initialState
       },
-      this.props.intialState
+      this.props.initialState
     )
 
     this.save = this.save.bind(this)
