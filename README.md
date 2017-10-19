@@ -28,7 +28,7 @@ Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs
 
 There are a few different ways to import code into Carbon:
 - Drop a file onto the editor
-- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/YOUR_USERNAME/GIST_ID_HERE`)
 - Paste your code directly
 
 #### Customization
