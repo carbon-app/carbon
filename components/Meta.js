@@ -31,7 +31,7 @@ export default () => (
         rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
       />
-      {THEMES.map((theme, i) => (
+      {THEMES.filter(t => t.hasStylesheet !== false).map((theme, i) => (
         <link
           key={i}
           rel="stylesheet"
