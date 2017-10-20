@@ -37,6 +37,11 @@ class Settings extends React.Component {
           <WindowPointer fromLeft="15px" />
           <ThemeSelect onChange={this.props.onChange.bind(null, 'windowTheme')} />
           <Toggle
+            label="Show line numbers"
+            enabled={this.props.enabled.showLineNumbers}
+            onChange={this.props.onChange.bind(null, 'showLineNumbers')}
+          />
+          <Toggle
             label="Drop shadow"
             enabled={this.props.enabled.dropShadow}
             onChange={this.props.onChange.bind(null, 'dropShadow')}

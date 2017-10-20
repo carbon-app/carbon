@@ -1207,7 +1207,7 @@ codemirror-mode-elixir@^1.1.1:
   dependencies:
     codemirror "^5.20.2"
 
-codemirror@^5.13.4, codemirror@^5.20.2, codemirror@^5.26.0:
+codemirror@^5.20.2, codemirror@^5.26.0:
   version "5.30.0"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.30.0.tgz#86e57dd5ea5535acbcf9c720797b4cefe05b5a70"
 

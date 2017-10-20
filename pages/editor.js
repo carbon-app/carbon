@@ -46,6 +46,7 @@ class Editor extends React.Component {
       background: 'rgba(171, 184, 195, 1)',
       theme: THEMES.seti.id,
       language: DEFAULT_LANGUAGE,
+      showLineNumbers: false,
       dropShadow: true,
       windowControls: true,
       widthAdjustment: true,
