@@ -18,7 +18,8 @@ const DEFAULT_SETTINGS = {
   marginHorizontal: '45px',
   background: 'rgba(171, 184, 195, 1)',
   theme: 'seti',
-  language: DEFAULT_LANGUAGE
+  language: DEFAULT_LANGUAGE,
+  showLineNumbers: false
 }
 
 class Carbon extends React.Component {
@@ -72,7 +73,7 @@ class Carbon extends React.Component {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
     const options = {
-      lineNumbers: false,
+      lineNumbers: config.showLineNumbers,
       mode: this.state.language || 'plaintext',
       theme: config.theme,
       scrollBarStyle: null,
