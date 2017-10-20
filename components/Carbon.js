@@ -72,7 +72,7 @@ class Carbon extends React.Component {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
     const options = {
-      lineNumbers: false,
+      lineNumbers: config.lineNumbers,
       mode: this.state.language || 'plaintext',
       theme: config.theme,
       scrollBarStyle: null,
