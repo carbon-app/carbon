@@ -125,7 +125,7 @@ class Editor extends React.Component {
           <Toolbar>
             <Dropdown
               selected={THEMES_HASH[this.state.theme]}
-              list={THEMES}
+              list={THEMES.filter(t => t.name)}
               onChange={theme => this.setState({ theme: theme.id })}
             />
             <Dropdown
