@@ -49,6 +49,7 @@ class Editor extends React.Component {
       dropShadow: true,
       windowControls: true,
       widthAdjustment: true,
+      lineNumbers: false,
       paddingVertical: '48px',
       paddingHorizontal: '32px',
       uploading: false,

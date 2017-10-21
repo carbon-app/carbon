@@ -51,6 +51,11 @@ class Settings extends React.Component {
             enabled={this.props.enabled.widthAdjustment}
             onChange={this.props.onChange.bind(null, 'widthAdjustment')}
           />
+          <Toggle
+            label="Line Numbers"
+            enabled={this.props.enabled.lineNumbers}
+            onChange={this.props.onChange.bind(null, 'lineNumbers')}
+          />
           <Slider
             label="Padding (vertical)"
             initialValue={16}
