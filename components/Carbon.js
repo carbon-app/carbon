@@ -8,6 +8,9 @@ import WindowControls from '../components/WindowControls'
 import CodeMirror from '../lib/react-codemirror'
 import { COLORS, DEFAULT_LANGUAGE, LANGUAGES } from '../lib/constants'
 
+// hack to make it work with graphql for now, until hightligh.js support it
+hljs.registerLanguage("graphql",function(e){return{aliases:["gql"],k:{keyword:"query mutation subscription|10 type interface union scalar fragment|10 enum on ...",literal:"true false null"},c:[e.HCM,e.QSM,e.NM,{cN:"type",b:"[^\\w][A-Z][a-z]",e:"\\W",eE:!0},{cN:"literal",b:"[^\\w][A-Z][A-Z]",e:"\\W",eE:!0},{cN:"variable",b:"\\$",e:"\\W",eE:!0},{cN:"keyword",b:"[.]{2}",e:"\\."},{cN:"meta",b:"@",e:"\\W",eE:!0}],i:/([;<']|BEGIN)/}});
+
 const LANGUAGE_MODE_HASH = toHash(LANGUAGES, 'mode')
 const LANGUAGE_NAME_HASH = toHash(LANGUAGES, 'short')
 
