@@ -32,7 +32,7 @@ class Editor extends React.Component {
   static async getInitialProps({ asPath }) {
     try {
       // TODO fix this hack
-      if (asPath.length > 30) {
+      if (asPath.length >= 20 && asPath.indexOf('.') === -1) {
         const content = await api.getGist(asPath)
         return { content }
       }
