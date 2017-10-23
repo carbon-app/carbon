@@ -16,9 +16,11 @@ import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import {
-  THEMES_ARRAY,
   THEMES,
+  THEMES_HASH,
   LANGUAGES,
+  LANGUAGE_MIME_HASH,
+  LANGUAGE_MODE_HASH,
   DEFAULT_LANGUAGE,
   COLORS,
   DEFAULT_CODE
@@ -44,7 +46,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       background: 'rgba(171, 184, 195, 1)',
-      theme: THEMES.seti.id,
+      theme: THEMES_HASH.seti.id,
       language: DEFAULT_LANGUAGE,
       dropShadow: true,
       windowControls: true,
@@ -122,11 +124,14 @@ class Editor extends React.Component {
         <div id="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES[this.state.theme]}
-              list={THEMES_ARRAY}
+              selected={THEMES_HASH[this.state.theme]}
+              list={THEMES}
               onChange={theme => this.setState({ theme: theme.id })}
             />
             <Dropdown
+              selected={
+                LANGUAGE_MIME_HASH[this.state.language] || LANGUAGE_MODE_HASH[this.state.language]
+              }
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />

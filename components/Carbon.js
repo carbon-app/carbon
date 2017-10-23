@@ -6,10 +6,13 @@ import Spinner from 'react-spinner'
 import toHash from 'tohash'
 import WindowControls from '../components/WindowControls'
 import CodeMirror from '../lib/react-codemirror'
-import { COLORS, DEFAULT_LANGUAGE, LANGUAGES } from '../lib/constants'
-
-const LANGUAGE_MODE_HASH = toHash(LANGUAGES, 'mode')
-const LANGUAGE_NAME_HASH = toHash(LANGUAGES, 'short')
+import {
+  COLORS,
+  DEFAULT_LANGUAGE,
+  LANGUAGES,
+  LANGUAGE_MODE_HASH,
+  LANGUAGE_NAME_HASH
+} from '../lib/constants'
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',

@@ -35,7 +35,10 @@ class Settings extends React.Component {
         </div>
         <div className="settings-settings">
           <WindowPointer fromLeft="15px" />
-          <ThemeSelect onChange={this.props.onChange.bind(null, 'windowTheme')} />
+          <ThemeSelect
+            selected={this.props.enabled.windowTheme || 'none'}
+            onChange={this.props.onChange.bind(null, 'windowTheme')}
+          />
           <Toggle
             label="Drop shadow"
             enabled={this.props.enabled.dropShadow}
@@ -58,12 +61,12 @@ class Settings extends React.Component {
           />
           <Slider
             label="Padding (vertical)"
-            initialValue={16}
+            value={this.props.enabled.paddingVertical || 16}
             onChange={this.props.onChange.bind(null, 'paddingVertical')}
           />
           <Slider
             label="Padding (horizontal)"
-            initialValue={32}
+            value={this.props.enabled.paddingHorizontal || 32}
             onChange={this.props.onChange.bind(null, 'paddingHorizontal')}
           />
         </div>

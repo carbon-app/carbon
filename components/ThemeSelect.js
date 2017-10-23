@@ -8,14 +8,12 @@ export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 export default class extends React.Component {
   constructor(props) {
     super()
-    this.state = { selected: props.selected || WINDOW_THEMES[0] }
     this.select = this.select.bind(this)
   }
 
   select(theme) {
-    if (this.state.selected !== theme) {
+    if (this.props.selected !== theme) {
       this.props.onChange(theme)
-      this.setState({ selected: theme })
     }
   }
 
@@ -24,7 +22,7 @@ export default class extends React.Component {
       const Img = WINDOW_THEMES_MAP[theme]
       return (
         <div
-          className={`theme ${this.state.selected === theme ? 'selected' : ''}`}
+          className={`theme ${this.props.selected === theme ? 'selected' : ''}`}
           key={i}
           onClick={this.select.bind(null, theme)}
         >
