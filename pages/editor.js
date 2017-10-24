@@ -22,6 +22,7 @@ import {
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
   DEFAULT_LANGUAGE,
+  DEFAULT_THEME,
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
@@ -55,7 +56,7 @@ class Editor extends React.Component {
     this.state = Object.assign(
       {
         background: 'rgba(171, 184, 195, 1)',
-        theme: THEMES_HASH.seti.id,
+        theme: DEFAULT_THEME.id,
         language: DEFAULT_LANGUAGE,
         dropShadow: true,
         windowControls: true,
@@ -140,8 +141,8 @@ class Editor extends React.Component {
         <div id="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES_HASH[this.state.theme]}
-              list={THEMES.filter(t => t.name)}
+              selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
+              list={THEMES}
               onChange={theme => this.setState({ theme: theme.id })}
             />
             <Dropdown
