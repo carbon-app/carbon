@@ -6,10 +6,13 @@ import Spinner from 'react-spinner'
 import toHash from 'tohash'
 import WindowControls from '../components/WindowControls'
 import CodeMirror from '../lib/react-codemirror'
-import { COLORS, DEFAULT_LANGUAGE, LANGUAGES } from '../lib/constants'
-
-const LANGUAGE_MODE_HASH = toHash(LANGUAGES, 'mode')
-const LANGUAGE_NAME_HASH = toHash(LANGUAGES, 'short')
+import {
+  COLORS,
+  DEFAULT_LANGUAGE,
+  LANGUAGES,
+  LANGUAGE_MODE_HASH,
+  LANGUAGE_NAME_HASH
+} from '../lib/constants'
 
 const DEFAULT_SETTINGS = {
   paddingVertical: '50px',
@@ -72,7 +75,7 @@ class Carbon extends React.Component {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
     const options = {
-      lineNumbers: false,
+      lineNumbers: config.lineNumbers,
       mode: this.state.language || 'plaintext',
       theme: config.theme,
       scrollBarStyle: null,
@@ -150,10 +153,11 @@ class Carbon extends React.Component {
             }
 
             #container :global(.cm-s-solarized) {
-              background-color: #fdf6e3;
-              color: #657b83;
-              text-shadow: #eee8d5 0 1px;
               box-shadow: none;
+            }
+
+            #container :global(.cm-s-solarized.cm-s-light) {
+              text-shadow: #eee8d5 0 1px;
             }
 
             #container :global(.CodeMirror__container) {

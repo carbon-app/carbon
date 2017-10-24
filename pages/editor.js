@@ -4,7 +4,6 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer from 'dropperx'
-import Morph from 'morphmorph'
 
 // Ours
 import Page from '../components/Page'
@@ -17,17 +16,17 @@ import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import {
-  THEMES_ARRAY,
   THEMES,
+  THEMES_HASH,
   LANGUAGES,
+  LANGUAGE_MIME_HASH,
+  LANGUAGE_MODE_HASH,
   DEFAULT_LANGUAGE,
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
-import { mappings, reverseMappings, replaceQuery } from '../lib/routing'
+import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
-
-const mapper = new Morph()
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
@@ -37,11 +36,11 @@ const removeQueryString = str => {
 class Editor extends React.Component {
   static async getInitialProps({ asPath, query }) {
     const path = removeQueryString(asPath)
-    const queryParams = mapper.map(mappings, query)
+    const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : null
     try {
       // TODO fix this hack
-      if (path.length > 30) {
+      if (path.length >= 20 && path.indexOf('.') === -1) {
         const content = await api.getGist(path)
         return { content, initialState }
       }
@@ -56,11 +55,12 @@ class Editor extends React.Component {
     this.state = Object.assign(
       {
         background: 'rgba(171, 184, 195, 1)',
-        theme: THEMES.seti.id,
+        theme: THEMES_HASH.seti.id,
         language: DEFAULT_LANGUAGE,
         dropShadow: true,
         windowControls: true,
         widthAdjustment: true,
+        lineNumbers: false,
         paddingVertical: '48px',
         paddingHorizontal: '32px',
         uploading: false,
@@ -86,8 +86,7 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate() {
-    const mappedState = mapper.map(reverseMappings, this.state)
-    replaceQuery(mappedState)
+    updateQueryString(this.state)
     const s = { ...this.state }
     delete s.code
     saveState(localStorage, s)
@@ -141,11 +140,14 @@ class Editor extends React.Component {
         <div id="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES[this.state.theme]}
-              list={THEMES_ARRAY}
+              selected={THEMES_HASH[this.state.theme]}
+              list={THEMES.filter(t => t.name)}
               onChange={theme => this.setState({ theme: theme.id })}
             />
             <Dropdown
+              selected={
+                LANGUAGE_MIME_HASH[this.state.language] || LANGUAGE_MODE_HASH[this.state.language]
+              }
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
