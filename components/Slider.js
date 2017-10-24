@@ -3,14 +3,11 @@ import React from 'react'
 export default class extends React.Component {
   constructor(props) {
     super()
-    this.state = { value: props.initialValue || 0 }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e) {
-    this.setState({ value: e.target.value }, () => {
-      this.props.onChange(`${this.state.value}px`)
-    })
+    this.props.onChange(`${e.target.value}px`)
   }
 
   render() {
@@ -22,7 +19,7 @@ export default class extends React.Component {
         <span className="label">{this.props.label}</span>
         <input
           type="range"
-          defaultValue={this.state.value}
+          defaultValue={this.props.value}
           onChange={this.handleChange}
           min={minValue}
           max={maxValue}
@@ -30,7 +27,10 @@ export default class extends React.Component {
         <div
           className="slider-bg"
           style={{
-            transform: `translate3d(${this.state.value * 1.0 / maxValue * 100}%, 0px, 0px)`
+            transform: `translate3d(${parseInt(this.props.value) *
+              1.0 /
+              maxValue *
+              100}%, 0px, 0px)`
           }}
         />
         <style jsx>{`

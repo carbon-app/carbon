@@ -155,6 +155,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Drarok",
+      "name": "Mat Gadd",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/55830?v=4",
+      "profile": "http://drarok.com/",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { THEMES_ARRAY, COLORS } from '../lib/constants'
 import Router from 'next/router'
+import { THEMES, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
 import Typography from './style/Typography'
 
@@ -41,7 +41,7 @@ export default () => (
         rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
       />
-      {THEMES_ARRAY.map((theme, i) => (
+      {THEMES.filter(t => t.hasStylesheet !== false).map((theme, i) => (
         <link
           key={i}
           rel="stylesheet"

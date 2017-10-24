@@ -16,45 +16,60 @@ import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
 import api from '../lib/api'
 import {
-  THEMES_ARRAY,
   THEMES,
+  THEMES_HASH,
   LANGUAGES,
+  LANGUAGE_MIME_HASH,
+  LANGUAGE_MODE_HASH,
   DEFAULT_LANGUAGE,
+  DEFAULT_THEME,
   COLORS,
   DEFAULT_CODE
 } from '../lib/constants'
+import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
+const removeQueryString = str => {
+  const qI = str.indexOf('?')
+  return str.slice(0, qI)
+}
+
 class Editor extends React.Component {
-  /* pathname, asPath, err, req, res */
-  static async getInitialProps({ asPath }) {
+  static async getInitialProps({ asPath, query }) {
+    const path = removeQueryString(asPath)
+    const queryParams = getQueryStringState(query)
+    const initialState = Object.keys(queryParams).length ? queryParams : null
     try {
       // TODO fix this hack
-      if (asPath.length > 30) {
-        const content = await api.getGist(asPath)
-        return { content }
+      if (path.length >= 20 && path.indexOf('.') === -1) {
+        const content = await api.getGist(path)
+        return { content, initialState }
       }
     } catch (e) {
       console.log(e)
     }
-    return {}
+    return { initialState }
   }
 
   constructor(props) {
     super(props)
-    this.state = {
-      background: 'rgba(171, 184, 195, 1)',
-      theme: THEMES.seti.id,
-      language: DEFAULT_LANGUAGE,
-      dropShadow: true,
-      windowControls: true,
-      widthAdjustment: true,
-      lineNumbers: false,
-      paddingVertical: '48px',
-      paddingHorizontal: '32px',
-      uploading: false,
-      code: props.content
-    }
+    this.state = Object.assign(
+      {
+        background: 'rgba(171, 184, 195, 1)',
+        theme: DEFAULT_THEME.id,
+        language: DEFAULT_LANGUAGE,
+        dropShadow: true,
+        windowControls: true,
+        widthAdjustment: true,
+        lineNumbers: false,
+        paddingVertical: '48px',
+        paddingHorizontal: '32px',
+        uploading: false,
+        code: props.content,
+        _initialState: this.props.initialState
+      },
+      this.props.initialState
+    )
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
@@ -62,13 +77,17 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
-    const state = getState(localStorage)
-    if (state) {
-      this.setState(state)
+    // Load from localStorage instead of query params
+    if (!this.state._initialState) {
+      const state = getState(localStorage)
+      if (state) {
+        this.setState(state)
+      }
     }
   }
 
   componentDidUpdate() {
+    updateQueryString(this.state)
     const s = { ...this.state }
     delete s.code
     saveState(localStorage, s)
@@ -122,11 +141,14 @@ class Editor extends React.Component {
         <div id="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES[this.state.theme]}
-              list={THEMES_ARRAY}
+              selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
+              list={THEMES}
               onChange={theme => this.setState({ theme: theme.id })}
             />
             <Dropdown
+              selected={
+                LANGUAGE_MIME_HASH[this.state.language] || LANGUAGE_MODE_HASH[this.state.language]
+              }
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />

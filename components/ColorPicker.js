@@ -111,6 +111,14 @@ class ColorPicker extends React.Component {
             color: ${COLORS.SECONDARY} !important;
           }
 
+          /* TODO remove once base64 url issue fixed in react-color */
+          /* prettier-ignore */
+          .colorpicker-picker > :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1) > div),
+          .colorpicker-picker > :global(.sketch-picker > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)) {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
+              left center !important;
+          }
+
           .colorpicker-picker > :global(.sketch-picker > div:nth-child(3) > div > div > input) {
             width: 100% !important;
             box-shadow: none;
