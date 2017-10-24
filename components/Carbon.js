@@ -21,6 +21,7 @@ const DEFAULT_SETTINGS = {
   marginHorizontal: '45px',
   background: 'rgba(171, 184, 195, 1)',
   theme: 'seti',
+  windowTheme: 'none',
   language: DEFAULT_LANGUAGE
 }
 
@@ -83,14 +84,6 @@ class Carbon extends React.Component {
       lineWrapping: true
     }
 
-    // create styles
-    const containerStyle = {
-      position: 'relative',
-      background: config.background,
-      minWidth: config.widthAdjustment ? '90px' : '680px',
-      padding: `${config.paddingVertical} ${config.paddingHorizontal}`
-    }
-
     // set content to spinner if loading, else editor
     let content = (
       <div>
@@ -106,21 +99,25 @@ class Carbon extends React.Component {
     )
     if (this.state.loading === false) {
       content = (
-        <div id="container" style={containerStyle}>
+        <div id="container">
           {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
           <CodeMirror
-            className={`CodeMirror__container window-theme__${config.windowTheme} ${config.dropShadow
-              ? 'dropshadow'
-              : ''}`}
+            className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onChange={this.codeUpdated}
             value={this.props.children}
             options={options}
           />
           <div id="container-bg">
             <div className="alpha" />
-            <div className="bg" style={{ background: config.background }} />
+            <div className="bg" />
           </div>
           <style jsx>{`
+            #container {
+              position: relative;
+              min-width: ${config.widthAdjustment ? '90px' : '680px'};
+              padding: ${config.paddingVertical} ${config.paddingHorizontal};
+            }
+
             #container #container-bg {
               background: #fff;
               position: absolute;
@@ -131,6 +128,7 @@ class Carbon extends React.Component {
             }
 
             #container .bg {
+              background: ${this.props.config.background || config.background};
               position: absolute;
               top: 0px;
               right: 0px;
@@ -169,18 +167,15 @@ class Carbon extends React.Component {
               min-width: inherit;
               position: relative;
               z-index: 1;
-            }
-
-            #container :global(.CodeMirror__container.dropshadow) {
-              box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);
               border-radius: 5px;
+              ${config.dropShadow ? 'box-shadow: 0 20px 68px rgba(0, 0, 0, 0.55);' : ''};
             }
 
             #container :global(.CodeMirror__container .CodeMirror) {
               height: auto;
               min-width: inherit;
               padding: 18px 18px;
-              border-radius: 5px;
+              ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
               font-family: Hack, monospace !important;
               font-size: 0.8rem;
               user-select: none;
