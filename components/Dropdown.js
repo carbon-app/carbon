@@ -60,7 +60,7 @@ class Dropdown extends React.Component {
   render() {
     // find longest list value in number of characters
     const MIN_WIDTH = this.props.list.reduce(
-      (max, { name }) => (name.length > max ? name.length : max),
+      (max, { name }) => (name && name.length > max ? name.length : max),
       0
     )
 

@@ -160,6 +160,11 @@ class Carbon extends React.Component {
               text-shadow: #eee8d5 0 1px;
             }
 
+            #container :global(.CodeMirror-gutters) {
+              background-color: unset;
+              border-right: none;
+            }
+
             #container :global(.CodeMirror__container) {
               min-width: inherit;
               position: relative;
