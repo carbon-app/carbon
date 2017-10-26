@@ -31,7 +31,7 @@ import { getState, saveState } from '../lib/util'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return str.slice(0, qI)
+  return str.slice(1, qI)
 }
 
 class Editor extends React.Component {
@@ -178,7 +178,7 @@ class Editor extends React.Component {
                 isOver={isOver || canDrop}
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
-                <Carbon config={this.state} updateCode={this.updateCode}>
+                <Carbon config={this.state} updateCode={code => this.updateCode(code)}>
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
               </Overlay>
