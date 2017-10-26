@@ -31,7 +31,7 @@ import { getState, saveState } from '../lib/util'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return str.slice(0, qI)
+  return str.slice(1, qI)
 }
 
 class Editor extends React.Component {
