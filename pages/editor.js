@@ -31,17 +31,17 @@ import { getState, saveState } from '../lib/util'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return str.slice(1, qI)
+  return qI > 0 ? str.substr(0, qI) : str
 }
 
 class Editor extends React.Component {
   static async getInitialProps({ asPath, query }) {
-    const path = removeQueryString(asPath)
+    const path = removeQueryString(asPath.split('/').pop())
     const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : null
     try {
       // TODO fix this hack
-      if (path.length >= 20 && path.indexOf('.') === -1) {
+      if (path.length >= 19 && path.indexOf('.') === -1) {
         const content = await api.getGist(path)
         return { content, initialState }
       }
