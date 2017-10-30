@@ -74,7 +74,6 @@ class Carbon extends React.Component {
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
-
     const options = {
       lineNumbers: config.lineNumbers,
       mode: this.state.language || 'plaintext',
@@ -108,7 +107,8 @@ class Carbon extends React.Component {
             options={options}
           />
           <div id="container-bg">
-            <div className="alpha" />
+            <div className="white eliminateOnRender" />
+            <div className="alpha eliminateOnRender" />
             <div className="bg" />
           </div>
           <style jsx>{`
@@ -119,6 +119,14 @@ class Carbon extends React.Component {
             }
 
             #container #container-bg {
+              position: absolute;
+              top: 0px;
+              right: 0px;
+              bottom: 0px;
+              left: 0px;
+            }
+
+            #container .white {
               background: #fff;
               position: absolute;
               top: 0px;

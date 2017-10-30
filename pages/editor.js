@@ -101,7 +101,7 @@ class Editor extends React.Component {
         transform: 'scale(2)',
         'transform-origin': 'center'
       },
-      filter: n => n.id !== 'container-bg',
+      filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
       width: node.offsetWidth * 2,
       height: node.offsetHeight * 2
     }
