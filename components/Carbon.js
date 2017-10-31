@@ -102,7 +102,7 @@ class Carbon extends React.Component {
           {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
-            onChange={(editor, meta, code) => this.codeUpdated(code)}
+            onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
             value={this.props.children}
             options={options}
           />
