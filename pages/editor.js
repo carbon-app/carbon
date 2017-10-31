@@ -24,14 +24,16 @@ import {
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   COLORS,
-  DEFAULT_CODE
+  DEFAULT_CODE,
+  GA_TRACKING_ID
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
+import ReactGA from 'react-ga'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return qI > 0 ? str.substr(0, qI) : str
+  return qI >= 0 ? str.substr(0, qI) : str
 }
 
 class Editor extends React.Component {
@@ -77,6 +79,7 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
+    ReactGA.initialize(GA_TRACKING_ID)
     // Load from localStorage instead of query params
     if (!this.state._initialState) {
       const state = getState(localStorage)
@@ -114,14 +117,21 @@ class Editor extends React.Component {
   }
 
   save() {
-    this.getCarbonImage().then(dataUrl => {
-      const link = document.createElement('a')
-      link.download = 'carbon.png'
-      link.href = dataUrl
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
-    })
+    this.getCarbonImage()
+      .then(dataUrl => {
+        const link = document.createElement('a')
+        link.download = 'carbon.png'
+        link.href = dataUrl
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      })
+      .then(() => {
+        ReactGA.event({
+          category: 'Click',
+          action: 'Download'
+        })
+      })
   }
 
   upload() {

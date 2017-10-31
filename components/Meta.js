@@ -3,8 +3,9 @@ import Router from 'next/router'
 import { THEMES, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
 import Typography from './style/Typography'
+import ReactGA from 'react-ga'
 
-const GA_TRACKING_ID = 'UA-106958506-1'
+import { GA_TRACKING_ID } from '../lib/constants'
 
 Router.onRouteChangeComplete = () => {
   if (process.env.NODE_ENV === 'production') {
