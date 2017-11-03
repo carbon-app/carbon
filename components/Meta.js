@@ -31,6 +31,10 @@ export default () => (
         rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
       />
+      <link
+        rel="stylesheet"
+        href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css`}
+      />
       {THEMES.filter(t => t.hasStylesheet !== false).map((theme, i) => (
         <link
           key={i}
