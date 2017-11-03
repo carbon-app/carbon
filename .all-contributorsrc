@@ -165,6 +165,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "varbrad",
+      "name": "Brad Davies",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11805775?v=4",
+      "profile": "https://bradlab.co.uk",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ]
 }
