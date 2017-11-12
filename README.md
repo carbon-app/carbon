@@ -39,6 +39,10 @@ Once you've got all of your code into Carbon, you can customize your image by ch
 
 After you've customized your image you can either Tweet a link to the image, or save it directly.
 
+## Community
+Check out these projects our awesome community has created:
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
+
 ## Contribute
 
 If you have discovered a bug or have a feature suggestion, feel free to create an issue on Github.
