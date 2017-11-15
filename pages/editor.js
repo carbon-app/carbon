@@ -21,6 +21,7 @@ import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
+  LANGUAGE_NAME_HASH,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   COLORS,
@@ -147,7 +148,9 @@ class Editor extends React.Component {
             />
             <Dropdown
               selected={
-                LANGUAGE_MIME_HASH[this.state.language] || LANGUAGE_MODE_HASH[this.state.language]
+                LANGUAGE_NAME_HASH[this.state.language] ||
+                LANGUAGE_MIME_HASH[this.state.language] ||
+                LANGUAGE_MODE_HASH[this.state.language]
               }
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}

@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "deploy": "now --public",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
-    "lint": "prettier --config .prettierrc -l *.js {components,handlers,lib,pages}/*.js",
+    "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate"
@@ -17,11 +17,11 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
-    "codemirror": "^5.26.0",
+    "codemirror": "^5.31.0",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
     "dropperx": "^0.0.3",
-    "express": "^4.15.3",
+    "express": "^4.16.2",
     "form-data": "^2.2.0",
     "highlight.js": "^9.12.0",
     "history": "^4.7.2",
@@ -29,10 +29,10 @@
     "morgan": "^1.8.2",
     "morphmorph": "^0.0.2",
     "ms": "^2.0.0",
-    "next": "^4.1.3",
+    "next": "^4.1.4",
     "react": "^16.0.0",
     "react-click-outside": "^2.3.1",
-    "react-codemirror2": "^3.0.3",
+    "react-codemirror2": "^3.0.7",
     "react-color": "^2.13.8",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
@@ -44,13 +44,13 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.5.0",
-    "cross-env": "^5.0.5",
+    "all-contributors-cli": "^4.7.0",
+    "cross-env": "^5.1.1",
     "husky": "^0.14.3",
-    "lint-staged": "^4.2.3",
-    "prettier": "^1.7.2",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.8.1",
     "uglifyjs-webpack-plugin": "1.0.0-beta.1",
-    "webpack": "^3.6.0"
+    "webpack": "^3.8.1"
   },
   "now": {
     "env": {
