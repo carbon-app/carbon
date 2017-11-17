@@ -4,6 +4,8 @@ import React from 'react'
 import domtoimage from 'dom-to-image'
 import Spinner from 'react-spinner'
 import toHash from 'tohash'
+import debounce from 'lodash.debounce'
+import ms from 'ms'
 import WindowControls from '../components/WindowControls'
 import CodeMirror from '../lib/react-codemirror'
 import {
@@ -55,22 +57,26 @@ class Carbon extends React.Component {
     this.props.updateCode(newCode)
   }
 
-  handleLanguageChange(newCode, config) {
-    const props = (config && config.customProps) || this.props
+  handleLanguageChange = debounce(
+    (newCode, config) => {
+      const props = (config && config.customProps) || this.props
 
-    if (props.config.language === 'auto') {
-      // try to set the language
-      const detectedLanguage = hljs.highlightAuto(newCode).language
-      const languageMode =
-        LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+      if (props.config.language === 'auto') {
+        // try to set the language
+        const detectedLanguage = hljs.highlightAuto(newCode).language
+        const languageMode =
+          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
 
-      if (languageMode) {
-        this.setState({ language: languageMode.mime || languageMode.mode })
+        if (languageMode) {
+          this.setState({ language: languageMode.mime || languageMode.mode })
+        }
+      } else {
+        this.setState({ language: props.config.language })
       }
-    } else {
-      this.setState({ language: props.config.language })
-    }
-  }
+    },
+    ms('300ms'),
+    { trailing: true }
+  )
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
