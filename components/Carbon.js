@@ -121,6 +121,8 @@ class Carbon extends React.Component {
             #container {
               position: relative;
               min-width: ${config.widthAdjustment ? '90px' : '680px'};
+              max-width: 1024px; /* The Fallback */
+              max-width: 92vw;
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
             }
 
