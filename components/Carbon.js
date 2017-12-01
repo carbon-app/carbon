@@ -219,19 +219,22 @@ class Carbon extends React.Component {
 
     return (
       <div id="section">
-        {content}
+        <div id="export-container">
+          {content}
+          <div id="twitter-png-fix" />
+        </div>
         <style jsx>{`
-          #section {
+          #section,
+          #export-container {
             height: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
           }
 
-          #section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
+          /* forces twitter to save images as png — https://github.com/dawnlabs/carbon/issues/86 */
+          #twitter-png-fix {
             height: 1px;
             width: 100%;
             background: rgba(0, 0, 0, 0.01);
