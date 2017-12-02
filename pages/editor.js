@@ -95,7 +95,7 @@ class Editor extends React.Component {
   }
 
   getCarbonImage() {
-    const node = document.getElementById('section')
+    const node = document.getElementById('export-container')
 
     const config = {
       style: {
