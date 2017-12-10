@@ -109,9 +109,7 @@ class Carbon extends React.Component {
         <div id="container">
           {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
           <CodeMirror
-            className={`CodeMirror__container CodeMirror__shadow window-theme__${
-              config.windowTheme
-            }`}
+            className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
             value={this.props.children}
             options={options}
@@ -186,15 +184,10 @@ class Carbon extends React.Component {
               position: relative;
               z-index: 1;
               border-radius: 5px;
-            }
-
-            #container :global(.CodeMirror__shadow) {
               ${config.dropShadow
-                ? 'box-shadow: 0 ' +
-                  config.dropShadowOffsetY +
-                  ' ' +
-                  config.dropShadowBlurRadius +
-                  ' rgba(0, 0, 0, 0.55)'
+                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${
+                    config.dropShadowBlurRadius
+                  } rgba(0, 0, 0, 0.55)`
                 : ''};
             }
 

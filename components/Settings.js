@@ -45,7 +45,7 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'dropShadow')}
           />
           <Slider
-            label="Drop shadow offset-y"
+            label="Drop shadow (offset-y)"
             value={this.props.enabled.dropShadowOffsetY || 20}
             onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
           />
