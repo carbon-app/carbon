@@ -50,7 +50,7 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
           />
           <Slider
-            label="Drop shadow blur-radius"
+            label="Drop shadow (blur-radius)"
             value={this.props.enabled.dropShadowBlurRadius || 68}
             onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
           />
