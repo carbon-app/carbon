@@ -44,6 +44,16 @@ class Settings extends React.Component {
             enabled={this.props.enabled.dropShadow}
             onChange={this.props.onChange.bind(null, 'dropShadow')}
           />
+          <Slider
+            label="Drop shadow (offset-y)"
+            value={this.props.enabled.dropShadowOffsetY || 20}
+            onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
+          />
+          <Slider
+            label="Drop shadow (blur-radius)"
+            value={this.props.enabled.dropShadowBlurRadius || 68}
+            onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
+          />
           <Toggle
             label="Window controls"
             enabled={this.props.enabled.windowControls}
