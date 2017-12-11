@@ -15,7 +15,7 @@
     "contrib:build": "all-contributors generate"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.17.1",
     "body-parser": "^1.17.2",
     "codemirror": "^5.31.0",
     "codemirror-mode-elixir": "^1.1.1",
@@ -31,7 +31,7 @@
     "ms": "^2.0.0",
     "next": "^4.1.4",
     "react": "^16.0.0",
-    "react-click-outside": "^2.3.1",
+    "react-click-outside": "^3.0.0",
     "react-codemirror2": "^3.0.7",
     "react-color": "^2.13.8",
     "react-dnd": "^2.4.0",
@@ -39,7 +39,7 @@
     "react-dom": "^16.0.0",
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
-    "react-syntax-highlight": "^0.0.6",
+    "react-syntax-highlight": "^15.3.1",
     "tohash": "^1.0.2",
     "twitter": "^1.7.1"
   },
@@ -47,9 +47,9 @@
     "all-contributors-cli": "^4.7.0",
     "cross-env": "^5.1.1",
     "husky": "^0.14.3",
-    "lint-staged": "^4.3.0",
+    "lint-staged": "^6.0.0",
     "prettier": "^1.8.1",
-    "uglifyjs-webpack-plugin": "1.0.0-beta.1",
+    "uglifyjs-webpack-plugin": "1.1.2",
     "webpack": "^3.8.1"
   },
   "now": {
