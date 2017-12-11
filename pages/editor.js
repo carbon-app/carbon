@@ -60,6 +60,8 @@ class Editor extends React.Component {
         theme: DEFAULT_THEME.id,
         language: DEFAULT_LANGUAGE,
         dropShadow: true,
+        dropShadowOffsetY: '20px',
+        dropShadowBlurRadius: '68px',
         windowControls: true,
         widthAdjustment: true,
         lineNumbers: false,
