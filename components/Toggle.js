@@ -15,12 +15,12 @@ export default class extends React.Component {
     return (
       <div className="toggle" onClick={this.toggle}>
         <span className="label">{this.props.label}</span>
-        {this.props.enabled ? this.props.children || <Checkmark /> : this.props.children}
+        {this.props.enabled ? <Checkmark /> : null}
         <style jsx>{`
           .toggle {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: ${this.props.center ? 'center' : 'space-between'}
             cursor: pointer;
             user-select: none;
             padding: 8px;

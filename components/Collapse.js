@@ -20,11 +20,7 @@ class Collapse extends React.Component {
     if (this.state.open) {
       return this.props.children
     }
-    return (
-      <Toggle enabled={false} label={this.props.label} onChange={this.toggle}>
-        <Arrowdown />
-      </Toggle>
-    )
+    return <Toggle enabled={false} center={true} label={this.props.label} onChange={this.toggle} />
   }
 }
 
