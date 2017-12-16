@@ -20,7 +20,7 @@ export default class extends React.Component {
           .toggle {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: ${this.props.center ? 'center' : 'space-between'}
             cursor: pointer;
             user-select: none;
             padding: 8px;
