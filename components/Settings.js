@@ -51,7 +51,7 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'lineNumbers')}
           />
           <Toggle
-            label="Width adjustment"
+            label="Auto-adjust width"
             enabled={this.props.enabled.widthAdjustment}
             onChange={this.props.onChange.bind(null, 'widthAdjustment')}
           />

@@ -1,5 +1,6 @@
 import React from 'react'
 import Toggle from './Toggle'
+import Arrowdown from './svg/Arrowdown'
 
 class Collapse extends React.Component {
   constructor(props) {
@@ -19,7 +20,11 @@ class Collapse extends React.Component {
     if (this.state.open) {
       return this.props.children
     }
-    return <Toggle enabled={false} label={this.props.label} onChange={this.toggle} />
+    return (
+      <Toggle enabled={false} label={this.props.label} onChange={this.toggle}>
+        <Arrowdown />
+      </Toggle>
+    )
   }
 }
 
