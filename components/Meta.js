@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { THEMES, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
+import Font from './style/Font'
 import Typography from './style/Typography'
 
 export default () => (
@@ -45,18 +46,10 @@ export default () => (
           }
         />
       ))}
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />
-      <link
-        rel="stylesheet"
-        href="https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Droid+Sans+Mono|Inconsolata|Source+Code+Pro|Ubuntu+Mono"
-      />
       <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
     </Head>
     <Reset />
+    <Font />
     <Typography />
     <style jsx>{`
       .meta {

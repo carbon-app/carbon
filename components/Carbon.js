@@ -1,7 +1,6 @@
 import { EOL } from 'os'
 import * as hljs from 'highlight.js'
 import React from 'react'
-import domtoimage from 'dom-to-image'
 import Spinner from 'react-spinner'
 import toHash from 'tohash'
 import debounce from 'lodash.debounce'
