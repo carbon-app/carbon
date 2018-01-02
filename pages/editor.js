@@ -190,21 +190,19 @@ class Editor extends React.Component {
             )}
           </ReadFileDropContainer>
         </div>
-        <style jsx>
-          {`
-            #editor {
-              background: ${COLORS.BLACK};
-              border: 3px solid ${COLORS.SECONDARY};
-              border-radius: 8px;
-              padding: 16px;
-            }
+        <style jsx>{`
+          #editor {
+            background: ${COLORS.BLACK};
+            border: 3px solid ${COLORS.SECONDARY};
+            border-radius: 8px;
+            padding: 16px;
+          }
 
-            .buttons {
-              display: flex;
-              margin-left: auto;
-            }
-          `}
-        </style>
+          .buttons {
+            display: flex;
+            margin-left: auto;
+          }
+        `}</style>
       </Page>
     )
   }
