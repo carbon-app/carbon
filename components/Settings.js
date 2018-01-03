@@ -2,6 +2,7 @@ import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import SettingsIcon from './svg/Settings'
 import ThemeSelect from './ThemeSelect'
+import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
@@ -39,6 +40,17 @@ class Settings extends React.Component {
           <ThemeSelect
             selected={this.props.enabled.windowTheme || 'none'}
             onChange={this.props.onChange.bind(null, 'windowTheme')}
+          />
+          <FontSelect
+            selected={this.props.enabled.fontFamily || 'Fira Code'}
+            onChange={this.props.onChange.bind(null, 'fontFamily')}
+          />
+          <Slider
+            label="Font size"
+            value={this.props.enabled.fontSize || 13}
+            minValue={10}
+            maxValue={18}
+            onChange={this.props.onChange.bind(null, 'fontSize')}
           />
           <Toggle
             label="Window controls"
