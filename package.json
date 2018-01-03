@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
-    "deploy": "now --public",
+    "deploy": "now -e NODE_ENV=production --public",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
@@ -48,7 +48,6 @@
     "cross-env": "^5.1.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
-    "now-travis": "^1.2.0",
     "prettier": "^1.8.1",
     "uglifyjs-webpack-plugin": "1.1.2",
     "webpack": "^3.10.0"
