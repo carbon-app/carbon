@@ -199,7 +199,7 @@ class Carbon extends React.Component {
               min-width: inherit;
               padding: 18px 18px;
               ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
-              font-family: ${config.fontFamily};
+              font-family: ${config.fontFamily}, monospace !important;
               font-size: ${config.fontSize};
               font-variant-ligatures: contextual;
               font-feature-settings: 'calt' 1;
