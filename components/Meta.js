@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Router from 'next/router'
 import { THEMES, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
+import Font from './style/Font'
 import Typography from './style/Typography'
 import ReactGA from 'react-ga'
 
@@ -56,7 +57,6 @@ export default () => (
           }
         />
       ))}
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.020/css/hack-extended.min.css" />
       <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
       <script
@@ -73,6 +73,7 @@ export default () => (
       />
     </Head>
     <Reset />
+    <Font />
     <Typography />
     <style jsx>{`
       .meta {

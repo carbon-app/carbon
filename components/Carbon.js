@@ -1,7 +1,6 @@
 import { EOL } from 'os'
 import * as hljs from 'highlight.js'
 import React from 'react'
-import domtoimage from 'dom-to-image'
 import Spinner from 'react-spinner'
 import toHash from 'tohash'
 import debounce from 'lodash.debounce'
@@ -26,7 +25,9 @@ const DEFAULT_SETTINGS = {
   dropShadowBlurRadius: '68px',
   theme: 'seti',
   windowTheme: 'none',
-  language: DEFAULT_LANGUAGE
+  language: DEFAULT_LANGUAGE,
+  fontFamily: 'Fira Code',
+  fontSize: '14px'
 }
 
 class Carbon extends React.Component {
@@ -198,8 +199,10 @@ class Carbon extends React.Component {
               min-width: inherit;
               padding: 18px 18px;
               ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
-              font-family: Hack, monospace !important;
-              font-size: 0.8rem;
+              font-family: ${config.fontFamily};
+              font-size: ${config.fontSize};
+              font-variant-ligatures: contextual;
+              font-feature-settings: 'calt' 1;
               user-select: none;
             }
 

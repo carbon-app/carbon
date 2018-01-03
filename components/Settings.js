@@ -2,9 +2,11 @@ import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import SettingsIcon from './svg/Settings'
 import ThemeSelect from './ThemeSelect'
+import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
+import Collapse from './Collapse'
 import { COLORS } from '../lib/constants'
 
 class Settings extends React.Component {
@@ -39,20 +41,16 @@ class Settings extends React.Component {
             selected={this.props.enabled.windowTheme || 'none'}
             onChange={this.props.onChange.bind(null, 'windowTheme')}
           />
-          <Toggle
-            label="Drop shadow"
-            enabled={this.props.enabled.dropShadow}
-            onChange={this.props.onChange.bind(null, 'dropShadow')}
+          <FontSelect
+            selected={this.props.enabled.fontFamily || 'Fira Code'}
+            onChange={this.props.onChange.bind(null, 'fontFamily')}
           />
           <Slider
-            label="Drop shadow (offset-y)"
-            value={this.props.enabled.dropShadowOffsetY || 20}
-            onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
-          />
-          <Slider
-            label="Drop shadow (blur-radius)"
-            value={this.props.enabled.dropShadowBlurRadius || 68}
-            onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
+            label="Font size"
+            value={this.props.enabled.fontSize || 13}
+            minValue={10}
+            maxValue={18}
+            onChange={this.props.onChange.bind(null, 'fontSize')}
           />
           <Toggle
             label="Window controls"
@@ -60,25 +58,42 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'windowControls')}
           />
           <Toggle
-            label="Width adjustment"
-            enabled={this.props.enabled.widthAdjustment}
-            onChange={this.props.onChange.bind(null, 'widthAdjustment')}
-          />
-          <Toggle
             label="Line numbers"
             enabled={this.props.enabled.lineNumbers}
             onChange={this.props.onChange.bind(null, 'lineNumbers')}
           />
-          <Slider
-            label="Padding (vertical)"
-            value={this.props.enabled.paddingVertical || 16}
-            onChange={this.props.onChange.bind(null, 'paddingVertical')}
+          <Toggle
+            label="Auto-adjust width"
+            enabled={this.props.enabled.widthAdjustment}
+            onChange={this.props.onChange.bind(null, 'widthAdjustment')}
           />
-          <Slider
-            label="Padding (horizontal)"
-            value={this.props.enabled.paddingHorizontal || 32}
-            onChange={this.props.onChange.bind(null, 'paddingHorizontal')}
-          />
+          <Collapse label="Advanced">
+            <Slider
+              label="Padding (vertical)"
+              value={this.props.enabled.paddingVertical || 16}
+              onChange={this.props.onChange.bind(null, 'paddingVertical')}
+            />
+            <Slider
+              label="Padding (horizontal)"
+              value={this.props.enabled.paddingHorizontal || 32}
+              onChange={this.props.onChange.bind(null, 'paddingHorizontal')}
+            />
+            <Toggle
+              label="Drop shadow"
+              enabled={this.props.enabled.dropShadow}
+              onChange={this.props.onChange.bind(null, 'dropShadow')}
+            />
+            <Slider
+              label="Drop shadow (offset-y)"
+              value={this.props.enabled.dropShadowOffsetY || 20}
+              onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
+            />
+            <Slider
+              label="Drop shadow (blur-radius)"
+              value={this.props.enabled.dropShadowBlurRadius || 68}
+              onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
+            />
+          </Collapse>
         </div>
         <style jsx>{`
           .settings-container {
