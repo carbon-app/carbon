@@ -26,7 +26,7 @@ const DEFAULT_SETTINGS = {
   theme: 'seti',
   windowTheme: 'none',
   language: DEFAULT_LANGUAGE,
-  fontFamily: 'Fira Code',
+  fontFamily: 'Hack',
   fontSize: '14px'
 }
 
