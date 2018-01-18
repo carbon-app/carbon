@@ -3,7 +3,7 @@ import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
-import ReadFileDropContainer from 'dropperx'
+import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 // Ours
 import Page from '../components/Page'
@@ -68,6 +68,7 @@ class Editor extends React.Component {
         paddingVertical: '48px',
         paddingHorizontal: '32px',
         uploading: false,
+        backgroundImage: null,
         code: props.content,
         _initialState: this.props.initialState
       },
@@ -93,6 +94,7 @@ class Editor extends React.Component {
     updateQueryString(this.state)
     const s = { ...this.state }
     delete s.code
+    delete s.backgroundImage
     saveState(localStorage, s)
   }
 
@@ -138,6 +140,10 @@ class Editor extends React.Component {
       })
   }
 
+  isImage(file) {
+    return file.type.split('/')[0] === 'image'
+  }
+
   render() {
     return (
       <Page enableHeroText>
@@ -177,7 +183,21 @@ class Editor extends React.Component {
             </div>
           </Toolbar>
 
-          <ReadFileDropContainer onDrop={([file]) => this.setState({ code: file.content })}>
+          <ReadFileDropContainer
+            readAs={file => {
+              if (this.isImage(file)) {
+                return DATA_URL
+              }
+              return TEXT
+            }}
+            onDrop={([file]) => {
+              if (this.isImage(file)) {
+                this.setState({ backgroundImage: file.content })
+              } else {
+                this.setState({ code: file.content })
+              }
+            }}
+          >
             {({ isOver, canDrop }) => (
               <Overlay
                 isOver={isOver || canDrop}
