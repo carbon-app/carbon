@@ -147,6 +147,9 @@ class Carbon extends React.Component {
 
             #container .bg {
               background: ${this.props.config.background || config.background};
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover;
               position: absolute;
               top: 0px;
               right: 0px;
@@ -217,6 +220,22 @@ class Carbon extends React.Component {
 
             #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 48px;
+            }
+
+            #container :global(.CodeMirror::after) {
+              filter: blur(12px);
+              opacity: 0;
+              background: ${this.props.config.background || config.background};
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-size: cover;
+              content: '';
+              display: block;
+              position: absolute;
+              width: 150%;
+              height: 150%;
+              top: -25%;
+              left: -25%;
             }
           `}</style>
         </div>
