@@ -12,7 +12,9 @@
     "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
-    "contrib:build": "all-contributors generate"
+    "contrib:build": "all-contributors generate",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -46,6 +48,8 @@
   "devDependencies": {
     "all-contributors-cli": "^4.7.0",
     "cross-env": "^5.1.1",
+    "cypress": "^1.4.1",
+    "hex2rgb": "^2.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
     "prettier": "^1.8.1",
