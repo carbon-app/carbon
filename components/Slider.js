@@ -7,7 +7,7 @@ export default class extends React.Component {
   }
 
   handleChange(e) {
-    this.props.onChange(`${e.target.value}px`)
+    this.props.onChange(`${e.target.value}${this.props.usePercentage ? '%' : 'px'}`)
   }
 
   render() {

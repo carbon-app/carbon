@@ -69,6 +69,9 @@ class Editor extends React.Component {
         paddingHorizontal: '32px',
         uploading: false,
         backgroundImage: null,
+        backgroundImageSize: '100%',
+        backgroundImagePositionX: '0%',
+        backgroundImagePositionY: '0%',
         code: props.content,
         _initialState: this.props.initialState
       },
@@ -164,8 +167,8 @@ class Editor extends React.Component {
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
             <ColorPicker
-              onChange={color => this.setState({ background: color })}
-              bg={this.state.background}
+              onChange={(key, value) => this.setState({ [key]: value })}
+              config={this.state}
             />
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}

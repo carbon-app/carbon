@@ -30,7 +30,7 @@ class ColorPicker extends React.Component {
   }
 
   handlePickColor(color) {
-    this.props.onChange(parseRGBA(color.rgb))
+    this.props.onChange('background', parseRGBA(color.rgb))
   }
 
   render() {
@@ -42,7 +42,7 @@ class ColorPicker extends React.Component {
           </div>
           <div className="bg-color-container" onClick={this.toggle}>
             <div className="bg-color-alpha" />
-            <div className="bg-color" style={{ background: this.props.bg }} />
+            <div className="bg-color" style={{ background: this.props.config.background }} />
           </div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
@@ -59,10 +59,19 @@ class ColorPicker extends React.Component {
           </div>
           <div className="picker-tabs-contents">
             <div style={this.state.selectedTab === 'Color' ? {} : { display: 'none' }}>
-              <SketchPicker color={this.props.bg} onChangeComplete={this.handlePickColor} />
+              <SketchPicker
+                color={this.props.config.background}
+                onChangeComplete={this.handlePickColor}
+              />
             </div>
             <div style={this.state.selectedTab === 'Image' ? {} : { display: 'none' }}>
-              <ImagePicker url={this.props.bg} />
+              <ImagePicker
+                onChange={this.props.onChange}
+                imageDataURL={this.props.config.backgroundImage}
+                size={this.props.config.backgroundImageSize}
+                posX={this.props.config.backgroundImagePositionX}
+                posY={this.props.config.backgroundImagePositionY}
+              />
             </div>
           </div>
         </div>
@@ -144,10 +153,9 @@ class ColorPicker extends React.Component {
 
           .colorpicker-picker {
             position: absolute;
-            width: 220px;
+            width: 222px;
             margin-left: 36px;
             margin-top: 4px;
-            padding: 1px;
             border: 0.5px solid ${COLORS.SECONDARY};
             border-radius: 3px;
             background: #1a1a1a;

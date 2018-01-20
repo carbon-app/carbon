@@ -149,7 +149,9 @@ class Carbon extends React.Component {
             #container .bg {
               ${this.props.config.backgroundImage
                 ? `background: url(${this.props.config.backgroundImage});
-                   background-size: cover;
+                   background-size: ${this.props.config.backgroundImageSize || 'cover'};
+                   background-position-x: ${this.props.config.backgroundImagePositionX || '0'};
+                   background-position-y: ${this.props.config.backgroundImagePositionY || '0'};
                    background-repeat: no-repeat;`
                 : `background: ${this.props.config.background || config.background};
                    background-size: auto;
