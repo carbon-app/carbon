@@ -20,7 +20,7 @@
     "codemirror": "^5.31.0",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
-    "dropperx": "^0.0.3",
+    "dropperx": "^0.1.0",
     "express": "^4.16.2",
     "form-data": "^2.2.0",
     "highlight.js": "^9.12.0",

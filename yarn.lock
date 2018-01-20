@@ -1729,9 +1729,9 @@ dot-prop@^3.0.0:
   dependencies:
     is-obj "^1.0.0"
 
-dropperx@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/dropperx/-/dropperx-0.0.3.tgz#4744bb49a79a7b7e4f0a4ecf13894f84c4e8a413"
+dropperx@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/dropperx/-/dropperx-0.1.0.tgz#73bc94e26391a1ae1f145c1dd79b47963fed44b8"
   dependencies:
     react ">=15"
     react-dnd ">=2"
