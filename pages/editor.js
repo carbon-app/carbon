@@ -111,7 +111,32 @@ class Editor extends React.Component {
       height: node.offsetHeight * 2
     }
 
-    return domtoimage.toPng(node, config)
+    return domtoimage.toPng(node, config).then(uri => {
+      return new Promise(function(resolve, reject) {
+        const canvas = document.createElement('canvas')
+        const context = canvas.getContext('2d')
+        const image = new Image()
+        image.addEventListener(
+          'load',
+          function() {
+            canvas.width = image.width
+            canvas.height = image.height
+            context.drawImage(image, 0, 0, canvas.width, canvas.height)
+
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
+            if (imageData.data[3] >= 255) {
+              imageData.data[3] = 254
+            }
+
+            const newUri = canvas.toDataURL('image/png')
+            canvas.remove()
+            resolve(newUri)
+          },
+          false
+        )
+        image.src = uri
+      })
+    })
   }
 
   updateCode(code) {
