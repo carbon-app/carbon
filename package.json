@@ -52,6 +52,7 @@
     "hex2rgb": "^2.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
+    "now": "^9.2.7",
     "prettier": "^1.8.1",
     "uglifyjs-webpack-plugin": "1.1.2",
     "webpack": "^3.10.0"
