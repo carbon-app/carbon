@@ -164,6 +164,8 @@ class ColorPicker extends React.Component {
           /* react-color overrides */
           .colorpicker-picker :global(.sketch-picker) {
             background: #1a1a1a !important;
+            padding: 8px 8px 0 !important;
+            margin: 0 auto 1px !important;
           }
 
           .colorpicker-picker :global(.sketch-picker > div:nth-child(3) > div > div > span) {

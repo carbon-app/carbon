@@ -1,12 +1,51 @@
 import React from 'react'
+import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 import Slider from './Slider'
 import { COLORS } from '../lib/constants'
+
+function getCroppedImg(imageDataURL, pixelCrop) {
+  const canvas = document.createElement('canvas')
+  canvas.width = pixelCrop.width
+  canvas.height = pixelCrop.height
+  const ctx = canvas.getContext('2d')
+
+  return new Promise((resolve, reject) => {
+    const image = new Image()
+    image.src = imageDataURL
+    image.onload = () => {
+      ctx.drawImage(
+        image,
+        pixelCrop.x,
+        pixelCrop.y,
+        pixelCrop.width,
+        pixelCrop.height,
+        0,
+        0,
+        pixelCrop.width,
+        pixelCrop.height
+      )
+
+      resolve(canvas.toDataURL('image/jpeg'))
+    }
+  })
+}
 
 export default class extends React.Component {
   constructor() {
     super()
+    this.state = {
+      crop: {
+        x: 0,
+        y: 0,
+        width: 100,
+        height: 100
+      }
+    }
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
+    this.onCropChange = this.onCropChange.bind(this)
+    this.onDragEnd = this.onDragEnd.bind(this)
+    this.onImageLoaded = this.onImageLoaded.bind(this)
   }
 
   selectImage(e) {
@@ -19,6 +58,25 @@ export default class extends React.Component {
 
   removeImage() {
     this.props.onChange('backgroundImage', null)
+    this.props.onChange('backgroundImageSelection', null)
+  }
+
+  onCropChange(crop, pixelCrop) {
+    this.setState({
+      crop: { ...crop, aspect: this.state.aspect },
+      pixelCrop
+    })
+  }
+
+  async onDragEnd() {
+    this.props.onChange(
+      'backgroundImageSelection',
+      await getCroppedImg(this.props.imageDataURL, this.state.pixelCrop)
+    )
+  }
+
+  onImageLoaded(image) {
+    this.setState({ aspect: image.width / image.height })
   }
 
   render() {
@@ -44,7 +102,14 @@ export default class extends React.Component {
                 x
               </a>
             </div>
-            <img src={this.props.imageDataURL} />
+            <ReactCrop
+              src={this.props.imageDataURL}
+              crop={this.state.crop}
+              onChange={this.onCropChange}
+              onDragEnd={this.onDragEnd}
+              onImageLoaded={this.onImageLoaded}
+              keepSelection
+            />
           </div>
           <Slider
             usePercentage
