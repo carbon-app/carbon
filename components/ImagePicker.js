@@ -111,43 +111,10 @@ export default class extends React.Component {
               keepSelection
             />
           </div>
-          <Slider
-            usePercentage
-            label="Size"
-            value={this.props.size || 100}
-            minValue={100}
-            maxValue={200}
-            onChange={this.props.onChange.bind(null, 'backgroundImageSize')}
-          />
-          <Slider
-            usePercentage
-            label="X position"
-            value={this.props.posX || 0}
-            minValue={0}
-            maxValue={100}
-            onChange={this.props.onChange.bind(null, 'backgroundImagePositionX')}
-          />
-          <Slider
-            usePercentage
-            label="Y position"
-            value={this.props.posY || 0}
-            minValue={0}
-            maxValue={100}
-            onChange={this.props.onChange.bind(null, 'backgroundImagePositionY')}
-          />
           <style jsx>{`
-            img {
-              width: 100%;
+            :global(.ReactCrop__image) {
               user-select: none;
               user-drag: none;
-            }
-
-            .settings-container > :global(div) {
-              border-bottom: solid 1px ${COLORS.SECONDARY};
-            }
-
-            .settings-container :global(div):last-child {
-              border-bottom: none;
             }
 
             .image-container {

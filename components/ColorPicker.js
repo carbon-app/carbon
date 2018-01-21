@@ -68,9 +68,6 @@ class ColorPicker extends React.Component {
               <ImagePicker
                 onChange={this.props.onChange}
                 imageDataURL={this.props.config.backgroundImage}
-                size={this.props.config.backgroundImageSize}
-                posX={this.props.config.backgroundImagePositionX}
-                posY={this.props.config.backgroundImagePositionY}
               />
             </div>
           </div>
