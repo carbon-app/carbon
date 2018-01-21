@@ -6,7 +6,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 
     curl -X POST \
       -H 'Content-type: application/json' \
-      --data "{\"text\": \":small_red_triangle: New Carbon PR Deployment for <https://github.com/dawnlabs/carbon/pulls/$TRAVIS_PULL_REQUEST|PR #$TRAVIS_PULL_REQUEST>\\n:rocket: $NOW_URL\"}" \
+      --data "{\"text\": \":small_red_triangle: New Carbon PR Deployment for <https://github.com/dawnlabs/carbon/pulls/$TRAVIS_PULL_REQUEST|PR #$TRAVIS_PULL_REQUEST>\n:rocket: $NOW_URL\"}" \
       "$DAWN_SLACK_WEBHOOK"
   fi
 fi
