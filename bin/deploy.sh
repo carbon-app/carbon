@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Don't deploy if commit contains WIP
+set -e
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   if [[ $(git log -1 --pretty=%B --no-merges) != *"WIP"* ]]; then
     NOW_URL=$(now -e NODE_ENV=production --public --no-clipboard --team=dawn --token "$NOW_TOKEN")
