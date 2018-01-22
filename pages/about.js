@@ -35,7 +35,7 @@ export default () => (
         <h4 className="mb0">Customization</h4>
         <p className="mt2 mb3">
           Once you&apos;ve got all of your code into Carbon, you can customize your image by
-          changing the syntax theme, background color, window theme, or padding.
+          changing the syntax theme, background color/image, window theme, or padding.
         </p>
         <p className="mt2 mb3">
           You can even drop an image file onto the editor to set the background to that image. Give
