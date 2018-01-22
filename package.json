@@ -7,17 +7,20 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
-    "deploy": "now --public",
+    "deploy": "now --public -e NODE_ENV=production",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
-    "contrib:build": "all-contributors generate"
+    "contrib:build": "all-contributors generate",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.17.2",
     "codemirror": "^5.31.0",
+    "codemirror-graphql": "^0.6.12",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
     "dropperx": "^0.1.0",
@@ -48,8 +51,11 @@
   "devDependencies": {
     "all-contributors-cli": "^4.7.0",
     "cross-env": "^5.1.1",
+    "cypress": "^1.4.1",
+    "hex2rgb": "^2.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
+    "now": "^9.2.7",
     "prettier": "^1.8.1",
     "uglifyjs-webpack-plugin": "1.1.2",
     "webpack": "^3.10.0"
