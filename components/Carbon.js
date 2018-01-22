@@ -21,6 +21,7 @@ const DEFAULT_SETTINGS = {
   paddingHorizontal: '50px',
   marginVertical: '45px',
   marginHorizontal: '45px',
+  backgroundMode: 'color',
   backgroundColor: 'rgba(171, 184, 195, 1)',
   dropShadowOffsetY: '20px',
   dropShadowBlurRadius: '68px',
@@ -99,7 +100,8 @@ class Carbon extends React.Component {
       lineWrapping: true
     }
     const backgroundImage =
-      this.props.config.backgroundImageSelection || this.props.config.backgroundImage
+      (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
+      this.props.config.backgroundImage
 
     // set content to spinner if loading, else editor
     let content = (
@@ -156,7 +158,7 @@ class Carbon extends React.Component {
             }
 
             #container .bg {
-              ${backgroundImage
+              ${this.props.config.backgroundMode === 'image'
                 ? `background: url(${backgroundImage});
                    background-size: cover;
                    background-repeat: no-repeat;`

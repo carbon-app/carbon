@@ -30,10 +30,12 @@ const getCroppedImg = (imageDataURL, pixelCrop) => {
   })
 }
 
+const INITIAL_STATE = { crop: null, imageAspectRatio: null, pixelCrop: null }
+
 export default class extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = INITIAL_STATE
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
     this.onImageLoaded = this.onImageLoaded.bind(this)
@@ -60,13 +62,15 @@ export default class extends React.Component {
     const file = e.target.files[0]
 
     const reader = new FileReader()
-    reader.onload = e => this.props.onChange({ backgroundImage: e.target.result })
+    reader.onload = e =>
+      this.props.onChange({ backgroundImage: e.target.result, backgroundImageSelection: null })
     reader.readAsDataURL(file)
   }
 
   removeImage() {
-    this.setState({}, () => {
+    this.setState(INITIAL_STATE, () => {
       this.props.onChange({
+        backgroundMode: 'color',
         backgroundImage: null,
         backgroundImageSelection: null
       })
@@ -97,7 +101,6 @@ export default class extends React.Component {
 
   async onDragEnd() {
     if (this.state.pixelCrop) {
-      console.log('drag end', this.props, this.state)
       const croppedImg = await getCroppedImg(this.props.imageDataURL, this.state.pixelCrop)
       this.props.onChange({ backgroundImageSelection: croppedImg })
     }

@@ -56,6 +56,7 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
+        backgroundMode: 'color',
         backgroundColor: 'rgba(171, 184, 195, 1)',
         backgroundImage: null,
         backgroundImageSelection: null,
@@ -196,7 +197,11 @@ class Editor extends React.Component {
             }}
             onDrop={([file]) => {
               if (this.isImage(file)) {
-                this.setState({ backgroundImage: file.content })
+                this.setState({
+                  backgroundImage: file.content,
+                  backgroundImageSelection: null,
+                  backgroundMode: 'image'
+                })
               } else {
                 this.setState({ code: file.content })
               }
