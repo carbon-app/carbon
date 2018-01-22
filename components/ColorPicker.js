@@ -61,7 +61,7 @@ class ColorPicker extends React.Component {
           <div className="picker-tabs-contents">
             <div style={this.state.selectedTab === 'Color' ? {} : { display: 'none' }}>
               <SketchPicker
-                color={this.props.config.background}
+                color={this.props.config.backgroundColor}
                 onChangeComplete={this.handlePickColor}
               />
             </div>
@@ -118,7 +118,7 @@ class ColorPicker extends React.Component {
               ? `background: url(${this.props.config.backgroundImage});
                  background-size: cover;
                  background-repeat: no-repeat;`
-              : `background: ${this.props.config.background || config.background};
+              : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                  background-size: auto;
                  background-repeat: repeat;`};
           }

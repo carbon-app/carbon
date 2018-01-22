@@ -56,7 +56,9 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        background: 'rgba(171, 184, 195, 1)',
+        backgroundColor: 'rgba(171, 184, 195, 1)',
+        backgroundImage: null,
+        backgroundImageSelection: null,
         theme: DEFAULT_THEME.id,
         language: DEFAULT_LANGUAGE,
         dropShadow: true,
@@ -68,8 +70,6 @@ class Editor extends React.Component {
         paddingVertical: '48px',
         paddingHorizontal: '32px',
         uploading: false,
-        backgroundImage: null,
-        backgroundImageSelection: null,
         code: props.content,
         _initialState: this.props.initialState
       },

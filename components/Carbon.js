@@ -21,7 +21,7 @@ const DEFAULT_SETTINGS = {
   paddingHorizontal: '50px',
   marginVertical: '45px',
   marginHorizontal: '45px',
-  background: 'rgba(171, 184, 195, 1)',
+  backgroundColor: 'rgba(171, 184, 195, 1)',
   dropShadowOffsetY: '20px',
   dropShadowBlurRadius: '68px',
   theme: 'seti',
@@ -160,7 +160,7 @@ class Carbon extends React.Component {
                 ? `background: url(${backgroundImage});
                    background-size: cover;
                    background-repeat: no-repeat;`
-                : `background: ${this.props.config.background || config.background};
+                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                    background-size: auto;
                    background-repeat: repeat;`} position: absolute;
               top: 0px;
