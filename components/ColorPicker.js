@@ -30,7 +30,7 @@ class ColorPicker extends React.Component {
   }
 
   handlePickColor(color) {
-    this.props.onChange('background', parseRGBA(color.rgb))
+    this.props.onChange({ background: parseRGBA(color.rgb) })
   }
 
   render() {
@@ -42,14 +42,15 @@ class ColorPicker extends React.Component {
           </div>
           <div className="bg-color-container" onClick={this.toggle}>
             <div className="bg-color-alpha" />
-            <div className="bg-color" style={{ background: this.props.config.background }} />
+            <div className="bg-color" />
           </div>
         </div>
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
           <div className="picker-tabs">
-            {['Color', 'Image'].map(tab => (
+            {['Color', 'Image'].map((tab, i) => (
               <div
+                key={i}
                 className={`picker-tab ${this.state.selectedTab === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}
               >
@@ -68,6 +69,7 @@ class ColorPicker extends React.Component {
               <ImagePicker
                 onChange={this.props.onChange}
                 imageDataURL={this.props.config.backgroundImage}
+                aspectRatio={this.props.config.aspectRatio}
               />
             </div>
           </div>
@@ -112,6 +114,13 @@ class ColorPicker extends React.Component {
             right: 0px;
             bottom: 0px;
             left: 0px;
+            ${this.props.config.backgroundImage
+              ? `background: url(${this.props.config.backgroundImage});
+                 background-size: cover;
+                 background-repeat: no-repeat;`
+              : `background: ${this.props.config.background || config.background};
+                 background-size: auto;
+                 background-repeat: repeat;`};
           }
 
           .bg-color-alpha {

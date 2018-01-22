@@ -2,6 +2,7 @@ import { EOL } from 'os'
 import * as hljs from 'highlight.js'
 import React from 'react'
 import Spinner from 'react-spinner'
+import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
@@ -49,6 +50,12 @@ class Carbon extends React.Component {
     })
 
     this.handleLanguageChange(this.props.children)
+
+    const ro = new ResizeObserver(entries => {
+      const cr = entries[0].contentRect
+      this.props.onAspectRatioChange(cr.width / cr.height)
+    })
+    ro.observe(this.exportContainerNode)
   }
 
   componentWillReceiveProps(newProps) {
@@ -235,7 +242,7 @@ class Carbon extends React.Component {
 
     return (
       <div id="section">
-        <div id="export-container">
+        <div id="export-container" ref={ele => (this.exportContainerNode = ele)}>
           {content}
           <div id="twitter-png-fix" />
         </div>

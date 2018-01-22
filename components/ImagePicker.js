@@ -3,7 +3,7 @@ import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 import Slider from './Slider'
 import { COLORS } from '../lib/constants'
 
-function getCroppedImg(imageDataURL, pixelCrop) {
+const getCroppedImg = (imageDataURL, pixelCrop) => {
   const canvas = document.createElement('canvas')
   canvas.width = pixelCrop.width
   canvas.height = pixelCrop.height
@@ -33,50 +33,74 @@ function getCroppedImg(imageDataURL, pixelCrop) {
 export default class extends React.Component {
   constructor() {
     super()
-    this.state = {
-      crop: {
-        x: 0,
-        y: 0,
-        width: 100,
-        height: 100
-      }
-    }
+    this.state = {}
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
+    this.onImageLoaded = this.onImageLoaded.bind(this)
     this.onCropChange = this.onCropChange.bind(this)
     this.onDragEnd = this.onDragEnd.bind(this)
-    this.onImageLoaded = this.onImageLoaded.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.crop && this.props.aspectRatio != nextProps.aspectRatio) {
+      // update crop for editor container aspect-ratio change
+      this.setState({
+        crop: makeAspectCrop(
+          {
+            ...this.state.crop,
+            aspect: nextProps.aspectRatio
+          },
+          this.state.imageAspectRatio
+        )
+      })
+    }
   }
 
   selectImage(e) {
     const file = e.target.files[0]
 
     const reader = new FileReader()
-    reader.onload = e => this.props.onChange('backgroundImage', e.target.result)
+    reader.onload = e => this.props.onChange({ backgroundImage: e.target.result })
     reader.readAsDataURL(file)
   }
 
   removeImage() {
-    this.props.onChange('backgroundImage', null)
-    this.props.onChange('backgroundImageSelection', null)
+    this.setState({}, () => {
+      this.props.onChange({
+        backgroundImage: null,
+        backgroundImageSelection: null
+      })
+    })
+  }
+
+  onImageLoaded(image) {
+    const imageAspectRatio = image.width / image.height
+    const initialCrop = {
+      x: 0,
+      y: 0,
+      width: 100,
+      aspect: this.props.aspectRatio
+    }
+
+    this.setState({
+      imageAspectRatio,
+      crop: makeAspectCrop(initialCrop, imageAspectRatio)
+    })
   }
 
   onCropChange(crop, pixelCrop) {
     this.setState({
-      crop: { ...crop, aspect: this.state.aspect },
+      crop: { ...crop, aspect: this.props.aspectRatio },
       pixelCrop
     })
   }
 
   async onDragEnd() {
-    this.props.onChange(
-      'backgroundImageSelection',
-      await getCroppedImg(this.props.imageDataURL, this.state.pixelCrop)
-    )
-  }
-
-  onImageLoaded(image) {
-    this.setState({ aspect: image.width / image.height })
+    if (this.state.pixelCrop) {
+      console.log('drag end', this.props, this.state)
+      const croppedImg = await getCroppedImg(this.props.imageDataURL, this.state.pixelCrop)
+      this.props.onChange({ backgroundImageSelection: croppedImg })
+    }
   }
 
   render() {
@@ -99,19 +123,26 @@ export default class extends React.Component {
             <div className="label">
               <span>Background image</span>
               <a href="#" onClick={this.removeImage}>
-                x
+                &times;
               </a>
             </div>
             <ReactCrop
               src={this.props.imageDataURL}
+              onImageLoaded={this.onImageLoaded}
               crop={this.state.crop}
               onChange={this.onCropChange}
               onDragEnd={this.onDragEnd}
-              onImageLoaded={this.onImageLoaded}
+              minHeight={10}
+              minWidth={10}
               keepSelection
             />
           </div>
           <style jsx>{`
+            .label {
+              user-select: none;
+              margin-bottom: 4px;
+            }
+
             :global(.ReactCrop__image) {
               user-select: none;
               user-drag: none;
