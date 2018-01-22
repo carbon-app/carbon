@@ -9,7 +9,7 @@ import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Page from '../components/Page'
 import Button from '../components/Button'
 import Dropdown from '../components/Dropdown'
-import ColorPicker from '../components/ColorPicker'
+import BackgroundSelect from '../components/BackgroundSelect'
 import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
@@ -171,7 +171,7 @@ class Editor extends React.Component {
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
-            <ColorPicker onChange={changes => this.setState(changes)} config={this.state} />
+            <BackgroundSelect onChange={changes => this.setState(changes)} config={this.state} />
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}

@@ -6,7 +6,7 @@ import ImagePicker from './ImagePicker'
 import { COLORS } from '../lib/constants'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
-class ColorPicker extends React.Component {
+class BackgroundSelect extends React.Component {
   constructor() {
     super()
     this.state = { isVisible: false, selectedTab: 'color' }
@@ -35,9 +35,9 @@ class ColorPicker extends React.Component {
 
   render() {
     return (
-      <div className="colorpicker-container">
-        <div className="colorpicker-display">
-          <div className="colorpicker-label">
+      <div className="bg-select-container">
+        <div className="bg-select-display">
+          <div className="bg-select-label">
             <span>BG</span>
           </div>
           <div className="bg-color-container" onClick={this.toggle}>
@@ -45,7 +45,7 @@ class ColorPicker extends React.Component {
             <div className="bg-color" />
           </div>
         </div>
-        <div className="colorpicker-picker" hidden={!this.state.isVisible}>
+        <div className="bg-select-pickers" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
           <div className="picker-tabs">
             {['color', 'image'].map((tab, i) => (
@@ -75,11 +75,11 @@ class ColorPicker extends React.Component {
           </div>
         </div>
         <style jsx>{`
-          .colorpicker-container {
+          .bg-select-container {
             height: 100%;
           }
 
-          .colorpicker-display {
+          .bg-select-display {
             display: flex;
             height: 100%;
             width: 72px;
@@ -87,7 +87,7 @@ class ColorPicker extends React.Component {
             border-radius: 3px;
           }
 
-          .colorpicker-label {
+          .bg-select-label {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -157,7 +157,7 @@ class ColorPicker extends React.Component {
             background: none;
           }
 
-          .colorpicker-picker {
+          .bg-select-pickers {
             position: absolute;
             width: 222px;
             margin-left: 36px;
@@ -168,25 +168,25 @@ class ColorPicker extends React.Component {
           }
 
           /* react-color overrides */
-          .colorpicker-picker :global(.sketch-picker) {
+          .bg-select-pickers :global(.sketch-picker) {
             background: #1a1a1a !important;
             padding: 8px 8px 0 !important;
             margin: 0 auto 1px !important;
           }
 
-          .colorpicker-picker :global(.sketch-picker > div:nth-child(3) > div > div > span) {
+          .bg-select-pickers :global(.sketch-picker > div:nth-child(3) > div > div > span) {
             color: ${COLORS.SECONDARY} !important;
           }
 
           /* TODO remove once base64 url issue fixed in react-color */
           /* prettier-ignore */
-          .colorpicker-picker :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1) > div),
-          .colorpicker-picker :global(.sketch-picker > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)) {
+          .bg-select-pickers :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div:nth-child(1) > div),
+          .bg-select-pickers :global(.sketch-picker > div:nth-child(2) > div:nth-child(2) > div:nth-child(1)) {
             background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
               left center !important;
           }
 
-          .colorpicker-picker :global(.sketch-picker > div:nth-child(3) > div > div > input) {
+          .bg-select-pickers :global(.sketch-picker > div:nth-child(3) > div > div > input) {
             width: 100% !important;
             box-shadow: none;
             outline: none;
@@ -196,7 +196,7 @@ class ColorPicker extends React.Component {
           }
 
           /* prettier-ignore */
-          .colorpicker-picker :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
+          .bg-select-pickers :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
             background: #fff;
           }
         `}</style>
@@ -205,4 +205,4 @@ class ColorPicker extends React.Component {
   }
 }
 
-export default enhanceWithClickOutside(ColorPicker)
+export default enhanceWithClickOutside(BackgroundSelect)
