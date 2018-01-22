@@ -69,9 +69,7 @@ class Editor extends React.Component {
         paddingHorizontal: '32px',
         uploading: false,
         backgroundImage: null,
-        backgroundImageSize: '100%',
-        backgroundImagePositionX: '0%',
-        backgroundImagePositionY: '0%',
+        backgroundImageSelection: null,
         code: props.content,
         _initialState: this.props.initialState
       },
@@ -81,6 +79,7 @@ class Editor extends React.Component {
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
+    this.updateAspectRatio = this.updateAspectRatio.bind(this)
   }
 
   componentDidMount() {
@@ -98,6 +97,7 @@ class Editor extends React.Component {
     const s = { ...this.state }
     delete s.code
     delete s.backgroundImage
+    delete s.backgroundImageSelection
     saveState(localStorage, s)
   }
 
@@ -119,6 +119,10 @@ class Editor extends React.Component {
 
   updateCode(code) {
     this.setState({ code })
+  }
+
+  updateAspectRatio(aspectRatio) {
+    this.setState({ aspectRatio })
   }
 
   save() {
@@ -166,10 +170,7 @@ class Editor extends React.Component {
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
-            <ColorPicker
-              onChange={(key, value) => this.setState({ [key]: value })}
-              config={this.state}
-            />
+            <ColorPicker onChange={changes => this.setState(changes)} config={this.state} />
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
@@ -206,7 +207,11 @@ class Editor extends React.Component {
                 isOver={isOver || canDrop}
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
-                <Carbon config={this.state} updateCode={code => this.updateCode(code)}>
+                <Carbon
+                  config={this.state}
+                  updateCode={code => this.updateCode(code)}
+                  onAspectRatioChange={this.updateAspectRatio}
+                >
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
               </Overlay>
