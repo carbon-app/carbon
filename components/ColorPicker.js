@@ -4,12 +4,12 @@ import { SketchPicker } from 'react-color'
 import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
 import { COLORS } from '../lib/constants'
-import { parseRGBA } from '../lib/util'
+import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
 class ColorPicker extends React.Component {
   constructor() {
     super()
-    this.state = { isVisible: false, selectedTab: 'Color' }
+    this.state = { isVisible: false, selectedTab: 'color' }
     this.toggle = this.toggle.bind(this)
     this.selectTab = this.selectTab.bind(this)
     this.handlePickColor = this.handlePickColor.bind(this)
@@ -20,8 +20,8 @@ class ColorPicker extends React.Component {
   }
 
   selectTab(name) {
-    if (this.state.selectedTab !== name) {
-      this.setState({ selectedTab: name })
+    if (this.props.config.backgroundMode !== name) {
+      this.props.onChange({ backgroundMode: name })
     }
   }
 
@@ -30,7 +30,7 @@ class ColorPicker extends React.Component {
   }
 
   handlePickColor(color) {
-    this.props.onChange({ background: parseRGBA(color.rgb) })
+    this.props.onChange({ backgroundColor: parseRGBA(color.rgb) })
   }
 
   render() {
@@ -48,24 +48,24 @@ class ColorPicker extends React.Component {
         <div className="colorpicker-picker" hidden={!this.state.isVisible}>
           <WindowPointer fromLeft="15px" />
           <div className="picker-tabs">
-            {['Color', 'Image'].map((tab, i) => (
+            {['color', 'image'].map((tab, i) => (
               <div
                 key={i}
-                className={`picker-tab ${this.state.selectedTab === tab ? 'active' : ''}`}
+                className={`picker-tab ${this.props.config.backgroundMode === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}
               >
-                {tab}
+                {capitalizeFirstLetter(tab)}
               </div>
             ))}
           </div>
           <div className="picker-tabs-contents">
-            <div style={this.state.selectedTab === 'Color' ? {} : { display: 'none' }}>
+            <div style={this.props.config.backgroundMode === 'color' ? {} : { display: 'none' }}>
               <SketchPicker
                 color={this.props.config.backgroundColor}
                 onChangeComplete={this.handlePickColor}
               />
             </div>
-            <div style={this.state.selectedTab === 'Image' ? {} : { display: 'none' }}>
+            <div style={this.props.config.backgroundMode === 'image' ? {} : { display: 'none' }}>
               <ImagePicker
                 onChange={this.props.onChange}
                 imageDataURL={this.props.config.backgroundImage}
@@ -114,7 +114,7 @@ class ColorPicker extends React.Component {
             right: 0px;
             bottom: 0px;
             left: 0px;
-            ${this.props.config.backgroundImage
+            ${this.props.config.backgroundMode === 'image'
               ? `background: url(${this.props.config.backgroundImage});
                  background-size: cover;
                  background-repeat: no-repeat;`
