@@ -10,10 +10,10 @@ export default () => (
       <div className="mb4">
         <h2>What does this do?</h2>
         <p>
-          You know all of those code screenshots you see on Twitter? Although the code's usually
-          impressive, we saw room for improvement in the aesthetic department. Carbon is the easiest
-          way to create beautiful images of your source code. So what are you waiting for? Go
-          impress all of your followers with your newfound design prowess. <span>🎨</span>
+          You know all of those code screenshots you see on Twitter? Although the code&apos;s
+          usually impressive, we saw room for improvement in the aesthetic department. Carbon is the
+          easiest way to create beautiful images of your source code. So what are you waiting for?
+          Go impress all of your followers with your newfound design prowess. <span>🎨</span>
         </p>
       </div>
       <div className="mb4">
@@ -34,12 +34,17 @@ export default () => (
         </ul>
         <h4 className="mb0">Customization</h4>
         <p className="mt2 mb3">
-          Once you've got all of your code into Carbon, you can customize your image by changing the
-          syntax theme, background color, window theme, or padding.
+          Once you&apos;ve got all of your code into Carbon, you can customize your image by
+          changing the syntax theme, background color/image, window theme, or padding.
+        </p>
+        <p className="mt2 mb3">
+          You can even drop an image file onto the editor to set the background to that image. Give
+          it a try!
         </p>
         <h4 className="mb0">Export/Sharing</h4>
         <p className="mt2">
-          After you've customized your image you can Tweet a link to the image, or save it directly.
+          After you&apos;ve customized your image you can Tweet a link to the image, or save it
+          directly.
         </p>
       </div>
       <div>
