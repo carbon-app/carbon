@@ -115,6 +115,11 @@ export default class extends React.Component {
           .upload-image {
             padding: 8px;
           }
+
+          span {
+            display: block;
+            margin-bottom: 16px;
+          }
         `}</style>
       </div>
     )
