@@ -146,6 +146,10 @@ export default class extends React.Component {
             />
           </div>
           <style jsx>{`
+            .settings-container img {
+              width: 100%;
+            }
+
             .label {
               user-select: none;
               margin-bottom: 4px;
@@ -174,8 +178,8 @@ export default class extends React.Component {
       <div>
         <div className="image-picker-container">{content}</div>
         <style jsx>{`
-          .settings-container img {
-            width: 100%;
+          .image-picker-container {
+            font-size: 12px;
           }
         `}</style>
       </div>
