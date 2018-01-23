@@ -9,7 +9,7 @@ import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Page from '../components/Page'
 import Button from '../components/Button'
 import Dropdown from '../components/Dropdown'
-import ColorPicker from '../components/ColorPicker'
+import BackgroundSelect from '../components/BackgroundSelect'
 import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
@@ -56,7 +56,10 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        background: 'rgba(171, 184, 195, 1)',
+        backgroundMode: 'color',
+        backgroundColor: 'rgba(171, 184, 195, 1)',
+        backgroundImage: null,
+        backgroundImageSelection: null,
         theme: DEFAULT_THEME.id,
         language: DEFAULT_LANGUAGE,
         dropShadow: true,
@@ -68,7 +71,6 @@ class Editor extends React.Component {
         paddingVertical: '48px',
         paddingHorizontal: '32px',
         uploading: false,
-        backgroundImage: null,
         code: props.content,
         _initialState: this.props.initialState
       },
@@ -78,6 +80,7 @@ class Editor extends React.Component {
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
+    this.updateAspectRatio = this.updateAspectRatio.bind(this)
   }
 
   componentDidMount() {
@@ -95,6 +98,7 @@ class Editor extends React.Component {
     const s = { ...this.state }
     delete s.code
     delete s.backgroundImage
+    delete s.backgroundImageSelection
     saveState(localStorage, s)
   }
 
@@ -116,6 +120,10 @@ class Editor extends React.Component {
 
   updateCode(code) {
     this.setState({ code })
+  }
+
+  updateAspectRatio(aspectRatio) {
+    this.setState({ aspectRatio })
   }
 
   save() {
@@ -163,10 +171,7 @@ class Editor extends React.Component {
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
-            <ColorPicker
-              onChange={color => this.setState({ background: color })}
-              bg={this.state.background}
-            />
+            <BackgroundSelect onChange={changes => this.setState(changes)} config={this.state} />
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
@@ -192,7 +197,11 @@ class Editor extends React.Component {
             }}
             onDrop={([file]) => {
               if (this.isImage(file)) {
-                this.setState({ backgroundImage: file.content })
+                this.setState({
+                  backgroundImage: file.content,
+                  backgroundImageSelection: null,
+                  backgroundMode: 'image'
+                })
               } else {
                 this.setState({ code: file.content })
               }
@@ -203,7 +212,11 @@ class Editor extends React.Component {
                 isOver={isOver || canDrop}
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
-                <Carbon config={this.state} updateCode={code => this.updateCode(code)}>
+                <Carbon
+                  config={this.state}
+                  updateCode={code => this.updateCode(code)}
+                  onAspectRatioChange={this.updateAspectRatio}
+                >
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
               </Overlay>

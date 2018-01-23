@@ -15,8 +15,7 @@
 
 /* global cy */
 
-export const editorVisible = () =>
-  cy.get('#editor').should('be.visible')
+export const editorVisible = () => cy.get('#editor').should('be.visible')
 
 // Import commands.js using ES2015 syntax:
 // import './commands'

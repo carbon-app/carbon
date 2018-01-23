@@ -40,9 +40,11 @@
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^16.2.0",
+    "react-image-crop": "^3.0.9",
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
+    "resize-observer-polyfill": "^1.5.0",
     "tohash": "^1.0.2",
     "twitter": "^1.7.1"
   },

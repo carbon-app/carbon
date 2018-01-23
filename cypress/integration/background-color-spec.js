@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* global cy */
 import hex2rgb from 'hex2rgb'
-import {editorVisible} from '../support'
+import { editorVisible } from '../support'
 
 // usually we can visit the page before each test
 // but these tests use the url, which means wasted page load
@@ -12,22 +12,18 @@ describe('background color', () => {
   const picker = '.colorpicker-picker'
 
   const openPicker = () => {
-    cy.get(bgColor)
-      .click()
-    return cy.get(picker)
-      .should('be.visible')
+    cy.get(bgColor).click()
+    return cy.get(picker).should('be.visible')
   }
 
   // clicking anywhere else closes it
-  const closePicker = () =>
-    cy.get('body').click()
+  const closePicker = () => cy.get('body').click()
 
   it('opens BG color pick', () => {
     cy.visit('/')
     openPicker()
     closePicker()
-    cy.get(picker)
-      .should('not.be.visible')
+    cy.get(picker).should('not.be.visible')
   })
 
   it('changes background color to dark red', () => {
@@ -35,22 +31,23 @@ describe('background color', () => {
     const darkRed = '#D0021B'
     const darkRedTile = `[title="${darkRed}"]`
     openPicker()
-    cy.get(picker).find(darkRedTile).click()
+    cy
+      .get(picker)
+      .find(darkRedTile)
+      .click()
     closePicker()
 
     // changing background color triggers url change
     cy.url().should('contain', '?bg=')
 
     // confirm color change
-    cy.get('#container-bg .bg')
-      .should('have.css', 'background-color', hex2rgb(darkRed).rgbString)
+    cy.get('#container-bg .bg').should('have.css', 'background-color', hex2rgb(darkRed).rgbString)
   })
 
   it('specifies color in url', () => {
     cy.visit('/?bg=rgb(255,0,0)')
     editorVisible()
-    cy.get('#container-bg .bg')
-      .should('have.css', 'background-color', 'rgb(255, 0, 0)')
+    cy.get('#container-bg .bg').should('have.css', 'background-color', 'rgb(255, 0, 0)')
   })
 
   it('enters neon pink', () => {
@@ -58,12 +55,13 @@ describe('background color', () => {
     editorVisible()
 
     const pink = 'ff00ff'
-    openPicker().find(`input[value="FF0000"]`)
-      .clear().type(`${pink}{enter}`)
+    openPicker()
+      .find(`input[value="FF0000"]`)
+      .clear()
+      .type(`${pink}{enter}`)
     closePicker()
 
     cy.url().should('contain', '?bg=rgba(255,0,255,1')
-    cy.get('#container-bg .bg')
-      .should('have.css', 'background-color', 'rgb(255, 0, 255)')
+    cy.get('#container-bg .bg').should('have.css', 'background-color', 'rgb(255, 0, 255)')
   })
 })
