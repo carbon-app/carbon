@@ -3,4 +3,3 @@ node_modules
 .next
 cypress/videos
 cypress/screenshots
-package-lock.json
