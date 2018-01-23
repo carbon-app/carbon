@@ -2,6 +2,7 @@ import { EOL } from 'os'
 import * as hljs from 'highlight.js'
 import React from 'react'
 import Spinner from 'react-spinner'
+import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
@@ -20,7 +21,8 @@ const DEFAULT_SETTINGS = {
   paddingHorizontal: '50px',
   marginVertical: '45px',
   marginHorizontal: '45px',
-  background: 'rgba(171, 184, 195, 1)',
+  backgroundMode: 'color',
+  backgroundColor: 'rgba(171, 184, 195, 1)',
   dropShadowOffsetY: '20px',
   dropShadowBlurRadius: '68px',
   theme: 'seti',
@@ -49,6 +51,12 @@ class Carbon extends React.Component {
     })
 
     this.handleLanguageChange(this.props.children)
+
+    const ro = new ResizeObserver(entries => {
+      const cr = entries[0].contentRect
+      this.props.onAspectRatioChange(cr.width / cr.height)
+    })
+    ro.observe(this.exportContainerNode)
   }
 
   componentWillReceiveProps(newProps) {
@@ -91,6 +99,9 @@ class Carbon extends React.Component {
       viewportMargin: Infinity,
       lineWrapping: true
     }
+    const backgroundImage =
+      (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
+      this.props.config.backgroundImage
 
     // set content to spinner if loading, else editor
     let content = (
@@ -147,11 +158,11 @@ class Carbon extends React.Component {
             }
 
             #container .bg {
-              ${this.props.config.backgroundImage
-                ? `background: url(${this.props.config.backgroundImage});
+              ${this.props.config.backgroundMode === 'image'
+                ? `background: url(${backgroundImage});
                    background-size: cover;
                    background-repeat: no-repeat;`
-                : `background: ${this.props.config.background || config.background};
+                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                    background-size: auto;
                    background-repeat: repeat;`} position: absolute;
               top: 0px;
@@ -233,7 +244,7 @@ class Carbon extends React.Component {
 
     return (
       <div id="section">
-        <div id="export-container">
+        <div id="export-container" ref={ele => (this.exportContainerNode = ele)}>
           {content}
           <div id="twitter-png-fix" />
         </div>

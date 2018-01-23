@@ -50,7 +50,7 @@ export default class extends React.Component {
   render() {
     return (
       <div className="window-theme">
-        <span className="label">Window Theme</span>
+        <span className="label">Window theme</span>
         <div className="themes">{this.renderThemes()}</div>
         <style jsx>{`
           .window-theme {

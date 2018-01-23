@@ -47,6 +47,7 @@ export default () => (
         />
       ))}
       <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
+      <link rel="stylesheet" type="text/css" href="/static/react-crop.css" />
     </Head>
     <Reset />
     <Font />

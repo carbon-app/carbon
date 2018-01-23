@@ -1,14 +1,13 @@
 /* eslint-env mocha */
 /* global cy */
-import {editorVisible} from '../support'
+import { editorVisible } from '../support'
 
 // usually we can visit the page before each test
 // but these tests use the url, which means wasted page load
 // so instead visit the desired url in each test
 
 describe('localStorage', () => {
-  const themeDropdown = () =>
-    cy.get('#toolbar .dropdown-container').first()
+  const themeDropdown = () => cy.get('#toolbar .dropdown-container').first()
 
   const pickTheme = (name = 'Blackboard') =>
     themeDropdown()
@@ -19,7 +18,9 @@ describe('localStorage', () => {
   it('is empty initially', () => {
     cy.visit('/')
     editorVisible()
-    cy.window().its('localStorage')
+    cy
+      .window()
+      .its('localStorage')
       .should('have.length', 0)
   })
 
@@ -29,9 +30,12 @@ describe('localStorage', () => {
     pickTheme('Blackboard')
     themeDropdown().contains('Blackboard')
 
-    cy.window().its('localStorage.CARBON_STATE')
+    cy
+      .window()
+      .its('localStorage.CARBON_STATE')
       .then(JSON.parse)
-      .its('theme').should('equal', 'blackboard')
+      .its('theme')
+      .should('equal', 'blackboard')
 
     // visiting page again restores theme from localStorage
     cy.visit('/')
