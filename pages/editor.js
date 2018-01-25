@@ -3,13 +3,13 @@ import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
-import ReadFileDropContainer from 'dropperx'
+import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 // Ours
 import Page from '../components/Page'
 import Button from '../components/Button'
 import Dropdown from '../components/Dropdown'
-import ColorPicker from '../components/ColorPicker'
+import BackgroundSelect from '../components/BackgroundSelect'
 import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
@@ -58,7 +58,10 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        background: 'rgba(171, 184, 195, 1)',
+        backgroundMode: 'color',
+        backgroundColor: 'rgba(171, 184, 195, 1)',
+        backgroundImage: null,
+        backgroundImageSelection: null,
         theme: DEFAULT_THEME.id,
         language: DEFAULT_LANGUAGE,
         dropShadow: true,
@@ -79,6 +82,7 @@ class Editor extends React.Component {
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
+    this.updateAspectRatio = this.updateAspectRatio.bind(this)
   }
 
   componentDidMount() {
@@ -96,6 +100,8 @@ class Editor extends React.Component {
     updateQueryString(this.state)
     const s = { ...this.state }
     delete s.code
+    delete s.backgroundImage
+    delete s.backgroundImageSelection
     saveState(localStorage, s)
   }
 
@@ -117,6 +123,10 @@ class Editor extends React.Component {
 
   updateCode(code) {
     this.setState({ code })
+  }
+
+  updateAspectRatio(aspectRatio) {
+    this.setState({ aspectRatio })
   }
 
   save() {
@@ -148,6 +158,10 @@ class Editor extends React.Component {
       })
   }
 
+  isImage(file) {
+    return file.type.split('/')[0] === 'image'
+  }
+
   render() {
     return (
       <Page enableHeroText>
@@ -167,10 +181,7 @@ class Editor extends React.Component {
               list={LANGUAGES}
               onChange={language => this.setState({ language: language.mime || language.mode })}
             />
-            <ColorPicker
-              onChange={color => this.setState({ background: color })}
-              bg={this.state.background}
-            />
+            <BackgroundSelect onChange={changes => this.setState(changes)} config={this.state} />
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
@@ -187,13 +198,35 @@ class Editor extends React.Component {
             </div>
           </Toolbar>
 
-          <ReadFileDropContainer onDrop={([file]) => this.setState({ code: file.content })}>
+          <ReadFileDropContainer
+            readAs={file => {
+              if (this.isImage(file)) {
+                return DATA_URL
+              }
+              return TEXT
+            }}
+            onDrop={([file]) => {
+              if (this.isImage(file)) {
+                this.setState({
+                  backgroundImage: file.content,
+                  backgroundImageSelection: null,
+                  backgroundMode: 'image'
+                })
+              } else {
+                this.setState({ code: file.content })
+              }
+            }}
+          >
             {({ isOver, canDrop }) => (
               <Overlay
                 isOver={isOver || canDrop}
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
-                <Carbon config={this.state} updateCode={code => this.updateCode(code)}>
+                <Carbon
+                  config={this.state}
+                  updateCode={code => this.updateCode(code)}
+                  onAspectRatioChange={this.updateAspectRatio}
+                >
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
               </Overlay>

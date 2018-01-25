@@ -7,7 +7,7 @@ export default class extends React.Component {
   }
 
   handleChange(e) {
-    this.props.onChange(`${e.target.value}px`)
+    this.props.onChange(`${e.target.value}${this.props.usePercentage ? '%' : 'px'}`)
   }
 
   render() {
@@ -38,6 +38,7 @@ export default class extends React.Component {
             position: relative;
             height: 32px;
             overflow: hidden;
+            user-select: none;
           }
 
           .slider:last-of-type {

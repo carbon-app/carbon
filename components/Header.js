@@ -9,7 +9,7 @@ const Header = ({ enableHeroText }) => (
       </a>
       {enableHeroText ? (
         <h2 className="mt3">
-          Create and share beautiful images of your source code.<br /> Start typing, or drop a file
+          Create and share beautiful images of your source code.<br /> Start typing or drop a file
           into the text area to get started.
         </h2>
       ) : null}
