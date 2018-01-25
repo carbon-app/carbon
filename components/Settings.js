@@ -42,7 +42,7 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'windowTheme')}
           />
           <FontSelect
-            selected={this.props.enabled.fontFamily || 'Fira Code'}
+            selected={this.props.enabled.fontFamily || 'Hack'}
             onChange={this.props.onChange.bind(null, 'fontFamily')}
           />
           <Slider
