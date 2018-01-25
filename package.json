@@ -53,6 +53,7 @@
     "all-contributors-cli": "^4.7.0",
     "cross-env": "^5.1.1",
     "cypress": "^1.4.1",
+    "graphql": "^0.12.3",
     "hex2rgb": "^2.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
