@@ -42,7 +42,7 @@ export default () => (
           rel="stylesheet"
           href={
             theme.link ||
-            `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/${theme.id}.min.css`
+            `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/theme/${theme.id}.min.css`
           }
         />
       ))}
