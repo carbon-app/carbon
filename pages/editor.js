@@ -109,6 +109,7 @@ class Editor extends React.Component {
       return api.image(window.location.href)
     }
 
+
     const node = document.getElementById('export-container')
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
