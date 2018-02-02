@@ -81,9 +81,10 @@ class BackgroundSelect extends React.Component {
 
           .bg-select-display {
             display: flex;
+            overflow: hidden;
             height: 100%;
             width: 72px;
-            border: 0.5px solid ${COLORS.SECONDARY};
+            border: 1px solid ${COLORS.SECONDARY};
             border-radius: 3px;
           }
 
@@ -95,20 +96,17 @@ class BackgroundSelect extends React.Component {
             cursor: default;
             height: 100%;
             padding: 0 8px;
-            border-right: 0.5px solid ${COLORS.SECONDARY};
+            border-right: 1px solid ${COLORS.SECONDARY};
           }
 
           .bg-color-container {
             position: relative;
-            width: 34px;
-            margin-bottom: 1px;
+            width: 100%;
             background: #fff;
-            border-radius: 0px 2px 2px 0px;
             cursor: pointer;
           }
 
           .bg-color {
-            border-radius: 0px 2px 2px 0px;
             position: absolute;
             top: 0px;
             right: 0px;
@@ -124,7 +122,6 @@ class BackgroundSelect extends React.Component {
           }
 
           .bg-color-alpha {
-            border-radius: 0px 2px 2px 0px;
             position: absolute;
             top: 0px;
             right: 0px;
@@ -162,7 +159,7 @@ class BackgroundSelect extends React.Component {
             width: 222px;
             margin-left: 36px;
             margin-top: 4px;
-            border: 0.5px solid ${COLORS.SECONDARY};
+            border: 1px solid ${COLORS.SECONDARY};
             border-radius: 3px;
             background: #1a1a1a;
           }

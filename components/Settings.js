@@ -114,7 +114,7 @@ class Settings extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 0.5px solid ${COLORS.SECONDARY};
+            border: 1px solid ${COLORS.SECONDARY};
             border-radius: 3px;
             user-select: none;
             position: relative;
@@ -135,7 +135,7 @@ class Settings extends React.Component {
             position: absolute;
             top: 44px;
             left: 0;
-            border: 0.5px solid ${COLORS.SECONDARY};
+            border: 1px solid ${COLORS.SECONDARY};
             width: 184px;
             border-radius: 3px;
             background: ${COLORS.BLACK};
@@ -145,7 +145,8 @@ class Settings extends React.Component {
             border-bottom: solid 1px ${COLORS.SECONDARY};
           }
 
-          .settings-settings > :global(div):first-child {
+          .settings-settings > :global(div):first-child,
+          .settings-settings > :global(.collapse) {
             border-bottom: none;
           }
         `}</style>
