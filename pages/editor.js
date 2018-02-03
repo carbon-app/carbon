@@ -32,7 +32,7 @@ import { getState, saveState } from '../lib/util'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return (qI >= 0 ? str.substr(0, qI) : str).replace(/<script(?:.|\s)*>(?:.|\s)*<\/script>/g, '')
+  return (qI >= 0 ? str.substr(0, qI) : str).replace(/<script(?:.|\s)*>(?:.|\s)*<\/script>/gi, '')
 }
 
 class Editor extends React.Component {
