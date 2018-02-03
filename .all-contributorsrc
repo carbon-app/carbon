@@ -194,6 +194,15 @@
         "test",
         "tool"
       ]
+    },
+    {
+      "login": "warborn",
+      "name": "Iván Munguía",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/10677789?v=4",
+      "profile": "https://ivan-munguia.netlify.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
