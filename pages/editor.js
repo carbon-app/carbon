@@ -14,6 +14,7 @@ import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
+import ArrowDown from '../components/svg/Arrowdown'
 import api from '../lib/api'
 import {
   THEMES,
@@ -75,6 +76,7 @@ class Editor extends React.Component {
         paddingHorizontal: '32px',
         uploading: false,
         code: props.content,
+        saveAs: 'png',
         _initialState: this.props.initialState
       },
       this.props.initialState
@@ -190,15 +192,15 @@ class Editor extends React.Component {
                 style={{ marginRight: '8px' }}
               />
               <Button
-                onClick={e => this.save()}
-                title="Save Image (PNG)"
+                onClick={e => this.save({ format: this.state.saveAs })}
+                title="Save Image"
                 color="#c198fb"
                 style={{ marginRight: '8px' }}
               />
-              <Button
-                onClick={e => this.save({ format: 'svg' })}
-                title="Save Vector (SVG)"
-                color="#9fca56"
+              <Dropdown
+                selected={{ id: this.state.saveAs, name: `(${this.state.saveAs.toUpperCase()})` }}
+                list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
+                onChange={saveAs => this.setState({ saveAs: saveAs.id })}
               />
             </div>
           </Toolbar>
