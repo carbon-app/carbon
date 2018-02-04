@@ -34,7 +34,13 @@ import ReactGA from 'react-ga'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return qI >= 0 ? str.substr(0, qI) : str
+  return (qI >= 0 ? str.substr(0, qI) : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;')
 }
 
 class Editor extends React.Component {

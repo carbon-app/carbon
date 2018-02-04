@@ -8,7 +8,7 @@ export default props => (
       ...props.style,
       background: COLORS.BLACK,
       color: props.color,
-      border: `0.5px solid ${props.color}`
+      border: `1px solid ${props.color}`
     }}
   >
     <span>{props.title}</span>

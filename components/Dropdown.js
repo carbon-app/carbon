@@ -41,7 +41,7 @@ class Dropdown extends React.Component {
             background: ${COLORS.BLACK};
             user-select: none;
             padding: 8px 16px;
-            border-bottom: 0.5px solid ${COLORS.SECONDARY};
+            border-bottom: 1px solid ${COLORS.SECONDARY};
           }
 
           .dropdown-list-item:hover {
@@ -120,7 +120,7 @@ class Dropdown extends React.Component {
           .dropdown-list {
             display: none;
             margin-top: -1px;
-            border: 0.5px solid ${COLORS.SECONDARY};
+            border: 1px solid ${COLORS.SECONDARY};
             border-radius: 0px 0px 3px 3px;
             max-height: 350px;
             overflow-y: scroll;

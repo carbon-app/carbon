@@ -33,11 +33,11 @@ export default class extends React.Component {
             cursor: pointer;
             user-select: none;
             padding: 8px 16px;
-            border-bottom: 0.5px solid ${COLORS.SECONDARY};
+            border-bottom: 1px solid ${COLORS.SECONDARY};
             background: rgba(255, 255, 255, 0.165);
           }
           .list-item:first-of-type {
-            border-top: 0.5px solid ${COLORS.SECONDARY};
+            border-top: 1px solid ${COLORS.SECONDARY};
           }
           .list-item:last-of-type {
             border-bottom: none;
