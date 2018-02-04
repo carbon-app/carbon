@@ -3,8 +3,8 @@ import enhanceWithClickOutside from 'react-click-outside'
 import { SketchPicker } from 'react-color'
 import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
-import { COLORS } from '../lib/constants'
-import validateColor from '../lib/colors'
+import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
+import { validateColor } from '../lib/colors'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
 class BackgroundSelect extends React.Component {
@@ -48,8 +48,7 @@ class BackgroundSelect extends React.Component {
         : background
 
     if (!validateColor(background)) {
-      // TODO move this to constants
-      background = 'rgba(171, 184, 195, 1)'
+      background = DEFAULT_BG_COLOR
     }
 
     return (

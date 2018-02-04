@@ -25,7 +25,8 @@ import {
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   COLORS,
-  DEFAULT_CODE
+  DEFAULT_CODE,
+  DEFAULT_BG_COLOR
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
@@ -60,7 +61,7 @@ class Editor extends React.Component {
     this.state = Object.assign(
       {
         backgroundMode: 'color',
-        backgroundColor: 'rgba(171, 184, 195, 1)',
+        backgroundColor: DEFAULT_BG_COLOR,
         backgroundImage: null,
         backgroundImageSelection: null,
         theme: DEFAULT_THEME.id,
