@@ -3,6 +3,7 @@ import enhanceWithClickOutside from 'react-click-outside'
 import { SketchPicker } from 'react-color'
 import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
+import colornames from 'colornames'
 import { COLORS } from '../lib/constants'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
@@ -45,6 +46,11 @@ class BackgroundSelect extends React.Component {
             .replace(/'/g, '&#x27;')
             .replace(/\//g, '&#x2F;')
         : background
+
+    if (!/#\d{3,6}|rgba{0,1}\(.*?\)/g.test(background) && !colornames.get(background)) {
+      // TODO move this to constants
+      background = 'rgba(171, 184, 195, 1)'
+    }
 
     return (
       <div className="bg-select-container">
