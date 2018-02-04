@@ -146,6 +146,7 @@ class Editor extends React.Component {
   resetDefaultSettings() {
     console.log('DEFAULT_SETTINGS', DEFAULT_SETTINGS)
     this.setState(DEFAULT_SETTINGS)
+    localStorage.clear()
   }
 
   upload() {
