@@ -105,7 +105,7 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage(format) {
+  getCarbonImage({ format } = { format: 'png' }) {
     const node = document.getElementById('export-container')
 
     const config = {
@@ -118,10 +118,9 @@ class Editor extends React.Component {
       height: node.offsetHeight * 2
     }
 
-    if (format === 'svg') {
-      return domtoimage.toSvg(node, config)
-    }
-    return domtoimage.toPng(node, config)
+    return format.toLowerCase() === 'svg'
+      ? domtoimage.toSvg(node, config)
+      : domtoimage.toPng(node, config)
   }
 
   updateCode(code) {
@@ -132,8 +131,8 @@ class Editor extends React.Component {
     this.setState({ aspectRatio })
   }
 
-  save(format) {
-    this.getCarbonImage(format).then(dataUrl => {
+  save({ format } = { format: 'png' }) {
+    this.getCarbonImage({ format }).then(dataUrl => {
       const link = document.createElement('a')
       link.download = 'carbon.' + format
       link.href = dataUrl
@@ -145,7 +144,7 @@ class Editor extends React.Component {
 
   upload() {
     this.setState({ uploading: true })
-    this.getCarbonImage('png')
+    this.getCarbonImage({ format: 'png' })
       .then(api.tweet)
       .then(() => this.setState({ uploading: false }))
       .catch(err => {
@@ -191,12 +190,16 @@ class Editor extends React.Component {
                 style={{ marginRight: '8px' }}
               />
               <Button
-                onClick={e => this.save('png')}
+                onClick={e => this.save()}
                 title="Save Image (PNG)"
                 color="#c198fb"
                 style={{ marginRight: '8px' }}
               />
-              <Button onClick={e => this.save('svg')} title="Save Vector (SVG)" color="#9fca56" />
+              <Button
+                onClick={e => this.save({ format: 'svg' })}
+                title="Save Vector (SVG)"
+                color="#9fca56"
+              />
             </div>
           </Toolbar>
 
