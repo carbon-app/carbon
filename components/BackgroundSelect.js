@@ -34,6 +34,18 @@ class BackgroundSelect extends React.Component {
   }
 
   render() {
+    let background = this.props.config.backgroundColor || config.backgroundColor
+    background =
+      typeof background === 'string'
+        ? background
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;')
+            .replace(/\//g, '&#x2F;')
+        : background
+
     return (
       <div className="bg-select-container">
         <div className="bg-select-display">
@@ -116,15 +128,7 @@ class BackgroundSelect extends React.Component {
               ? `background: url(${this.props.config.backgroundImage});
                  background-size: cover;
                  background-repeat: no-repeat;`
-              : `background: ${(this.props.config.backgroundColor || config.backgroundColor)
-                  .replace(/&/g, '&amp;')
-                  .replace(/</g, '&lt;')
-                  .replace(/>/g, '&gt;')
-                  .replace(/"/g, '&quot;')
-                  .replace(/'/g, '&#x27;')
-                  .replace(/\//g, '&#x2F;')};
-                 background-size: auto;
-                 background-repeat: repeat;`};
+              : `background: ${background};`};
           }
 
           .bg-color-alpha {
