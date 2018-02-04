@@ -26,7 +26,8 @@ import {
   DEFAULT_THEME,
   COLORS,
   DEFAULT_CODE,
-  DEFAULT_BG_COLOR
+  DEFAULT_BG_COLOR,
+  DEFAULT_SETTINGS
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
@@ -85,6 +86,7 @@ class Editor extends React.Component {
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
+    this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
   }
 
   componentDidMount() {
@@ -141,6 +143,11 @@ class Editor extends React.Component {
     })
   }
 
+  resetDefaultSettings() {
+    console.log('DEFAULT_SETTINGS', DEFAULT_SETTINGS)
+    this.setState(DEFAULT_SETTINGS)
+  }
+
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage()
@@ -189,6 +196,7 @@ class Editor extends React.Component {
                 style={{ marginRight: '8px' }}
               />
               <Button onClick={this.save} title="Save Image" color="#c198fb" />
+              <Button onClick={this.resetDefaultSettings} title="Reset Settings" color="#c198fb" />
             </div>
           </Toolbar>
 
