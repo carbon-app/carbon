@@ -4,7 +4,7 @@ import Logo from './svg/Logo'
 const Header = ({ enableHeroText }) => (
   <div className="header mb4">
     <div className="header-content">
-      <a href="/">
+      <a id="link-home" href="/" aria-label="Home">
         <Logo />
       </a>
       {enableHeroText ? (
