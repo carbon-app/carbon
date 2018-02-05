@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { COLORS } from '../lib/constants'
 
 const Footer = props => (
-  <div className="mt3">
-    <div className="mt3">
+  <footer role="contentinfo" className="mt3">
+    <nav role="navigation" className="mt3">
       <Link href="/about">
         <a className="link">about</a>
       </Link>
@@ -14,7 +14,7 @@ const Footer = props => (
       <a className="link" href="https://github.com/dawnlabs/carbon">
         source
       </a>
-    </div>
+    </nav>
     <div className="mt3 mb2">
       a project by{' '}
       <a className="dawn-link" href="https://dawnlabs.io">
@@ -23,7 +23,7 @@ const Footer = props => (
       ¬
     </div>
     <style jsx>{`
-      div > div {
+      footer > div {
         text-align: center;
         font-size: 14px;
         color: ${COLORS.GRAY};
@@ -46,7 +46,7 @@ const Footer = props => (
         color: #fff;
       }
     `}</style>
-  </div>
+  </footer>
 )
 
 export default Footer
