@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from './svg/Logo'
 
 const Header = ({ enableHeroText }) => (
-  <div className="header mb4">
+  <header role="banner" className="header mb4">
     <div className="header-content">
       <a id="link-home" href="/" aria-label="Home">
         <Logo />
@@ -33,7 +33,7 @@ const Header = ({ enableHeroText }) => (
         text-align: center;
       }
     `}</style>
-  </div>
+  </header>
 )
 
 export default Header
