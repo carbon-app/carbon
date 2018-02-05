@@ -187,6 +187,7 @@ class Editor extends React.Component {
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
+              resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
               <Button
@@ -197,7 +198,6 @@ class Editor extends React.Component {
                 style={{ marginRight: '8px' }}
               />
               <Button onClick={this.save} title="Save Image" color="#c198fb" />
-              <Button onClick={this.resetDefaultSettings} title="Reset Settings" color="#c198fb" />
             </div>
           </Toolbar>
 

@@ -93,6 +93,11 @@ class Settings extends React.Component {
               value={this.props.enabled.dropShadowBlurRadius || 68}
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
             />
+            <Toggle
+              label="Reset Settings"
+              enabled={false}
+              onChange={this.props.resetDefaultSettings}
+            />
           </Collapse>
         </div>
         <style jsx>{`
