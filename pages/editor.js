@@ -61,20 +61,7 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        backgroundMode: 'color',
-        backgroundColor: DEFAULT_BG_COLOR,
-        backgroundImage: null,
-        backgroundImageSelection: null,
-        theme: DEFAULT_THEME.id,
-        language: DEFAULT_LANGUAGE,
-        dropShadow: true,
-        dropShadowOffsetY: '20px',
-        dropShadowBlurRadius: '68px',
-        windowControls: true,
-        widthAdjustment: true,
-        lineNumbers: false,
-        paddingVertical: '48px',
-        paddingHorizontal: '32px',
+        ...DEFAULT_SETTINGS,
         uploading: false,
         code: props.content,
         _initialState: this.props.initialState
