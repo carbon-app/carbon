@@ -13,24 +13,9 @@ import {
   DEFAULT_LANGUAGE,
   LANGUAGES,
   LANGUAGE_MODE_HASH,
-  LANGUAGE_NAME_HASH
+  LANGUAGE_NAME_HASH,
+  DEFAULT_SETTINGS
 } from '../lib/constants'
-
-const DEFAULT_SETTINGS = {
-  paddingVertical: '50px',
-  paddingHorizontal: '50px',
-  marginVertical: '45px',
-  marginHorizontal: '45px',
-  backgroundMode: 'color',
-  backgroundColor: 'rgba(171, 184, 195, 1)',
-  dropShadowOffsetY: '20px',
-  dropShadowBlurRadius: '68px',
-  theme: 'seti',
-  windowTheme: 'none',
-  language: DEFAULT_LANGUAGE,
-  fontFamily: 'Hack',
-  fontSize: '14px'
-}
 
 class Carbon extends React.Component {
   constructor(props) {
