@@ -71,6 +71,7 @@ class Settings extends React.Component {
             <Slider
               label="Padding (vertical)"
               value={this.props.enabled.paddingVertical || 16}
+              maxValue={200}
               onChange={this.props.onChange.bind(null, 'paddingVertical')}
             />
             <Slider
