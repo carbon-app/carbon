@@ -1222,7 +1222,7 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
 
-classnames@^2.2.3:
+classnames@^2.2.3, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -3967,7 +3967,7 @@ prop-types-exact@1.1.1:
     has "^1.0.1"
     object.assign "^4.0.4"
 
-prop-types@15.6.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@15.6.0, prop-types@15.x, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -4147,6 +4147,13 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+"react-draggable@^2.2.6 || ^3.0.3":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.0.5.tgz#c031e0ed4313531f9409d6cd84c8ebcec0ddfe2d"
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+
 react-hot-loader@4.0.0-beta.18:
   version "4.0.0-beta.18"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.0.0-beta.18.tgz#5a3d1b5bd813633380b88c0c660019dbf638975d"
@@ -4159,6 +4166,13 @@ react-hot-loader@4.0.0-beta.18:
 react-image-crop@^3.0.9:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-3.0.9.tgz#5f1601a50c6fda31b3ad927a56380c81bfa466db"
+
+react-resizable@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-1.7.5.tgz#83eb75bb3684da6989bbbf4f826e1470f0af902e"
+  dependencies:
+    prop-types "15.x"
+    react-draggable "^2.2.6 || ^3.0.3"
 
 react-spinkit@^3.0.0:
   version "3.0.0"

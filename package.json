@@ -41,6 +41,7 @@
     "react-dnd-html5-backend": "^2.4.1",
     "react-dom": "^16.2.0",
     "react-image-crop": "^3.0.9",
+    "react-resizable": "^1.7.5",
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
