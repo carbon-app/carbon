@@ -9,10 +9,10 @@ export const Sharp = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <defs>
-      <rect id="a" width="81" height="81" rx="3" />
+      <rect id="a1" width="81" height="81" rx="3" />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="b" fill="white">
+      <mask id="b1" fill="white">
         <use xlinkHref="#a" />
       </mask>
       <use fill="#616161" xlinkHref="#a" />
@@ -58,10 +58,10 @@ export const BW = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <defs>
-      <rect id="a" width="81" height="81" rx="3" />
+      <rect id="a2" width="81" height="81" rx="3" />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="b" fill="white">
+      <mask id="b2" fill="white">
         <use xlinkHref="#a" />
       </mask>
       <use fill="#616161" xlinkHref="#a" />
@@ -90,10 +90,10 @@ export const None = () => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <defs>
-      <rect id="a" width="81" height="81" rx="3" />
+      <rect id="a3" width="81" height="81" rx="3" />
     </defs>
     <g fill="none" fillRule="evenodd">
-      <mask id="b" fill="white">
+      <mask id="b3" fill="white">
         <use xlinkHref="#a" />
       </mask>
       <use fill="#616161" xlinkHref="#a" />

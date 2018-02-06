@@ -25,14 +25,19 @@ import {
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   COLORS,
-  DEFAULT_CODE
+  DEFAULT_CODE,
+  DEFAULT_BG_COLOR,
+  DEFAULT_SETTINGS
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
 const removeQueryString = str => {
   const qI = str.indexOf('?')
-  return (qI >= 0 ? str.substr(0, qI) : str).replace(/<script(?:.|\s)*>(?:.|\s)*<\/script>/g, '')
+  return (qI >= 0 ? str.substr(0, qI) : str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\//g, '&#x2F;')
 }
 
 class Editor extends React.Component {
@@ -56,20 +61,7 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        backgroundMode: 'color',
-        backgroundColor: 'rgba(171, 184, 195, 1)',
-        backgroundImage: null,
-        backgroundImageSelection: null,
-        theme: DEFAULT_THEME.id,
-        language: DEFAULT_LANGUAGE,
-        dropShadow: true,
-        dropShadowOffsetY: '20px',
-        dropShadowBlurRadius: '68px',
-        windowControls: true,
-        widthAdjustment: true,
-        lineNumbers: false,
-        paddingVertical: '48px',
-        paddingHorizontal: '32px',
+        ...DEFAULT_SETTINGS,
         uploading: false,
         code: props.content,
         _initialState: this.props.initialState
@@ -81,6 +73,7 @@ class Editor extends React.Component {
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
+    this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
   }
 
   componentDidMount() {
@@ -137,6 +130,11 @@ class Editor extends React.Component {
     })
   }
 
+  resetDefaultSettings() {
+    this.setState(DEFAULT_SETTINGS)
+    localStorage.clear()
+  }
+
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage()
@@ -175,6 +173,7 @@ class Editor extends React.Component {
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
+              resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
               <Button

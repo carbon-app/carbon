@@ -3,7 +3,8 @@ import enhanceWithClickOutside from 'react-click-outside'
 import { SketchPicker } from 'react-color'
 import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
-import { COLORS } from '../lib/constants'
+import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
+import { validateColor } from '../lib/colors'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
 class BackgroundSelect extends React.Component {
@@ -34,6 +35,22 @@ class BackgroundSelect extends React.Component {
   }
 
   render() {
+    let background = this.props.config.backgroundColor || config.backgroundColor
+    background =
+      typeof background === 'string'
+        ? background
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;')
+            .replace(/\//g, '&#x2F;')
+        : background
+
+    if (!validateColor(background)) {
+      background = DEFAULT_BG_COLOR
+    }
+
     return (
       <div className="bg-select-container">
         <div className="bg-select-display">
@@ -116,9 +133,7 @@ class BackgroundSelect extends React.Component {
               ? `background: url(${this.props.config.backgroundImage});
                  background-size: cover;
                  background-repeat: no-repeat;`
-              : `background: ${this.props.config.backgroundColor || config.backgroundColor};
-                 background-size: auto;
-                 background-repeat: repeat;`};
+              : `background: ${background};`};
           }
 
           .bg-color-alpha {
