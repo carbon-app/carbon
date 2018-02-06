@@ -23,9 +23,12 @@ const Footer = props => (
       ¬
     </div>
     <style jsx>{`
+      footer {
+        font-size: 14px;
+      }
+
       footer > div {
         text-align: center;
-        font-size: 14px;
         color: ${COLORS.GRAY};
       }
 
