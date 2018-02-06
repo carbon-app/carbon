@@ -32,7 +32,7 @@
     "morgan": "^1.8.2",
     "morphmorph": "^0.0.2",
     "ms": "^2.0.0",
-    "next": "^4.2.3",
+    "next": "^5.0.0",
     "react": "^16.2.0",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^3.0.7",

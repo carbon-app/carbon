@@ -26,7 +26,8 @@ import {
   DEFAULT_THEME,
   COLORS,
   DEFAULT_CODE,
-  DEFAULT_BG_COLOR
+  DEFAULT_BG_COLOR,
+  DEFAULT_SETTINGS
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
@@ -60,20 +61,7 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        backgroundMode: 'color',
-        backgroundColor: DEFAULT_BG_COLOR,
-        backgroundImage: null,
-        backgroundImageSelection: null,
-        theme: DEFAULT_THEME.id,
-        language: DEFAULT_LANGUAGE,
-        dropShadow: true,
-        dropShadowOffsetY: '20px',
-        dropShadowBlurRadius: '68px',
-        windowControls: true,
-        widthAdjustment: true,
-        lineNumbers: false,
-        paddingVertical: '48px',
-        paddingHorizontal: '32px',
+        ...DEFAULT_SETTINGS,
         uploading: false,
         code: props.content,
         _initialState: this.props.initialState
@@ -85,6 +73,7 @@ class Editor extends React.Component {
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
+    this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
   }
 
   componentDidMount() {
@@ -141,6 +130,11 @@ class Editor extends React.Component {
     })
   }
 
+  resetDefaultSettings() {
+    this.setState(DEFAULT_SETTINGS)
+    localStorage.clear()
+  }
+
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage()
@@ -179,6 +173,7 @@ class Editor extends React.Component {
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
+              resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
               <Button
