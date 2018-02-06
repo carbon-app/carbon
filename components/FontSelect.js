@@ -48,7 +48,7 @@ export default class extends React.Component {
   }
 
   render() {
-    const selectedFont = FONTS.filter(font => font.id === this.props.selected)[0]
+    const selectedFont = FONTS.filter(font => font.id === this.props.selected)[0] || {}
     return (
       <div className="font-select-container">
         <div
