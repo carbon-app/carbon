@@ -71,7 +71,7 @@ class Dropdown extends React.Component {
         onClick={this.toggle}
       >
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
-          <span>{this.props.selected.name}</span>
+          <span>{this.props.selected ? this.props.selected.name : ''}</span>
           <div className="arrow-down">
             <ArrowDown />
           </div>

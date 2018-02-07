@@ -71,6 +71,7 @@ class Settings extends React.Component {
             <Slider
               label="Padding (vertical)"
               value={this.props.enabled.paddingVertical || 16}
+              maxValue={200}
               onChange={this.props.onChange.bind(null, 'paddingVertical')}
             />
             <Slider
@@ -92,6 +93,11 @@ class Settings extends React.Component {
               label="Drop shadow (blur-radius)"
               value={this.props.enabled.dropShadowBlurRadius || 68}
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
+            />
+            <Toggle
+              label="Reset settings"
+              enabled={false}
+              onChange={this.props.resetDefaultSettings}
             />
           </Collapse>
         </div>
