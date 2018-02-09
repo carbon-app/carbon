@@ -44,6 +44,7 @@ Check out these projects our awesome community has created:
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 
 ## Contribute
 
