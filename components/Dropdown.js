@@ -92,6 +92,7 @@ const SelectedItem = ({ children, isOpen, ...rest }) => {
           border: 1px solid ${COLORS.SECONDARY};
           border-radius: 3px;
           padding: 8px 16px;
+          outline: none;
         }
         .dropdown-display-text {
           flex-grow: 1;
