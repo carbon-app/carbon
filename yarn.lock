@@ -1898,6 +1898,10 @@ dotenv@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
 
+downshift@^1.28.0:
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-1.28.0.tgz#4d2d153ee6a45fcdba0a7121a7858aff42dd0bf3"
+
 dropperx@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/dropperx/-/dropperx-0.1.0.tgz#73bc94e26391a1ae1f145c1dd79b47963fed44b8"
