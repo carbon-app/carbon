@@ -101,11 +101,12 @@ class Editor extends React.Component {
     const config = {
       style: {
         transform: 'scale(2)',
-        'transform-origin': 'center'
+        'transform-origin': 'center',
+        'background': (this.state.squaredImage) ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
       width: node.offsetWidth * 2,
-      height: node.offsetHeight * 2
+      height: (this.state.squaredImage) ? node.offsetWidth * 2 : node.offsetHeight * 2
     }
 
     return domtoimage.toPng(node, config)
