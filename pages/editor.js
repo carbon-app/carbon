@@ -212,7 +212,7 @@ class Editor extends React.Component {
                   backgroundMode: 'image'
                 })
               } else {
-                this.setState({ code: file.content })
+                this.setState({ code: file.content, language: 'auto' })
               }
             }}
           >

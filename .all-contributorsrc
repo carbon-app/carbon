@@ -212,6 +212,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "NARKOZ",
+      "name": "Nihad Abbasov",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/253398?v=4",
+      "profile": "https://github.com/NARKOZ",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "TorzuoliH",
+      "name": "Hugo Torzuoli",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7328625?v=4",
+      "profile": "https://torzuolih.github.io",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "bruno02221",
+      "name": "Bruno C. Couto",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1906977?v=4",
+      "profile": "https://github.com/bruno02221",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
