@@ -1,134 +1,156 @@
 import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
+import Downshift from 'downshift'
 import ArrowDown from './svg/Arrowdown'
-import Checkmark from './svg/Checkmark'
+import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
-class Dropdown extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isVisible: false
-    }
-    this.select = this.select.bind(this)
-    this.toggle = this.toggle.bind(this)
-  }
+const Dropdown = ({ list, selected, onChange }) => {
+  return (
+    <Downshift
+      render={renderDropdown(list)}
+      selectedItem={selected}
+      defaultHighlightedIndex={list.findIndex(it => it === selected)}
+      itemToString={item => item.name}
+      onChange={onChange}
+      stateReducer={reduceState(list)}
+    />
+  )
+}
 
-  select(item) {
-    if (this.props.selected !== item) {
-      this.props.onChange(item)
-    }
-  }
-
-  toggle() {
-    this.setState({ isVisible: !this.state.isVisible })
-  }
-
-  handleClickOutside() {
-    this.setState({ isVisible: false })
-  }
-
-  renderListItems() {
-    return this.props.list.map((item, i) => (
-      <div className="dropdown-list-item" key={i} onClick={this.select.bind(null, item)}>
-        <span>{item.name}</span>
-        {this.props.selected === item ? <Checkmark /> : null}
-        <style jsx>{`
-          .dropdown-list-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: ${COLORS.BLACK};
-            user-select: none;
-            padding: 8px 16px;
-            border-bottom: 1px solid ${COLORS.SECONDARY};
-          }
-
-          .dropdown-list-item:hover {
-            background: ${COLORS.HOVER};
-          }
-
-          .dropdown-list-item:last-of-type {
-            border-bottom: none;
-            border-radius: 0px 0px 2px 2px;
-          }
-        `}</style>
-      </div>
-    ))
-  }
-
-  render() {
-    // find longest list value in number of characters
-    const MIN_WIDTH = this.props.list.reduce(
-      (max, { name }) => (name && name.length > max ? name.length : max),
-      0
-    )
-
-    return (
-      <div
-        className="dropdown-container"
-        style={{ minWidth: MIN_WIDTH * 14 }}
-        onClick={this.toggle}
-      >
-        <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
-          <span>{this.props.selected ? this.props.selected.name : ''}</span>
-          <div className="arrow-down">
-            <ArrowDown />
-          </div>
-        </div>
-        <div className="dropdown-list">{this.renderListItems()}</div>
-        <style jsx>{`
-          .arrow-down {
-            position: absolute;
-            right: 16px;
-          }
-
-          .is-visible > .arrow-down {
-            transform: rotate(180deg);
-          }
-
-          .is-visible {
-            border-radius: 3px 3px 0px 0px !important;
-          }
-
-          .dropdown-container {
-            height: 100%;
-            cursor: pointer;
-          }
-
-          .dropdown-display {
-            height: 100%;
-            border: 1px solid ${COLORS.SECONDARY};
-            border-radius: 3px;
-            user-select: none;
-            padding: 8px 16px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-          }
-
-          .dropdown-display:hover {
-            background: ${COLORS.HOVER};
-          }
-
-          .is-visible + .dropdown-list {
-            display: block;
-          }
-
-          .dropdown-list {
-            display: none;
-            margin-top: -1px;
-            border: 1px solid ${COLORS.SECONDARY};
-            border-radius: 0px 0px 3px 3px;
-            max-height: 350px;
-            overflow-y: scroll;
-          }
-        `}</style>
-      </div>
-    )
+const reduceState = list => (state, changes) => {
+  switch (changes.type) {
+    case Downshift.stateChangeTypes.keyDownArrowUp:
+    case Downshift.stateChangeTypes.keyDownArrowDown:
+      return { ...changes, selectedItem: list[changes.highlightedIndex] }
+    default:
+      return changes
   }
 }
 
-export default enhanceWithClickOutside(Dropdown)
+const renderDropdown = list => ({
+  isOpen,
+  highlightedIndex,
+  setHighlightedIndex,
+  selectHighlightedItem,
+  selectedItem,
+  getRootProps,
+  getButtonProps,
+  getInputProps,
+  getItemProps
+}) => {
+  return (
+    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth(list)}>
+      <SelectedItem {...getButtonProps()} {...getInputProps()} isOpen={isOpen}>
+        {selectedItem.name}
+      </SelectedItem>
+      {isOpen ? (
+        <ListItems>
+          {list.map((item, index) => (
+            <ListItem
+              key={index}
+              {...getItemProps({
+                item,
+                isSelected: selectedItem === item,
+                isHighlighted: highlightedIndex === index
+              })}
+            >
+              {item.name}
+            </ListItem>
+          ))}
+        </ListItems>
+      ) : null}
+    </DropdownContainer>
+  )
+}
+
+const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
+  return (
+    <div {...rest} ref={innerRef} className="dropdown-container">
+      {children}
+      <style jsx>{`
+        .dropdown-container {
+          min-width: ${minWidth}px;
+          cursor: pointer;
+        }
+      `}</style>
+    </div>
+  )
+}
+
+const SelectedItem = ({ children, isOpen, ...rest }) => {
+  return (
+    <span {...rest} tabIndex="0" className="dropdown-display">
+      <span className="dropdown-display-text">{children}</span>
+      <div className={`dropdown-arrow ${isOpen ? 'is-reverse' : ''}`}>
+        <ArrowDown />
+      </div>
+      <style jsx>{`
+        .dropdown-display {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          border: 1px solid ${COLORS.SECONDARY};
+          border-radius: 3px;
+          padding: 8px 16px;
+          outline: none;
+        }
+        .dropdown-display-text {
+          flex-grow: 1;
+        }
+        .dropdown-arrow.is-reverse {
+          transform: rotate(180deg);
+        }
+      `}</style>
+    </span>
+  )
+}
+
+const ListItems = ({ children }) => {
+  return (
+    <ul className="dropdown-list">
+      {children}
+      <style jsx>{`
+        .dropdown-list {
+          margin-top: -1px;
+          border: 1px solid ${COLORS.SECONDARY};
+          border-radius: 0 0 3px 3px;
+          max-height: 350px;
+          overflow-y: scroll;
+        }
+      `}</style>
+    </ul>
+  )
+}
+
+const ListItem = ({ children, isHighlighted, isSelected, ...rest }) => {
+  return (
+    <li {...rest} className="dropdown-list-item">
+      <span className="dropdown-list-item-text">{children}</span>
+      {isSelected ? <CheckMark /> : null}
+      <style jsx>{`
+        .dropdown-list-item {
+          display: flex;
+          align-items: center;
+          background: ${isHighlighted ? COLORS.HOVER : COLORS.BLACK};
+          padding: 8px 16px;
+          border-bottom: 1px solid ${COLORS.SECONDARY};
+        }
+        .dropdown-list-item:hover {
+          background: ${COLORS.HOVER};
+        }
+        .dropdown-list-item-text {
+          flex-grow: 1;
+        }
+      `}</style>
+    </li>
+  )
+}
+
+function minWidth(list) {
+  return list.reduce((max, { name }) => {
+    const wordSize = name.length * 12
+    return wordSize > max ? wordSize : max
+  }, 0)
+}
+
+export default Dropdown
