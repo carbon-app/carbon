@@ -63,11 +63,6 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'lineNumbers')}
           />
           <Toggle
-            label="Squared image"
-            enabled={this.props.enabled.squaredImage}
-            onChange={this.props.onChange.bind(null, 'squaredImage')}
-          />
-          <Toggle
             label="Auto-adjust width"
             enabled={this.props.enabled.widthAdjustment}
             onChange={this.props.onChange.bind(null, 'widthAdjustment')}
@@ -98,6 +93,11 @@ class Settings extends React.Component {
               label="Drop shadow (blur-radius)"
               value={this.props.enabled.dropShadowBlurRadius || 68}
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
+            />
+            <Toggle
+              label="Squared image"
+              enabled={this.props.enabled.squaredImage}
+              onChange={this.props.onChange.bind(null, 'squaredImage')}
             />
             <Toggle
               label="Reset settings"
