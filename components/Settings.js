@@ -95,6 +95,11 @@ class Settings extends React.Component {
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
             />
             <Toggle
+              label="Squared image"
+              enabled={this.props.enabled.squaredImage}
+              onChange={this.props.onChange.bind(null, 'squaredImage')}
+            />
+            <Toggle
               label="Reset settings"
               enabled={false}
               onChange={this.props.resetDefaultSettings}
