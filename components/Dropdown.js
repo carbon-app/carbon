@@ -94,6 +94,9 @@ const SelectedItem = ({ children, isOpen, ...rest }) => {
           padding: 8px 16px;
           outline: none;
         }
+        .dropdown-display:hover {
+          background: ${COLORS.HOVER};
+        }
         .dropdown-display-text {
           flex-grow: 1;
         }
