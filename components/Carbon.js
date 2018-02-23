@@ -27,6 +27,7 @@ class Carbon extends React.Component {
     }
 
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
+    this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
   }
 
@@ -51,6 +52,10 @@ class Carbon extends React.Component {
   codeUpdated(newCode) {
     this.handleLanguageChange(newCode)
     this.props.updateCode(newCode)
+  }
+
+  handleTitleBarChange(newTitle) {
+    this.props.updateTitleBar(newTitle)
   }
 
   handleLanguageChange = debounce(
@@ -104,7 +109,7 @@ class Carbon extends React.Component {
     if (this.state.loading === false) {
       content = (
         <div id="container">
-          {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
+          {config.windowControls ? <WindowControls theme={config.windowTheme} handleTitleBarChange={this.handleTitleBarChange} /> : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}

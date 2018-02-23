@@ -1,11 +1,11 @@
 import React from 'react'
 import { Controls, ControlsBW } from './svg/Controls'
 
-export default ({ theme }) => (
+export default ({ theme, handleTitleBarChange }) => (
   <div className="window-controls">
     {theme === 'bw' ? <ControlsBW /> : <Controls />}
     <div className="window-title-container">
-      <input type="text" spellcheck="false" />
+      <input type="text" spellCheck="false" onChange={e => handleTitleBarChange(e.target.value)} />
     </div>
     <style jsx>
       {`
