@@ -3,6 +3,7 @@ import enhanceWithClickOutside from 'react-click-outside'
 import SettingsIcon from './svg/Settings'
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
+import ResolutionSelect from './ResolutionSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
@@ -98,6 +99,10 @@ class Settings extends React.Component {
               label="Squared image"
               enabled={this.props.enabled.squaredImage}
               onChange={this.props.onChange.bind(null, 'squaredImage')}
+            />
+            <ResolutionSelect
+              selected={this.props.enabled.resolution || '2x'}
+              onChange={this.props.onChange.bind(null, 'resolution')}
             />
             <Toggle
               label="Reset settings"
