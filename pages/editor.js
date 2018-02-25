@@ -72,6 +72,7 @@ class Editor extends React.Component {
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
+    this.updateTitleBar = this.updateTitleBar.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
   }
@@ -118,6 +119,10 @@ class Editor extends React.Component {
 
   updateAspectRatio(aspectRatio) {
     this.setState({ aspectRatio })
+  }
+
+  updateTitleBar(titleBar) {
+    this.setState({ titleBar })
   }
 
   save() {
@@ -216,6 +221,7 @@ class Editor extends React.Component {
                   config={this.state}
                   updateCode={code => this.updateCode(code)}
                   onAspectRatioChange={this.updateAspectRatio}
+                  updateTitleBar={this.updateTitleBar}
                 >
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
