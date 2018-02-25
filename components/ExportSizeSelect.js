@@ -1,7 +1,7 @@
 import React from 'react'
 import { COLORS } from '../lib/constants'
 import Checkmark from './svg/Checkmark'
-import { RESOLUTIONS } from '../lib/constants'
+import { EXPORT_SIZES } from '../lib/constants'
 
 export default class extends React.Component {
   constructor(props) {
@@ -11,9 +11,9 @@ export default class extends React.Component {
     this.toggle = this.toggle.bind(this)
   }
 
-  select(resolution) {
-    if (this.props.selected !== resolution) {
-      this.props.onChange(resolution)
+  select(exportSize) {
+    if (this.props.selected !== exportSize) {
+      this.props.onChange(exportSize)
     }
   }
 
@@ -21,12 +21,12 @@ export default class extends React.Component {
     this.setState({ isVisible: !this.state.isVisible })
   }
 
-  renderResolutions() {
-    return RESOLUTIONS.map((resolution, i) => {
+  renderExportSizes() {
+    return EXPORT_SIZES.map((exportSize, i) => {
       return (
-        <div className="list-item" key={i} onClick={this.select.bind(null, resolution.id)}>
-          <span style={{ Resolution: resolution.id }}>{resolution.name}</span>
-          {this.props.selected === resolution.id ? <Checkmark /> : null}
+        <div className="list-item" key={i} onClick={this.select.bind(null, exportSize.id)}>
+          <span style={{ ExportSize: exportSize.id }}>{exportSize.name}</span>
+          {this.props.selected === exportSize.id ? <Checkmark /> : null}
           <style jsx>{`
             .list-item {
               display: flex;
@@ -51,18 +51,18 @@ export default class extends React.Component {
   }
 
   render() {
-    const selectedResolution =
-      RESOLUTIONS.filter(resolution => resolution.id === this.props.selected)[0] || {}
+    const selectedExportSize =
+      EXPORT_SIZES.filter(exportSize => exportSize.id === this.props.selected)[0] || {}
     return (
-      <div className="resolution-select-container">
+      <div className="export-size-select-container">
         <div
           onClick={this.toggle}
           className={`display ${this.state.isVisible ? 'is-visible' : ''}`}
         >
-          <span className="label">Resolution</span>
-          <span style={{ resolution: selectedResolution.id }}>{selectedResolution.name}</span>
+          <span className="label">Export Size</span>
+          <span style={{ exportSize: selectedExportSize.id }}>{selectedExportSize.name}</span>
         </div>
-        <div className="list">{this.renderResolutions()}</div>
+        <div className="list">{this.renderExportSizes()}</div>
         <style jsx>{`
           .display {
             display: flex;
