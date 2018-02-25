@@ -109,7 +109,12 @@ class Carbon extends React.Component {
     if (this.state.loading === false) {
       content = (
         <div id="container">
-          {config.windowControls ? <WindowControls theme={config.windowTheme} handleTitleBarChange={this.handleTitleBarChange} /> : null}
+          {config.windowControls ? (
+            <WindowControls
+              theme={config.windowTheme}
+              handleTitleBarChange={this.handleTitleBarChange}
+            />
+          ) : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}

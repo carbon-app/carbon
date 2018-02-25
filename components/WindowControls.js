@@ -19,8 +19,9 @@ export default ({ theme, handleTitleBarChange }) => (
 
         .window-title-container {
           position: absolute;
-          top: 20px;
-          left: -18px;
+          margin: 0px;
+          top: -3px;
+          left: -9px;
           width: 100%;
           text-align: center;
         }
