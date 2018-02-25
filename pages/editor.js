@@ -24,7 +24,10 @@ import {
   LANGUAGE_NAME_HASH,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
+  DEFAULT_RESOLUTION,
   COLORS,
+  RESOLUTIONS,
+  RESOLUTIONS_HASH,
   DEFAULT_CODE,
   DEFAULT_BG_COLOR,
   DEFAULT_SETTINGS
@@ -99,15 +102,18 @@ class Editor extends React.Component {
   getCarbonImage() {
     const node = document.getElementById('export-container')
 
+    const resolutionRatio = (RESOLUTIONS_HASH[this.state.resolution] || DEFAULT_RESOLUTION).value
     const config = {
       style: {
-        transform: 'scale(2)',
+        transform: `scale(${resolutionRatio})`,
         'transform-origin': 'center',
-        'background': (this.state.squaredImage) ? this.state.backgroundColor : 'none'
+        background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
-      width: node.offsetWidth * 2,
-      height: (this.state.squaredImage) ? node.offsetWidth * 2 : node.offsetHeight * 2
+      width: node.offsetWidth * resolutionRatio,
+      height: this.state.squaredImage
+        ? node.offsetWidth * resolutionRatio
+        : node.offsetHeight * resolutionRatio
     }
 
     return domtoimage.toPng(node, config)
