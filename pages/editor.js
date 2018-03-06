@@ -14,6 +14,7 @@ import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
+import ArrowDown from '../components/svg/Arrowdown'
 import api from '../lib/api'
 import {
   THEMES,
@@ -67,6 +68,7 @@ class Editor extends React.Component {
         ...DEFAULT_SETTINGS,
         uploading: false,
         code: props.content,
+        saveAs: 'png',
         _initialState: this.props.initialState
       },
       this.props.initialState
@@ -99,7 +101,7 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage() {
+  getCarbonImage({ format } = { format: 'png' }) {
     const node = document.getElementById('export-container')
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
@@ -116,7 +118,9 @@ class Editor extends React.Component {
         : node.offsetHeight * exportSize
     }
 
-    return domtoimage.toPng(node, config)
+    return format.toLowerCase() === 'svg'
+      ? domtoimage.toSvg(node, config)
+      : domtoimage.toPng(node, config)
   }
 
   updateCode(code) {
@@ -131,10 +135,10 @@ class Editor extends React.Component {
     this.setState({ titleBar })
   }
 
-  save() {
-    this.getCarbonImage().then(dataUrl => {
+  save({ format } = { format: 'png' }) {
+    this.getCarbonImage({ format }).then(dataUrl => {
       const link = document.createElement('a')
-      link.download = 'carbon.png'
+      link.download = 'carbon.' + format
       link.href = dataUrl
       document.body.appendChild(link)
       link.click()
@@ -149,7 +153,7 @@ class Editor extends React.Component {
 
   upload() {
     this.setState({ uploading: true })
-    this.getCarbonImage()
+    this.getCarbonImage({ format: 'png' })
       .then(api.tweet)
       .then(() => this.setState({ uploading: false }))
       .catch(err => {
@@ -195,7 +199,17 @@ class Editor extends React.Component {
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
               />
-              <Button onClick={this.save} title="Save Image" color="#c198fb" />
+              <Button
+                onClick={e => this.save({ format: this.state.saveAs })}
+                title="Save Image"
+                color="#c198fb"
+                style={{ marginRight: '8px' }}
+              />
+              <Dropdown
+                selected={{ id: this.state.saveAs, name: `(${this.state.saveAs.toUpperCase()})` }}
+                list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
+                onChange={saveAs => this.setState({ saveAs: saveAs.id })}
+              />
             </div>
           </Toolbar>
 
