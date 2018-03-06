@@ -8,8 +8,8 @@ import { editorVisible } from '../support'
 // so instead visit the desired url in each test
 
 describe('background color', () => {
-  const bgColor = '.colorpicker-container .bg-color'
-  const picker = '.colorpicker-picker'
+  const bgColor = '.bg-color-container .bg-color'
+  const picker = '.bg-select-pickers'
 
   const openPicker = () => {
     cy.get(bgColor).click()

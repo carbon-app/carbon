@@ -13,24 +13,9 @@ import {
   DEFAULT_LANGUAGE,
   LANGUAGES,
   LANGUAGE_MODE_HASH,
-  LANGUAGE_NAME_HASH
+  LANGUAGE_NAME_HASH,
+  DEFAULT_SETTINGS
 } from '../lib/constants'
-
-const DEFAULT_SETTINGS = {
-  paddingVertical: '50px',
-  paddingHorizontal: '50px',
-  marginVertical: '45px',
-  marginHorizontal: '45px',
-  backgroundMode: 'color',
-  backgroundColor: 'rgba(171, 184, 195, 1)',
-  dropShadowOffsetY: '20px',
-  dropShadowBlurRadius: '68px',
-  theme: 'seti',
-  windowTheme: 'none',
-  language: DEFAULT_LANGUAGE,
-  fontFamily: 'Hack',
-  fontSize: '14px'
-}
 
 class Carbon extends React.Component {
   constructor(props) {
@@ -42,6 +27,7 @@ class Carbon extends React.Component {
     }
 
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
+    this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
   }
 
@@ -66,6 +52,10 @@ class Carbon extends React.Component {
   codeUpdated(newCode) {
     this.handleLanguageChange(newCode)
     this.props.updateCode(newCode)
+  }
+
+  handleTitleBarChange(newTitle) {
+    this.props.updateTitleBar(newTitle)
   }
 
   handleLanguageChange = debounce(
@@ -119,7 +109,12 @@ class Carbon extends React.Component {
     if (this.state.loading === false) {
       content = (
         <div id="container">
-          {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
+          {config.windowControls ? (
+            <WindowControls
+              theme={config.windowTheme}
+              handleTitleBarChange={this.handleTitleBarChange}
+            />
+          ) : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}

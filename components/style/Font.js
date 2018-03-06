@@ -1,6 +1,19 @@
 export default () => (
   <style jsx global>{`
     @font-face {
+      font-family: 'Iosevka';
+      src: url('//cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-iosevka-term-bold.eot');
+      src: url('//cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-iosevka-term-bold.eot')
+          format('embedded-opentype'),
+        url('//cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-iosevka-term-bold.woff')
+          format('woff'),
+        url('//cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-iosevka-term-bold.ttf')
+          format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    @font-face {
       font-family: 'Hack';
       src: url('//cdn.jsdelivr.net/font-hack/2.020/fonts/woff2/hack-regular-webfont.woff2?v=2.020')
           format('woff2'),

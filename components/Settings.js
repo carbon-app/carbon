@@ -3,6 +3,7 @@ import enhanceWithClickOutside from 'react-click-outside'
 import SettingsIcon from './svg/Settings'
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
+import ExportSizeSelect from './ExportSizeSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
@@ -71,6 +72,7 @@ class Settings extends React.Component {
             <Slider
               label="Padding (vertical)"
               value={this.props.enabled.paddingVertical || 16}
+              maxValue={200}
               onChange={this.props.onChange.bind(null, 'paddingVertical')}
             />
             <Slider
@@ -92,6 +94,20 @@ class Settings extends React.Component {
               label="Drop shadow (blur-radius)"
               value={this.props.enabled.dropShadowBlurRadius || 68}
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
+            />
+            <Toggle
+              label="Squared image"
+              enabled={this.props.enabled.squaredImage}
+              onChange={this.props.onChange.bind(null, 'squaredImage')}
+            />
+            <ExportSizeSelect
+              selected={this.props.enabled.exportSize || '2x'}
+              onChange={this.props.onChange.bind(null, 'exportSize')}
+            />
+            <Toggle
+              label="Reset settings"
+              enabled={false}
+              onChange={this.props.resetDefaultSettings}
             />
           </Collapse>
         </div>

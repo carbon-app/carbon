@@ -25,8 +25,13 @@ import {
   LANGUAGE_NAME_HASH,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
+  DEFAULT_EXPORT_SIZE,
   COLORS,
-  DEFAULT_CODE
+  EXPORT_SIZES,
+  EXPORT_SIZES_HASH,
+  DEFAULT_CODE,
+  DEFAULT_BG_COLOR,
+  DEFAULT_SETTINGS
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
@@ -60,20 +65,7 @@ class Editor extends React.Component {
     super(props)
     this.state = Object.assign(
       {
-        backgroundMode: 'color',
-        backgroundColor: 'rgba(171, 184, 195, 1)',
-        backgroundImage: null,
-        backgroundImageSelection: null,
-        theme: DEFAULT_THEME.id,
-        language: DEFAULT_LANGUAGE,
-        dropShadow: true,
-        dropShadowOffsetY: '20px',
-        dropShadowBlurRadius: '68px',
-        windowControls: true,
-        widthAdjustment: true,
-        lineNumbers: false,
-        paddingVertical: '48px',
-        paddingHorizontal: '32px',
+        ...DEFAULT_SETTINGS,
         uploading: false,
         code: props.content,
         _initialState: this.props.initialState
@@ -84,7 +76,9 @@ class Editor extends React.Component {
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
+    this.updateTitleBar = this.updateTitleBar.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
+    this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
   }
 
   componentDidMount() {
@@ -109,14 +103,18 @@ class Editor extends React.Component {
   getCarbonImage({ format } = { format: 'png' }) {
     const node = document.getElementById('export-container')
 
+    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
     const config = {
       style: {
-        transform: 'scale(2)',
-        'transform-origin': 'center'
+        transform: `scale(${exportSize})`,
+        'transform-origin': 'center',
+        background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
-      width: node.offsetWidth * 2,
-      height: node.offsetHeight * 2
+      width: node.offsetWidth * exportSize,
+      height: this.state.squaredImage
+        ? node.offsetWidth * exportSize
+        : node.offsetHeight * exportSize
     }
 
     return format.toLowerCase() === 'svg'
@@ -132,6 +130,10 @@ class Editor extends React.Component {
     this.setState({ aspectRatio })
   }
 
+  updateTitleBar(titleBar) {
+    this.setState({ titleBar })
+  }
+
   save({ format } = { format: 'png' }) {
     this.getCarbonImage({ format }).then(dataUrl => {
       const link = document.createElement('a')
@@ -141,6 +143,11 @@ class Editor extends React.Component {
       link.click()
       link.remove()
     })
+  }
+
+  resetDefaultSettings() {
+    this.setState(DEFAULT_SETTINGS)
+    localStorage.clear()
   }
 
   upload() {
@@ -181,6 +188,7 @@ class Editor extends React.Component {
             <Settings
               onChange={(key, value) => this.setState({ [key]: value })}
               enabled={this.state}
+              resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
               <Button
@@ -215,7 +223,7 @@ class Editor extends React.Component {
                   backgroundMode: 'image'
                 })
               } else {
-                this.setState({ code: file.content })
+                this.setState({ code: file.content, language: 'auto' })
               }
             }}
           >
@@ -228,6 +236,7 @@ class Editor extends React.Component {
                   config={this.state}
                   updateCode={code => this.updateCode(code)}
                   onAspectRatioChange={this.updateAspectRatio}
+                  updateTitleBar={this.updateTitleBar}
                 >
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
