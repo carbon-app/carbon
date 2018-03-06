@@ -75,6 +75,7 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
         .dropdown-container {
           min-width: ${minWidth}px;
           cursor: pointer;
+          user-select: none;
         }
       `}</style>
     </div>
