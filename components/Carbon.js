@@ -112,7 +112,36 @@ class Carbon extends React.PureComponent {
         </div>
         <style jsx>
           {`
-            .container {
+            div {
+              height: 352px;
+            }
+          `}
+        </style>
+      </div>
+    )
+    if (this.state.loading === false) {
+      content = (
+        <div id="container">
+          {config.windowControls ? (
+            <WindowControls
+              theme={config.windowTheme}
+              handleTitleBarChange={this.handleTitleBarChange}
+            />
+          ) : null}
+          <CodeMirror
+            className={`CodeMirror__container window-theme__${config.windowTheme}`}
+            onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
+            value={this.props.children}
+            options={options}
+          />
+          {config.watermark && <div className="watermark">image created with carbon.now.sh</div>}
+          <div id="container-bg">
+            <div className="white eliminateOnRender" />
+            <div className="alpha eliminateOnRender" />
+            <div className="bg" />
+          </div>
+          <style jsx>{`
+            #container {
               position: relative;
               min-width: ${config.widthAdjustment ? '90px' : '680px'};
               max-width: 1024px;
