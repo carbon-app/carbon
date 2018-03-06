@@ -2,30 +2,20 @@ export default () => (
   <style jsx global>{`
     @font-face {
       font-family: 'Hack';
-      src: url('//cdn.jsdelivr.net/font-hack/2.020/fonts/eot/hack-regular-webfont.eot?v=2.020');
-      src: url('//cdn.jsdelivr.net/font-hack/2.020/fonts/eot/hack-regular-webfont.eot?#iefix&v=2.020')
-          format('embedded-opentype'),
-        url('//cdn.jsdelivr.net/font-hack/2.020/fonts/woff2/hack-regular-webfont.woff2?v=2.020')
+      src: url('//cdn.jsdelivr.net/font-hack/2.020/fonts/woff2/hack-regular-webfont.woff2?v=2.020')
           format('woff2'),
         url('//cdn.jsdelivr.net/font-hack/2.020/fonts/woff/hack-regular-webfont.woff?v=2.020')
-          format('woff'),
-        url('//cdn.jsdelivr.net/font-hack/2.020/fonts/web-ttf/hack-regular-webfont.ttf?v=2.020')
-          format('truetype');
+          format('woff');
       font-weight: 400;
       font-style: normal;
     }
 
     @font-face {
       font-family: 'Fira Code';
-      src: url('//cdn.rawgit.com/tonsky/FiraCode/1.204/distr/eot/FiraCode-Regular.eot');
-      src: url('//cdn.rawgit.com/tonsky/FiraCode/1.204/distr/eot/FiraCode-Regular.eot')
-          format('embedded-opentype'),
-        url('//cdn.rawgit.com/tonsky/FiraCode/1.204/distr/woff2/FiraCode-Regular.woff2')
+      src: url('//cdn.rawgit.com/tonsky/FiraCode/1.204/distr/woff2/FiraCode-Regular.woff2')
           format('woff2'),
         url('//cdn.rawgit.com/tonsky/FiraCode/1.204/distr/woff/FiraCode-Regular.woff')
-          format('woff'),
-        url('//cdn.rawgit.com/tonsky/FiraCode/1.204/distr/ttf/FiraCode-Regular.ttf')
-          format('truetype');
+          format('woff');
       font-weight: 400;
       font-style: normal;
     }
