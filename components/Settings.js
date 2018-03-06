@@ -100,6 +100,11 @@ class Settings extends React.Component {
               enabled={this.props.enabled.squaredImage}
               onChange={this.props.onChange.bind(null, 'squaredImage')}
             />
+            <Toggle
+              label="Watermark"
+              enabled={this.props.enabled.watermark}
+              onChange={this.props.onChange.bind(null, 'watermark')}
+            />
             <ExportSizeSelect
               selected={this.props.enabled.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}

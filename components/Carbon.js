@@ -121,6 +121,7 @@ class Carbon extends React.Component {
             value={this.props.children}
             options={options}
           />
+          {config.watermark && <div className="watermark">image created with carbon.now.sh</div>}
           <div id="container-bg">
             <div className="white eliminateOnRender" />
             <div className="alpha eliminateOnRender" />
@@ -133,6 +134,14 @@ class Carbon extends React.Component {
               max-width: 1024px; /* The Fallback */
               max-width: 92vw;
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
+            }
+
+            #container .watermark {
+              position: absolute;
+              z-index: 1;
+              right: ${config.paddingHorizontal};
+              font-size: 8px;
+              color: rgba(255, 255, 255, 0.5);
             }
 
             #container #container-bg {
