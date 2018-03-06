@@ -68,7 +68,6 @@ class Editor extends React.Component {
         ...DEFAULT_SETTINGS,
         uploading: false,
         code: props.content,
-        saveAs: 'png',
         _initialState: this.props.initialState
       },
       this.props.initialState
@@ -138,7 +137,7 @@ class Editor extends React.Component {
   save({ format } = { format: 'png' }) {
     this.getCarbonImage({ format }).then(dataUrl => {
       const link = document.createElement('a')
-      link.download = 'carbon.' + format
+      link.download = `carbon.${format}`
       link.href = dataUrl
       document.body.appendChild(link)
       link.click()
@@ -199,16 +198,12 @@ class Editor extends React.Component {
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
               />
-              <Button
-                onClick={e => this.save({ format: this.state.saveAs })}
-                title="Save Image"
-                color="#c198fb"
-                style={{ marginRight: '8px' }}
-              />
               <Dropdown
-                selected={{ id: this.state.saveAs, name: `(${this.state.saveAs.toUpperCase()})` }}
+                button
+                color="#c198fb"
+                selected={{ id: 'SAVE_IMAGE', name: 'Save Image' }}
                 list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
-                onChange={saveAs => this.setState({ saveAs: saveAs.id })}
+                onChange={saveAs => this.save({ format: saveAs.id })}
               />
             </div>
           </Toolbar>
