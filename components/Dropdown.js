@@ -41,7 +41,11 @@ class Dropdown extends React.Component {
             background: ${COLORS.BLACK};
             user-select: none;
             padding: 8px 16px;
-            border-bottom: 1px solid ${COLORS.SECONDARY};
+            border-bottom: 1px solid ${this.props.color || COLORS.SECONDARY};
+          }
+
+          .dropdown-list-item span {
+            color: ${this.props.color || '#fff'};
           }
 
           .dropdown-list-item:hover {
@@ -58,8 +62,11 @@ class Dropdown extends React.Component {
   }
 
   render() {
+    const color = this.props.color || COLORS.SECONDARY
+
     // find longest list value in number of characters
-    const MIN_WIDTH = this.props.list.reduce(
+    const list = this.props.button ? [...this.props.list, this.props.selected] : this.props.list
+    const MIN_WIDTH = list.reduce(
       (max, { name }) => (name && name.length > max ? name.length : max),
       0
     )
@@ -67,13 +74,13 @@ class Dropdown extends React.Component {
     return (
       <div
         className="dropdown-container"
-        style={{ minWidth: MIN_WIDTH * 14 }}
+        style={{ minWidth: MIN_WIDTH * 10 + 32 }}
         onClick={this.toggle}
       >
         <div className={`dropdown-display ${this.state.isVisible ? 'is-visible' : ''}`}>
           <span style={{ minWidth: '4rem' }}>{this.props.selected.name}</span>
           <div className="arrow-down">
-            <ArrowDown />
+            <ArrowDown fill={color} />
           </div>
         </div>
         <div className="dropdown-list">{this.renderListItems()}</div>
@@ -98,7 +105,7 @@ class Dropdown extends React.Component {
 
           .dropdown-display {
             height: 100%;
-            border: 1px solid ${COLORS.SECONDARY};
+            border: 1px solid ${color};
             border-radius: 3px;
             user-select: none;
             padding: 8px 16px;
@@ -107,6 +114,10 @@ class Dropdown extends React.Component {
             align-items: center;
             position: relative;
             z-index: 1;
+          }
+
+          .dropdown-display span {
+            color: ${color};
           }
 
           .dropdown-display:hover {
@@ -120,7 +131,7 @@ class Dropdown extends React.Component {
           .dropdown-list {
             display: none;
             margin-top: -1px;
-            border: 1px solid ${COLORS.SECONDARY};
+            border: 1px solid ${color};
             border-radius: 0px 0px 3px 3px;
             max-height: 350px;
             overflow-y: scroll;
