@@ -59,7 +59,7 @@ export default class extends React.Component {
           onClick={this.toggle}
           className={`display ${this.state.isVisible ? 'is-visible' : ''}`}
         >
-          <span className="label">Export Size</span>
+          <span className="label">Export size</span>
           <span style={{ exportSize: selectedExportSize.id }}>{selectedExportSize.name}</span>
         </div>
         <div className="list">{this.renderExportSizes()}</div>
