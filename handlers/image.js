@@ -1,11 +1,13 @@
+const port = parseInt(process.env.PORT, 10) || 3000
+
 module.exports = browser => async (req, res) => {
   let page = await browser.newPage()
-  let url = req.body.url
+  let state = req.body.state
 
-  if (!url) res.status(400).send()
+  if (!state) res.status(400).send()
 
   try {
-    await page.goto(url)
+    await page.goto(`http://localhost:${port}?state=${state}`)
     await page.addScriptTag({ path: `./lib/customDomToImage.js` })
 
     const targetElement = await page.$('#export-container')

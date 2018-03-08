@@ -33,7 +33,7 @@ import {
   DEFAULT_BG_COLOR,
   DEFAULT_SETTINGS
 } from '../lib/constants'
-import { getQueryStringState, updateQueryString } from '../lib/routing'
+import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
 const removeQueryString = str => {
@@ -79,6 +79,7 @@ class Editor extends React.Component {
     this.updateTitleBar = this.updateTitleBar.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
+    this.getCarbonImage = this.getCarbonImage.bind(this)
   }
 
   componentDidMount() {
@@ -104,11 +105,12 @@ class Editor extends React.Component {
     //if safari, get image from api
     if (
       navigator.userAgent.indexOf('Safari') != -1 &&
-      navigator.userAgent.indexOf('Chrome') == -1
+      navigator.userAgent.indexOf('Chrome') == -1 &&
+      format === 'png'
     ) {
-      return api.image(window.location.href)
+      const encodedState = serializeState(this.state)
+      return api.image(encodedState)
     }
-
 
     const node = document.getElementById('export-container')
 
