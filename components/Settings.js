@@ -167,6 +167,7 @@ class Settings extends React.Component {
           }
 
           .settings-settings > :global(div):first-child,
+          .settings-settings > :global(div):last-child,
           .settings-settings > :global(.collapse) {
             border-bottom: none;
           }
