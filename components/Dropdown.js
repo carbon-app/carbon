@@ -86,9 +86,9 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <span {...rest} tabIndex="0" className="dropdown-display">
+    <span {...rest} tabIndex="0" className={`dropdown-display ${isOpen ? 'is-open' : ''}`}>
       <span className="dropdown-display-text">{children}</span>
-      <div className={`dropdown-arrow ${isOpen ? 'is-reverse' : ''}`}>
+      <div className={`dropdown-arrow`}>
         <ArrowDown fill={itemColor} />
       </div>
       <style jsx>{`
@@ -104,11 +104,16 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
         .dropdown-display:hover {
           background: ${COLORS.HOVER};
         }
+
+        .dropdown-display.is-open {
+          border-radius: 3px 3px 0 0;
+        }
+
         .dropdown-display-text {
           flex-grow: 1;
           color: ${itemColor};
         }
-        .dropdown-arrow.is-reverse {
+        .is-open > .dropdown-arrow {
           transform: rotate(180deg);
         }
       `}</style>
@@ -148,6 +153,11 @@ const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
           padding: 8px 16px;
           border-bottom: 1px solid ${itemColor};
         }
+
+        .dropdown-list-item:last-child {
+          border-bottom: none;
+        }
+
         .dropdown-list-item:hover {
           background: ${COLORS.HOVER};
         }
