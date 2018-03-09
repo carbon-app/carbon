@@ -6,7 +6,9 @@ import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
+
 import WindowControls from '../components/WindowControls'
+import Watermark from '../components/svg/Watermark'
 import CodeMirror from '../lib/react-codemirror'
 import {
   COLORS,
@@ -121,6 +123,7 @@ class Carbon extends React.Component {
             value={this.props.children}
             options={options}
           />
+          {config.watermark && <Watermark />}
           <div id="container-bg">
             <div className="white eliminateOnRender" />
             <div className="alpha eliminateOnRender" />
@@ -133,6 +136,14 @@ class Carbon extends React.Component {
               max-width: 1024px; /* The Fallback */
               max-width: 92vw;
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
+            }
+
+            #container :global(.watermark) {
+              fill-opacity: 0.3;
+              position: absolute;
+              z-index: 2;
+              bottom: calc(${config.paddingVertical} + 16px);
+              right: calc(${config.paddingHorizontal} + 16px);
             }
 
             #container #container-bg {
