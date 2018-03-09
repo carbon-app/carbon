@@ -120,7 +120,9 @@ export default class extends React.Component {
         </div>
         <hr />
         <div className="random-image">
-          <span>Or use a random unsplash image:</span>
+          <span>
+            Or use a random <a href="https://unsplash.com/">Unsplash</a> image:
+          </span>
           <RandomImage onChange={this.selectImage} />
         </div>
         <style jsx>{`
@@ -137,6 +139,10 @@ export default class extends React.Component {
           span {
             display: block;
             margin-bottom: 16px;
+          }
+
+          a {
+            text-decoration: underline;
           }
 
           hr {
