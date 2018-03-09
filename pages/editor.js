@@ -238,7 +238,7 @@ class Editor extends React.Component {
                   onAspectRatioChange={this.updateAspectRatio}
                   updateTitleBar={this.updateTitleBar}
                 >
-                  {this.state.code || DEFAULT_CODE}
+                  {this.state.code != null ? this.state.code : DEFAULT_CODE}
                 </Carbon>
               </Overlay>
             )}
