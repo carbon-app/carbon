@@ -6,7 +6,9 @@ import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
+
 import WindowControls from '../components/WindowControls'
+import Watermark from '../components/svg/Watermark'
 import CodeMirror from '../lib/react-codemirror'
 import {
   COLORS,
@@ -27,6 +29,7 @@ class Carbon extends React.Component {
     }
 
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
+    this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
   }
 
@@ -51,6 +54,10 @@ class Carbon extends React.Component {
   codeUpdated(newCode) {
     this.handleLanguageChange(newCode)
     this.props.updateCode(newCode)
+  }
+
+  handleTitleBarChange(newTitle) {
+    this.props.updateTitleBar(newTitle)
   }
 
   handleLanguageChange = debounce(
@@ -104,13 +111,19 @@ class Carbon extends React.Component {
     if (this.state.loading === false) {
       content = (
         <div id="container">
-          {config.windowControls ? <WindowControls theme={config.windowTheme} /> : null}
+          {config.windowControls ? (
+            <WindowControls
+              theme={config.windowTheme}
+              handleTitleBarChange={this.handleTitleBarChange}
+            />
+          ) : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
             value={this.props.children}
             options={options}
           />
+          {config.watermark && <Watermark />}
           <div id="container-bg">
             <div className="white eliminateOnRender" />
             <div className="alpha eliminateOnRender" />
@@ -123,6 +136,14 @@ class Carbon extends React.Component {
               max-width: 1024px; /* The Fallback */
               max-width: 92vw;
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
+            }
+
+            #container :global(.watermark) {
+              fill-opacity: 0.3;
+              position: absolute;
+              z-index: 2;
+              bottom: calc(${config.paddingVertical} + 16px);
+              right: calc(${config.paddingHorizontal} + 16px);
             }
 
             #container #container-bg {

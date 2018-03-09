@@ -3,6 +3,7 @@ import enhanceWithClickOutside from 'react-click-outside'
 import SettingsIcon from './svg/Settings'
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
+import ExportSizeSelect from './ExportSizeSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
@@ -95,6 +96,20 @@ class Settings extends React.Component {
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
             />
             <Toggle
+              label="Squared image"
+              enabled={this.props.enabled.squaredImage}
+              onChange={this.props.onChange.bind(null, 'squaredImage')}
+            />
+            <Toggle
+              label="Watermark"
+              enabled={this.props.enabled.watermark}
+              onChange={this.props.onChange.bind(null, 'watermark')}
+            />
+            <ExportSizeSelect
+              selected={this.props.enabled.exportSize || '2x'}
+              onChange={this.props.onChange.bind(null, 'exportSize')}
+            />
+            <Toggle
               label="Reset settings"
               enabled={false}
               onChange={this.props.resetDefaultSettings}
@@ -152,6 +167,7 @@ class Settings extends React.Component {
           }
 
           .settings-settings > :global(div):first-child,
+          .settings-settings > :global(div):last-child,
           .settings-settings > :global(.collapse) {
             border-bottom: none;
           }

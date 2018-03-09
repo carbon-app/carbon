@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
+
 import Slider from './Slider'
+import RandomImage from './RandomImage'
 import { COLORS } from '../lib/constants'
+import { fileToDataURL } from '../lib/util'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
   const canvas = document.createElement('canvas')
@@ -59,18 +62,16 @@ export default class extends React.Component {
   }
 
   selectImage(e) {
-    const file = e.target.files[0]
+    const file = e.target ? e.target.files[0] : e
 
-    const reader = new FileReader()
-    reader.onload = e =>
-      this.props.onChange({ backgroundImage: e.target.result, backgroundImageSelection: null })
-    reader.readAsDataURL(file)
+    return fileToDataURL(file).then(dataURL =>
+      this.props.onChange({ backgroundImage: dataURL, backgroundImageSelection: null })
+    )
   }
 
   removeImage() {
     this.setState(INITIAL_STATE, () => {
       this.props.onChange({
-        backgroundMode: 'color',
         backgroundImage: null,
         backgroundImageSelection: null
       })
@@ -108,17 +109,45 @@ export default class extends React.Component {
 
   render() {
     let content = (
-      <div className="upload-image">
-        <span>Click the button below to upload a background image</span>
-        <input type="file" accept="image/x-png,image/jpeg,image/jpg" onChange={this.selectImage} />
+      <div>
+        <div className="choose-image">
+          <span>Click the button below to upload a background image:</span>
+          <input
+            type="file"
+            accept="image/x-png,image/jpeg,image/jpg"
+            onChange={this.selectImage}
+          />
+        </div>
+        <hr />
+        <div className="random-image">
+          <span>
+            Or use a random <a href="https://unsplash.com/">Unsplash</a> image:
+          </span>
+          <RandomImage onChange={this.selectImage} />
+        </div>
         <style jsx>{`
-          .upload-image {
+          .choose-image,
+          .random-image {
             padding: 8px;
+          }
+
+          input {
+            cursor: pointer;
+            outline: none;
           }
 
           span {
             display: block;
             margin-bottom: 16px;
+          }
+
+          a {
+            text-decoration: underline;
+          }
+
+          hr {
+            border-bottom: none;
+            margin-bottom: 0;
           }
         `}</style>
       </div>

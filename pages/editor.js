@@ -14,6 +14,7 @@ import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
+import ArrowDown from '../components/svg/Arrowdown'
 import api from '../lib/api'
 import {
   THEMES,
@@ -24,7 +25,10 @@ import {
   LANGUAGE_NAME_HASH,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
+  DEFAULT_EXPORT_SIZE,
   COLORS,
+  EXPORT_SIZES,
+  EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_BG_COLOR,
   DEFAULT_SETTINGS,
@@ -74,6 +78,7 @@ class Editor extends React.Component {
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
     this.updateCode = this.updateCode.bind(this)
+    this.updateTitleBar = this.updateTitleBar.bind(this)
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
   }
@@ -98,20 +103,26 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage() {
+  getCarbonImage({ format } = { format: 'png' }) {
     const node = document.getElementById('export-container')
 
+    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
     const config = {
       style: {
-        transform: 'scale(2)',
-        'transform-origin': 'center'
+        transform: `scale(${exportSize})`,
+        'transform-origin': 'center',
+        background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
-      width: node.offsetWidth * 2,
-      height: node.offsetHeight * 2
+      width: node.offsetWidth * exportSize,
+      height: this.state.squaredImage
+        ? node.offsetWidth * exportSize
+        : node.offsetHeight * exportSize
     }
 
-    return domtoimage.toPng(node, config)
+    return format.toLowerCase() === 'svg'
+      ? domtoimage.toSvg(node, config)
+      : domtoimage.toPng(node, config)
   }
 
   updateCode(code) {
@@ -122,11 +133,15 @@ class Editor extends React.Component {
     this.setState({ aspectRatio })
   }
 
-  save() {
-    this.getCarbonImage()
+  updateTitleBar(titleBar) {
+    this.setState({ titleBar })
+  }
+
+  save({ format } = { format: 'png' }) {
+    this.getCarbonImage({ format })
       .then(dataUrl => {
         const link = document.createElement('a')
-        link.download = 'carbon.png'
+        link.download = `carbon.${format}`
         link.href = dataUrl
         document.body.appendChild(link)
         link.click()
@@ -147,7 +162,7 @@ class Editor extends React.Component {
 
   upload() {
     this.setState({ uploading: true })
-    this.getCarbonImage()
+    this.getCarbonImage({ format: 'png' })
       .then(api.tweet)
       .then(() => this.setState({ uploading: false }))
       .catch(err => {
@@ -193,7 +208,13 @@ class Editor extends React.Component {
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
               />
-              <Button onClick={this.save} title="Save Image" color="#c198fb" />
+              <Dropdown
+                button
+                color="#c198fb"
+                selected={{ id: 'SAVE_IMAGE', name: 'Save Image' }}
+                list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
+                onChange={saveAs => this.save({ format: saveAs.id })}
+              />
             </div>
           </Toolbar>
 
@@ -225,6 +246,7 @@ class Editor extends React.Component {
                   config={this.state}
                   updateCode={code => this.updateCode(code)}
                   onAspectRatioChange={this.updateAspectRatio}
+                  updateTitleBar={this.updateTitleBar}
                 >
                   {this.state.code || DEFAULT_CODE}
                 </Carbon>
