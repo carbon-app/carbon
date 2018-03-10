@@ -7,14 +7,14 @@ import { COLORS } from '../lib/constants'
 
 class Dropdown extends Component {
   state = {
-    inputValue: '',
+    inputValue: this.props.selected.name,
     itemsToShow: this.props.list
   }
   userInputtedValue = ''
 
   onUserAction = changes => {
     this.setState(({ inputValue, itemsToShow }) => {
-      const isClosingMenu = changes.hasOwnProperty('isOpen') && !changes.isOpen
+      const clearUserInput = changes.hasOwnProperty('isOpen')
 
       if (changes.hasOwnProperty('inputValue')) {
         if (changes.type === Downshift.stateChangeTypes.keyDownEscape) {
@@ -34,10 +34,10 @@ class Dropdown extends Component {
         (changes.type === Downshift.stateChangeTypes.keyDownArrowUp ||
           changes.type === Downshift.stateChangeTypes.keyDownArrowDown)
       ) {
-        inputValue = itemsToShow[changes.highlightedIndex]
+        inputValue = itemsToShow[changes.highlightedIndex].name
       }
 
-      if (isClosingMenu) {
+      if (clearUserInput) {
         this.userInputtedValue = ''
       }
 
@@ -50,6 +50,7 @@ class Dropdown extends Component {
 
     return (
       <Downshift
+        inputValue={this.state.inputValue}
         render={renderDropdown({ button, color, list: this.state.itemsToShow, selected })}
         selectedItem={selected}
         defaultHighlightedIndex={list.findIndex(it => it === selected)}
@@ -70,9 +71,7 @@ const renderDropdown = ({ button, color, list, selected }) => ({
   getRootProps,
   getButtonProps,
   getInputProps,
-  getItemProps,
-  inputValue,
-  typeable
+  getItemProps
 }) => {
   return (
     <DropdownContainer
@@ -229,7 +228,5 @@ function minWidth(isButton, selected, list) {
     return wordSize > max ? wordSize : max
   }, 0)
 }
-
-Dropdown.defaultProps = {}
 
 export default Dropdown
