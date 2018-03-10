@@ -9,13 +9,13 @@ class Dropdown extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      itemsToShow: this.props.list
     }
     this.userInputtedValue = ''
   }
-
   onUserAction = changes => {
-    this.setState(({ inputValue }) => {
+    this.setState(({ inputValue, itemsToShow }) => {
       const isClosingMenu = changes.hasOwnProperty('isOpen') && !changes.isOpen
 
       if (changes.hasOwnProperty('inputValue')) {
@@ -27,40 +27,39 @@ class Dropdown extends React.Component {
         }
       }
 
+      itemsToShow = this.userInputtedValue
+        ? matchSorter(this.props.list, this.userInputtedValue, { keys: ['name'] })
+        : this.props.list
+
+      if (
+        changes.hasOwnProperty('highlightedIndex') &&
+        (changes.type === Downshift.stateChangeTypes.keyDownArrowUp ||
+          changes.type === Downshift.stateChangeTypes.keyDownArrowDown)
+      ) {
+        inputValue = itemsToShow[changes.highlightedIndex]
+      }
+
       if (isClosingMenu) {
         this.userInputtedValue = ''
       }
-      return { inputValue }
+
+      return { inputValue, itemsToShow }
     })
   }
 
   render() {
     const { button, color, list, selected, onChange } = this.props
-    const newList = this.userInputtedValue
-      ? matchSorter(list, this.state.inputValue, { keys: ['name'] })
-      : list
 
     return (
       <Downshift
-        render={renderDropdown({ button, color, list: newList, selected })}
+        render={renderDropdown({ button, color, list: this.state.itemsToShow, selected })}
         selectedItem={selected}
         defaultHighlightedIndex={list.findIndex(it => it === selected)}
         itemToString={item => item.name}
         onChange={onChange}
-        stateReducer={reduceState(list)}
         onUserAction={this.onUserAction}
       />
     )
-  }
-}
-
-const reduceState = list => (state, changes) => {
-  switch (changes.type) {
-    case Downshift.stateChangeTypes.keyDownArrowUp:
-    case Downshift.stateChangeTypes.keyDownArrowDown:
-      return { ...changes, selectedItem: list[changes.highlightedIndex] }
-    default:
-      return changes
   }
 }
 
