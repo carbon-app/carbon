@@ -88,7 +88,7 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
   return (
     <span {...rest} tabIndex="0" className={`dropdown-display ${isOpen ? 'is-open' : ''}`}>
       <span className="dropdown-display-text">{children}</span>
-      <div className={`dropdown-arrow`}>
+      <div role="button" className={`dropdown-arrow`}>
         <ArrowDown fill={itemColor} />
       </div>
       <style jsx>{`
@@ -123,7 +123,7 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
 
 const ListItems = ({ children, color }) => {
   return (
-    <ul className="dropdown-list">
+    <ul role="listbox" className="dropdown-list">
       {children}
       <style jsx>{`
         .dropdown-list {
@@ -142,7 +142,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <li {...rest} className="dropdown-list-item">
+    <li {...rest} role="option" className="dropdown-list-item">
       <span className="dropdown-list-item-text">{children}</span>
       {isSelected ? <CheckMark /> : null}
       <style jsx>{`
