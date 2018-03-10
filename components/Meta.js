@@ -4,6 +4,9 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
+import '../static/react-crop.css'
+import '../static/react-spinner.css'
+
 export default () => (
   <div className="meta">
     <Head>
@@ -47,8 +50,6 @@ export default () => (
           }
         />
       ))}
-      <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
-      <link rel="stylesheet" type="text/css" href="/static/react-crop.css" />
     </Head>
     <Reset />
     <Font />
