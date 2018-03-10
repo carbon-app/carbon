@@ -1,19 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
 import ArrowDown from './svg/Arrowdown'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
-class Dropdown extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      inputValue: '',
-      itemsToShow: this.props.list
-    }
-    this.userInputtedValue = ''
+class Dropdown extends Component {
+  state = {
+    inputValue: '',
+    itemsToShow: this.props.list
   }
+  userInputtedValue = ''
+
   onUserAction = changes => {
     this.setState(({ inputValue, itemsToShow }) => {
       const isClosingMenu = changes.hasOwnProperty('isOpen') && !changes.isOpen
