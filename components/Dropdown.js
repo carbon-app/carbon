@@ -1,20 +1,57 @@
 import React from 'react'
 import Downshift from 'downshift'
+import matchSorter from 'match-sorter'
 import ArrowDown from './svg/Arrowdown'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
-const Dropdown = ({ button, color, list, selected, onChange }) => {
-  return (
-    <Downshift
-      render={renderDropdown({ button, color, list, selected })}
-      selectedItem={selected}
-      defaultHighlightedIndex={list.findIndex(it => it === selected)}
-      itemToString={item => item.name}
-      onChange={onChange}
-      stateReducer={reduceState(list)}
-    />
-  )
+class Dropdown extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      inputValue: ''
+    }
+    this.userInputtedValue = ''
+  }
+
+  onUserAction = changes => {
+    this.setState(({ inputValue }) => {
+      const isClosingMenu = changes.hasOwnProperty('isOpen') && !changes.isOpen
+
+      if (changes.hasOwnProperty('inputValue')) {
+        if (changes.type === Downshift.stateChangeTypes.keyDownEscape) {
+          inputValue = this.userInputtedValue
+        } else {
+          inputValue = changes.inputValue
+          this.userInputtedValue = changes.inputValue
+        }
+      }
+
+      if (isClosingMenu) {
+        this.userInputtedValue = ''
+      }
+      return { inputValue }
+    })
+  }
+
+  render() {
+    const { button, color, list, selected, onChange } = this.props
+    const newList = this.userInputtedValue
+      ? matchSorter(list, this.state.inputValue, { keys: ['name'] })
+      : list
+
+    return (
+      <Downshift
+        render={renderDropdown({ button, color, list: newList, selected })}
+        selectedItem={selected}
+        defaultHighlightedIndex={list.findIndex(it => it === selected)}
+        itemToString={item => item.name}
+        onChange={onChange}
+        stateReducer={reduceState(list)}
+        onUserAction={this.onUserAction}
+      />
+    )
+  }
 }
 
 const reduceState = list => (state, changes) => {
@@ -36,14 +73,22 @@ const renderDropdown = ({ button, color, list, selected }) => ({
   getRootProps,
   getButtonProps,
   getInputProps,
-  getItemProps
+  getItemProps,
+  inputValue,
+  typeable
 }) => {
   return (
     <DropdownContainer
       {...getRootProps({ refKey: 'innerRef' })}
       minWidth={minWidth(button, selected, list)}
     >
-      <SelectedItem {...getButtonProps()} {...getInputProps()} isOpen={isOpen} color={color}>
+      <SelectedItem
+        {...getButtonProps()}
+        getInputProps={getInputProps}
+        isOpen={isOpen}
+        color={color}
+        button={button}
+      >
         {selectedItem.name}
       </SelectedItem>
       {isOpen ? (
@@ -82,12 +127,16 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ children, isOpen, color, ...rest }) => {
+const SelectedItem = ({ getInputProps, children, isOpen, color, button, ...rest }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
     <span {...rest} tabIndex="0" className={`dropdown-display ${isOpen ? 'is-open' : ''}`}>
-      <span className="dropdown-display-text">{children}</span>
+      {button ? (
+        <span className="dropdown-display-text">{children}</span>
+      ) : (
+        <input {...getInputProps({ placeholder: children })} className="dropdown-display-text" />
+      )}
       <div role="button" className={`dropdown-arrow`}>
         <ArrowDown fill={itemColor} />
       </div>
@@ -112,6 +161,11 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
         .dropdown-display-text {
           flex-grow: 1;
           color: ${itemColor};
+          background: transparent;
+          border: none;
+          outline: none;
+          font-size: inherit;
+          font-family: inherit;
         }
         .is-open > .dropdown-arrow {
           transform: rotate(180deg);
@@ -178,5 +232,7 @@ function minWidth(isButton, selected, list) {
     return wordSize > max ? wordSize : max
   }, 0)
 }
+
+Dropdown.defaultProps = {}
 
 export default Dropdown
