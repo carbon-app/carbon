@@ -32,6 +32,7 @@
     "highlight.js": "^9.12.0",
     "history": "^4.7.2",
     "lodash.debounce": "^4.0.8",
+    "match-sorter": "^2.2.0",
     "morgan": "^1.8.2",
     "morphmorph": "^0.0.2",
     "ms": "^2.0.0",
