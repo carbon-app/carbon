@@ -79,7 +79,7 @@ const renderDropdown = ({ button, color, list, selected }) => ({
       minWidth={minWidth(button, selected, list)}
     >
       <SelectedItem
-        {...getButtonProps()}
+        getButtonProps={getButtonProps}
         getInputProps={getInputProps}
         isOpen={isOpen}
         color={color}
@@ -123,11 +123,15 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ getInputProps, children, isOpen, color, button, ...rest }) => {
+const SelectedItem = ({ getButtonProps, getInputProps, children, isOpen, color, button }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <span {...rest} tabIndex="0" className={`dropdown-display ${isOpen ? 'is-open' : ''}`}>
+    <span
+      {...getButtonProps()}
+      tabIndex="0"
+      className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
+    >
       {button ? (
         <span className="dropdown-display-text">{children}</span>
       ) : (
