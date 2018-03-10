@@ -53,6 +53,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
+    "@zeit/next-css": "^0.1.4",
     "all-contributors-cli": "^4.7.0",
     "cypress": "^1.4.1",
     "hex2rgb": "^2.2.0",
