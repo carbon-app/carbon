@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js",
-    "deploy": "now --public -e NODE_ENV=production",
+    "start": "node server.js",
+    "deploy": "now --public --docker -e NODE_ENV=production",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
@@ -37,6 +37,7 @@
     "morphmorph": "^0.0.2",
     "ms": "^2.0.0",
     "next": "^5.0.0",
+    "now-logs": "^0.0.7",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.0.0",
     "react": "^16.2.0",
