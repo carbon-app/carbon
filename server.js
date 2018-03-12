@@ -9,6 +9,8 @@ const dev = process.env.NODE_ENV !== 'production' && !process.env.NOW
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+require('now-logs')(process.env.NOW_URL)
+
 function wrap(handler) {
   return (req, res) =>
     handler(req, res).catch(err => {
@@ -16,9 +18,16 @@ function wrap(handler) {
     })
 }
 
+const puppeteerParams = process.env.DOCKER
+  ? {
+      executablePath: '/usr/bin/chromium-browser',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    }
+  : {}
+
 app
   .prepare()
-  .then(puppeteer.launch)
+  .then(puppeteer.launch.bind(puppeteer, puppeteerParams))
   .then(browser => {
     // set up
     const server = express()
@@ -38,7 +47,7 @@ app
     server.post('/twitter', bodyParser.json({ limit: '5mb' }), require('./handlers/twitter'))
     server.post('/image', bodyParser.json({ limit: '5mb' }), wrap(imageHandler))
 
-    server.listen(port, err => {
+    server.listen(port, '0.0.0.0', err => {
       if (err) throw err
       console.log(`> Ready on http://localhost:${port}`)
     })
