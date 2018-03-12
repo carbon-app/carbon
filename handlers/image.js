@@ -1,4 +1,5 @@
-const port = parseInt(process.env.PORT, 10) || 3000
+const PORT = parseInt(process.env.PORT, 10) || 3000
+const ARBITRARY_WAIT_TIME = 500
 
 module.exports = browser => async (req, res) => {
   let page = await browser.newPage()
@@ -7,8 +8,11 @@ module.exports = browser => async (req, res) => {
   if (!state) res.status(400).send()
 
   try {
-    await page.goto(`http://localhost:${port}?state=${state}`)
+    await page.goto(`http://localhost:${PORT}?state=${state}`)
     await page.addScriptTag({ path: `./lib/customDomToImage.js` })
+
+    // wait for page to detect language
+    await delay(ARBITRARY_WAIT_TIME)
 
     const targetElement = await page.$('#export-container')
 
@@ -33,4 +37,9 @@ module.exports = browser => async (req, res) => {
   } finally {
     await page.close()
   }
+}
+
+// private
+function delay(ms) {
+  return new Promise(r => setTimeout(r, ms))
 }
