@@ -9,7 +9,10 @@ const dev = process.env.NODE_ENV !== 'production' && !process.env.NOW
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-require('now-logs')(process.env.NOW_URL)
+if (!dev) {
+  const LOGS_ID = `${process.env.LOGS_SECRET_PREFIX}:${process.env.NOW_URL}`
+  require('now-logs')(LOGS_ID)
+}
 
 function wrap(handler) {
   return (req, res) =>

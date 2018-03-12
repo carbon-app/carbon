@@ -71,7 +71,8 @@
       "TWITTER_CONSUMER_KEY": "@twitter-consumer-key",
       "TWITTER_CONSUMER_SECRET": "@twitter-consumer-secret",
       "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
-      "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret"
+      "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret",
+      "LOGS_SECRET_PREFIX": "@logs_secret_prefix"
     }
   },
   "lint-staged": {
