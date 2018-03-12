@@ -147,6 +147,10 @@ class Editor extends React.Component {
 
   save({ format } = { format: 'png' }) {
     this.getCarbonImage({ format }).then(dataUrl => {
+      if (format === 'svg') {
+        dataUrl = dataUrl.split('&nbsp;').join('&#160;')
+      }
+
       const link = document.createElement('a')
       link.download = `carbon.${format}`
       link.href = dataUrl
