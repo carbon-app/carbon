@@ -5,7 +5,7 @@ const next = require('next')
 const puppeteer = require('puppeteer')
 
 const port = parseInt(process.env.PORT, 10) || 3000
-const dev = process.env.NODE_ENV !== 'production' && !process.env.NOW
+const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
@@ -21,12 +21,12 @@ function wrap(handler) {
     })
 }
 
-const puppeteerParams = process.env.DOCKER
-  ? {
+const puppeteerParams = dev
+  ? {}
+  : {
       executablePath: '/usr/bin/chromium-browser',
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
-  : {}
 
 app
   .prepare()
