@@ -135,7 +135,10 @@ const SelectedItem = ({ getButtonProps, getInputProps, children, isOpen, color, 
       {button ? (
         <span className="dropdown-display-text">{children}</span>
       ) : (
-        <input {...getInputProps({ placeholder: children })} className="dropdown-display-text" />
+        <input
+          {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
+          className="dropdown-display-text"
+        />
       )}
       <div role="button" className={`dropdown-arrow`}>
         <ArrowDown fill={itemColor} />
