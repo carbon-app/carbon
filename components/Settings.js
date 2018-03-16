@@ -12,7 +12,7 @@ import { COLORS } from '../lib/constants'
 
 class Settings extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       isVisible: false
     }

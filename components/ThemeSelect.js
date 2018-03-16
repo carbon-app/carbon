@@ -7,7 +7,7 @@ export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 export default class extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.select = this.select.bind(this)
   }
 

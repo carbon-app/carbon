@@ -36,14 +36,6 @@ import {
 import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
-const removeQueryString = str => {
-  const qI = str.indexOf('?')
-  return (qI >= 0 ? str.substr(0, qI) : str)
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\//g, '&#x2F;')
-}
-
 class Editor extends React.Component {
   static async getInitialProps({ asPath, query }) {
     const path = removeQueryString(asPath.split('/').pop())
@@ -80,6 +72,10 @@ class Editor extends React.Component {
     this.updateAspectRatio = this.updateAspectRatio.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
+    this.onDrop = this.onDrop.bind(this)
+    this.updateTheme = this.updateTheme.bind(this)
+    this.updateLanguage = this.updateLanguage.bind(this)
+    this.updateSetting = this.updateSetting.bind(this)
   }
 
   componentDidMount() {
@@ -93,7 +89,7 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate() {
-    updateQueryString(this.state)
+    updateQueryString(this.state) // TODO check for ?react_perf
     const s = { ...this.state }
     delete s.code
     delete s.backgroundImage
@@ -133,19 +129,24 @@ class Editor extends React.Component {
       : domtoimage.toPng(node, config)
   }
 
+  // TODO use class props with bind
+  updateSetting(key, value) {
+    this.setState({ [key]: value })
+  }
+
   updateCode(code) {
-    this.setState({ code })
+    this.updateSetting('code', code)
   }
 
   updateAspectRatio(aspectRatio) {
-    this.setState({ aspectRatio })
+    this.updateSetting('aspectRatio', aspectRatio)
   }
 
   updateTitleBar(titleBar) {
-    this.setState({ titleBar })
+    this.updateSetting('titleBar', titleBar)
   }
 
-  save({ format } = { format: 'png' }) {
+  save({ id = 'png' }) {
     this.getCarbonImage({ format }).then(dataUrl => {
       if (format === 'svg') {
         dataUrl = dataUrl.split('&nbsp;').join('&#160;')
@@ -176,8 +177,24 @@ class Editor extends React.Component {
       })
   }
 
-  isImage(file) {
-    return file.type.split('/')[0] === 'image'
+  onDrop([file]) {
+    if (isImage(file)) {
+      this.setState({
+        backgroundImage: file.content,
+        backgroundImageSelection: null,
+        backgroundMode: 'image'
+      })
+    } else {
+      this.setState({ code: file.content, language: 'auto' })
+    }
+  }
+
+  updateTheme(theme) {
+    this.updateSetting('theme', theme.id)
+  }
+
+  updateLanguage(language) {
+    this.updateSetting('language', language.mime || language.mode)
   }
 
   render() {
@@ -188,7 +205,7 @@ class Editor extends React.Component {
             <Dropdown
               selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
               list={THEMES}
-              onChange={theme => this.setState({ theme: theme.id })}
+              onChange={this.updateTheme}
             />
             <Dropdown
               selected={
@@ -197,11 +214,17 @@ class Editor extends React.Component {
                 LANGUAGE_MODE_HASH[this.state.language]
               }
               list={LANGUAGES}
-              onChange={language => this.setState({ language: language.mime || language.mode })}
+              onChange={this.updateLanguage}
             />
-            <BackgroundSelect onChange={changes => this.setState(changes)} config={this.state} />
+            <BackgroundSelect
+              onChange={this.setState}
+              mode={this.state.backgroundMode}
+              color={this.state.backgroundColor}
+              image={this.state.backgroundImage}
+              aspectRatio={this.state.aspectRatio}
+            />
             <Settings
-              onChange={(key, value) => this.setState({ [key]: value })}
+              onChange={this.updateSetting}
               enabled={this.state}
               resetDefaultSettings={this.resetDefaultSettings}
             />
@@ -214,34 +237,16 @@ class Editor extends React.Component {
                 style={{ marginRight: '8px' }}
               />
               <Dropdown
-                button
+                button={true}
                 color="#c198fb"
                 selected={{ id: 'SAVE_IMAGE', name: 'Save Image' }}
                 list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
-                onChange={saveAs => this.save({ format: saveAs.id })}
+                onChange={this.save}
               />
             </div>
           </Toolbar>
 
-          <ReadFileDropContainer
-            readAs={file => {
-              if (this.isImage(file)) {
-                return DATA_URL
-              }
-              return TEXT
-            }}
-            onDrop={([file]) => {
-              if (this.isImage(file)) {
-                this.setState({
-                  backgroundImage: file.content,
-                  backgroundImageSelection: null,
-                  backgroundMode: 'image'
-                })
-              } else {
-                this.setState({ code: file.content, language: 'auto' })
-              }
-            }}
-          >
+          <ReadFileDropContainer readAs={readAs} onDrop={this.onDrop}>
             {({ isOver, canDrop }) => (
               <Overlay
                 isOver={isOver || canDrop}
@@ -275,6 +280,25 @@ class Editor extends React.Component {
       </Page>
     )
   }
+}
+
+function removeQueryString(str) {
+  const qI = str.indexOf('?')
+  return (qI >= 0 ? str.substr(0, qI) : str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\//g, '&#x2F;')
+}
+
+function isImage(file) {
+  return file.type.split('/')[0] === 'image'
+}
+
+function readAs(file) {
+  if (isImage(file)) {
+    return DATA_URL
+  }
+  return TEXT
 }
 
 export default DragDropContext(HTML5Backend)(Editor)

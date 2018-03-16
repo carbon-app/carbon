@@ -7,9 +7,9 @@ import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { validateColor } from '../lib/colors'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
-class BackgroundSelect extends React.Component {
-  constructor() {
-    super()
+class BackgroundSelect extends React.PureComponent {
+  constructor(props) {
+    super(props)
     this.state = { isVisible: false, selectedTab: 'color', mounted: false }
     this.toggle = this.toggle.bind(this)
     this.selectTab = this.selectTab.bind(this)
@@ -25,7 +25,7 @@ class BackgroundSelect extends React.Component {
   }
 
   selectTab(name) {
-    if (this.props.config.backgroundMode !== name) {
+    if (this.props.mode !== name) {
       this.props.onChange({ backgroundMode: name })
     }
   }
@@ -39,7 +39,7 @@ class BackgroundSelect extends React.Component {
   }
 
   render() {
-    let background = this.props.config.backgroundColor || config.backgroundColor
+    let background = this.props.color
     background =
       typeof background === 'string'
         ? background
@@ -72,7 +72,7 @@ class BackgroundSelect extends React.Component {
             {['color', 'image'].map((tab, i) => (
               <div
                 key={i}
-                className={`picker-tab ${this.props.config.backgroundMode === tab ? 'active' : ''}`}
+                className={`picker-tab ${this.props.mode === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}
               >
                 {capitalizeFirstLetter(tab)}
@@ -80,19 +80,16 @@ class BackgroundSelect extends React.Component {
             ))}
           </div>
           <div className="picker-tabs-contents">
-            <div style={this.props.config.backgroundMode === 'color' ? {} : { display: 'none' }}>
+            <div style={this.props.mode === 'color' ? {} : { display: 'none' }}>
               {this.state.mounted && (
-                <SketchPicker
-                  color={this.props.config.backgroundColor}
-                  onChangeComplete={this.handlePickColor}
-                />
+                <SketchPicker color={this.props.color} onChangeComplete={this.handlePickColor} />
               )}
             </div>
-            <div style={this.props.config.backgroundMode === 'image' ? {} : { display: 'none' }}>
+            <div style={this.props.mode === 'image' ? {} : { display: 'none' }}>
               <ImagePicker
                 onChange={this.props.onChange}
-                imageDataURL={this.props.config.backgroundImage}
-                aspectRatio={this.props.config.aspectRatio}
+                imageDataURL={this.props.image}
+                aspectRatio={this.props.aspectRatio}
               />
             </div>
           </div>
@@ -135,8 +132,8 @@ class BackgroundSelect extends React.Component {
             right: 0px;
             bottom: 0px;
             left: 0px;
-            ${this.props.config.backgroundMode === 'image'
-              ? `background: url(${this.props.config.backgroundImage});
+            ${this.props.mode === 'image'
+              ? `background: url(${this.props.image});
                  background-size: cover;
                  background-repeat: no-repeat;`
               : `background: ${background};`};
