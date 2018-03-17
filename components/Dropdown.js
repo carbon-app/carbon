@@ -35,10 +35,21 @@ class Dropdown extends Component {
           changes.type === Downshift.stateChangeTypes.keyDownArrowDown)
       ) {
         inputValue = itemsToShow[changes.highlightedIndex].name
+        this.props.onChange(itemsToShow[changes.highlightedIndex])
       }
 
-      if (clearUserInput) {
+      if (changes.hasOwnProperty('isOpen')) {
         this.userInputtedValue = ''
+
+        // clear on open
+        if (changes.isOpen) {
+          inputValue = ''
+        }
+
+        // set on close
+        if (changes.isOpen === false && !inputValue) {
+          inputValue = this.props.selected.name
+        }
       }
 
       return { inputValue, itemsToShow }
