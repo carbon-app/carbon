@@ -80,6 +80,7 @@ class Editor extends React.Component {
     this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
+    this.updateBackground = this.updateBackground.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
@@ -140,7 +141,7 @@ class Editor extends React.Component {
     this.setState({ [key]: value })
   }
 
-  save({ id = 'png' }) {
+  save({ id: format = 'png' }) {
     this.getCarbonImage({ format }).then(dataUrl => {
       if (format === 'svg') {
         dataUrl = dataUrl.split('&nbsp;').join('&#160;')
@@ -191,6 +192,10 @@ class Editor extends React.Component {
     this.updateSetting('language', language.mime || language.mode)
   }
 
+  updateBackground(changes, cb) {
+    this.setState(changes, cb)
+  }
+
   render() {
     return (
       <Page enableHeroText={true}>
@@ -211,7 +216,7 @@ class Editor extends React.Component {
               onChange={this.updateLanguage}
             />
             <BackgroundSelect
-              onChange={this.setState}
+              onChange={this.updateBackground}
               mode={this.state.backgroundMode}
               color={this.state.backgroundColor}
               image={this.state.backgroundImage}
