@@ -74,15 +74,15 @@ class Editor extends React.Component {
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
-    this.updateCode = this.updateCode.bind(this)
-    this.updateTitleBar = this.updateTitleBar.bind(this)
-    this.updateAspectRatio = this.updateAspectRatio.bind(this)
+    this.updateSetting = this.updateSetting.bind(this)
+    this.updateCode = this.updateSetting.bind(this, 'code')
+    this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
+    this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
+    this.updateTheme = this.updateTheme.bind(this)
+    this.updateLanguage = this.updateLanguage.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
-    this.updateTheme = this.updateTheme.bind(this)
-    this.updateLanguage = this.updateLanguage.bind(this)
-    this.updateSetting = this.updateSetting.bind(this)
   }
 
   componentDidMount() {
@@ -136,21 +136,8 @@ class Editor extends React.Component {
       : domtoimage.toPng(node, config)
   }
 
-  // TODO use class props with bind
   updateSetting(key, value) {
     this.setState({ [key]: value })
-  }
-
-  updateCode(code) {
-    this.updateSetting('code', code)
-  }
-
-  updateAspectRatio(aspectRatio) {
-    this.updateSetting('aspectRatio', aspectRatio)
-  }
-
-  updateTitleBar(titleBar) {
-    this.updateSetting('titleBar', titleBar)
   }
 
   save({ id = 'png' }) {
@@ -257,6 +244,7 @@ class Editor extends React.Component {
                   config={this.state}
                   updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
+                  titleBar={this.state.titleBar}
                   updateTitleBar={this.updateTitleBar}
                 >
                   {this.state.code != null ? this.state.code : DEFAULT_CODE}
