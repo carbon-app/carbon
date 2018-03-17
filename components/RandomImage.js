@@ -78,8 +78,6 @@ export default class extends React.Component {
   render() {
     const bgImage = this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].dataURL
 
-    if (!bgImage) return null
-
     return (
       <div className="random-image-container">
         <div className="controls">
