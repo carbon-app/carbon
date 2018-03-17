@@ -113,6 +113,7 @@ class Carbon extends PureComponent {
         <div id="container">
           {config.windowControls ? (
             <WindowControls
+              titleBar={this.props.titleBar}
               theme={config.windowTheme}
               handleTitleBarChange={this.handleTitleBarChange}
             />
