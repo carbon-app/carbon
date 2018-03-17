@@ -1,6 +1,6 @@
 import { EOL } from 'os'
 import * as hljs from 'highlight.js'
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
@@ -19,7 +19,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 
-class Carbon extends Component {
+class Carbon extends PureComponent {
   constructor(props) {
     super(props)
 

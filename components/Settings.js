@@ -39,74 +39,74 @@ class Settings extends React.Component {
         <div className="settings-settings">
           <WindowPointer fromLeft="15px" />
           <ThemeSelect
-            selected={this.props.enabled.windowTheme || 'none'}
+            selected={this.props.windowTheme || 'none'}
             onChange={this.props.onChange.bind(null, 'windowTheme')}
           />
           <FontSelect
-            selected={this.props.enabled.fontFamily || 'Hack'}
+            selected={this.props.fontFamily || 'Hack'}
             onChange={this.props.onChange.bind(null, 'fontFamily')}
           />
           <Slider
             label="Font size"
-            value={this.props.enabled.fontSize || 13}
+            value={this.props.fontSize || 13}
             minValue={10}
             maxValue={18}
             onChange={this.props.onChange.bind(null, 'fontSize')}
           />
           <Toggle
             label="Window controls"
-            enabled={this.props.enabled.windowControls}
+            enabled={this.props.windowControls}
             onChange={this.props.onChange.bind(null, 'windowControls')}
           />
           <Toggle
             label="Line numbers"
-            enabled={this.props.enabled.lineNumbers}
+            enabled={this.props.lineNumbers}
             onChange={this.props.onChange.bind(null, 'lineNumbers')}
           />
           <Toggle
             label="Auto-adjust width"
-            enabled={this.props.enabled.widthAdjustment}
+            enabled={this.props.widthAdjustment}
             onChange={this.props.onChange.bind(null, 'widthAdjustment')}
           />
           <Collapse label="Advanced">
             <Slider
               label="Padding (vertical)"
-              value={this.props.enabled.paddingVertical || 16}
+              value={this.props.paddingVertical || 16}
               maxValue={200}
               onChange={this.props.onChange.bind(null, 'paddingVertical')}
             />
             <Slider
               label="Padding (horizontal)"
-              value={this.props.enabled.paddingHorizontal || 32}
+              value={this.props.paddingHorizontal || 32}
               onChange={this.props.onChange.bind(null, 'paddingHorizontal')}
             />
             <Toggle
               label="Drop shadow"
-              enabled={this.props.enabled.dropShadow}
+              enabled={this.props.dropShadow}
               onChange={this.props.onChange.bind(null, 'dropShadow')}
             />
             <Slider
               label="Drop shadow (offset-y)"
-              value={this.props.enabled.dropShadowOffsetY || 20}
+              value={this.props.dropShadowOffsetY || 20}
               onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
             />
             <Slider
               label="Drop shadow (blur-radius)"
-              value={this.props.enabled.dropShadowBlurRadius || 68}
+              value={this.props.dropShadowBlurRadius || 68}
               onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
             />
             <Toggle
               label="Squared image"
-              enabled={this.props.enabled.squaredImage}
+              enabled={this.props.squaredImage}
               onChange={this.props.onChange.bind(null, 'squaredImage')}
             />
             <Toggle
               label="Watermark"
-              enabled={this.props.enabled.watermark}
+              enabled={this.props.watermark}
               onChange={this.props.onChange.bind(null, 'watermark')}
             />
             <ExportSizeSelect
-              selected={this.props.enabled.exportSize || '2x'}
+              selected={this.props.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}
             />
             <Toggle

@@ -36,6 +36,13 @@ import {
 import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
+const saveButtonOptions = {
+  button: true,
+  color: '#c198fb',
+  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
+  list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
+}
+
 class Editor extends React.Component {
   static async getInitialProps({ asPath, query }) {
     const path = removeQueryString(asPath.split('/').pop())
@@ -89,7 +96,7 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate() {
-    updateQueryString(this.state) // TODO check for ?react_perf
+    updateQueryString(this.state)
     const s = { ...this.state }
     delete s.code
     delete s.backgroundImage
@@ -199,7 +206,7 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <Page enableHeroText>
+      <Page enableHeroText={true}>
         <div id="editor">
           <Toolbar>
             <Dropdown
@@ -224,8 +231,8 @@ class Editor extends React.Component {
               aspectRatio={this.state.aspectRatio}
             />
             <Settings
+              {...this.state}
               onChange={this.updateSetting}
-              enabled={this.state}
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
@@ -236,13 +243,7 @@ class Editor extends React.Component {
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
               />
-              <Dropdown
-                button={true}
-                color="#c198fb"
-                selected={{ id: 'SAVE_IMAGE', name: 'Save Image' }}
-                list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
-                onChange={this.save}
-              />
+              <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>
 
@@ -254,7 +255,7 @@ class Editor extends React.Component {
               >
                 <Carbon
                   config={this.state}
-                  updateCode={code => this.updateCode(code)}
+                  updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
                   updateTitleBar={this.updateTitleBar}
                 >
