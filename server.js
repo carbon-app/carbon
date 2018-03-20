@@ -17,7 +17,8 @@ if (!dev) {
 function wrap(handler) {
   return (req, res) =>
     handler(req, res).catch(err => {
-      res.status(400).send(err);
+      console.log('ERR:', err)
+      res.status(400).end()
     })
 }
 
