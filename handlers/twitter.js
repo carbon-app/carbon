@@ -29,8 +29,9 @@ const respondFail = (res, err) => {
     return res.status(420).send()
   }
 
+  // eslint-disable-next-line
   console.error(`Error: ${err.message || JSON.stringify(err, null, 2)}`)
-  res.status(500).send()
+  return res.status(500).send()
 }
 
 module.exports = (req, res) => {
@@ -38,7 +39,7 @@ module.exports = (req, res) => {
     return res.status(400).send()
   }
 
-  uploadImage(req.body.data)
+  return uploadImage(req.body.data)
     .then(uploadTweet)
     .then(extractImageUrl)
     .then(respondSuccess.bind(null, res))
