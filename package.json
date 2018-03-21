@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "body-parser": "^1.17.2",
-    "codemirror": "^5.31.0",
+    "codemirror": "^5.36.0",
     "codemirror-graphql": "^0.6.12",
     "codemirror-mode-elixir": "^1.1.1",
     "cross-env": "^5.1.3",
