@@ -1,7 +1,4 @@
 import Page from '../components/Page'
-import Meta from '../components/Meta'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import { COLORS } from '../lib/constants'
 
 export default () => (
@@ -13,7 +10,10 @@ export default () => (
           You know all of those code screenshots you see on Twitter? Although the code&apos;s
           usually impressive, we saw room for improvement in the aesthetic department. Carbon is the
           easiest way to create beautiful images of your source code. So what are you waiting for?
-          Go impress all of your followers with your newfound design prowess. <span>🎨</span>
+          Go impress all of your followers with your newfound design prowess.{' '}
+          <span role="img" aria-label="Palette">
+            🎨
+          </span>
         </p>
       </div>
       <div className="mb4">
@@ -23,12 +23,11 @@ export default () => (
         <ul className="mt0 mb3">
           <li>Drop a file into the editor</li>
           <li>
-            Append a GitHub gist id to the url (<a
-              className="link"
-              href="/0db00e81d5416c339181e59481c74b59"
-            >
+            Append a GitHub gist id to the url (
+            <a className="link" href="/0db00e81d5416c339181e59481c74b59">
               example
-            </a>)
+            </a>
+            )
           </li>
           <li>Paste your code directly</li>
         </ul>
@@ -56,24 +55,26 @@ export default () => (
         </p>
       </div>
     </div>
-    <style jsx>{`
-      p,
-      li {
-        color: ${COLORS.GRAY};
-      }
+    <style jsx>
+      {`
+        p,
+        li {
+          color: ${COLORS.GRAY};
+        }
 
-      span {
-        color: #fff;
-      }
+        span {
+          color: #fff;
+        }
 
-      ul {
-        list-style-position: inside;
-        list-style-type: circle;
-      }
+        ul {
+          list-style-position: inside;
+          list-style-type: circle;
+        }
 
-      .about {
-        max-width: 632px;
-      }
-    `}</style>
+        .about {
+          max-width: 632px;
+        }
+      `}
+    </style>
   </Page>
 )

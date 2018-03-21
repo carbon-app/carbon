@@ -12,7 +12,7 @@ import { COLORS } from '../lib/constants'
 
 class Settings extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       isVisible: false
     }
@@ -116,62 +116,64 @@ class Settings extends React.Component {
             />
           </Collapse>
         </div>
-        <style jsx>{`
-          .settings-container {
-            display: flex;
-            position: relative;
-            height: 100%;
-            width: 37px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 3px;
-            color: #fff;
-            font-size: 12px;
-          }
+        <style jsx>
+          {`
+            .settings-container {
+              display: flex;
+              position: relative;
+              height: 100%;
+              width: 37px;
+              align-items: center;
+              justify-content: center;
+              border-radius: 3px;
+              color: #fff;
+              font-size: 12px;
+            }
 
-          .settings-display {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid ${COLORS.SECONDARY};
-            border-radius: 3px;
-            user-select: none;
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-          }
+            .settings-display {
+              height: 100%;
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 1px solid ${COLORS.SECONDARY};
+              border-radius: 3px;
+              user-select: none;
+              position: relative;
+              z-index: 1;
+              cursor: pointer;
+            }
 
-          .settings-display:hover {
-            background: ${COLORS.HOVER};
-          }
+            .settings-display:hover {
+              background: ${COLORS.HOVER};
+            }
 
-          .is-visible + .settings-settings {
-            display: block;
-          }
+            .is-visible + .settings-settings {
+              display: block;
+            }
 
-          .settings-settings {
-            display: none;
-            position: absolute;
-            top: 44px;
-            left: 0;
-            border: 1px solid ${COLORS.SECONDARY};
-            width: 184px;
-            border-radius: 3px;
-            background: ${COLORS.BLACK};
-          }
+            .settings-settings {
+              display: none;
+              position: absolute;
+              top: 44px;
+              left: 0;
+              border: 1px solid ${COLORS.SECONDARY};
+              width: 184px;
+              border-radius: 3px;
+              background: ${COLORS.BLACK};
+            }
 
-          .settings-settings > :global(div) {
-            border-bottom: solid 1px ${COLORS.SECONDARY};
-          }
+            .settings-settings > :global(div) {
+              border-bottom: solid 1px ${COLORS.SECONDARY};
+            }
 
-          .settings-settings > :global(div):first-child,
-          .settings-settings > :global(div):last-child,
-          .settings-settings > :global(.collapse) {
-            border-bottom: none;
-          }
-        `}</style>
+            .settings-settings > :global(div):first-child,
+            .settings-settings > :global(div):last-child,
+            .settings-settings > :global(.collapse) {
+              border-bottom: none;
+            }
+          `}
+        </style>
       </div>
     )
   }

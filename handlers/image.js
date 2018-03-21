@@ -1,22 +1,23 @@
+/* global domtoimage */
 const PORT = parseInt(process.env.PORT, 10) || 3000
 const ARBITRARY_WAIT_TIME = 500
 
 module.exports = browser => async (req, res) => {
-  let page = await browser.newPage()
-  let state = req.body.state
+  const page = await browser.newPage()
+  const { state } = req.body
 
   if (!state) res.status(400).send()
 
   try {
     await page.goto(`http://localhost:${PORT}?state=${state}`)
-    await page.addScriptTag({ path: `./lib/customDomToImage.js` })
+    await page.addScriptTag({ path: './lib/customDomToImage.js' })
 
     // wait for page to detect language
     await delay(ARBITRARY_WAIT_TIME)
 
     const targetElement = await page.$('#export-container')
 
-    let dataUrl = await page.evaluate(target => {
+    const dataUrl = await page.evaluate(target => {
       const config = {
         style: {
           transform: 'scale(2)',

@@ -10,20 +10,16 @@ const WALLPAPER_COLLECTION_ID = 136026
 const RANDOM_WALLPAPER_URL = `https://source.unsplash.com/collection/${WALLPAPER_COLLECTION_ID}/240x320`
 
 const largerImage = url => url.replace(/w=\d+/, 'w=1920').replace(/&h=\d+/, '')
-const smallerImage = url => url.replace(/w=\d+/, 'w=240')
 
-export default class extends React.Component {
-  constructor() {
-    super()
+export default class RandomImage extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = { cacheIndex: 0, loading: false }
     this.selectImage = this.selectImage.bind(this)
     this.updateCache = this.updateCache.bind(this)
     this.getImage = this.getImage.bind(this)
     this.nextImage = this.nextImage.bind(this)
   }
-
-  cache = []
-  imageUrls = {}
 
   // fetch images in browser (we require window.FileReader)
   componentDidMount() {
@@ -39,7 +35,7 @@ export default class extends React.Component {
     const res = await axios.get(`${RANDOM_WALLPAPER_URL}?sig=${sig}`, { responseType: 'blob' })
 
     // image already in cache?
-    if (this.imageUrls[res.request.responseURL]) return
+    if (this.imageUrls[res.request.responseURL]) return undefined
 
     this.imageUrls[res.request.responseURL] = true
     return {
@@ -47,6 +43,9 @@ export default class extends React.Component {
       dataURL: await fileToDataURL(res.data)
     }
   }
+
+  cache = []
+  imageUrls = {}
 
   selectImage() {
     this.setState({ loading: true })
@@ -85,27 +84,29 @@ export default class extends React.Component {
           <span onClick={this.nextImage}>Try Another</span>
         </div>
         <div className="image">{this.state.loading && <Spinner />}</div>
-        <style jsx>{`
-          .image {
-            width: 100%;
-            height: 120px;
-            background: url(${bgImage});
-            background-size: cover;
-            background-repeat: no-repeat;
-          }
+        <style jsx>
+          {`
+            .image {
+              width: 100%;
+              height: 120px;
+              background: url(${bgImage});
+              background-size: cover;
+              background-repeat: no-repeat;
+            }
 
-          .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-          }
+            .controls {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 4px;
+            }
 
-          span {
-            opacity: ${this.state.loading ? 0.5 : 1};
-            cursor: ${this.state.loading ? 'not-allowed' : 'pointer'};
-            user-select: none;
-          }
-        `}</style>
+            span {
+              opacity: ${this.state.loading ? 0.5 : 1};
+              cursor: ${this.state.loading ? 'not-allowed' : 'pointer'};
+              user-select: none;
+            }
+          `}
+        </style>
       </div>
     )
   }

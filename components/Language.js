@@ -1,5 +1,4 @@
 import React from 'react'
-import { Controls, ControlsBW } from './svg/Controls'
 
 export default ({ language }) => (
   <div className="language">

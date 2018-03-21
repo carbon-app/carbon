@@ -4,7 +4,7 @@ import { COLORS, FONTS } from '../lib/constants'
 
 export default class extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = { isVisible: false }
     this.select = this.select.bind(this)
     this.toggle = this.toggle.bind(this)
@@ -21,28 +21,30 @@ export default class extends React.Component {
   }
 
   renderListItems() {
-    return FONTS.map((font, i) => (
-      <div className="list-item" key={i} onClick={this.select.bind(null, font.id)}>
+    return FONTS.map(font => (
+      <div className="list-item" key={font.id} onClick={this.select.bind(null, font.id)}>
         <span style={{ fontFamily: font.id }}>{font.name}</span>
         {this.props.selected === font.id ? <Checkmark /> : null}
-        <style jsx>{`
-          .list-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
-            padding: 8px 16px;
-            border-bottom: 1px solid ${COLORS.SECONDARY};
-            background: rgba(255, 255, 255, 0.165);
-          }
-          .list-item:first-of-type {
-            border-top: 1px solid ${COLORS.SECONDARY};
-          }
-          .list-item:last-of-type {
-            border-bottom: none;
-          }
-        `}</style>
+        <style jsx>
+          {`
+            .list-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              cursor: pointer;
+              user-select: none;
+              padding: 8px 16px;
+              border-bottom: 1px solid ${COLORS.SECONDARY};
+              background: rgba(255, 255, 255, 0.165);
+            }
+            .list-item:first-of-type {
+              border-top: 1px solid ${COLORS.SECONDARY};
+            }
+            .list-item:last-of-type {
+              border-bottom: none;
+            }
+          `}
+        </style>
       </div>
     ))
   }
@@ -59,25 +61,27 @@ export default class extends React.Component {
           <span style={{ fontFamily: selectedFont.id }}>{selectedFont.name}</span>
         </div>
         <div className="list">{this.renderListItems()}</div>
-        <style jsx>{`
-          .display {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
-            padding: 8px;
-          }
-          .list {
-            display: none;
-            margin-top: -1px;
-            max-height: 80px;
-            overflow-y: scroll;
-          }
-          .is-visible + .list {
-            display: block;
-          }
-        `}</style>
+        <style jsx>
+          {`
+            .display {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              cursor: pointer;
+              user-select: none;
+              padding: 8px;
+            }
+            .list {
+              display: none;
+              margin-top: -1px;
+              max-height: 80px;
+              overflow-y: scroll;
+            }
+            .is-visible + .list {
+              display: block;
+            }
+          `}
+        </style>
       </div>
     )
   }
