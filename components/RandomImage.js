@@ -13,8 +13,8 @@ const largerImage = url => url.replace(/w=\d+/, 'w=1920').replace(/&h=\d+/, '')
 const smallerImage = url => url.replace(/w=\d+/, 'w=240')
 
 export default class extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = { cacheIndex: 0, loading: false }
     this.selectImage = this.selectImage.bind(this)
     this.updateCache = this.updateCache.bind(this)

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { COLORS } from '../lib/constants'
 
-const Footer = props => (
+const Footer = () => (
   <footer role="contentinfo" className="mt3">
     <nav role="navigation" className="mt3">
       <Link href="/about">

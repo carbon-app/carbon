@@ -2,7 +2,7 @@ import React from 'react'
 
 export default class extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.handleChange = this.handleChange.bind(this)
   }
 

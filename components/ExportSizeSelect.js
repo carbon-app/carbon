@@ -5,7 +5,7 @@ import { EXPORT_SIZES } from '../lib/constants'
 
 export default class extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = { isVisible: false }
     this.select = this.select.bind(this)
     this.toggle = this.toggle.bind(this)

@@ -1,6 +1,6 @@
 import { EOL } from 'os'
 import * as hljs from 'highlight.js'
-import React from 'react'
+import React, { PureComponent } from 'react'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
@@ -19,7 +19,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 
-class Carbon extends React.Component {
+class Carbon extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -113,6 +113,7 @@ class Carbon extends React.Component {
         <div id="container">
           {config.windowControls ? (
             <WindowControls
+              titleBar={this.props.titleBar}
               theme={config.windowTheme}
               handleTitleBarChange={this.handleTitleBarChange}
             />
