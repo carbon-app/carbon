@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
 import ArrowDown from './svg/Arrowdown'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
-class Dropdown extends Component {
+class Dropdown extends PureComponent {
   state = {
     inputValue: this.props.selected.name,
     itemsToShow: this.props.list
@@ -58,10 +58,12 @@ class Dropdown extends Component {
   render() {
     const { button, color, list, selected, onChange } = this.props
 
+    const minWidth = calcMinWidth(button, selected, list)
+
     return (
       <Downshift
         inputValue={this.state.inputValue}
-        render={renderDropdown({ button, color, list: this.state.itemsToShow, selected })}
+        render={renderDropdown({ button, color, list: this.state.itemsToShow, selected, minWidth })}
         selectedItem={selected}
         defaultHighlightedIndex={list.findIndex(it => it === selected)}
         itemToString={item => item.name}
@@ -72,7 +74,7 @@ class Dropdown extends Component {
   }
 }
 
-const renderDropdown = ({ button, color, list, selected }) => ({
+const renderDropdown = ({ button, color, list, minWidth, selected }) => ({
   isOpen,
   highlightedIndex,
   setHighlightedIndex,
@@ -84,10 +86,7 @@ const renderDropdown = ({ button, color, list, selected }) => ({
   getItemProps
 }) => {
   return (
-    <DropdownContainer
-      {...getRootProps({ refKey: 'innerRef' })}
-      minWidth={minWidth(button, selected, list)}
-    >
+    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
       <SelectedItem
         getButtonProps={getButtonProps}
         getInputProps={getInputProps}
@@ -245,7 +244,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
   )
 }
 
-function minWidth(isButton, selected, list) {
+function calcMinWidth(isButton, selected, list) {
   const items = isButton ? [...list, selected] : list
 
   return items.reduce((max, { name }) => {

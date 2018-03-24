@@ -34,8 +34,8 @@ const getCroppedImg = (imageDataURL, pixelCrop) => {
 const INITIAL_STATE = { crop: null, imageAspectRatio: null, pixelCrop: null }
 
 export default class extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = INITIAL_STATE
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)

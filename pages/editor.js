@@ -32,12 +32,11 @@ import {
 import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
-const removeQueryString = str => {
-  const qI = str.indexOf('?')
-  return (qI >= 0 ? str.substr(0, qI) : str)
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\//g, '&#x2F;')
+const saveButtonOptions = {
+  button: true,
+  color: '#c198fb',
+  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
+  list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
 }
 
 class Editor extends React.Component {
@@ -71,11 +70,16 @@ class Editor extends React.Component {
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
-    this.updateCode = this.updateCode.bind(this)
-    this.updateTitleBar = this.updateTitleBar.bind(this)
-    this.updateAspectRatio = this.updateAspectRatio.bind(this)
+    this.updateSetting = this.updateSetting.bind(this)
+    this.updateCode = this.updateSetting.bind(this, 'code')
+    this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
+    this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
+    this.updateTheme = this.updateTheme.bind(this)
+    this.updateLanguage = this.updateLanguage.bind(this)
+    this.updateBackground = this.updateBackground.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
+    this.onDrop = this.onDrop.bind(this)
   }
 
   componentDidMount() {
@@ -129,19 +133,11 @@ class Editor extends React.Component {
       : domtoimage.toPng(node, config)
   }
 
-  updateCode(code) {
-    this.setState({ code })
+  updateSetting(key, value) {
+    this.setState({ [key]: value })
   }
 
-  updateAspectRatio(aspectRatio) {
-    this.setState({ aspectRatio })
-  }
-
-  updateTitleBar(titleBar) {
-    this.setState({ titleBar })
-  }
-
-  save({ format } = { format: 'png' }) {
+  save({ id: format = 'png' }) {
     this.getCarbonImage({ format }).then(dataUrl => {
       const parsedUrl = format === 'svg' ? dataUrl.split('&nbsp;').join('&#160;') : dataUrl
 
@@ -170,15 +166,39 @@ class Editor extends React.Component {
       })
   }
 
+  onDrop([file]) {
+    if (isImage(file)) {
+      this.setState({
+        backgroundImage: file.content,
+        backgroundImageSelection: null,
+        backgroundMode: 'image'
+      })
+    } else {
+      this.setState({ code: file.content, language: 'auto' })
+    }
+  }
+
+  updateTheme(theme) {
+    this.updateSetting('theme', theme.id)
+  }
+
+  updateLanguage(language) {
+    this.updateSetting('language', language.mime || language.mode)
+  }
+
+  updateBackground(changes, cb) {
+    this.setState(changes, cb)
+  }
+
   render() {
     return (
-      <Page enableHeroText>
+      <Page enableHeroText={true}>
         <div id="editor">
           <Toolbar>
             <Dropdown
               selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
               list={THEMES}
-              onChange={theme => this.setState({ theme: theme.id })}
+              onChange={this.updateTheme}
             />
             <Dropdown
               selected={
@@ -187,12 +207,18 @@ class Editor extends React.Component {
                 LANGUAGE_MODE_HASH[this.state.language]
               }
               list={LANGUAGES}
-              onChange={language => this.setState({ language: language.mime || language.mode })}
+              onChange={this.updateLanguage}
             />
-            <BackgroundSelect onChange={changes => this.setState(changes)} config={this.state} />
+            <BackgroundSelect
+              onChange={this.updateBackground}
+              mode={this.state.backgroundMode}
+              color={this.state.backgroundColor}
+              image={this.state.backgroundImage}
+              aspectRatio={this.state.aspectRatio}
+            />
             <Settings
-              onChange={(key, value) => this.setState({ [key]: value })}
-              enabled={this.state}
+              {...this.state}
+              onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
@@ -203,35 +229,11 @@ class Editor extends React.Component {
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
               />
-              <Dropdown
-                button
-                color="#c198fb"
-                selected={{ id: 'SAVE_IMAGE', name: 'Save Image' }}
-                list={['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))}
-                onChange={saveAs => this.save({ format: saveAs.id })}
-              />
+              <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>
 
-          <ReadFileDropContainer
-            readAs={file => {
-              if (isImage(file)) {
-                return DATA_URL
-              }
-              return TEXT
-            }}
-            onDrop={([file]) => {
-              if (isImage(file)) {
-                this.setState({
-                  backgroundImage: file.content,
-                  backgroundImageSelection: null,
-                  backgroundMode: 'image'
-                })
-              } else {
-                this.setState({ code: file.content, language: 'auto' })
-              }
-            }}
-          >
+          <ReadFileDropContainer readAs={readAs} onDrop={this.onDrop}>
             {({ isOver, canDrop }) => (
               <Overlay
                 isOver={isOver || canDrop}
@@ -239,8 +241,9 @@ class Editor extends React.Component {
               >
                 <Carbon
                   config={this.state}
-                  updateCode={code => this.updateCode(code)}
+                  updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
+                  titleBar={this.state.titleBar}
                   updateTitleBar={this.updateTitleBar}
                 >
                   {this.state.code != null ? this.state.code : DEFAULT_CODE}
@@ -269,8 +272,23 @@ class Editor extends React.Component {
   }
 }
 
+function removeQueryString(str) {
+  const qI = str.indexOf('?')
+  return (qI >= 0 ? str.substr(0, qI) : str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\//g, '&#x2F;')
+}
+
 function isImage(file) {
   return file.type.split('/')[0] === 'image'
+}
+
+function readAs(file) {
+  if (isImage(file)) {
+    return DATA_URL
+  }
+  return TEXT
 }
 
 export default DragDropContext(HTML5Backend)(Editor)
