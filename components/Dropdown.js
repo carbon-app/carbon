@@ -1,33 +1,81 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import Downshift from 'downshift'
+import matchSorter from 'match-sorter'
 import ArrowDown from './svg/Arrowdown'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
-const Dropdown = ({ button, color, list, selected, onChange }) => {
-  return (
-    <Downshift
-      render={renderDropdown({ button, color, list, selected })}
-      selectedItem={selected}
-      defaultHighlightedIndex={list.findIndex(it => it === selected)}
-      itemToString={item => item.name}
-      onChange={onChange}
-      stateReducer={reduceState(list)}
-    />
-  )
-}
+class Dropdown extends PureComponent {
+  state = {
+    inputValue: this.props.selected.name,
+    itemsToShow: this.props.list
+  }
+  userInputtedValue = ''
 
-const reduceState = list => (state, changes) => {
-  switch (changes.type) {
-    case Downshift.stateChangeTypes.keyDownArrowUp:
-    case Downshift.stateChangeTypes.keyDownArrowDown:
-      return { ...changes, selectedItem: list[changes.highlightedIndex] }
-    default:
-      return changes
+  onUserAction = changes => {
+    this.setState(({ inputValue, itemsToShow }) => {
+      const clearUserInput = changes.hasOwnProperty('isOpen')
+
+      if (changes.hasOwnProperty('inputValue')) {
+        if (changes.type === Downshift.stateChangeTypes.keyDownEscape) {
+          inputValue = this.userInputtedValue
+        } else {
+          inputValue = changes.inputValue
+          this.userInputtedValue = changes.inputValue
+        }
+      }
+
+      itemsToShow = this.userInputtedValue
+        ? matchSorter(this.props.list, this.userInputtedValue, { keys: ['name'] })
+        : this.props.list
+
+      if (
+        changes.hasOwnProperty('highlightedIndex') &&
+        (changes.type === Downshift.stateChangeTypes.keyDownArrowUp ||
+          changes.type === Downshift.stateChangeTypes.keyDownArrowDown)
+      ) {
+        inputValue = itemsToShow[changes.highlightedIndex].name
+        this.props.onChange(itemsToShow[changes.highlightedIndex])
+      }
+
+      if (changes.hasOwnProperty('isOpen')) {
+        this.userInputtedValue = ''
+
+        // clear on open
+        if (changes.isOpen) {
+          inputValue = ''
+        }
+
+        // set on close
+        if (changes.isOpen === false && !inputValue) {
+          inputValue = this.props.selected.name
+        }
+      }
+
+      return { inputValue, itemsToShow }
+    })
+  }
+
+  render() {
+    const { button, color, list, selected, onChange } = this.props
+
+    const minWidth = calcMinWidth(button, selected, list)
+
+    return (
+      <Downshift
+        inputValue={this.state.inputValue}
+        render={renderDropdown({ button, color, list: this.state.itemsToShow, selected, minWidth })}
+        selectedItem={selected}
+        defaultHighlightedIndex={list.findIndex(it => it === selected)}
+        itemToString={item => item.name}
+        onChange={onChange}
+        onUserAction={this.onUserAction}
+      />
+    )
   }
 }
 
-const renderDropdown = ({ button, color, list, selected }) => ({
+const renderDropdown = ({ button, color, list, minWidth, selected }) => ({
   isOpen,
   highlightedIndex,
   setHighlightedIndex,
@@ -39,11 +87,14 @@ const renderDropdown = ({ button, color, list, selected }) => ({
   getItemProps
 }) => {
   return (
-    <DropdownContainer
-      {...getRootProps({ refKey: 'innerRef' })}
-      minWidth={minWidth(button, selected, list)}
-    >
-      <SelectedItem {...getButtonProps()} {...getInputProps()} isOpen={isOpen} color={color}>
+    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
+      <SelectedItem
+        getButtonProps={getButtonProps}
+        getInputProps={getInputProps}
+        isOpen={isOpen}
+        color={color}
+        button={button}
+      >
         {selectedItem.name}
       </SelectedItem>
       {isOpen ? (
@@ -82,13 +133,24 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ children, isOpen, color, ...rest }) => {
+const SelectedItem = ({ getButtonProps, getInputProps, children, isOpen, color, button }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <span {...rest} tabIndex="0" className={`dropdown-display ${isOpen ? 'is-open' : ''}`}>
-      <span className="dropdown-display-text">{children}</span>
-      <div className={`dropdown-arrow`}>
+    <span
+      {...getButtonProps()}
+      tabIndex="0"
+      className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
+    >
+      {button ? (
+        <span className="dropdown-display-text">{children}</span>
+      ) : (
+        <input
+          {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
+          className="dropdown-display-text"
+        />
+      )}
+      <div role="button" className={`dropdown-arrow`}>
         <ArrowDown fill={itemColor} />
       </div>
       <style jsx>{`
@@ -112,6 +174,11 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
         .dropdown-display-text {
           flex-grow: 1;
           color: ${itemColor};
+          background: transparent;
+          border: none;
+          outline: none;
+          font-size: inherit;
+          font-family: inherit;
         }
         .is-open > .dropdown-arrow {
           transform: rotate(180deg);
@@ -123,7 +190,7 @@ const SelectedItem = ({ children, isOpen, color, ...rest }) => {
 
 const ListItems = ({ children, color }) => {
   return (
-    <ul className="dropdown-list">
+    <ul role="listbox" className="dropdown-list">
       {children}
       <style jsx>{`
         .dropdown-list {
@@ -142,7 +209,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <li {...rest} className="dropdown-list-item">
+    <li {...rest} role="option" className="dropdown-list-item">
       <span className="dropdown-list-item-text">{children}</span>
       {isSelected ? <CheckMark /> : null}
       <style jsx>{`
@@ -170,7 +237,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
   )
 }
 
-function minWidth(isButton, selected, list) {
+function calcMinWidth(isButton, selected, list) {
   const items = isButton ? [...list, selected] : list
 
   return items.reduce((max, { name }) => {

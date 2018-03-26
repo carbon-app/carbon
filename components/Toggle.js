@@ -3,7 +3,7 @@ import Checkmark from './svg/Checkmark'
 
 export default class extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.toggle = this.toggle.bind(this)
   }
 

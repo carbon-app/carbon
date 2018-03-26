@@ -15,6 +15,9 @@ Router.onRouteChangeComplete = () => {
   }
 }
 
+import '../static/react-crop.css'
+import '../static/react-spinner.css'
+
 export default () => (
   <div className="meta">
     <Head>
@@ -37,8 +40,10 @@ export default () => (
         content="Carbon is the easiest way to create and share beautiful images of your source code."
       />
       <meta name="og:image" content="/static/banner.png" />
+      <meta name="theme-color" content="#121212" />
       <title>Carbon</title>
       <link rel="shortcut icon" href="/static/favicon.ico" />
+      <link rel="stylesheet" href="/_next/static/style.css" />
       <link
         rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
@@ -53,11 +58,10 @@ export default () => (
           rel="stylesheet"
           href={
             theme.link ||
-            `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.34.0/theme/${theme.id}.min.css`
+            `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/${theme.id}.min.css`
           }
         />
       ))}
-      <link rel="stylesheet" type="text/css" href="/static/react-spinner.css" />
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
       <script
         dangerouslySetInnerHTML={{
@@ -71,7 +75,6 @@ export default () => (
       `
         }}
       />
-      <link rel="stylesheet" type="text/css" href="/static/react-crop.css" />
     </Head>
     <Reset />
     <Font />

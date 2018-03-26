@@ -1,6 +1,6 @@
 import { EOL } from 'os'
 import * as hljs from 'highlight.js'
-import React from 'react'
+import React, { PureComponent } from 'react'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
 import toHash from 'tohash'
@@ -19,7 +19,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 
-class Carbon extends React.Component {
+class Carbon extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -113,6 +113,7 @@ class Carbon extends React.Component {
         <div id="container">
           {config.windowControls ? (
             <WindowControls
+              titleBar={this.props.titleBar}
               theme={config.windowTheme}
               handleTitleBarChange={this.handleTitleBarChange}
             />
@@ -183,8 +184,7 @@ class Carbon extends React.Component {
               right: 0px;
               bottom: 0px;
               left: 0px;
-              background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==)
-                left center;
+              background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==);
             }
 
             #container :global(.cm-s-dracula .CodeMirror-cursor) {

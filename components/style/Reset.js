@@ -147,7 +147,6 @@ export default () => (
       overflow-y: auto;
       min-width: 848px;
       min-height: 704px;
-      height: 100%;
     }
 
     * {
