@@ -43,7 +43,7 @@ export default () => (
       />
       {THEMES.filter(t => t.hasStylesheet !== false).map(theme => (
         <link
-          key={theme.link}
+          key={theme.id}
           rel="stylesheet"
           href={
             theme.link ||
