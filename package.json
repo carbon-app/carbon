@@ -36,7 +36,7 @@
     "morgan": "^1.8.2",
     "morphmorph": "^0.0.2",
     "ms": "^2.0.0",
-    "next": "^5.0.0",
+    "next": "^5.1.0",
     "now-logs": "^0.0.7",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.0.0",
@@ -56,7 +56,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-    "@zeit/next-css": "^0.1.4",
+    "@zeit/next-css": "^0.1.5",
     "all-contributors-cli": "^4.7.0",
     "cypress": "^1.4.1",
     "hex2rgb": "^2.2.0",
