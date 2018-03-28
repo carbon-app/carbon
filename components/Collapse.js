@@ -1,6 +1,5 @@
 import React from 'react'
 import Toggle from './Toggle'
-import Arrowdown from './svg/Arrowdown'
 
 class Collapse extends React.Component {
   constructor(props) {

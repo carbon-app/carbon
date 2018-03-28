@@ -1,7 +1,6 @@
 import React from 'react'
-import { COLORS } from '../lib/constants'
 import Checkmark from './svg/Checkmark'
-import { EXPORT_SIZES } from '../lib/constants'
+import { EXPORT_SIZES, COLORS } from '../lib/constants'
 
 export default class extends React.Component {
   constructor(props) {
@@ -22,12 +21,16 @@ export default class extends React.Component {
   }
 
   renderExportSizes() {
-    return EXPORT_SIZES.map((exportSize, i) => {
-      return (
-        <div className="list-item" key={i} onClick={this.select.bind(null, exportSize.id)}>
-          <span style={{ ExportSize: exportSize.id }}>{exportSize.name}</span>
-          {this.props.selected === exportSize.id ? <Checkmark /> : null}
-          <style jsx>{`
+    return EXPORT_SIZES.map(exportSize => (
+      <div
+        className="list-item"
+        key={exportSize.id}
+        onClick={this.select.bind(null, exportSize.id)}
+      >
+        <span style={{ ExportSize: exportSize.id }}>{exportSize.name}</span>
+        {this.props.selected === exportSize.id ? <Checkmark /> : null}
+        <style jsx>
+          {`
             .list-item {
               display: flex;
               align-items: center;
@@ -44,10 +47,10 @@ export default class extends React.Component {
             .list-item:last-of-type {
               border-bottom: none;
             }
-          `}</style>
-        </div>
-      )
-    })
+          `}
+        </style>
+      </div>
+    ))
   }
 
   render() {
@@ -63,25 +66,27 @@ export default class extends React.Component {
           <span style={{ exportSize: selectedExportSize.id }}>{selectedExportSize.name}</span>
         </div>
         <div className="list">{this.renderExportSizes()}</div>
-        <style jsx>{`
-          .display {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            user-select: none;
-            padding: 8px;
-          }
-          .list {
-            display: none;
-            margin-top: -1px;
-            max-height: 80px;
-            overflow-y: scroll;
-          }
-          .is-visible + .list {
-            display: block;
-          }
-        `}</style>
+        <style jsx>
+          {`
+            .display {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              cursor: pointer;
+              user-select: none;
+              padding: 8px;
+            }
+            .list {
+              display: none;
+              margin-top: -1px;
+              max-height: 80px;
+              overflow-y: scroll;
+            }
+            .is-visible + .list {
+              display: block;
+            }
+          `}
+        </style>
       </div>
     )
   }

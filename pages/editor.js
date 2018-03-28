@@ -14,7 +14,6 @@ import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
-import ArrowDown from '../components/svg/Arrowdown'
 import api from '../lib/api'
 import {
   THEMES,
@@ -23,14 +22,11 @@ import {
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
-  DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   DEFAULT_EXPORT_SIZE,
   COLORS,
-  EXPORT_SIZES,
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
-  DEFAULT_BG_COLOR,
   DEFAULT_SETTINGS
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
@@ -106,10 +102,10 @@ class Editor extends React.Component {
   }
 
   getCarbonImage({ format, type } = { format: 'png' }) {
-    //if safari, get image from api
+    // if safari, get image from api
     if (
-      navigator.userAgent.indexOf('Safari') != -1 &&
-      navigator.userAgent.indexOf('Chrome') == -1 &&
+      navigator.userAgent.indexOf('Safari') !== -1 &&
+      navigator.userAgent.indexOf('Chrome') === -1 &&
       format === 'png'
     ) {
       const encodedState = serializeState(this.state)
@@ -266,19 +262,21 @@ class Editor extends React.Component {
             )}
           </ReadFileDropContainer>
         </div>
-        <style jsx>{`
-          #editor {
-            background: ${COLORS.BLACK};
-            border: 3px solid ${COLORS.SECONDARY};
-            border-radius: 8px;
-            padding: 16px;
-          }
+        <style jsx>
+          {`
+            #editor {
+              background: ${COLORS.BLACK};
+              border: 3px solid ${COLORS.SECONDARY};
+              border-radius: 8px;
+              padding: 16px;
+            }
 
-          .buttons {
-            display: flex;
-            margin-left: auto;
-          }
-        `}</style>
+            .buttons {
+              display: flex;
+              margin-left: auto;
+            }
+          `}
+        </style>
       </Page>
     )
   }

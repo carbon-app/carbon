@@ -11,13 +11,15 @@ export default ({ children, enableHeroText }) => (
 
     <Footer />
 
-    <style jsx>{`
-      .main {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-      }
-    `}</style>
+    <style jsx>
+      {`
+        .main {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+        }
+      `}
+    </style>
   </main>
 )

@@ -4,7 +4,7 @@ import { COLORS } from '../lib/constants'
 
 const Footer = () => (
   <footer role="contentinfo" className="mt3">
-    <nav role="navigation" className="mt3">
+    <nav className="mt3">
       <Link href="/about">
         <a className="link">about</a>
       </Link>
@@ -22,33 +22,35 @@ const Footer = () => (
       </a>{' '}
       ¬
     </div>
-    <style jsx>{`
-      footer {
-        font-size: 14px;
-      }
+    <style jsx>
+      {`
+        footer {
+          font-size: 14px;
+        }
 
-      footer > div {
-        text-align: center;
-        color: ${COLORS.GRAY};
-      }
+        footer > div {
+          text-align: center;
+          color: ${COLORS.GRAY};
+        }
 
-      a {
-        margin-right: 16px;
-      }
+        a {
+          margin-right: 16px;
+        }
 
-      a:last-child {
-        margin-right: 0;
-      }
+        a:last-child {
+          margin-right: 0;
+        }
 
-      .dawn-link {
-        color: ${COLORS.PRIMARY};
-        text-decoration: none;
-      }
+        .dawn-link {
+          color: ${COLORS.PRIMARY};
+          text-decoration: none;
+        }
 
-      .dawn-link:hover {
-        color: #fff;
-      }
-    `}</style>
+        .dawn-link:hover {
+          color: #fff;
+        }
+      `}
+    </style>
   </footer>
 )
 
