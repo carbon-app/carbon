@@ -105,7 +105,7 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage({ format } = { format: 'png' }) {
+  getCarbonImage({ format, type } = { format: 'png' }) {
     //if safari, get image from api
     if (
       navigator.userAgent.indexOf('Safari') != -1 &&
@@ -119,6 +119,11 @@ class Editor extends React.Component {
     const node = document.getElementById('export-container')
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+    const width = node.offsetWidth * exportSize
+    const height = this.state.squaredImage
+      ? node.offsetWidth * exportSize
+      : node.offsetHeight * exportSize
+
     const config = {
       style: {
         transform: `scale(${exportSize})`,
@@ -126,15 +131,19 @@ class Editor extends React.Component {
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
-      width: node.offsetWidth * exportSize,
-      height: this.state.squaredImage
-        ? node.offsetWidth * exportSize
-        : node.offsetHeight * exportSize
+      width,
+      height
     }
 
-    return format.toLowerCase() === 'svg'
-      ? domtoimage.toSvg(node, config)
-      : domtoimage.toPng(node, config)
+    if (type === 'blob')
+      return domtoimage
+        .toBlob(node, config)
+        .then(blob => window.URL.createObjectURL(blob, { type: 'image/png' }))
+
+    if (format === 'svg')
+      return domtoimage.toSvg(node, config).then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+
+    return domtoimage.toPng(node, config)
   }
 
   updateSetting(key, value) {
@@ -142,14 +151,13 @@ class Editor extends React.Component {
   }
 
   save({ id: format = 'png' }) {
-    this.getCarbonImage({ format }).then(dataUrl => {
-      if (format === 'svg') {
-        dataUrl = dataUrl.split('&nbsp;').join('&#160;')
-      }
+    const link = document.createElement('a')
 
-      const link = document.createElement('a')
+    const type = format === 'png' ? 'blob' : undefined
+
+    return this.getCarbonImage({ format, type }).then(url => {
       link.download = `carbon.${format}`
-      link.href = dataUrl
+      link.href = url
       document.body.appendChild(link)
       link.click()
       link.remove()
