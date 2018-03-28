@@ -153,12 +153,9 @@ class Editor extends React.Component {
   save({ id: format = 'png' }) {
     const link = document.createElement('a')
 
-    const promise =
-      format === 'png'
-        ? this.getCarbonImage({ format, type: 'blob' })
-        : this.getCarbonImage({ format })
+    const type = format === 'png' ? 'blob' : undefined
 
-    return promise.then(url => {
+    return this.getCarbonImage({ format, type }).then(url => {
       link.download = `carbon.${format}`
       link.href = url
       document.body.appendChild(link)
