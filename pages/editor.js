@@ -119,6 +119,11 @@ class Editor extends React.Component {
     const node = document.getElementById('export-container')
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+    const width = node.offsetWidth * exportSize
+    const height = this.state.squaredImage
+      ? node.offsetWidth * exportSize
+      : node.offsetHeight * exportSize
+
     const config = {
       style: {
         transform: `scale(${exportSize})`,
@@ -126,15 +131,14 @@ class Editor extends React.Component {
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
-      width: node.offsetWidth * exportSize,
-      height: this.state.squaredImage
-        ? node.offsetWidth * exportSize
-        : node.offsetHeight * exportSize
+      width,
+      height
     }
 
-    return format.toLowerCase() === 'svg'
-      ? domtoimage.toSvg(node, config)
-      : domtoimage.toPng(node, config)
+    if (format === 'blob') return domtoimage.toBlob(node, config)
+    if (format === 'svg') return domtoimage.toSvg(node, config)
+
+    return domtoimage.toPng(node, config)
   }
 
   updateSetting(key, value) {
@@ -142,14 +146,18 @@ class Editor extends React.Component {
   }
 
   save({ id: format = 'png' }) {
-    this.getCarbonImage({ format }).then(dataUrl => {
-      if (format === 'svg') {
-        dataUrl = dataUrl.split('&nbsp;').join('&#160;')
-      }
+    const link = document.createElement('a')
 
-      const link = document.createElement('a')
+    const promise =
+      format === 'png'
+        ? this.getCarbonImage({ format: 'blob' }).then(blob =>
+            window.URL.createObjectURL(blob, { type: 'image/png' })
+          )
+        : this.getCarbonImage({ format })
+
+    return promise.then(url => {
       link.download = `carbon.${format}`
-      link.href = dataUrl
+      link.href = url
       document.body.appendChild(link)
       link.click()
       link.remove()
