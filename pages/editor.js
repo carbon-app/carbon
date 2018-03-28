@@ -105,7 +105,7 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage({ format } = { format: 'png' }) {
+  getCarbonImage({ format, type } = { format: 'png' }) {
     //if safari, get image from api
     if (
       navigator.userAgent.indexOf('Safari') != -1 &&
@@ -135,8 +135,13 @@ class Editor extends React.Component {
       height
     }
 
-    if (format === 'blob') return domtoimage.toBlob(node, config)
-    if (format === 'svg') return domtoimage.toSvg(node, config)
+    if (type === 'blob')
+      return domtoimage
+        .toBlob(node, config)
+        .then(blob => window.URL.createObjectURL(blob, { type: 'image/png' }))
+
+    if (format === 'svg')
+      return domtoimage.toSvg(node, config).then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
 
     return domtoimage.toPng(node, config)
   }
@@ -150,9 +155,7 @@ class Editor extends React.Component {
 
     const promise =
       format === 'png'
-        ? this.getCarbonImage({ format: 'blob' }).then(blob =>
-            window.URL.createObjectURL(blob, { type: 'image/png' })
-          )
+        ? this.getCarbonImage({ format, type: 'blob' })
         : this.getCarbonImage({ format })
 
     return promise.then(url => {
