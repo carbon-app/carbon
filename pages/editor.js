@@ -188,16 +188,16 @@ class Editor extends React.Component {
     }
   }
 
+  updateTheme(theme) {
+    this.updateSetting('theme', theme.id)
+  }
+
   updateLanguageList(language) {
     const langItem = new RegExp(language.key, 'i')
     const match = LANGUAGES.find(lang => langItem.test(lang.text))
     if (match) {
       this.updateSetting('language', match.mime || match.mode)
     }
-  }
-
-  updateTheme(theme) {
-    this.updateSetting('theme', theme.id)
   }
 
   updateLanguage(language) {
