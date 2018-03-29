@@ -1,23 +1,14 @@
-import { EOL } from 'os'
 import * as hljs from 'highlight.js'
 import React, { PureComponent } from 'react'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
-import toHash from 'tohash'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 
 import WindowControls from '../components/WindowControls'
 import Watermark from '../components/svg/Watermark'
 import CodeMirror from '../lib/react-codemirror'
-import {
-  COLORS,
-  DEFAULT_LANGUAGE,
-  LANGUAGES,
-  LANGUAGE_MODE_HASH,
-  LANGUAGE_NAME_HASH,
-  DEFAULT_SETTINGS
-} from '../lib/constants'
+import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
 class Carbon extends PureComponent {
   constructor(props) {
@@ -130,120 +121,122 @@ class Carbon extends PureComponent {
             <div className="alpha eliminateOnRender" />
             <div className="bg" />
           </div>
-          <style jsx>{`
-            #container {
-              position: relative;
-              min-width: ${config.widthAdjustment ? '90px' : '680px'};
-              max-width: 1024px; /* The Fallback */
-              max-width: 92vw;
-              padding: ${config.paddingVertical} ${config.paddingHorizontal};
-            }
+          <style jsx>
+            {`
+              #container {
+                position: relative;
+                min-width: ${config.widthAdjustment ? '90px' : '680px'};
+                max-width: 1024px; /* The Fallback */
+                max-width: 92vw;
+                padding: ${config.paddingVertical} ${config.paddingHorizontal};
+              }
 
-            #container :global(.watermark) {
-              fill-opacity: 0.3;
-              position: absolute;
-              z-index: 2;
-              bottom: calc(${config.paddingVertical} + 16px);
-              right: calc(${config.paddingHorizontal} + 16px);
-            }
+              #container :global(.watermark) {
+                fill-opacity: 0.3;
+                position: absolute;
+                z-index: 2;
+                bottom: calc(${config.paddingVertical} + 16px);
+                right: calc(${config.paddingHorizontal} + 16px);
+              }
 
-            #container #container-bg {
-              position: absolute;
-              top: 0px;
-              right: 0px;
-              bottom: 0px;
-              left: 0px;
-            }
+              #container #container-bg {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+              }
 
-            #container .white {
-              background: #fff;
-              position: absolute;
-              top: 0px;
-              right: 0px;
-              bottom: 0px;
-              left: 0px;
-            }
+              #container .white {
+                background: #fff;
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+              }
 
-            #container .bg {
-              ${this.props.config.backgroundMode === 'image'
-                ? `background: url(${backgroundImage});
+              #container .bg {
+                ${this.props.config.backgroundMode === 'image'
+                  ? `background: url(${backgroundImage});
                    background-size: cover;
                    background-repeat: no-repeat;`
-                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
+                  : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                    background-size: auto;
                    background-repeat: repeat;`} position: absolute;
-              top: 0px;
-              right: 0px;
-              bottom: 0px;
-              left: 0px;
-            }
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+              }
 
-            #container .alpha {
-              position: absolute;
-              top: 0px;
-              right: 0px;
-              bottom: 0px;
-              left: 0px;
-              background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==);
-            }
+              #container .alpha {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                bottom: 0px;
+                left: 0px;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==);
+              }
 
-            #container :global(.cm-s-dracula .CodeMirror-cursor) {
-              border-left: solid 2px #159588;
-            }
+              #container :global(.cm-s-dracula .CodeMirror-cursor) {
+                border-left: solid 2px #159588;
+              }
 
-            #container :global(.cm-s-solarized) {
-              box-shadow: none;
-            }
+              #container :global(.cm-s-solarized) {
+                box-shadow: none;
+              }
 
-            #container :global(.cm-s-solarized.cm-s-light) {
-              text-shadow: #eee8d5 0 1px;
-            }
+              #container :global(.cm-s-solarized.cm-s-light) {
+                text-shadow: #eee8d5 0 1px;
+              }
 
-            #container :global(.CodeMirror-gutters) {
-              background-color: unset;
-              border-right: none;
-            }
+              #container :global(.CodeMirror-gutters) {
+                background-color: unset;
+                border-right: none;
+              }
 
-            #container :global(.CodeMirror__container) {
-              min-width: inherit;
-              position: relative;
-              z-index: 1;
-              border-radius: 5px;
-              ${config.dropShadow
-                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${
-                    config.dropShadowBlurRadius
-                  } rgba(0, 0, 0, 0.55)`
-                : ''};
-            }
+              #container :global(.CodeMirror__container) {
+                min-width: inherit;
+                position: relative;
+                z-index: 1;
+                border-radius: 5px;
+                ${config.dropShadow
+                  ? `box-shadow: 0 ${config.dropShadowOffsetY} ${
+                      config.dropShadowBlurRadius
+                    } rgba(0, 0, 0, 0.55)`
+                  : ''};
+              }
 
-            #container :global(.CodeMirror__container .CodeMirror) {
-              height: auto;
-              min-width: inherit;
-              padding: 18px 18px;
-              ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
-              font-family: ${config.fontFamily}, monospace !important;
-              font-size: ${config.fontSize};
-              font-variant-ligatures: contextual;
-              font-feature-settings: 'calt' 1;
-              user-select: none;
-            }
+              #container :global(.CodeMirror__container .CodeMirror) {
+                height: auto;
+                min-width: inherit;
+                padding: 18px 18px;
+                ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
+                font-family: ${config.fontFamily}, monospace !important;
+                font-size: ${config.fontSize};
+                font-variant-ligatures: contextual;
+                font-feature-settings: 'calt' 1;
+                user-select: none;
+              }
 
-            #container :global(.CodeMirror-scroll) {
-              overflow: hidden !important;
-            }
+              #container :global(.CodeMirror-scroll) {
+                overflow: hidden !important;
+              }
 
-            #container :global(.window-theme__sharp > .CodeMirror) {
-              border-radius: 0px;
-            }
+              #container :global(.window-theme__sharp > .CodeMirror) {
+                border-radius: 0px;
+              }
 
-            #container :global(.window-theme__bw > .CodeMirror) {
-              border: 2px solid ${COLORS.SECONDARY};
-            }
+              #container :global(.window-theme__bw > .CodeMirror) {
+                border: 2px solid ${COLORS.SECONDARY};
+              }
 
-            #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
-              padding-top: 48px;
-            }
-          `}</style>
+              #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
+                padding-top: 48px;
+              }
+            `}
+          </style>
         </div>
       )
     }
@@ -254,24 +247,26 @@ class Carbon extends PureComponent {
           {content}
           <div id="twitter-png-fix" />
         </div>
-        <style jsx>{`
-          #section,
-          #export-container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-          }
+        <style jsx>
+          {`
+            #section,
+            #export-container {
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              overflow: hidden;
+            }
 
-          /* forces twitter to save images as png — https://github.com/dawnlabs/carbon/issues/86 */
-          #twitter-png-fix {
-            height: 1px;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.01);
-          }
-        `}</style>
+            /* forces twitter to save images as png — https://github.com/dawnlabs/carbon/issues/86 */
+            #twitter-png-fix {
+              height: 1px;
+              width: 100%;
+              background: rgba(0, 0, 0, 0.01);
+            }
+          `}
+        </style>
       </div>
     )
   }

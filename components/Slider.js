@@ -27,49 +27,51 @@ export default class extends React.Component {
         <div
           className="slider-bg"
           style={{
-            transform: `translate3d(${(parseInt(this.props.value) - minValue) *
+            transform: `translate3d(${(parseInt(this.props.value, 10) - minValue) *
               1.0 /
               (maxValue - minValue) *
               100}%, 0px, 0px)`
           }}
         />
-        <style jsx>{`
-          .slider {
-            position: relative;
-            height: 32px;
-            overflow: hidden;
-            user-select: none;
-          }
+        <style jsx>
+          {`
+            .slider {
+              position: relative;
+              height: 32px;
+              overflow: hidden;
+              user-select: none;
+            }
 
-          .slider:last-of-type {
-            border-bottom: 0;
-          }
+            .slider:last-of-type {
+              border-bottom: 0;
+            }
 
-          .label {
-            position: absolute;
-            left: 8px;
-            height: 32px;
-            line-height: 32px;
-          }
+            .label {
+              position: absolute;
+              left: 8px;
+              height: 32px;
+              line-height: 32px;
+            }
 
-          .slider input {
-            opacity: 0;
-            cursor: ew-resize;
-            position: relative;
-            height: 100%;
-            width: 100%;
-          }
+            .slider input {
+              opacity: 0;
+              cursor: ew-resize;
+              position: relative;
+              height: 100%;
+              width: 100%;
+            }
 
-          .slider-bg {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            pointer-events: none;
-            height: 32px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.165);
-          }
-        `}</style>
+            .slider-bg {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              pointer-events: none;
+              height: 32px;
+              width: 100%;
+              background: rgba(255, 255, 255, 0.165);
+            }
+          `}
+        </style>
       </div>
     )
   }

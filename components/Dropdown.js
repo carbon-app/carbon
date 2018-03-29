@@ -10,13 +10,10 @@ class Dropdown extends PureComponent {
     inputValue: this.props.selected.name,
     itemsToShow: this.props.list
   }
-  userInputtedValue = ''
 
   onUserAction = changes => {
     this.setState(({ inputValue, itemsToShow }) => {
-      const clearUserInput = changes.hasOwnProperty('isOpen')
-
-      if (changes.hasOwnProperty('inputValue')) {
+      if (Object.prototype.hasOwnProperty.call(changes, 'inputValue')) {
         if (changes.type === Downshift.stateChangeTypes.keyDownEscape) {
           inputValue = this.userInputtedValue
         } else {
@@ -30,7 +27,7 @@ class Dropdown extends PureComponent {
         : this.props.list
 
       if (
-        changes.hasOwnProperty('highlightedIndex') &&
+        Object.prototype.hasOwnProperty.call(changes, 'highlightedIndex') &&
         (changes.type === Downshift.stateChangeTypes.keyDownArrowUp ||
           changes.type === Downshift.stateChangeTypes.keyDownArrowDown)
       ) {
@@ -38,7 +35,7 @@ class Dropdown extends PureComponent {
         this.props.onChange(itemsToShow[changes.highlightedIndex])
       }
 
-      if (changes.hasOwnProperty('isOpen')) {
+      if (Object.prototype.hasOwnProperty.call(changes, 'isOpen')) {
         this.userInputtedValue = ''
 
         // clear on open
@@ -55,6 +52,8 @@ class Dropdown extends PureComponent {
       return { inputValue, itemsToShow }
     })
   }
+
+  userInputtedValue = ''
 
   render() {
     const { button, color, list, selected, onChange } = this.props
@@ -122,13 +121,15 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   return (
     <div {...rest} ref={innerRef} className="dropdown-container">
       {children}
-      <style jsx>{`
-        .dropdown-container {
-          min-width: ${minWidth}px;
-          cursor: pointer;
-          user-select: none;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          .dropdown-container {
+            min-width: ${minWidth}px;
+            cursor: pointer;
+            user-select: none;
+          }
+        `}
+      </style>
     </div>
   )
 }
@@ -150,40 +151,42 @@ const SelectedItem = ({ getButtonProps, getInputProps, children, isOpen, color, 
           className="dropdown-display-text"
         />
       )}
-      <div role="button" className={`dropdown-arrow`}>
+      <div role="button" className="dropdown-arrow">
         <ArrowDown fill={itemColor} />
       </div>
-      <style jsx>{`
-        .dropdown-display {
-          display: flex;
-          align-items: center;
-          height: 100%;
-          border: 1px solid ${itemColor};
-          border-radius: 3px;
-          padding: 8px 16px;
-          outline: none;
-        }
-        .dropdown-display:hover {
-          background: ${COLORS.HOVER};
-        }
+      <style jsx>
+        {`
+          .dropdown-display {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            border: 1px solid ${itemColor};
+            border-radius: 3px;
+            padding: 8px 16px;
+            outline: none;
+          }
+          .dropdown-display:hover {
+            background: ${COLORS.HOVER};
+          }
 
-        .dropdown-display.is-open {
-          border-radius: 3px 3px 0 0;
-        }
+          .dropdown-display.is-open {
+            border-radius: 3px 3px 0 0;
+          }
 
-        .dropdown-display-text {
-          flex-grow: 1;
-          color: ${itemColor};
-          background: transparent;
-          border: none;
-          outline: none;
-          font-size: inherit;
-          font-family: inherit;
-        }
-        .is-open > .dropdown-arrow {
-          transform: rotate(180deg);
-        }
-      `}</style>
+          .dropdown-display-text {
+            flex-grow: 1;
+            color: ${itemColor};
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: inherit;
+            font-family: inherit;
+          }
+          .is-open > .dropdown-arrow {
+            transform: rotate(180deg);
+          }
+        `}
+      </style>
     </span>
   )
 }
@@ -192,15 +195,17 @@ const ListItems = ({ children, color }) => {
   return (
     <ul role="listbox" className="dropdown-list">
       {children}
-      <style jsx>{`
-        .dropdown-list {
-          margin-top: -1px;
-          border: 1px solid ${color || COLORS.SECONDARY};
-          border-radius: 0 0 3px 3px;
-          max-height: 350px;
-          overflow-y: scroll;
-        }
-      `}</style>
+      <style jsx>
+        {`
+          .dropdown-list {
+            margin-top: -1px;
+            border: 1px solid ${color || COLORS.SECONDARY};
+            border-radius: 0 0 3px 3px;
+            max-height: 350px;
+            overflow-y: scroll;
+          }
+        `}
+      </style>
     </ul>
   )
 }
@@ -212,27 +217,29 @@ const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
     <li {...rest} role="option" className="dropdown-list-item">
       <span className="dropdown-list-item-text">{children}</span>
       {isSelected ? <CheckMark /> : null}
-      <style jsx>{`
-        .dropdown-list-item {
-          display: flex;
-          align-items: center;
-          background: ${isHighlighted ? COLORS.HOVER : COLORS.BLACK};
-          padding: 8px 16px;
-          border-bottom: 1px solid ${itemColor};
-        }
+      <style jsx>
+        {`
+          .dropdown-list-item {
+            display: flex;
+            align-items: center;
+            background: ${isHighlighted ? COLORS.HOVER : COLORS.BLACK};
+            padding: 8px 16px;
+            border-bottom: 1px solid ${itemColor};
+          }
 
-        .dropdown-list-item:last-child {
-          border-bottom: none;
-        }
+          .dropdown-list-item:last-child {
+            border-bottom: none;
+          }
 
-        .dropdown-list-item:hover {
-          background: ${COLORS.HOVER};
-        }
-        .dropdown-list-item-text {
-          flex-grow: 1;
-          color: ${itemColor};
-        }
-      `}</style>
+          .dropdown-list-item:hover {
+            background: ${COLORS.HOVER};
+          }
+          .dropdown-list-item-text {
+            flex-grow: 1;
+            color: ${itemColor};
+          }
+        `}
+      </style>
     </li>
   )
 }
