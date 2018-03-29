@@ -192,6 +192,14 @@ class Editor extends React.Component {
     this.updateSetting('theme', theme.id)
   }
 
+  updateLanguageList(language) {
+    const langItem = new RegExp(language.key, 'i')
+    const match = LANGUAGES.find(lang => langItem.test(lang.text))
+    if (match) {
+      this.updateSetting('language', match.mime || match.mode)
+    }
+  }
+
   updateLanguage(language) {
     this.updateSetting('language', language.mime || language.mode)
   }
@@ -217,6 +225,7 @@ class Editor extends React.Component {
                 LANGUAGE_MODE_HASH[this.state.language]
               }
               list={LANGUAGES}
+              onKeyDown={this.updateLanguageList}
               onChange={this.updateLanguage}
             />
             <BackgroundSelect
