@@ -47,7 +47,7 @@ export default class extends React.Component {
     getImageDownloadUrl(image)
       .then(url => axios.get(url, { responseType: 'blob' }))
       .then(res => res.data)
-      .then(this.props.onChange)
+      .then(blob => this.props.onChange(blob, image))
       .then(() => this.setState({ loading: false }))
   }
 

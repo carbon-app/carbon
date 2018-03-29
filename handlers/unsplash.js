@@ -5,7 +5,8 @@ const WALLPAPER_COLLECTION_ID = 136026
 
 const client = new Unsplash({
   applicationId: process.env.UNSPLASH_ACCESS_KEY,
-  secret: process.env.UNSPLASH_SECRET_KEY
+  secret: process.env.UNSPLASH_SECRET_KEY,
+  callbackUrl: process.env.UNSPLASH_CALLBACK_URL
 })
 
 const parseImageResult = img => ({
