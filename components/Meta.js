@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { THEMES, COLORS } from '../lib/constants'
+import { THEMES } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
@@ -39,11 +39,11 @@ export default () => (
       />
       <link
         rel="stylesheet"
-        href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css`}
+        href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css"
       />
-      {THEMES.filter(t => t.hasStylesheet !== false).map((theme, i) => (
+      {THEMES.filter(t => t.hasStylesheet !== false).map(theme => (
         <link
-          key={i}
+          key={theme.id}
           rel="stylesheet"
           href={
             theme.link ||
@@ -55,10 +55,12 @@ export default () => (
     <Reset />
     <Font />
     <Typography />
-    <style jsx>{`
-      .meta {
-        display: none;
-      }
-    `}</style>
+    <style jsx>
+      {`
+        .meta {
+          display: none;
+        }
+      `}
+    </style>
   </div>
 )

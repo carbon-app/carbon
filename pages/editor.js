@@ -14,7 +14,6 @@ import Settings from '../components/Settings'
 import Toolbar from '../components/Toolbar'
 import Overlay from '../components/Overlay'
 import Carbon from '../components/Carbon'
-import ArrowDown from '../components/svg/Arrowdown'
 import api from '../lib/api'
 import {
   THEMES,
@@ -23,14 +22,11 @@ import {
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
-  DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   DEFAULT_EXPORT_SIZE,
   COLORS,
-  EXPORT_SIZES,
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
-  DEFAULT_BG_COLOR,
   DEFAULT_SETTINGS
 } from '../lib/constants'
 import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
@@ -105,11 +101,11 @@ class Editor extends React.Component {
     saveState(localStorage, s)
   }
 
-  getCarbonImage({ format } = { format: 'png' }) {
-    //if safari, get image from api
+  getCarbonImage({ format, type } = { format: 'png' }) {
+    // if safari, get image from api
     if (
-      navigator.userAgent.indexOf('Safari') != -1 &&
-      navigator.userAgent.indexOf('Chrome') == -1 &&
+      navigator.userAgent.indexOf('Safari') !== -1 &&
+      navigator.userAgent.indexOf('Chrome') === -1 &&
       format === 'png'
     ) {
       const encodedState = serializeState(this.state)
@@ -119,6 +115,11 @@ class Editor extends React.Component {
     const node = document.getElementById('export-container')
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+    const width = node.offsetWidth * exportSize
+    const height = this.state.squaredImage
+      ? node.offsetWidth * exportSize
+      : node.offsetHeight * exportSize
+
     const config = {
       style: {
         transform: `scale(${exportSize})`,
@@ -126,15 +127,19 @@ class Editor extends React.Component {
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
-      width: node.offsetWidth * exportSize,
-      height: this.state.squaredImage
-        ? node.offsetWidth * exportSize
-        : node.offsetHeight * exportSize
+      width,
+      height
     }
 
-    return format.toLowerCase() === 'svg'
-      ? domtoimage.toSvg(node, config)
-      : domtoimage.toPng(node, config)
+    if (type === 'blob')
+      return domtoimage
+        .toBlob(node, config)
+        .then(blob => window.URL.createObjectURL(blob, { type: 'image/png' }))
+
+    if (format === 'svg')
+      return domtoimage.toSvg(node, config).then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+
+    return domtoimage.toPng(node, config)
   }
 
   updateSetting(key, value) {
@@ -142,14 +147,13 @@ class Editor extends React.Component {
   }
 
   save({ id: format = 'png' }) {
-    this.getCarbonImage({ format }).then(dataUrl => {
-      if (format === 'svg') {
-        dataUrl = dataUrl.split('&nbsp;').join('&#160;')
-      }
+    const link = document.createElement('a')
 
-      const link = document.createElement('a')
+    const type = format === 'png' ? 'blob' : undefined
+
+    return this.getCarbonImage({ format, type }).then(url => {
       link.download = `carbon.${format}`
-      link.href = dataUrl
+      link.href = url
       document.body.appendChild(link)
       link.click()
       link.remove()
@@ -196,7 +200,7 @@ class Editor extends React.Component {
     if (photographer) {
       this.setState(({ code = DEFAULT_CODE }) => ({
         ...changes,
-        code: code + `\n\n// Photograph by ${photographer}`
+        code: code + `\n\n// Photograph by ${photographer} on Unsplash`
       }))
     } else {
       this.setState(changes)
@@ -265,19 +269,21 @@ class Editor extends React.Component {
             )}
           </ReadFileDropContainer>
         </div>
-        <style jsx>{`
-          #editor {
-            background: ${COLORS.BLACK};
-            border: 3px solid ${COLORS.SECONDARY};
-            border-radius: 8px;
-            padding: 16px;
-          }
+        <style jsx>
+          {`
+            #editor {
+              background: ${COLORS.BLACK};
+              border: 3px solid ${COLORS.SECONDARY};
+              border-radius: 8px;
+              padding: 16px;
+            }
 
-          .buttons {
-            display: flex;
-            margin-left: auto;
-          }
-        `}</style>
+            .buttons {
+              display: flex;
+              margin-left: auto;
+            }
+          `}
+        </style>
       </Page>
     )
   }

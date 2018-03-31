@@ -15,7 +15,9 @@ const downloadThumbnailImage = img => {
 const getImageDownloadUrl = img =>
   axios.get(`/unsplash/download/${img.id}`).then(res => res.data.url)
 
-export default class extends React.Component {
+const largerImage = url => url.replace(/w=\d+/, 'w=1920').replace(/&h=\d+/, '')
+
+export default class RandomImage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { cacheIndex: 0, loading: false }
@@ -24,9 +26,6 @@ export default class extends React.Component {
     this.getImages = this.getImages.bind(this)
     this.nextImage = this.nextImage.bind(this)
   }
-
-  cache = []
-  imageUrls = {}
 
   // fetch images in browser (we require window.FileReader)
   componentDidMount() {
@@ -39,6 +38,9 @@ export default class extends React.Component {
     const imageUrls = await axios.get('/unsplash/random')
     return Promise.all(imageUrls.data.map(downloadThumbnailImage))
   }
+
+  cache = []
+  imageUrls = {}
 
   selectImage() {
     const image = this.cache[this.state.cacheIndex]
@@ -78,27 +80,29 @@ export default class extends React.Component {
           <span onClick={this.nextImage}>Try Another</span>
         </div>
         <div className="image">{this.state.loading && <Spinner />}</div>
-        <style jsx>{`
-          .image {
-            width: 100%;
-            height: 120px;
-            background: url(${bgImage});
-            background-size: cover;
-            background-repeat: no-repeat;
-          }
+        <style jsx>
+          {`
+            .image {
+              width: 100%;
+              height: 120px;
+              background: url(${bgImage});
+              background-size: cover;
+              background-repeat: no-repeat;
+            }
 
-          .controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-          }
+            .controls {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 4px;
+            }
 
-          span {
-            opacity: ${this.state.loading ? 0.5 : 1};
-            cursor: ${this.state.loading ? 'not-allowed' : 'pointer'};
-            user-select: none;
-          }
-        `}</style>
+            span {
+              opacity: ${this.state.loading ? 0.5 : 1};
+              cursor: ${this.state.loading ? 'not-allowed' : 'pointer'};
+              user-select: none;
+            }
+          `}
+        </style>
       </div>
     )
   }
