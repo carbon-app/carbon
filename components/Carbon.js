@@ -80,7 +80,10 @@ class Carbon extends PureComponent {
       theme: config.theme,
       scrollBarStyle: null,
       viewportMargin: Infinity,
-      lineWrapping: true
+      lineWrapping: true,
+      extraKeys: {
+        'Shift-Tab': 'indentLess'
+      }
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
