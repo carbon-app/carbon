@@ -1,4 +1,3 @@
-import * as hljs from 'highlight.js'
 import React, { PureComponent } from 'react'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
@@ -51,13 +50,20 @@ class Carbon extends PureComponent {
     this.props.updateTitleBar(newTitle)
   }
 
+  async getHighlightLang(code = '') {
+    if (!this.hljs) {
+      this.hljs = await import('highlight.js')
+    }
+    return this.hljs.highlightAuto(code).language
+  }
+
   handleLanguageChange = debounce(
-    (newCode, config) => {
+    async (newCode, config) => {
       const props = (config && config.customProps) || this.props
 
       if (props.config.language === 'auto') {
         // try to set the language
-        const detectedLanguage = hljs.highlightAuto(newCode).language
+        const detectedLanguage = await this.getHighlightLang(newCode)
         const languageMode =
           LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
 
