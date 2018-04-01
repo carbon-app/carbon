@@ -15,9 +15,7 @@ const downloadThumbnailImage = img => {
 const getImageDownloadUrl = img =>
   axios.get(`/unsplash/download/${img.id}`).then(res => res.data.url)
 
-const largerImage = url => url.replace(/w=\d+/, 'w=1920').replace(/&h=\d+/, '')
-
-export default class RandomImage extends React.Component {
+class RandomImage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { cacheIndex: 0, loading: false }
@@ -71,6 +69,7 @@ export default class RandomImage extends React.Component {
   }
 
   render() {
+    const linkUrl = this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].url
     const bgImage = this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].dataURL
 
     return (
@@ -79,7 +78,9 @@ export default class RandomImage extends React.Component {
           <span onClick={this.selectImage}>Use Image</span>
           <span onClick={this.nextImage}>Try Another</span>
         </div>
-        <div className="image">{this.state.loading && <Spinner />}</div>
+        <LinkWrapper url={linkUrl && `${linkUrl}&utm_source=carbon&utm_medium=referral`}>
+          <div className="image">{this.state.loading && <Spinner />}</div>
+        </LinkWrapper>
         <style jsx>
           {`
             .image {
@@ -107,3 +108,9 @@ export default class RandomImage extends React.Component {
     )
   }
 }
+
+function LinkWrapper({ url, children }) {
+  return url ? <a href={url}>{children}</a> : <div>{children}</div>
+}
+
+export default RandomImage
