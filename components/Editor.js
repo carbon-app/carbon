@@ -6,14 +6,14 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 // Ours
-import Page from '../components/Page'
-import Button from '../components/Button'
-import Dropdown from '../components/Dropdown'
-import BackgroundSelect from '../components/BackgroundSelect'
-import Settings from '../components/Settings'
-import Toolbar from '../components/Toolbar'
-import Overlay from '../components/Overlay'
-import Carbon from '../components/Carbon'
+import Page from './Page'
+import Button from './Button'
+import Dropdown from './Dropdown'
+import BackgroundSelect from './BackgroundSelect'
+import Settings from './Settings'
+import Toolbar from './Toolbar'
+import Overlay from './Overlay'
+import Carbon from './Carbon'
 import api from '../lib/api'
 import {
   THEMES,

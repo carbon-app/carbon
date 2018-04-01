@@ -1,3 +1,3 @@
-import Editor from './editor'
+import Editor from '../components/Editor'
 
 export default Editor
