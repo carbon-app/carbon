@@ -128,7 +128,9 @@ class Editor extends React.Component {
       },
       filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
       width,
-      height
+      height,
+      // %[00 -> 19] cause failures
+      filter: node => !(node.innerText && node.innerText.match(/%[0-1][0-9]/))
     }
 
     if (type === 'blob')
