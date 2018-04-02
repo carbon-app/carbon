@@ -5,7 +5,8 @@ import React from 'react'
 import Editor from '../components/Editor'
 import Page from '../components/Page'
 import api from '../lib/api'
-import { getQueryStringState } from '../lib/routing'
+import { getQueryStringState, updateQueryString } from '../lib/routing'
+import { saveState } from '../lib/util'
 
 class Index extends React.Component {
   static async getInitialProps({ asPath, query }) {
@@ -27,10 +28,19 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props} />
+        <Editor {...this.props} onUpdate={onEditorUpdate} />
       </Page>
     )
   }
+}
+
+function onEditorUpdate(state) {
+  updateQueryString(state)
+  const s = { ...state }
+  delete s.code
+  delete s.backgroundImage
+  delete s.backgroundImageSelection
+  saveState(localStorage, s)
 }
 
 function removeQueryString(str) {

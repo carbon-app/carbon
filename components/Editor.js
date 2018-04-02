@@ -28,8 +28,8 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS
 } from '../lib/constants'
-import { updateQueryString, serializeState } from '../lib/routing'
-import { getState, saveState } from '../lib/util'
+import { serializeState } from '../lib/routing'
+import { getState } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -76,12 +76,7 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate() {
-    updateQueryString(this.state)
-    const s = { ...this.state }
-    delete s.code
-    delete s.backgroundImage
-    delete s.backgroundImageSelection
-    saveState(localStorage, s)
+    this.props.onUpdate(this.state)
   }
 
   getCarbonImage({ format, type } = { format: 'png' }) {
@@ -276,6 +271,12 @@ function readAs(file) {
     return DATA_URL
   }
   return TEXT
+}
+
+function noop() {}
+
+Editor.defaultProps = {
+  onUpdate: noop
 }
 
 export default DragDropContext(HTML5Backend)(Editor)
