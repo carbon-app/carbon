@@ -6,7 +6,6 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 // Ours
-import Page from './Page'
 import Button from './Button'
 import Dropdown from './Dropdown'
 import BackgroundSelect from './BackgroundSelect'
@@ -29,7 +28,7 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS
 } from '../lib/constants'
-import { getQueryStringState, updateQueryString, serializeState } from '../lib/routing'
+import { updateQueryString, serializeState } from '../lib/routing'
 import { getState, saveState } from '../lib/util'
 
 const saveButtonOptions = {
@@ -40,22 +39,6 @@ const saveButtonOptions = {
 }
 
 class Editor extends React.Component {
-  static async getInitialProps({ asPath, query }) {
-    const path = removeQueryString(asPath.split('/').pop())
-    const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : null
-    try {
-      // TODO fix this hack
-      if (path.length >= 19 && path.indexOf('.') === -1) {
-        const content = await api.getGist(path)
-        return { content, initialState }
-      }
-    } catch (e) {
-      console.log(e)
-    }
-    return { initialState }
-  }
-
   constructor(props) {
     super(props)
     this.state = Object.assign(
@@ -204,7 +187,7 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <Page enableHeroText={true}>
+      <React.Fragment>
         <div id="editor">
           <Toolbar>
             <Dropdown
@@ -279,17 +262,9 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </Page>
+      </React.Fragment>
     )
   }
-}
-
-function removeQueryString(str) {
-  const qI = str.indexOf('?')
-  return (qI >= 0 ? str.substr(0, qI) : str)
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\//g, '&#x2F;')
 }
 
 function isImage(file) {

@@ -1,3 +1,44 @@
-import Editor from '../components/Editor'
+// Theirs
+import React from 'react'
 
-export default Editor
+// Ours
+import Editor from '../components/Editor'
+import Page from '../components/Page'
+import api from '../lib/api'
+import { getQueryStringState } from '../lib/routing'
+
+class Index extends React.Component {
+  static async getInitialProps({ asPath, query }) {
+    const path = removeQueryString(asPath.split('/').pop())
+    const queryParams = getQueryStringState(query)
+    const initialState = Object.keys(queryParams).length ? queryParams : null
+    try {
+      // TODO fix this hack
+      if (path.length >= 19 && path.indexOf('.') === -1) {
+        const content = await api.getGist(path)
+        return { content, initialState }
+      }
+    } catch (e) {
+      console.log(e)
+    }
+    return { initialState }
+  }
+
+  render() {
+    return (
+      <Page enableHeroText={true}>
+        <Editor {...this.props} />
+      </Page>
+    )
+  }
+}
+
+function removeQueryString(str) {
+  const qI = str.indexOf('?')
+  return (qI >= 0 ? str.substr(0, qI) : str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\//g, '&#x2F;')
+}
+
+export default Index
