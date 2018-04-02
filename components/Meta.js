@@ -43,6 +43,10 @@ export default () => {
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css"
         />
+        <link
+          rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/seti.min.css"
+        />
         {onBrowser
           ? THEMES.filter(t => t.hasStylesheet !== false).map(theme => (
               <link
