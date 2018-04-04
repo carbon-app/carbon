@@ -11,7 +11,10 @@ const client = new Unsplash({
 
 const parseImageResult = img => ({
   id: img.id,
-  photographer: img.user.name,
+  photographer: {
+    name: img.user.name,
+    profile_url: img.user.links.html
+  },
   url: img.urls.small
 })
 
