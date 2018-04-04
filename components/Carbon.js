@@ -1,5 +1,5 @@
-import * as hljs from 'highlight.js'
 import React, { PureComponent } from 'react'
+import * as hljs from 'highlight.js'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
 import debounce from 'lodash.debounce'
