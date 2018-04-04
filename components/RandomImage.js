@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Spinner from 'react-spinner'
 
+import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
 
 const downloadThumbnailImage = img => {
@@ -25,6 +26,9 @@ class RandomImage extends React.Component {
     this.nextImage = this.nextImage.bind(this)
   }
 
+  cache = []
+  imageUrls = {}
+
   // fetch images in browser (we require window.FileReader)
   componentDidMount() {
     // clear cache when remounted
@@ -36,9 +40,6 @@ class RandomImage extends React.Component {
     const imageUrls = await axios.get('/unsplash/random')
     return Promise.all(imageUrls.data.map(downloadThumbnailImage))
   }
-
-  cache = []
-  imageUrls = {}
 
   selectImage() {
     const image = this.cache[this.state.cacheIndex]
@@ -69,7 +70,8 @@ class RandomImage extends React.Component {
   }
 
   render() {
-    const linkUrl = this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].url
+    const photographer =
+      this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].photographer
     const bgImage = this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].dataURL
 
     return (
@@ -78,17 +80,17 @@ class RandomImage extends React.Component {
           <span onClick={this.selectImage}>Use Image</span>
           <span onClick={this.nextImage}>Try Another</span>
         </div>
-        <LinkWrapper url={linkUrl && `${linkUrl}&utm_source=carbon&utm_medium=referral`}>
-          <div className="image">{this.state.loading && <Spinner />}</div>
-        </LinkWrapper>
+        <div className="image">{this.state.loading && <Spinner />}</div>
+        {photographer && <PhotoCredit photographer={photographer} />}
         <style jsx>
           {`
             .image {
               width: 100%;
-              height: 120px;
+              height: 140px;
               background: url(${bgImage});
               background-size: cover;
               background-repeat: no-repeat;
+              margin-bottom: 4px;
             }
 
             .controls {
@@ -107,10 +109,6 @@ class RandomImage extends React.Component {
       </div>
     )
   }
-}
-
-function LinkWrapper({ url, children }) {
-  return url ? <a href={url}>{children}</a> : <div>{children}</div>
 }
 
 export default RandomImage

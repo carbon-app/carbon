@@ -2,6 +2,7 @@ import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 
 import RandomImage from './RandomImage'
+import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
@@ -31,7 +32,7 @@ const getCroppedImg = (imageDataURL, pixelCrop) => {
   })
 }
 
-const INITIAL_STATE = { crop: null, imageAspectRatio: null, pixelCrop: null }
+const INITIAL_STATE = { crop: null, imageAspectRatio: null, pixelCrop: null, photographer: null }
 
 export default class extends React.Component {
   constructor(props) {
@@ -92,10 +93,12 @@ export default class extends React.Component {
     const file = e.target ? e.target.files[0] : e
 
     return fileToDataURL(file).then(dataURL =>
-      this.props.onChange({
-        backgroundImage: dataURL,
-        backgroundImageSelection: null,
-        photographer
+      this.setState({ photographer }, () => {
+        this.props.onChange({
+          backgroundImage: dataURL,
+          backgroundImageSelection: null,
+          photographer
+        })
       })
     )
   }
@@ -177,6 +180,7 @@ export default class extends React.Component {
               minWidth={10}
               keepSelection
             />
+            {this.state.photographer && <PhotoCredit photographer={this.state.photographer} />}
           </div>
           <style jsx>
             {`
