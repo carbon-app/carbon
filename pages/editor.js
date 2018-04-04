@@ -200,7 +200,7 @@ class Editor extends React.Component {
     if (photographer) {
       this.setState(({ code = DEFAULT_CODE }) => ({
         ...changes,
-        code: code + `\n\n// Photograph by ${photographer} on Unsplash`
+        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`
       }))
     } else {
       this.setState(changes)
