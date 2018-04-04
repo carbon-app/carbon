@@ -45,8 +45,7 @@ class Editor extends React.Component {
       {
         ...DEFAULT_SETTINGS,
         uploading: false,
-        code: props.content,
-        _initialState: this.props.initialState
+        code: props.content
       },
       this.props.initialState
     )
@@ -67,7 +66,7 @@ class Editor extends React.Component {
 
   componentDidMount() {
     // Load from localStorage instead of query params
-    if (!this.state._initialState) {
+    if (!this.props.initialState) {
       const state = getState(localStorage)
       if (state) {
         this.setState(state)
@@ -273,10 +272,8 @@ function readAs(file) {
   return TEXT
 }
 
-function noop() {}
-
 Editor.defaultProps = {
-  onUpdate: noop
+  onUpdate: () => {}
 }
 
 export default DragDropContext(HTML5Backend)(Editor)
