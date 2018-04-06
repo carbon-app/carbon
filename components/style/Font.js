@@ -10,6 +10,16 @@ export default () => (
       }
 
       @font-face {
+        font-family: 'Fantasque Sans Mono';
+        src: url('//cdn.jsdelivr.net/npm/@typopro/web-fantasque-sans-mono@3.7.5/TypoPRO-FantasqueSansMono-Bold.woff')
+            format('woff2'),
+          url('//cdn.jsdelivr.net/npm/@typopro/web-fantasque-sans-mono@3.7.5/TypoPRO-FantasqueSansMono-Bold.woff')
+            format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
         font-family: 'Hack';
         src: url('//cdn.jsdelivr.net/font-hack/2.020/fonts/woff2/hack-regular-webfont.woff2?v=2.020')
             format('woff2'),
