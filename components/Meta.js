@@ -3,6 +3,7 @@ import { THEMES } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
+import DatGuiStyle from './style/DatGui'
 
 import '../static/react-crop.css'
 import '../static/react-spinner.css'
@@ -63,6 +64,7 @@ export default () => {
       <Reset />
       <Font />
       <Typography />
+      <DatGuiStyle />
       <style jsx>
         {`
           .meta {
