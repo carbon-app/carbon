@@ -10,7 +10,6 @@
     "deploy": "now --public --docker -e NODE_ENV=production",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
-    "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
