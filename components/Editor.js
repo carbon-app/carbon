@@ -6,7 +6,7 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 import '../node_modules/react-dat-gui/build/react-dat-gui.css';
-import DatGui, { DatColor, DatPresets, DatFolder } from 'react-dat-gui';
+import DatGui, { DatColor, DatPresets, DatFolder, DatString } from 'react-dat-gui';
 
 // Ours
 import Button from './Button'
@@ -96,7 +96,7 @@ class Editor extends React.Component {
         code: props.content,
         customThemeStyle: {
           current: defaultTheme,
-          presets: themePresets
+          presets: themePresets,
         }
       },
       this.props.initialState
@@ -115,6 +115,7 @@ class Editor extends React.Component {
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
     this.colorsChanged = this.colorsChanged.bind(this)
+    this.loadCustomFont = this.loadCustomFont.bind(this)
   }
 
   componentDidMount() {
@@ -242,22 +243,56 @@ class Editor extends React.Component {
     this.setCustomStyles()
   }
 
+  loadCustomFont() {
+    const currentCustomFontElement = document.getElementById("custom-font")
+    const head = document.getElementsByTagName('head')[0]
+    const link = document.createElement('link')
+    link.id = "custom-font"
+    link.rel = 'stylesheet'
+    link.type = 'text/css'
+    link.href = this.state.customThemeStyle.current.fontURL
+    link.media = 'all'
+
+    if(currentCustomFontElement) {
+      currentCustomFontElement.remove()
+      head.appendChild(link)
+    }
+    else {
+      head.appendChild(link)
+    }
+  }
+
   setCustomStyles() {
     // Convert customThemeStyle to iterable object
-    const iterableStyles = Object.entries(this.state.customThemeStyle.current)
+    const withoutFontProps = Object.assign({}, this.state.customThemeStyle.current)
+    delete withoutFontProps.fontURL
+    delete withoutFontProps.fontName
+    const iterableStyles = Object.entries(withoutFontProps)
 
     // The editor background and text color properties need to be handled differently
     const windowProps = ["background", "color"]
-    const isWindowProp = (selector) => windowProps.includes(selector)
+    const isWindowProp = (property) => windowProps.includes(property)
+
+    const currentStyle = this.state.customThemeStyle.current
+
+    const customFontCSS = `
+    .CodeMirror__container > .CodeMirror
+      {
+        font-family: ${currentStyle.fontName ? currentStyle.fontName : DEFAULT_SETTINGS.fontFamily} !important;
+        font-size: ${currentStyle.fontSize ? currentStyle.fontSize : DEFAULT_SETTINGS.fontSize}px !important;
+      }
+    `
 
     // Return CSS string of custom theme styles
     const generateCustomStyleCSS = () => {
-      return iterableStyles.map(([cssSelector, colorCode]) => {
-        return isWindowProp(cssSelector)
-          ? `.cm-s-custom.CodeMirror {${cssSelector}: ${colorCode};}`
-          : `.cm-s-custom .${cssSelector} {color: ${colorCode};}`
-      }).join("\n")
+      return iterableStyles.map(([key, value]) => {
+        return isWindowProp(key)
+          ? `.cm-s-custom.CodeMirror {${key}: ${value};}`
+          : `.cm-s-custom .${key} {color: ${value};}`
+      }).join("\n") + customFontCSS
     }
+
+    this.loadCustomFont()
 
     // Get the custom-styles node and remove it's previous CSS text
     const style = document.getElementById("custom-styles")
@@ -270,6 +305,7 @@ class Editor extends React.Component {
 
 
   render() {
+    const themeStyles = {...this.state.customThemeStyle.current, ...this.state.customThemeStyle.fontURL, ...this.state.customThemeStyle.fontName, ...this.state.customThemeStyle.fontSize}
     return (
       <React.Fragment>
         <div id="editor">
@@ -310,8 +346,11 @@ class Editor extends React.Component {
               />
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
-            <DatGui data={this.state.customThemeStyle.current} onUpdate={this.colorsChanged}>
+            <DatGui data={themeStyles} onUpdate={this.colorsChanged}>
               <DatPresets label='Theme Presets' options={this.state.customThemeStyle.presets} onUpdate={this.colorsChanged} />
+              <DatString label='Custom Font Name' path="fontName" />
+              <DatString label='Custom Font Size' path="fontSize" />
+              <DatString label='Custom Font URL' path="fontURL" />
               <DatFolder title='Show Colors'>
                 {Object.keys(this.state.customThemeStyle.current).map(key => <DatColor path={key} label={key} key={key} />)}
               </DatFolder>
