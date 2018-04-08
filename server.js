@@ -36,13 +36,9 @@ app
     // set up
     const server = express()
     const imageHandler = require('./handlers/image')(browser)
+    const unsplashHandler = require('./handlers/unsplash')
 
     server.use(morgan('tiny'))
-
-    server.get('/about', (req, res) => app.render(req, res, '/about'))
-
-    // if root, render webpage from next
-    server.get('/*', (req, res) => app.render(req, res, '/', req.query))
 
     // api endpoints
     server.post(
@@ -52,6 +48,13 @@ app
       require('./handlers/twitter')
     )
     server.post('/image', bodyParser.json({ limit: '5mb' }), wrap(imageHandler))
+    server.get('/unsplash/random', wrap(unsplashHandler.randomImages))
+    server.get('/unsplash/download/:imageId', wrap(unsplashHandler.downloadImage))
+
+    server.get('/about', (req, res) => app.render(req, res, '/about'))
+
+    // if root, render webpage from next
+    server.get('/*', (req, res) => app.render(req, res, '/', req.query))
 
     // otherwise, try and get gist
     server.get('*', handle)

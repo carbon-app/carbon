@@ -185,8 +185,15 @@ class Editor extends React.Component {
     this.updateSetting('language', language.mime || language.mode)
   }
 
-  updateBackground(changes, cb) {
-    this.setState(changes, cb)
+  updateBackground({ photographer, ...changes }) {
+    if (photographer) {
+      this.setState(({ code = DEFAULT_CODE }) => ({
+        ...changes,
+        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`
+      }))
+    } else {
+      this.setState(changes)
+    }
   }
 
   render() {

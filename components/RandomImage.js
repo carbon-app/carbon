@@ -2,24 +2,32 @@ import React from 'react'
 import axios from 'axios'
 import Spinner from 'react-spinner'
 
-import { range, fileToDataURL } from '../lib/util'
+import PhotoCredit from './PhotoCredit'
+import { fileToDataURL } from '../lib/util'
 
-const RAND_RANGE = 1000000
-const UPDATE_SIZE = 20
-const WALLPAPER_COLLECTION_ID = 136026
-const RANDOM_WALLPAPER_URL = `https://source.unsplash.com/collection/${WALLPAPER_COLLECTION_ID}/240x320`
+const downloadThumbnailImage = img => {
+  return axios
+    .get(img.url, { responseType: 'blob' })
+    .then(res => res.data)
+    .then(fileToDataURL)
+    .then(dataURL => Object.assign(img, { dataURL }))
+}
 
-const largerImage = url => url.replace(/w=\d+/, 'w=1920').replace(/&h=\d+/, '')
+const getImageDownloadUrl = img =>
+  axios.get(`/unsplash/download/${img.id}`).then(res => res.data.url)
 
-export default class RandomImage extends React.Component {
+class RandomImage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { cacheIndex: 0, loading: false }
     this.selectImage = this.selectImage.bind(this)
     this.updateCache = this.updateCache.bind(this)
-    this.getImage = this.getImage.bind(this)
+    this.getImages = this.getImages.bind(this)
     this.nextImage = this.nextImage.bind(this)
   }
+
+  cache = []
+  imageUrls = {}
 
   // fetch images in browser (we require window.FileReader)
   componentDidMount() {
@@ -28,38 +36,25 @@ export default class RandomImage extends React.Component {
     this.updateCache()
   }
 
-  async getImage() {
-    // circumvent browser caching
-    const sig = Math.floor(Math.random() * RAND_RANGE)
-
-    const res = await axios.get(`${RANDOM_WALLPAPER_URL}?sig=${sig}`, { responseType: 'blob' })
-
-    // image already in cache?
-    if (this.imageUrls[res.request.responseURL]) return undefined
-
-    this.imageUrls[res.request.responseURL] = true
-    return {
-      url: res.request.responseURL,
-      dataURL: await fileToDataURL(res.data)
-    }
+  async getImages() {
+    const imageUrls = await axios.get('/unsplash/random')
+    return Promise.all(imageUrls.data.map(downloadThumbnailImage))
   }
 
-  cache = []
-  imageUrls = {}
-
   selectImage() {
+    const image = this.cache[this.state.cacheIndex]
+
     this.setState({ loading: true })
-    axios
-      .get(largerImage(this.cache[this.state.cacheIndex].url), { responseType: 'blob' })
+    getImageDownloadUrl(image)
+      .then(url => axios.get(url, { responseType: 'blob' }))
       .then(res => res.data)
-      .then(this.props.onChange)
+      .then(blob => this.props.onChange(blob, image))
       .then(() => this.setState({ loading: false }))
   }
 
   updateCache() {
     this.setState({ loading: true })
-    Promise.all(range(UPDATE_SIZE).map(this.getImage))
-      .then(imgs => imgs.filter(img => img)) // remove null
+    this.getImages()
       .then(imgs => (this.cache = this.cache.concat(imgs)))
       .then(() => this.setState({ loading: false }))
   }
@@ -75,6 +70,8 @@ export default class RandomImage extends React.Component {
   }
 
   render() {
+    const photographer =
+      this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].photographer
     const bgImage = this.cache[this.state.cacheIndex] && this.cache[this.state.cacheIndex].dataURL
 
     return (
@@ -84,14 +81,16 @@ export default class RandomImage extends React.Component {
           <span onClick={this.nextImage}>Try Another</span>
         </div>
         <div className="image">{this.state.loading && <Spinner />}</div>
+        {photographer && <PhotoCredit photographer={photographer} />}
         <style jsx>
           {`
             .image {
               width: 100%;
-              height: 120px;
+              height: 140px;
               background: url(${bgImage});
               background-size: cover;
               background-repeat: no-repeat;
+              margin-bottom: 4px;
             }
 
             .controls {
@@ -111,3 +110,5 @@ export default class RandomImage extends React.Component {
     )
   }
 }
+
+export default RandomImage
