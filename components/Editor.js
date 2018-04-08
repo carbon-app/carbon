@@ -103,11 +103,18 @@ class Editor extends React.Component {
         'transform-origin': 'center',
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
-      filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
+      filter: n => {
+        // %[00 -> 19] cause failures
+        if (n.innerText && n.innerText.match(/%[0-1][0-9]/)) {
+          return false
+        }
+        if (n.className) {
+          return String(n.className).indexOf('eliminateOnRender') < 0
+        }
+        return true
+      },
       width,
-      height,
-      // %[00 -> 19] cause failures
-      filter: node => !(node.innerText && node.innerText.match(/%[0-1][0-9]/))
+      height
     }
 
     if (type === 'blob')
