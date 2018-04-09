@@ -5,6 +5,9 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
+import '../node_modules/react-dat-gui/build/react-dat-gui.css';
+import DatGui, { DatColor, DatPresets, DatFolder, DatString } from 'react-dat-gui';
+
 // Ours
 import Button from './Button'
 import Dropdown from './Dropdown'
@@ -38,6 +41,51 @@ const saveButtonOptions = {
   list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
 }
 
+const themePresets = [
+  {
+    Seti: {
+      "background": "#151718",
+      "color": "#cfd2d1",
+      "cm-keyword": "#e6cd69",
+      "cm-operator": "#9fca56",
+      "cm-def": "#55b5db",
+      "cm-meta": "#55b5db",
+      "cm-string": "#55b5db",
+      // "cm-variable": "#a074c4",
+      "cm-variable-2": "#a074c4",
+      "cm-property": "#a074c4",
+      "cm-number": "#cd3f45"
+    },
+    Material: {
+      "background": "#263238",
+      "color": "#e9eded",
+      "cm-keyword": "#c792ea",
+      "cm-operator": "#e9eded",
+      "cm-def": "#e9eded",
+      "cm-meta": "#80cbc4",
+      "cm-string": "#c3e88d",
+      // "cm-variable": "#a074c4",
+      "cm-variable-2": "#80cbc4",
+      "cm-property": "#80cbae",
+      "cm-number": "#f77669"
+    },
+  }
+]
+const customThemes = themePresets[0]
+const defaultTheme = {
+  "background": "#",
+  "color": "#",
+  "cm-keyword": "#",
+  "cm-operator": "#",
+  "cm-def": "#",
+  "cm-meta": "#",
+  "cm-string": "#",
+  // "cm-variable": "#",
+  "cm-variable-2": "#",
+  "cm-property": "#",
+  "cm-number": "#"
+}
+
 class Editor extends React.Component {
   constructor(props) {
     super(props)
@@ -45,7 +93,11 @@ class Editor extends React.Component {
       {
         ...DEFAULT_SETTINGS,
         uploading: false,
-        code: props.content
+        code: props.content,
+        customThemeStyle: {
+          current: defaultTheme,
+          presets: themePresets,
+        }
       },
       this.props.initialState
     )
@@ -62,6 +114,8 @@ class Editor extends React.Component {
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
+    this.colorsChanged = this.colorsChanged.bind(this)
+    this.loadCustomFont = this.loadCustomFont.bind(this)
   }
 
   componentDidMount() {
@@ -72,6 +126,9 @@ class Editor extends React.Component {
         this.setState(state)
       }
     }
+
+    // Load initial custom theme
+    this.state.theme === 'custom' && this.setCustomStyles()
   }
 
   componentDidUpdate() {
@@ -193,7 +250,76 @@ class Editor extends React.Component {
     }
   }
 
+  colorsChanged(newColors) {
+    const customThemeStyle = this.state.customThemeStyle
+    customThemeStyle.current = newColors
+    this.setState({customThemeStyle})
+    this.setCustomStyles()
+  }
+
+  loadCustomFont() {
+    const currentCustomFontElement = document.getElementById("custom-font")
+    const head = document.getElementsByTagName('head')[0]
+    const link = document.createElement('link')
+    link.id = "custom-font"
+    link.rel = 'stylesheet'
+    link.type = 'text/css'
+    link.href = this.state.customThemeStyle.current.fontURL
+    link.media = 'all'
+
+    if(currentCustomFontElement) {
+      currentCustomFontElement.remove()
+      head.appendChild(link)
+    }
+    else {
+      head.appendChild(link)
+    }
+  }
+
+  setCustomStyles() {
+    // Convert customThemeStyle to iterable object
+    const withoutFontProps = Object.assign({}, this.state.customThemeStyle.current)
+    delete withoutFontProps.fontURL
+    delete withoutFontProps.fontName
+    const iterableStyles = Object.entries(withoutFontProps)
+
+    // The editor background and text color properties need to be handled differently
+    const windowProps = ["background", "color"]
+    const isWindowProp = (property) => windowProps.includes(property)
+
+    const currentStyle = this.state.customThemeStyle.current
+
+    const customFontCSS = `
+    .CodeMirror__container > .CodeMirror
+      {
+        font-family: ${currentStyle.fontName ? currentStyle.fontName : DEFAULT_SETTINGS.fontFamily} !important;
+        font-size: ${currentStyle.fontSize ? currentStyle.fontSize : DEFAULT_SETTINGS.fontSize}px !important;
+      }
+    `
+
+    // Return CSS string of custom theme styles
+    const generateCustomStyleCSS = () => {
+      return iterableStyles.map(([key, value]) => {
+        return isWindowProp(key)
+          ? `.cm-s-custom.CodeMirror {${key}: ${value};}`
+          : `.cm-s-custom .${key} {color: ${value};}`
+      }).join("\n") + customFontCSS
+    }
+
+    this.loadCustomFont()
+
+    // Get the custom-styles node and remove it's previous CSS text
+    const style = document.getElementById("custom-styles")
+    style.firstChild && style.removeChild(style.firstChild);
+
+    // Set the style element content to our generated CSS
+    style.appendChild(document.createTextNode(generateCustomStyleCSS()))
+  }
+
+
+
   render() {
+    const themeStyles = {...this.state.customThemeStyle.current, ...this.state.customThemeStyle.fontURL, ...this.state.customThemeStyle.fontName, ...this.state.customThemeStyle.fontSize}
     return (
       <React.Fragment>
         <div id="editor">
@@ -234,6 +360,15 @@ class Editor extends React.Component {
               />
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
+            <DatGui data={themeStyles} onUpdate={this.colorsChanged}>
+              <DatPresets label='Theme Presets' options={this.state.customThemeStyle.presets} onUpdate={this.colorsChanged} />
+              <DatString label='Custom Font Name' path="fontName" />
+              <DatString label='Custom Font Size' path="fontSize" />
+              <DatString label='Custom Font URL' path="fontURL" />
+              <DatFolder title='Show Colors'>
+                {Object.keys(this.state.customThemeStyle.current).map(key => <DatColor path={key} label={key} key={key} />)}
+              </DatFolder>
+            </DatGui>
           </Toolbar>
 
           <ReadFileDropContainer readAs={readAs} onDrop={this.onDrop}>
@@ -270,6 +405,7 @@ class Editor extends React.Component {
             }
           `}
         </style>
+        <style id="custom-styles" />
       </React.Fragment>
     )
   }

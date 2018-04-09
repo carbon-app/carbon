@@ -216,7 +216,7 @@ class Carbon extends PureComponent {
                 min-width: inherit;
                 padding: 18px 18px;
                 ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
-                font-family: ${config.fontFamily}, monospace !important;
+                font-family: ${config.fontFamily}, monospace;
                 font-size: ${config.fontSize};
                 font-variant-ligatures: contextual;
                 font-feature-settings: 'calt' 1;
