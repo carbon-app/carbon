@@ -6,7 +6,7 @@ import Typography from './style/Typography'
 
 import '../static/react-crop.css'
 import '../static/react-spinner.css'
-import '../static/customThemes/one-dark.css'
+import '../lib/custom/themes/one-dark.css'
 
 export default () => {
   const onBrowser = typeof window !== 'undefined'
