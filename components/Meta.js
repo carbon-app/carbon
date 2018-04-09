@@ -34,6 +34,7 @@ export default () => {
         <meta name="theme-color" content="#121212" />
         <title>Carbon</title>
         <link rel="shortcut icon" href="/static/favicon.ico" />
+        <link rel="stylesheet" href="/static/customThemes/one-dark.css" />
         <link rel="stylesheet" href="/_next/static/style.css" />
         <link
           rel="stylesheet"
