@@ -6,6 +6,7 @@ import Typography from './style/Typography'
 
 import '../static/react-crop.css'
 import '../static/react-spinner.css'
+import '../static/customThemes/one-dark.css'
 
 export default () => {
   const onBrowser = typeof window !== 'undefined'
@@ -34,7 +35,6 @@ export default () => {
         <meta name="theme-color" content="#121212" />
         <title>Carbon</title>
         <link rel="shortcut icon" href="/static/favicon.ico" />
-        <link rel="stylesheet" href="/static/customThemes/one-dark.css" />
         <link rel="stylesheet" href="/_next/static/style.css" />
         <link
           rel="stylesheet"
