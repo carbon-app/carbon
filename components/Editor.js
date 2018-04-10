@@ -62,9 +62,8 @@ class Editor extends React.Component {
   }
 
   componentDidMount() {
-    // Load from localStorage instead of query params
+    // Load from localStorage and then URL params
     this.setState({
-      ...this.state,
       ...getState(localStorage),
       ...this.props.initialState
     })
