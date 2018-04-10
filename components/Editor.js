@@ -41,14 +41,11 @@ const saveButtonOptions = {
 class Editor extends React.Component {
   constructor(props) {
     super(props)
-    this.state = Object.assign(
-      {
-        ...DEFAULT_SETTINGS,
-        uploading: false,
-        code: props.content
-      },
-      this.props.initialState
-    )
+    this.state = {
+      ...DEFAULT_SETTINGS,
+      uploading: false,
+      code: props.content
+    }
 
     this.save = this.save.bind(this)
     this.upload = this.upload.bind(this)
@@ -66,12 +63,11 @@ class Editor extends React.Component {
 
   componentDidMount() {
     // Load from localStorage instead of query params
-    if (!this.props.initialState) {
-      const state = getState(localStorage)
-      if (state) {
-        this.setState(state)
-      }
-    }
+    this.setState({
+      ...this.state,
+      ...getState(localStorage),
+      ...this.props.initialState
+    })
   }
 
   componentDidUpdate() {
