@@ -10,6 +10,16 @@ export default () => (
       }
 
       @font-face {
+        font-family: 'Monoid';
+        src: url('//cdn.jsdelivr.net/npm/@typopro/web-monoid@3.7.5/TypoPRO-Monoid-Regular.woff')
+            format('woff2'),
+          url('//cdn.jsdelivr.net/npm/@typopro/web-monoid@3.7.5/TypoPRO-Monoid-Regular.woff')
+            format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
         font-family: 'Fantasque Sans Mono';
         src: url('//cdn.jsdelivr.net/npm/@typopro/web-fantasque-sans-mono@3.7.5/TypoPRO-FantasqueSansMono-Regular.woff')
             format('woff2'),
