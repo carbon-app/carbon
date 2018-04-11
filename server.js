@@ -38,7 +38,9 @@ app
     const imageHandler = require('./handlers/image')(browser)
     const unsplashHandler = require('./handlers/unsplash')
 
-    server.use(morgan('tiny'))
+    if (dev) {
+      server.use(morgan('tiny'))
+    }
 
     // api endpoints
     server.post('/twitter', bodyParser.json({ limit: '5mb' }), require('./handlers/twitter'))
