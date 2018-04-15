@@ -284,6 +284,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ericadamski",
+      "name": "Eric Adamski",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6516758?v=4",
+      "profile": "https://ericadamski.github.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"

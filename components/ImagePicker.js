@@ -89,7 +89,7 @@ export default class extends React.Component {
     })
   }
 
-  selectImage(e, { photographer }) {
+  selectImage(e, { photographer } = {}) {
     const file = e.target ? e.target.files[0] : e
 
     return fileToDataURL(file).then(dataURL =>
