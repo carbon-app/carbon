@@ -1,5 +1,6 @@
 // Theirs
 import React from 'react'
+import { Provider, Subscribe, Container } from 'unstated'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
@@ -29,7 +30,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 import { serializeState } from '../lib/routing'
-import { getState } from '../lib/util'
+import { getState, isImage } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -38,8 +39,8 @@ const saveButtonOptions = {
   list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
 }
 
-class Editor extends React.Component {
-  constructor(props) {
+class EditorContainer extends Container {
+  constructor(props = {}) {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
@@ -183,93 +184,98 @@ class Editor extends React.Component {
       this.setState(changes)
     }
   }
-
-  render() {
-    return (
-      <React.Fragment>
-        <div id="editor">
-          <Toolbar>
-            <Dropdown
-              selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
-              list={THEMES}
-              onChange={this.updateTheme}
-            />
-            <Dropdown
-              selected={
-                LANGUAGE_NAME_HASH[this.state.language] ||
-                LANGUAGE_MIME_HASH[this.state.language] ||
-                LANGUAGE_MODE_HASH[this.state.language]
-              }
-              list={LANGUAGES}
-              onChange={this.updateLanguage}
-            />
-            <BackgroundSelect
-              onChange={this.updateBackground}
-              mode={this.state.backgroundMode}
-              color={this.state.backgroundColor}
-              image={this.state.backgroundImage}
-              aspectRatio={this.state.aspectRatio}
-            />
-            <Settings
-              {...this.state}
-              onChange={this.updateSetting}
-              resetDefaultSettings={this.resetDefaultSettings}
-            />
-            <div className="buttons">
-              {this.props.tweet && (
-                <Button
-                  className="tweetButton"
-                  onClick={this.upload}
-                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-              )}
-              <Dropdown {...saveButtonOptions} onChange={this.save} />
-            </div>
-          </Toolbar>
-
-          <ReadFileDropContainer readAs={readAs} onDrop={this.onDrop}>
-            {({ isOver, canDrop }) => (
-              <Overlay
-                isOver={isOver || canDrop}
-                title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
-              >
-                <Carbon
-                  config={this.state}
-                  updateCode={this.updateCode}
-                  onAspectRatioChange={this.updateAspectRatio}
-                  titleBar={this.state.titleBar}
-                  updateTitleBar={this.updateTitleBar}
-                >
-                  {this.state.code != null ? this.state.code : DEFAULT_CODE}
-                </Carbon>
-              </Overlay>
-            )}
-          </ReadFileDropContainer>
-        </div>
-        <style jsx>
-          {`
-            #editor {
-              background: ${COLORS.BLACK};
-              border: 3px solid ${COLORS.SECONDARY};
-              border-radius: 8px;
-              padding: 16px;
-            }
-
-            .buttons {
-              display: flex;
-              margin-left: auto;
-            }
-          `}
-        </style>
-      </React.Fragment>
-    )
-  }
 }
 
-function isImage(file) {
-  return file.type.split('/')[0] === 'image'
+class Editor extends React.Component {
+  render() {
+    const ed = new EditorContainer(this.props)
+    return (
+      <Provider inject={[ed]}>
+        <Subscribe to={[EditorContainer]}>
+          {editor => (
+            <React.Fragment>
+              <div id="editor">
+                <Toolbar>
+                  <Dropdown
+                    selected={THEMES_HASH[editor.state.theme] || DEFAULT_THEME}
+                    list={THEMES}
+                    onChange={editor.updateTheme}
+                  />
+                  <Dropdown
+                    selected={
+                      LANGUAGE_NAME_HASH[editor.state.language] ||
+                      LANGUAGE_MIME_HASH[editor.state.language] ||
+                      LANGUAGE_MODE_HASH[editor.state.language]
+                    }
+                    list={LANGUAGES}
+                    onChange={editor.updateLanguage}
+                  />
+                  <BackgroundSelect
+                    onChange={editor.updateBackground}
+                    mode={editor.state.backgroundMode}
+                    color={editor.state.backgroundColor}
+                    image={editor.state.backgroundImage}
+                    aspectRatio={editor.state.aspectRatio}
+                  />
+                  <Settings
+                    {...editor.state}
+                    onChange={editor.updateSetting}
+                    resetDefaultSettings={editor.resetDefaultSettings}
+                  />
+                  <div className="buttons">
+                    {this.props.tweet && (
+                      <Button
+                        className="tweetButton"
+                        onClick={editor.upload}
+                        title={editor.state.uploading ? 'Loading...' : 'Tweet Image'}
+                        color="#57b5f9"
+                        style={{ marginRight: '8px' }}
+                      />
+                    )}
+                    <Dropdown {...saveButtonOptions} onChange={editor.save} />
+                  </div>
+                </Toolbar>
+
+                <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
+                  {({ isOver, canDrop }) => (
+                    <Overlay
+                      isOver={isOver || canDrop}
+                      title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
+                    >
+                      <Carbon
+                        config={editor.state}
+                        updateCode={editor.updateCode}
+                        onAspectRatioChange={editor.updateAspectRatio}
+                        titleBar={editor.state.titleBar}
+                        updateTitleBar={editor.updateTitleBar}
+                      >
+                        {editor.state.code != null ? editor.state.code : DEFAULT_CODE}
+                      </Carbon>
+                    </Overlay>
+                  )}
+                </ReadFileDropContainer>
+              </div>
+              <style jsx>
+                {`
+                  #editor {
+                    background: ${COLORS.BLACK};
+                    border: 3px solid ${COLORS.SECONDARY};
+                    border-radius: 8px;
+                    padding: 16px;
+                  }
+
+                  .buttons {
+                    display: flex;
+                    margin-left: auto;
+                  }
+                `}
+              </style>
+            </React.Fragment>
+          )}
+        </Subscribe>
+      </Provider>
+    )
+  }
 }
 
 function readAs(file) {

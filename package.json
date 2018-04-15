@@ -55,7 +55,8 @@
     "resize-observer-polyfill": "^1.5.0",
     "tohash": "^1.0.2",
     "twitter": "^1.7.1",
-    "unsplash-js": "^4.8.0"
+    "unsplash-js": "^4.8.0",
+    "unstated": "^2.0.2"
   },
   "devDependencies": {
     "@zeit/next-css": "^0.1.5",
