@@ -76,7 +76,7 @@ class Editor extends React.Component {
     this.props.onUpdate(this.state)
   }
 
-  getCarbonImage({ format, type } = { format: 'png' }) {
+  getCarbonImage({ format } = { format: 'png' }) {
     // if safari, get image from api
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
@@ -115,15 +115,16 @@ class Editor extends React.Component {
       height
     }
 
-    if (type === 'blob')
+    if (format === 'svg') {
       return domtoimage
-        .toBlob(node, config)
-        .then(blob => window.URL.createObjectURL(blob, { type: 'image/png' }))
+        .toSvg(node, config)
+        .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+        .then(uri => uri.slice(uri.indexOf(',') + 1))
+        .then(data => new Blob([data], { type: 'image/svg+xml' }))
+        .then(data => window.URL.createObjectURL(data))
+    }
 
-    if (format === 'svg')
-      return domtoimage.toSvg(node, config).then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
-
-    return domtoimage.toPng(node, config)
+    return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
   }
 
   updateSetting(key, value) {
@@ -133,9 +134,7 @@ class Editor extends React.Component {
   save({ id: format = 'png' }) {
     const link = document.createElement('a')
 
-    const type = format === 'png' ? 'blob' : undefined
-
-    return this.getCarbonImage({ format, type })
+    return this.getCarbonImage({ format })
       .then(url => {
         link.download = `carbon.${format}`
         link.href = url
