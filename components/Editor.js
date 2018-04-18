@@ -148,12 +148,9 @@ class Editor extends React.Component {
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
-      .then(api.tweet)
+      .then(this.props.tweet)
+      .catch(console.error)
       .then(() => this.setState({ uploading: false }))
-      .catch(err => {
-        console.error(err)
-        this.setState({ uploading: false })
-      })
   }
 
   onDrop([file]) {
@@ -219,13 +216,15 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              <Button
-                className="tweetButton"
-                onClick={this.upload}
-                title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                color="#57b5f9"
-                style={{ marginRight: '8px' }}
-              />
+              {this.props.tweet && (
+                <Button
+                  className="tweetButton"
+                  onClick={this.upload}
+                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                  color="#57b5f9"
+                  style={{ marginRight: '8px' }}
+                />
+              )}
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>

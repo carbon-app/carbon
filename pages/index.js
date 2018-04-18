@@ -28,7 +28,7 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props} onUpdate={onEditorUpdate} />
+        <Editor {...this.props} onUpdate={onEditorUpdate} tweet={api.tweet} />
       </Page>
     )
   }
