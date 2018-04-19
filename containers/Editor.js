@@ -1,5 +1,4 @@
 // Theirs
-import React from 'react'
 import { Container } from 'unstated'
 import domtoimage from 'dom-to-image'
 
@@ -159,6 +158,10 @@ class EditorContainer extends Container {
       this.setState(changes)
     }
   }
+}
+
+EditorContainer.defaultProps = {
+  onUpdate: () => {}
 }
 
 export default EditorContainer

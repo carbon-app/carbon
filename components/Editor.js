@@ -37,93 +37,102 @@ const saveButtonOptions = {
   list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
 }
 
+const to = [EditorContainer]
+
 class Editor extends React.Component {
-  render() {
-    const ed = new EditorContainer(this.props)
+  constructor(props) {
+    super(props)
+    this.inject = [new EditorContainer(props)]
+    this.renderEditor = this.renderEditor.bind(this)
+  }
+
+  renderEditor(editor) {
     return (
-      <Provider inject={[ed]}>
-        <Subscribe to={[EditorContainer]}>
-          {editor => (
-            <React.Fragment>
-              <div id="editor">
-                <Toolbar>
-                  <Dropdown
-                    selected={THEMES_HASH[editor.state.theme] || DEFAULT_THEME}
-                    list={THEMES}
-                    onChange={editor.updateTheme}
-                  />
-                  <Dropdown
-                    selected={
-                      LANGUAGE_NAME_HASH[editor.state.language] ||
-                      LANGUAGE_MIME_HASH[editor.state.language] ||
-                      LANGUAGE_MODE_HASH[editor.state.language]
-                    }
-                    list={LANGUAGES}
-                    onChange={editor.updateLanguage}
-                  />
-                  <BackgroundSelect
-                    onChange={editor.updateBackground}
-                    mode={editor.state.backgroundMode}
-                    color={editor.state.backgroundColor}
-                    image={editor.state.backgroundImage}
-                    aspectRatio={editor.state.aspectRatio}
-                  />
-                  <Settings
-                    {...editor.state}
-                    onChange={editor.updateSetting}
-                    resetDefaultSettings={editor.resetDefaultSettings}
-                  />
-                  <div className="buttons">
-                    {this.props.tweet && (
-                      <Button
-                        className="tweetButton"
-                        onClick={editor.upload}
-                        title={editor.state.uploading ? 'Loading...' : 'Tweet Image'}
-                        color="#57b5f9"
-                        style={{ marginRight: '8px' }}
-                      />
-                    )}
-                    <Dropdown {...saveButtonOptions} onChange={editor.save} />
-                  </div>
-                </Toolbar>
+      <React.Fragment>
+        <div id="editor">
+          <Toolbar>
+            <Dropdown
+              selected={THEMES_HASH[editor.state.theme] || DEFAULT_THEME}
+              list={THEMES}
+              onChange={editor.updateTheme}
+            />
+            <Dropdown
+              selected={
+                LANGUAGE_NAME_HASH[editor.state.language] ||
+                LANGUAGE_MIME_HASH[editor.state.language] ||
+                LANGUAGE_MODE_HASH[editor.state.language]
+              }
+              list={LANGUAGES}
+              onChange={editor.updateLanguage}
+            />
+            <BackgroundSelect
+              onChange={editor.updateBackground}
+              mode={editor.state.backgroundMode}
+              color={editor.state.backgroundColor}
+              image={editor.state.backgroundImage}
+              aspectRatio={editor.state.aspectRatio}
+            />
+            <Settings
+              {...editor.state}
+              onChange={editor.updateSetting}
+              resetDefaultSettings={editor.resetDefaultSettings}
+            />
+            <div className="buttons">
+              {this.props.tweet && (
+                <Button
+                  className="tweetButton"
+                  onClick={editor.upload}
+                  title={editor.state.uploading ? 'Loading...' : 'Tweet Image'}
+                  color="#57b5f9"
+                  style={{ marginRight: '8px' }}
+                />
+              )}
+              <Dropdown {...saveButtonOptions} onChange={editor.save} />
+            </div>
+          </Toolbar>
 
-                <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
-                  {({ isOver, canDrop }) => (
-                    <Overlay
-                      isOver={isOver || canDrop}
-                      title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
-                    >
-                      <Carbon
-                        config={editor.state}
-                        updateCode={editor.updateCode}
-                        onAspectRatioChange={editor.updateAspectRatio}
-                        titleBar={editor.state.titleBar}
-                        updateTitleBar={editor.updateTitleBar}
-                      >
-                        {editor.state.code != null ? editor.state.code : DEFAULT_CODE}
-                      </Carbon>
-                    </Overlay>
-                  )}
-                </ReadFileDropContainer>
-              </div>
-              <style jsx>
-                {`
-                  #editor {
-                    background: ${COLORS.BLACK};
-                    border: 3px solid ${COLORS.SECONDARY};
-                    border-radius: 8px;
-                    padding: 16px;
-                  }
+          <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
+            {({ isOver, canDrop }) => (
+              <Overlay
+                isOver={isOver || canDrop}
+                title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
+              >
+                <Carbon
+                  config={editor.state}
+                  updateCode={editor.updateCode}
+                  onAspectRatioChange={editor.updateAspectRatio}
+                  titleBar={editor.state.titleBar}
+                  updateTitleBar={editor.updateTitleBar}
+                >
+                  {editor.state.code != null ? editor.state.code : DEFAULT_CODE}
+                </Carbon>
+              </Overlay>
+            )}
+          </ReadFileDropContainer>
+        </div>
+        <style jsx>
+          {`
+            #editor {
+              background: ${COLORS.BLACK};
+              border: 3px solid ${COLORS.SECONDARY};
+              border-radius: 8px;
+              padding: 16px;
+            }
 
-                  .buttons {
-                    display: flex;
-                    margin-left: auto;
-                  }
-                `}
-              </style>
-            </React.Fragment>
-          )}
-        </Subscribe>
+            .buttons {
+              display: flex;
+              margin-left: auto;
+            }
+          `}
+        </style>
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    return (
+      <Provider inject={this.inject}>
+        <Subscribe to={to}>{this.renderEditor}</Subscribe>
       </Provider>
     )
   }
@@ -134,10 +143,6 @@ function readAs(file) {
     return DATA_URL
   }
   return TEXT
-}
-
-Editor.defaultProps = {
-  onUpdate: () => {}
 }
 
 export default DragDropContext(HTML5Backend)(Editor)
