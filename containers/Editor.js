@@ -124,6 +124,7 @@ class EditorContainer extends Container {
     this.setState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
       .then(this.props.tweet)
+      // eslint-disable-next-line
       .catch(console.error)
       .then(() => this.setState({ uploading: false }))
   }

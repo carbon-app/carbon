@@ -29,6 +29,7 @@ const respondFail = (res, err) => {
     return res.status(420).send()
   }
 
+  // eslint-disable-next-line
   console.error(`Error: ${err.message || JSON.stringify(err, null, 2)}`)
   return res.status(500).send()
 }
