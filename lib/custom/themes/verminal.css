@@ -63,10 +63,10 @@
   color: #e06c75;
 }
 .cm-s-verminal .cm-keyword {
-  color: #569cd6;
+  color: #9AE1FF;
 }
 .cm-s-verminal .cm-def {
-  color: #f5a623;
+  color: #34B7FF;
 }
 .cm-s-verminal .cm-atom {
   color: #d19a66;
@@ -80,9 +80,11 @@
 .cm-s-verminal .cm-qualifier {
   color: #d19a66;
 }
-.cm-s-verminal .cm-variable,
-.cm-s-verminal .cm-variable-2 {
+.cm-s-verminal .cm-variable {
   color: #ff9ba3;
+}
+.cm-s-verminal .cm-variable-2 {
+  color: #fff;
 }
 .cm-s-verminal .cm-string {
   color: #98c379;
@@ -91,7 +93,7 @@
   color: #abb2bf;
 }
 .cm-s-verminal .cm-operator {
-  color: #56b6c2;
+  color: #FA78C3;
 }
 
 .cm-s-verminal .cm-meta {
