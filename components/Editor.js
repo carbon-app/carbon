@@ -14,26 +14,8 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
-import {
-  THEMES,
-  THEMES_HASH,
-  LANGUAGES,
-  LANGUAGE_MIME_HASH,
-  LANGUAGE_MODE_HASH,
-  LANGUAGE_NAME_HASH,
-  DEFAULT_THEME,
-  COLORS,
-  DEFAULT_CODE,
-  DEFAULT_SETTINGS
-} from '../lib/constants'
+import { COLORS, DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { isImage } from '../lib/util'
-
-const saveButtonOptions = {
-  button: true,
-  color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
-  list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
-}
 
 const to = [EditorContainer]
 
@@ -48,47 +30,7 @@ class Editor extends React.Component {
     return (
       <React.Fragment>
         <div id="editor">
-          <Toolbar>
-            <Dropdown
-              selected={THEMES_HASH[editor.state.theme] || DEFAULT_THEME}
-              list={THEMES}
-              onChange={editor.updateTheme}
-            />
-            <Dropdown
-              selected={
-                LANGUAGE_NAME_HASH[editor.state.language] ||
-                LANGUAGE_MIME_HASH[editor.state.language] ||
-                LANGUAGE_MODE_HASH[editor.state.language]
-              }
-              list={LANGUAGES}
-              onChange={editor.updateLanguage}
-            />
-            <BackgroundSelect
-              onChange={editor.updateBackground}
-              mode={editor.state.backgroundMode}
-              color={editor.state.backgroundColor}
-              image={editor.state.backgroundImage}
-              aspectRatio={editor.state.aspectRatio}
-            />
-            <Settings
-              {...editor.state}
-              onChange={editor.updateSetting}
-              resetDefaultSettings={editor.resetDefaultSettings}
-            />
-            <div className="buttons">
-              {this.props.tweet && (
-                <Button
-                  className="tweetButton"
-                  onClick={editor.upload}
-                  title={editor.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-              )}
-              <Dropdown {...saveButtonOptions} onChange={editor.save} />
-            </div>
-          </Toolbar>
-
+          <Toolbar />
           <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
             {({ isOver, canDrop }) => (
               <Overlay
@@ -115,11 +57,6 @@ class Editor extends React.Component {
               border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;
               padding: 16px;
-            }
-
-            .buttons {
-              display: flex;
-              margin-left: auto;
             }
           `}
         </style>
