@@ -17,7 +17,7 @@
     "cy:open": "cypress open"
   },
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "body-parser": "^1.17.2",
     "codemirror": "^5.36.0",
     "codemirror-graphql": "^0.6.12",
@@ -28,14 +28,14 @@
     "dropperx": "^0.1.0",
     "express": "^4.16.2",
     "form-data": "^2.2.0",
-    "graphql": "^0.11.7",
+    "graphql": "^0.13.2",
     "highlight.js": "^9.12.0",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "match-sorter": "^2.2.0",
     "morgan": "^1.8.2",
-    "morphmorph": "^0.0.2",
+    "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
     "next": "^5.1.0",
     "now-logs": "^0.0.7",
@@ -43,7 +43,7 @@
     "puppeteer": "^1.0.0",
     "react": "^16.2.0",
     "react-click-outside": "^3.0.0",
-    "react-codemirror2": "^3.0.7",
+    "react-codemirror2": "^4.2.1",
     "react-color": "^2.13.8",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
@@ -61,11 +61,11 @@
   "devDependencies": {
     "@zeit/next-css": "^0.1.5",
     "all-contributors-cli": "^4.7.0",
-    "cypress": "^1.4.1",
+    "cypress": "^2.1.0",
     "hex2rgb": "^2.2.0",
     "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
-    "now": "^9.2.7",
+    "lint-staged": "^7.0.4",
+    "now": "^11.1.7",
     "prettier": "^1.8.1",
     "webpack": "^3.10.0"
   },
@@ -85,6 +85,11 @@
     " *.js": [
       "prettier",
       "git add"
+    ]
+  },
+  "greenkeeper": {
+    "ignore": [
+      "webpack"
     ]
   },
   "description": "Create and share beautiful images of your source code",
