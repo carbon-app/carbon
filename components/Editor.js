@@ -1,6 +1,6 @@
 // Theirs
 import React from 'react'
-import { Provider, Subscribe } from 'unstated'
+import { Provider } from 'unstated'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 
@@ -10,18 +10,15 @@ import Coder from './Coder'
 import Toolbar from './Toolbar'
 import { COLORS } from '../lib/constants'
 
-const to = [EditorContainer]
-
 class Editor extends React.Component {
   constructor(props) {
     super(props)
     this.inject = [new EditorContainer(props)]
-    this.renderEditor = this.renderEditor.bind(this)
   }
 
-  renderEditor(editor) {
+  render() {
     return (
-      <React.Fragment>
+      <Provider inject={this.inject}>
         <div id="editor">
           <Toolbar />
           <Coder />
@@ -36,14 +33,6 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </React.Fragment>
-    )
-  }
-
-  render() {
-    return (
-      <Provider inject={this.inject}>
-        <Subscribe to={to}>{this.renderEditor}</Subscribe>
       </Provider>
     )
   }
