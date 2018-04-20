@@ -2,6 +2,7 @@ import React from 'react'
 import { Subscribe } from 'unstated'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
+import EditorContainer from '../containers/Editor'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
 
