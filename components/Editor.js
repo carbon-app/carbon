@@ -3,7 +3,6 @@ import React from 'react'
 import { Provider, Subscribe } from 'unstated'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
-import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 // Ours
@@ -15,7 +14,6 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
-import api from '../lib/api'
 import {
   THEMES,
   THEMES_HASH,
