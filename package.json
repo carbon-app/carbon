@@ -41,13 +41,13 @@
     "now-logs": "^0.0.7",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.0.0",
-    "react": "^16.2.0",
+    "react": "16.2.0",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^4.2.1",
     "react-color": "^2.13.8",
     "react-dnd": "^2.4.0",
     "react-dnd-html5-backend": "^2.4.1",
-    "react-dom": "^16.2.0",
+    "react-dom": "16.2.0",
     "react-image-crop": "^3.0.9",
     "react-spinkit": "^3.0.0",
     "react-spinner": "^0.2.7",
@@ -88,7 +88,9 @@
   },
   "greenkeeper": {
     "ignore": [
-      "webpack"
+      "webpack",
+      "react",
+      "react-dom"
     ]
   },
   "description": "Create and share beautiful images of your source code",
