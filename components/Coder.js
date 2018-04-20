@@ -1,0 +1,54 @@
+import React from 'react'
+import { Subscribe } from 'unstated'
+import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
+
+import Overlay from './Overlay'
+import Carbon from './Carbon'
+
+import { DEFAULT_CODE } from '../lib/constants'
+import { isImage } from '../lib/util'
+
+const to = [EditorContainer]
+
+class Coder extends React.Component {
+  constructor(props) {
+    super(props)
+    this.renderPane = this.renderPane.bind(this)
+  }
+
+  renderPane(editor) {
+    return (
+      <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
+        {({ isOver, canDrop }) => (
+          <Overlay
+            isOver={isOver || canDrop}
+            title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
+          >
+            <Carbon
+              config={editor.state}
+              updateCode={editor.updateCode}
+              onAspectRatioChange={editor.updateAspectRatio}
+              titleBar={editor.state.titleBar}
+              updateTitleBar={editor.updateTitleBar}
+            >
+              {editor.state.code != null ? editor.state.code : DEFAULT_CODE}
+            </Carbon>
+          </Overlay>
+        )}
+      </ReadFileDropContainer>
+    )
+  }
+
+  render() {
+    return <Subscribe to={to}>{this.renderPane}</Subscribe>
+  }
+}
+
+function readAs(file) {
+  if (isImage(file)) {
+    return DATA_URL
+  }
+  return TEXT
+}
+
+export default Coder

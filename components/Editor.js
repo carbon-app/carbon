@@ -3,19 +3,12 @@ import React from 'react'
 import { Provider, Subscribe } from 'unstated'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
-import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 // Ours
 import EditorContainer from '../containers/Editor'
-import Button from './Button'
-import Dropdown from './Dropdown'
-import BackgroundSelect from './BackgroundSelect'
-import Settings from './Settings'
+import Coder from './Coder'
 import Toolbar from './Toolbar'
-import Overlay from './Overlay'
-import Carbon from './Carbon'
-import { COLORS, DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
-import { isImage } from '../lib/util'
+import { COLORS } from '../lib/constants'
 
 const to = [EditorContainer]
 
@@ -31,24 +24,7 @@ class Editor extends React.Component {
       <React.Fragment>
         <div id="editor">
           <Toolbar />
-          <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
-            {({ isOver, canDrop }) => (
-              <Overlay
-                isOver={isOver || canDrop}
-                title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
-              >
-                <Carbon
-                  config={editor.state}
-                  updateCode={editor.updateCode}
-                  onAspectRatioChange={editor.updateAspectRatio}
-                  titleBar={editor.state.titleBar}
-                  updateTitleBar={editor.updateTitleBar}
-                >
-                  {editor.state.code != null ? editor.state.code : DEFAULT_CODE}
-                </Carbon>
-              </Overlay>
-            )}
-          </ReadFileDropContainer>
+          <Coder />
         </div>
         <style jsx>
           {`
@@ -71,13 +47,6 @@ class Editor extends React.Component {
       </Provider>
     )
   }
-}
-
-function readAs(file) {
-  if (isImage(file)) {
-    return DATA_URL
-  }
-  return TEXT
 }
 
 export default DragDropContext(HTML5Backend)(Editor)

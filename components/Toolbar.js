@@ -1,5 +1,5 @@
 import React from 'react'
-import { Provider, Subscribe } from 'unstated'
+import { Subscribe } from 'unstated'
 
 import EditorContainer from '../containers/Editor'
 import Button from './Button'
