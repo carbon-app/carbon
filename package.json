@@ -66,7 +66,7 @@
     "lint-staged": "^7.0.4",
     "now": "^11.1.7",
     "prettier": "^1.8.1",
-    "webpack": "^4.6.0"
+    "webpack": "^3.10.0"
   },
   "now": {
     "env": {
@@ -84,6 +84,11 @@
     " *.js": [
       "prettier",
       "git add"
+    ]
+  },
+  "greenkeeper": {
+    "ignore": [
+      "webpack"
     ]
   },
   "description": "Create and share beautiful images of your source code",
