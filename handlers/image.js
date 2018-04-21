@@ -33,6 +33,7 @@ module.exports = browser => async (req, res) => {
 
     res.status(200).json({ dataUrl })
   } catch (e) {
+    // eslint-disable-next-line
     console.error(e)
     res.status(500).send()
   } finally {
