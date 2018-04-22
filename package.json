@@ -7,6 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "node server.js",
+    "test": "npm run cy:run --",
     "deploy": "now --public --docker -e NODE_ENV=production",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "prettier --config .prettierrc *.js {components,handlers,lib,pages}/*.js",
