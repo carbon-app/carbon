@@ -16,7 +16,10 @@ class Index extends React.Component {
     try {
       // TODO fix this hack
       if (path.length >= 19 && path.indexOf('.') === -1) {
-        const content = await api.getGist(path)
+        const { content, language } = await api.getGist(path)
+        if (language) {
+          initialState.language = language.toLowerCase()
+        }
         return { content, initialState }
       }
     } catch (e) {

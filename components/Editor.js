@@ -198,7 +198,8 @@ class Editor extends React.Component {
               selected={
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
-                LANGUAGE_MODE_HASH[this.state.language]
+                LANGUAGE_MODE_HASH[this.state.language] ||
+                'auto'
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}
