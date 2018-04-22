@@ -39,6 +39,7 @@ class Carbon extends PureComponent {
   }
 
   componentWillReceiveProps(newProps) {
+    // TODO use getDerivedStateFromProps() on React@16.3
     this.handleLanguageChange(newProps.children, { customProps: newProps })
   }
 
