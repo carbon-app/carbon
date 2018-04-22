@@ -13,12 +13,13 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  plugins: ['react'],
+  plugins: ['react', 'import'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error'
+    'react/jsx-uses-vars': 'error',
+    'import/no-unresolved': 2
   }
 }
