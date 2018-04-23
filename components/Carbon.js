@@ -19,13 +19,13 @@ class Carbon extends React.Component {
   render() {
     return (
       <Provider inject={this.inject}>
-        <div id="editor">
+        <div id="carbon">
           <Toolbar />
           <Editor />
         </div>
         <style jsx>
           {`
-            #editor {
+            #carbon {
               background: ${COLORS.BLACK};
               border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;
