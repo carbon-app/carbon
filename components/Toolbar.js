@@ -40,7 +40,8 @@ function render(editor) {
         selected={
           LANGUAGE_NAME_HASH[editor.state.language] ||
           LANGUAGE_MIME_HASH[editor.state.language] ||
-          LANGUAGE_MODE_HASH[editor.state.language]
+          LANGUAGE_MODE_HASH[editor.state.language] ||
+          'auto'
         }
         list={LANGUAGES}
         onChange={editor.updateLanguage}
