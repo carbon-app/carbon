@@ -4,7 +4,7 @@ import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 
 import EditorContainer from '../containers/Editor'
 import Overlay from './Overlay'
-import Coder from './Coder'
+import CodeWindow from './CodeWindow'
 
 import { DEFAULT_CODE } from '../lib/constants'
 import { isImage } from '../lib/util'
@@ -25,7 +25,7 @@ class Editor extends React.Component {
             isOver={isOver || canDrop}
             title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
           >
-            <Coder
+            <CodeWindow
               config={editor.state}
               updateCode={editor.updateCode}
               onAspectRatioChange={editor.updateAspectRatio}
@@ -33,7 +33,7 @@ class Editor extends React.Component {
               updateTitleBar={editor.updateTitleBar}
             >
               {editor.state.code != null ? editor.state.code : DEFAULT_CODE}
-            </Coder>
+            </CodeWindow>
           </Overlay>
         )}
       </ReadFileDropContainer>

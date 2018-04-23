@@ -10,7 +10,7 @@ import Watermark from '../components/svg/Watermark'
 import CodeMirror from '../lib/react-codemirror'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
-class Coder extends PureComponent {
+class CodeWindow extends PureComponent {
   constructor(props) {
     super(props)
 
@@ -277,4 +277,4 @@ class Coder extends PureComponent {
   }
 }
 
-export default Coder
+export default CodeWindow
