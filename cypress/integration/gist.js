@@ -7,6 +7,12 @@ describe('Gist', () => {
     editorVisible()
 
     cy.contains('Y-Combinator implemented in JavaScript')
+  })
+
+  it('Should pull the language from the first Gist file', () => {
+    cy.visit('/3208813b324d82a9ebd197e4b1c3bae8')
+    editorVisible()
+
     cy.get('#downshift-input-Auto').should('have.value', 'JavaScript')
   })
 })
