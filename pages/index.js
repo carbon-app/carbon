@@ -12,7 +12,7 @@ class Index extends React.Component {
   static async getInitialProps({ asPath, query }) {
     const path = removeQueryString(asPath.split('/').pop())
     const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : null
+    const initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
       // TODO fix this hack
       if (path.length >= 19 && path.indexOf('.') === -1) {
