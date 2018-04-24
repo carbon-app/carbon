@@ -33,7 +33,7 @@ class EditorContainer extends Container {
     this.updateBackground = this.updateBackground.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
-    this.onDrop = this.onDrop.bind(this)
+    this.handleDroppedFile = this.handleDroppedFile.bind(this)
   }
 
   componentDidMount() {
@@ -129,7 +129,7 @@ class EditorContainer extends Container {
       .then(() => this.setState({ uploading: false }))
   }
 
-  onDrop([file]) {
+  handleDroppedFile([file]) {
     if (isImage(file)) {
       this.setState({
         backgroundImage: file.content,

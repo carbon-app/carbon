@@ -9,7 +9,7 @@ import CodeWindow from './CodeWindow'
 import { DEFAULT_CODE } from '../lib/constants'
 import { isImage } from '../lib/util'
 
-const to = [EditorContainer]
+const editorContainer = [EditorContainer]
 
 class Editor extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Editor extends React.Component {
 
   renderPane(editor) {
     return (
-      <ReadFileDropContainer readAs={readAs} onDrop={editor.onDrop}>
+      <ReadFileDropContainer readAs={readAs} onDrop={editor.handleDroppedFile}>
         {({ isOver, canDrop }) => (
           <Overlay
             isOver={isOver || canDrop}
@@ -41,7 +41,7 @@ class Editor extends React.Component {
   }
 
   render() {
-    return <Subscribe to={to}>{this.renderPane}</Subscribe>
+    return <Subscribe to={editorContainer}>{this.renderPane}</Subscribe>
   }
 }
 
