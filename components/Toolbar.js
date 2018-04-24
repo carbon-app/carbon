@@ -16,7 +16,7 @@ import {
   DEFAULT_THEME
 } from '../lib/constants'
 
-const to = [EditorContainer]
+const editorContainer = [EditorContainer]
 const saveButtonOptions = {
   button: true,
   color: '#c198fb',
@@ -25,7 +25,7 @@ const saveButtonOptions = {
 }
 
 function Toolbar() {
-  return <Subscribe to={to}>{render}</Subscribe>
+  return <Subscribe to={editorContainer}>{render}</Subscribe>
 }
 
 function render(editor) {
