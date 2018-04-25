@@ -74,11 +74,9 @@ class Dropdown extends PureComponent {
   }
 }
 
-const renderDropdown = ({ button, color, list, minWidth, selected }) => ({
+const renderDropdown = ({ button, color, list, minWidth }) => ({
   isOpen,
   highlightedIndex,
-  setHighlightedIndex,
-  selectHighlightedItem,
   selectedItem,
   getRootProps,
   getButtonProps,

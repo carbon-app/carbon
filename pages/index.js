@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Ours
-import Editor from '../components/Editor'
+import Carbon from '../components/Carbon'
 import Page from '../components/Page'
 import api from '../lib/api'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
@@ -23,6 +23,7 @@ class Index extends React.Component {
         return { content, initialState }
       }
     } catch (e) {
+      // eslint-disable-next-line
       console.log(e)
     }
     return { initialState }
@@ -31,7 +32,7 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props} onUpdate={onEditorUpdate} tweet={api.tweet} />
+        <Carbon {...this.props} onUpdate={onEditorUpdate} tweet={api.tweet} />
       </Page>
     )
   }
