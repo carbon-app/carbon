@@ -56,7 +56,7 @@ describe('background color', () => {
 
     const pink = 'ff00ff'
     openPicker()
-      .find('input[value="FF0000"]')
+      .find(`input[value="FF0000"]`)
       .clear()
       .type(`${pink}{enter}`)
     closePicker()
