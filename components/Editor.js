@@ -76,7 +76,7 @@ class Editor extends React.Component {
     this.props.onUpdate(this.state)
   }
 
-  getCarbonImage({ format } = { format: 'png' }) {
+  getCarbonImage({ format, type } = { format: 'png' }) {
     // if safari, get image from api
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
@@ -115,16 +115,21 @@ class Editor extends React.Component {
       height
     }
 
-    if (format === 'svg') {
-      return domtoimage
+    if (type === 'blob') {
+      if (format === 'svg') {
+        return domtoimage
         .toSvg(node, config)
         .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
         .then(uri => uri.slice(uri.indexOf(',') + 1))
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
         .then(data => window.URL.createObjectURL(data))
+      }
+
+      return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
     }
 
-    return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+    // Twitter needs regular dataurls
+    return domtoimage.toPng(node, config)
   }
 
   updateSetting(key, value) {
@@ -134,20 +139,19 @@ class Editor extends React.Component {
   save({ id: format = 'png' }) {
     const link = document.createElement('a')
 
-    return this.getCarbonImage({ format })
-      .then(url => {
-        link.download = `carbon.${format}`
-        link.href = url
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
+    return this.getCarbonImage({ format, type: 'blob' }).then(url => {
+      link.download = `carbon.${format}`
+      link.href = url
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+    })
+    .then(() => {
+      ReactGA.event({
+        category: 'Click',
+        action: 'Download'
       })
-      .then(() => {
-        ReactGA.event({
-          category: 'Click',
-          action: 'Download'
-        })
-      })
+    })
   }
 
   resetDefaultSettings() {
@@ -158,12 +162,9 @@ class Editor extends React.Component {
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
-      .then(api.tweet)
+      .then(this.props.tweet)
+      .catch(console.error)
       .then(() => this.setState({ uploading: false }))
-      .catch(err => {
-        console.error(err)
-        this.setState({ uploading: false })
-      })
   }
 
   onDrop([file]) {
@@ -211,7 +212,8 @@ class Editor extends React.Component {
               selected={
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
-                LANGUAGE_MODE_HASH[this.state.language]
+                LANGUAGE_MODE_HASH[this.state.language] ||
+                'auto'
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}
@@ -229,13 +231,15 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              <Button
-                className="tweetButton"
-                onClick={this.upload}
-                title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                color="#57b5f9"
-                style={{ marginRight: '8px' }}
-              />
+              {this.props.tweet && (
+                <Button
+                  className="tweetButton"
+                  onClick={this.upload}
+                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                  color="#57b5f9"
+                  style={{ marginRight: '8px' }}
+                />
+              )}
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>

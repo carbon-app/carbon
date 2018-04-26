@@ -15,7 +15,7 @@ describe('localStorage', () => {
       .contains(name)
       .click()
 
-  it('is empty initially', () => {
+  it.skip('is empty initially', () => {
     cy.visit('/')
     editorVisible()
     cy
@@ -28,7 +28,7 @@ describe('localStorage', () => {
     cy.visit('/')
     editorVisible()
     pickTheme('Blackboard')
-    themeDropdown().contains('Blackboard')
+    themeDropdown().click().contains('Blackboard')
 
     cy
       .window()
@@ -39,7 +39,7 @@ describe('localStorage', () => {
 
     // visiting page again restores theme from localStorage
     cy.visit('/')
-    themeDropdown().contains('Blackboard')
+    themeDropdown().click().contains('Blackboard')
     cy.url().should('contain', 't=blackboard')
   })
 })
