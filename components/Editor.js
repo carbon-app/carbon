@@ -73,7 +73,7 @@ class Editor extends React.Component {
     this.props.onUpdate(this.state)
   }
 
-  getCarbonImage({ format } = { format: 'png' }) {
+  getCarbonImage({ format, type } = { format: 'png' }) {
     // if safari, get image from api
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
@@ -112,16 +112,21 @@ class Editor extends React.Component {
       height
     }
 
-    if (format === 'svg') {
-      return domtoimage
+    if (type === 'blob') {
+      if (format === 'svg') {
+        return domtoimage
         .toSvg(node, config)
         .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
         .then(uri => uri.slice(uri.indexOf(',') + 1))
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
         .then(data => window.URL.createObjectURL(data))
+      }
+
+      return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
     }
 
-    return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+    // Twitter needs regular dataurls
+    return domtoimage.toPng(node, config)
   }
 
   updateSetting(key, value) {
@@ -131,7 +136,7 @@ class Editor extends React.Component {
   save({ id: format = 'png' }) {
     const link = document.createElement('a')
 
-    return this.getCarbonImage({ format }).then(url => {
+    return this.getCarbonImage({ format, type: 'blob' }).then(url => {
       link.download = `carbon.${format}`
       link.href = url
       document.body.appendChild(link)
