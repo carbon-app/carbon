@@ -17,6 +17,7 @@ if (!dev) {
 function wrap(handler) {
   return (req, res) =>
     handler(req, res).catch(err => {
+      // eslint-disable-next-line
       console.log('ERR:', err)
       res.status(400).end()
     })
@@ -58,6 +59,7 @@ app
 
     server.listen(port, '0.0.0.0', err => {
       if (err) throw err
+      // eslint-disable-next-line
       console.log(`> Ready on http://localhost:${port}`)
     })
   })
