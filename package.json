@@ -59,7 +59,7 @@
     "unsplash-js": "^4.8.0"
   },
   "devDependencies": {
-    "@zeit/next-css": "^0.1.5",
+    "@zeit/next-css": "^0.2.0",
     "all-contributors-cli": "^4.7.0",
     "babel-eslint": "^8.2.3",
     "cypress": "^2.1.0",
