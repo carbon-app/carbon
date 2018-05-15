@@ -9,6 +9,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+process.on('SIGINT', process.exit)
+
 if (!dev) {
   const LOGS_ID = `${process.env.LOGS_SECRET_PREFIX}:${process.env.NOW_URL}`
   require('now-logs')(LOGS_ID)
