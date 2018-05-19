@@ -1,0 +1,17 @@
+labels:
+  - duplicate
+  - wontfix
+  - invalid
+  - stale
+  - theme/language
+
+labelConfig:
+  duplicate:
+    delayTime: 3 days
+    comment: This issue has been marked as a $LABEL. It will be closed in $CLOSE_TIME . . .
+  "theme/language":
+    delayTime: 5 days
+    comment: |
+      This issue has been marked "$LABEL" and will be closed in $CLOSE_TIME. As of Carbon `3.0.0`, the Carbon core team is no longer implementing new themes or languages (although the ability to create your own will be implemented soon!). However, PRs to add new ones will be happily accepted.
+      
+      Please see https://github.com/dawnlabs/carbon#a-note-on-adding-themeslanguages for notes on how to do so 👌. 
