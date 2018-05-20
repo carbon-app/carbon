@@ -1,5 +1,5 @@
 language: node_js
-node_js: stable
+node_js: "9"
 cache:
   yarn: true
   directories:
