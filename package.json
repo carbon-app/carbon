@@ -38,7 +38,7 @@
     "morgan": "^1.8.2",
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
-    "next": "^5.1.0",
+    "next": "^6.0.3",
     "now-logs": "^0.0.7",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.0.0",
