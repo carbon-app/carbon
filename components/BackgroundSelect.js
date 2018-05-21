@@ -55,7 +55,7 @@ class BackgroundSelect extends React.PureComponent {
       background = DEFAULT_BG_COLOR
     }
 
-    const _this = this
+    const { mode, image } = this.props
 
     return (
       <div className="bg-select-container">
@@ -135,8 +135,8 @@ class BackgroundSelect extends React.PureComponent {
               right: 0px;
               bottom: 0px;
               left: 0px;
-              ${_this.props.mode === 'image'
-                ? `background: url(${_this.props.image});
+              ${mode === 'image'
+                ? `background: url(${image});
                  background-size: cover;
                  background-repeat: no-repeat;`
                 : `background: ${background};`};
