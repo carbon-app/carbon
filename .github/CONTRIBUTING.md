@@ -11,3 +11,10 @@ If you'd like to make some changes yourself, see the following:
 6. Finally, submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) with your changes!
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind are welcome!
+
+### A note on adding themes/languages
+We're happy to accept any PRs adding new themes and languages to Carbon! Currently there are a few ways to do so:
+
+1. If the [theme](https://codemirror.net/demo/theme.html) or [language](https://codemirror.net/mode/index.html) is supported in Codemirror, all you have to do is add a [constant](https://github.com/dawnlabs/carbon/blob/master/lib/constants.js) for it.
+
+2. If it's not supported, you can add a Codemirror compliant [custom file](https://github.com/dawnlabs/carbon/tree/master/lib/custom) to implement it and add a constant like above.

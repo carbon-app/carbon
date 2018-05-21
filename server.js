@@ -9,6 +9,8 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+process.on('SIGINT', process.exit)
+
 if (!dev) {
   const LOGS_ID = `${process.env.LOGS_SECRET_PREFIX}:${process.env.NOW_URL}`
   require('now-logs')(LOGS_ID)
@@ -17,6 +19,7 @@ if (!dev) {
 function wrap(handler) {
   return (req, res) =>
     handler(req, res).catch(err => {
+      // eslint-disable-next-line
       console.log('ERR:', err)
       res.status(400).end()
     })
@@ -63,6 +66,7 @@ app
 
     server.listen(port, '0.0.0.0', err => {
       if (err) throw err
+      // eslint-disable-next-line
       console.log(`> Ready on http://localhost:${port}`)
     })
   })
