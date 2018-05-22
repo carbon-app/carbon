@@ -11,6 +11,10 @@ const client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 })
 
+const extractMediaId = morph.get('data.media_id_string')
+const extractImageUrl = morph.get('data.entities.media.0.display_url')
+const extractErrorCode = morph.get('0.code')
+
 const uploadImage = data => client.post('media/upload', { media_data: data })
 const uploadMetadata = (altText, twitterRes = {}) => {
   if (!altText)
@@ -31,10 +35,6 @@ const uploadTweet = (twitterRes = {}) => client.post('statuses/update', {
     status: `Carbon Copy #${extractMediaId(twitterRes).slice(0, 8)}`,
     media_ids: extractMediaId(twitterRes)
 })
-
-const extractMediaId = morph.get('data.media_id_string')
-const extractImageUrl = morph.get('data.entities.media.0.display_url')
-const extractErrorCode = morph.get('0.code')
 
 const respondSuccess = (res, url) => res.json({ url })
 const respondFail = (res, err) => {
