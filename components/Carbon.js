@@ -38,7 +38,8 @@ class Carbon extends PureComponent {
     ro.observe(this.exportContainerNode)
   }
 
-  componentWillReceiveProps(newProps) {
+  // TODO use getDerivedStateFromProps
+  UNSAFE_componentWillReceiveProps(newProps) {
     // TODO use getDerivedStateFromProps() on React@16.3
     this.handleLanguageChange(newProps.children, { customProps: newProps })
   }
