@@ -153,7 +153,7 @@ class Editor extends React.Component {
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
-      .then(this.props.tweet)
+      .then(this.props.tweet.bind(null, this.state.code || DEFAULT_CODE))
       // eslint-disable-next-line
       .catch(console.error)
       .then(() => this.setState({ uploading: false }))
