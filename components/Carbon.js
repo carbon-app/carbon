@@ -29,7 +29,9 @@ class Carbon extends PureComponent {
       loading: false
     })
 
-    this.handleLanguageChange(this.props.children)
+    this.setState(
+      this.handleLanguageChange(this.props.children)
+    )
 
     const ro = new ResizeObserver(entries => {
       const cr = entries[0].contentRect
@@ -38,13 +40,12 @@ class Carbon extends PureComponent {
     ro.observe(this.exportContainerNode)
   }
 
-  // TODO use getDerivedStateFromProps
-  UNSAFE_componentWillReceiveProps(newProps) {
-    this.handleLanguageChange(newProps.children, { customProps: newProps })
+  static getDerivedStateFromProps(newProps) {
+    return this.handleLanguageChange(newProps.children, { customProps: newProps }) || null
   }
 
   codeUpdated(newCode) {
-    this.handleLanguageChange(newCode)
+    this.setState(this.handleLanguageChange(newCode))
     this.props.updateCode(newCode)
   }
 
@@ -63,11 +64,10 @@ class Carbon extends PureComponent {
           LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
 
         if (languageMode) {
-          this.setState({ language: languageMode.mime || languageMode.mode })
+          return { language: languageMode.mime || languageMode.mode }
         }
-      } else {
-        this.setState({ language: props.config.language })
       }
+      return { language: props.config.language }
     },
     ms('300ms'),
     { trailing: true }
