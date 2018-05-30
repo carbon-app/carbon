@@ -6,6 +6,7 @@ import Typography from './style/Typography'
 
 import '../static/react-crop.css'
 import '../static/react-spinner.css'
+import '../static/fonts/dank-mono.css'
 import '../lib/custom/themes/one-dark.css'
 import '../lib/custom/themes/verminal.css'
 

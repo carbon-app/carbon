@@ -24,6 +24,11 @@ export default class extends React.Component {
     return FONTS.map(font => (
       <div className="list-item" key={font.id} onClick={this.select.bind(null, font.id)}>
         <span style={{ fontFamily: font.id }}>{font.name}</span>
+        {font.link && this.props.selected === font.id && (
+          <a href={font.link} target="_blank">
+            <span style={{ fontFamily: font.id }}>Purchase</span>
+          </a>
+        )}
         {this.props.selected === font.id ? <Checkmark /> : null}
         <style jsx>
           {`
@@ -42,6 +47,15 @@ export default class extends React.Component {
             }
             .list-item:last-of-type {
               border-bottom: none;
+            }
+
+            .list-item a {
+              display: block;
+              color: ${COLORS.BLACK};
+              background: ${COLORS.PRIMARY};
+              border-radius: 2px;
+              padding: 2px 3px;
+              font-weight: bold;
             }
           `}
         </style>
