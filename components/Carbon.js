@@ -35,6 +35,7 @@ class Carbon extends PureComponent {
 
     this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
+    this.onBeforeChange = this.onBeforeChange.bind(this)
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
   }
 
@@ -70,6 +71,10 @@ class Carbon extends PureComponent {
     ms('300ms'),
     { trailing: true }
   )
+
+  onBeforeChange(editor, meta, code) {
+    return this.codeUpdated(code)
+  }
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
@@ -113,7 +118,7 @@ class Carbon extends PureComponent {
           ) : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
-            onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
+            onBeforeChange={this.onBeforeChange}
             value={this.props.children}
             options={options}
           />
