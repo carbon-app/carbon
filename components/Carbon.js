@@ -10,6 +10,20 @@ import Watermark from '../components/svg/Watermark'
 import CodeMirror from '../lib/react-codemirror'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
+const handleLanguageChange = (newCode, props) => {
+  if (props.config.language === 'auto') {
+    // try to set the language
+    const detectedLanguage = hljs.highlightAuto(newCode).language
+    const languageMode =
+      LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+
+    if (languageMode) {
+      return { language: languageMode.mime || languageMode.mode }
+    }
+  }
+  return { language: props.config.language }
+}
+
 class Carbon extends PureComponent {
   constructor(props) {
     super(props)
@@ -19,9 +33,9 @@ class Carbon extends PureComponent {
       language: props.config.language
     }
 
-    this.handleLanguageChange = this.handleLanguageChange.bind(this)
     this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
+    this.handleLanguageChange = this.handleLanguageChange.bind(this)
   }
 
   componentDidMount() {
@@ -29,9 +43,7 @@ class Carbon extends PureComponent {
       loading: false
     })
 
-    this.setState(
-      this.handleLanguageChange(this.props.children)
-    )
+    this.setState(handleLanguageChange(this.props.children, this.props))
 
     const ro = new ResizeObserver(entries => {
       const cr = entries[0].contentRect
@@ -41,11 +53,11 @@ class Carbon extends PureComponent {
   }
 
   static getDerivedStateFromProps(newProps) {
-    return this.handleLanguageChange(newProps.children, { customProps: newProps }) || null
+    return handleLanguageChange(newProps.children, newProps) || null
   }
 
   codeUpdated(newCode) {
-    this.setState(this.handleLanguageChange(newCode))
+    this.handleLanguageChange(newCode, this.props)
     this.props.updateCode(newCode)
   }
 
@@ -54,21 +66,7 @@ class Carbon extends PureComponent {
   }
 
   handleLanguageChange = debounce(
-    (newCode, config) => {
-      const props = (config && config.customProps) || this.props
-
-      if (props.config.language === 'auto') {
-        // try to set the language
-        const detectedLanguage = hljs.highlightAuto(newCode).language
-        const languageMode =
-          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
-
-        if (languageMode) {
-          return { language: languageMode.mime || languageMode.mode }
-        }
-      }
-      return { language: props.config.language }
-    },
+    (...args) => this.setState(handleLanguageChange(...args)),
     ms('300ms'),
     { trailing: true }
   )
