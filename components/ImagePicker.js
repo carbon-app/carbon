@@ -46,7 +46,7 @@ export default class extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    if (state.crop && this.props.aspectRatio !== nextProps.aspectRatio) {
+    if (state.crop) {
       // update crop for editor container aspect-ratio change
       return {
         crop: makeAspectCrop(
