@@ -4,13 +4,18 @@ const morph = require('morphmorph')
 const RATE_LIMIT_CODE = 420
 const MAX_ALT_TEXT_LENGTH = 420
 
-const client = new Twitter({
-  consumer_key: process.env.TWITTER_CONSUMER_KEY,
-  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-})
-
+let client
+try {
+  client = new Twitter({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  })
+} catch (e) {
+  // eslint-disable-next-line
+  console.warn(e.message);
+}
 const extractMediaId = morph.get('data.media_id_string')
 const extractImageUrl = morph.get('data.entities.media.0.display_url')
 const extractErrorCode = morph.get('0.code')
