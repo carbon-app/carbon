@@ -25,7 +25,7 @@ class Carbon extends PureComponent {
     this.codeMirrorUpdate = this.codeMirrorUpdate.bind(this)
   }
 
-  codeMirrorUpdate(instance){
+  codeMirrorUpdate(){
     if(this.props.config.lineNumberSeperator){
       const lineNumSelector = ".CodeMirror-gutter-wrapper > .CodeMirror-linenumber"
       const lineNumElem = document.querySelector(lineNumSelector)
