@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import ReactDOM from 'react-dom'
 import * as hljs from 'highlight.js'
 import Spinner from 'react-spinner'
 import ResizeObserver from 'resize-observer-polyfill'
