@@ -64,6 +64,11 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'lineNumbers')}
           />
           <Toggle
+            label="Line Number Seperator"
+            enabled={this.props.lineNumberSeperator}
+            onChange={this.props.onChange.bind(null, 'lineNumberSeperator')}
+          />
+          <Toggle
             label="Auto-adjust width"
             enabled={this.props.widthAdjustment}
             onChange={this.props.onChange.bind(null, 'widthAdjustment')}

@@ -22,6 +22,20 @@ class Carbon extends PureComponent {
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
     this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
+    this.codeMirrorUpdate = this.codeMirrorUpdate.bind(this)
+  }
+
+  codeMirrorUpdate(){
+    if(this.props.config.lineNumberSeperator){
+      const lineNumSelector = ".CodeMirror-gutter-wrapper > .CodeMirror-linenumber"
+      const lineNumElem = document.querySelector(lineNumSelector)
+      const lineNumColor = window.getComputedStyle(lineNumElem).getPropertyValue('color')
+  
+      document.querySelectorAll(lineNumSelector).forEach( (elem) => { 
+        elem.style.borderRight = "1px solid " + lineNumColor
+        elem.style.setProperty("padding-right", "10px", "important")
+      })
+    }
   }
 
   componentDidMount() {
@@ -36,6 +50,7 @@ class Carbon extends PureComponent {
       this.props.onAspectRatioChange(cr.width / cr.height)
     })
     ro.observe(this.exportContainerNode)
+    
   }
 
   // TODO use getDerivedStateFromProps
@@ -75,6 +90,8 @@ class Carbon extends PureComponent {
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
+    const gutterClass = (this.props.config.lineNumberSeperator? ["CodeMirror-linenumbers", "extraGutter"]: [])
+
     const options = {
       lineNumbers: config.lineNumbers,
       mode: this.state.language || 'plaintext',
@@ -82,10 +99,12 @@ class Carbon extends PureComponent {
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
+      gutters:gutterClass,
       extraKeys: {
         'Shift-Tab': 'indentLess'
       }
     }
+
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
       this.props.config.backgroundImage
@@ -118,6 +137,7 @@ class Carbon extends PureComponent {
             onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
             value={this.props.children}
             options={options}
+            onUpdate={this.codeMirrorUpdate}
           />
           {config.watermark && <Watermark />}
           <div id="container-bg">
@@ -125,6 +145,11 @@ class Carbon extends PureComponent {
             <div className="alpha eliminateOnRender" />
             <div className="bg" />
           </div>
+          <style>
+            {`
+              .extraGutter {width:14px;}
+            `}
+          </style>
           <style jsx>
             {`
               #container {
@@ -134,7 +159,6 @@ class Carbon extends PureComponent {
                 max-width: 92vw;
                 padding: ${config.paddingVertical} ${config.paddingHorizontal};
               }
-
               #container :global(.watermark) {
                 fill-opacity: 0.3;
                 position: absolute;
