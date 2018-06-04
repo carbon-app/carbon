@@ -45,20 +45,20 @@ export default class extends React.Component {
     this.onDragEnd = this.onDragEnd.bind(this)
   }
 
-  // TODO use getDerivedStateFromProps
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.state.crop && this.props.aspectRatio !== nextProps.aspectRatio) {
+  static getDerivedStateFromProps(nextProps, state) {
+    if (state.crop) {
       // update crop for editor container aspect-ratio change
-      this.setState({
+      return {
         crop: makeAspectCrop(
           {
-            ...this.state.crop,
+            ...state.crop,
             aspect: nextProps.aspectRatio
           },
-          this.state.imageAspectRatio
+          state.imageAspectRatio
         )
-      })
+      }
     }
+    return null
   }
 
   async onDragEnd() {

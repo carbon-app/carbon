@@ -10,6 +10,20 @@ import Watermark from '../components/svg/Watermark'
 import CodeMirror from '../lib/react-codemirror'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
+const handleLanguageChange = (newCode, props) => {
+  if (props.config.language === 'auto') {
+    // try to set the language
+    const detectedLanguage = hljs.highlightAuto(newCode).language
+    const languageMode =
+      LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+
+    if (languageMode) {
+      return { language: languageMode.mime || languageMode.mode }
+    }
+  }
+  return { language: props.config.language }
+}
+
 class Carbon extends PureComponent {
   constructor(props) {
     super(props)
@@ -19,9 +33,10 @@ class Carbon extends PureComponent {
       language: props.config.language
     }
 
-    this.handleLanguageChange = this.handleLanguageChange.bind(this)
     this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
     this.codeUpdated = this.codeUpdated.bind(this)
+    this.onBeforeChange = this.onBeforeChange.bind(this)
+    this.handleLanguageChange = this.handleLanguageChange.bind(this)
   }
 
   componentDidMount() {
@@ -29,7 +44,7 @@ class Carbon extends PureComponent {
       loading: false
     })
 
-    this.handleLanguageChange(this.props.children)
+    this.setState(handleLanguageChange(this.props.children, this.props))
 
     const ro = new ResizeObserver(entries => {
       const cr = entries[0].contentRect
@@ -38,13 +53,12 @@ class Carbon extends PureComponent {
     ro.observe(this.exportContainerNode)
   }
 
-  // TODO use getDerivedStateFromProps
-  UNSAFE_componentWillReceiveProps(newProps) {
-    this.handleLanguageChange(newProps.children, { customProps: newProps })
+  static getDerivedStateFromProps(newProps) {
+    return handleLanguageChange(newProps.children, newProps) || null
   }
 
   codeUpdated(newCode) {
-    this.handleLanguageChange(newCode)
+    this.handleLanguageChange(newCode, this.props)
     this.props.updateCode(newCode)
   }
 
@@ -53,25 +67,14 @@ class Carbon extends PureComponent {
   }
 
   handleLanguageChange = debounce(
-    (newCode, config) => {
-      const props = (config && config.customProps) || this.props
-
-      if (props.config.language === 'auto') {
-        // try to set the language
-        const detectedLanguage = hljs.highlightAuto(newCode).language
-        const languageMode =
-          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
-
-        if (languageMode) {
-          this.setState({ language: languageMode.mime || languageMode.mode })
-        }
-      } else {
-        this.setState({ language: props.config.language })
-      }
-    },
+    (...args) => this.setState(handleLanguageChange(...args)),
     ms('300ms'),
     { trailing: true }
   )
+
+  onBeforeChange(editor, meta, code) {
+    return this.codeUpdated(code)
+  }
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
@@ -115,7 +118,7 @@ class Carbon extends PureComponent {
           ) : null}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
-            onBeforeChange={(editor, meta, code) => this.codeUpdated(code)}
+            onBeforeChange={this.onBeforeChange}
             value={this.props.children}
             options={options}
           />
