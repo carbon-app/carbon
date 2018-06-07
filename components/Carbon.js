@@ -109,13 +109,13 @@ class Carbon extends PureComponent {
     if (this.state.loading === false) {
       content = (
         <div id="container">
-          {config.windowControls ? (
+          {config.windowControls && (
             <WindowControls
               titleBar={this.props.titleBar}
               theme={config.windowTheme}
               handleTitleBarChange={this.handleTitleBarChange}
             />
-          ) : null}
+          )}
           <CodeMirror
             className={`CodeMirror__container window-theme__${config.windowTheme}`}
             onBeforeChange={this.onBeforeChange}

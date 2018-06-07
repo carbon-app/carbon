@@ -94,7 +94,7 @@ const renderDropdown = ({ button, color, list, minWidth }) => ({
       >
         {selectedItem.name}
       </SelectedItem>
-      {isOpen ? (
+      {isOpen && (
         <ListItems color={color}>
           {list.map((item, index) => (
             <ListItem
@@ -110,7 +110,7 @@ const renderDropdown = ({ button, color, list, minWidth }) => ({
             </ListItem>
           ))}
         </ListItems>
-      ) : null}
+      )}
     </DropdownContainer>
   )
 }
