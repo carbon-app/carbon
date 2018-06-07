@@ -50,7 +50,7 @@ export default () => {
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/seti.min.css"
         />
         {onBrowser
-          ? THEMES.filter(t => t.hasStylesheet !== false).map(theme => (
+          && THEMES.filter(t => t.hasStylesheet !== false).map(theme => (
               <link
                 key={theme.id}
                 rel="stylesheet"
@@ -59,8 +59,7 @@ export default () => {
                   `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/${theme.id}.min.css`
                 }
               />
-            ))
-          : null}
+            ))}
       </Head>
       <Reset />
       <Font />

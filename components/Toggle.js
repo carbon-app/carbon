@@ -15,7 +15,7 @@ export default class extends React.Component {
     return (
       <div className={`toggle ${this.props.className}`} onClick={this.toggle}>
         <span className="label">{this.props.label}</span>
-        {this.props.enabled ? <Checkmark /> : null}
+        {this.props.enabled && <Checkmark />}
         <style jsx>
           {`
             .toggle {
