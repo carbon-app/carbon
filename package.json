@@ -91,7 +91,8 @@
     "ignore": [
       "webpack",
       "react",
-      "react-dom"
+      "react-dom",
+      "graphql"
     ]
   },
   "description": "Create and share beautiful images of your source code",
