@@ -56,6 +56,7 @@ class Editor extends React.Component {
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
+    this.updateWatermark = this.updateWatermark.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
@@ -115,11 +116,11 @@ class Editor extends React.Component {
     if (type === 'blob') {
       if (format === 'svg') {
         return domtoimage
-        .toSvg(node, config)
-        .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
-        .then(uri => uri.slice(uri.indexOf(',') + 1))
-        .then(data => new Blob([data], { type: 'image/svg+xml' }))
-        .then(data => window.URL.createObjectURL(data))
+          .toSvg(node, config)
+          .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+          .then(uri => uri.slice(uri.indexOf(',') + 1))
+          .then(data => new Blob([data], { type: 'image/svg+xml' }))
+          .then(data => window.URL.createObjectURL(data))
       }
 
       return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
@@ -190,6 +191,14 @@ class Editor extends React.Component {
     }
   }
 
+  updateWatermark(watermarkURL) {
+    if (watermarkURL) {
+      this.setState({
+        customWatermark: watermarkURL
+      })
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -220,6 +229,7 @@ class Editor extends React.Component {
             <Settings
               {...this.state}
               onChange={this.updateSetting}
+              onUpdate={this.updateWatermark}
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
@@ -248,6 +258,7 @@ class Editor extends React.Component {
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={this.state.titleBar}
                   updateTitleBar={this.updateTitleBar}
+                  customWatermark={this.state.customWatermark}
                 >
                   {this.state.code != null ? this.state.code : DEFAULT_CODE}
                 </Carbon>
