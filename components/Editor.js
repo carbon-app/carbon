@@ -53,6 +53,7 @@ class Editor extends React.Component {
     this.updateCode = this.updateSetting.bind(this, 'code')
     this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
     this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
+    this.updateWatermark = this.updateSetting.bind(this, 'updateWatermark')
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
@@ -115,11 +116,11 @@ class Editor extends React.Component {
     if (type === 'blob') {
       if (format === 'svg') {
         return domtoimage
-        .toSvg(node, config)
-        .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
-        .then(uri => uri.slice(uri.indexOf(',') + 1))
-        .then(data => new Blob([data], { type: 'image/svg+xml' }))
-        .then(data => window.URL.createObjectURL(data))
+          .toSvg(node, config)
+          .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+          .then(uri => uri.slice(uri.indexOf(',') + 1))
+          .then(data => new Blob([data], { type: 'image/svg+xml' }))
+          .then(data => window.URL.createObjectURL(data))
       }
 
       return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
@@ -287,7 +288,7 @@ function readAs(file) {
 }
 
 Editor.defaultProps = {
-  onUpdate: () => {}
+  onUpdate: () => { }
 }
 
 export default DragDropContext(HTML5Backend)(Editor)

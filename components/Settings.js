@@ -9,6 +9,7 @@ import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
 import Collapse from './Collapse'
 import { COLORS } from '../lib/constants'
+import CustomWatermarkPicker from './CustomWatermarkPicker'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -105,6 +106,9 @@ class Settings extends React.Component {
               enabled={this.props.watermark}
               onChange={this.props.onChange.bind(null, 'watermark')}
             />
+            {this.props.watermark &&
+              <CustomWatermarkPicker onChange={this.props.onChange.bind(null, 'customWatermark')} />
+            }
             <ExportSizeSelect
               selected={this.props.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}
