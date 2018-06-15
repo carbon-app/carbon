@@ -10,20 +10,18 @@ export default class extends React.Component {
   selectImage(e) {
     const file = e.target ? e.target.files[0] : e
 
-    return fileToDataURL(file).then(dataURL =>
-      this.setState(() => {
-        this.props.onChange({
-          customWatermark: dataURL
-        })
-      })
-    )
+    return fileToDataURL(file).then(customWatermark => this.props.onChange(customWatermark))
   }
 
   render() {
     return (
       <div className={`toggle`}>
         <span>
-          <input type="file" onChange={this.selectImage} />{' '}
+          <input
+            type="file"
+            accept="image/x-png,image/jpeg,image/jpg,image/svg+xml"
+            onChange={this.selectImage}
+          />
           <span className="labelText"> Upload Custom Watermark </span>
         </span>
 

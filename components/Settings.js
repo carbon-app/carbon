@@ -106,7 +106,9 @@ class Settings extends React.Component {
               enabled={this.props.watermark}
               onChange={this.props.onChange.bind(null, 'watermark')}
             />
-            {this.props.watermark && <CustomWatermarkPicker onChange={this.props.onUpdate} />}
+            {this.props.watermark &&
+              <CustomWatermarkPicker onChange={this.props.onChange.bind(null, 'customWatermark')} />
+            }
             <ExportSizeSelect
               selected={this.props.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}

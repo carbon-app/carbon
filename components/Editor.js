@@ -53,10 +53,10 @@ class Editor extends React.Component {
     this.updateCode = this.updateSetting.bind(this, 'code')
     this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
     this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
+    this.updateWatermark = this.updateSetting.bind(this, 'updateWatermark')
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
-    this.updateWatermark = this.updateWatermark.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
@@ -191,14 +191,6 @@ class Editor extends React.Component {
     }
   }
 
-  updateWatermark(watermarkURL) {
-    if (watermarkURL) {
-      this.setState({
-        customWatermark: watermarkURL
-      })
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -229,7 +221,6 @@ class Editor extends React.Component {
             <Settings
               {...this.state}
               onChange={this.updateSetting}
-              onUpdate={this.updateWatermark}
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
@@ -258,7 +249,6 @@ class Editor extends React.Component {
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={this.state.titleBar}
                   updateTitleBar={this.updateTitleBar}
-                  customWatermark={this.state.customWatermark}
                 >
                   {this.state.code != null ? this.state.code : DEFAULT_CODE}
                 </Carbon>
@@ -298,7 +288,7 @@ function readAs(file) {
 }
 
 Editor.defaultProps = {
-  onUpdate: () => {}
+  onUpdate: () => { }
 }
 
 export default DragDropContext(HTML5Backend)(Editor)

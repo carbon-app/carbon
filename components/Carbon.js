@@ -107,13 +107,12 @@ class Carbon extends PureComponent {
       </div>
     )
     let watermark = <Watermark />
-    if (this.props.customWatermark) {
-      let watermarkSource = this.props.customWatermark
+    if (this.props.config.customWatermark) {
       watermark = (
         <img
           className="watermark"
           style={{ height: '75px', width: '75px' }}
-          src={watermarkSource.customWatermark}
+          src={this.props.config.customWatermark}
           alt="Custom Watermark"
         />
       )
