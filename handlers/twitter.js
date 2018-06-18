@@ -14,7 +14,7 @@ try {
   })
 } catch (e) {
   // eslint-disable-next-line
-  console.warn(e.message);
+  console.warn(e.message)
 }
 const extractMediaId = morph.get('data.media_id_string')
 const extractImageUrl = morph.get('data.entities.media.0.display_url')
@@ -22,12 +22,12 @@ const extractErrorCode = morph.get('0.code')
 
 const uploadImage = data => client.post('media/upload', { media_data: data })
 const uploadMetadata = (altText, twitterRes = {}) => {
-  if (!altText)
-    return twitterRes
+  if (!altText) return twitterRes
 
-  const formattedAltText = altText.length > MAX_ALT_TEXT_LENGTH
-    ? `${altText.slice(0, MAX_ALT_TEXT_LENGTH - 3)}...`
-    : altText
+  const formattedAltText =
+    altText.length > MAX_ALT_TEXT_LENGTH
+      ? `${altText.slice(0, MAX_ALT_TEXT_LENGTH - 3)}...`
+      : altText
 
   return client
     .post('media/metadata/create', {
@@ -36,10 +36,11 @@ const uploadMetadata = (altText, twitterRes = {}) => {
     })
     .then(() => twitterRes)
 }
-const uploadTweet = (twitterRes = {}) => client.post('statuses/update', {
+const uploadTweet = (twitterRes = {}) =>
+  client.post('statuses/update', {
     status: `Carbon Copy #${extractMediaId(twitterRes).slice(0, 8)}`,
     media_ids: extractMediaId(twitterRes)
-})
+  })
 
 const respondSuccess = (res, url) => res.json({ url })
 const respondFail = (res, err) => {
