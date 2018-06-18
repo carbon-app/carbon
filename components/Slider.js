@@ -27,9 +27,8 @@ export default class extends React.Component {
         <div
           className="slider-bg"
           style={{
-            transform: `translate3d(${(parseInt(this.props.value, 10) - minValue) *
-              1.0 /
-              (maxValue - minValue) *
+            transform: `translate3d(${(((parseInt(this.props.value, 10) - minValue) * 1.0) /
+              (maxValue - minValue)) *
               100}%, 0px, 0px)`
           }}
         />

@@ -5,6 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
+import Spinner from 'react-spinner'
 
 // Ours
 import Button from './Button'
@@ -45,6 +46,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
+      loading: true,
       uploading: false,
       code: props.content
     }
@@ -68,7 +70,8 @@ class Editor extends React.Component {
     // Load from localStorage and then URL params
     this.setState({
       ...getState(localStorage),
-      ...this.props.initialState
+      ...this.props.initialState,
+      loading: false
     })
   }
 
@@ -118,11 +121,11 @@ class Editor extends React.Component {
     if (type === 'blob') {
       if (format === 'svg') {
         return domtoimage
-        .toSvg(node, config)
-        .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
-        .then(uri => uri.slice(uri.indexOf(',') + 1))
-        .then(data => new Blob([data], { type: 'image/svg+xml' }))
-        .then(data => window.URL.createObjectURL(data))
+          .toSvg(node, config)
+          .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+          .then(uri => uri.slice(uri.indexOf(',') + 1))
+          .then(data => new Blob([data], { type: 'image/svg+xml' }))
+          .then(data => window.URL.createObjectURL(data))
       }
 
       return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
@@ -200,6 +203,9 @@ class Editor extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <Spinner />
+    }
     return (
       <React.Fragment>
         <div id="editor">
