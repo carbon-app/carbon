@@ -25,7 +25,7 @@
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
     "downshift": "^1.28.0",
-    "dropperx": "0.2.0",
+    "dropperx": "0.2.1",
     "express": "^4.16.2",
     "graphql": "^0.13.2",
     "highlight.js": "^9.12.0",
