@@ -59,7 +59,7 @@
     "all-contributors-cli": "^5.0.0",
     "babel-eslint": "^8.2.3",
     "cypress": "^3.0.0",
-    "eslint": "^4.19.1",
+    "eslint": "^5.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-react": "^7.7.0",
     "hex2rgb": "^2.2.0",
