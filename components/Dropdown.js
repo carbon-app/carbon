@@ -63,13 +63,14 @@ class Dropdown extends PureComponent {
     return (
       <Downshift
         inputValue={this.state.inputValue}
-        render={renderDropdown({ button, color, list: this.state.itemsToShow, selected, minWidth })}
         selectedItem={selected}
         defaultHighlightedIndex={list.findIndex(it => it === selected)}
         itemToString={item => item.name}
         onChange={onChange}
         onUserAction={this.onUserAction}
-      />
+      >
+        {renderDropdown({ button, color, list: this.state.itemsToShow, selected, minWidth })}
+      </Downshift>
     )
   }
 }
@@ -79,14 +80,14 @@ const renderDropdown = ({ button, color, list, minWidth }) => ({
   highlightedIndex,
   selectedItem,
   getRootProps,
-  getButtonProps,
+  getToggleButtonProps,
   getInputProps,
   getItemProps
 }) => {
   return (
     <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
       <SelectedItem
-        getButtonProps={getButtonProps}
+        getToggleButtonProps={getToggleButtonProps}
         getInputProps={getInputProps}
         isOpen={isOpen}
         color={color}
@@ -132,12 +133,12 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ getButtonProps, getInputProps, children, isOpen, color, button }) => {
+const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, color, button }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
     <span
-      {...getButtonProps()}
+      {...getToggleButtonProps()}
       tabIndex="0"
       className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
     >
