@@ -70,6 +70,14 @@ class Settings extends React.Component {
           />
           <Collapse label="Advanced">
             <Slider
+              label="Line height"
+              value={this.props.lineHeight}
+              minValue={90}
+              maxValue={250}
+              usePercentage={true}
+              onChange={this.props.onChange.bind(null, 'lineHeight')}
+            />
+            <Slider
               label="Padding (vertical)"
               value={this.props.paddingVertical || 16}
               maxValue={200}
