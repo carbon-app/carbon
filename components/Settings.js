@@ -51,6 +51,7 @@ class Settings extends React.Component {
             value={this.props.fontSize || 13}
             minValue={10}
             maxValue={18}
+            step={0.5}
             onChange={this.props.onChange.bind(null, 'fontSize')}
           />
           <Toggle
