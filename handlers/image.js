@@ -23,7 +23,20 @@ module.exports = browser => async (req, res) => {
           transform: 'scale(2)',
           'transform-origin': 'center'
         },
-        filter: n => (n.className ? String(n.className).indexOf('eliminateOnRender') < 0 : true),
+        filter: n => {
+          // %[00 -> 19] cause failures
+          if (
+            n.innerText && n.innerText.match(/%[0-1][0-9]/) &&
+            n.className &&
+            n.className.startsWith('cm-') // is CodeMirror primitive string
+          ) {
+            n.innerText = n.innerText.replace('%', '%25')
+          }
+          if (n.className) {
+            return String(n.className).indexOf('eliminateOnRender') < 0
+          }
+          return true
+        },
         width: target.offsetWidth * 2,
         height: target.offsetHeight * 2
       }
