@@ -103,8 +103,12 @@ class Editor extends React.Component {
       },
       filter: n => {
         // %[00 -> 19] cause failures
-        if (n.innerText && n.innerText.match(/%[0-1][0-9]/)) {
-          return false
+        if (
+          n.innerText && n.innerText.match(/%[0-1][0-9]/) &&
+          n.className &&
+          n.className.startsWith('cm-') // is CodeMirror primitive string
+        ) {
+          n.innerText = n.innerText.replace('%', '%25')
         }
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
