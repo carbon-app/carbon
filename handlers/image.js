@@ -9,7 +9,7 @@ module.exports = browser => async (req, res) => {
   if (!state) res.status(400).send()
 
   try {
-    await page.goto(`http://localhost:${PORT}?state=${state}`)
+    await page.goto(`http://localhost:${PORT}?state=${encodeURIComponent(state)}`)
     await page.addScriptTag({ path: './lib/customDomToImage.js' })
 
     // wait for page to detect language
