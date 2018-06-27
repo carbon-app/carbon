@@ -6,7 +6,7 @@ import Editor from '../components/Editor'
 import Page from '../components/Page'
 import api from '../lib/api'
 import { getQueryStringState, updateQueryString } from '../lib/routing'
-import { saveState } from '../lib/util'
+import { saveState, escapeHtml } from '../lib/util'
 
 class Index extends React.Component {
   static async getInitialProps({ asPath, query }) {
@@ -49,10 +49,7 @@ function onEditorUpdate(state) {
 
 function removeQueryString(str) {
   const qI = str.indexOf('?')
-  return (qI >= 0 ? str.substr(0, qI) : str)
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\//g, '&#x2F;')
+  return escapeHtml(qI >= 0 ? str.substr(0, qI) : str)
 }
 
 export default Index

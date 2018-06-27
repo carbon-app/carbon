@@ -106,8 +106,12 @@ class Editor extends React.Component {
       },
       filter: n => {
         // %[00 -> 19] cause failures
-        if (n.innerText && n.innerText.match(/%[0-1][0-9]/)) {
-          return false
+        if (
+          n.innerText && n.innerText.match(/%[0-1][0-9]/) &&
+          n.className &&
+          n.className.startsWith('cm-') // is CodeMirror primitive string
+        ) {
+          n.innerText = n.innerText.replace('%', '%25')
         }
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
@@ -122,7 +126,7 @@ class Editor extends React.Component {
       if (format === 'svg') {
         return domtoimage
           .toSvg(node, config)
-          .then(dataUrl => dataUrl.split('&nbsp;').join('&#160;'))
+          .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
           .then(uri => uri.slice(uri.indexOf(',') + 1))
           .then(data => new Blob([data], { type: 'image/svg+xml' }))
           .then(data => window.URL.createObjectURL(data))
