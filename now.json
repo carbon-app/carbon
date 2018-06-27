@@ -1,0 +1,16 @@
+{
+  "name": "carbon",
+  "type": "docker",
+  "public": true,
+  "env": {
+    "NODE_ENV": "production",
+    "TWITTER_CONSUMER_KEY": "@twitter-consumer-key",
+    "TWITTER_CONSUMER_SECRET": "@twitter-consumer-secret",
+    "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
+    "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret",
+    "LOGS_SECRET_PREFIX": "@logs_secret_prefix",
+    "UNSPLASH_SECRET_KEY": "@unsplash_secret_key",
+    "UNSPLASH_ACCESS_KEY": "@unsplash_access_key",
+    "UNSPLASH_CALLBACK_URL": "@unsplash_callback_url"
+  }
+}

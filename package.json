@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "node server.js",
     "test": "npm run cy:run --",
-    "deploy": "now --public --docker -e NODE_ENV=production",
+    "deploy": "now",
     "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
     "lint": "eslint .",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
@@ -68,18 +68,6 @@
     "now": "^11.1.7",
     "prettier": "^1.8.1",
     "webpack": "^3.10.0"
-  },
-  "now": {
-    "env": {
-      "TWITTER_CONSUMER_KEY": "@twitter-consumer-key",
-      "TWITTER_CONSUMER_SECRET": "@twitter-consumer-secret",
-      "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
-      "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret",
-      "LOGS_SECRET_PREFIX": "@logs_secret_prefix",
-      "UNSPLASH_SECRET_KEY": "@unsplash_secret_key",
-      "UNSPLASH_ACCESS_KEY": "@unsplash_access_key",
-      "UNSPLASH_CALLBACK_URL": "@unsplash_callback_url"
-    }
   },
   "lint-staged": {
     " *.js": [
