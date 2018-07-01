@@ -42,6 +42,19 @@ class Settings extends React.Component {
             selected={this.props.windowTheme || 'none'}
             onChange={this.props.onChange.bind(null, 'windowTheme')}
           />
+          <Slider
+            label="Window transparency"
+            usePercentage="true"
+            value={this.props.transparency || 100}
+            onChange={this.props.onChange.bind(null, 'transparency')}
+          />
+          <Slider
+            label="Background Blur"
+            minValue={0}
+            maxValue={50}
+            value={this.props.backgroundBlur || 0}
+            onChange={this.props.onChange.bind(null, 'backgroundBlur')}
+          />
           <FontSelect
             selected={this.props.fontFamily || 'Hack'}
             onChange={this.props.onChange.bind(null, 'fontFamily')}

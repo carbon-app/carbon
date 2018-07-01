@@ -180,6 +180,11 @@ class Editor extends React.Component {
 
   updateTheme(theme) {
     this.updateSetting('theme', theme.id)
+    this.setState({
+      transparency: '',
+      backgroundBlur: 0,
+      didThemeChange: true
+    })
   }
 
   updateLanguage(language) {
