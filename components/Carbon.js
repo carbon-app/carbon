@@ -35,6 +35,8 @@ class Carbon extends PureComponent {
     this.codeUpdated = this.codeUpdated.bind(this)
     this.onBeforeChange = this.onBeforeChange.bind(this)
     this.handleLanguageChange = this.handleLanguageChange.bind(this)
+
+    this.codeMirrorNode = React.createRef();
   }
 
   componentDidMount() {
@@ -83,6 +85,29 @@ class Carbon extends PureComponent {
         'Shift-Tab': 'indentLess'
       }
     }
+
+    let background = '';
+    if (!config.didThemeChange) {
+      let { codeMirrorNode } = this;
+      if (codeMirrorNode && codeMirrorNode.current) {
+        let [codeMirrorEditor] = codeMirrorNode.current.ref.children
+        let { backgroundColor } = getComputedStyle(codeMirrorEditor)
+        let transparency = this.props.config.transparency || 100
+        let alpha = parseFloat(transparency) / 100
+        if (backgroundColor.includes('rgba')) {
+          background = backgroundColor.split(',')
+          background[3] = ` ${alpha})`
+          background = background.join(', ')
+        } else {
+          background = backgroundColor.replace(')', `, ${alpha})`).replace('rgb(', 'rgba(')
+        }
+
+        background = `${background} !important`
+      }
+    }
+
+    this.props.config.didThemeChange = false;
+
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
       this.props.config.backgroundImage
@@ -98,6 +123,7 @@ class Carbon extends PureComponent {
         ) : null}
         <CodeMirror
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
+          ref={this.codeMirrorNode}
           onBeforeChange={this.onBeforeChange}
           value={this.props.children}
           options={options}
@@ -179,7 +205,7 @@ class Carbon extends PureComponent {
             }
 
             #container :global(.CodeMirror-gutters) {
-              background-color: unset;
+              background-color: unset !important;
               border-right: none;
             }
 
@@ -221,6 +247,8 @@ class Carbon extends PureComponent {
 
             #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 48px;
+              background: ${background};
+              backdrop-filter: blur(${parseFloat(config.blur)}px);
             }
           `}
         </style>
