@@ -202,6 +202,7 @@ class Carbon extends PureComponent {
               ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
               font-family: ${config.fontFamily}, monospace !important;
               font-size: ${config.fontSize};
+              line-height: ${config.lineHeight};
               font-variant-ligatures: contextual;
               font-feature-settings: 'calt' 1;
               user-select: none;

@@ -51,6 +51,7 @@ class Settings extends React.Component {
             value={this.props.fontSize || 13}
             minValue={10}
             maxValue={18}
+            step={0.5}
             onChange={this.props.onChange.bind(null, 'fontSize')}
           />
           <Toggle
@@ -69,6 +70,14 @@ class Settings extends React.Component {
             onChange={this.props.onChange.bind(null, 'widthAdjustment')}
           />
           <Collapse label="Advanced">
+            <Slider
+              label="Line height"
+              value={this.props.lineHeight}
+              minValue={90}
+              maxValue={250}
+              usePercentage={true}
+              onChange={this.props.onChange.bind(null, 'lineHeight')}
+            />
             <Slider
               label="Padding (vertical)"
               value={this.props.paddingVertical || 16}
