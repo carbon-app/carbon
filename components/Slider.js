@@ -13,6 +13,7 @@ export default class extends React.Component {
   render() {
     const minValue = this.props.minValue || 0
     const maxValue = this.props.maxValue || 100
+    const step = 'step' in this.props ? this.props.step : 1;
 
     return (
       <div className="slider">
@@ -23,11 +24,12 @@ export default class extends React.Component {
           onChange={this.handleChange}
           min={minValue}
           max={maxValue}
+          step={step}
         />
         <div
           className="slider-bg"
           style={{
-            transform: `translate3d(${(((parseInt(this.props.value, 10) - minValue) * 1.0) /
+            transform: `translate3d(${(((parseFloat(this.props.value) - minValue) * 1.0) /
               (maxValue - minValue)) *
               100}%, 0px, 0px)`
           }}

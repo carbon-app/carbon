@@ -20,6 +20,7 @@ import '../static/react-spinner.css'
 import '../static/fonts/dank-mono.css'
 import '../lib/custom/themes/one-dark.css'
 import '../lib/custom/themes/verminal.css'
+import '../lib/custom/themes/night-owl.css'
 
 export default () => {
   const onBrowser = typeof window !== 'undefined'
