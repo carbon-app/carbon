@@ -16,9 +16,11 @@ class Dropdown extends PureComponent {
       if (Object.prototype.hasOwnProperty.call(changes, 'inputValue')) {
         if (changes.type === Downshift.stateChangeTypes.keyDownEscape) {
           inputValue = this.userInputtedValue
-        } else {
+        } else if (changes.type === Downshift.stateChangeTypes.changeInput) {
           inputValue = changes.inputValue
           this.userInputtedValue = changes.inputValue
+        } else {
+          inputValue = changes.inputValue
         }
       }
 
@@ -56,20 +58,21 @@ class Dropdown extends PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { button, color, list, selected, onChange } = this.props
+    const { button, color, selected, onChange } = this.props
+    const { itemsToShow, inputValue } = this.state
 
-    const minWidth = calcMinWidth(button, selected, list)
+    const minWidth = calcMinWidth(button, selected, itemsToShow)
 
     return (
       <Downshift
-        inputValue={this.state.inputValue}
+        inputValue={inputValue}
         selectedItem={selected}
-        defaultHighlightedIndex={list.findIndex(it => it === selected)}
+        defaultHighlightedIndex={itemsToShow.findIndex(it => it === selected)}
         itemToString={item => item.name}
         onChange={onChange}
         onUserAction={this.onUserAction}
       >
-        {renderDropdown({ button, color, list: this.state.itemsToShow, selected, minWidth })}
+        {renderDropdown({ button, color, list: itemsToShow, selected, minWidth })}
       </Downshift>
     )
   }
