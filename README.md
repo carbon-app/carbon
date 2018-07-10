@@ -52,6 +52,7 @@ Check out these projects our awesome community has created:
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
 
 ## Contribute
 PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
