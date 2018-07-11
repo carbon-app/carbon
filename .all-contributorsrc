@@ -303,6 +303,16 @@
         "code",
         "design"
       ]
+    },
+    {
+      "login": "mixn",
+      "name": "Milos",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/672237?v=4",
+      "profile": "http://twitter.com/mixn",
+      "contributions": [
+        "code",
+        "tool"
+      ]
     }
   ],
   "repoType": "github"
