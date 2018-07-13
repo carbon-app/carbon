@@ -143,12 +143,7 @@ class Editor extends React.Component {
   save({ id: format = 'png' }) {
     const link = document.createElement('a')
 
-    const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
-    const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
-      .slice(0, 19)
-      .replace(/:/g,'-')
-      .replace('T','_')
-    const timestamp = this.state.timestamp ? `_${timeString}` : ''
+    const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
       link.download = `carbon${timestamp}.${format}`
@@ -291,6 +286,17 @@ class Editor extends React.Component {
     )
   }
 }
+
+function formatTimestamp() {
+  const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
+  const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
+    .slice(0, 19)
+    .replace(/:/g,'-')
+    .replace('T','_')
+
+  return timeString;
+}
+
 
 function isImage(file) {
   return file.type.split('/')[0] === 'image'
