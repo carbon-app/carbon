@@ -114,6 +114,11 @@ class Settings extends React.Component {
               enabled={this.props.watermark}
               onChange={this.props.onChange.bind(null, 'watermark')}
             />
+            <Toggle
+              label="Timestamp file name"
+              enabled={this.props.timestamp}
+              onChange={this.props.onChange.bind(null, 'timestamp')}
+            />
             <ExportSizeSelect
               selected={this.props.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}

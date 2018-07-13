@@ -142,15 +142,16 @@ class Editor extends React.Component {
 
   save({ id: format = 'png' }) {
     const link = document.createElement('a')
+
     const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
-    const timeString = (new Date(Date.now() - timezoneOffset))
-      .toISOString()
+    const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
       .slice(0, 19)
       .replace(/:/g,'-')
       .replace('T',' ')
+    const timestamp = this.state.timestamp ? ` ${timeString}` : '';
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
-      link.download = `carbon ${timeString}.${format}`
+      link.download = `carbon${timestamp}.${format}`
       link.href = url
       document.body.appendChild(link)
       link.click()
