@@ -1,0 +1,133 @@
+/*
+    Name:       nord 1.1.1
+    Author:     Arctic Ice Studio (https://github.com/arcticicestudio/)
+    Original VS Code Theme (https://github.com/arcticicestudio/nord-visual-studio-code)
+*/
+/* basic */
+.CodeMirror.cm-s-nord {
+  color: #d8dee9;
+  background-color: #2e3440;
+}
+.cm-s-nord .CodeMirror-selected {
+  background-color: rgba(67, 76, 94, 0.8);
+}
+.cm-s-nord .CodeMirror-gutter,
+.cm-s-nord .CodeMirror-gutters {
+  border: none;
+  background-color: #2e3440;
+}
+.cm-s-nord .CodeMirror-linenumber,
+.cm-s-nord .CodeMirror-linenumbers {
+  color: rgba(216, 222, 233, 0.4) !important;
+  background-color: transparent;
+}
+.cm-s-nord .CodeMirror-lines {
+  color: #d8dee9 !important;
+  background-color: transparent;
+}
+.cm-s-nord .CodeMirror-cursor {
+  border-left: 2px solid #d8dee9 !important;
+}
+/* addon: edit/machingbrackets.js & addon: edit/matchtags.js */
+.cm-s-nord .CodeMirror-matchingbracket,
+.cm-s-nord .CodeMirror-matchingtag {
+  border-bottom: 2px solid #81A1C1;
+  color: #d8dee9 !important;
+  background-color: transparent;
+}
+.cm-s-nord .CodeMirror-nonmatchingbracket {
+  border-bottom: 2px solid #bf616a;
+  color: #d8dee9 !important;
+  background-color: transparent;
+}
+/* addon: fold/foldgutter.js */
+.cm-s-nord .CodeMirror-foldmarker,
+.cm-s-nord .CodeMirror-foldgutter,
+.cm-s-nord .CodeMirror-foldgutter-open,
+.cm-s-nord .CodeMirror-foldgutter-folded {
+  border: none;
+  text-shadow: none;
+  color: #d8dee9 !important;
+  background-color: transparent;
+}
+/* addon: selection/active-line.js */
+.cm-s-nord .CodeMirror-activeline-background {
+  background-color: rgba(67, 76, 94, 0.32);
+}
+/* basic syntax */
+.cm-s-nord .cm-attribute {
+  color: #8FBCBB;
+}
+.cm-s-nord .cm-keyword {
+  color: #81A1C1;
+}
+.cm-s-nord .cm-def {
+  color: #D8DEE9;
+}
+.cm-s-nord .cm-atom {
+  color: #81A1C1;
+}
+.cm-s-nord .cm-number {
+  color: #B48EAD;
+}
+.cm-s-nord .cm-property {
+  color: #D8DEE9;
+}
+.cm-s-nord .cm-qualifier {
+  color: #88C0D0;
+}
+.cm-s-nord .cm-variable,
+.cm-s-nord .cm-variable-2 {
+  color: #88C0D0;
+}
+.cm-s-nord .cm-variable-3 {
+  color: #D8DEE9;
+}
+.cm-s-nord .cm-string,
+.cm-s-nord .cm-string-2 {
+  color: #A3BE8C;
+}
+.cm-s-nord .cm-operator {
+  color: #81A1C1;
+}
+.cm-s-nord .cm-meta {
+  color: #81A1C1;
+}
+.cm-s-nord .cm-comment {
+  color: #4C566A;
+}
+.cm-s-nord .cm-error {
+  color: #bf616a;
+}
+/* markdown */
+.cm-s-nord .cm-header {
+  color: #88C0D0;
+}
+.cm-s-nord .cm-quote {
+  color: #4C566A;
+}
+.cm-s-nord .cm-link {
+  color: #88C0D0;
+  text-decoration: none;
+}
+.cm-s-nord .cm-url {
+  color: #d8dee9;
+  text-decoration: underline;
+}
+.cm-s-nord .cm-strong {
+  font-weight: bold;
+}
+.cm-s-nord .cm-em {
+  font-style: italic;
+}
+/* diff */
+.cm-s-nord .cm-negative {
+  color: #bf616a;
+}
+.cm-s-nord .cm-positive {
+  color: #a3be8c;
+}
+/* html */
+.cm-s-nord .cm-tag {
+  color: #81A1C1;
+}
