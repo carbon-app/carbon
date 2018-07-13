@@ -147,8 +147,8 @@ class Editor extends React.Component {
     const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
       .slice(0, 19)
       .replace(/:/g,'-')
-      .replace('T',' ')
-    const timestamp = this.state.timestamp ? ` ${timeString}` : '';
+      .replace('T','_')
+    const timestamp = this.state.timestamp ? `_${timeString}` : ''
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
       link.download = `carbon${timestamp}.${format}`
