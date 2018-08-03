@@ -232,10 +232,10 @@
       ]
     },
     {
-      "login": "bruno02221",
+      "login": "imbrn",
       "name": "Bruno C. Couto",
       "avatar_url": "https://avatars1.githubusercontent.com/u/1906977?v=4",
-      "profile": "https://github.com/bruno02221",
+      "profile": "https://github.com/imbrn",
       "contributions": [
         "code"
       ]
@@ -302,6 +302,16 @@
       "contributions": [
         "code",
         "design"
+      ]
+    },
+    {
+      "login": "mixn",
+      "name": "Milos",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/672237?v=4",
+      "profile": "http://twitter.com/mixn",
+      "contributions": [
+        "code",
+        "tool"
       ]
     }
   ],
