@@ -104,11 +104,12 @@ class Editor extends React.Component {
       filter: n => {
         // %[00 -> 19] cause failures
         if (
-          n.innerText && n.innerText.match(/%[0-1][0-9]/) &&
+          n.innerText && n.innerText.match(/%\S\S/) &&
           n.className &&
-          n.className.startsWith('cm-') // is CodeMirror primitive string
+          n.className.startsWith('cm-') && // is CodeMirror primitive string
+          format === 'png' // only occurs when saving PNG
         ) {
-          n.innerText = n.innerText.replace('%', '%25')
+          n.innerText = encodeURIComponent(n.innerText)
         }
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
