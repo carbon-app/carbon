@@ -146,15 +146,9 @@ class Editor extends React.Component {
     const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
-      if (format === 'open ↗') {
-        link.href = url
-        link.target = '_blank'
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
-        return url;
+      if (format !== 'open ↗') {
+        link.download = `carbon${timestamp}.${format}`
       }
-      link.download = `carbon${timestamp}.${format}`
       link.href = url
       document.body.appendChild(link)
       link.click()
