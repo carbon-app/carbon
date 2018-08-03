@@ -32,6 +32,13 @@ const Header = ({ enableHeroText }) => (
 
         h2 {
           text-align: center;
+          max-width: 80vw;
+        }
+
+        @media only screen and (max-width: 640px)  {
+          h2 {
+            font-size: 1.25rem;
+          }
         }
       `}
     </style>
