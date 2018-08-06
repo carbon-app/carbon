@@ -18,6 +18,7 @@ export default ({ children, enableHeroText }) => (
           justify-content: center;
           flex-direction: column;
           align-items: center;
+          max-width: 100vw;
         }
       `}
     </style>
