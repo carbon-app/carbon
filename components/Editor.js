@@ -84,7 +84,7 @@ class Editor extends React.Component {
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
       navigator.userAgent.indexOf('Chrome') === -1 &&
-      format === 'png'
+      format !== 'svg'
     ) {
       const encodedState = serializeState(this.state)
       return api.image(encodedState)

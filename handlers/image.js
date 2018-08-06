@@ -17,7 +17,7 @@ module.exports = browser => async (req, res) => {
 
     const targetElement = await page.$('#export-container')
 
-    const dataUrl = await page.evaluate(target => {
+    const dataUrl = await page.evaluate((target = document) => {
       const config = {
         style: {
           transform: 'scale(2)',
