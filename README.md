@@ -54,6 +54,7 @@ Check out these projects our awesome community has created:
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
 
 ## Contribute
 PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.

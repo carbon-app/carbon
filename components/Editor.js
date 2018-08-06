@@ -38,7 +38,7 @@ const saveButtonOptions = {
   button: true,
   color: '#c198fb',
   selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
-  list: ['png', 'svg'].map(id => ({ id, name: id.toUpperCase() }))
+  list: ['png', 'svg', 'open ↗'].map(id => ({ id, name: id.toUpperCase() }))
 }
 
 class Editor extends React.Component {
@@ -150,7 +150,9 @@ class Editor extends React.Component {
     const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
-      link.download = `carbon${timestamp}.${format}`
+      if (format !== 'open ↗') {
+        link.download = `carbon${timestamp}.${format}`
+      }
       link.href = url
       document.body.appendChild(link)
       link.click()
