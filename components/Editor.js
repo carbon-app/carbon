@@ -251,9 +251,8 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet && (
+              {this.props.tweet && this.state.online && (
                 <Button
-                  disabled={!this.state.online}
                   className="tweetButton"
                   onClick={this.upload}
                   title={this.state.uploading ? 'Loading...' : 'Tweet Image'}

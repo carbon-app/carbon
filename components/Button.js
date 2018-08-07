@@ -28,10 +28,6 @@ export default props => (
           background: ${COLORS.HOVER} !important;
         }
 
-        button:disabled {
-          cursor: not-allowed;
-        }
-
         button > span {
           font-size: 14px;
           line-height: 1;
