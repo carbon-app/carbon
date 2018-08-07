@@ -1,14 +1,21 @@
 FROM node:9-alpine
 
 # Source https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md
-# Installs latest Chromium (68) package.
+# Installs latest Chromium package.
 ENV CHROME_BIN=/usr/bin/chromium-browser
 RUN apk update && apk upgrade && \
-    echo @v3.8 http://nl.alpinelinux.org/alpine/v3.8/community >> /etc/apk/repositories && \
-    echo @v3.8 http://nl.alpinelinux.org/alpine/v3.8/main >> /etc/apk/repositories && \
+    echo http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
+    echo http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
     apk add --no-cache \
-      chromium@v3.8 \
-      nss@v3.8
+      zlib-dev \
+      xvfb \
+      xorg-server \
+      dbus \
+      ttf-freefont \
+      chromium \
+      nss \
+      ca-certificates \
+      dumb-init
 
 WORKDIR /app
 

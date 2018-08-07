@@ -30,8 +30,7 @@ const puppeteerParams = dev
   ? {}
   : {
       executablePath: '/usr/bin/chromium-browser',
-      // TODO args: ['--no-sandbox', '--disable-setuid-sandbox']
-      args: ['--no-sandbox', '--headless', '--disable-gpu']
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
     }
 
 app
