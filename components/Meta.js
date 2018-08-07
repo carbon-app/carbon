@@ -37,6 +37,7 @@ export default () => {
         <meta name="og:image" content="/static/banner.png" />
         <meta name="theme-color" content="#121212" />
         <title>Carbon</title>
+        <link rel='manifest' href='/static/manifest.json' />
         <link rel="shortcut icon" href="/static/favicon.ico" />
         <link rel="stylesheet" href="/_next/static/style.css" />
         <link
