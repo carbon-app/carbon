@@ -41,12 +41,6 @@ export default () => {
           rel="preload"
           as="style"
           onLoad="this.onload=null;this.rel='stylesheet'"
-          href="/static/react-spinner.css"
-        />
-        <link
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
           href="/static/react-crop.css"
         />
         <link
