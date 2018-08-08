@@ -46,7 +46,8 @@ class Editor extends React.Component {
       ...DEFAULT_SETTINGS,
       loading: true,
       uploading: false,
-      code: props.content
+      code: props.content,
+      online: true
     }
 
     this.save = this.save.bind(this)
@@ -61,6 +62,9 @@ class Editor extends React.Component {
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
+
+    this.setOffline = () => this.setState({ online: false })
+    this.setOnline = () => this.setState({ online: true })
   }
 
   componentDidMount() {
@@ -68,8 +72,17 @@ class Editor extends React.Component {
     this.setState({
       ...getState(localStorage),
       ...this.props.initialState,
-      loading: false
+      loading: false,
+      online: Boolean(window && window.navigator && window.navigator.onLine)
     })
+
+    window.addEventListener('offline', this.setOffline);
+    window.addEventListener('online', this.setOnline);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('offline', this.setOffline);
+    window.removeEventListener('online', this.setOnline);
   }
 
   componentDidUpdate() {
@@ -238,7 +251,7 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet && (
+              {this.props.tweet && this.state.online && (
                 <Button
                   className="tweetButton"
                   onClick={this.upload}

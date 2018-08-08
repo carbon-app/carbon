@@ -10,6 +10,7 @@ export default props => (
       color: props.color,
       border: `1px solid ${props.color}`
     }}
+    disabled={props.disabled}
   >
     <span>{props.title}</span>
     <style jsx>
