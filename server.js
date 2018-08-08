@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -45,6 +46,8 @@ app
       server.use(morgan('tiny'))
     }
 
+    const filePath = path.join(__dirname, '.next', 'service-worker.js')
+    server.get('/service-worker.js', (req, res) => app.serveStatic(req, res, filePath))
     // api endpoints
     server.post(
       '/twitter',

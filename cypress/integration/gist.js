@@ -7,6 +7,6 @@ describe('Gist', () => {
     editorVisible()
 
     cy.contains('Y-Combinator implemented in JavaScript')
-    cy.get('#downshift-input-Auto').should('have.value', 'JavaScript')
+    cy.get('#downshift-input-JavaScript').should('have.value', 'JavaScript')
   })
 })
