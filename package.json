@@ -23,6 +23,7 @@
     "codemirror": "^5.36.0",
     "codemirror-graphql": "^0.6.12",
     "codemirror-mode-elixir": "^1.1.1",
+    "compression": "^1.7.3",
     "dom-to-image": "^2.5.2",
     "downshift": "^2.0.0",
     "dropperx": "0.2.1",

@@ -27,7 +27,8 @@ import {
   COLORS,
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
-  DEFAULT_SETTINGS
+  DEFAULT_SETTINGS,
+  DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState } from '../lib/routing'
 import { getState } from '../lib/util'
@@ -233,7 +234,7 @@ class Editor extends React.Component {
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
                 LANGUAGE_MODE_HASH[this.state.language] ||
-                'auto'
+                DEFAULT_LANGUAGE
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}
