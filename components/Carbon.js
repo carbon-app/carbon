@@ -79,6 +79,7 @@ class Carbon extends PureComponent {
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
+      activeLine: true,
       extraKeys: {
         'Shift-Tab': 'indentLess'
       }
