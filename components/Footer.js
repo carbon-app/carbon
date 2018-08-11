@@ -8,6 +8,9 @@ const Footer = () => (
       <Link href="/about">
         <a className="link">about</a>
       </Link>
+      <a className="link" href="https://spectrum.chat/carbon-now">
+        join community
+      </a>
       <a className="link" href="https://github.com/dawnlabs/carbon/issues/new">
         send feedback
       </a>
