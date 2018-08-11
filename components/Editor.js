@@ -100,6 +100,14 @@ class Editor extends React.Component {
       return api.image(encodedState)
     }
 
+    if (format === 'png') {
+      document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
+        if (n.innerText && n.innerText.match(/%\S\S/)) {
+          n.innerText = encodeURIComponent(n.innerText);
+        }
+      })
+    }
+
     const node = document.getElementById('export-container')
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
@@ -115,15 +123,6 @@ class Editor extends React.Component {
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => {
-        // %[00 -> 19] cause failures
-        if (
-          n.innerText && n.innerText.match(/%\S\S/) &&
-          n.className &&
-          n.className.startsWith('cm-') && // is CodeMirror primitive string
-          format === 'png' // only occurs when saving PNG
-        ) {
-          n.innerText = encodeURIComponent(n.innerText)
-        }
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
         }
