@@ -91,16 +91,17 @@ class Editor extends React.Component {
 
   getCarbonImage({ format, type } = { format: 'png' }) {
     // if safari, get image from api
+    const isPNG = format !== 'svg'
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
       navigator.userAgent.indexOf('Chrome') === -1 &&
-      format !== 'svg'
+      isPNG
     ) {
       const encodedState = serializeState(this.state)
       return api.image(encodedState)
     }
 
-    if (format === 'png') {
+    if (isPNG) {
       document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
         if (n.innerText && n.innerText.match(/%\S\S/)) {
           n.innerText = encodeURIComponent(n.innerText);
