@@ -30,7 +30,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 import { serializeState } from '../lib/routing'
-import { getState } from '../lib/util'
+import { getState, formatCode } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -62,6 +62,7 @@ class Editor extends React.Component {
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
+    this.format = this.format.bind(this)
 
     this.setOffline = () => this.setState({ online: false })
     this.setOnline = () => this.setState({ online: true })
@@ -76,13 +77,13 @@ class Editor extends React.Component {
       online: Boolean(window && window.navigator && window.navigator.onLine)
     })
 
-    window.addEventListener('offline', this.setOffline);
-    window.addEventListener('online', this.setOnline);
+    window.addEventListener('offline', this.setOffline)
+    window.addEventListener('online', this.setOnline)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('offline', this.setOffline);
-    window.removeEventListener('online', this.setOnline);
+    window.removeEventListener('offline', this.setOffline)
+    window.removeEventListener('online', this.setOnline)
   }
 
   componentDidUpdate() {
@@ -104,7 +105,7 @@ class Editor extends React.Component {
     if (isPNG) {
       document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
         if (n.innerText && n.innerText.match(/%\S\S/)) {
-          n.innerText = encodeURIComponent(n.innerText);
+          n.innerText = encodeURIComponent(n.innerText)
         }
       })
     }
@@ -215,6 +216,16 @@ class Editor extends React.Component {
     }
   }
 
+  format(code) {
+    formatCode(code)
+      .then(formatted => {
+        this.setState({ code: formatted })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
   render() {
     if (this.state.loading) {
       return <Spinner />
@@ -251,15 +262,24 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet && this.state.online && (
-                <Button
-                  className="tweetButton"
-                  onClick={this.upload}
-                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-              )}
+              <Button
+                className="tweetButton"
+                onClick={() => this.format(this.state.code)}
+                title={this.state.formatLoading ? 'Formatting...' : 'P'}
+                color="#57b5f9"
+                style={{ marginRight: '8px' }}
+                disabled={this.state.code == null || this.state.code.length === 0}
+              />
+              {this.props.tweet &&
+                this.state.online && (
+                  <Button
+                    className="tweetButton"
+                    onClick={this.upload}
+                    title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                    color="#57b5f9"
+                    style={{ marginRight: '8px' }}
+                  />
+                )}
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>
@@ -304,15 +324,15 @@ class Editor extends React.Component {
 }
 
 function formatTimestamp() {
-  const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
-  const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
+  const timezoneOffset = new Date().getTimezoneOffset() * 60000
+  const timeString = new Date(Date.now() - timezoneOffset)
+    .toISOString()
     .slice(0, 19)
-    .replace(/:/g,'-')
-    .replace('T','_')
+    .replace(/:/g, '-')
+    .replace('T', '_')
 
-  return timeString;
+  return timeString
 }
-
 
 function isImage(file) {
   return file.type.split('/')[0] === 'image'
