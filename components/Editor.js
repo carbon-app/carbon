@@ -91,13 +91,22 @@ class Editor extends React.Component {
 
   getCarbonImage({ format, type } = { format: 'png' }) {
     // if safari, get image from api
+    const isPNG = format !== 'svg'
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
       navigator.userAgent.indexOf('Chrome') === -1 &&
-      format !== 'svg'
+      isPNG
     ) {
       const encodedState = serializeState(this.state)
       return api.image(encodedState)
+    }
+
+    if (isPNG) {
+      document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
+        if (n.innerText && n.innerText.match(/%\S\S/)) {
+          n.innerText = encodeURIComponent(n.innerText);
+        }
+      })
     }
 
     const node = document.getElementById('export-container')
@@ -115,15 +124,6 @@ class Editor extends React.Component {
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => {
-        // %[00 -> 19] cause failures
-        if (
-          n.innerText && n.innerText.match(/%\S\S/) &&
-          n.className &&
-          n.className.startsWith('cm-') && // is CodeMirror primitive string
-          format === 'png' // only occurs when saving PNG
-        ) {
-          n.innerText = encodeURIComponent(n.innerText)
-        }
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
         }
