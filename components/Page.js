@@ -18,6 +18,7 @@ export default ({ children, enableHeroText }) => (
           justify-content: center;
           flex-direction: column;
           align-items: center;
+          min-width: 1080px; // temporary fix for mobile overflow issue
         }
       `}
     </style>
