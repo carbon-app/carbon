@@ -217,13 +217,11 @@ class Editor extends React.Component {
   }
 
   format(code) {
-    formatCode(code)
-      .then(formatted => {
-        this.setState({ code: formatted })
-      })
-      .catch(err => {
-        console.error(err)
-      })
+    try {
+      this.setState({ code: formatCode(code) })
+    } catch (err) {
+      //
+    }
   }
 
   render() {
