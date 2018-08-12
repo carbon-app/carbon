@@ -265,7 +265,7 @@ class Editor extends React.Component {
               <Button
                 className="tweetButton"
                 onClick={() => this.format(this.state.code)}
-                title={this.state.formatLoading ? 'Formatting...' : 'P'}
+                title="Format"
                 color="#57b5f9"
                 style={{ marginRight: '8px' }}
                 disabled={this.state.code == null || this.state.code.length === 0}
