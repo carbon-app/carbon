@@ -30,7 +30,6 @@ export default () => {
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Carbon is the easiest way to create and share beautiful images of your source code."
