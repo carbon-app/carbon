@@ -216,12 +216,15 @@ class Editor extends React.Component {
     }
   }
 
-  format(code) {
-    try {
-      this.setState({ code: formatCode(code) })
-    } catch (err) {
-      //
-    }
+  format() {
+    this.setState(({ code }) => {
+      try {
+        const newCode = formatCode(code)
+        return { code: newCode }
+      } catch (e) {
+        // pass, create a toast here in the future.
+      }
+    })
   }
 
   render() {
@@ -261,10 +264,9 @@ class Editor extends React.Component {
             />
             <div className="buttons">
               <Button
-                className="tweetButton"
-                onClick={() => this.format(this.state.code)}
+                onClick={this.format}
                 title="Format"
-                color="#57b5f9"
+                color="white"
                 style={{ marginRight: '8px' }}
                 disabled={this.state.code == null || this.state.code.length === 0}
               />
