@@ -42,7 +42,7 @@
     "puppeteer": "1.7.0",
     "react": "16.3.*",
     "react-click-outside": "^3.0.0",
-    "react-codemirror2": "^5.0.0",
+    "react-codemirror2": "^5.1.0",
     "react-color": "^2.13.8",
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^5.0.0",
