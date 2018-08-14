@@ -4,7 +4,6 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
-import Spinner from 'react-spinner'
 
 // Ours
 import Button from './Button'
@@ -45,7 +44,6 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
-      loading: true,
       uploading: false,
       code: props.content,
       online: true
@@ -73,17 +71,16 @@ class Editor extends React.Component {
     this.setState({
       ...getState(localStorage),
       ...this.props.initialState,
-      loading: false,
       online: Boolean(window && window.navigator && window.navigator.onLine)
     })
 
-    window.addEventListener('offline', this.setOffline);
-    window.addEventListener('online', this.setOnline);
+    window.addEventListener('offline', this.setOffline)
+    window.addEventListener('online', this.setOnline)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('offline', this.setOffline);
-    window.removeEventListener('online', this.setOnline);
+    window.removeEventListener('offline', this.setOffline)
+    window.removeEventListener('online', this.setOnline)
   }
 
   componentDidUpdate() {
@@ -92,13 +89,22 @@ class Editor extends React.Component {
 
   getCarbonImage({ format, type } = { format: 'png' }) {
     // if safari, get image from api
+    const isPNG = format !== 'svg'
     if (
       navigator.userAgent.indexOf('Safari') !== -1 &&
       navigator.userAgent.indexOf('Chrome') === -1 &&
-      format !== 'svg'
+      isPNG
     ) {
       const encodedState = serializeState(this.state)
       return api.image(encodedState)
+    }
+
+    if (isPNG) {
+      document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
+        if (n.innerText && n.innerText.match(/%\S\S/)) {
+          n.innerText = encodeURIComponent(n.innerText)
+        }
+      })
     }
 
     const node = document.getElementById('export-container')
@@ -116,15 +122,6 @@ class Editor extends React.Component {
         background: this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => {
-        // %[00 -> 19] cause failures
-        if (
-          n.innerText && n.innerText.match(/%\S\S/) &&
-          n.className &&
-          n.className.startsWith('cm-') && // is CodeMirror primitive string
-          format === 'png' // only occurs when saving PNG
-        ) {
-          n.innerText = encodeURIComponent(n.innerText)
-        }
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
         }
@@ -217,9 +214,6 @@ class Editor extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <Spinner />
-    }
     return (
       <React.Fragment>
         <div id="editor">
@@ -252,15 +246,16 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet && this.state.online && (
-                <Button
-                  className="tweetButton"
-                  onClick={this.upload}
-                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-              )}
+              {this.props.tweet &&
+                this.state.online && (
+                  <Button
+                    className="tweetButton"
+                    onClick={this.upload}
+                    title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                    color="#57b5f9"
+                    style={{ marginRight: '8px' }}
+                  />
+                )}
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>
@@ -305,15 +300,15 @@ class Editor extends React.Component {
 }
 
 function formatTimestamp() {
-  const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
-  const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
+  const timezoneOffset = new Date().getTimezoneOffset() * 60000
+  const timeString = new Date(Date.now() - timezoneOffset)
+    .toISOString()
     .slice(0, 19)
-    .replace(/:/g,'-')
-    .replace('T','_')
+    .replace(/:/g, '-')
+    .replace('T', '_')
 
-  return timeString;
+  return timeString
 }
-
 
 function isImage(file) {
   return file.type.split('/')[0] === 'image'

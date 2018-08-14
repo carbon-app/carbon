@@ -31,7 +31,7 @@ export default () => (
       body {
         font-size: var(--h4);
         line-height: var(--lh);
-        margin: 2rem 0;
+        margin: 6rem 0;
       }
 
       h1,

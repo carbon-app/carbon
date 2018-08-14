@@ -13,7 +13,7 @@ export default class extends React.Component {
   render() {
     const minValue = this.props.minValue || 0
     const maxValue = this.props.maxValue || 100
-    const step = 'step' in this.props ? this.props.step : 1;
+    const step = 'step' in this.props ? this.props.step : 1
 
     return (
       <div className="slider">
