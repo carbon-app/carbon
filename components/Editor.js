@@ -73,13 +73,13 @@ class Editor extends React.Component {
       online: Boolean(window && window.navigator && window.navigator.onLine)
     })
 
-    window.addEventListener('offline', this.setOffline);
-    window.addEventListener('online', this.setOnline);
+    window.addEventListener('offline', this.setOffline)
+    window.addEventListener('online', this.setOnline)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('offline', this.setOffline);
-    window.removeEventListener('online', this.setOnline);
+    window.removeEventListener('offline', this.setOffline)
+    window.removeEventListener('online', this.setOnline)
   }
 
   componentDidUpdate() {
@@ -101,7 +101,7 @@ class Editor extends React.Component {
     if (isPNG) {
       document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
         if (n.innerText && n.innerText.match(/%\S\S/)) {
-          n.innerText = encodeURIComponent(n.innerText);
+          n.innerText = encodeURIComponent(n.innerText)
         }
       })
     }
@@ -245,15 +245,16 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet && this.state.online && (
-                <Button
-                  className="tweetButton"
-                  onClick={this.upload}
-                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-              )}
+              {this.props.tweet &&
+                this.state.online && (
+                  <Button
+                    className="tweetButton"
+                    onClick={this.upload}
+                    title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                    color="#57b5f9"
+                    style={{ marginRight: '8px' }}
+                  />
+                )}
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>
@@ -298,15 +299,15 @@ class Editor extends React.Component {
 }
 
 function formatTimestamp() {
-  const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
-  const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
+  const timezoneOffset = new Date().getTimezoneOffset() * 60000
+  const timeString = new Date(Date.now() - timezoneOffset)
+    .toISOString()
     .slice(0, 19)
-    .replace(/:/g,'-')
-    .replace('T','_')
+    .replace(/:/g, '-')
+    .replace('T', '_')
 
-  return timeString;
+  return timeString
 }
-
 
 function isImage(file) {
   return file.type.split('/')[0] === 'image'
