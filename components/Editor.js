@@ -30,7 +30,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 import { serializeState } from '../lib/routing'
-import { getState, formatCode } from '../lib/util'
+import { getState } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -62,7 +62,6 @@ class Editor extends React.Component {
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
-    this.format = this.format.bind(this)
 
     this.setOffline = () => this.setState({ online: false })
     this.setOnline = () => this.setState({ online: true })
@@ -216,17 +215,6 @@ class Editor extends React.Component {
     }
   }
 
-  format() {
-    this.setState(({ code }) => {
-      try {
-        const newCode = formatCode(code)
-        return { code: newCode }
-      } catch (e) {
-        // pass, create a toast here in the future.
-      }
-    })
-  }
-
   render() {
     if (this.state.loading) {
       return <Spinner />
@@ -263,13 +251,6 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              <Button
-                onClick={this.format}
-                title="Format"
-                color="white"
-                style={{ marginRight: '8px' }}
-                disabled={this.state.code == null || this.state.code.length === 0}
-              />
               {this.props.tweet &&
                 this.state.online && (
                   <Button
