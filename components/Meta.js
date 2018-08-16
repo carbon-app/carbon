@@ -4,14 +4,11 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
-const LOCAL_STYLESHEETS = [
-  'one-dark',
-  'verminal',
-  'night-owl',
-  'nord'
-]
+const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
 
-const CDN_STYLESHEETS = THEMES.filter(t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0)
+const CDN_STYLESHEETS = THEMES.filter(
+  t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0
+)
 
 export default () => {
   const onBrowser = typeof window !== 'undefined'
