@@ -31,12 +31,11 @@ class Settings extends React.Component {
   }
 
   format() {
-    try {
-      const newCode = formatCode(this.props.code)
-      this.props.onChange('code', newCode)
-    } catch (e) {
-      // pass, create a toast here in the future.
-    }
+    return formatCode(this.props.code)
+      .then(this.props.onChange.bind(this, 'code'))
+      .catch(() => {
+        // create toast here in the future
+      })
   }
 
   render() {

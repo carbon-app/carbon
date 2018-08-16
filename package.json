@@ -40,6 +40,7 @@
     "next": "^6.0.3",
     "next-offline": "^2.9.0",
     "now-logs": "^0.0.7",
+    "prettier": "^1.8.1",
     "puppeteer": "1.7.0",
     "react": "16.3.*",
     "react-click-outside": "^3.0.0",
@@ -67,11 +68,10 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
     "now": "^11.1.7",
-    "prettier": "^1.8.1",
     "webpack": "^3.10.0"
   },
   "lint-staged": {
-    " *.js": [
+    "*.js": [
       "prettier",
       "git add"
     ]

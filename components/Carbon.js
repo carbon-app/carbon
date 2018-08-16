@@ -3,7 +3,7 @@ import * as hljs from 'highlight.js'
 import ResizeObserver from 'resize-observer-polyfill'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
-import {Controlled as CodeMirror} from 'react-codemirror2'
+import { Controlled as CodeMirror } from 'react-codemirror2'
 import Spinner from 'react-spinner'
 
 import WindowControls from '../components/WindowControls'
