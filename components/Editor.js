@@ -4,6 +4,7 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
+import Spinner from 'react-spinner'
 
 // Ours
 import Button from './Button'
@@ -26,7 +27,8 @@ import {
   COLORS,
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
-  DEFAULT_SETTINGS
+  DEFAULT_SETTINGS,
+  DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState } from '../lib/routing'
 import { getState } from '../lib/util'
@@ -43,6 +45,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
+      loading: true,
       uploading: false,
       code: props.content,
       online: true
@@ -70,6 +73,7 @@ class Editor extends React.Component {
     this.setState({
       ...getState(localStorage),
       ...this.props.initialState,
+      loading: false,
       online: Boolean(window && window.navigator && window.navigator.onLine)
     })
 
@@ -213,6 +217,20 @@ class Editor extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <div>
+          <Spinner />
+          <style jsx>
+            {`
+              div {
+                height: 160px;
+              }
+            `}
+          </style>
+        </div>
+      )
+    }
     return (
       <React.Fragment>
         <div id="editor">
@@ -227,7 +245,7 @@ class Editor extends React.Component {
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
                 LANGUAGE_MODE_HASH[this.state.language] ||
-                'auto'
+                DEFAULT_LANGUAGE
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}

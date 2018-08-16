@@ -1,5 +1,6 @@
 const path = require('path')
 const express = require('express')
+const compression = require('compression')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const next = require('next')
@@ -45,6 +46,8 @@ app
     if (dev) {
       server.use(morgan('tiny'))
     }
+
+    server.use(compression())
 
     const filePath = path.join(__dirname, '.next', 'service-worker.js')
     server.get('/service-worker.js', (req, res) => app.serveStatic(req, res, filePath))
