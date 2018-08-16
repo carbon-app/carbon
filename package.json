@@ -71,7 +71,7 @@
     "webpack": "^3.10.0"
   },
   "lint-staged": {
-    " *.js": [
+    "*.js": [
       "prettier",
       "git add"
     ]
