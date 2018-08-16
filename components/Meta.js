@@ -44,9 +44,7 @@ export default () => {
           href="/static/react-crop.css"
         />
         <link
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
+          rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
         />
         <link

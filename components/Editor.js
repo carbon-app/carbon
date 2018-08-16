@@ -224,7 +224,7 @@ class Editor extends React.Component {
           <style jsx>
             {`
               div {
-                height: 80px;
+                height: 160px;
               }
             `}
           </style>
