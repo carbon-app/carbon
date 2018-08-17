@@ -1,0 +1,24 @@
+{
+  "name": "carbon-api",
+  "version": "0.0.0-semantically-released",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "deploy": "now"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "isomorphic-fetch": "^2.2.1",
+    "morgan": "^1.8.2",
+    "morphmorph": "^0.1.2",
+    "now-logs": "^0.0.7",
+    "puppeteer": "1.7.0",
+    "twit": "^2.2.9",
+    "unsplash-js": "^4.8.0"
+  }
+}
