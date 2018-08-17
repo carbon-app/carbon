@@ -1,5 +1,6 @@
 // Theirs
 import React from 'react'
+import { withRouter } from "next/router";
 
 // Ours
 import Editor from '../components/Editor'
@@ -12,7 +13,7 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props.url} onUpdate={onEditorUpdate} tweet={api.tweet} />
+        <Editor {...this.props.router} onUpdate={onEditorUpdate} tweet={api.tweet} />
       </Page>
     )
   }
@@ -27,4 +28,4 @@ function onEditorUpdate(state) {
   saveState(localStorage, s)
 }
 
-export default Index
+export default withRouter(Index);
