@@ -4,13 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next",
     "build": "next build",
-    "start": "node server.js",
+    "start": "next start",
+    "export": "next export",
     "test": "npm run cy:run --",
     "deploy": "now",
-    "prettier": "prettier --config .prettierrc --write *.js {components,handlers,lib,pages}/*.js",
-    "lint": "eslint .",
+    "prettier": "prettier --config .prettierrc --write *.js {components,api,lib,pages}/**/*.js",
+    "lint": "eslint components/*.js lib/*.js pages/*.js api/handlers/*.js api/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
@@ -19,30 +20,25 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "body-parser": "^1.17.2",
     "codemirror": "^5.36.0",
     "codemirror-graphql": "^0.6.12",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
     "downshift": "^2.0.0",
     "dropperx": "0.2.1",
-    "express": "^4.16.2",
     "graphql": "^0.13.2",
     "highlight.js": "^9.12.0",
     "history": "^4.7.2",
-    "isomorphic-fetch": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "match-sorter": "^2.2.0",
-    "morgan": "^1.8.2",
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
     "next": "^6.0.3",
     "next-offline": "^2.9.0",
-    "now-logs": "^0.0.7",
-    "puppeteer": "1.7.0",
+    "prettier": "^1.8.1",
     "react": "16.3.*",
     "react-click-outside": "^3.0.0",
-    "react-codemirror2": "^5.0.0",
+    "react-codemirror2": "^5.1.0",
     "react-color": "^2.13.8",
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^5.0.0",
@@ -53,11 +49,9 @@
     "react-syntax-highlight": "^15.3.1",
     "resize-observer-polyfill": "^1.5.0",
     "tohash": "^1.0.2",
-    "twit": "^2.2.9",
-    "unsplash-js": "^4.8.0"
+    "url": "^0.11.0"
   },
   "devDependencies": {
-    "@zeit/next-css": "^0.2.0",
     "all-contributors-cli": "^5.0.0",
     "babel-eslint": "^8.2.3",
     "cypress": "^3.0.0",
@@ -68,11 +62,10 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
     "now": "^11.1.7",
-    "prettier": "^1.8.1",
     "webpack": "^3.10.0"
   },
   "lint-staged": {
-    " *.js": [
+    "*.js": [
       "prettier",
       "git add"
     ]

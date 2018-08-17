@@ -3,10 +3,10 @@ import * as hljs from 'highlight.js'
 import ResizeObserver from 'resize-observer-polyfill'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
+import { Controlled as CodeMirror } from 'react-codemirror2'
 
 import WindowControls from '../components/WindowControls'
 import Watermark from '../components/svg/Watermark'
-import CodeMirror from '../lib/react-codemirror'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
 const handleLanguageChange = (newCode, props) => {

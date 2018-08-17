@@ -1,5 +1,4 @@
 /* global domtoimage */
-const PORT = parseInt(process.env.PORT, 10) || 3000
 const ARBITRARY_WAIT_TIME = 500
 
 module.exports = browser => async (req, res) => {
@@ -9,8 +8,8 @@ module.exports = browser => async (req, res) => {
   if (!state) res.status(400).send()
 
   try {
-    await page.goto(`http://localhost:${PORT}?state=${state}`)
-    await page.addScriptTag({ path: './lib/customDomToImage.js' })
+    await page.goto(`http://carbon.now.sh?state=${state}`)
+    await page.addScriptTag({ path: './customDomToImage.js' })
 
     // wait for page to detect language
     await delay(ARBITRARY_WAIT_TIME)
@@ -26,7 +25,8 @@ module.exports = browser => async (req, res) => {
         filter: n => {
           // %[00 -> 19] cause failures
           if (
-            n.innerText && n.innerText.match(/%\S\S/) &&
+            n.innerText &&
+            n.innerText.match(/%\S\S/) &&
             n.className &&
             n.className.startsWith('cm-') // is CodeMirror primitive string
           ) {

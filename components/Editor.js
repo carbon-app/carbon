@@ -1,5 +1,6 @@
 // Theirs
 import ReactGA from 'react-ga'
+import url from 'url'
 import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
@@ -17,6 +18,7 @@ import Overlay from './Overlay'
 import Carbon from './Carbon'
 import api from '../lib/api'
 import {
+  GA_TRACKING_ID,
   THEMES,
   THEMES_HASH,
   LANGUAGES,
@@ -29,10 +31,10 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  GA_TRACKING_ID
+  DEFAULT_LANGUAGE
 } from '../lib/constants'
-import { serializeState } from '../lib/routing'
-import { getState } from '../lib/util'
+import { serializeState, getQueryStringState } from '../lib/routing'
+import { getState, escapeHtml } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -69,23 +71,43 @@ class Editor extends React.Component {
     this.setOnline = () => this.setState({ online: true })
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     ReactGA.initialize(GA_TRACKING_ID)
+
+    const { asPath = '' } = this.props
+    const { query } = url.parse(asPath, true)
+    const path = removeQueryString(asPath.split('/').pop())
+    const queryParams = getQueryStringState(query)
+    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    try {
+      // TODO fix this hack
+      if (path.length >= 19 && path.indexOf('.') === -1) {
+        const { content, language } = await api.getGist(path)
+        if (language) {
+          initialState.language = language.toLowerCase()
+        }
+        initialState.code = content
+      }
+    } catch (e) {
+      // eslint-disable-next-line
+      console.log(e)
+    }
+
     // Load from localStorage and then URL params
     this.setState({
       ...getState(localStorage),
-      ...this.props.initialState,
+      ...initialState,
       loading: false,
       online: Boolean(window && window.navigator && window.navigator.onLine)
     })
 
-    window.addEventListener('offline', this.setOffline);
-    window.addEventListener('online', this.setOnline);
+    window.addEventListener('offline', this.setOffline)
+    window.addEventListener('online', this.setOnline)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('offline', this.setOffline);
-    window.removeEventListener('online', this.setOnline);
+    window.removeEventListener('offline', this.setOffline)
+    window.removeEventListener('online', this.setOnline)
   }
 
   componentDidUpdate() {
@@ -107,7 +129,7 @@ class Editor extends React.Component {
     if (isPNG) {
       document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
         if (n.innerText && n.innerText.match(/%\S\S/)) {
-          n.innerText = encodeURIComponent(n.innerText);
+          n.innerText = encodeURIComponent(n.innerText)
         }
       })
     }
@@ -226,7 +248,18 @@ class Editor extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <Spinner />
+      return (
+        <div>
+          <Spinner />
+          <style jsx>
+            {`
+              div {
+                height: 160px;
+              }
+            `}
+          </style>
+        </div>
+      )
     }
     return (
       <React.Fragment>
@@ -242,7 +275,7 @@ class Editor extends React.Component {
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
                 LANGUAGE_MODE_HASH[this.state.language] ||
-                'auto'
+                DEFAULT_LANGUAGE
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}
@@ -260,15 +293,16 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet && this.state.online && (
-                <Button
-                  className="tweetButton"
-                  onClick={this.upload}
-                  title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                  color="#57b5f9"
-                  style={{ marginRight: '8px' }}
-                />
-              )}
+              {this.props.tweet &&
+                this.state.online && (
+                  <Button
+                    className="tweetButton"
+                    onClick={this.upload}
+                    title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                    color="#57b5f9"
+                    style={{ marginRight: '8px' }}
+                  />
+                )}
               <Dropdown {...saveButtonOptions} onChange={this.save} />
             </div>
           </Toolbar>
@@ -312,16 +346,21 @@ class Editor extends React.Component {
   }
 }
 
-function formatTimestamp() {
-  const timezoneOffset = (new Date()).getTimezoneOffset() * 60000
-  const timeString = (new Date(Date.now() - timezoneOffset)).toISOString()
-    .slice(0, 19)
-    .replace(/:/g,'-')
-    .replace('T','_')
-
-  return timeString;
+function removeQueryString(str) {
+  const qI = str.indexOf('?')
+  return escapeHtml(qI >= 0 ? str.substr(0, qI) : str)
 }
 
+function formatTimestamp() {
+  const timezoneOffset = new Date().getTimezoneOffset() * 60000
+  const timeString = new Date(Date.now() - timezoneOffset)
+    .toISOString()
+    .slice(0, 19)
+    .replace(/:/g, '-')
+    .replace('T', '_')
+
+  return timeString
+}
 
 function isImage(file) {
   return file.type.split('/')[0] === 'image'

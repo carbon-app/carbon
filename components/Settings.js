@@ -8,7 +8,9 @@ import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
 import Collapse from './Collapse'
+
 import { COLORS } from '../lib/constants'
+import { formatCode } from '../lib/util'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class Settings extends React.Component {
       isVisible: false
     }
     this.toggle = this.toggle.bind(this)
+    this.format = this.format.bind(this)
   }
 
   toggle() {
@@ -25,6 +28,14 @@ class Settings extends React.Component {
 
   handleClickOutside() {
     this.setState({ isVisible: false })
+  }
+
+  format() {
+    return formatCode(this.props.code)
+      .then(this.props.onChange.bind(this, 'code'))
+      .catch(() => {
+        // create toast here in the future
+      })
   }
 
   render() {
@@ -123,8 +134,10 @@ class Settings extends React.Component {
               selected={this.props.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}
             />
+            <Toggle label="Prettify code" center={true} enabled={false} onChange={this.format} />
             <Toggle
-              label="Reset settings"
+              label={<center className="red">Reset settings</center>}
+              center={true}
               enabled={false}
               onChange={this.props.resetDefaultSettings}
             />
@@ -185,6 +198,10 @@ class Settings extends React.Component {
             .settings-settings > :global(div):last-child,
             .settings-settings > :global(.collapse) {
               border-bottom: none;
+            }
+
+            .red {
+              color: red;
             }
           `}
         </style>

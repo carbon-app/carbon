@@ -15,13 +15,11 @@ Router.onRouteChangeComplete = () => {
   }
 }
 
-import '../static/react-crop.css'
-import '../static/react-spinner.css'
-import '../static/fonts/dank-mono.css'
-import '../lib/custom/themes/one-dark.css'
-import '../lib/custom/themes/verminal.css'
-import '../lib/custom/themes/night-owl.css'
-import '../lib/custom/themes/nord.css'
+const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
+
+const CDN_STYLESHEETS = THEMES.filter(
+  t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0
+)
 
 export default () => {
   const onBrowser = typeof window !== 'undefined'
@@ -48,26 +46,52 @@ export default () => {
         <meta name="og:image" content="/static/banner.png" />
         <meta name="theme-color" content="#121212" />
         <title>Carbon</title>
-        <link rel='manifest' href='/static/manifest.json' />
+        <link rel="manifest" href="/static/manifest.json" />
         <link rel="shortcut icon" href="/static/favicon.ico" />
-        <link rel="stylesheet" href="/_next/static/style.css" />
+        <link
+          rel="preload"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
+          href="/static/react-crop.css"
+        />
+        <link
+          rel="preload"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
+          href="/static/fonts/dank-mono.css"
+        />
         <link
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
         />
         <link
-          rel="stylesheet"
+          rel="preload"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css"
         />
         <link
-          rel="stylesheet"
+          rel="preload"
+          as="style"
+          onLoad="this.onload=null;this.rel='stylesheet'"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/seti.min.css"
         />
+        {LOCAL_STYLESHEETS.map(id => (
+          <link
+            key={id}
+            rel="preload"
+            as="style"
+            onLoad="this.onload=null;this.rel='stylesheet'"
+            href={`/static/themes/${id}.css`}
+          />
+        ))}
         {onBrowser
-          ? THEMES.filter(t => t.hasStylesheet !== false).map(theme => (
+          ? CDN_STYLESHEETS.map(theme => (
               <link
                 key={theme.id}
-                rel="stylesheet"
+                rel="preload"
+                as="style"
+                onLoad="this.onload=null;this.rel='stylesheet'"
                 href={
                   theme.link ||
                   `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/${theme.id}.min.css`
