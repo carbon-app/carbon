@@ -55,14 +55,6 @@ puppeteer.launch(puppeteerParams).then(browser => {
   server.get('/unsplash/random', wrap(unsplashHandler.randomImages))
   server.get('/unsplash/download/:imageId', wrap(unsplashHandler.downloadImage))
 
-  // TODO remove
-  // server.get('/about', (req, res) => app.render(req, res, '/about'))
-  // if root, render webpage from next
-  // server.get('/*', (req, res) => app.render(req, res, '/', req.query))
-
-  // otherwise, try and get gist
-  // server.get('*', handle)
-
   server.listen(port, '0.0.0.0', err => {
     if (err) throw err
     // eslint-disable-next-line
