@@ -1,12 +1,13 @@
 import React from 'react'
-import axios from 'axios'
 import Spinner from 'react-spinner'
+
+import api from '../lib/api'
 
 import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
 
 const downloadThumbnailImage = img => {
-  return axios
+  return api.client
     .get(img.url, { responseType: 'blob' })
     .then(res => res.data)
     .then(fileToDataURL)
@@ -14,7 +15,7 @@ const downloadThumbnailImage = img => {
 }
 
 const getImageDownloadUrl = img =>
-  axios.get(`/unsplash/download/${img.id}`).then(res => res.data.url)
+  api.client.get(`/unsplash/download/${img.id}`).then(res => res.data.url)
 
 class RandomImage extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class RandomImage extends React.Component {
   }
 
   async getImages() {
-    const imageUrls = await axios.get('/unsplash/random')
+    const imageUrls = await api.client.get('/unsplash/random')
     return Promise.all(imageUrls.data.map(downloadThumbnailImage))
   }
 
@@ -46,7 +47,7 @@ class RandomImage extends React.Component {
 
     this.setState({ loading: true })
     getImageDownloadUrl(image)
-      .then(url => axios.get(url, { responseType: 'blob' }))
+      .then(url => api.client.get(url, { responseType: 'blob' }))
       .then(res => res.data)
       .then(blob => this.props.onChange(blob, image))
       .then(() => this.setState({ loading: false }))

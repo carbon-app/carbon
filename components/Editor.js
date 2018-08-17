@@ -1,4 +1,5 @@
 // Theirs
+import url from 'url'
 import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
@@ -30,8 +31,8 @@ import {
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE
 } from '../lib/constants'
-import { serializeState } from '../lib/routing'
-import { getState } from '../lib/util'
+import { serializeState, getQueryStringState } from '../lib/routing'
+import { getState, escapeHtml } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -68,11 +69,30 @@ class Editor extends React.Component {
     this.setOnline = () => this.setState({ online: true })
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { asPath = '' } = this.props
+    const { query } = url.parse(asPath, true)
+    const path = removeQueryString(asPath.split('/').pop())
+    const queryParams = getQueryStringState(query)
+    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    try {
+      // TODO fix this hack
+      if (path.length >= 19 && path.indexOf('.') === -1) {
+        const { content, language } = await api.getGist(path)
+        if (language) {
+          initialState.language = language.toLowerCase()
+        }
+        initialState.code = content
+      }
+    } catch (e) {
+      // eslint-disable-next-line
+      console.log(e)
+    }
+
     // Load from localStorage and then URL params
     this.setState({
       ...getState(localStorage),
-      ...this.props.initialState,
+      ...initialState,
       loading: false,
       online: Boolean(window && window.navigator && window.navigator.onLine)
     })
@@ -314,6 +334,11 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
+}
+
+function removeQueryString(str) {
+  const qI = str.indexOf('?')
+  return escapeHtml(qI >= 0 ? str.substr(0, qI) : str)
 }
 
 function formatTimestamp() {
