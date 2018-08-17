@@ -1,4 +1,5 @@
 // Theirs
+import url from 'url'
 import React from 'react'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
@@ -69,7 +70,8 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    const { asPath, query } = this.props
+    const { asPath = '' } = this.props
+    const { query } = url.parse(asPath, true)
     const path = removeQueryString(asPath.split('/').pop())
     const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : {}
