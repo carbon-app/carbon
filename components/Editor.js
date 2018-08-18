@@ -71,8 +71,8 @@ class Editor extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props
-    const { query } = url.parse(asPath, true)
-    const path = removeQueryString(asPath.split('/').pop())
+    const { query, pathname } = url.parse(asPath, true)
+    const path = escapeHtml(pathname.split('/').pop())
     const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
@@ -342,11 +342,6 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
-}
-
-function removeQueryString(str) {
-  const qI = str.indexOf('?')
-  return escapeHtml(qI >= 0 ? str.substr(0, qI) : str)
 }
 
 function formatTimestamp() {
