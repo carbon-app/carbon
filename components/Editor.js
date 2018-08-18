@@ -99,7 +99,9 @@ class Editor extends React.Component {
     }
 
     // Makes sure the slash in encoded in application/X is decoded
-    newState.language = unescapeHtml(newState.language)
+    if (newState.language) {
+      newState.language = unescapeHtml(newState.language)
+    }
 
     this.setState(newState)
 
