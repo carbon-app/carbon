@@ -312,6 +312,7 @@ class Editor extends React.Component {
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
                 <Carbon
+                  key={this.state.language}
                   config={this.state}
                   updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
