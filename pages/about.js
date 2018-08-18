@@ -46,7 +46,11 @@ export default () => (
           directly.
         </p>
         <p className="mt2 mb3">
-          Please, if you select Tweet, look at this page for adding accessibility: <a href="https://help.twitter.com/en/using-twitter/picture-descriptions">Twitter - How to make images accessible for people</a>. The limit of the text is 420 characters.
+          Please, if you decide to Tweet, look at this page for adding accessibility:
+          <a className="link" href="https://help.twitter.com/en/using-twitter/picture-descriptions">
+            Twitter - How to make images accessible for people
+          </a>
+          . The limit of the text is 420 characters.
         </p>
       </div>
       <div>
