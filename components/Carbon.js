@@ -28,7 +28,7 @@ class Carbon extends PureComponent {
     super(props)
 
     this.state = {
-      language: props.config.language
+      ...handleLanguageChange(this.props.children, this.props)
     }
 
     this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
@@ -38,17 +38,11 @@ class Carbon extends PureComponent {
   }
 
   componentDidMount() {
-    this.setState(handleLanguageChange(this.props.children, this.props))
-
     const ro = new ResizeObserver(entries => {
       const cr = entries[0].contentRect
       this.props.onAspectRatioChange(cr.width / cr.height)
     })
     ro.observe(this.exportContainerNode)
-  }
-
-  static getDerivedStateFromProps(newProps) {
-    return handleLanguageChange(newProps.children, newProps) || null
   }
 
   codeUpdated(newCode) {
