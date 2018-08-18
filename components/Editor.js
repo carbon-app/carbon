@@ -265,7 +265,7 @@ class Editor extends React.Component {
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
                 LANGUAGE_MODE_HASH[this.state.language] ||
-                DEFAULT_LANGUAGE
+                LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}
