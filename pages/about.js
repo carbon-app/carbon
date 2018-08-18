@@ -41,9 +41,12 @@ export default () => (
           it a try!
         </p>
         <h4 className="mb0">Export/Sharing</h4>
-        <p className="mt2">
+        <p className="mt2 mb3">
           After you&apos;ve customized your image you can Tweet a link to the image, or save it
           directly.
+        </p>
+        <p className="mt2 mb3">
+          Please, if you select Tweet, look at this page for adding accessibility: <a href="https://help.twitter.com/en/using-twitter/picture-descriptions">Twitter - How to make images accessible for people</a>. The limit of the text is 420 characters.
         </p>
       </div>
       <div>
