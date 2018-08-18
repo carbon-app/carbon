@@ -321,7 +321,9 @@ class Editor extends React.Component {
                 isOver={isOver || canDrop}
                 title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
               >
+                {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
                 <Carbon
+                  key={this.state.language}
                   config={this.state}
                   updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
