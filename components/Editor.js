@@ -34,7 +34,7 @@ import {
   DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml } from '../lib/util'
+import { getState, escapeHtml, unescapeHtml } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -75,8 +75,8 @@ class Editor extends React.Component {
     ReactGA.initialize(GA_TRACKING_ID)
 
     const { asPath = '' } = this.props
-    const { query } = url.parse(asPath, true)
-    const path = removeQueryString(asPath.split('/').pop())
+    const { query, pathname } = url.parse(asPath, true)
+    const path = escapeHtml(pathname.split('/').pop())
     const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
@@ -93,13 +93,21 @@ class Editor extends React.Component {
       console.log(e)
     }
 
-    // Load from localStorage and then URL params
-    this.setState({
+    const newState = {
+      // Load from localStorage
       ...getState(localStorage),
+      // and then URL params
       ...initialState,
       loading: false,
       online: Boolean(window && window.navigator && window.navigator.onLine)
-    })
+    }
+
+    // Makes sure the slash in encoded in application/X is decoded
+    if (newState.language) {
+      newState.language = unescapeHtml(newState.language)
+    }
+
+    this.setState(newState)
 
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
@@ -275,7 +283,7 @@ class Editor extends React.Component {
                 LANGUAGE_NAME_HASH[this.state.language] ||
                 LANGUAGE_MIME_HASH[this.state.language] ||
                 LANGUAGE_MODE_HASH[this.state.language] ||
-                DEFAULT_LANGUAGE
+                LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
               }
               list={LANGUAGES}
               onChange={this.updateLanguage}
@@ -344,11 +352,6 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
-}
-
-function removeQueryString(str) {
-  const qI = str.indexOf('?')
-  return escapeHtml(qI >= 0 ? str.substr(0, qI) : str)
 }
 
 function formatTimestamp() {
