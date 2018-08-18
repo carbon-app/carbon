@@ -32,7 +32,7 @@ import {
   DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml } from '../lib/util'
+import { getState, escapeHtml, unescapeHtml } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -89,13 +89,19 @@ class Editor extends React.Component {
       console.log(e)
     }
 
-    // Load from localStorage and then URL params
-    this.setState({
+    const newState = {
+      // Load from localStorage
       ...getState(localStorage),
+      // and then URL params
       ...initialState,
       loading: false,
       online: Boolean(window && window.navigator && window.navigator.onLine)
-    })
+    }
+
+    // Makes sure the slash in encoded in application/X is decoded
+    newState.language = unescapeHtml(newState.language)
+
+    this.setState(newState)
 
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
