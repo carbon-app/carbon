@@ -23,7 +23,7 @@ class Settings extends React.Component {
   }
 
   toggle() {
-    this.setState({ isVisible: !this.state.isVisible })
+    this.setState(state => ({ isVisible: !state.isVisible }))
   }
 
   handleClickOutside() {
