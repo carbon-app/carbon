@@ -1,7 +1,7 @@
 import React from 'react'
 import Toggle from './Toggle'
 
-import {toggle} from '../lib/util'
+import { toggle } from '../lib/util'
 
 class Collapse extends React.PureComponent {
   state = {

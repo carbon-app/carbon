@@ -42,7 +42,9 @@ class RandomImage extends React.Component {
   }
 
   selectImage() {
-    if (this.state.loading) return;
+    if (this.state.loading) {
+      return
+    }
 
     const image = this.cache[this.state.cacheIndex]
 
@@ -62,7 +64,9 @@ class RandomImage extends React.Component {
   }
 
   nextImage() {
-    if (this.state.loading) return
+    if (this.state.loading) {
+      return
+    }
 
     this.setState(state => ({ cacheIndex: state.cacheIndex + 1 }))
 
