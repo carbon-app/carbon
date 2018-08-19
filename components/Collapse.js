@@ -1,6 +1,8 @@
 import React from 'react'
 import Toggle from './Toggle'
 
+import {toggle} from '../lib/util'
+
 class Collapse extends React.Component {
   constructor(props) {
     super(props)
@@ -10,9 +12,7 @@ class Collapse extends React.Component {
   }
 
   toggle = () => {
-    this.setState(state => ({
-      open: !state.open
-    }))
+    this.setState(toggle('open'))
   }
 
   render() {

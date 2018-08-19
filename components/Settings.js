@@ -10,7 +10,7 @@ import WindowPointer from './WindowPointer'
 import Collapse from './Collapse'
 
 import { COLORS } from '../lib/constants'
-import { formatCode } from '../lib/util'
+import { toggle, formatCode } from '../lib/util'
 
 class Settings extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Settings extends React.Component {
   }
 
   toggle() {
-    this.setState(state => ({ isVisible: !state.isVisible }))
+    this.setState(toggle('isVisible'))
   }
 
   handleClickOutside() {
