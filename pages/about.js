@@ -47,9 +47,11 @@ export default () => (
         </p>
         <p className="mt2 mb3">
           If you use the &apos;Tweet&apos; button, Carbon will automatically make your image
-          accessible. However, if you want to manually tweet your carbon image, please check
-          out <a className="link" href="https://help.twitter.com/en/using-twitter/picture-descriptions">this page</a>
-          {' '}to found out how to make your Twitter images accessible.
+          accessible. However, if you want to manually tweet your carbon image, please check out{' '}
+          <a className="link" href="https://help.twitter.com/en/using-twitter/picture-descriptions">
+            this page
+          </a>{' '}
+          to found out how to make your Twitter images accessible.
         </p>
       </div>
       <div>

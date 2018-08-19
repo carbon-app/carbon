@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "export": "next export",
     "test": "npm run cy:run --",
     "deploy": "now",
-    "prettier": "prettier --config .prettierrc --write *.js {components,api,lib,pages}/**/*.js",
+    "prettier": "prettier --config .prettierrc --write {.,components,api,lib,pages}/*.js {components,api,lib,pages}/**/*.js",
     "lint": "eslint components/*.js lib/*.js pages/*.js api/handlers/*.js api/*.js",
     "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
@@ -66,7 +66,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier",
+      "prettier --write",
       "git add"
     ]
   },

@@ -120,7 +120,7 @@ export default class extends React.Component {
           <span>Click the button below to upload a background image:</span>
           <input
             type="file"
-            accept="image/x-png,image/jpeg,image/jpg"
+            accept="image/png,image/x-png,image/jpeg,image/jpg"
             onChange={this.selectImage}
           />
         </div>

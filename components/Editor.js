@@ -16,7 +16,6 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
-import api from '../lib/api'
 import {
   GA_TRACKING_ID,
   THEMES,
@@ -81,8 +80,8 @@ class Editor extends React.Component {
     const initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
       // TODO fix this hack
-      if (path.length >= 19 && path.indexOf('.') === -1) {
-        const { content, language } = await api.getGist(path)
+      if (this.props.api.getGist && path.length >= 19 && path.indexOf('.') === -1) {
+        const { content, language } = await this.props.api.getGist(path)
         if (language) {
           initialState.language = language.toLowerCase()
         }
@@ -102,7 +101,7 @@ class Editor extends React.Component {
       online: Boolean(window && window.navigator && window.navigator.onLine)
     }
 
-    // Makes sure the slash in encoded in application/X is decoded
+    // Makes sure the slash in 'application/X' is decoded
     if (newState.language) {
       newState.language = unescapeHtml(newState.language)
     }
@@ -126,12 +125,13 @@ class Editor extends React.Component {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
+      (this.props.api.image,
       navigator.userAgent.indexOf('Safari') !== -1 &&
-      navigator.userAgent.indexOf('Chrome') === -1 &&
-      isPNG
+        navigator.userAgent.indexOf('Chrome') === -1 &&
+        isPNG)
     ) {
       const encodedState = serializeState(this.state)
-      return api.image(encodedState)
+      return this.props.api.image(encodedState)
     }
 
     if (isPNG) {
@@ -217,7 +217,7 @@ class Editor extends React.Component {
   upload() {
     this.setState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
-      .then(this.props.tweet.bind(null, this.state.code || DEFAULT_CODE))
+      .then(this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE))
       // eslint-disable-next-line
       .catch(console.error)
       .then(() => this.setState({ uploading: false }))
@@ -301,7 +301,7 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
             />
             <div className="buttons">
-              {this.props.tweet &&
+              {this.props.api.tweet &&
                 this.state.online && (
                   <Button
                     className="tweetButton"
@@ -379,6 +379,7 @@ function readAs(file) {
 }
 
 Editor.defaultProps = {
+  api: {},
   onUpdate: () => {}
 }
 

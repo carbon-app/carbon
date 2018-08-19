@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
 import ArrowDown from './svg/Arrowdown'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
-class Dropdown extends PureComponent {
+class Dropdown extends React.PureComponent {
   state = {
     inputValue: this.props.selected.name,
     itemsToShow: this.props.list

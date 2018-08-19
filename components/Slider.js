@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class extends React.Component {
+class Slider extends React.Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -77,3 +77,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default Slider

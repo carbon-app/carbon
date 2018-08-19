@@ -28,7 +28,6 @@ class RandomImage extends React.Component {
   }
 
   cache = []
-  imageUrls = {}
 
   // fetch images in browser (we require window.FileReader)
   componentDidMount() {
@@ -43,6 +42,10 @@ class RandomImage extends React.Component {
   }
 
   selectImage() {
+    if (this.state.loading) {
+      return
+    }
+
     const image = this.cache[this.state.cacheIndex]
 
     this.setState({ loading: true })
@@ -61,9 +64,11 @@ class RandomImage extends React.Component {
   }
 
   nextImage() {
-    if (this.state.loading) return
+    if (this.state.loading) {
+      return
+    }
 
-    this.setState({ cacheIndex: this.state.cacheIndex + 1 })
+    this.setState(state => ({ cacheIndex: state.cacheIndex + 1 }))
 
     if (this.state.cacheIndex > this.cache.length - 2) {
       this.updateCache()

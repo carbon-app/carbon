@@ -1,19 +1,14 @@
 import React from 'react'
 import Toggle from './Toggle'
 
-class Collapse extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      open: false
-    }
+import { toggle } from '../lib/util'
+
+class Collapse extends React.PureComponent {
+  state = {
+    open: false
   }
 
-  toggle = () => {
-    this.setState(state => ({
-      open: !state.open
-    }))
-  }
+  toggle = () => this.setState(toggle('open'))
 
   render() {
     if (this.state.open) {
