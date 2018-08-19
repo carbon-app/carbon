@@ -153,7 +153,7 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
           className="dropdown-display-text"
         />
       )}
-      <div role="button" className="dropdown-arrow">
+      <div className="dropdown-arrow">
         <ArrowDown fill={itemColor} />
       </div>
       <style jsx>
