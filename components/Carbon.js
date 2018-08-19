@@ -33,10 +33,6 @@ class Carbon extends React.PureComponent {
     ro.observe(this.exportContainerNode)
   }
 
-  handleTitleBarChange = newTitle => {
-    this.props.updateTitleBar(newTitle)
-  }
-
   handleLanguageChange = debounce(handleLanguageChange, ms('300ms'), {
     leading: true,
     trailing: true
@@ -70,7 +66,7 @@ class Carbon extends React.PureComponent {
           <WindowControls
             titleBar={this.props.titleBar}
             theme={config.windowTheme}
-            handleTitleBarChange={this.handleTitleBarChange}
+            handleTitleBarChange={this.props.updateTitleBar}
           />
         ) : null}
         <CodeMirror
