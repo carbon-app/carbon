@@ -25,7 +25,7 @@ export default class extends React.Component {
       <div className="list-item" key={font.id} onClick={this.select.bind(null, font.id)}>
         <span style={{ fontFamily: font.id }}>{font.name}</span>
         {font.link && this.props.selected === font.id && (
-          <a href={font.link} target="_blank">
+          <a href={font.link} target="_blank" rel="noopener noreferrer">
             <span style={{ fontFamily: font.id }}>Purchase</span>
           </a>
         )}
