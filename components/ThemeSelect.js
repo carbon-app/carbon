@@ -5,7 +5,7 @@ import { COLORS } from '../lib/constants'
 const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
 export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
-export default class extends React.Component {
+class ThemeSelect extends React.Component {
   constructor(props) {
     super(props)
     this.select = this.select.bind(this)
@@ -76,3 +76,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default ThemeSelect
