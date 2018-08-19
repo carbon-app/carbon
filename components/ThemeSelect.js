@@ -6,12 +6,7 @@ const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
 export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 class ThemeSelect extends React.Component {
-  constructor(props) {
-    super(props)
-    this.select = this.select.bind(this)
-  }
-
-  select(theme) {
+  select = (theme) => {
     if (this.props.selected !== theme) {
       this.props.onChange(theme)
     }
