@@ -97,7 +97,7 @@ class Editor extends React.Component {
       online: Boolean(window && window.navigator && window.navigator.onLine)
     }
 
-    // Makes sure the slash in encoded in application/X is decoded
+    // Makes sure the slash in 'application/X' is decoded
     if (newState.language) {
       newState.language = unescapeHtml(newState.language)
     }
