@@ -1,15 +1,8 @@
 import React from 'react'
 import Checkmark from './svg/Checkmark'
 
-export default class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.toggle = this.toggle.bind(this)
-  }
-
-  toggle() {
-    this.props.onChange(!this.props.enabled)
-  }
+class Toggle extends React.PureComponent {
+  toggle = () => this.props.onChange(!this.props.enabled)
 
   render() {
     return (
@@ -32,3 +25,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default Toggle

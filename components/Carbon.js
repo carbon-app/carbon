@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import * as hljs from 'highlight.js'
 import ResizeObserver from 'resize-observer-polyfill'
 import debounce from 'lodash.debounce'
@@ -23,7 +23,7 @@ const handleLanguageChange = (newCode, props) => {
   return { language: props.config.language }
 }
 
-class Carbon extends PureComponent {
+class Carbon extends React.PureComponent {
   constructor(props) {
     super(props)
 

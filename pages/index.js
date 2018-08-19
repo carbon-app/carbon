@@ -1,6 +1,6 @@
 // Theirs
 import React from 'react'
-import { withRouter } from "next/router";
+import { withRouter } from 'next/router'
 
 // Ours
 import Editor from '../components/Editor'
@@ -28,4 +28,4 @@ function onEditorUpdate(state) {
   saveState(localStorage, s)
 }
 
-export default withRouter(Index);
+export default withRouter(Index)

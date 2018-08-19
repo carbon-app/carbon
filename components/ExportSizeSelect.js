@@ -2,7 +2,7 @@ import React from 'react'
 import Checkmark from './svg/Checkmark'
 import { EXPORT_SIZES, COLORS } from '../lib/constants'
 
-export default class extends React.Component {
+class ExportSizeSelect extends React.Component {
   constructor(props) {
     super(props)
     this.state = { isVisible: false }
@@ -91,3 +91,5 @@ export default class extends React.Component {
     )
   }
 }
+
+export default ExportSizeSelect
