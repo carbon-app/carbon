@@ -10,7 +10,7 @@ const CDN_STYLESHEETS = THEMES.filter(
   t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0
 )
 
-export default () => {
+export default function Meta() {
   const onBrowser = typeof window !== 'undefined'
   return (
     <div className="meta">
