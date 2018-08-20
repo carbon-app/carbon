@@ -11,8 +11,8 @@ const CDN_STYLESHEETS = THEMES.filter(
 )
 
 /*
- * Before supporting <link rel="preload" verify if it is widely supported in FireFox
- * with out a flag here: https&://caniuse.com/#feat=link-rel-preload
+ * Before supporting <link rel="preload"> verify that it is widely supported in FireFox
+ * with out a flag here: https://caniuse.com/#feat=link-rel-preload
  */
 export default function Meta() {
   const onBrowser = typeof window !== 'undefined'
