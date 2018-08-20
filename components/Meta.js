@@ -21,6 +21,9 @@ const CDN_STYLESHEETS = THEMES.filter(
   t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0
 )
 
+// as="style"
+// onLoad="this.onload=null;this.rel='stylesheet'"
+
 export default function Meta() {
   const onBrowser = typeof window !== 'undefined'
   return (
@@ -49,12 +52,7 @@ export default function Meta() {
         <title>Carbon</title>
         <link rel="manifest" href="/static/manifest.json" />
         <link rel="shortcut icon" href="/static/favicon.ico" />
-        <link
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
-          href="/static/react-crop.css"
-        />
+        <link rel="stylesheet" href="/static/react-crop.css" />
         <link
           rel="preload"
           as="style"
@@ -66,33 +64,21 @@ export default function Meta() {
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
         />
         <link
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
+          rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css"
         />
         <link
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
+          rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/seti.min.css"
         />
         {LOCAL_STYLESHEETS.map(id => (
-          <link
-            key={id}
-            rel="preload"
-            as="style"
-            onLoad="this.onload=null;this.rel='stylesheet'"
-            href={`/static/themes/${id}.css`}
-          />
+          <link key={id} rel="stylesheet" href={`/static/themes/${id}.css`} />
         ))}
         {onBrowser
           ? CDN_STYLESHEETS.map(theme => (
               <link
                 key={theme.id}
-                rel="preload"
-                as="style"
-                onLoad="this.onload=null;this.rel='stylesheet'"
+                rel="stylesheet"
                 href={
                   theme.link ||
                   `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/${theme.id}.min.css`
