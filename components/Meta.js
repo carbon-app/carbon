@@ -53,12 +53,7 @@ export default function Meta() {
         <link rel="manifest" href="/static/manifest.json" />
         <link rel="shortcut icon" href="/static/favicon.ico" />
         <link rel="stylesheet" href="/static/react-crop.css" />
-        <link
-          rel="preload"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
-          href="/static/fonts/dank-mono.css"
-        />
+        <link rel="stylesheet" href="/static/fonts/dank-mono.css" />
         <link
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
