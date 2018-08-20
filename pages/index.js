@@ -13,7 +13,7 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props.router} onUpdate={onEditorUpdate} api={api} />
+        <Editor {...this.props.router} onUpdate={onEditorUpdate} api={api} onReset={onReset} />
       </Page>
     )
   }
@@ -26,6 +26,18 @@ function onEditorUpdate(state) {
   delete s.backgroundImage
   delete s.backgroundImageSelection
   saveState(localStorage, s)
+}
+
+function onReset() {
+  localStorage.clear()
+
+  if (window.navigator && navigator.serviceWorker) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      for (let registration of registrations) {
+        registration.unregister()
+      }
+    })
+  }
 }
 
 export default withRouter(Index)

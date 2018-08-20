@@ -201,7 +201,7 @@ class Editor extends React.Component {
 
   resetDefaultSettings() {
     this.setState(DEFAULT_SETTINGS)
-    localStorage.clear()
+    this.props.onReset()
   }
 
   upload() {
@@ -370,7 +370,8 @@ function readAs(file) {
 
 Editor.defaultProps = {
   api: {},
-  onUpdate: () => {}
+  onUpdate: () => {},
+  onReset: () => {}
 }
 
 export default DragDropContext(HTML5Backend)(Editor)
