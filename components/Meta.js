@@ -22,8 +22,8 @@ const CDN_STYLESHEETS = THEMES.filter(
 )
 
 /*
- * Before supporting <link rel="preload" verify if it is widely supported in FireFox
- * with out a flag here: https&://caniuse.com/#feat=link-rel-preload
+ * Before supporting <link rel="preload"> verify that it is widely supported in FireFox
+ * with out a flag here: https://caniuse.com/#feat=link-rel-preload
  */
 export default function Meta() {
   const onBrowser = typeof window !== 'undefined'
@@ -57,15 +57,15 @@ export default function Meta() {
         <link rel="stylesheet" href="/static/fonts/dank-mono.css" />
         <link
           rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.26.0/codemirror.min.css"
+          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/seti.min.css"
         />
         <link
           rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/theme/solarized.min.css"
+          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
         />
         <link
           rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/seti.min.css"
+          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/solarized.min.css"
         />
         {LOCAL_STYLESHEETS.map(id => (
           <link key={id} rel="stylesheet" href={`/static/themes/${id}.css`} />
@@ -77,7 +77,7 @@ export default function Meta() {
                 rel="stylesheet"
                 href={
                   theme.link ||
-                  `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.36.0/theme/${theme.id}.min.css`
+                  `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${theme.id}.min.css`
                 }
               />
             ))
