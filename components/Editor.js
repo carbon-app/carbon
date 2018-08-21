@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
-import shallowEquals from '../lib/shallow-equals'
+import shallowCompare from 'react-addons-shallow-compare'
 
 // Ours
 import Button from './Button'
@@ -115,7 +115,8 @@ class Editor extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(!shallowEquals(this.state, prevState)) {
+    // this.props ensures props are not compared, only state
+    if (shallowCompare(this, this.props, prevState)) {
       this.props.onUpdate(this.state)
     }
   }
