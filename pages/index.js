@@ -10,22 +10,22 @@ import { updateQueryString } from '../lib/routing'
 import { saveState } from '../lib/util'
 
 class Index extends React.Component {
+  onEditorUpdate = state => {
+    updateQueryString(this.props.router, state)
+    const s = { ...state }
+    delete s.code
+    delete s.backgroundImage
+    delete s.backgroundImageSelection
+    saveState(localStorage, s)
+  }
+
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props.router} onUpdate={onEditorUpdate} api={api} onReset={onReset} />
+        <Editor {...this.props.router} onUpdate={this.onEditorUpdate} api={api} onReset={onReset} />
       </Page>
     )
   }
-}
-
-function onEditorUpdate(state) {
-  updateQueryString(state)
-  const s = { ...state }
-  delete s.code
-  delete s.backgroundImage
-  delete s.backgroundImageSelection
-  saveState(localStorage, s)
 }
 
 function onReset() {

@@ -6,6 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
+import shallowCompare from 'react-addons-shallow-compare'
 
 // Ours
 import Button from './Button'
@@ -113,8 +114,11 @@ class Editor extends React.Component {
     window.removeEventListener('online', this.setOnline)
   }
 
-  componentDidUpdate() {
-    this.props.onUpdate(this.state)
+  componentDidUpdate(prevProps, prevState) {
+    // this.props ensures props are not compared, only state
+    if (shallowCompare(this, this.props, prevState)) {
+      this.props.onUpdate(this.state)
+    }
   }
 
   getCarbonImage({ format, type } = { format: 'png' }) {
