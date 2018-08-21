@@ -9,21 +9,6 @@ import WindowControls from '../components/WindowControls'
 import Watermark from '../components/svg/Watermark'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
-const handleLanguageChange = (newCode, language) => {
-  if (language === 'auto') {
-    // try to set the language
-    const detectedLanguage = hljs.highlightAuto(newCode).language
-    const languageMode =
-      LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
-
-    if (languageMode) {
-      return languageMode.mime || languageMode.mode
-    }
-  }
-
-  return language
-}
-
 class Carbon extends React.PureComponent {
   componentDidMount() {
     const ro = new ResizeObserver(entries => {
@@ -33,10 +18,27 @@ class Carbon extends React.PureComponent {
     ro.observe(this.exportContainerNode)
   }
 
-  handleLanguageChange = debounce(handleLanguageChange, ms('300ms'), {
-    leading: true,
-    trailing: true
-  })
+  handleLanguageChange = debounce(
+    (newCode, language) => {
+      if (language === 'auto') {
+        // try to set the language
+        const detectedLanguage = hljs.highlightAuto(newCode).language
+        const languageMode =
+          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+
+        if (languageMode) {
+          return languageMode.mime || languageMode.mode
+        }
+      }
+
+      return language
+    },
+    ms('300ms'),
+    {
+      leading: true,
+      trailing: true
+    }
+  )
 
   onBeforeChange = (editor, meta, code) => this.props.updateCode(code)
 
