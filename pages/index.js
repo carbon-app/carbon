@@ -11,16 +11,17 @@ import { saveState } from '../lib/util'
 
 class Index extends React.Component {
   render() {
+    const {router} = this.props
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props.router} onUpdate={onEditorUpdate} api={api} />
+        <Editor {...router} onUpdate={(state) => onEditorUpdate(router, state)} api={api} />
       </Page>
     )
   }
 }
 
-function onEditorUpdate(state) {
-  updateQueryString(state)
+function onEditorUpdate(router, state) {
+  updateQueryString(router, state)
   const s = { ...state }
   delete s.code
   delete s.backgroundImage
