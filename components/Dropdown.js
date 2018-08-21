@@ -58,7 +58,7 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { button, color, selected, onChange } = this.props
+    const { button, color, selected, onChange, itemWrapper } = this.props
     const { itemsToShow, inputValue } = this.state
 
     const minWidth = calcMinWidth(button, selected, itemsToShow)
@@ -72,13 +72,13 @@ class Dropdown extends React.PureComponent {
         onChange={onChange}
         onUserAction={this.onUserAction}
       >
-        {renderDropdown({ button, color, list: itemsToShow, selected, minWidth })}
+        {renderDropdown({ button, color, list: itemsToShow, selected, minWidth, itemWrapper })}
       </Downshift>
     )
   }
 }
 
-const renderDropdown = ({ button, color, list, minWidth }) => ({
+const renderDropdown = ({ button, color, list, minWidth, itemWrapper }) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -104,6 +104,7 @@ const renderDropdown = ({ button, color, list, minWidth }) => ({
             <ListItem
               key={index}
               color={color}
+              itemWrapper={itemWrapper}
               {...getItemProps({
                 item,
                 isSelected: selectedItem === item,
@@ -212,12 +213,16 @@ const ListItems = ({ children, color }) => {
   )
 }
 
-const ListItem = ({ children, color, isHighlighted, isSelected, ...rest }) => {
+const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ...rest }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
     <li {...rest} role="option" className="dropdown-list-item">
-      <span className="dropdown-list-item-text">{children}</span>
+      {itemWrapper ? (
+        itemWrapper({ children, color: itemColor })
+      ) : (
+        <span className="dropdown-list-item-text">{children}</span>
+      )}
       {isSelected ? <CheckMark /> : null}
       <style jsx>
         {`

@@ -14,6 +14,7 @@ import Dropdown from './Dropdown'
 import BackgroundSelect from './BackgroundSelect'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
+import ExportButton from './ExportButton'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
 import {
@@ -37,8 +38,9 @@ import { getState, escapeHtml, unescapeHtml } from '../lib/util'
 const saveButtonOptions = {
   button: true,
   color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
-  list: ['png', 'svg', 'open ↗'].map(id => ({ id, name: id.toUpperCase() }))
+  selected: { id: 'SAVE_IMAGE', name: 'Export Image' },
+  list: ['png', 'svg', 'copy embed', 'open ↗'].map(id => ({ id, name: id.toUpperCase() })),
+  itemWrapper: props => <ExportButton {...props} />
 }
 
 class Editor extends React.Component {
@@ -52,7 +54,7 @@ class Editor extends React.Component {
       online: true
     }
 
-    this.save = this.save.bind(this)
+    this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
     this.updateCode = this.updateSetting.bind(this, 'code')
@@ -70,7 +72,7 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    const { asPath = '' } = this.props
+    const { asPath = '' } = this.props.router
     const { query, pathname } = url.parse(asPath, true)
     const path = escapeHtml(pathname.split('/').pop())
     const queryParams = getQueryStringState(query)
@@ -187,7 +189,11 @@ class Editor extends React.Component {
     this.setState({ [key]: value })
   }
 
-  save({ id: format = 'png' }) {
+  export({ id: format = 'png' }) {
+    if (format === 'copy embed') {
+      return
+    }
+
     const link = document.createElement('a')
 
     const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
@@ -305,7 +311,7 @@ class Editor extends React.Component {
                     style={{ marginRight: '8px' }}
                   />
                 )}
-              <Dropdown {...saveButtonOptions} onChange={this.save} />
+              <Dropdown {...saveButtonOptions} onChange={this.export} />
             </div>
           </Toolbar>
 

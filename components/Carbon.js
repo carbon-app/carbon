@@ -10,6 +10,11 @@ import Watermark from '../components/svg/Watermark'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
 class Carbon extends React.PureComponent {
+  static defaultProps = {
+    onAspectRatioChange: () => {},
+    updateCode: () => {}
+  }
+
   componentDidMount() {
     const ro = new ResizeObserver(entries => {
       const cr = entries[0].contentRect
@@ -69,6 +74,8 @@ class Carbon extends React.PureComponent {
             titleBar={this.props.titleBar}
             theme={config.windowTheme}
             handleTitleBarChange={this.props.updateTitleBar}
+            code={this.props.children}
+            copyable={this.props.copyable}
           />
         ) : null}
         <CodeMirror

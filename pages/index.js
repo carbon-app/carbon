@@ -22,7 +22,12 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <Editor {...this.props.router} onUpdate={this.onEditorUpdate} api={api} onReset={onReset} />
+        <Editor
+          router={this.props.router}
+          onUpdate={this.onEditorUpdate}
+          api={api}
+          onReset={onReset}
+        />
       </Page>
     )
   }
