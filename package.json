@@ -28,7 +28,6 @@
     "dropperx": "0.2.1",
     "graphql": "^0.13.2",
     "highlight.js": "^9.12.0",
-    "history": "^4.7.2",
     "lodash.debounce": "^4.0.8",
     "match-sorter": "^2.2.0",
     "morphmorph": "^0.1.0",
