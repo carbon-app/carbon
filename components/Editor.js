@@ -6,6 +6,7 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
+import shallowEquals from '../lib/shallow-equals'
 
 // Ours
 import Button from './Button'
@@ -113,8 +114,10 @@ class Editor extends React.Component {
     window.removeEventListener('online', this.setOnline)
   }
 
-  componentDidUpdate() {
-    this.props.onUpdate(this.state)
+  componentDidUpdate(prevProps, prevState) {
+    if(!shallowEquals(this.state, prevState)) {
+      this.props.onUpdate(this.state)
+    }
   }
 
   getCarbonImage({ format, type } = { format: 'png' }) {
