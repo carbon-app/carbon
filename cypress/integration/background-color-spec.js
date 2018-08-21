@@ -31,8 +31,7 @@ describe('background color', () => {
     const darkRed = '#D0021B'
     const darkRedTile = `[title="${darkRed}"]`
     openPicker()
-    cy
-      .get(picker)
+    cy.get(picker)
       .find(darkRedTile)
       .click()
     closePicker()
@@ -61,7 +60,7 @@ describe('background color', () => {
       .type(`${pink}{enter}`)
     closePicker()
 
-    cy.url().should('contain', '?bg=rgba(255,0,255,1')
+    cy.url().should('contain', `?bg=rgba(${encodeURIComponent('255,0,255,1')}`)
     cy.get('#container-bg .bg').should('have.css', 'background-color', 'rgb(255, 0, 255)')
   })
 })
