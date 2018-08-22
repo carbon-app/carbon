@@ -125,10 +125,10 @@ class Editor extends React.Component {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
-      (this.props.api.image,
+      this.props.api.image &&
       navigator.userAgent.indexOf('Safari') !== -1 &&
-        navigator.userAgent.indexOf('Chrome') === -1 &&
-        isPNG)
+      navigator.userAgent.indexOf('Chrome') === -1 &&
+      isPNG
     ) {
       const encodedState = serializeState(this.state)
       return this.props.api.image(encodedState)
