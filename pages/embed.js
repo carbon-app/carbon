@@ -59,7 +59,7 @@ class Embed extends React.Component {
     return (
       <Page theme={this.state.theme}>
         {this.state.mounted && (
-          <Carbon config={this.state} copyable={this.state.copyable}>
+          <Carbon readOnly={true} config={this.state} copyable={this.state.copyable}>
             {this.state.code}
           </Carbon>
         )}
