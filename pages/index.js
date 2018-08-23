@@ -20,12 +20,28 @@ class Index extends React.Component {
   }
 
   render() {
-    const { router } = this.props
     return (
       <Page enableHeroText={true}>
-        <Editor {...router} onUpdate={this.onEditorUpdate} api={api} />
+        <Editor
+          router={this.props.router}
+          onUpdate={this.onEditorUpdate}
+          api={api}
+          onReset={onReset}
+        />
       </Page>
     )
+  }
+}
+
+function onReset() {
+  localStorage.clear()
+
+  if (window.navigator && navigator.serviceWorker) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      for (let registration of registrations) {
+        registration.unregister()
+      }
+    })
   }
 }
 

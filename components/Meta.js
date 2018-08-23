@@ -15,10 +15,45 @@ Router.onRouteChangeComplete = () => {
   }
 }
 
-const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
+export const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
 
 const CDN_STYLESHEETS = THEMES.filter(
   t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0
+)
+
+export const CodeMirrorLink = () => (
+  <link
+    rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+  />
+)
+
+export const MetaTags = () => (
+  <>
+    <meta charSet="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Carbon is the easiest way to create and share beautiful images of your source code."
+    />
+    <meta name="application-name" content="Carbon" />
+    <meta name="twitter:title" content="Carbon" />
+    <meta
+      name="twitter:description"
+      content="Carbon is the easiest way to create and share beautiful images of your source code."
+    />
+    <meta name="og:title" content="Carbon" />
+    <meta
+      name="og:description"
+      content="Carbon is the easiest way to create and share beautiful images of your source code."
+    />
+    <meta name="og:image" content="/static/banner.png" />
+    <meta name="theme-color" content="#121212" />
+    <title>Carbon</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="manifest" href="/static/manifest.json" />
+  </>
 )
 
 /*
@@ -30,39 +65,14 @@ export default function Meta() {
   return (
     <div className="meta">
       <Head>
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-          name="description"
-          content="Carbon is the easiest way to create and share beautiful images of your source code."
-        />
-        <meta name="application-name" content="Carbon" />
-        <meta name="twitter:title" content="Carbon" />
-        <meta
-          name="twitter:description"
-          content="Carbon is the easiest way to create and share beautiful images of your source code."
-        />
-        <meta name="og:title" content="Carbon" />
-        <meta
-          name="og:description"
-          content="Carbon is the easiest way to create and share beautiful images of your source code."
-        />
-        <meta name="og:image" content="/static/banner.png" />
-        <meta name="theme-color" content="#121212" />
-        <title>Carbon</title>
-        <link rel="manifest" href="/static/manifest.json" />
-        <link rel="shortcut icon" href="/static/favicon.ico" />
+        <MetaTags />
         <link rel="stylesheet" href="/static/react-crop.css" />
         <link rel="stylesheet" href="/static/fonts/dank-mono.css" />
         <link
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/seti.min.css"
         />
-        <link
-          rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
-        />
+        <CodeMirrorLink />
         <link
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/solarized.min.css"

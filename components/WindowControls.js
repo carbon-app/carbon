@@ -1,7 +1,40 @@
 import React from 'react'
-import { Controls, ControlsBW } from './svg/Controls'
 
-export default ({ titleBar, theme, handleTitleBarChange }) => (
+import CopyButton from './CopyButton'
+import { COLORS } from '../lib/constants'
+import { Controls, ControlsBW } from './svg/Controls'
+import CopySVG from './svg/Copy'
+import CheckMark from './svg/Checkmark'
+
+const size = 24
+
+function renderCopyButton({ copied }) {
+  return (
+    <button>
+      {copied ? (
+        <CheckMark color={COLORS.GRAY} width={size} height={size} />
+      ) : (
+        <CopySVG size={size} color={COLORS.GRAY} />
+      )}
+      <style jsx>
+        {`
+          button {
+            border: none;
+            cursor: pointer;
+            color: ${COLORS.SECONDARY};
+            background: transparent;
+          }
+
+          &:active {
+            outline: none;
+          }
+        `}
+      </style>
+    </button>
+  )
+}
+
+export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
   <div className="window-controls">
     {theme === 'bw' ? <ControlsBW /> : <Controls />}
     <div className="window-title-container">
@@ -12,6 +45,11 @@ export default ({ titleBar, theme, handleTitleBarChange }) => (
         onChange={e => handleTitleBarChange(e.target.value)}
       />
     </div>
+    {copyable && (
+      <div className="copy-button">
+        <CopyButton text={code}>{renderCopyButton}</CopyButton>
+      </div>
+    )}
     <style jsx>
       {`
         div {
@@ -39,6 +77,13 @@ export default ({ titleBar, theme, handleTitleBarChange }) => (
           color: white;
           text-align: center;
           font-size: 14px;
+        }
+
+        .copy-button {
+          cursor: pointer;
+          position: absolute;
+          top: 20px;
+          right: 16px;
         }
       `}
     </style>
