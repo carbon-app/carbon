@@ -41,6 +41,7 @@ export const MetaTags = () => (
     <meta name="theme-color" content="#121212" />
     <title>Carbon</title>
     <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="manifest" href="/static/manifest.json" />
   </>
 )
 
@@ -55,7 +56,6 @@ export default function Meta() {
       <Head>
         <MetaTags />
         <link rel="stylesheet" href="/static/react-crop.css" />
-        <link rel="manifest" href="/static/manifest.json" />
         <link
           rel="stylesheet"
           href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/seti.min.css"
