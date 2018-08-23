@@ -11,5 +11,3 @@ RUN yarn
 COPY . .
 # We run the build and expose as /public
 RUN yarn build && yarn export -o /public
-# Move service worker file to /public
-RUN cp .next/service-worker.js /public
