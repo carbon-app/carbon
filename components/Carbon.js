@@ -45,7 +45,11 @@ class Carbon extends React.PureComponent {
     }
   )
 
-  onBeforeChange = (editor, meta, code) => this.props.updateCode(code)
+  onBeforeChange = (editor, meta, code) => {
+    if (!this.props.readOnly) {
+      this.props.updateCode(code)
+    }
+  }
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
