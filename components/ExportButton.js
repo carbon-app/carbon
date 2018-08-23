@@ -16,7 +16,7 @@ function ExportButton({ router, children, color }) {
     <React.Fragment>
       {children === 'COPY EMBED' ? (
         <CopyButton text={toIFrame(router.asPath)}>
-          {({ copied }) => <button>{copied ? 'COPIED!' : 'EMBED CODE'}</button>}
+          {({ copied }) => <button>{copied ? 'COPIED!' : 'COPY EMBED'}</button>}
         </CopyButton>
       ) : (
         <button>{children}</button>

@@ -43,7 +43,8 @@ class Embed extends React.Component {
   state = {
     ...DEFAULT_SETTINGS,
     code: DEFAULT_CODE,
-    mounted: false
+    mounted: false,
+    readOnly: true
   }
 
   componentDidMount() {
@@ -52,14 +53,26 @@ class Embed extends React.Component {
     const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : {}
 
-    this.setState({ ...initialState, copyable: queryParams.copy !== false, mounted: true })
+    this.setState({
+      ...initialState,
+      copyable: queryParams.copy !== false,
+      readOnly: queryParams.readonly !== false,
+      mounted: true
+    })
   }
+
+  updateCode = code => this.setState({ code })
 
   render() {
     return (
       <Page theme={this.state.theme}>
         {this.state.mounted && (
-          <Carbon readOnly={true} config={this.state} copyable={this.state.copyable}>
+          <Carbon
+            config={this.state}
+            readOnly={this.state.readOnly}
+            copyable={this.state.copyable}
+            updateCode={this.updateCode}
+          >
             {this.state.code}
           </Carbon>
         )}
