@@ -5,7 +5,7 @@
   "static": {
     "rewrites": [
       {
-        "source": "!/about",
+        "source": "!/?(about)?(embed)",
         "destination": "/index.html"
       }
     ]

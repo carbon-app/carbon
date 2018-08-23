@@ -9,32 +9,10 @@ import WindowControls from '../components/WindowControls'
 import Watermark from '../components/svg/Watermark'
 import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
 
-const handleLanguageChange = (newCode, props) => {
-  if (props.config.language === 'auto') {
-    // try to set the language
-    const detectedLanguage = hljs.highlightAuto(newCode).language
-    const languageMode =
-      LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
-
-    if (languageMode) {
-      return { language: languageMode.mime || languageMode.mode }
-    }
-  }
-  return { language: props.config.language }
-}
-
 class Carbon extends React.PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      ...handleLanguageChange(this.props.children, this.props)
-    }
-
-    this.handleTitleBarChange = this.handleTitleBarChange.bind(this)
-    this.codeUpdated = this.codeUpdated.bind(this)
-    this.onBeforeChange = this.onBeforeChange.bind(this)
-    this.handleLanguageChange = this.handleLanguageChange.bind(this)
+  static defaultProps = {
+    onAspectRatioChange: () => {},
+    updateCode: () => {}
   }
 
   componentDidMount() {
@@ -45,30 +23,38 @@ class Carbon extends React.PureComponent {
     ro.observe(this.exportContainerNode)
   }
 
-  codeUpdated(newCode) {
-    this.handleLanguageChange(newCode, this.props)
-    this.props.updateCode(newCode)
-  }
-
-  handleTitleBarChange(newTitle) {
-    this.props.updateTitleBar(newTitle)
-  }
-
   handleLanguageChange = debounce(
-    (...args) => this.setState(handleLanguageChange(...args)),
+    (newCode, language) => {
+      if (language === 'auto') {
+        // try to set the language
+        const detectedLanguage = hljs.highlightAuto(newCode).language
+        const languageMode =
+          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+
+        if (languageMode) {
+          return languageMode.mime || languageMode.mode
+        }
+      }
+
+      return language
+    },
     ms('300ms'),
-    { trailing: true }
+    {
+      leading: true,
+      trailing: true
+    }
   )
 
-  onBeforeChange(editor, meta, code) {
-    return this.codeUpdated(code)
-  }
+  onBeforeChange = (editor, meta, code) => this.props.updateCode(code)
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
+
+    const languageMode = this.handleLanguageChange(this.props.children, config.language)
+
     const options = {
       lineNumbers: config.lineNumbers,
-      mode: this.state.language || 'plaintext',
+      mode: languageMode || 'plaintext',
       theme: config.theme,
       scrollBarStyle: null,
       viewportMargin: Infinity,
@@ -87,7 +73,9 @@ class Carbon extends React.PureComponent {
           <WindowControls
             titleBar={this.props.titleBar}
             theme={config.windowTheme}
-            handleTitleBarChange={this.handleTitleBarChange}
+            handleTitleBarChange={this.props.updateTitleBar}
+            code={this.props.children}
+            copyable={this.props.copyable}
           />
         ) : null}
         <CodeMirror

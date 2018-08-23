@@ -6,6 +6,7 @@ module.exports = (phase /* { defaultConfig } */) => {
     async exportPathMap() {
       return {
         '/about': { page: '/about' },
+        '/embed': { page: '/embed' },
         '/index': { page: '/index' },
         '/': { page: '/' }
       }
