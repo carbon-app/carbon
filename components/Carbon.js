@@ -61,7 +61,9 @@ class Carbon extends React.PureComponent {
       lineWrapping: true,
       extraKeys: {
         'Shift-Tab': 'indentLess'
-      }
+      },
+      // negative values removes the cursor, undefined means default (530)
+      cursorBlinkRate: this.props.readOnly ? -1 : undefined
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
