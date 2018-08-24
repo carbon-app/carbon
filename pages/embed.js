@@ -3,13 +3,15 @@ import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 import url from 'url'
+import morph from 'morphmorph'
 
 // Ours
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
-
 import { getQueryStringState } from '../lib/routing'
+
+const isInIFrame = morph.get('parent.window.parent')
 
 const Page = props => (
   <React.Fragment>
@@ -49,13 +51,26 @@ class Embed extends React.Component {
 
     this.setState({
       ...initialState,
+      id: query.id,
       copyable: queryParams.copy !== false,
       readOnly: queryParams.readonly !== false,
       mounted: true
     })
   }
 
-  updateCode = code => this.setState({ code })
+  updateCode = code => {
+    this.setState({ code })
+
+    if (isInIFrame(window)) {
+      window.parent.window.parent.postMessage(
+        {
+          id: this.state.id || 'carbon',
+          code
+        },
+        '*'
+      )
+    }
+  }
 
   render() {
     return (
