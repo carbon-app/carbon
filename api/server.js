@@ -46,10 +46,6 @@ puppeteer.launch(puppeteerParams).then(browser => {
 
   server.use(compression())
 
-  // Service Worker
-  // const filePath = path.join(__dirname, '.next', 'service-worker.js')
-  // server.get('/service-worker.js', (req, res) => app.serveStatic(req, res, filePath))
-
   // api endpoints
   server.post('/twitter', bodyParser.json({ limit: '5mb' }), require('./handlers/twitter'))
   server.post('/image', bodyParser.json({ limit: '5mb' }), wrap(imageHandler))
