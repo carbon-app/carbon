@@ -44,13 +44,13 @@ describe('background color', () => {
   })
 
   it('specifies color in url', () => {
-    cy.visit('/?bg=rgb(255,0,0)')
+    cy.visit('?bg=rgb(255,0,0)')
     editorVisible()
     cy.get('#container-bg .bg').should('have.css', 'background-color', 'rgb(255, 0, 0)')
   })
 
   it('enters neon pink', () => {
-    cy.visit('/?bg=rgb(255,0,0)')
+    cy.visit('?bg=rgb(255,0,0)')
     editorVisible()
 
     const pink = 'ff00ff'
