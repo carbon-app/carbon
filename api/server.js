@@ -36,6 +36,7 @@ puppeteer.launch(puppeteerParams).then(browser => {
   const server = express()
   const imageHandler = require('./handlers/image')(browser)
   const unsplashHandler = require('./handlers/unsplash')
+  const oembedHandler = require('./handlers/oembed')
 
   if (dev) {
     server.use(morgan('tiny'))
@@ -54,6 +55,7 @@ puppeteer.launch(puppeteerParams).then(browser => {
   server.post('/image', bodyParser.json({ limit: '5mb' }), wrap(imageHandler))
   server.get('/unsplash/random', wrap(unsplashHandler.randomImages))
   server.get('/unsplash/download/:imageId', wrap(unsplashHandler.downloadImage))
+  server.get('/oembed', oembedHandler)
 
   server.listen(port, '0.0.0.0', err => {
     if (err) throw err
