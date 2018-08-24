@@ -38,9 +38,8 @@ import { getState, escapeHtml, unescapeHtml } from '../lib/util'
 const saveButtonOptions = {
   button: true,
   color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Export Image' },
-  list: ['png', 'svg', 'copy embed', 'open ↗'].map(id => ({ id, name: id.toUpperCase() })),
-  itemWrapper: props => <ExportButton {...props} />
+  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
+  list: ['png', 'svg', 'open ↗'].map(id => ({ id, name: id.toUpperCase() }))
 }
 
 class Editor extends React.Component {

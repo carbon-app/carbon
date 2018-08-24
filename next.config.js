@@ -1,7 +1,7 @@
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
-const withOffline = require('next-offline')
+// const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
+// const withOffline = require('next-offline')
 
-module.exports = (phase /* { defaultConfig } */) => {
+module.exports = (/* phase  { defaultConfig } */) => {
   const config = {
     async exportPathMap() {
       return {
@@ -19,9 +19,5 @@ module.exports = (phase /* { defaultConfig } */) => {
     }
   }
 
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return config
-  }
-
-  return withOffline(config)
+  return config
 }
