@@ -17,6 +17,8 @@ module.exports = (req, res) => {
   try {
     embedUrl = decodeURIComponent(req.query.url)
   } catch (e) {
+    // eslint-disable-next-line
+    console.log(e)
     /* URL is already decoded */
   }
 

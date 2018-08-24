@@ -55,7 +55,7 @@ puppeteer.launch(puppeteerParams).then(browser => {
   server.post('/image', bodyParser.json({ limit: '5mb' }), wrap(imageHandler))
   server.get('/unsplash/random', wrap(unsplashHandler.randomImages))
   server.get('/unsplash/download/:imageId', wrap(unsplashHandler.downloadImage))
-  server.get('/oembed', oembedHandler)
+  server.all('/oembed', oembedHandler)
 
   server.listen(port, '0.0.0.0', err => {
     if (err) throw err
