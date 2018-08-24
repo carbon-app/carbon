@@ -1,9 +1,9 @@
 // const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 // const withOffline = require('next-offline')
 
-module.exports = (/* phase, { defaultConfig } */) => {
+module.exports = (/* phase  { defaultConfig } */) => {
   const config = {
-    exportPathMap() {
+    async exportPathMap() {
       return {
         '/about': { page: '/about' },
         '/embed': { page: '/embed' },
