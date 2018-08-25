@@ -14,6 +14,7 @@ import { getQueryStringState } from '../lib/routing'
 const Page = props => (
   <div>
     <Head>
+      <title>Carbon Embeds</title>
       <MetaTags />
       {LOCAL_STYLESHEETS.indexOf(props.theme) > -1 ? (
         <link rel="stylesheet" href={`/static/themes/${props.theme}.css`} />
