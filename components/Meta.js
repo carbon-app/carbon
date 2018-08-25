@@ -54,6 +54,7 @@ export default function Meta() {
   return (
     <div className="meta">
       <Head>
+        <title>Carbon</title>
         <MetaTags />
         <link rel="stylesheet" href="/static/react-crop.css" />
         <link
