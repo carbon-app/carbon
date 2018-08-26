@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Toolbar = props => (
-  <div id="toolbar">
+  <div className="toolbar">
     {props.children}
     <style jsx>
       {`
-        #toolbar {
+        .toolbar {
           width: 100%;
           height: 40px; // TODO fix
           margin-bottom: 16px;
@@ -16,11 +16,11 @@ const Toolbar = props => (
           color: #fff;
         }
 
-        #toolbar > :global(div) {
+        .toolbar > :global(div) {
           margin-right: 8px;
         }
 
-        #toolbar > :global(div):last-child {
+        .toolbar > :global(div):last-child {
           margin-right: 0px;
         }
       `}

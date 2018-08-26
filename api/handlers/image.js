@@ -14,7 +14,7 @@ module.exports = browser => async (req, res) => {
     // wait for page to detect language
     await delay(ARBITRARY_WAIT_TIME)
 
-    const targetElement = await page.$('#export-container')
+    const targetElement = await page.$('.export-container')
 
     const dataUrl = await page.evaluate((target = document) => {
       const config = {
