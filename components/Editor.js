@@ -67,6 +67,7 @@ class Editor extends React.Component {
 
     this.setOffline = () => this.setState({ online: false })
     this.setOnline = () => this.setState({ online: true })
+    this.innerRef = node => (this.carbonNode = node)
   }
 
   async componentDidMount() {
@@ -142,7 +143,7 @@ class Editor extends React.Component {
       })
     }
 
-    const node = document.getElementById('export-container')
+    const node = this.carbonNode
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
     const width = node.offsetWidth * exportSize
@@ -269,7 +270,7 @@ class Editor extends React.Component {
     }
     return (
       <React.Fragment>
-        <div id="editor">
+        <div className="editor">
           <Toolbar>
             <Dropdown
               selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
@@ -327,6 +328,7 @@ class Editor extends React.Component {
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={this.state.titleBar}
                   updateTitleBar={this.updateTitleBar}
+                  innerRef={this.innerRef}
                 >
                   {this.state.code != null ? this.state.code : DEFAULT_CODE}
                 </Carbon>
@@ -336,7 +338,7 @@ class Editor extends React.Component {
         </div>
         <style jsx>
           {`
-            #editor {
+            .editor {
               background: ${COLORS.BLACK};
               border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;

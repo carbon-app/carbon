@@ -12,7 +12,8 @@ import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onAspectRatioChange: () => {},
-    updateCode: () => {}
+    updateCode: () => {},
+    innerRef: () => {}
   }
 
   componentDidMount() {
@@ -74,7 +75,7 @@ class Carbon extends React.PureComponent {
       this.props.config.backgroundImage
 
     const content = (
-      <div id="container">
+      <div className="container">
         {config.windowControls ? (
           <WindowControls
             titleBar={this.props.titleBar}
@@ -91,21 +92,21 @@ class Carbon extends React.PureComponent {
           options={options}
         />
         {config.watermark && <Watermark />}
-        <div id="container-bg">
+        <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />
           <div className="bg" />
         </div>
         <style jsx>
           {`
-            #container {
+            .container {
               position: relative;
               min-width: ${config.widthAdjustment ? '90px' : '680px'};
               max-width: 1024px;
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
             }
 
-            #container :global(.watermark) {
+            .container :global(.watermark) {
               fill-opacity: 0.3;
               position: absolute;
               z-index: 2;
@@ -113,7 +114,7 @@ class Carbon extends React.PureComponent {
               right: calc(${config.paddingHorizontal} + 16px);
             }
 
-            #container #container-bg {
+            .container .container-bg {
               position: absolute;
               top: 0px;
               right: 0px;
@@ -121,7 +122,7 @@ class Carbon extends React.PureComponent {
               left: 0px;
             }
 
-            #container .white {
+            .container .white {
               background: #fff;
               position: absolute;
               top: 0px;
@@ -130,7 +131,7 @@ class Carbon extends React.PureComponent {
               left: 0px;
             }
 
-            #container .bg {
+            .container .bg {
               ${this.props.config.backgroundMode === 'image'
                 ? `background: url(${backgroundImage});
                      background-size: cover;
@@ -144,7 +145,7 @@ class Carbon extends React.PureComponent {
               left: 0px;
             }
 
-            #container .alpha {
+            .container .alpha {
               position: absolute;
               top: 0px;
               right: 0px;
@@ -153,24 +154,24 @@ class Carbon extends React.PureComponent {
               background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==);
             }
 
-            #container :global(.cm-s-dracula .CodeMirror-cursor) {
+            .container :global(.cm-s-dracula .CodeMirror-cursor) {
               border-left: solid 2px #159588;
             }
 
-            #container :global(.cm-s-solarized) {
+            .container :global(.cm-s-solarized) {
               box-shadow: none;
             }
 
-            #container :global(.cm-s-solarized.cm-s-light) {
+            .container :global(.cm-s-solarized.cm-s-light) {
               text-shadow: #eee8d5 0 1px;
             }
 
-            #container :global(.CodeMirror-gutters) {
+            .container :global(.CodeMirror-gutters) {
               background-color: unset;
               border-right: none;
             }
 
-            #container :global(.CodeMirror__container) {
+            .container :global(.CodeMirror__container) {
               min-width: inherit;
               position: relative;
               z-index: 1;
@@ -182,7 +183,7 @@ class Carbon extends React.PureComponent {
                 : ''};
             }
 
-            #container :global(.CodeMirror__container .CodeMirror) {
+            .container :global(.CodeMirror__container .CodeMirror) {
               height: auto;
               min-width: inherit;
               padding: 18px 18px;
@@ -195,19 +196,19 @@ class Carbon extends React.PureComponent {
               user-select: none;
             }
 
-            #container :global(.CodeMirror-scroll) {
+            .container :global(.CodeMirror-scroll) {
               overflow: hidden !important;
             }
 
-            #container :global(.window-theme__sharp > .CodeMirror) {
+            .container :global(.window-theme__sharp > .CodeMirror) {
               border-radius: 0px;
             }
 
-            #container :global(.window-theme__bw > .CodeMirror) {
+            .container :global(.window-theme__bw > .CodeMirror) {
               border: 2px solid ${COLORS.SECONDARY};
             }
 
-            #container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
+            .container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 48px;
             }
           `}
@@ -216,15 +217,21 @@ class Carbon extends React.PureComponent {
     )
 
     return (
-      <div id="section">
-        <div id="export-container" ref={ele => (this.exportContainerNode = ele)}>
+      <div className="section">
+        <div
+          className="export-container"
+          ref={ele => {
+            this.exportContainerNode = ele
+            this.props.innerRef(ele)
+          }}
+        >
           {content}
-          <div id="twitter-png-fix" />
+          <div className="twitter-png-fix" />
         </div>
         <style jsx>
           {`
-            #section,
-            #export-container {
+            .section,
+            .export-container {
               height: 100%;
               display: flex;
               flex-direction: column;
@@ -234,7 +241,7 @@ class Carbon extends React.PureComponent {
             }
 
             /* forces twitter to save images as png — https://github.com/dawnlabs/carbon/issues/86 */
-            #twitter-png-fix {
+            .twitter-png-fix {
               height: 1px;
               width: 100%;
               background: rgba(0, 0, 0, 0.01);
