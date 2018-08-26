@@ -14,7 +14,6 @@ import Dropdown from './Dropdown'
 import BackgroundSelect from './BackgroundSelect'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
-import ExportButton from './ExportButton'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
 import {
