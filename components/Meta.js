@@ -4,21 +4,39 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
-export const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
+const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
 
-const CDN_STYLESHEETS = THEMES.filter(
-  t => t.hasStylesheet !== false && LOCAL_STYLESHEETS.indexOf(t.id) < 0
-)
+const CDN_STYLESHEETS = THEMES.filter(t => LOCAL_STYLESHEETS.indexOf(t.id) < 0)
+
+export const StylesheetLink = ({ theme }) => {
+  let href
+  if (LOCAL_STYLESHEETS.indexOf(theme) > -1) {
+    href = `/static/themes/${theme}.css`
+  } else if (theme.indexOf('solarized') > -1) {
+    href = '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/solarized.min.css'
+  } else {
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${theme}.min.css`
+  }
+
+  return (
+    <Head>
+      <link key={href} rel="stylesheet" href={href} />
+    </Head>
+  )
+}
 
 export const CodeMirrorLink = () => (
-  <link
-    rel="stylesheet"
-    href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
-  />
+  <Head>
+    <link
+      key="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+    />
+  </Head>
 )
 
 export const MetaTags = () => (
-  <>
+  <Head>
     <meta charSet="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,7 +60,7 @@ export const MetaTags = () => (
     <title>Carbon</title>
     <link rel="shortcut icon" href="/static/favicon.ico" />
     <link rel="manifest" href="/static/manifest.json" />
-  </>
+  </Head>
 )
 
 /*
@@ -55,33 +73,20 @@ export default function Meta() {
     <div className="meta">
       <Head>
         <title>Carbon</title>
-        <MetaTags />
         <link rel="stylesheet" href="/static/react-crop.css" />
-        <link
-          rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/seti.min.css"
-        />
-        <CodeMirrorLink />
-        <link
-          rel="stylesheet"
-          href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/solarized.min.css"
-        />
-        {LOCAL_STYLESHEETS.map(id => (
-          <link key={id} rel="stylesheet" href={`/static/themes/${id}.css`} />
-        ))}
-        {onBrowser
-          ? CDN_STYLESHEETS.map(theme => (
-              <link
-                key={theme.id}
-                rel="stylesheet"
-                href={
-                  theme.link ||
-                  `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${theme.id}.min.css`
-                }
-              />
-            ))
-          : null}
       </Head>
+      <MetaTags />
+      <StylesheetLink theme="seti" />
+      <CodeMirrorLink />
+      <StylesheetLink theme="seti" />
+      {LOCAL_STYLESHEETS.map(id => (
+        <StylesheetLink key={id} theme={id} />
+      ))}
+      {onBrowser
+        ? CDN_STYLESHEETS.map(theme => (
+            <StylesheetLink key={theme.id} theme={theme.link || theme.id} />
+          ))
+        : null}
       <Reset />
       <Font />
       <Typography />

@@ -5,7 +5,7 @@ import { withRouter } from 'next/router'
 import url from 'url'
 
 // Ours
-import { LOCAL_STYLESHEETS, CodeMirrorLink, MetaTags } from '../components/Meta'
+import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 
@@ -15,17 +15,10 @@ const Page = props => (
   <div>
     <Head>
       <title>Carbon Embeds</title>
-      <MetaTags />
-      {LOCAL_STYLESHEETS.indexOf(props.theme) > -1 ? (
-        <link rel="stylesheet" href={`/static/themes/${props.theme}.css`} />
-      ) : (
-        <link
-          rel="stylesheet"
-          href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${props.theme}.min.css`}
-        />
-      )}
-      <CodeMirrorLink />
     </Head>
+    <MetaTags />
+    <StylesheetLink theme={props.theme} />
+    <CodeMirrorLink />
     {props.children}
     <style jsx global>
       {`
