@@ -52,6 +52,11 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  getRef = ele => {
+    this.exportContainerNode = ele
+    this.props.innerRef(ele)
+  }
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -218,13 +223,7 @@ class Carbon extends React.PureComponent {
 
     return (
       <div className="section">
-        <div
-          className="export-container"
-          ref={ele => {
-            this.exportContainerNode = ele
-            this.props.innerRef(ele)
-          }}
-        >
+        <div className="export-container" ref={this.getRef}>
           {content}
           <div className="twitter-png-fix" />
         </div>
