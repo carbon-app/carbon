@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { THEMES } from '../lib/constants'
+import { THEMES, THEMES_HASH } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
@@ -12,10 +12,10 @@ export const StylesheetLink = ({ theme }) => {
   let href
   if (LOCAL_STYLESHEETS.indexOf(theme) > -1) {
     href = `/static/themes/${theme}.css`
-  } else if (theme.indexOf('solarized') > -1) {
-    href = '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/solarized.min.css'
   } else {
-    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${theme}.min.css`
+    const themeDef = THEMES_HASH[theme]
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${themeDef &&
+      (themeDef.link || themeDef.id)}.min.css`
   }
 
   return (
@@ -78,14 +78,11 @@ export default function Meta() {
       <MetaTags />
       <StylesheetLink theme="seti" />
       <CodeMirrorLink />
-      <StylesheetLink theme="seti" />
       {LOCAL_STYLESHEETS.map(id => (
         <StylesheetLink key={id} theme={id} />
       ))}
       {onBrowser
-        ? CDN_STYLESHEETS.map(theme => (
-            <StylesheetLink key={theme.id} theme={theme.link || theme.id} />
-          ))
+        ? CDN_STYLESHEETS.map(theme => <StylesheetLink key={theme.id} theme={theme.id} />)
         : null}
       <Reset />
       <Font />
