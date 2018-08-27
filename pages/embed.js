@@ -12,7 +12,7 @@ import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
 
 const Page = props => (
-  <div>
+  <React.Fragment>
     <Head>
       <title>Carbon Embeds</title>
     </Head>
@@ -30,7 +30,7 @@ const Page = props => (
         }
       `}
     </style>
-  </div>
+  </React.Fragment>
 )
 
 class Embed extends React.Component {
