@@ -10,7 +10,7 @@ const size = 24
 
 function renderCopyButton({ copied }) {
   return (
-    <button>
+    <button aria-label="Copy Button">
       {copied ? (
         <CheckMark color={COLORS.GRAY} width={size} height={size} />
       ) : (
@@ -39,6 +39,7 @@ export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
     {theme === 'bw' ? <ControlsBW /> : <Controls />}
     <div className="window-title-container">
       <input
+        aria-label="Image Title"
         value={titleBar}
         type="text"
         spellCheck="false"
