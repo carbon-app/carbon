@@ -21,5 +21,10 @@ module.exports = {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'import/no-unresolved': 2
+  },
+  settings: {
+    react: {
+      version: '16.4'
+    }
   }
 }

@@ -3,29 +3,24 @@ import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
 import url from 'url'
+import morph from 'morphmorph'
 
 // Ours
-import { LOCAL_STYLESHEETS, CodeMirrorLink, MetaTags } from '../components/Meta'
+import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
-
 import { getQueryStringState } from '../lib/routing'
 
+const isInIFrame = morph.get('parent.window.parent')
+
 const Page = props => (
-  <div>
+  <React.Fragment>
     <Head>
       <title>Carbon Embeds</title>
-      <MetaTags />
-      {LOCAL_STYLESHEETS.indexOf(props.theme) > -1 ? (
-        <link rel="stylesheet" href={`/static/themes/${props.theme}.css`} />
-      ) : (
-        <link
-          rel="stylesheet"
-          href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${props.theme}.min.css`}
-        />
-      )}
-      <CodeMirrorLink />
     </Head>
+    <MetaTags />
+    <StylesheetLink theme={props.theme} />
+    <CodeMirrorLink />
     {props.children}
     <style jsx global>
       {`
@@ -37,7 +32,7 @@ const Page = props => (
         }
       `}
     </style>
-  </div>
+  </React.Fragment>
 )
 
 class Embed extends React.Component {
@@ -56,13 +51,27 @@ class Embed extends React.Component {
 
     this.setState({
       ...initialState,
+      id: query.id,
       copyable: queryParams.copy !== false,
       readOnly: queryParams.readonly !== false,
       mounted: true
     })
   }
 
-  updateCode = code => this.setState({ code })
+  updateCode = code => {
+    this.setState({ code })
+
+    const iFrame = isInIFrame(window)
+    if (iFrame) {
+      iFrame.postMessage(
+        {
+          id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
+          code
+        },
+        '*'
+      )
+    }
+  }
 
   render() {
     return (
