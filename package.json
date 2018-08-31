@@ -29,6 +29,7 @@
     "graphql": "^0.13.2",
     "highlight.js": "^9.12.0",
     "lodash.debounce": "^4.0.8",
+    "lodash.omit": "^4.5.0",
     "match-sorter": "^2.2.0",
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
