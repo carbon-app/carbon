@@ -61,10 +61,11 @@ class Embed extends React.Component {
   updateCode = code => {
     this.setState({ code })
 
-    if (isInIFrame(window)) {
-      window.parent.window.parent.postMessage(
+    const iFrame = isInIFrame(window)
+    if (iFrame) {
+      iFrame.postMessage(
         {
-          id: this.state.id || 'carbon',
+          id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
           code
         },
         '*'
