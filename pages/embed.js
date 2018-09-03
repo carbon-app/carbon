@@ -12,6 +12,15 @@ import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
 
 const isInIFrame = morph.get('parent.window.parent')
+const getParent = win => {
+  const iFrame = isInIFrame(win)
+
+  if (iFrame) {
+    return iFrame
+  }
+
+  return win.parent
+}
 
 const Page = props => (
   <React.Fragment>
@@ -49,35 +58,43 @@ class Embed extends React.Component {
     const queryParams = getQueryStringState(query)
     const initialState = Object.keys(queryParams).length ? queryParams : {}
 
-    this.setState({
-      ...initialState,
-      id: query.id,
-      copyable: queryParams.copy !== false,
-      readOnly: queryParams.readonly !== false,
-      mounted: true
-    })
+    this.setState(
+      {
+        ...initialState,
+        id: query.id,
+        copyable: queryParams.copy !== false,
+        readOnly: queryParams.readonly !== false,
+        mounted: true
+      },
+      this.postMessage
+    )
   }
 
-  updateCode = code => {
-    this.setState({ code })
+  ref = React.createRef()
 
-    const iFrame = isInIFrame(window)
-    if (iFrame) {
-      iFrame.postMessage(
-        {
-          id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
-          code
-        },
-        '*'
-      )
-    }
+  postMessage = () => {
+    getParent(window).postMessage(
+      JSON.stringify({
+        // Used by embed provider
+        src: window.location.toString(),
+        context: 'iframe.resize',
+        height: this.ref.current.exportContainerNode.offsetHeight,
+        // Carbon specific data
+        id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
+        code: this.state.code
+      }),
+      '*'
+    )
   }
+
+  updateCode = code => this.setState({ code }, this.postMessage)
 
   render() {
     return (
       <Page theme={this.state.theme}>
         {this.state.mounted && (
           <Carbon
+            ref={this.ref}
             config={this.state}
             readOnly={this.state.readOnly}
             copyable={this.state.copyable}
