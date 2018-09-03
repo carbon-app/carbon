@@ -78,16 +78,23 @@ class Embed extends React.Component {
         // Used by embed provider
         src: window.location.toString(),
         context: 'iframe.resize',
-        height: this.ref.current.exportContainerNode.offsetHeight,
-        // Carbon specific data
-        id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
-        code: this.state.code
+        height: this.ref.current.exportContainerNode.offsetHeight
       }),
       '*'
     )
   }
 
-  updateCode = code => this.setState({ code }, this.postMessage)
+  updateCode = code => {
+    this.setState({ code }, this.postMessage)
+
+    getParent(window).postMessage(
+      {
+        id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
+        code
+      },
+      '*'
+    )
+  }
 
   render() {
     return (
