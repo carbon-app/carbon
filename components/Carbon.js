@@ -167,6 +167,16 @@ class Carbon extends React.PureComponent {
               box-shadow: none;
             }
 
+            .container :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumber),
+            .container :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumbers) {
+              background-color: #fdf6e3 !important;
+            }
+
+            .container :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumber),
+            .container :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumbers) {
+              background-color: #002b36 !important;
+            }
+
             .container :global(.cm-s-solarized.cm-s-light) {
               text-shadow: #eee8d5 0 1px;
             }
