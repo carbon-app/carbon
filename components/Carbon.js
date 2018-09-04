@@ -159,6 +159,7 @@ class Carbon extends React.PureComponent {
               background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==);
             }
 
+            /* TODO move the theme specific styles out of this component */
             .container :global(.cm-s-dracula .CodeMirror-cursor) {
               border-left: solid 2px #159588;
             }
