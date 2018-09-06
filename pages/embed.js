@@ -9,7 +9,7 @@ import morph from 'morphmorph'
 // Ours
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
-import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
+import { DEFAULT_CODE, DEFAULT_SETTINGS, GA_TRACKING_ID } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
 
 const isInIFrame = morph.get('parent.window.parent')
@@ -70,11 +70,11 @@ class Embed extends React.Component {
       this.postMessage
     )
 
+    ReactGA.initialize(GA_TRACKING_ID)
     ReactGA.event({
       category: 'Embed',
-      action: 'mount',
-      value: document.referrer,
-      label: 'Iframe parent URL',
+      action: 'iframe:mount',
+      label: document.referrer,
       nonInteraction: true
     })
   }
