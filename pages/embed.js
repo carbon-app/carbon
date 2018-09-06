@@ -1,4 +1,5 @@
 // Theirs
+import ReactGA from 'react-ga'
 import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
@@ -68,6 +69,14 @@ class Embed extends React.Component {
       },
       this.postMessage
     )
+
+    ReactGA.event({
+      category: 'Embed',
+      action: 'mount',
+      value: document.referrer,
+      label: 'Iframe parent URL',
+      nonInteraction: true
+    })
   }
 
   ref = React.createRef()
