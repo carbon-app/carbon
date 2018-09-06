@@ -1,19 +1,10 @@
 import Head from 'next/head'
-import Router from 'next/router'
-import ReactGA from 'react-ga'
 import { THEMES, THEMES_HASH } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
 import { GA_TRACKING_ID } from '../lib/constants'
-
-Router.onRouteChangeComplete = () => {
-  if (process.env.NODE_ENV === 'production') {
-    ReactGA.initialize(GA_TRACKING_ID)
-    ReactGA.pageview(window.location.pathname)
-  }
-}
 
 const LOCAL_STYLESHEETS = ['one-dark', 'verminal', 'night-owl', 'nord']
 
