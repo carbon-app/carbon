@@ -61,7 +61,7 @@
     "hex2rgb": "^2.2.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
-    "now": "^11.1.7",
+    "now": "^11.4.2",
     "webpack": "^3.10.0"
   },
   "lint-staged": {
