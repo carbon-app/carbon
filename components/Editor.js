@@ -16,6 +16,7 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
+import ExportButton from './ExportButton'
 import {
   THEMES,
   THEMES_HASH,
@@ -37,8 +38,9 @@ import { getState, escapeHtml, unescapeHtml } from '../lib/util'
 const saveButtonOptions = {
   button: true,
   color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
-  list: ['png', 'svg', 'open ↗'].map(id => ({ id, name: id.toUpperCase() }))
+  selected: { id: 'SAVE_IMAGE', name: 'Export Image' },
+  list: ['png', 'svg', 'copy embed', 'open ↗'].map(id => ({ id, name: id.toUpperCase() })),
+  itemWrapper: props => <ExportButton {...props} />
 }
 
 class Editor extends React.Component {
