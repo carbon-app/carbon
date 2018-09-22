@@ -331,6 +331,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "Jaredk3nt",
+      "name": "Jared Jones",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6362515?v=4",
+      "profile": "https://danggoodcode.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
