@@ -29,7 +29,10 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE
+  DEFAULT_LANGUAGE,
+  TEMPLATES,
+  TEMPLATES_HASH,
+  DEFAULT_TEMPLATE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getState, escapeHtml, unescapeHtml } from '../lib/util'
@@ -61,6 +64,7 @@ class Editor extends React.Component {
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
+    this.updateTemplate = this.updateTemplate.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
@@ -253,6 +257,14 @@ class Editor extends React.Component {
     }
   }
 
+  updateTemplate(template) {
+    const { id, name, ...rest } = template
+    this.setState({
+      ...rest,
+      template: id
+    })
+  }
+
   render() {
     if (this.state.loading) {
       return (
@@ -272,6 +284,11 @@ class Editor extends React.Component {
       <React.Fragment>
         <div className="editor">
           <Toolbar>
+            <Dropdown
+              selected={TEMPLATES_HASH[this.state.template] || TEMPLATES_HASH[DEFAULT_TEMPLATE]}
+              list={TEMPLATES}
+              onChange={this.updateTemplate}
+            />
             <Dropdown
               selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
               list={THEMES}
