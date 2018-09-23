@@ -2,7 +2,7 @@ import React from 'react'
 
 import CopyButton from './CopyButton'
 import { COLORS } from '../lib/constants'
-import { Controls, ControlsBW } from './svg/Controls'
+import { Controls, ControlsBW, ControlsWin } from './svg/Controls'
 import CopySVG from './svg/Copy'
 import CheckMark from './svg/Checkmark'
 
@@ -36,7 +36,7 @@ function renderCopyButton({ copied }) {
 
 export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
   <div className="window-controls">
-    {theme === 'bw' ? <ControlsBW /> : <Controls />}
+    {theme === 'bw' ? <ControlsBW /> : theme === 'win' ? <ControlsWin /> : <Controls />}
     <div className="window-title-container">
       <input
         aria-label="Image Title"
