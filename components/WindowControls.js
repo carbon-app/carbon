@@ -2,7 +2,7 @@ import React from 'react'
 import { useCopyTextHandler } from 'actionsack'
 
 import { COLORS } from '../lib/constants'
-import { Controls, ControlsBW } from './svg/Controls'
+import { Controls, ControlsBW, ControlsWin } from './svg/Controls'
 import CopySVG from './svg/Copy'
 import CheckMark from './svg/Checkmark'
 
@@ -38,7 +38,7 @@ const CopyButton = React.memo(function CopyButton({ text }) {
 
 export default ({ theme, copyable, code, light }) => (
   <div className="window-controls">
-    {theme === 'bw' ? <ControlsBW /> : <Controls />}
+    {theme === 'bw' ? <ControlsBW /> : theme === 'win' ? <ControlsWin /> : <Controls />}
     <div className="window-title-container">
       <input aria-label="Image Title" type="text" spellCheck="false" />
     </div>
