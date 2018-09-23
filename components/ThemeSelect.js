@@ -1,8 +1,8 @@
 import React from 'react'
-import { None, BW, Sharp } from './svg/WindowThemes'
+import { None, BW, Sharp, Win } from './svg/WindowThemes'
 import { COLORS } from '../lib/constants'
 
-const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
+const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, win: Win }
 export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 class ThemeSelect extends React.Component {

@@ -111,3 +111,35 @@ export const None = () => (
     </g>
   </svg>
 )
+
+export const Win = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="50"
+    height="50"
+    viewBox="0 0 81 81"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+  >
+    <defs>
+      <rect id="a1" width="81" height="81" rx="3" />
+    </defs>
+    <g fill="none" fillRule="evenodd">
+      <mask id="b1" fill="white">
+        <use xlinkHref="#a1" />
+      </mask>
+      <use fill="#616161" xlinkHref="#a1" />
+      <g transform="translate(0 32)" mask="url(#b1)">
+        <path
+          fill="#000000"
+          fillRule="nonzero"
+          d="M66.0458013,46.1092762 C66.0458013,48.3193105 64.2622787,50.1077029 62.050805,50.1077029 L0.174089069,50.1077029 L0.174089069,6.16868499 C0.174089069,0.174657534 0.174089069,0.174657534 0.174089069,0.174657534 L66.0458013,0.174657534 L66.0458013,46.1092762 Z"
+        />
+        <g transform="translate(5 12.5)">
+          <rect x="0" y="0" width="8" height="8" stroke="#ffffff" strokeWidth="1" />
+          <line x1="37" y1="0" x2="45" y2="8" stroke="#ffffff" strokeWidth="1" />
+          <line x1="37" y1="8" x2="45" y2="0" stroke="#ffffff" strokeWidth="1" />
+        </g>
+      </g>
+    </g>
+  </svg>
+)

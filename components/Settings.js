@@ -185,7 +185,7 @@ class Settings extends React.Component {
               top: 44px;
               left: 0;
               border: 1px solid ${COLORS.SECONDARY};
-              width: 184px;
+              width: 242px;
               border-radius: 3px;
               background: ${COLORS.BLACK};
             }
