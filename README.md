@@ -46,14 +46,23 @@ After you've customized your image you can either Tweet a link to the image, or 
 
 ## Community
 Check out these projects our awesome community has created:
+
+##### Editor Plugins
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
+
+##### CLIs
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
+
+##### Libraries
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
+
+##### Textbooks
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
 
 ## Contribute
 PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
