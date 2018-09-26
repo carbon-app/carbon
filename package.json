@@ -59,7 +59,7 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-react": "^7.7.0",
     "hex2rgb": "^2.2.0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0",
     "lint-staged": "^7.0.4",
     "now": "^11.1.7",
     "webpack": "^3.10.0"
