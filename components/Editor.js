@@ -258,10 +258,10 @@ class Editor extends React.Component {
   }
 
   updateTemplate(template) {
-    const { id, name, ...rest } = template
+    const { name, ...rest } = template
     this.setState({
       ...rest,
-      template: id
+      template: name
     })
   }
 
