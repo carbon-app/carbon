@@ -2,7 +2,8 @@
   "projectName": "carbon",
   "projectOwner": "dawnlabs",
   "files": [
-    "README.md"
+    "README.md",
+    "README.es.md"
   ],
   "imageSize": 100,
   "commit": false,
