@@ -36,8 +36,8 @@ class Toast extends React.Component {
             .toast {
               width: 704px;
               padding: 8px 16px;
-              background: #fff;
-              color: #000;
+              color: #fff;
+              border: 1px solid #fff;
               border-radius: 2px;
               margin-top: calc(var(--x4) * -1);
             }
