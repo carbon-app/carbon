@@ -4,16 +4,17 @@ const key = 'CARBON_DAWN_TOAST'
 
 class Toast extends React.Component {
   state = {
-    open: true
+    open: false
   }
 
-  close = () => this.setState({ open: false })
+  close = () => {
+    this.setState({ open: false })
+    window.localStorage.setItem(key, true)
+  }
 
   componentDidMount() {
-    if (window.localStorage.getItem(key)) {
-      this.close()
-    } else {
-      window.localStorage.setItem(key, true)
+    if (!window.localStorage.getItem(key)) {
+      this.setState({ open: true })
     }
   }
 
