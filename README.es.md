@@ -78,7 +78,7 @@ Carbon es un proyecto de <a href="http://dawnlabs.io/"><img width="8%" src="http
 
 ## Contribuyentes
 
-Gracias a todas estas personas maravillosas ([emoji key] (https://github.com/kentcdodds/all-contributors#emoji-key)):
+Gracias a todas estas personas maravillosas ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
