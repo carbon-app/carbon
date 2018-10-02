@@ -8,7 +8,7 @@ import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { validateColor } from '../lib/colors'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
-class BackgroundSelect extends React.PureComponent {
+class BackgroundSelect extends React.Component {
   constructor(props) {
     super(props)
     this.state = { isVisible: false, mounted: false }
