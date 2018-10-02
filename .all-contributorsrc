@@ -2,7 +2,8 @@
   "projectName": "carbon",
   "projectOwner": "dawnlabs",
   "files": [
-    "README.md"
+    "README.md",
+    "README.es.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -330,6 +331,16 @@
       "profile": "https://twitter.com/bberrycarmen",
       "contributions": [
         "doc"
+      ]
+    },
+    {
+      "login": "ucdstudent95618",
+      "name": "Miguel Salazar",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/19369949?v=4",
+      "profile": "https://www.linkedin.com/in/miguel-salazar-823b07a1/",
+      "contributions": [
+        "doc",
+        "translation"
       ]
     }
   ],
