@@ -34,7 +34,6 @@
     "ms": "^2.0.0",
     "next": "^7.0.0",
     "next-offline": "^3.0.1",
-    "prettier": "^1.14.3",
     "react": "^16.5.2",
     "react-addons-shallow-compare": "^15.6.2",
     "react-click-outside": "^3.0.0",
@@ -62,6 +61,7 @@
     "husky": "^1.0.1",
     "lint-staged": "^7.3.0",
     "now": "^11.4.6",
+    "prettier": "^1.14.3",
     "webpack": "^4.20.2"
   },
   "lint-staged": {
