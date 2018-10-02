@@ -12,7 +12,6 @@
     "deploy": "now",
     "prettier": "prettier --config .prettierrc --write {.,components,api,lib,pages}/*.js {components,api,lib,pages}/**/*.js",
     "lint": "eslint components/*.js lib/*.js pages/*.js api/handlers/*.js api/*.js",
-    "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
@@ -88,5 +87,10 @@
   "bugs": {
     "url": "https://github.com/dawnlabs/carbon/issues"
   },
-  "homepage": "https://dawnlabs.io/carbon"
+  "homepage": "https://dawnlabs.io/carbon",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run contrib:build && git add README.md && lint-staged"
+    }
+  }
 }
