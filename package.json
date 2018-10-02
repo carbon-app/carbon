@@ -26,6 +26,9 @@
     "dom-to-image": "^2.5.2",
     "downshift": "^2.0.0",
     "dropperx": "0.2.1",
+    "generator-code": "^1.1.38",
+    "generator-license": "^5.4.0",
+    "generator-modules": "^1.0.1",
     "graphql": "^0.13.2",
     "gulp-yarn": "^2.0.0",
     "highlight.js": "^9.12.0",
@@ -52,7 +55,8 @@
     "resize-observer-polyfill": "^1.5.0",
     "tohash": "^1.0.2",
     "url": "^0.11.0",
-    "yeoman-generator": "^3.1.1"
+    "yeoman-generator": "^3.1.1",
+    "yo": "^2.0.5"
   },
   "devDependencies": {
     "all-contributors-cli": "^5.0.0",
