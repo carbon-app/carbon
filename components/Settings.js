@@ -12,7 +12,7 @@ import Collapse from './Collapse'
 import { COLORS } from '../lib/constants'
 import { toggle, formatCode } from '../lib/util'
 
-class Settings extends React.Component {
+class Settings extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {

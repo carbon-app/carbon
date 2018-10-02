@@ -7,6 +7,7 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
 import shallowCompare from 'react-addons-shallow-compare'
+import omit from 'lodash.omit'
 
 // Ours
 import Button from './Button'
@@ -270,6 +271,9 @@ class Editor extends React.Component {
         </div>
       )
     }
+
+    const config = omit(this.state, ['code', 'aspectRatio'])
+
     return (
       <React.Fragment>
         <div className="editor">
@@ -297,7 +301,7 @@ class Editor extends React.Component {
               aspectRatio={this.state.aspectRatio}
             />
             <Settings
-              {...this.state}
+              {...config}
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
             />

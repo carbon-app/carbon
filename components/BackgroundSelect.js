@@ -1,6 +1,7 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import { SketchPicker } from 'react-color'
+import shallowCompare from 'react-addons-shallow-compare'
 import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
@@ -18,6 +19,13 @@ class BackgroundSelect extends React.PureComponent {
 
   componentDidMount() {
     this.setState({ mounted: true })
+  }
+
+  shouldComponentUpdate(prevProps, prevState) {
+    return (
+      prevState.isVisible !== this.state.isVisible ||
+      (prevState.isVisible && shallowCompare(this, prevProps, prevState))
+    )
   }
 
   toggle() {
