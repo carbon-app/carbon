@@ -1,8 +1,4 @@
-node_modules
-.env
-.next
-out
-cypress/videos
-cypress/screenshots
-.idea
-.DS_Store
+.tmp/
+coverage/
+dist/
+node_modules/

@@ -342,6 +342,34 @@
         "doc",
         "translation"
       ]
+    },
+    {
+      "login": "edwinfrc",
+      "name": "edwinfrc",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/10235189?v=4",
+      "profile": "https://github.com/edwinfrc",
+      "contributions": [
+        "blog",
+        "bug",
+        "code",
+        "design",
+        "doc",
+        "eventOrganizing",
+        "example",
+        "financial",
+        "fundingFinding",
+        "ideas",
+        "infra",
+        "platform",
+        "plugin",
+        "review",
+        "talk",
+        "test",
+        "tool",
+        "translation",
+        "tutorial",
+        "video"
+      ]
     }
   ],
   "repoType": "github"
