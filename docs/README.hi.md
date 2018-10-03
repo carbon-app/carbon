@@ -1,84 +1,87 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
+
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
-[![Siguenos en Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-## Introducción
+##### अनुवाद
+[Español](/README.es.md)
+[English](/README.md)
 
-¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [de](https://twitter.com/reactjs/status/890511993261654017)[esas](https://twitter.com/notquiteleo/status/873483329345028096)[capturas de pantalla](https://twitter.com/zeithq/status/805779711154647040) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorar en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, Qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
+## प्रस्तावना
 
-Visite [carbon.now.sh](https://carbon.now.sh) o lea [nuestra publicación] (https://dawnlabs.io/blog/carbon/) para obtener más información sobre el proyecto.
+आप ट्विटर पर देखे गए [उन](https://twitter.com/reactjs/status/890511993261654017) [सभी](https://twitter.com/dan_abramov/status/890191815567175680) [कोड](https://twitter.com/notquiteleo/status/873483329345028096) [स्क्रीनशॉट](https://twitter.com/zeithq/status/805779711154647040) को जानते हैं? हालांकि कोड आमतौर पर प्रभावशाली है, हमने सौंदर्य विभाग में सुधार के लिए जगह देखी। कार्बन आपके स्रोत कोड की सुंदर छवियों को बनाना और साझा करना आसान बनाता है। तो आप किसका इंतज़ार कर रहे हैं? अपने सभी अनुयायियों को अपने नए डिजाइन कौशल के साथ प्रभावित करें।
 
-## Caracteristicas
+परियोजना के बारे में अधिक जानने के लिए [carbon.now.sh](https://carbon.now.sh) पर जाएं या हमारी [पोस्ट](https://dawnlabs.io/blog/carbon/) पढ़ें।
 
-* **Importar de GitHub gist**. Simplemente agregue un ID de gitHub gist a la url
-* **Personalización**. Personaliza cosas como el tema de sintaxis de tu imagen, el estilo de la ventana y más
-* **Comparte rápidamente**. Guarde su imagen o twittee un enlace con un clic
+## विशेषताएं
 
-## Ejemplo
+* **GitHub gist से आयात करें**. बस यूआरएल में एक GitHub gist आईडी संलग्न करें
+* **अनुकूलन**. थीम, विंडो शैली आदि जैसी चीजों को कस्टमाइज़ करें
+* **जल्दी से साझा करें**. अपनी छवि को सहेजें या एक क्लिक के साथ एक लिंक ट्वीट करें
+
+## उदाहरण
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## Uso
+## प्रयोग
 
-#### Importar
+#### Import
 
-Hay algunas formas diferentes de importar código en Carbon:
-- Coloca un archivo en el editor
-- Agregar una ID de GitHub gist a la url (por ejemplo, `carbon.now.sh/GIST_ID_HERE`)
-- Pega tu código directamente
+कार्बन में कोड import करने के कुछ अलग तरीके हैं:
+- एक फ़ाइल को editor पर छोड़ दें
+- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें  (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- अपना कोड सीधे paste
 
-#### Personalización
+#### अनुकूलन
 
-Una vez que tenga todo su código en Carbon, puede personalizar su imagen cambiando el tema de sintaxis, el color de fondo, el tema de la ventana o el relleno.
+एक बार जब आप अपना पूरा कोड कार्बन में प्राप्त कर लेंगे, तो आप सिंटैक्स थीम, पृष्ठभूमि रंग, विंडो थीम या पैडिंग को बदलकर अपनी छवि को कस्टमाइज़ कर सकते हैं।
 
+#### Export/Sharing
 
+अपनी छवि को अनुकूलित करने के बाद आप या तो छवि के लिंक को ट्वीट कर सकते हैं, या इसे सीधे सहेज सकते हैं।
 
-#### Exportar/Compartir
+## समुदाय
+इन परियोजनाओं को देखें हमारे भयानक समुदाय ने बनाया है:
 
-Después de que haya personalizado su imagen, puede Tweet un enlace a la imagen, o guardarlo directamente.
-
-## Comunidad
-Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
-
-##### Complementos del editor
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Abra la selección en su archivo IntelliJ IDEA actual en Carbon a través de un menú contextual
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Abre tu archivo Atom actual en Carbon con `shift-cmd-A`
-- [Código VS `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Abre tu actual archivo VS Code en Carbon con el comando `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Abre la selección en tu archivo Sublime Text 3 actual con una clave de límite personalizada
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Abre la selección en tu actual Vim / Neovim usando la función `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Abre la selección en tu Emacs actual usando la función interactiva ` carbon-now-sh`
+##### Editor Plugins
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - एक context menu के माध्यम से कार्बन में अपनी वर्तमान IntelliJ IDEA फ़ाइल में चयन खोलें
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A` के साथ कार्बन में अपनी वर्तमान एटम फ़ाइल खोलें
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - कार्बन में कमांड `carbon` के साथ अपनी वर्तमान VS Code फ़ाइल खोलें
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - एक कस्टम बाध्य कुंजी के साथ अपने वर्तमान sublime text 3 फ़ाइल में चयन खोलें
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - फ़ंक्शन `CarbonNowSh()` का उपयोग करके अपने वर्तमान Vim/Neovim में चयन को खोलें
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) -  इंटरैक्टिव फ़ंक्शन `carbon-now-sh` का उपयोग करके अपने वर्तमान Emacs में चयन को खोलें
 
 ##### CLIs
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abre un archivo en Carbon o descárgalo directamente usando ` carbon-now`, con un modo interactivo, resaltado selectivo y más
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - कार्बन में एक फ़ाइल खोलें या इसे `carbon-now` का उपयोग करके सीधे डाउनलोड करें, जिसमें एक इंटरैक्टिव मोड, चुनिंदा हाइलाइटिंग और बहुत कुछ शामिल है
 
 ##### Libraries
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iterativamente manipule la estética de la imagen en `R` y abra en Carbon o descargue directamente.
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R` में छवि सौंदर्यशास्त्र का आंशिक रूप से उपयोग करें और या तो कार्बन में खुलें या सीधे डाउनलोड करें।
 
-##### Libros de texto
-- ["CS 101 - Una introducción al pensamiento computacional"](https://itunes.apple.com/us/book/id1435714196) - un libro de texto de ciencias de la computación por Sarbo Roy.
+##### पाठ्यपुस्तकें
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - सरबो रॉय द्वारा एक कंप्यूटर विज्ञान पाठ्यपुस्तक।
 
-## Contribuir
-¡Bienvenido! Consulte nuestro [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) para obtener más detalles.
+## Contribute
+PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) देखें।
 
-## Gracias a
-[▲ ZEIT](https://zeit.co/) para patrocinar el alojamiento de Carbon.
+## धन्यवाद
+[ ▲ ZEIT ](https://zeit.co/) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
 
-## Autores
-Carbon es un proyecto de <a href="http://dawnlabs.io/"><img width="8%" src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+## लेखक
+कार्बन <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> द्वारा एक परियोजना है
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contribuyentes
+## योगदानकर्ता
 
-Gracias a todas estas personas maravillosas ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+इन सभी अद्भुत लोगों के लिए धन्यवाद ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
@@ -88,4 +91,5 @@ Gracias a todas estas personas maravillosas ([emoji key](https://github.com/kent
 | [<img src="https://avatars1.githubusercontent.com/u/10941033?v=4" width="100px;"/><br /><sub><b>g3r4n</b></sub>](https://github.com/g3r4n)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=g3r4n "Code") | [<img src="https://avatars0.githubusercontent.com/u/55830?v=4" width="100px;"/><br /><sub><b>Mat Gadd</b></sub>](http://drarok.com/)<br />[🐛](https://github.com/dawnlabs/carbon/issues?q=author%3ADrarok "Bug reports") [💻](https://github.com/dawnlabs/carbon/commits?author=Drarok "Code") | [<img src="https://avatars1.githubusercontent.com/u/11805775?v=4" width="100px;"/><br /><sub><b>Brad Davies</b></sub>](https://bradlab.co.uk)<br />[🐛](https://github.com/dawnlabs/carbon/issues?q=author%3Avarbrad "Bug reports") [💻](https://github.com/dawnlabs/carbon/commits?author=varbrad "Code") | [<img src="https://avatars1.githubusercontent.com/u/9087886?v=4" width="100px;"/><br /><sub><b>Rafael Câmara</b></sub>](http://www.rafaelcamaram.com/)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=rafaelcamaram "Code") | [<img src="https://avatars1.githubusercontent.com/u/2212006?v=4" width="100px;"/><br /><sub><b>Gleb Bahmutov</b></sub>](https://glebbahmutov.com/)<br />[⚠️](https://github.com/dawnlabs/carbon/commits?author=bahmutov "Tests") [🔧](#tool-bahmutov "Tools") | [<img src="https://avatars2.githubusercontent.com/u/10677789?v=4" width="100px;"/><br /><sub><b>Iván Munguía</b></sub>](https://ivan-munguia.netlify.com)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=warborn "Code") | [<img src="https://avatars1.githubusercontent.com/u/2755722?v=4" width="100px;"/><br /><sub><b>Dillon Mulroy</b></sub>](https://dillonmulroy.com)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=dmmulroy "Code") |
 | [<img src="https://avatars2.githubusercontent.com/u/253398?v=4" width="100px;"/><br /><sub><b>Nihad Abbasov</b></sub>](https://github.com/NARKOZ)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=NARKOZ "Code") | [<img src="https://avatars1.githubusercontent.com/u/7328625?v=4" width="100px;"/><br /><sub><b>Hugo Torzuoli</b></sub>](https://torzuolih.github.io)<br />[📖](https://github.com/dawnlabs/carbon/commits?author=TorzuoliH "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/1906977?v=4" width="100px;"/><br /><sub><b>Bruno C. Couto</b></sub>](https://github.com/imbrn)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=imbrn "Code") | [<img src="https://avatars2.githubusercontent.com/u/13263073?v=4" width="100px;"/><br /><sub><b>Mark Molnar</b></sub>](https://github.com/molnarmark)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=molnarmark "Code") | [<img src="https://avatars1.githubusercontent.com/u/1459450?v=4" width="100px;"/><br /><sub><b>Takahiko Inayama</b></sub>](https://www.behance.net/tetra2000)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=TETRA2000 "Code") | [<img src="https://avatars1.githubusercontent.com/u/14319020?v=4" width="100px;"/><br /><sub><b>François Martin</b></sub>](https://github.com/martinfrancois)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=martinfrancois "Code") | [<img src="https://avatars3.githubusercontent.com/u/3630346?v=4" width="100px;"/><br /><sub><b>Raphael Amorim</b></sub>](http://raphamorim.io)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=raphamorim "Code") |
 | [<img src="https://avatars0.githubusercontent.com/u/27292?v=4" width="100px;"/><br /><sub><b>Camron Flanders</b></sub>](http://camronflanders.com)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=camflan "Code") | [<img src="https://avatars0.githubusercontent.com/u/6516758?v=4" width="100px;"/><br /><sub><b>Eric Adamski</b></sub>](https://ericadamski.github.com)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=ericadamski "Code") | [<img src="https://avatars0.githubusercontent.com/u/4671080?v=4" width="100px;"/><br /><sub><b>Winner Crespo</b></sub>](http://winnercrespo.com)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=wistcc "Code") [🎨](#design-wistcc "Design") | [<img src="https://avatars3.githubusercontent.com/u/672237?v=4" width="100px;"/><br /><sub><b>Milos</b></sub>](http://twitter.com/mixn)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=mixn "Code") [🔧](#tool-mixn "Tools") | [<img src="https://avatars1.githubusercontent.com/u/29014463?v=4" width="100px;"/><br /><sub><b>Yashu Mittal</b></sub>](https://mittalyashu.now.sh/)<br />[💻](https://github.com/dawnlabs/carbon/commits?author=mittalyashu "Code") | [<img src="https://avatars0.githubusercontent.com/u/22792183?v=4" width="100px;"/><br /><sub><b>Rachel M. Carmena</b></sub>](https://twitter.com/bberrycarmen)<br />[📖](https://github.com/dawnlabs/carbon/commits?author=rachelcarmena "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/19369949?v=4" width="100px;"/><br /><sub><b>Miguel Salazar</b></sub>](https://www.linkedin.com/in/miguel-salazar-823b07a1/)<br />[📖](https://github.com/dawnlabs/carbon/commits?author=ucdstudent95618 "Documentation") [🌍](#translation-ucdstudent95618 "Translation") |
+| [<img src="https://avatars3.githubusercontent.com/u/19145803?v=4" width="100px;"/><br /><sub><b>Vyom Jain</b></sub>](https://www.linkedin.com/in/vyom-jain-233a28139)<br />[📖](https://github.com/dawnlabs/carbon/commits?author=vvyomjjain "Documentation") [🌍](#translation-vvyomjjain "Translation") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->

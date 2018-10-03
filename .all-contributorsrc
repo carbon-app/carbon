@@ -3,7 +3,8 @@
   "projectOwner": "dawnlabs",
   "files": [
     "README.md",
-    "README.es.md"
+    "docs/README.es.md",
+    "docs/README.hi.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -338,6 +339,16 @@
       "name": "Miguel Salazar",
       "avatar_url": "https://avatars0.githubusercontent.com/u/19369949?v=4",
       "profile": "https://www.linkedin.com/in/miguel-salazar-823b07a1/",
+      "contributions": [
+        "doc",
+        "translation"
+      ]
+    },
+    {
+      "login": "vvyomjjain",
+      "name": "Vyom Jain",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19145803?v=4",
+      "profile": "https://www.linkedin.com/in/vyom-jain-233a28139",
       "contributions": [
         "doc",
         "translation"

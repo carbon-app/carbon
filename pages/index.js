@@ -1,6 +1,7 @@
 // Theirs
 import React from 'react'
 import { withRouter } from 'next/router'
+import omit from 'lodash.omit'
 
 // Ours
 import Editor from '../components/Editor'
@@ -12,11 +13,7 @@ import { saveState } from '../lib/util'
 class Index extends React.Component {
   onEditorUpdate = state => {
     updateQueryString(this.props.router, state)
-    const s = { ...state }
-    delete s.code
-    delete s.backgroundImage
-    delete s.backgroundImageSelection
-    saveState(localStorage, s)
+    saveState(localStorage, omit(state, ['code', 'backgroundImage', 'backgroundImageSelection']))
   }
 
   render() {

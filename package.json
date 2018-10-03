@@ -12,7 +12,6 @@
     "deploy": "now",
     "prettier": "prettier --config .prettierrc --write {.,components,api,lib,pages}/*.js {components,api,lib,pages}/**/*.js",
     "lint": "eslint components/*.js lib/*.js pages/*.js api/handlers/*.js api/*.js",
-    "precommit": "npm run contrib:build && git add README.md && lint-staged",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
@@ -20,22 +19,22 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "codemirror": "^5.36.0",
+    "codemirror": "^5.40.2",
     "codemirror-graphql": "^0.7.1",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
-    "downshift": "^2.0.0",
+    "downshift": "^2.2.3",
     "dropperx": "0.2.1",
-    "graphql": "^0.13.2",
+    "graphql": "^14.0.2",
     "highlight.js": "^9.12.0",
     "lodash.debounce": "^4.0.8",
-    "match-sorter": "^2.2.0",
+    "lodash.omit": "^4.5.0",
+    "match-sorter": "^2.3.0",
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
     "next": "^7.0.0",
-    "next-offline": "^3.0.0",
-    "prettier": "^1.8.1",
-    "react": "16.3.*",
+    "next-offline": "^3.0.1",
+    "react": "^16.5.2",
     "react-addons-shallow-compare": "^15.6.2",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^5.1.0",
@@ -43,8 +42,8 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^5.0.0",
-    "react-dom": "16.3.*",
-    "react-image-crop": "^4.0.0",
+    "react-dom": "^16.5.2",
+    "react-image-crop": "^6.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
     "resize-observer-polyfill": "^1.5.0",
@@ -53,16 +52,17 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^5.0.0",
-    "babel-eslint": "^10.0.0",
+    "babel-eslint": "^10.0.1",
     "cypress": "^3.0.0",
-    "eslint": "^5.0.0",
+    "eslint": "^5.6.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-react": "^7.7.0",
     "hex2rgb": "^2.2.0",
-    "husky": "^1.0.0",
-    "lint-staged": "^7.0.4",
-    "now": "^11.1.7",
-    "webpack": "^3.10.0"
+    "husky": "^1.0.1",
+    "lint-staged": "^7.3.0",
+    "now": "^11.4.6",
+    "prettier": "^1.14.3",
+    "webpack": "^4.20.2"
   },
   "lint-staged": {
     "*.js": [
@@ -87,5 +87,10 @@
   "bugs": {
     "url": "https://github.com/dawnlabs/carbon/issues"
   },
-  "homepage": "https://dawnlabs.io/carbon"
+  "homepage": "https://dawnlabs.io/carbon",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run contrib:build && git add README.md && lint-staged"
+    }
+  }
 }
