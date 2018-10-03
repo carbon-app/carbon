@@ -3,8 +3,8 @@
   "projectOwner": "dawnlabs",
   "files": [
     "README.md",
-    "README.es.md",
-    "README.hi.md"
+    "docs/README.es.md",
+    "docs/README.hi.md"
   ],
   "imageSize": 100,
   "commit": false,
