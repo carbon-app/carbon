@@ -18,5 +18,9 @@
     "promptValues": {
       "publisher": "y"
     }
+  },
+  "generator-mocha": {
+    "ui": "bdd",
+    "rjs": false
   }
 }
