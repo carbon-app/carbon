@@ -112,6 +112,7 @@
     "karma-phantomjs-shim": "^1.4.0",
     "karma-webpack": "^3.0.5",
     "lint-staged": "^7.0.4",
+    "lodash": "^4.17.11",
     "mocha": "^5.2.0",
     "node-sass": "^4.5.0",
     "now": "^11.1.7",
