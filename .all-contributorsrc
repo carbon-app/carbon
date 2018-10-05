@@ -4,7 +4,8 @@
   "files": [
     "README.md",
     "docs/README.es.md",
-    "docs/README.hi.md"
+    "docs/README.hi.md",
+    "docs/README.de.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -313,7 +314,9 @@
       "profile": "http://twitter.com/mixn",
       "contributions": [
         "code",
-        "tool"
+        "tool",
+        "doc",
+        "translation"
       ]
     },
     {
