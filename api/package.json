@@ -17,7 +17,7 @@
     "morgan": "^1.8.2",
     "morphmorph": "^0.1.2",
     "now-logs": "^0.0.7",
-    "puppeteer": "1.7.0",
+    "puppeteer": "1.9.0",
     "twit": "^2.2.9",
     "unsplash-js": "^4.8.0"
   }
