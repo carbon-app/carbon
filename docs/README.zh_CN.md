@@ -10,80 +10,79 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### Translations
+##### 翻译
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.zh_CN.md)
 
-## Introduction
+## 简介
 
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码图片给人印象深刻，但就审美程度来说还有可改进的地方。Carbon可以很容易的为你的代码创建漂亮的图片。那么还等什么呢？用这个新学到的美化设计给你的followers秀一秀吧。
 
-Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs.io/blog/carbon/) to learn more about the project.
+可以访问 [carbon.now.sh](https://carbon.now.sh)或者浏览 [博客文章](https://dawnlabs.io/blog/carbon/) 了解关于这个项目更多的内容。
 
-## Features
+## 特性
 
-* **Import from GitHub gist**. Simply append a GitHub gist id to the url
-* **Customization**. Customize things like your image's syntax theme, window style, and more
-* **Share quickly**. Save your image or Tweet a link with one click
+* **GitHub gist导入**. 只需要在url后面加上github gist id就可以导入
+* **定制化**. 可定制图片的语法主题，窗口样式等
+* **所见即分享**. 点下鼠标就可以分享到推特上面
 
-## Example
+## 示例
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## Usage
+## 使用
 
-#### Import
+#### 导入
 
-There are a few different ways to import code into Carbon:
-- Drop a file onto the editor
-- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/GIST_ID_HERE`)
-- Paste your code directly
+有几种不同的方法可以将代码导入到Carbon：
+- 把文件拖到编辑器
+- 在carbon url后添加GitHub gist id(比如 `carbon.now.sh/你的gist id`)
+- 直接粘贴代码
 
-#### Customization
+#### 定制化
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.
+当你把代码导入到Carbon后，你可以定制生成的代码图片。可定制的内容有语法主题，背景颜色，窗口主题，或者padding距离。
 
-#### Export/Sharing
+#### 导出/分享
 
-After you've customized your image you can either Tweet a link to the image, or save it directly.
+当你定制完图片样式后，可以分享到推特上面，或者直接保存。
 
-## Community
-Check out these projects our awesome community has created:
+## 社区
+下面是我们社区已经创建的一些优秀的项目：
 
-##### Editor Plugins
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
+##### 编辑器插件
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 在IntelliJ IDEA中选中当前文件的一段代码到Carbon中
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 用`shift-cmd-A`命令在Carbon中导入你当前的Atom文件
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 用`carbon`命令在Carbon中导入你当前的VS Code文件
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 在Sublime Text3中选中当前文件的一段代码到Carbon中
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 用`CarbonNowSh()`函数在Carbon中导入你当前的Vim/Neovim文件
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - 用交互式函数`carbon-now-sh`在Carbon中导入你当前的Emacs文件
 
-##### CLIs
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
+##### 命令行工具
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 在Carbon中打开一个文件或者直接使用`carbon-now`下载它，特色是交互式模式，可选高亮等
 
 ##### Libraries
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - 迭代式处理`R`中的图片并在Carbon中打开，或者直接下载。
 
-##### Textbooks
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
+##### 书籍
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy写的一本计算机科学书.
 
-## Contribute
-PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
+## 贡献代码
+欢迎PRs！请阅读 [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) 了解更多.
 
-## Thanks To
-[ ▲ ZEIT ](https://zeit.co/) for sponsoring Carbon's hosting.
+## 感谢
+[ ▲ ZEIT ](https://zeit.co/) 赞助了Carbon网站的托管
 
-## Authors
-Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+## 作者
+Carbon项目由TA们发起 <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contributors
+## 贡献者
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+感谢以下所有的优秀贡献者们 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
