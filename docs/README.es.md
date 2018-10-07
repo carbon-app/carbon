@@ -42,7 +42,7 @@ Una vez que tenga todo su código en Carbon, puede personalizar su imagen cambia
 
 #### Exportar/Compartir
 
-Después de que haya personalizado su imagen, puede Tweet un enlace a la imagen, o guardarlo directamente.
+Después de que hayas personalizado tu fragmento de código puedes compartilo en un Tweet haciendo un enlace a la imagen, o guardardo la imagen directamente.
 
 ## Comunidad
 Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
