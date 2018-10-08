@@ -23,7 +23,7 @@
     "codemirror-graphql": "^0.7.1",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
-    "downshift": "^2.2.3",
+    "downshift": "^3.0.0",
     "dropperx": "0.2.1",
     "graphql": "^14.0.2",
     "highlight.js": "^9.12.0",
