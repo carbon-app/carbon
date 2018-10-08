@@ -356,6 +356,15 @@
         "doc",
         "translation"
       ]
+    },
+    {
+      "login": "raboid",
+      "name": "Sean",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3892149?v=4",
+      "profile": "https://lastblocklabs.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
