@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-remark-embed-carbon",
+  "version": "0.0.1",
+  "description": "Gatsby Remark Plugin for Embedding Carbon screenshots",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "remark",
+    "carbon"
+  ],
+  "dependencies": {
+    "unist-util-visit": "^1.1.3"
+  },
+  "scripts": {}
+}
