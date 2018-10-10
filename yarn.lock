@@ -1800,9 +1800,9 @@ component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
-compute-scroll-into-view@^1.0.2:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.8.tgz#ad0acd869dc6dc1069201532c025783a30ea177d"
+compute-scroll-into-view@^1.0.9:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.11.tgz#7ff0a57f9aeda6314132d8994cce7aeca794fecf"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -2228,11 +2228,11 @@ domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
 
-downshift@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-2.2.3.tgz#85187568455134e72025fbddd40bb9cf96c55eed"
+downshift@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-3.0.0.tgz#a18b5654a2fa65831b7db3a7f0a4260a06c650b8"
   dependencies:
-    compute-scroll-into-view "^1.0.2"
+    compute-scroll-into-view "^1.0.9"
     prop-types "^15.6.0"
 
 dropperx@0.2.1:
