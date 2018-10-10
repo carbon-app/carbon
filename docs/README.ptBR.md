@@ -46,7 +46,7 @@ Depois que você customizar a sua imagem, você pode tweetar um link para a imag
 ## Comunidade
 Confira os projetos top da nossa comunidade:
 
-##### Editor Plugins
+##### Plugins para editores de texto
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Selecione o trecho de código aberto no seu IntelliJ IDEA e o use o botão direito para abrir o menu de opções onde você pode acionar o Carbon;
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Abra o arquivo atual do seu Atom no Carbon com o comando `shift-cmd-A`;
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Abra seu arquivo do VS Code no Carbon usando o comando `carbon`;
@@ -57,10 +57,10 @@ Confira os projetos top da nossa comunidade:
 ##### CLIs
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abra um arquivo no Carbon ou faça download da imagem diretamente com `carbon-now`, apresentando um modo interativo, seleção destacada e muito mais.
 
-##### Libraries
+##### Bibliotecas
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Manipule iterativamente a estética da imagem em `R` e abra no Carbon ou faça download diretamente.
 
-##### Textbooks
+##### Livros Didáticos
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - um livro didático de ciência da computação escrito por Sarbo Roy.
 
 ## Contribua
