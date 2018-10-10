@@ -10,7 +10,7 @@
     "export": "next export",
     "test": "npm run cy:run --",
     "deploy": "now",
-    "prettier": "prettier --config .prettierrc --write {.,components,api,lib,pages}/*.js {components,api,lib,pages}/**/*.js",
+    "prettier": "prettier --config .prettierrc --write {.,components,api,lib,pages}/*.js {components,api,lib,pages,packages}/**/*.js",
     "lint": "eslint components/*.js lib/*.js pages/*.js api/handlers/*.js api/*.js",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
