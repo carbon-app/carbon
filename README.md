@@ -15,7 +15,7 @@
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
 - [简体中文](/docs/README.zh_CN.md)
-- [Português ptBR](/docs/README.br.pt.md)
+- [Português](/docs/README.br.pt.md)
 
 ## Introduction
 
