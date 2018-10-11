@@ -2,7 +2,12 @@
   "projectName": "carbon",
   "projectOwner": "dawnlabs",
   "files": [
-    "README.md"
+    "README.md",
+    "docs/README.de.md",
+    "docs/README.es.md",
+    "docs/README.hi.md",
+    "docs/README.br.pt.md",
+    "docs/README.zh_CN.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -311,7 +316,9 @@
       "profile": "http://twitter.com/mixn",
       "contributions": [
         "code",
-        "tool"
+        "tool",
+        "doc",
+        "translation"
       ]
     },
     {
@@ -330,6 +337,53 @@
       "profile": "https://twitter.com/bberrycarmen",
       "contributions": [
         "doc"
+      ]
+    },
+    {
+      "login": "ucdstudent95618",
+      "name": "Miguel Salazar",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/19369949?v=4",
+      "profile": "https://www.linkedin.com/in/miguel-salazar-823b07a1/",
+      "contributions": [
+        "doc",
+        "translation"
+      ]
+    },
+    {
+      "login": "vvyomjjain",
+      "name": "Vyom Jain",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19145803?v=4",
+      "profile": "https://www.linkedin.com/in/vyom-jain-233a28139",
+      "contributions": [
+        "doc",
+        "translation"
+      ]
+    },
+    {
+      "login": "racaljk",
+      "name": "racaljk",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5010047?v=4",
+      "profile": "http://www.cnblogs.com/racaljk/",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "raboid",
+      "name": "Sean",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3892149?v=4",
+      "profile": "https://lastblocklabs.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "izabelacborges",
+      "name": "Izabela Borges",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/19255077?v=4",
+      "profile": "http://izabelacborges.com/",
+      "contributions": [
+        "translation"
       ]
     },
     {

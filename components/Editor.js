@@ -7,6 +7,7 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
 import shallowCompare from 'react-addons-shallow-compare'
+import omit from 'lodash.omit'
 
 // Ours
 import Button from './Button'
@@ -16,6 +17,7 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
+import ExportButton from './ExportButton'
 import {
   THEMES,
   THEMES_HASH,
@@ -40,8 +42,9 @@ import { getState, escapeHtml, unescapeHtml } from '../lib/util'
 const saveButtonOptions = {
   button: true,
   color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Save Image' },
-  list: ['png', 'svg', 'open ↗'].map(id => ({ id, name: id.toUpperCase() }))
+  selected: { id: 'SAVE_IMAGE', name: 'Export Image' },
+  list: ['png', 'svg', 'copy embed', 'open ↗'].map(id => ({ id, name: id.toUpperCase() })),
+  itemWrapper: props => <ExportButton {...props} />
 }
 
 class Editor extends React.Component {
@@ -280,6 +283,9 @@ class Editor extends React.Component {
         </div>
       )
     }
+
+    const config = omit(this.state, ['code', 'aspectRatio'])
+
     return (
       <React.Fragment>
         <div className="editor">
@@ -312,7 +318,7 @@ class Editor extends React.Component {
               aspectRatio={this.state.aspectRatio}
             />
             <Settings
-              {...this.state}
+              {...config}
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
             />

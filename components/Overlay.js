@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Overlay = props => (
   <div className="dnd-container">
     {props.isOver ? <div className="dnd-overlay">{props.title}</div> : null}
