@@ -14,7 +14,7 @@
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.zh_CN.md)
+- [简体中文](/docs/README.cn.zh.md)
 - [Português](/docs/README.br.pt.md)
 
 ## Introduction
