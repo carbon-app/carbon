@@ -11,9 +11,9 @@
 
 ## Introducción
 
-¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [de](https://twitter.com/reactjs/status/890511993261654017)[esas](https://twitter.com/notquiteleo/status/873483329345028096)[capturas de pantalla](https://twitter.com/zeithq/status/805779711154647040) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorar en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, Qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
+¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [de](https://twitter.com/reactjs/status/890511993261654017)[esas](https://twitter.com/notquiteleo/status/873483329345028096)[capturas de pantalla](https://twitter.com/zeithq/status/805779711154647040) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorarlo en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
 
-Visite [carbon.now.sh](https://carbon.now.sh) o lea [nuestra publicación] (https://dawnlabs.io/blog/carbon/) para obtener más información sobre el proyecto.
+Visite [carbon.now.sh](https://carbon.now.sh) o lea [nuestra publicación](https://dawnlabs.io/case-studies/carbon) para obtener más información sobre el proyecto.
 
 ## Caracteristicas
 
@@ -42,7 +42,7 @@ Una vez que tenga todo su código en Carbon, puede personalizar su imagen cambia
 
 #### Exportar/Compartir
 
-Después de que hayas personalizado tu fragmento de código puedes compartilo en un Tweet haciendo un enlace a la imagen, o guardardo la imagen directamente.
+Después de que hayas personalizado tu fragmento de código puedes compartirlo en un Tweet haciendo un enlace a la imagen, o guardando la imagen directamente.
 
 ## Comunidad
 Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
