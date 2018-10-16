@@ -10,81 +10,78 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### Translations
-- [Español](/docs/README.es.md)
-- [हिंदी](/docs/README.hi.md)
-- [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.cn.zh.md)
-- [Português](/docs/README.br.pt.md)
+##### अनुवाद
+[Español](/README.es.md)
+[English](/README.md)
 
-## Introduction
+## प्रस्तावना
 
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+आप ट्विटर पर देखे गए [उन](https://twitter.com/reactjs/status/890511993261654017) [सभी](https://twitter.com/dan_abramov/status/890191815567175680) [कोड](https://twitter.com/notquiteleo/status/873483329345028096) [स्क्रीनशॉट](https://twitter.com/zeithq/status/805779711154647040) को जानते हैं? हालांकि कोड आमतौर पर प्रभावशाली है, हमने सौंदर्य विभाग में सुधार के लिए जगह देखी। कार्बन आपके स्रोत कोड की सुंदर छवियों को बनाना और साझा करना आसान बनाता है। तो आप किसका इंतज़ार कर रहे हैं? अपने सभी अनुयायियों को अपने नए डिजाइन कौशल के साथ प्रभावित करें।
 
-Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs.io/case-studies/carbon/) to learn more about the project.
+परियोजना के बारे में अधिक जानने के लिए [carbon.now.sh](https://carbon.now.sh) पर जाएं या हमारी [पोस्ट](https://dawnlabs.io/case-studies/carbon/) पढ़ें।
 
-## Features
+## विशेषताएं
 
-* **Import from GitHub gist**. Simply append a GitHub gist id to the url
-* **Customization**. Customize things like your image's syntax theme, window style, and more
-* **Share quickly**. Save your image or Tweet a link with one click
+* **GitHub gist से आयात करें**. बस यूआरएल में एक GitHub gist आईडी संलग्न करें
+* **अनुकूलन**. थीम, विंडो शैली आदि जैसी चीजों को कस्टमाइज़ करें
+* **जल्दी से साझा करें**. अपनी छवि को सहेजें या एक क्लिक के साथ एक लिंक ट्वीट करें
 
-## Example
+## उदाहरण
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## Usage
+## प्रयोग
 
 #### Import
 
-There are a few different ways to import code into Carbon:
-- Drop a file onto the editor
-- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/GIST_ID_HERE`)
-- Paste your code directly
+कार्बन में कोड import करने के कुछ अलग तरीके हैं:
+- एक फ़ाइल को editor पर छोड़ दें
+- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें  (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- अपना कोड सीधे paste
 
-#### Customization
+#### अनुकूलन
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.
+एक बार जब आप अपना पूरा कोड कार्बन में प्राप्त कर लेंगे, तो आप सिंटैक्स थीम, पृष्ठभूमि रंग, विंडो थीम या पैडिंग को बदलकर अपनी छवि को कस्टमाइज़ कर सकते हैं।
 
 #### Export/Sharing
 
-After you've customized your image you can either Tweet a link to the image, or save it directly.
+अपनी छवि को अनुकूलित करने के बाद आप या तो छवि के लिंक को ट्वीट कर सकते हैं, या इसे सीधे सहेज सकते हैं।
 
-## Community
-Check out these projects our awesome community has created:
+## समुदाय
+इन परियोजनाओं को देखें हमारे भयानक समुदाय ने बनाया है:
 
 ##### Editor Plugins
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - एक context menu के माध्यम से कार्बन में अपनी वर्तमान IntelliJ IDEA फ़ाइल में चयन खोलें
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A` के साथ कार्बन में अपनी वर्तमान एटम फ़ाइल खोलें
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - कार्बन में कमांड `carbon` के साथ अपनी वर्तमान VS Code फ़ाइल खोलें
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - एक कस्टम बाध्य कुंजी के साथ अपने वर्तमान sublime text 3 फ़ाइल में चयन खोलें
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - फ़ंक्शन `CarbonNowSh()` का उपयोग करके अपने वर्तमान Vim/Neovim में चयन को खोलें
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) -  इंटरैक्टिव फ़ंक्शन `carbon-now-sh` का उपयोग करके अपने वर्तमान Emacs में चयन को खोलें
 
 ##### CLIs
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - कार्बन में एक फ़ाइल खोलें या इसे `carbon-now` का उपयोग करके सीधे डाउनलोड करें, जिसमें एक इंटरैक्टिव मोड, चुनिंदा हाइलाइटिंग और बहुत कुछ शामिल है
 
 ##### Libraries
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R` में छवि सौंदर्यशास्त्र का आंशिक रूप से उपयोग करें और या तो कार्बन में खुलें या सीधे डाउनलोड करें।
 
-##### Textbooks
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
+##### पाठ्यपुस्तकें
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - सरबो रॉय द्वारा एक कंप्यूटर विज्ञान पाठ्यपुस्तक।
 
 ## Contribute
-PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
+PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) देखें।
 
-## Thanks To
-[ ▲ ZEIT ](https://zeit.co/) for sponsoring Carbon's hosting.
+## धन्यवाद
+[ ▲ ZEIT ](https://zeit.co/) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
 
-## Authors
-Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+## लेखक
+कार्बन <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> द्वारा एक परियोजना है
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contributors
+## योगदानकर्ता
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+इन सभी अद्भुत लोगों के लिए धन्यवाद ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->

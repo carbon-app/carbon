@@ -10,81 +10,74 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### Translations
-- [Español](/docs/README.es.md)
-- [हिंदी](/docs/README.hi.md)
-- [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.cn.zh.md)
-- [Português](/docs/README.br.pt.md)
+## Einführung
 
-## Introduction
+Kennen wir nicht alle [diese](https://twitter.com/dan_abramov/status/890191815567175680) [Screenshots](https://twitter.com/reactjs/status/890511993261654017) [von](https://twitter.com/notquiteleo/status/873483329345028096) [Code](https://twitter.com/zeithq/status/805779711154647040), die wir ständig auf Twitter sehen? Obwohl der Code gewöhnlich äußert beeindruckt, haben wir im ästhetischen Bereich etwas Raum für Verbesserung gesehen. Carbon ermöglicht das Erstellen und Teilen wunderschöner Bilder deines Quellcodes. Worauf wartest du also? Beeindrucke deine Follower mit deinen neu gefundenen Design Fähigkeiten.
 
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+Besuche [carbon.now.sh](https://carbon.now.sh) oder lese [unseren Post](https://dawnlabs.io/case-studies/carbon/) um mehr über das Projekt zu erfahren.
 
-Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs.io/case-studies/carbon/) to learn more about the project.
+## Feature
 
-## Features
+* **Importiere Github Gists**. Hänge einfach eine Github Gist ID der URL an
+* **Anpassungen**. Wähle zwischen unterschiedlichen Syntax Themes, Window Styles und vielen weiteren Dingen
+* **Teile sofort**. Speichere dein Bild oder tweete einen Link mit nur einem Klick
 
-* **Import from GitHub gist**. Simply append a GitHub gist id to the url
-* **Customization**. Customize things like your image's syntax theme, window style, and more
-* **Share quickly**. Save your image or Tweet a link with one click
-
-## Example
+## Beispiel
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## Usage
+## Anwendung
 
 #### Import
 
-There are a few different ways to import code into Carbon:
-- Drop a file onto the editor
-- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/GIST_ID_HERE`)
-- Paste your code directly
+Code kann man in Carbon auf unterschiedliche Weisen importieren:
+- Schiebe eine Datei in den Editor
+- Hänge eine Github Gist ID an die URL an (z.B. `carbon.now.sh/GIST_ID_HIER`)
+- Füge Code direkt aus der Zwischenablage ein
 
-#### Customization
+#### Anpassung
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.
+Wenn du deinen Code vollständig in Carbon importiert hast, kannst du dein Bild anpassen, indem du Syntax Theme, Hintergrundfarbe, Window Theme, Padding, usw. veränderst.
 
-#### Export/Sharing
+#### Exportieren/Teilen
 
-After you've customized your image you can either Tweet a link to the image, or save it directly.
+Hast du dein Bild vollständig angepasst, kannst du entweder einen Link zum Bild tweeten, oder es direkt herunterladen.
 
 ## Community
-Check out these projects our awesome community has created:
+Schau dir auch diese Projekte näher an, die unsere tolle Community hervorgebracht hat:
 
 ##### Editor Plugins
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Öffne die Auswahl deiner aktuellen IntelliJ IDEA Datei in Carbon mit Hilfe eines Context Menüs
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Öffne deine aktuelle Atom Datei in Carbon via `shift-cmd-A`
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Öffne deine aktuelle VS Code Datei in Carbon mit Hilfe des `carbon` Befehls
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Öffne die Auswahl deiner aktuellen Sublime Text 3 Datei mit Hilfe eines Tastenkürzels deiner Wahl
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Öffne die Auswahl aus Vim/Neovim mit Hilfe der Funktion `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Öffne die Auswahl deines aktuelles Emacs mit Hilfe der interaktiven Funktion `carbon-now-sh`
 
 ##### CLIs
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Öffne eine Datei in Carbon oder lade sie direkt mit dem Befehl `carbon-now` herunter. Weitere Features sind unter anderem ein interaktiver Modus, selektives Highlighting und vieles mehr
 
 ##### Libraries
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Manipuliere auf eine interaktive Weise das Aussehen von Bildern mit `R` und öffne diese in Carbon oder lade sie direkt herunter.
 
-##### Textbooks
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
+##### Lehrbücher
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - ein Informatik Lehrbuch von Sarbo Roy.
 
-## Contribute
-PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
+## Mitwirken
+Pull Requests sind willkommen! Bitte lese hierzu unsere [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) für mehr Details.
 
-## Thanks To
-[ ▲ ZEIT ](https://zeit.co/) for sponsoring Carbon's hosting.
+## Danke an
+[ ▲ ZEIT ](https://zeit.co/) für das Sponsoring von Carbon’s Hosting.
 
-## Authors
-Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+## Autoren
+Carbon ist ein Projekt von <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contributors
+## Mitwirkende
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Ein Danke geht an all diese wunderbaren Menschen ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->

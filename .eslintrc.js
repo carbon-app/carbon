@@ -15,7 +15,6 @@ module.exports = {
   },
   plugins: ['react', 'import'],
   rules: {
-    'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/jsx-uses-react': 'error',
@@ -24,7 +23,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.4'
+      version: '16.5'
     }
   }
 }

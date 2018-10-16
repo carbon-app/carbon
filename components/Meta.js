@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import { THEMES, THEMES_HASH } from '../lib/constants'
 import Reset from './style/Reset'

@@ -73,7 +73,9 @@ class Carbon extends React.PureComponent {
         'Shift-Tab': 'indentLess'
       },
       // negative values removes the cursor, undefined means default (530)
-      cursorBlinkRate: this.props.readOnly ? -1 : undefined
+      cursorBlinkRate: this.props.readOnly ? -1 : undefined,
+      // needs to be able to refresh every 16ms to hit 60 frames / second
+      pollInterval: 16
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
