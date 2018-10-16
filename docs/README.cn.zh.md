@@ -19,7 +19,7 @@
 
 你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码图片给人印象深刻，但就审美程度来说还有可改进的地方。Carbon可以很容易的为你的代码创建漂亮的图片。那么还等什么呢？用这个新学到的美化设计给你的followers秀一秀吧。
 
-可以访问 [carbon.now.sh](https://carbon.now.sh)或者浏览 [博客文章](https://dawnlabs.io/blog/carbon/) 了解关于这个项目更多的内容。
+可以访问 [carbon.now.sh](https://carbon.now.sh)或者浏览 [博客文章](https://dawnlabs.io/case-studies/carbon/) 了解关于这个项目更多的内容。
 
 ## 特性
 
