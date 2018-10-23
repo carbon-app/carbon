@@ -1720,9 +1720,9 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
-codemirror-graphql@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.7.1.tgz#64b995643d511b9aa8f85eeeb2feac7aeb4b94d4"
+codemirror-graphql@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/codemirror-graphql/-/codemirror-graphql-0.8.2.tgz#387fdeb7ffe5023b5d48ef7b1e48dd53812d1383"
   dependencies:
     graphql-language-service-interface "^1.3.2"
     graphql-language-service-parser "^1.2.2"
@@ -4256,9 +4256,9 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-next-offline@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-3.0.1.tgz#c4dd43cb3a30201ee26d4f8be34b0644aab306ec"
+next-offline@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-3.0.2.tgz#da4b0e42af2878334bef626f00e8c4df444308d8"
   dependencies:
     clean-webpack-plugin "^0.1.19"
     copy-webpack-plugin "~4.5.2"
