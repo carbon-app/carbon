@@ -33,7 +33,7 @@
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
     "next": "^7.0.0",
-    "next-offline": "^3.0.1",
+    "next-offline": "3.0.2",
     "react": "^16.5.2",
     "react-addons-shallow-compare": "^15.6.2",
     "react-click-outside": "^3.0.0",
