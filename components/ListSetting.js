@@ -10,9 +10,9 @@ class ListSetting extends React.Component {
     this.toggle = this.toggle.bind(this)
   }
 
-  select(fontId) {
-    if (this.props.selected !== fontId) {
-      this.props.onChange(fontId)
+  select(item) {
+    if (this.props.selected !== item) {
+      this.props.onChange(item)
     }
   }
 
@@ -50,9 +50,9 @@ class ListSetting extends React.Component {
   }
 
   render() {
-    const selectedItem = this.props.items.filter(font => font.id === this.props.selected)[0] || {}
+    const selectedItem = this.props.items.filter(item => item.id === this.props.selected)[0] || {}
     return (
-      <div className="font-select-container">
+      <div className="list-select-container">
         <div
           className={`display ${this.state.isVisible ? 'is-visible' : ''}`}
           onClick={this.toggle}
