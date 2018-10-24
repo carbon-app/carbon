@@ -199,10 +199,11 @@ class Editor extends React.Component {
     const link = document.createElement('a')
 
     const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
+    const prefix = this.state.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
       if (format !== 'open ↗') {
-        link.download = `carbon${timestamp}.${format}`
+        link.download = `${prefix}${timestamp}.${format}`
       }
       link.href = url
       document.body.appendChild(link)

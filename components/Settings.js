@@ -20,6 +20,7 @@ class Settings extends React.PureComponent {
     }
     this.toggle = this.toggle.bind(this)
     this.format = this.format.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   toggle() {
@@ -28,6 +29,10 @@ class Settings extends React.PureComponent {
 
   handleClickOutside() {
     this.setState({ isVisible: false })
+  }
+
+  handleInputChange(e) {
+    this.props.onChange(e.target.name, e.target.value)
   }
 
   format() {
@@ -52,6 +57,13 @@ class Settings extends React.PureComponent {
           <ThemeSelect
             selected={this.props.windowTheme || 'none'}
             onChange={this.props.onChange.bind(null, 'windowTheme')}
+          />
+          <input
+            title="filename"
+            placeholder="File name..."
+            value={this.props.filename}
+            name="filename"
+            onChange={this.handleInputChange}
           />
           <FontSelect
             selected={this.props.fontFamily || 'Hack'}
@@ -202,6 +214,17 @@ class Settings extends React.PureComponent {
 
             .red {
               color: red;
+            }
+
+            input {
+              padding: 8px;
+              width: 100%;
+              font-size: 12px;
+              color: ${COLORS.SECONDARY};
+              background: ${COLORS.BLACK};
+              border: none;
+              border-bottom: solid 1px ${COLORS.SECONDARY};
+              outline: none;
             }
           `}
         </style>
