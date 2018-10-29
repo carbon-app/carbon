@@ -138,21 +138,27 @@ class Editor extends React.Component {
       return this.props.api.image(encodedState)
     }
 
-    if (isPNG) {
-      document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
-        if (n.innerText && n.innerText.match(/%\S\S/)) {
-          n.innerText = encodeURIComponent(n.innerText)
-        }
-      })
-    }
-
     const node = this.carbonNode
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
-    const width = node.offsetWidth * exportSize
-    const height = this.state.squaredImage
+
+    let width = node.offsetWidth * exportSize
+    let height = this.state.squaredImage
       ? node.offsetWidth * exportSize
       : node.offsetHeight * exportSize
+
+    if (isPNG) {
+      const newNode = node.cloneNode(true)
+      newNode.querySelectorAll('.CodeMirror-line > span > span').forEach(encodeTextNode)
+
+      newNode.style.visibility = 'hidden'
+      document.body.appendChild(newNode)
+
+      width = newNode.offsetWidth * exportSize
+      height = this.state.squaredImage ? width : newNode.offsetHeight * exportSize
+
+      newNode.remove()
+    }
 
     const config = {
       style: {
@@ -163,6 +169,13 @@ class Editor extends React.Component {
       filter: n => {
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
+        }
+        if (
+          isPNG && // only occurs when saving PNG
+          n.className &&
+          n.className.startsWith('cm-') // is CodeMirror primitive string
+        ) {
+          encodeTextNode(n)
         }
         return true
       },
@@ -360,6 +373,12 @@ class Editor extends React.Component {
         </style>
       </React.Fragment>
     )
+  }
+}
+
+function encodeTextNode(node) {
+  if (node.innerText && node.innerText.match(/%\S\S/)) {
+    node.innerText = encodeURIComponent(node.innerText)
   }
 }
 
