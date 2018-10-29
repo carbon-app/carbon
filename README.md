@@ -16,7 +16,7 @@
 - [Deutsch](/docs/README.de.md)
 - [简体中文](/docs/README.cn.zh.md)
 - [Português](/docs/README.br.pt.md)
-- [Malayalam](/docs/README.ml.md)
+- [മലയാളം](/docs/README.ml.md)
 
 ## Introduction
 
