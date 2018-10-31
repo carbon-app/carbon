@@ -142,23 +142,25 @@ class Editor extends React.Component {
 
     const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
 
-    let width = node.offsetWidth * exportSize
-    let height = this.state.squaredImage
-      ? node.offsetWidth * exportSize
-      : node.offsetHeight * exportSize
+    const map = new Map()
+    const undoMap = value => {
+      map.forEach((value, node) => (node.innerText = value))
+      return value
+    }
 
     if (isPNG) {
-      const newNode = node.cloneNode(true)
-      newNode.querySelectorAll('.CodeMirror-line span[role="presentation"]').forEach(encodeTextNode)
-
-      newNode.style.visibility = 'hidden'
-      document.body.appendChild(newNode)
-
-      width = newNode.offsetWidth * exportSize
-      height = this.state.squaredImage ? width : newNode.offsetHeight * exportSize
-
-      newNode.remove()
+      node.querySelectorAll('span[role="presentation"]').forEach(node => {
+        if (node.innerText && node.innerText.match(/%\S\S/)) {
+          map.set(node, node.innerText)
+          node.innerText = encodeURIComponent(node.innerText)
+        }
+      })
     }
+
+    const width = node.offsetWidth * exportSize
+    const height = this.state.squaredImage
+      ? node.offsetWidth * exportSize
+      : node.offsetHeight * exportSize
 
     const config = {
       style: {
@@ -169,13 +171,6 @@ class Editor extends React.Component {
       filter: n => {
         if (n.className) {
           return String(n.className).indexOf('eliminateOnRender') < 0
-        }
-        if (
-          isPNG && // only occurs when saving PNG
-          n.matches &&
-          n.matches('span[role="presentation"]')
-        ) {
-          encodeTextNode(n)
         }
         return true
       },
@@ -193,11 +188,14 @@ class Editor extends React.Component {
           .then(data => window.URL.createObjectURL(data))
       }
 
-      return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+      return domtoimage
+        .toBlob(node, config)
+        .then(blob => window.URL.createObjectURL(blob))
+        .then(undoMap)
     }
 
     // Twitter needs regular dataurls
-    return domtoimage.toPng(node, config)
+    return domtoimage.toPng(node, config).then(undoMap)
   }
 
   updateSetting(key, value) {
@@ -373,12 +371,6 @@ class Editor extends React.Component {
         </style>
       </React.Fragment>
     )
-  }
-}
-
-function encodeTextNode(node) {
-  if (node.innerText && node.innerText.match(/%\S\S/)) {
-    node.innerText = encodeURIComponent(node.innerText)
   }
 }
 
