@@ -13,7 +13,10 @@ import { saveState } from '../lib/util'
 class Index extends React.Component {
   onEditorUpdate = state => {
     updateQueryString(this.props.router, state)
-    saveState(localStorage, omit(state, ['code', 'backgroundImage', 'backgroundImageSelection']))
+    saveState(
+      localStorage,
+      omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'filename'])
+    )
   }
 
   render() {

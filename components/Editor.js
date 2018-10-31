@@ -142,17 +142,25 @@ class Editor extends React.Component {
       return this.props.api.image(encodedState)
     }
 
+    const node = this.carbonNode
+
+    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+
+    const map = new Map()
+    const undoMap = value => {
+      map.forEach((value, node) => (node.innerText = value))
+      return value
+    }
+
     if (isPNG) {
-      document.querySelectorAll('.CodeMirror-line > span > span').forEach(n => {
-        if (n.innerText && n.innerText.match(/%\S\S/)) {
-          n.innerText = encodeURIComponent(n.innerText)
+      node.querySelectorAll('span[role="presentation"]').forEach(node => {
+        if (node.innerText && node.innerText.match(/%\S\S/)) {
+          map.set(node, node.innerText)
+          node.innerText = encodeURIComponent(node.innerText)
         }
       })
     }
 
-    const node = this.carbonNode
-
-    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
     const width = node.offsetWidth * exportSize
     const height = this.state.squaredImage
       ? node.offsetWidth * exportSize
@@ -184,11 +192,14 @@ class Editor extends React.Component {
           .then(data => window.URL.createObjectURL(data))
       }
 
-      return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+      return domtoimage
+        .toBlob(node, config)
+        .then(blob => window.URL.createObjectURL(blob))
+        .then(undoMap)
     }
 
     // Twitter needs regular dataurls
-    return domtoimage.toPng(node, config)
+    return domtoimage.toPng(node, config).then(undoMap)
   }
 
   updateSetting(key, value) {
@@ -203,11 +214,12 @@ class Editor extends React.Component {
     const link = document.createElement('a')
 
     const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
+    const prefix = this.state.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' })
       .then(url => {
         if (format !== 'open ↗') {
-          link.download = `carbon${timestamp}.${format}`
+          link.download = `${prefix}${timestamp}.${format}`
         }
         link.href = url
         document.body.appendChild(link)

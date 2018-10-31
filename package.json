@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -20,7 +20,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "codemirror": "^5.40.2",
-    "codemirror-graphql": "^0.7.1",
+    "codemirror-graphql": "0.7.1",
     "codemirror-mode-elixir": "^1.1.1",
     "dom-to-image": "^2.5.2",
     "downshift": "^3.1.4",
