@@ -149,7 +149,7 @@ class Editor extends React.Component {
 
     if (isPNG) {
       const newNode = node.cloneNode(true)
-      newNode.querySelectorAll('.CodeMirror-line > span > span').forEach(encodeTextNode)
+      newNode.querySelectorAll('.CodeMirror-line span[role="presentation"]').forEach(encodeTextNode)
 
       newNode.style.visibility = 'hidden'
       document.body.appendChild(newNode)
@@ -172,8 +172,8 @@ class Editor extends React.Component {
         }
         if (
           isPNG && // only occurs when saving PNG
-          n.className &&
-          n.className.startsWith('cm-') // is CodeMirror primitive string
+          n.matches &&
+          n.matches('span[role="presentation"]')
         ) {
           encodeTextNode(n)
         }
