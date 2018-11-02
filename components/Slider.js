@@ -29,7 +29,7 @@ class Slider extends React.Component {
         <div
           className="slider-bg"
           style={{
-            transform: `translate3d(${(((parseFloat(this.props.value) - minValue) * 1.0) /
+            transform: `translate3d(${((parseFloat(this.props.value) - minValue) /
               (maxValue - minValue)) *
               100}%, 0px, 0px)`
           }}

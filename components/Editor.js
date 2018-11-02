@@ -8,7 +8,6 @@ import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
 import shallowCompare from 'react-addons-shallow-compare'
 import omit from 'lodash.omit'
-
 // Ours
 import Button from './Button'
 import Dropdown from './Dropdown'
@@ -19,22 +18,22 @@ import Overlay from './Overlay'
 import Carbon from './Carbon'
 import ExportButton from './ExportButton'
 import {
-  THEMES,
-  THEMES_HASH,
-  LANGUAGES,
+  COLORS,
+  DEFAULT_CODE,
+  DEFAULT_EXPORT_SIZE,
+  DEFAULT_LANGUAGE,
+  DEFAULT_SETTINGS,
+  DEFAULT_THEME,
+  EXPORT_SIZES_HASH,
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
-  DEFAULT_THEME,
-  DEFAULT_EXPORT_SIZE,
-  COLORS,
-  EXPORT_SIZES_HASH,
-  DEFAULT_CODE,
-  DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE
+  LANGUAGES,
+  THEMES,
+  THEMES_HASH
 } from '../lib/constants'
-import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml, unescapeHtml } from '../lib/util'
+import { getQueryStringState, serializeState } from '../lib/routing'
+import { escapeHtml, getState, unescapeHtml } from '../lib/util'
 
 const saveButtonOptions = {
   button: true,
@@ -376,13 +375,11 @@ class Editor extends React.Component {
 
 function formatTimestamp() {
   const timezoneOffset = new Date().getTimezoneOffset() * 60000
-  const timeString = new Date(Date.now() - timezoneOffset)
+  return new Date(Date.now() - timezoneOffset)
     .toISOString()
     .slice(0, 19)
     .replace(/:/g, '-')
     .replace('T', '_')
-
-  return timeString
 }
 
 function isImage(file) {

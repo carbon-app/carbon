@@ -2,7 +2,7 @@
 // const withOffline = require('next-offline')
 
 module.exports = (/* phase  { defaultConfig } */) => {
-  const config = {
+  return {
     async exportPathMap() {
       return {
         '/about': { page: '/about' },
@@ -18,6 +18,4 @@ module.exports = (/* phase  { defaultConfig } */) => {
           : 'http://localhost:4000'
     }
   }
-
-  return config
 }
