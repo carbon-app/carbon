@@ -26,8 +26,8 @@ class Toast extends React.Component {
     return (
       <div className="toast mb4">
         <div className="toast-content">
-          <p>Enjoy using Carbon? Want to work with the team that created it?</p>
-          <a href="https://dawnlabs.io">We&#39;re hiring!</a>
+          <p>Working on a product or new idea? The team behind Carbon is here to help.</p>
+          <a href="https://dawnlabs.io">Let&#39;s talk!</a>
           <a className="close-toast" href="#" onClick={this.close}>
             &times;
           </a>
