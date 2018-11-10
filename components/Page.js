@@ -3,7 +3,6 @@ import ReactGA from 'react-ga'
 import Meta from './Meta'
 import Header from './Header'
 import Footer from './Footer'
-import Toast from './Toast'
 
 import { GA_TRACKING_ID } from '../lib/constants'
 
@@ -20,7 +19,6 @@ class Page extends React.Component {
     return (
       <main className="main mt4 mb4">
         <Meta />
-        <Toast />
         <Header enableHeroText={enableHeroText} />
         <div className="page">{children}</div>
 
