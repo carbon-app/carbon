@@ -125,7 +125,7 @@ class Editor extends React.Component {
     }
   }
 
-  getCarbonImage({ format, type } = { format: 'png' }) {
+  async getCarbonImage({ format, type } = { format: 'png' }) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
@@ -150,7 +150,7 @@ class Editor extends React.Component {
 
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
-        if (node.innerText && node.innerText.match(/%\S\S/)) {
+        if (node.innerText && node.innerText.match(/%\d\S/)) {
           map.set(node, node.innerText)
           node.innerText = encodeURIComponent(node.innerText)
         }
@@ -178,24 +178,27 @@ class Editor extends React.Component {
       height
     }
 
-    if (type === 'blob') {
-      if (format === 'svg') {
-        return domtoimage
-          .toSvg(node, config)
-          .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
-          .then(uri => uri.slice(uri.indexOf(',') + 1))
-          .then(data => new Blob([data], { type: 'image/svg+xml' }))
-          .then(data => window.URL.createObjectURL(data))
+    try {
+      if (type === 'blob') {
+        if (format === 'svg') {
+          return domtoimage
+            .toSvg(node, config)
+            .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
+            .then(uri => uri.slice(uri.indexOf(',') + 1))
+            .then(data => new Blob([data], { type: 'image/svg+xml' }))
+            .then(data => window.URL.createObjectURL(data))
+        }
+
+        return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
       }
 
-      return domtoimage
-        .toBlob(node, config)
-        .then(blob => window.URL.createObjectURL(blob))
-        .then(undoMap)
+      // Twitter needs regular dataurls
+      return await domtoimage.toPng(node, config)
+    } catch (error) {
+      throw error
+    } finally {
+      undoMap()
     }
-
-    // Twitter needs regular dataurls
-    return domtoimage.toPng(node, config).then(undoMap)
   }
 
   updateSetting(key, value) {
