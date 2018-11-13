@@ -35,7 +35,6 @@ class Toast extends React.Component {
         <style jsx>
           {`
             .toast {
-              width: 704px;
               padding: 8px 16px;
               color: #fff;
               border: 1px solid #fff;
@@ -53,8 +52,8 @@ class Toast extends React.Component {
             }
 
             .close-toast {
+              margin-left: 32px;
               text-decoration: none;
-              margin-left: auto;
             }
 
             p {
