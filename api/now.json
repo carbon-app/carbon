@@ -16,5 +16,8 @@
   },
   "features": {
     "cloud": "v1"
+  },
+  "github": {
+    "autoAlias": false
   }
 }

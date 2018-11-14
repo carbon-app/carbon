@@ -9,5 +9,8 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "github": {
+    "autoAlias": false
   }
 }
