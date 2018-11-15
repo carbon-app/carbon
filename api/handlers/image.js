@@ -8,8 +8,10 @@ module.exports = browser => async (req, res) => {
   if (!state) res.status(400).send()
 
   try {
+    const path = require.resolve('dom-to-image')
+
     await page.goto(`http://carbon.now.sh?state=${state}`)
-    await page.addScriptTag({ path: './customDomToImage.js' })
+    await page.addScriptTag({ path })
 
     // wait for page to detect language
     await delay(ARBITRARY_WAIT_TIME)

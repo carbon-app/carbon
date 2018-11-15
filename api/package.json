@@ -12,6 +12,7 @@
     "body-parser": "^1.17.2",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
+    "dom-to-image": "^2.6.0",
     "express": "^4.16.4",
     "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.9.1",
