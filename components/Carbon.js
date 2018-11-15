@@ -7,7 +7,13 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 
 import WindowControls from '../components/WindowControls'
 import Watermark from '../components/svg/Watermark'
-import { COLORS, LANGUAGE_MODE_HASH, LANGUAGE_NAME_HASH, DEFAULT_SETTINGS } from '../lib/constants'
+import {
+  COLORS,
+  LANGUAGE_MODE_HASH,
+  LANGUAGE_NAME_HASH,
+  THEMES_HASH,
+  DEFAULT_SETTINGS
+} from '../lib/constants'
 
 class Carbon extends React.PureComponent {
   static defaultProps = {
@@ -98,7 +104,7 @@ class Carbon extends React.PureComponent {
           value={this.props.children}
           options={options}
         />
-        {config.watermark && <Watermark />}
+        {config.watermark && <Watermark light={THEMES_HASH[config.theme].light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />
