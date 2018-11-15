@@ -11,13 +11,13 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "compression": "^1.7.3",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "isomorphic-fetch": "^2.2.1",
-    "morgan": "^1.8.2",
+    "morgan": "^1.9.1",
     "morphmorph": "^0.1.2",
     "now-logs": "^0.0.7",
-    "puppeteer": "^1.9.0",
+    "puppeteer": "^1.10.0",
     "twit": "^2.2.9",
     "unsplash-js": "^4.8.0"
   }
