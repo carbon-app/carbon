@@ -26,7 +26,7 @@ module.exports = browser => async (req, res) => {
           // %[00 -> 19] cause failures
           if (
             n.innerText &&
-            node.innerText.match(/%\d\S/) &&
+            n.innerText.match(/%\d\S/) &&
             n.className &&
             n.className.startsWith('cm-') // is CodeMirror primitive string
           ) {
