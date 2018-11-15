@@ -16,12 +16,6 @@ module.exports = browser => async (req, res) => {
 
     const targetElement = await page.$('.export-container')
 
-    targetElement.querySelectorAll('span[role="presentation"]').forEach(node => {
-      if (node.innerText && node.innerText.match(/%\d\S/)) {
-        node.innerText = encodeURIComponent(node.innerText)
-      }
-    })
-
     const dataUrl = await page.evaluate((target = document) => {
       const config = {
         style: {
@@ -29,6 +23,15 @@ module.exports = browser => async (req, res) => {
           'transform-origin': 'center'
         },
         filter: n => {
+          // %[00 -> 19] cause failures
+          if (
+            n.innerText &&
+            node.innerText.match(/%\d\S/) &&
+            n.className &&
+            n.className.startsWith('cm-') // is CodeMirror primitive string
+          ) {
+            n.innerText = encodeURIComponent(n.innerText)
+          }
           if (n.className) {
             return String(n.className).indexOf('eliminateOnRender') < 0
           }
