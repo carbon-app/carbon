@@ -8,7 +8,7 @@ import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { validateColor } from '../lib/colors'
 import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
 
-class BackgroundSelect extends React.Component {
+class BackgroundSelect extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = { isVisible: false, mounted: false }
@@ -19,13 +19,6 @@ class BackgroundSelect extends React.Component {
 
   componentDidMount() {
     this.setState({ mounted: true })
-  }
-
-  shouldComponentUpdate(prevProps, prevState) {
-    return (
-      prevState.isVisible !== this.state.isVisible ||
-      (prevState.isVisible && shallowCompare(this, prevProps, prevState))
-    )
   }
 
   toggle() {

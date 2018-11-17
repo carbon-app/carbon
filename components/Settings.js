@@ -146,6 +146,13 @@ class Settings extends React.PureComponent {
               selected={this.props.exportSize || '2x'}
               onChange={this.props.onChange.bind(null, 'exportSize')}
             />
+            <input
+              title="Background Image"
+              placeholder="Background URL"
+              value={this.props.backgroundImage}
+              name="backgroundImage"
+              onChange={this.handleInputChange}
+            />
             <Toggle label="Prettify code" center={true} enabled={false} onChange={this.format} />
             <Toggle
               label={<center className="red">Reset settings</center>}
