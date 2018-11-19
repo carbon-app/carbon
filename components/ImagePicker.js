@@ -4,6 +4,7 @@ import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 import RandomImage from './RandomImage'
 import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
+import { COLORS } from '../lib/constants'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
   const canvas = document.createElement('canvas')
@@ -124,6 +125,20 @@ export default class extends React.Component {
             onChange={this.selectImage}
           />
         </div>
+        <input
+          type="text"
+          title="Background Image"
+          placeholder="Background URL"
+          value={this.props.imageDataURL || ''}
+          name="backgroundImage"
+          onChange={e =>
+            this.props.onChange({
+              backgroundImage: e.target.value,
+              backgroundImageSelection: null,
+              photographer: null
+            })
+          }
+        />
         <hr />
         <div className="random-image">
           <span>
@@ -138,8 +153,18 @@ export default class extends React.Component {
               padding: 8px;
             }
 
-            input {
+            input[type='file'] {
               cursor: pointer;
+              outline: none;
+            }
+
+            input[type='text'] {
+              padding: 8px;
+              width: 100%;
+              font-size: 12px;
+              color: ${COLORS.SECONDARY};
+              background: ${COLORS.BLACK};
+              border: none;
               outline: none;
             }
 
