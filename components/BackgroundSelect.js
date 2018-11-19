@@ -1,7 +1,6 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import { SketchPicker } from 'react-color'
-import shallowCompare from 'react-addons-shallow-compare'
 import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
