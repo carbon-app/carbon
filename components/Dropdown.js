@@ -174,6 +174,7 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
 
           .dropdown-display.is-open {
             border-radius: 3px 3px 0 0;
+            border-width: 2px;
           }
 
           .dropdown-display-text {
@@ -201,8 +202,8 @@ const ListItems = ({ children, color }) => {
       <style jsx>
         {`
           .dropdown-list {
-            margin-top: -1px;
-            border: 1px solid ${color || COLORS.SECONDARY};
+            margin-top: -2px;
+            border: 2px solid ${color || COLORS.SECONDARY};
             border-radius: 0 0 3px 3px;
             max-height: 350px;
             overflow-y: scroll;
