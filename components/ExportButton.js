@@ -14,13 +14,9 @@ const toIFrame = url =>
 function ExportButton({ router, children, color }) {
   return (
     <React.Fragment>
-      {children === 'COPY EMBED' ? (
-        <CopyButton text={toIFrame(router.asPath)}>
-          {({ copied }) => <button>{copied ? 'COPIED!' : 'COPY EMBED'}</button>}
-        </CopyButton>
-      ) : (
-        <button>{children}</button>
-      )}
+      <CopyButton text={toIFrame(router.asPath)}>
+        {({ copied }) => <button>{copied ? 'Copied!' : 'Copy Embed'}</button>}
+      </CopyButton>
       <style jsx>
         {`
           button {
@@ -32,6 +28,7 @@ function ExportButton({ router, children, color }) {
             color: ${color};
             background: transparent;
             cursor: pointer;
+            user-select: none;
           }
 
           &:active {
