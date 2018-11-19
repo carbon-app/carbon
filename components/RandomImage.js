@@ -6,7 +6,7 @@ import api from '../lib/api'
 import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
 
-const downloadThumbnailImage = img => {
+export const downloadThumbnailImage = img => {
   return api.client
     .get(img.url, { responseType: 'blob' })
     .then(res => res.data)

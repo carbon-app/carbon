@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 
-import RandomImage from './RandomImage'
+import RandomImage, { downloadThumbnailImage } from './RandomImage'
 import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
 import { COLORS } from '../lib/constants'
@@ -39,6 +39,7 @@ export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
+    this.handleURLInput = this.handleURLInput.bind(this)
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
     this.onImageLoaded = this.onImageLoaded.bind(this)
@@ -91,6 +92,16 @@ export default class extends React.Component {
     })
   }
 
+  handleURLInput(e) {
+    return downloadThumbnailImage({ url: e.target.value }).then(({ dataURL }) =>
+      this.props.onChange({
+        backgroundImage: dataURL,
+        backgroundImageSelection: null,
+        photographer: null
+      })
+    )
+  }
+
   selectImage(e, { photographer } = {}) {
     const file = e.target ? e.target.files[0] : e
 
@@ -125,19 +136,14 @@ export default class extends React.Component {
             onChange={this.selectImage}
           />
         </div>
+        <hr />
         <input
           type="text"
           title="Background Image"
-          placeholder="Background URL"
+          placeholder="Or enter image URL"
           value={this.props.imageDataURL || ''}
           name="backgroundImage"
-          onChange={e =>
-            this.props.onChange({
-              backgroundImage: e.target.value,
-              backgroundImageSelection: null,
-              photographer: null
-            })
-          }
+          onChange={this.handleURLInput}
         />
         <hr />
         <div className="random-image">
@@ -163,7 +169,7 @@ export default class extends React.Component {
               width: 100%;
               font-size: 12px;
               color: ${COLORS.SECONDARY};
-              background: ${COLORS.BLACK};
+              background: #1a1a1a;
               border: none;
               outline: none;
             }
@@ -180,6 +186,7 @@ export default class extends React.Component {
             hr {
               border-bottom: none;
               margin-bottom: 0;
+              margin-top: 0;
             }
           `}
         </style>
