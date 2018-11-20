@@ -1,12 +1,13 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
-import shallowCompare from 'react-addons-shallow-compare'
 import { withRouter } from 'next/router'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
 import CopyButton from './CopyButton'
 import WindowPointer from './WindowPointer'
+
+import { toggle } from '../lib/util'
 
 const toIFrame = url =>
   `<iframe
@@ -16,37 +17,20 @@ const toIFrame = url =>
 </iframe>
 `
 
-class ExportMenu extends React.Component {
+class ExportMenu extends React.PureComponent {
   state = {
     isVisible: false
   }
 
-  shouldComponentUpdate(prevProps, prevState) {
-    return (
-      prevState.isVisible !== this.state.isVisible ||
-      (prevState.isVisible && shallowCompare(this, prevProps, prevState))
-    )
-  }
+  toggle = () => this.setState(toggle('isVisible'))
 
-  toggle = () => {
-    this.setState({ isVisible: !this.state.isVisible })
-  }
+  handleClickOutside = () => this.setState({ isVisible: false })
 
-  handleClickOutside = () => {
-    this.setState({ isVisible: false })
-  }
+  handleInputChange = e => this.props.onChange(e.target.name, e.target.value)
 
-  handleInputChange = e => {
-    this.props.onChange(e.target.name, e.target.value)
-  }
+  handleExportSizeChange = selectedSize => () => this.props.onChange('exportSize', selectedSize)
 
-  handleExportSizeChange = selectedSize => () => {
-    this.props.onChange('exportSize', selectedSize)
-  }
-
-  handleExport = format => () => {
-    this.props.export(format)
-  }
+  handleExport = format => () => this.props.export(format)
 
   render() {
     const { exportSize, filename, router } = this.props
