@@ -11,7 +11,7 @@ const toIFrame = url =>
 </iframe>
 `
 
-function ExportButton({ router, children, color }) {
+function ExportButton({ router, color }) {
   return (
     <React.Fragment>
       <CopyButton text={toIFrame(router.asPath)}>

@@ -69,6 +69,7 @@ class ExportMenu extends React.Component {
               <div>
                 {EXPORT_SIZES.map(({ name }) => (
                   <button
+                    key={name}
                     onClick={this.handleExportSizeChange(name)}
                     className={`size-button ${exportSize === name ? 'selected' : ''}`}
                   >
