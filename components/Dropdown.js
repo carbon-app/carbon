@@ -165,6 +165,7 @@ const DropdownIcon = ({ children, isOpen }) => {
               border: ${isOpen ? 2 : 1}px solid white;
               border-right: none;
               border-radius: 3px 0 0 3px;
+              cursor: initial;
             }
           `}
         </style>
