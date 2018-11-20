@@ -186,7 +186,7 @@ class BackgroundSelect extends React.Component {
               position: absolute;
               width: 222px;
               margin-left: 36px;
-              margin-top: 4px;
+              margin-top: 12px;
               border: 1px solid ${COLORS.SECONDARY};
               border-radius: 3px;
               background: #1a1a1a;

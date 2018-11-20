@@ -8,7 +8,7 @@ export default props => (
       ...props.style,
       background: COLORS.BLACK,
       color: props.color,
-      border: `1px solid ${props.color}`
+      border: `${props.selected ? 2 : 1}px solid ${props.color}`
     }}
     disabled={props.disabled}
   >

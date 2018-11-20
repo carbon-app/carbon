@@ -17,7 +17,7 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
-import ExportButton from './ExportButton'
+import ExportMenu from './ExportMenu'
 import {
   THEMES,
   THEMES_HASH,
@@ -35,14 +35,6 @@ import {
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getState, escapeHtml, unescapeHtml } from '../lib/util'
-
-const saveButtonOptions = {
-  button: true,
-  color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Export Image' },
-  list: ['png', 'svg', 'copy embed', 'open ↗'].map(id => ({ id, name: id.toUpperCase() })),
-  itemWrapper: props => <ExportButton {...props} />
-}
 
 class Editor extends React.Component {
   constructor(props) {
@@ -205,18 +197,16 @@ class Editor extends React.Component {
     this.setState({ [key]: value })
   }
 
-  export({ id: format = 'png' }) {
-    if (format === 'copy embed') {
-      return
-    }
-
+  export(format = 'png') {
     const link = document.createElement('a')
 
     const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
     const prefix = this.state.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
-      if (format !== 'open ↗') {
+      if (format === 'open') {
+        link.target = '_blank'
+      } else {
         link.download = `${prefix}${timestamp}.${format}`
       }
       link.href = url
@@ -272,7 +262,22 @@ class Editor extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
+    const {
+      loading,
+      theme,
+      language,
+      backgroundColor,
+      backgroundImage,
+      backgroundMode,
+      aspectRatio,
+      uploading,
+      online,
+      titleBar,
+      code,
+      exportSize
+    } = this.state
+
+    if (loading) {
       return (
         <div>
           <Spinner />
@@ -294,15 +299,15 @@ class Editor extends React.Component {
         <div className="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
+              selected={THEMES_HASH[theme] || DEFAULT_THEME}
               list={THEMES}
               onChange={this.updateTheme}
             />
             <Dropdown
               selected={
-                LANGUAGE_NAME_HASH[this.state.language] ||
-                LANGUAGE_MIME_HASH[this.state.language] ||
-                LANGUAGE_MODE_HASH[this.state.language] ||
+                LANGUAGE_NAME_HASH[language] ||
+                LANGUAGE_MIME_HASH[language] ||
+                LANGUAGE_MODE_HASH[language] ||
                 LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
               }
               list={LANGUAGES}
@@ -310,10 +315,10 @@ class Editor extends React.Component {
             />
             <BackgroundSelect
               onChange={this.updateBackground}
-              mode={this.state.backgroundMode}
-              color={this.state.backgroundColor}
-              image={this.state.backgroundImage}
-              aspectRatio={this.state.aspectRatio}
+              mode={backgroundMode}
+              color={backgroundColor}
+              image={backgroundImage}
+              aspectRatio={aspectRatio}
             />
             <Settings
               {...config}
@@ -322,16 +327,20 @@ class Editor extends React.Component {
             />
             <div className="buttons">
               {this.props.api.tweet &&
-                this.state.online && (
+                online && (
                   <Button
                     className="tweetButton"
                     onClick={this.upload}
-                    title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
+                    title={uploading ? 'Loading...' : 'Tweet'}
                     color="#57b5f9"
                     style={{ marginRight: '8px' }}
                   />
                 )}
-              <Dropdown {...saveButtonOptions} onChange={this.export} />
+              <ExportMenu
+                onChange={this.updateSetting}
+                export={this.export}
+                exportSize={exportSize}
+              />
             </div>
           </Toolbar>
 
@@ -343,15 +352,15 @@ class Editor extends React.Component {
               >
                 {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
                 <Carbon
-                  key={this.state.language}
+                  key={language}
                   config={this.state}
                   updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
-                  titleBar={this.state.titleBar}
+                  titleBar={titleBar}
                   updateTitleBar={this.updateTitleBar}
                   innerRef={this.innerRef}
                 >
-                  {this.state.code != null ? this.state.code : DEFAULT_CODE}
+                  {code != null ? code : DEFAULT_CODE}
                 </Carbon>
               </Overlay>
             )}
