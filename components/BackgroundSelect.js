@@ -47,42 +47,39 @@ class BackgroundSelect extends React.Component {
   }
 
   render() {
-    let background = this.props.color
-    background =
-      typeof background === 'string'
-        ? background
+    const { color, mode, image, onChange, aspectRatio } = this.props
+    const { isVisible, mounted } = this.state
+
+    let background =
+      typeof color === 'string'
+        ? color
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#x27;')
             .replace(/\//g, '&#x2F;')
-        : background
+        : color
 
     if (!validateColor(background)) {
       background = DEFAULT_BG_COLOR
     }
 
-    const { mode, image } = this.props
-
     return (
       <div className="bg-select-container">
-        <div className="bg-select-display">
-          <div className="bg-select-label">
-            <span>BG</span>
-          </div>
+        <div className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}>
           <div className="bg-color-container" onClick={this.toggle}>
             <div className="bg-color-alpha" />
             <div className="bg-color" />
           </div>
         </div>
-        <div className="bg-select-pickers" hidden={!this.state.isVisible}>
+        <div className="bg-select-pickers" hidden={!isVisible}>
           <WindowPointer fromLeft="15px" />
           <div className="picker-tabs">
             {['color', 'image'].map(tab => (
               <div
                 key={tab}
-                className={`picker-tab ${this.props.mode === tab ? 'active' : ''}`}
+                className={`picker-tab ${mode === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}
               >
                 {capitalizeFirstLetter(tab)}
@@ -90,17 +87,11 @@ class BackgroundSelect extends React.Component {
             ))}
           </div>
           <div className="picker-tabs-contents">
-            <div style={this.props.mode === 'color' ? {} : { display: 'none' }}>
-              {this.state.mounted && (
-                <SketchPicker color={this.props.color} onChangeComplete={this.handlePickColor} />
-              )}
+            <div style={mode === 'color' ? {} : { display: 'none' }}>
+              {mounted && <SketchPicker color={color} onChangeComplete={this.handlePickColor} />}
             </div>
-            <div style={this.props.mode === 'image' ? {} : { display: 'none' }}>
-              <ImagePicker
-                onChange={this.props.onChange}
-                imageDataURL={this.props.image}
-                aspectRatio={this.props.aspectRatio}
-              />
+            <div style={mode === 'image' ? {} : { display: 'none' }}>
+              <ImagePicker onChange={onChange} imageDataURL={image} aspectRatio={aspectRatio} />
             </div>
           </div>
         </div>
@@ -114,20 +105,13 @@ class BackgroundSelect extends React.Component {
               display: flex;
               overflow: hidden;
               height: 100%;
-              width: 72px;
+              width: 40px;
               border: 1px solid ${COLORS.SECONDARY};
               border-radius: 3px;
             }
 
-            .bg-select-label {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              user-select: none;
-              cursor: default;
-              height: 100%;
-              padding: 0 8px;
-              border-right: 1px solid ${COLORS.SECONDARY};
+            .bg-select-display.is-visible {
+              border-width: 2px;
             }
 
             .bg-color-container {
@@ -185,9 +169,8 @@ class BackgroundSelect extends React.Component {
             .bg-select-pickers {
               position: absolute;
               width: 222px;
-              margin-left: 36px;
               margin-top: 12px;
-              border: 1px solid ${COLORS.SECONDARY};
+              border: 2px solid ${COLORS.SECONDARY};
               border-radius: 3px;
               background: #1a1a1a;
             }

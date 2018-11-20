@@ -139,7 +139,7 @@ class Settings extends React.PureComponent {
               display: flex;
               position: relative;
               height: 100%;
-              width: 37px;
+              width: 40px;
               align-items: center;
               justify-content: center;
               border-radius: 3px;
@@ -161,6 +161,10 @@ class Settings extends React.PureComponent {
               cursor: pointer;
             }
 
+            .settings-display.is-visible {
+              border-width: 2px;
+            }
+
             .settings-display:hover {
               background: ${COLORS.HOVER};
             }
@@ -174,7 +178,7 @@ class Settings extends React.PureComponent {
               position: absolute;
               top: 52px;
               left: 0;
-              border: 1px solid ${COLORS.SECONDARY};
+              border: 2px solid ${COLORS.SECONDARY};
               width: 184px;
               border-radius: 3px;
               background: ${COLORS.BLACK};

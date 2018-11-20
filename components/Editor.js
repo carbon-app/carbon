@@ -35,6 +35,8 @@ import {
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getState, escapeHtml, unescapeHtml } from '../lib/util'
+import LanguageIcon from './svg/Language'
+import ThemeIcon from './svg/Theme'
 
 class Editor extends React.Component {
   constructor(props) {
@@ -296,11 +298,13 @@ class Editor extends React.Component {
         <div className="editor">
           <Toolbar>
             <Dropdown
+              icon={<ThemeIcon />}
               selected={THEMES_HASH[theme] || DEFAULT_THEME}
               list={THEMES}
               onChange={this.updateTheme}
             />
             <Dropdown
+              icon={<LanguageIcon />}
               selected={
                 LANGUAGE_NAME_HASH[language] ||
                 LANGUAGE_MIME_HASH[language] ||
