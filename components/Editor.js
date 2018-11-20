@@ -200,14 +200,11 @@ class Editor extends React.Component {
   export(format = 'png') {
     const link = document.createElement('a')
 
-    const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
     const prefix = this.state.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
-      if (format === 'open') {
-        link.target = '_blank'
-      } else {
-        link.download = `${prefix}${timestamp}.${format}`
+      if (format !== 'open') {
+        link.download = `${prefix}.${format}`
       }
       link.href = url
       document.body.appendChild(link)
@@ -384,17 +381,6 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
-}
-
-function formatTimestamp() {
-  const timezoneOffset = new Date().getTimezoneOffset() * 60000
-  const timeString = new Date(Date.now() - timezoneOffset)
-    .toISOString()
-    .slice(0, 19)
-    .replace(/:/g, '-')
-    .replace('T', '_')
-
-  return timeString
 }
 
 function isImage(file) {
