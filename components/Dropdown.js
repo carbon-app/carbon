@@ -58,7 +58,7 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { color, selected, onChange, itemWrapper } = this.props
+    const { color, selected, onChange, itemWrapper, icon } = this.props
     const { itemsToShow, inputValue } = this.state
 
     const minWidth = calcMinWidth(itemsToShow)
@@ -72,13 +72,20 @@ class Dropdown extends React.PureComponent {
         onChange={onChange}
         onUserAction={this.onUserAction}
       >
-        {renderDropdown({ color, list: itemsToShow, selected, minWidth, itemWrapper })}
+        {renderDropdown({
+          color,
+          list: itemsToShow,
+          selected,
+          minWidth,
+          itemWrapper,
+          icon
+        })}
       </Downshift>
     )
   }
 }
 
-const renderDropdown = ({ color, list, minWidth, itemWrapper }) => ({
+const renderDropdown = ({ color, list, minWidth, itemWrapper, icon }) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -89,11 +96,13 @@ const renderDropdown = ({ color, list, minWidth, itemWrapper }) => ({
 }) => {
   return (
     <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
+      <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
       <SelectedItem
         getToggleButtonProps={getToggleButtonProps}
         getInputProps={getInputProps}
         isOpen={isOpen}
         color={color}
+        hasIcon={!!icon}
       >
         {selectedItem.name}
       </SelectedItem>
@@ -126,9 +135,11 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
       <style jsx>
         {`
           .dropdown-container {
+            position: relative;
             min-width: ${minWidth}px;
             cursor: pointer;
             user-select: none;
+            margin-left: 40px;
           }
         `}
       </style>
@@ -136,7 +147,43 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, color }) => {
+const DropdownIcon = ({ children, isOpen }) => {
+  if (children) {
+    return (
+      <div className="dropdown-icon">
+        {children}
+        <style jsx>
+          {`
+            .dropdown-icon {
+              position: absolute;
+              left: -40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 40px;
+              height: 40px;
+              border: ${isOpen ? 2 : 1}px solid white;
+              border-right: none;
+              border-radius: 3px 0 0 3px;
+              cursor: initial;
+            }
+          `}
+        </style>
+      </div>
+    )
+  } else {
+    return null
+  }
+}
+
+const SelectedItem = ({
+  getToggleButtonProps,
+  getInputProps,
+  children,
+  isOpen,
+  color,
+  hasIcon
+}) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
@@ -157,10 +204,9 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
           .dropdown-display {
             display: flex;
             align-items: center;
-            height: 100%;
+            height: 40px;
             border: 1px solid ${itemColor};
-            border-radius: 3px;
-            padding: 8px 16px;
+            border-radius: ${hasIcon ? '0 3px 3px 0' : '3px'};
             outline: none;
           }
           .dropdown-display:hover {
@@ -168,12 +214,13 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
           }
 
           .dropdown-display.is-open {
-            border-radius: 3px 3px 0 0;
+            border-radius: ${hasIcon ? '0 3px 0 0' : '3px 3px 0 0'};
             border-width: 2px;
           }
 
           .dropdown-display-text {
             flex-grow: 1;
+            padding: 0 16px;
             color: ${itemColor};
             background: transparent;
             border: none;
@@ -181,6 +228,11 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
             font-size: inherit;
             font-family: inherit;
           }
+
+          .dropdown-arrow {
+            padding: 0 16px;
+          }
+
           .is-open > .dropdown-arrow {
             transform: rotate(180deg);
           }
