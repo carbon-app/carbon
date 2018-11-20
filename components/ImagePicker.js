@@ -102,13 +102,22 @@ export default class extends React.Component {
   handleURLInput(e) {
     e.preventDefault()
     const url = e.target[0].value
-    return downloadThumbnailImage({ url }).then(({ dataURL }) =>
-      this.props.onChange({
-        backgroundImage: dataURL,
-        backgroundImageSelection: null,
-        photographer: null
+    return downloadThumbnailImage({ url })
+      .then(({ dataURL }) =>
+        this.props.onChange({
+          backgroundImage: dataURL,
+          backgroundImageSelection: null,
+          photographer: null
+        })
+      )
+      .catch(err => {
+        if (err.message.indexOf('Network Error') > -1) {
+          this.setState({
+            error:
+              'Fetching the image failed. This is probably a CORS-related issue. You can either enable CORS in your browser, or use another image.'
+          })
+        }
       })
-    )
   }
 
   selectMode(mode) {
@@ -167,6 +176,7 @@ export default class extends React.Component {
               <button type="submit">Upload</button>
             </form>
           )}
+          {this.state.error && <span className="error">{this.state.error}</span>}
         </div>
         <hr />
         <div className="random-image">
@@ -241,6 +251,11 @@ export default class extends React.Component {
               border-bottom: none;
               margin-bottom: 0;
               margin-top: 0;
+            }
+
+            .error {
+              color: red;
+              margin-top: 8px;
             }
           `}
         </style>
