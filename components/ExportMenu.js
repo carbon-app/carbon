@@ -37,7 +37,7 @@ class ExportMenu extends React.Component {
   }
 
   handleInputChange = e => {
-    this.props.onChange('filename', e.target.value)
+    this.props.onChange(e.target.name, e.target.value)
   }
 
   handleExportSizeChange = selectedSize => () => {
