@@ -1,11 +1,20 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import shallowCompare from 'react-addons-shallow-compare'
+import { withRouter } from 'next/router'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
-import ExportButton from './ExportButton'
 import Button from './Button'
+import CopyButton from './CopyButton'
 import WindowPointer from './WindowPointer'
+
+const toIFrame = url =>
+  `<iframe
+  src="https://carbon.now.sh/embed${url}"
+  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
+  sandbox="allow-scripts allow-same-origin">
+</iframe>
+`
 
 class ExportMenu extends React.Component {
   state = {
@@ -40,7 +49,7 @@ class ExportMenu extends React.Component {
   }
 
   render() {
-    const { exportSize, filename } = this.props
+    const { exportSize, filename, router } = this.props
     const { isVisible } = this.state
 
     return (
@@ -80,12 +89,14 @@ class ExportMenu extends React.Component {
             </div>
           </div>
           <div className="export-option">
-            <div className="open-container">
-              <button onClick={this.handleExport('open')}>Open ↗</button>
-            </div>
-            <div className="copy-container">
-              <ExportButton color={COLORS.PURPLE}>Copy Embed</ExportButton>
-            </div>
+            <button className="open-button" onClick={this.handleExport('open')}>
+              Open ↗
+            </button>
+            <CopyButton text={toIFrame(router.asPath)}>
+              {({ copied }) => (
+                <button className="copy-button">{copied ? 'Copied!' : 'Copy Embed'}</button>
+              )}
+            </CopyButton>
             <div className="save-container">
               <span>Save as</span>
               <div>
@@ -177,8 +188,8 @@ class ExportMenu extends React.Component {
               opacity: 1;
             }
 
-            .copy-container,
-            .open-container,
+            .copy-button,
+            .open-button,
             .save-container {
               display: flex;
               flex: 1;
@@ -187,12 +198,12 @@ class ExportMenu extends React.Component {
               padding: 12px 16px;
             }
 
-            .copy-container {
+            .copy-button {
               flex-basis: 72px;
             }
 
-            .copy-container,
-            .open-container {
+            .copy-button,
+            .open-button {
               border-right: 1px solid ${COLORS.PURPLE};
             }
 
@@ -219,4 +230,4 @@ class ExportMenu extends React.Component {
   }
 }
 
-export default enhanceWithClickOutside(ExportMenu)
+export default withRouter(enhanceWithClickOutside(ExportMenu))
