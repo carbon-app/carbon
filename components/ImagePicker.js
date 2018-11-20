@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 
-import RandomImage from './RandomImage'
+import RandomImage, { downloadThumbnailImage } from './RandomImage'
 import PhotoCredit from './PhotoCredit'
 import { fileToDataURL } from '../lib/util'
+import { COLORS } from '../lib/constants'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
   const canvas = document.createElement('canvas')
@@ -32,17 +33,25 @@ const getCroppedImg = (imageDataURL, pixelCrop) => {
   })
 }
 
-const INITIAL_STATE = { crop: null, imageAspectRatio: null, pixelCrop: null, photographer: null }
+const INITIAL_STATE = {
+  mode: 'file',
+  crop: null,
+  imageAspectRatio: null,
+  pixelCrop: null,
+  photographer: null
+}
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
+    this.handleURLInput = this.handleURLInput.bind(this)
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
     this.onImageLoaded = this.onImageLoaded.bind(this)
     this.onCropChange = this.onCropChange.bind(this)
     this.onDragEnd = this.onDragEnd.bind(this)
+    this.selectMode = this.selectMode.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -90,6 +99,22 @@ export default class extends React.Component {
     })
   }
 
+  handleURLInput(e) {
+    e.preventDefault()
+    const url = e.target[0].value
+    return downloadThumbnailImage({ url }).then(({ dataURL }) =>
+      this.props.onChange({
+        backgroundImage: dataURL,
+        backgroundImageSelection: null,
+        photographer: null
+      })
+    )
+  }
+
+  selectMode(mode) {
+    this.setState({ mode })
+  }
+
   selectImage(e, { photographer } = {}) {
     const file = e.target ? e.target.files[0] : e
 
@@ -117,12 +142,31 @@ export default class extends React.Component {
     let content = (
       <div>
         <div className="choose-image">
-          <span>Click the button below to upload a background image:</span>
-          <input
-            type="file"
-            accept="image/png,image/x-png,image/jpeg,image/jpg"
-            onChange={this.selectImage}
-          />
+          <span>Upload a background image:</span>
+          <button
+            className={this.state.mode === 'file' ? 'active' : 'none'}
+            onClick={this.selectMode.bind(this, 'file')}
+          >
+            File
+          </button>
+          <button
+            className={this.state.mode === 'url' ? 'active' : 'none'}
+            onClick={this.selectMode.bind(this, 'url')}
+          >
+            URL
+          </button>
+          {this.state.mode === 'file' ? (
+            <input
+              type="file"
+              accept="image/png,image/x-png,image/jpeg,image/jpg"
+              onChange={this.selectImage}
+            />
+          ) : (
+            <form onSubmit={this.handleURLInput}>
+              <input type="text" title="Background Image" placeholder="Image URL..." />
+              <button type="submit">Upload</button>
+            </form>
+          )}
         </div>
         <hr />
         <div className="random-image">
@@ -133,14 +177,55 @@ export default class extends React.Component {
         </div>
         <style jsx>
           {`
+            button {
+              display: inline-block;
+            }
+
             .choose-image,
             .random-image {
               padding: 8px;
             }
 
-            input {
+            .choose-image > button {
+              cursor: pointer;
+              color: white;
+              background: transparent;
+              border: none;
+              outline: none;
+              padding: 0;
+              margin: 0 8px 8px 0;
+            }
+
+            .choose-image > button:not(.active) {
+              opacity: 0.4;
+            }
+
+            input[type='file'] {
               cursor: pointer;
               outline: none;
+            }
+
+            form {
+              display: flex;
+              justify-content: space-between;
+            }
+
+            form > button {
+              padding: 1px 18px 2px 7px;
+            }
+
+            form > input {
+              display: inline-block;
+              width: 100%;
+              font-size: 12px;
+              color: ${COLORS.SECONDARY};
+              background: #1a1a1a;
+              border: none;
+              outline: none;
+              margin-right: 8px;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
             }
 
             span {
@@ -155,6 +240,7 @@ export default class extends React.Component {
             hr {
               border-bottom: none;
               margin-bottom: 0;
+              margin-top: 0;
             }
           `}
         </style>
