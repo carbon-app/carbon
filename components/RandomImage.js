@@ -8,7 +8,7 @@ import { fileToDataURL } from '../lib/util'
 
 export const downloadThumbnailImage = img => {
   return api.client
-    .get(img.url, { responseType: 'blob' })
+    .get(img.url.replace('http://', 'https://'), { responseType: 'blob' })
     .then(res => res.data)
     .then(fileToDataURL)
     .then(dataURL => Object.assign(img, { dataURL }))
