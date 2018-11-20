@@ -58,10 +58,10 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { button, color, selected, onChange, itemWrapper } = this.props
+    const { color, selected, onChange, itemWrapper } = this.props
     const { itemsToShow, inputValue } = this.state
 
-    const minWidth = calcMinWidth(button, selected, itemsToShow)
+    const minWidth = calcMinWidth(itemsToShow)
 
     return (
       <Downshift
@@ -72,13 +72,13 @@ class Dropdown extends React.PureComponent {
         onChange={onChange}
         onUserAction={this.onUserAction}
       >
-        {renderDropdown({ button, color, list: itemsToShow, selected, minWidth, itemWrapper })}
+        {renderDropdown({ color, list: itemsToShow, selected, minWidth, itemWrapper })}
       </Downshift>
     )
   }
 }
 
-const renderDropdown = ({ button, color, list, minWidth, itemWrapper }) => ({
+const renderDropdown = ({ color, list, minWidth, itemWrapper }) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -94,7 +94,6 @@ const renderDropdown = ({ button, color, list, minWidth, itemWrapper }) => ({
         getInputProps={getInputProps}
         isOpen={isOpen}
         color={color}
-        button={button}
       >
         {selectedItem.name}
       </SelectedItem>
@@ -137,7 +136,7 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, color, button }) => {
+const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, color }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
@@ -146,14 +145,10 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
       tabIndex="0"
       className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
     >
-      {button ? (
-        <span className="dropdown-display-text">{children}</span>
-      ) : (
-        <input
-          {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
-          className="dropdown-display-text"
-        />
-      )}
+      <input
+        {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
+        className="dropdown-display-text"
+      />
       <div className="dropdown-arrow">
         <ArrowDown fill={itemColor} />
       </div>
@@ -252,9 +247,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ...
   )
 }
 
-function calcMinWidth(isButton, selected, list) {
-  const items = isButton ? [...list, selected] : list
-
+function calcMinWidth(items) {
   return items.reduce((max, { name }) => {
     const wordSize = name.length * 10 + 32
     return wordSize > max ? wordSize : max
