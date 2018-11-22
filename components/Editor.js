@@ -175,12 +175,16 @@ class Editor extends React.Component {
     try {
       if (type === 'blob') {
         if (format === 'svg') {
-          return domtoimage
-            .toSvg(node, config)
-            .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
-            .then(uri => uri.slice(uri.indexOf(',') + 1))
-            .then(data => new Blob([data], { type: 'image/svg+xml' }))
-            .then(data => window.URL.createObjectURL(data))
+          return (
+            domtoimage
+              .toSvg(node, config)
+              .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
+              // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
+              .then(dataUrl => dataUrl.replace(/&(?!#?[a-z0-9]+;)/g, '&amp;'))
+              .then(uri => uri.slice(uri.indexOf(',') + 1))
+              .then(data => new Blob([data], { type: 'image/svg+xml' }))
+              .then(data => window.URL.createObjectURL(data))
+          )
         }
 
         return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
