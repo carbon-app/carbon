@@ -12,76 +12,81 @@ import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
 //import Remove from './svg/Remove'
 
-const WindowSettings = ({
-  onChange,
-  windowTheme,
-  paddingHorizontal,
-  paddingVertical,
-  dropShadow,
-  dropShadowBlurRadius,
-  dropShadowOffsetY,
-  windowControls
-}) => {
-  return (
-    <div className="settings-content">
-      <ThemeSelect selected={windowTheme || 'none'} onChange={onChange.bind(null, 'windowTheme')} />
-      <div className="row">
-        <Slider
-          label="Padding (vert)"
-          value={paddingVertical}
-          maxValue={200}
-          onChange={onChange.bind(null, 'paddingVertical')}
+const WindowSettings = React.memo(
+  ({
+    onChange,
+    windowTheme,
+    paddingHorizontal,
+    paddingVertical,
+    dropShadow,
+    dropShadowBlurRadius,
+    dropShadowOffsetY,
+    windowControls
+  }) => {
+    return (
+      <div className="settings-content">
+        <ThemeSelect
+          selected={windowTheme || 'none'}
+          onChange={onChange.bind(null, 'windowTheme')}
         />
-        <Slider
-          label="Padding (horiz)"
-          value={paddingHorizontal}
-          onChange={onChange.bind(null, 'paddingHorizontal')}
-        />
-      </div>
-      <Toggle
-        label="Drop shadow"
-        enabled={dropShadow}
-        onChange={onChange.bind(null, 'dropShadow')}
-      />
-      {dropShadow && (
-        <div className="row drop-shadow-options">
+        <div className="row">
           <Slider
-            label="(offset-y)"
-            value={dropShadowOffsetY}
-            onChange={onChange.bind(null, 'dropShadowOffsetY')}
+            label="Padding (vert)"
+            value={paddingVertical}
+            maxValue={200}
+            onChange={onChange.bind(null, 'paddingVertical')}
           />
           <Slider
-            label="(blur-radius)"
-            value={dropShadowBlurRadius}
-            onChange={onChange.bind(null, 'dropShadowBlurRadius')}
+            label="Padding (horiz)"
+            value={paddingHorizontal}
+            onChange={onChange.bind(null, 'paddingHorizontal')}
           />
         </div>
-      )}
-      <Toggle
-        label="Window controls"
-        enabled={windowControls}
-        onChange={onChange.bind(null, 'windowControls')}
-      />
-      <style jsx>
-        {`
-          .row {
-            display: flex;
-          }
+        <Toggle
+          label="Drop shadow"
+          enabled={dropShadow}
+          onChange={onChange.bind(null, 'dropShadow')}
+        />
+        {dropShadow && (
+          <div className="row drop-shadow-options">
+            <Slider
+              label="(offset-y)"
+              value={dropShadowOffsetY}
+              onChange={onChange.bind(null, 'dropShadowOffsetY')}
+            />
+            <Slider
+              label="(blur-radius)"
+              value={dropShadowBlurRadius}
+              onChange={onChange.bind(null, 'dropShadowBlurRadius')}
+            />
+          </div>
+        )}
+        <Toggle
+          label="Window controls"
+          enabled={windowControls}
+          onChange={onChange.bind(null, 'windowControls')}
+        />
+        <style jsx>
+          {`
+            .row {
+              display: flex;
+            }
 
-          .row > :global(div:first-child) {
-            border-right: 1px solid ${COLORS.SECONDARY};
-          }
+            .row > :global(div:first-child) {
+              border-right: 1px solid ${COLORS.SECONDARY};
+            }
 
-          .drop-shadow-options {
-            opacity: 0.5;
-          }
-        `}
-      </style>
-    </div>
-  )
-}
+            .drop-shadow-options {
+              opacity: 0.5;
+            }
+          `}
+        </style>
+      </div>
+    )
+  }
+)
 
-const TypeSettings = ({ onChange, font, size, lineHeight }) => {
+const TypeSettings = React.memo(({ onChange, font, size, lineHeight }) => {
   return (
     <div className="settings-content">
       <FontSelect selected={font} onChange={onChange.bind(null, 'fontFamily')} />
@@ -103,9 +108,9 @@ const TypeSettings = ({ onChange, font, size, lineHeight }) => {
       />
     </div>
   )
-}
+})
 
-const MiscSettings = ({ format, reset }) => {
+const MiscSettings = React.memo(({ format, reset }) => {
   return (
     <div className="settings-content">
       <button onClick={format}>Prettify code</button>
@@ -138,9 +143,9 @@ const MiscSettings = ({ format, reset }) => {
       </style>
     </div>
   )
-}
+})
 
-const MenuButton = ({ name, select, selected }) => {
+const MenuButton = React.memo(({ name, select, selected }) => {
   return (
     <button onClick={select(name)} className={selected === name ? 'selected' : ''}>
       {name}
@@ -179,9 +184,9 @@ const MenuButton = ({ name, select, selected }) => {
       </style>
     </button>
   )
-}
+})
 
-/*const Presets = ({ show, presets, toggle, create, remove }) => {
+/*const Presets = React.memo(({ show, presets, toggle, create, remove }) => {
   return (
     <div className="settings-presets">
       <div className="settings-presets-header">
@@ -268,7 +273,7 @@ const MenuButton = ({ name, select, selected }) => {
       </style>
     </div>
   )
-}*/
+})*/
 
 class Settings extends React.PureComponent {
   state = {
