@@ -277,29 +277,20 @@ class Settings extends React.PureComponent {
     showPresets: false
   }
 
-  toggleVisible = () => {
-    this.setState(toggle('isVisible'))
-  }
+  toggleVisible = () => this.setState(toggle('isVisible'))
 
-  togglePresets = () => {
-    this.setState(toggle('showPresets'))
-  }
+  togglePresets = () => this.setState(toggle('showPresets'))
 
-  handleClickOutside = () => {
-    this.setState({ isVisible: false })
-  }
+  handleClickOutside = () => this.setState({ isVisible: false })
 
-  format = () => {
-    return formatCode(this.props.code)
+  format = () =>
+    formatCode(this.props.code)
       .then(this.props.onChange.bind(this, 'code'))
       .catch(() => {
         // create toast here in the future
       })
-  }
 
-  selectMenu = selectedMenu => () => {
-    this.setState({ selectedMenu })
-  }
+  selectMenu = selectedMenu => () => this.setState({ selectedMenu })
 
   renderContent = () => {
     switch (this.state.selectedMenu) {
