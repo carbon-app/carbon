@@ -151,7 +151,7 @@ class BackgroundSelect extends React.Component {
             .picker-tab {
               user-select: none;
               cursor: pointer;
-              background: rgba(255, 255, 255, 0.165);
+              background: ${COLORS.DARK_GRAY};
               width: 50%;
               text-align: center;
               padding: 8px 0;
@@ -191,7 +191,7 @@ class BackgroundSelect extends React.Component {
               box-shadow: none;
               outline: none;
               border-radius: 2px;
-              background: rgba(255, 255, 255, 0.165);
+              background: ${COLORS.DARK_GRAY};
               color: #fff !important;
             }
 

@@ -47,7 +47,7 @@ class ThemeSelect extends React.Component {
   render() {
     return (
       <div className="window-theme">
-        <span className="label">Window theme</span>
+        <span className="label">Theme</span>
         <div className="themes">{this.renderThemes()}</div>
         <style jsx>
           {`

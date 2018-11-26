@@ -1,7 +1,7 @@
 import React from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
-import ArrowDown from './svg/Arrowdown'
+import { Down as ArrowDown } from './svg/Arrows'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
@@ -197,7 +197,7 @@ const SelectedItem = ({
         className="dropdown-display-text"
       />
       <div className="dropdown-arrow">
-        <ArrowDown fill={itemColor} />
+        <ArrowDown color={itemColor} />
       </div>
       <style jsx>
         {`

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { COLORS } from '../lib/constants'
+
 class Slider extends React.Component {
   constructor(props) {
     super(props)
@@ -17,6 +19,14 @@ class Slider extends React.Component {
 
     return (
       <div className="slider">
+        <div
+          className="slider-bg"
+          style={{
+            transform: `translate3d(${(((parseFloat(this.props.value) - minValue) * 1.0) /
+              (maxValue - minValue)) *
+              100}%, 0px, 0px)`
+          }}
+        />
         <span className="label">{this.props.label}</span>
         <input
           type="range"
@@ -26,19 +36,11 @@ class Slider extends React.Component {
           max={maxValue}
           step={step}
         />
-        <div
-          className="slider-bg"
-          style={{
-            transform: `translate3d(${(((parseFloat(this.props.value) - minValue) * 1.0) /
-              (maxValue - minValue)) *
-              100}%, 0px, 0px)`
-          }}
-        />
         <style jsx>
           {`
             .slider {
               position: relative;
-              height: 32px;
+              height: 33px;
               overflow: hidden;
               user-select: none;
             }
@@ -50,8 +52,8 @@ class Slider extends React.Component {
             .label {
               position: absolute;
               left: 8px;
-              height: 32px;
-              line-height: 32px;
+              height: 33px;
+              line-height: 33px;
             }
 
             .slider input {
@@ -67,9 +69,9 @@ class Slider extends React.Component {
               top: 0;
               bottom: 0;
               pointer-events: none;
-              height: 32px;
+              height: 33px;
               width: 100%;
-              background: rgba(255, 255, 255, 0.165);
+              background: ${COLORS.DARK_GRAY};
             }
           `}
         </style>
