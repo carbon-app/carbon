@@ -8,7 +8,8 @@
     "docs/README.hi.md",
     "docs/README.br.pt.md",
     "docs/README.cn.zh.md",
-    "docs/README.ml.md"
+    "docs/README.ml.md",
+    "docs/README.tr.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -392,6 +393,15 @@
       "name": "Shinil M S",
       "avatar_url": "https://avatars2.githubusercontent.com/u/18573510?v=4",
       "profile": "https://ghuser.io/shinilms",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "berkeatac",
+      "name": "Berke Atac",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/10579633?v=4",
+      "profile": "https://github.com/berkeatac",
       "contributions": [
         "translation"
       ]
