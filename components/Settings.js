@@ -333,7 +333,7 @@ class Settings extends React.PureComponent {
   }
 
   render() {
-    const { isVisible, selectedMenu, showPresets } = this.state
+    const { isVisible, selectedMenu } = this.state
 
     return (
       <div className="settings-container">
