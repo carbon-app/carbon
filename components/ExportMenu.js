@@ -46,11 +46,12 @@ class ExportMenu extends React.PureComponent {
           color={COLORS.PURPLE}
         />
         <div className="export-menu" hidden={!isVisible}>
-          <WindowPointer fromRight="12px" color={COLORS.PURPLE} />
-          <div className="export-option">
+          <WindowPointer fromRight="28px" color={COLORS.PURPLE} />
+          <div className="export-option filename-option">
+            <span>File name</span>
             <input
               title="filename"
-              placeholder="File name..."
+              placeholder="carbon"
               value={filename}
               name="filename"
               onChange={this.handleInputChange}
@@ -143,6 +144,18 @@ class ExportMenu extends React.PureComponent {
               background-color: ${COLORS.BLACK};
             }
 
+            .filename-option {
+              align-items: center;
+              justify-content: space-between;
+              padding: 0 16px;
+            }
+
+            .filename-option input {
+              padding: 8px 0;
+              width: 60%;
+              text-align: right;
+            }
+
             .export-option {
               display: flex;
               border-bottom: 1px solid ${COLORS.PURPLE};
@@ -162,6 +175,7 @@ class ExportMenu extends React.PureComponent {
             }
 
             .size-button {
+              line-height: 0;
               opacity: 0.4;
               margin-right: 10px;
             }

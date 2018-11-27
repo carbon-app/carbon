@@ -176,8 +176,9 @@ const MenuButton = React.memo(({ name, select, selected }) => {
             display: flex;
             padding: 8px;
             height: 33px;
+            line-height: 0;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 14px;
             border-bottom: 1px solid ${COLORS.SECONDARY};
             position: relative;
           }
@@ -192,7 +193,8 @@ const MenuButton = React.memo(({ name, select, selected }) => {
 
           .arrow-icon {
             position: absolute;
-            right: 16px;
+            right: 14px;
+            top: 11px;
           }
         `}
       </style>
@@ -434,8 +436,6 @@ class Settings extends React.PureComponent {
           {`
             .settings-content {
               width: 100%;
-              max-height: 232px;
-              overflow-y: scroll;
               border-left: 1px solid ${COLORS.SECONDARY};
             }
 

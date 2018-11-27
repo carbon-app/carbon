@@ -23,7 +23,7 @@ class Toggle extends React.PureComponent {
               justify-content: ${this.props.center ? 'center' : 'space-between'};
               cursor: pointer;
               user-select: none;
-              padding: 8px;
+              padding: 8px 12px 8px 8px;
             }
 
             .checkmark-disabled {

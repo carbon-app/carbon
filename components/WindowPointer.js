@@ -9,10 +9,10 @@ export default ({ fromLeft, fromRight, color = '#fff' }) => (
           width: 0px;
           height: 0px;
           border-style: solid;
-          border-width: 0 5px 10px 5px;
+          border-width: 0 5px 6px 5px;
           border-color: transparent transparent ${color} transparent;
           position: absolute;
-          top: -10px;
+          top: -8px;
           left: ${fromLeft || 'initial'};
           right: ${fromRight || 'initial'};
         }
