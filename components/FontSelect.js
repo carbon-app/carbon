@@ -6,7 +6,7 @@ const Font = font => <span style={{ fontFamily: font.id }}>{font.name}</span>
 
 function FontSelect(props) {
   return (
-    <ListSetting title="Font family" items={FONTS} {...props}>
+    <ListSetting title="Font" items={FONTS} {...props}>
       {Font}
     </ListSetting>
   )

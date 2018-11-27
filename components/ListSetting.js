@@ -35,7 +35,7 @@ class ListSetting extends React.Component {
               user-select: none;
               padding: 8px 16px;
               border-bottom: 1px solid ${COLORS.SECONDARY};
-              background: rgba(255, 255, 255, 0.165);
+              background: ${COLORS.DARK_GRAY};
             }
             .list-item:first-of-type {
               border-top: 1px solid ${COLORS.SECONDARY};
