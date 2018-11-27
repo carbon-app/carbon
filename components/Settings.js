@@ -21,7 +21,10 @@ const WindowSettings = React.memo(
     dropShadow,
     dropShadowBlurRadius,
     dropShadowOffsetY,
-    windowControls
+    windowControls,
+    lineNumbers,
+    widthAdjustment,
+    watermark
   }) => {
     return (
       <div className="settings-content">
@@ -66,6 +69,17 @@ const WindowSettings = React.memo(
           enabled={windowControls}
           onChange={onChange.bind(null, 'windowControls')}
         />
+        <Toggle
+          label="Line numbers"
+          enabled={lineNumbers}
+          onChange={onChange.bind(null, 'lineNumbers')}
+        />
+        <Toggle
+          label="Auto-adjust width"
+          enabled={widthAdjustment}
+          onChange={onChange.bind(null, 'widthAdjustment')}
+        />
+        <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
         <style jsx>
           {`
             .row {
@@ -310,6 +324,9 @@ class Settings extends React.PureComponent {
             dropShadowBlurRadius={this.props.dropShadowBlurRadius}
             dropShadowOffsetY={this.props.dropShadowOffsetY}
             windowControls={this.props.windowControls}
+            lineNumbers={this.props.lineNumbers}
+            widthAdjustment={this.props.widthAdjustment}
+            watermark={this.props.watermark}
           />
         )
       case 'Type':
@@ -417,6 +434,8 @@ class Settings extends React.PureComponent {
           {`
             .settings-content {
               width: 100%;
+              max-height: 232px;
+              overflow-y: scroll;
               border-left: 1px solid ${COLORS.SECONDARY};
             }
 
