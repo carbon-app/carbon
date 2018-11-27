@@ -434,7 +434,7 @@ class Settings extends React.PureComponent {
           {`
             .settings-content {
               width: 100%;
-              height: 232px;
+              max-height: 232px;
               overflow-y: scroll;
               border-left: 1px solid ${COLORS.SECONDARY};
             }
