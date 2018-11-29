@@ -242,7 +242,7 @@ class Carbon extends React.PureComponent {
 
     return (
       <div className="section">
-        <div className="export-container" ref={this.getRef} id="export-area">
+        <div className="export-container" ref={this.getRef} id="export-container">
           {content}
           <div className="twitter-png-fix" />
         </div>
