@@ -37,7 +37,7 @@ class ExportMenu extends React.PureComponent {
     const { isVisible } = this.state
 
     return (
-      <div className="export-container">
+      <div className="export-container" id="export-initializer">
         <Button
           selected={isVisible}
           className="exportButton"
@@ -85,10 +85,10 @@ class ExportMenu extends React.PureComponent {
             <div className="save-container">
               <span>Save as</span>
               <div>
-                <button onClick={this.handleExport('png')} className="save-button">
+                <button onClick={this.handleExport('png')} className="save-button" id="png-export">
                   PNG
                 </button>
-                <button onClick={this.handleExport('svg')} className="save-button">
+                <button onClick={this.handleExport('svg')} className="save-button" id="svg-export">
                   SVG
                 </button>
               </div>
