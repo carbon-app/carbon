@@ -9,7 +9,8 @@
     "docs/README.br.pt.md",
     "docs/README.cn.zh.md",
     "docs/README.ml.md",
-    "docs/README.tr.md"
+    "docs/README.tr.md",
+    "docs/README.kr.md"
   ],
   "imageSize": 100,
   "commit": false,
