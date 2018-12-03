@@ -10,78 +10,84 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### अनुवाद
-[Español](/README.es.md)
-[English](/README.md)
+##### Translations
+- [Español](/docs/README.es.md)
+- [हिंदी](/docs/README.hi.md)
+- [Deutsch](/docs/README.de.md)
+- [简体中文](/docs/README.cn.zh.md)
+- [Português](/docs/README.br.pt.md)
+- [മലയാളം](/docs/README.ml.md)
+- [Türkçe](/docs/README.tr.md)
+- [한국어](/docs/README.kr.md)
 
-## प्रस्तावना
+## Introduction
 
-आप ट्विटर पर देखे गए [उन](https://twitter.com/reactjs/status/890511993261654017) [सभी](https://twitter.com/dan_abramov/status/890191815567175680) [कोड](https://twitter.com/notquiteleo/status/873483329345028096) [स्क्रीनशॉट](https://twitter.com/zeithq/status/805779711154647040) को जानते हैं? हालांकि कोड आमतौर पर प्रभावशाली है, हमने सौंदर्य विभाग में सुधार के लिए जगह देखी। कार्बन आपके स्रोत कोड की सुंदर छवियों को बनाना और साझा करना आसान बनाता है। तो आप किसका इंतज़ार कर रहे हैं? अपने सभी अनुयायियों को अपने नए डिजाइन कौशल के साथ प्रभावित करें।
+트위터에서 공유되고 있는 [그](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 합니다. 무엇을 망설이나요? 당신의 디자인 감각으로 follower들을 감동시키세요!
 
-परियोजना के बारे में अधिक जानने के लिए [carbon.now.sh](https://carbon.now.sh) पर जाएं या हमारी [पोस्ट](https://dawnlabs.io/case-studies/carbon/) पढ़ें।
+이 프로젝트를 더 알고싶다면 [carbon.now.sh](https://carbon.now.sh)에 방문하시거나 [우리의 post](https://dawnlabs.io/case-studies/carbon/)를 읽어주세요.
+## Features
 
-## विशेषताएं
+* **GitHub gist에서 가져오기**. 그저 url에 github gist id를 입력하세요.
+* **커스터마이징**.  코드 스크린샷의 syntax theme, window style 등 많은 것들을 커스터마이징하세요.
+* **빠르게 공유하기**. 클릭 한 번으로 이미지를 저장하거나 Tweet에 공유하세요.
 
-* **GitHub gist से आयात करें**. बस यूआरएल में एक GitHub gist आईडी संलग्न करें
-* **अनुकूलन**. थीम, विंडो शैली आदि जैसी चीजों को कस्टमाइज़ करें
-* **जल्दी से साझा करें**. अपनी छवि को सहेजें या एक क्लिक के साथ एक लिंक ट्वीट करें
-
-## उदाहरण
+## Example
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## प्रयोग
+## Usage
 
 #### Import
 
-कार्बन में कोड import करने के कुछ अलग तरीके हैं:
-- एक फ़ाइल को editor पर छोड़ दें
-- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें  (e.g. `carbon.now.sh/GIST_ID_HERE`)
-- अपना कोड सीधे paste
+Carbon에 코드를 적용시키는데는 몇 가지 방법이 있습니다: 
+- 편집기에 file을 놓기
+- url에 GitHub gist id 붙여넣기 (예시. `carbon.now.sh/GIST_ID_HERE`)
+- Paste your code directly
 
-#### अनुकूलन
+#### Customization
 
-एक बार जब आप अपना पूरा कोड कार्बन में प्राप्त कर लेंगे, तो आप सिंटैक्स थीम, पृष्ठभूमि रंग, विंडो थीम या पैडिंग को बदलकर अपनी छवि को कस्टमाइज़ कर सकते हैं।
+Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme 그리고 padding 등 이미지를 커스터마이징 할 수 있습니다.
 
 #### Export/Sharing
 
-अपनी छवि को अनुकूलित करने के बाद आप या तो छवि के लिंक को ट्वीट कर सकते हैं, या इसे सीधे सहेज सकते हैं।
+코드 이미지를 커스터마이징 하고 나면, 곧바로 이미지를 저장하고, Tweet에 공유 할 수 있습니다. 
 
-## समुदाय
-इन परियोजनाओं को देखें हमारे भयानक समुदाय ने बनाया है:
+## Community
+우리의 멋진 커뮤니티가 만든 아래의 프로젝트들을 확인해보세요:
 
 ##### Editor Plugins
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - एक context menu के माध्यम से कार्बन में अपनी वर्तमान IntelliJ IDEA फ़ाइल में चयन खोलें
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A` के साथ कार्बन में अपनी वर्तमान एटम फ़ाइल खोलें
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - कार्बन में कमांड `carbon` के साथ अपनी वर्तमान VS Code फ़ाइल खोलें
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - एक कस्टम बाध्य कुंजी के साथ अपने वर्तमान sublime text 3 फ़ाइल में चयन खोलें
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - फ़ंक्शन `CarbonNowSh()` का उपयोग करके अपने वर्तमान Vim/Neovim में चयन को खोलें
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) -  इंटरैक्टिव फ़ंक्शन `carbon-now-sh` का उपयोग करके अपने वर्तमान Emacs में चयन को खोलें
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - context menu를 통해서 IntelliJ IDEA file의 선택 영역을 Carbon에서 엽니다.
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A`를 사용해 현재 보고있는 Atom 파일을 Carbon에서 엽니다. 
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - `carbon`명령어를 사용해 현재 보고있는 VS Code 파일을 Carbon에서 엽니다.
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 
+커스텀 키를 사용해 Sublime Text 3 파일의 선택 영역을 Carbon에서 엽니다. 
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 
+`CarbonNowSh()` 함수를 사용해 현재 보고 있는 Vim/Neovim 선택 영역을 엽니다.
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - ineractive 함수인 `carbon-now-sh`를 사용해 현재 보고있는 Emacs 선택 영역을 엽니다.
 
 ##### CLIs
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - कार्बन में एक फ़ाइल खोलें या इसे `carbon-now` का उपयोग करके सीधे डाउनलोड करें, जिसमें एक इंटरैक्टिव मोड, चुनिंदा हाइलाइटिंग और बहुत कुछ शामिल है
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - `carbon-now` 명령을 사용해서 곧바로 파일을 열거나 다운로드 받으세요. 이 것은 대화형 모드가 지원되고 선택인 하이라이팅 등 많은 것들을 지원합니다.
 
 ##### Libraries
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R` में छवि सौंदर्यशास्त्र का आंशिक रूप से उपयोग करें और या तो कार्बन में खुलें या सीधे डाउनलोड करें।
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R`을 통해서 이미지의 미적인 부분을 조작하고, 그 이미지를 다운 받거나 Carbon에서 열 수 있습니다. 
 
-##### पाठ्यपुस्तकें
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - सरबो रॉय द्वारा एक कंप्यूटर विज्ञान पाठ्यपुस्तक।
+##### Textbooks
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy가 쓴 컴퓨터 사이언스 교과서.
 
 ## Contribute
-PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) देखें।
+풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md)를 참조해주세요.
+## Thanks To
+[ ▲ ZEIT ](https://zeit.co/)가 Carbon 호스팅을 지원해주고 있습니다..
 
-## धन्यवाद
-[ ▲ ZEIT ](https://zeit.co/) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
-
-## लेखक
-कार्बन <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> द्वारा एक परियोजना है
+## Authors
+Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## योगदानकर्ता
+## Contributors
 
-इन सभी अद्भुत लोगों के लिए धन्यवाद ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+아래의 모든 멋진 분들께 감사 드립니다 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
