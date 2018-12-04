@@ -144,7 +144,7 @@ class Editor extends React.Component {
 
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
-        if (node.innerText && node.innerText.match(/%\d\S/)) {
+        if (node.innerText && node.innerText.match(/%\S\S/)) {
           map.set(node, node.innerText)
           node.innerText = encodeURIComponent(node.innerText)
         }
