@@ -31,7 +31,8 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE
+  DEFAULT_LANGUAGE,
+  PRESETS
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
@@ -46,7 +47,8 @@ class Editor extends React.Component {
       loading: true,
       uploading: false,
       code: props.content,
-      online: true
+      online: true,
+      presets: PRESETS
     }
 
     this.export = this.export.bind(this)
@@ -287,7 +289,8 @@ class Editor extends React.Component {
       online,
       titleBar,
       code,
-      exportSize
+      exportSize,
+      presets
     } = this.state
 
     if (loading) {
@@ -341,6 +344,7 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
               updatePreset={this.updatePreset}
+              presets={presets}
             />
             <div className="buttons">
               {this.props.api.tweet &&
