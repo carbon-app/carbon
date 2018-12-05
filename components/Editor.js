@@ -274,7 +274,10 @@ class Editor extends React.Component {
       })
 
   // eslint-disable-next-line
-  updatePreset = ({ name, custom, ...settings }) => this.setState({ preset: name, ...settings })
+  applyPreset = ({ name, custom, ...settings }) => this.setState({ preset: name, ...settings })
+
+  removePreset = nameToRemove =>
+    this.setState({ presets: this.state.presets.filter(({ name }) => name !== nameToRemove) })
 
   render() {
     const {
@@ -289,8 +292,7 @@ class Editor extends React.Component {
       online,
       titleBar,
       code,
-      exportSize,
-      presets
+      exportSize
     } = this.state
 
     if (loading) {
@@ -343,8 +345,8 @@ class Editor extends React.Component {
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
-              updatePreset={this.updatePreset}
-              presets={presets}
+              applyPreset={this.applyPreset}
+              removePreset={this.removePreset}
             />
             <div className="buttons">
               {this.props.api.tweet &&

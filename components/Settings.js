@@ -202,7 +202,7 @@ const MenuButton = React.memo(({ name, select, selected }) => {
   )
 })
 
-const Presets = React.memo(({ show, presets, toggle, create, remove, update }) => {
+const Presets = React.memo(({ show, presets, toggle, create, remove, apply }) => {
   return (
     <div className="settings-presets">
       <div className="settings-presets-header">
@@ -224,7 +224,7 @@ const Presets = React.memo(({ show, presets, toggle, create, remove, update }) =
               key={preset.name}
               className="settings-presets-preset"
               style={{ backgroundColor: preset.backgroundColor }}
-              onClick={() => update(preset)}
+              onClick={() => apply(preset)}
             >
               {preset.custom ? (
                 <button className="settings-presets-remove" onClick={() => remove(preset.name)}>
@@ -362,7 +362,7 @@ class Settings extends React.PureComponent {
 
   render() {
     const { isVisible, selectedMenu, showPresets } = this.state
-    const { updatePreset, presets } = this.props
+    const { applyPreset, removePreset, presets } = this.props
 
     return (
       <div className="settings-container">
@@ -378,7 +378,8 @@ class Settings extends React.PureComponent {
             show={showPresets}
             toggle={this.togglePresets}
             presets={presets}
-            update={updatePreset}
+            apply={applyPreset}
+            remove={removePreset}
           />
           <div className="settings-bottom">
             <div className="settings-menu">
