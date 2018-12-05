@@ -37,7 +37,7 @@ class ExportMenu extends React.PureComponent {
     const { isVisible } = this.state
 
     return (
-      <div className="export-container" id="export-menu">
+      <div className="export-menu-container" id="export-menu">
         <Button
           selected={isVisible}
           className="exportButton"
