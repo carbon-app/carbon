@@ -10,7 +10,7 @@ import { COLORS, PRESETS } from '../lib/constants'
 import { toggle } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
-//import Remove from './svg/Remove'
+import Remove from './svg/Remove'
 
 const WindowSettings = React.memo(
   ({
