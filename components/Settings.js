@@ -6,7 +6,7 @@ import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
-import { COLORS } from '../lib/constants'
+import { COLORS, PRESETS } from '../lib/constants'
 import { toggle } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
@@ -202,94 +202,114 @@ const MenuButton = React.memo(({ name, select, selected }) => {
   )
 })
 
-/*const Presets = React.memo(({ show, presets, toggle, create, remove }) => {
+const Presets = React.memo(({ show, presets, toggle, create, remove, update }) => {
   return (
     <div className="settings-presets">
       <div className="settings-presets-header">
         <span>Presets</span>
-        {show && <button className="settings-presets-create" onClick={create}>create +</button>}
+        {false &&
+          show && (
+            <button className="settings-presets-create" onClick={create}>
+              create +
+            </button>
+          )}
         <button className="settings-presets-arrow" onClick={toggle}>
           {show ? <Arrows.Up /> : <Arrows.Down />}
         </button>
       </div>
       {show && (
         <div className="settings-presets-content">
-          {presets.map(({ id, backgroundColor, userCreated }) => (
-            <div key={id} className="settings-presets-preset" style={{
-              backgroundColor
-            }}>
-              {
-                userCreated ? <button className="settings-presets-remove" onClick={() => remove(id)}><Remove /></button> : null
-              }
-            </div>
+          {presets.map(preset => (
+            <button
+              key={preset.name}
+              className="settings-presets-preset"
+              style={{ backgroundColor: preset.backgroundColor }}
+              onClick={() => update(preset)}
+            >
+              {preset.custom ? (
+                <button className="settings-presets-remove" onClick={() => remove(preset.name)}>
+                  <Remove />
+                </button>
+              ) : null}
+            </button>
           ))}
         </div>
       )}
       <style jsx>
-      {`
-        .settings-presets {
-          border-bottom: 1px solid ${COLORS.SECONDARY};
-        }
+        {`
+          button {
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+          }
 
-        .settings-presets-header {
-          display: flex;
-          padding: 10px 8px;
-          position: relative;
-          color: ${COLORS.SECONDARY};
-          width: 100%;
-          align-items: center;
-        }
+          .settings-presets {
+            border-bottom: 1px solid ${COLORS.SECONDARY};
+          }
 
-        .settings-presets-arrow, .settings-presets-create, .settings-presets-remove {
-          cursor: pointer;
-          background: transparent;
-          outline: none;
-          border: none;
-          font-size: 12px;
-        }
+          .settings-presets-header {
+            display: flex;
+            padding: 10px 8px;
+            position: relative;
+            color: ${COLORS.SECONDARY};
+            width: 100%;
+            align-items: center;
+          }
 
-        .settings-presets-create {
-          color: ${COLORS.GRAY};
-          padding: 0 8px;
-        }
+          .settings-presets-arrow,
+          .settings-presets-create,
+          .settings-presets-remove {
+            cursor: pointer;
+            background: transparent;
+            outline: none;
+            border: none;
+            font-size: 12px;
+          }
 
-        .settings-presets-arrow {
-          position: absolute;
-          right: 16px;
-        }
+          .settings-presets-create {
+            color: ${COLORS.GRAY};
+            padding: 0 8px;
+          }
 
-        .settings-presets-content {
-          display: flex;
-          overflow-x: scroll;
-          margin: 12px 8px;
-        }
+          .settings-presets-arrow {
+            position: absolute;
+            right: 16px;
+          }
 
-        .settings-presets-preset {
-          border-radius: 3px;
-          height: 96px;
-          margin-right: 8px;
-          flex: 0 0 96px;
-          position: relative;
-        }
+          .settings-presets-content {
+            display: flex;
+            overflow-x: scroll;
+            margin: 12px 8px;
+          }
 
-        .settings-presets-remove {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          padding: 0;
-          top: 6px;
-          right: 6px;
-          width: 11px;
-          height: 11px;
-          border-radius: 999px;
-          background-color: ${COLORS.SECONDARY};
-        }
-      `}
+          .settings-presets-preset {
+            border-radius: 3px;
+            height: 96px;
+            margin-right: 8px;
+            flex: 0 0 96px;
+            position: relative;
+          }
+
+          .settings-presets-remove {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            padding: 0;
+            top: 6px;
+            right: 6px;
+            width: 11px;
+            height: 11px;
+            border-radius: 999px;
+            background-color: ${COLORS.SECONDARY};
+          }
+        `}
       </style>
     </div>
   )
-})*/
+})
 
 class Settings extends React.PureComponent {
   state = {
@@ -341,7 +361,8 @@ class Settings extends React.PureComponent {
   }
 
   render() {
-    const { isVisible, selectedMenu } = this.state
+    const { isVisible, selectedMenu, showPresets } = this.state
+    const { updatePreset } = this.props
 
     return (
       <div className="settings-container">
@@ -353,6 +374,12 @@ class Settings extends React.PureComponent {
         </div>
         <div className="settings-settings">
           <WindowPointer fromLeft="15px" />
+          <Presets
+            show={showPresets}
+            toggle={this.togglePresets}
+            presets={PRESETS}
+            update={updatePreset}
+          />
           <div className="settings-bottom">
             <div className="settings-menu">
               <MenuButton name="Window" select={this.selectMenu} selected={selectedMenu} />

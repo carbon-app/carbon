@@ -271,6 +271,8 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
+  updatePreset = ({ name, custom, ...settings }) => this.setState({ preset: name, ...settings })
+
   render() {
     const {
       loading,
@@ -337,6 +339,7 @@ class Editor extends React.Component {
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
+              updatePreset={this.updatePreset}
             />
             <div className="buttons">
               {this.props.api.tweet &&
