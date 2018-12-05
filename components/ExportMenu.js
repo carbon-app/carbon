@@ -127,7 +127,7 @@ class ExportMenu extends React.PureComponent {
               opacity: 0.4;
             }
 
-            .export-container {
+            .export-menu-container {
               position: relative;
               color: ${COLORS.PURPLE};
               font-size: 12px;
