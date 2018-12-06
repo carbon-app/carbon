@@ -264,6 +264,10 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
             align-items: center;
           }
 
+          .settings-presets-header > span {
+            font-size: 14px;
+          }
+
           .settings-presets-arrow,
           .settings-presets-create,
           .settings-presets-remove {
@@ -287,7 +291,7 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
           .settings-presets-content {
             display: flex;
             overflow-x: scroll;
-            margin: 12px 8px;
+            margin: 0 8px 12px 8px;
           }
 
           .settings-presets-preset {
