@@ -38,6 +38,11 @@ import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
+const themeIcon = <ThemeIcon />
+const languageIcon = <LanguageIcon />
+
+const tweetButtonStyle = { marginRight: '8px' }
+
 class Editor extends React.Component {
   constructor(props) {
     super(props)
@@ -318,13 +323,13 @@ class Editor extends React.Component {
         <div className="editor">
           <Toolbar>
             <Dropdown
-              icon={<ThemeIcon />}
+              icon={themeIcon}
               selected={THEMES_HASH[theme] || DEFAULT_THEME}
               list={THEMES}
               onChange={this.updateTheme}
             />
             <Dropdown
-              icon={<LanguageIcon />}
+              icon={languageIcon}
               selected={
                 LANGUAGE_NAME_HASH[language] ||
                 LANGUAGE_MIME_HASH[language] ||
@@ -357,7 +362,7 @@ class Editor extends React.Component {
                     onClick={this.upload}
                     title={uploading ? 'Loading...' : 'Tweet'}
                     color="#57b5f9"
-                    style={{ marginRight: '8px' }}
+                    style={tweetButtonStyle}
                   />
                 )}
               <ExportMenu
