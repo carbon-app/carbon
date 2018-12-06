@@ -284,10 +284,13 @@ class Editor extends React.Component {
 
   // eslint-disable-next-line
   applyPreset = (index, { custom, ...settings }) => {
-    const previousSettings = SETTINGS_KEYS.reduce((obj, settingKey) => ({
-      ...obj,
-      [settingKey]: this.state[settingKey]
-    }))
+    const previousSettings = SETTINGS_KEYS.reduce(
+      (obj, settingKey) => ({
+        ...obj,
+        [settingKey]: this.state[settingKey]
+      }),
+      {}
+    )
     this.setState({ selectedPreset: index, previousSettings, ...settings })
   }
 
