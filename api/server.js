@@ -42,7 +42,15 @@ puppeteer.launch(puppeteerParams).then(browser => {
     server.use(morgan('tiny'))
   }
 
-  server.use(cors())
+  server.use(
+    cors({
+      origin(origin, callback) {
+        return origin === 'https://carbon.now.sh' || !origin
+          ? callback(null, true)
+          : callback(new Error('Not allowed by CORS'))
+      }
+    })
+  )
 
   server.use(compression())
 
