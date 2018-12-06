@@ -39,8 +39,6 @@ import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
-const SETTINGS_KEYS = Object.keys(DEFAULT_SETTINGS)
-
 class Editor extends React.Component {
   constructor(props) {
     super(props)
@@ -205,10 +203,6 @@ class Editor extends React.Component {
     this.setState({
       [key]: value
     })
-
-    if (Object.prototype.hasOwnProperty(DEFAULT_SETTINGS, key)) {
-      this.setState({ selectedPreset: null })
-    }
   }
 
   export(format = 'png') {
@@ -279,25 +273,7 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  // eslint-disable-next-line
-  applyPreset = (index, { custom, ...settings }) => {
-    const previousSettings = SETTINGS_KEYS.reduce(
-      (obj, settingKey) => ({
-        ...obj,
-        [settingKey]: this.state[settingKey]
-      }),
-      {}
-    )
-    this.setState({ selectedPreset: index, previousSettings, ...settings })
-  }
-
-  // TODO: consider returning this callback from `applyPreset` and having `Presets` manage this state internally
-  undoPreset = () =>
-    this.setState({
-      selectedPreset: null,
-      previousSettings: null,
-      ...this.state.previousSettings
-    })
+  applyPreset = settings => this.setState(settings)
 
   removePreset = index =>
     this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
@@ -370,7 +346,6 @@ class Editor extends React.Component {
               format={this.format}
               applyPreset={this.applyPreset}
               removePreset={this.removePreset}
-              undoPreset={this.undoPreset}
             />
             <div className="buttons">
               {this.props.api.tweet &&

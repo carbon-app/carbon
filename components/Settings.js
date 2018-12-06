@@ -1,5 +1,6 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
+import omit from 'lodash.omit'
 
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
@@ -336,7 +337,9 @@ class Settings extends React.PureComponent {
   state = {
     isVisible: false,
     selectedMenu: 'Window',
-    showPresets: false
+    showPresets: false,
+    selectedPreset: null,
+    previousSettings: null
   }
 
   toggleVisible = () => this.setState(toggle('isVisible'))
@@ -352,7 +355,7 @@ class Settings extends React.PureComponent {
       case 'Window':
         return (
           <WindowSettings
-            onChange={this.props.onChange}
+            onChange={this.handleChange}
             windowTheme={this.props.windowTheme}
             paddingHorizontal={this.props.paddingHorizontal}
             paddingVertical={this.props.paddingVertical}
@@ -368,7 +371,7 @@ class Settings extends React.PureComponent {
       case 'Type':
         return (
           <TypeSettings
-            onChange={this.props.onChange}
+            onChange={this.handleChange}
             font={this.props.fontFamily}
             size={this.props.fontSize}
             lineHeight={this.props.lineHeight}
@@ -381,9 +384,33 @@ class Settings extends React.PureComponent {
     }
   }
 
+  handleChange = (key, value) => {
+    this.props.onChange(key, value)
+    this.setState({ selectedPreset: null, previousSettings: null })
+  }
+
+  applyPreset = (index, { custom, ...settings }) => {
+    // Do not store functions in previous state
+    const previousSettings = omit(this.props, [
+      'onChange',
+      'resetDefaultSettings',
+      'applyPreset',
+      'removePreset'
+    ])
+
+    this.props.applyPreset(settings)
+    this.setState({ selectedPreset: index, previousSettings })
+  }
+
+  undoPreset = () => {
+    this.props.applyPreset(this.state.previousSettings)
+    this.setState({ selectedPreset: null, previousSettings: null })
+  }
+
   render() {
-    const { isVisible, selectedMenu, showPresets } = this.state
-    const { applyPreset, removePreset, presets, selectedPreset, undoPreset } = this.props
+    const { isVisible, selectedMenu, showPresets, selectedPreset } = this.state
+    // TODO consider moving both of this to this Class
+    const { removePreset, presets } = this.props
 
     return (
       <div className="settings-container">
@@ -399,10 +426,10 @@ class Settings extends React.PureComponent {
             show={showPresets}
             toggle={this.togglePresets}
             presets={presets}
-            apply={applyPreset}
+            apply={this.applyPreset}
+            undo={this.undoPreset}
             remove={removePreset}
             selected={selectedPreset}
-            undo={undoPreset}
           />
           <div className="settings-bottom">
             <div className="settings-menu">
