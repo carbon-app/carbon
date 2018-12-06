@@ -232,7 +232,7 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
           ))}
         </div>
       ) : null}
-      {show && selected !== undefined ? (
+      {show && selected != null ? (
         <div className="settings-presets-applied">
           <span>Preset applied!</span>
           <button onClick={undo}>

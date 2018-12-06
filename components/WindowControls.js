@@ -40,7 +40,7 @@ export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
     <div className="window-title-container">
       <input
         aria-label="Image Title"
-        value={titleBar}
+        value={titleBar || ''}
         type="text"
         spellCheck="false"
         onChange={e => handleTitleBarChange(e.target.value)}

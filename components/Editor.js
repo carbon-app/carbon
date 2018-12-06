@@ -32,13 +32,14 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
-  SETTINGS_KEYS,
   PRESETS
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
+
+const SETTINGS_KEYS = Object.keys(DEFAULT_SETTINGS)
 
 class Editor extends React.Component {
   constructor(props) {
@@ -195,8 +196,6 @@ class Editor extends React.Component {
 
       // Twitter needs regular dataurls
       return await domtoimage.toPng(node, config)
-    } catch (error) {
-      throw error
     } finally {
       undoMap()
     }
@@ -207,10 +206,8 @@ class Editor extends React.Component {
       [key]: value
     })
 
-    if (SETTINGS_KEYS.includes(key)) {
-      this.setState({
-        selectedPreset: undefined
-      })
+    if (Object.prototype.hasOwnProperty(DEFAULT_SETTINGS, key)) {
+      this.setState({ selectedPreset: null })
     }
   }
 
@@ -294,16 +291,16 @@ class Editor extends React.Component {
     this.setState({ selectedPreset: index, previousSettings, ...settings })
   }
 
-  removePreset = index =>
-    this.setState({ presets: this.state.presets.filter((_, i) => i !== index) })
-
-  undoPreset = () => {
+  // TODO: consider returning this callback from `applyPreset` and having `Presets` manage this state internally
+  undoPreset = () =>
     this.setState({
-      selectedPreset: undefined,
-      previousSettings: undefined,
+      selectedPreset: null,
+      previousSettings: null,
       ...this.state.previousSettings
     })
-  }
+
+  removePreset = index =>
+    this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
 
   render() {
     const {
@@ -336,7 +333,7 @@ class Editor extends React.Component {
       )
     }
 
-    const config = omit(this.state, ['code', 'aspectRatio'])
+    const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
 
     return (
       <React.Fragment>
