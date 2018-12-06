@@ -203,9 +203,7 @@ class Editor extends React.Component {
   }
 
   updateSetting(key, value) {
-    this.setState({
-      [key]: value
-    })
+    this.setState({ [key]: value })
   }
 
   export(format = 'png') {
@@ -278,13 +276,6 @@ class Editor extends React.Component {
 
   applyPreset = settings => this.setState(settings)
 
-  format = () =>
-    formatCode(this.state.code)
-      .then(this.updateCode)
-      .catch(() => {
-        // create toast here in the future
-      })
-
   render() {
     const {
       loading,
@@ -352,7 +343,6 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
               applyPreset={this.applyPreset}
-              format={this.format}
             />
             <div className="buttons">
               {this.props.api.tweet &&
