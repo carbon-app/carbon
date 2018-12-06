@@ -34,7 +34,7 @@ import {
   DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml, unescapeHtml } from '../lib/util'
+import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
@@ -264,6 +264,13 @@ class Editor extends React.Component {
     }
   }
 
+  format = () =>
+    formatCode(this.state.code)
+      .then(this.updateCode)
+      .catch(() => {
+        // create toast here in the future
+      })
+
   render() {
     const {
       loading,
@@ -329,6 +336,7 @@ class Editor extends React.Component {
               {...config}
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
+              format={this.format}
             />
             <div className="buttons">
               {this.props.api.tweet &&
