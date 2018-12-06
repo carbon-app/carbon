@@ -395,7 +395,8 @@ class Settings extends React.PureComponent {
       'onChange',
       'resetDefaultSettings',
       'applyPreset',
-      'removePreset'
+      'removePreset',
+      'format'
     ])
 
     this.props.applyPreset(settings)

@@ -278,6 +278,13 @@ class Editor extends React.Component {
   removePreset = index =>
     this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
 
+  format = () =>
+    formatCode(this.state.code)
+      .then(this.updateCode)
+      .catch(() => {
+        // create toast here in the future
+      })
+
   render() {
     const {
       loading,
@@ -346,6 +353,7 @@ class Editor extends React.Component {
               format={this.format}
               applyPreset={this.applyPreset}
               removePreset={this.removePreset}
+              format={this.format}
             />
             <div className="buttons">
               {this.props.api.tweet &&
