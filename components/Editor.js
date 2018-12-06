@@ -31,8 +31,7 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE,
-  PRESETS
+  DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
@@ -47,8 +46,7 @@ class Editor extends React.Component {
       loading: true,
       uploading: false,
       code: props.content,
-      online: true,
-      presets: PRESETS
+      online: true
     }
 
     this.export = this.export.bind(this)
@@ -275,9 +273,6 @@ class Editor extends React.Component {
 
   applyPreset = settings => this.setState(settings)
 
-  removePreset = index =>
-    this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
-
   format = () =>
     formatCode(this.state.code)
       .then(this.updateCode)
@@ -352,7 +347,6 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
               applyPreset={this.applyPreset}
-              removePreset={this.removePreset}
               format={this.format}
             />
             <div className="buttons">

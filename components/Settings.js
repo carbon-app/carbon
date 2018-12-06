@@ -335,6 +335,7 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
 
 class Settings extends React.PureComponent {
   state = {
+    presets: PRESETS,
     isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
@@ -408,10 +409,11 @@ class Settings extends React.PureComponent {
     this.setState({ selectedPreset: null, previousSettings: null })
   }
 
+  removePreset = index =>
+    this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
+
   render() {
-    const { isVisible, selectedMenu, showPresets, selectedPreset } = this.state
-    // TODO consider moving both of this to this Class
-    const { removePreset, presets } = this.props
+    const { isVisible, selectedMenu, showPresets, selectedPreset, presets } = this.state
 
     return (
       <div className="settings-container">
@@ -425,12 +427,12 @@ class Settings extends React.PureComponent {
           <WindowPointer fromLeft="15px" />
           <Presets
             show={showPresets}
-            toggle={this.togglePresets}
             presets={presets}
+            selected={selectedPreset}
+            toggle={this.togglePresets}
             apply={this.applyPreset}
             undo={this.undoPreset}
-            remove={removePreset}
-            selected={selectedPreset}
+            remove={this.removePreset}
           />
           <div className="settings-bottom">
             <div className="settings-menu">
