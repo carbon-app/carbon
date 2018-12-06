@@ -202,39 +202,44 @@ const MenuButton = React.memo(({ name, select, selected }) => {
   )
 })
 
-const Presets = React.memo(({ show, presets, toggle, create, remove, apply }) => {
+const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, undo }) => {
   return (
     <div className="settings-presets">
       <div className="settings-presets-header">
         <span>Presets</span>
-        {false &&
-          show && (
-            <button className="settings-presets-create" onClick={create}>
-              create +
-            </button>
-          )}
         <button className="settings-presets-arrow" onClick={toggle}>
           {show ? <Arrows.Up /> : <Arrows.Down />}
         </button>
       </div>
-      {show && (
+      {show ? (
         <div className="settings-presets-content">
-          {presets.map(preset => (
+          {presets.map((preset, i) => (
             <button
-              key={preset.name}
+              key={i}
               className="settings-presets-preset"
-              style={{ backgroundColor: preset.backgroundColor }}
-              onClick={() => apply(preset)}
+              style={{
+                backgroundColor: preset.backgroundColor,
+                border: i === selected ? `2px solid ${COLORS.SECONDARY}` : 'initial'
+              }}
+              onClick={() => apply(i, preset)}
             >
               {preset.custom ? (
-                <button className="settings-presets-remove" onClick={() => remove(preset.name)}>
+                <button className="settings-presets-remove" onClick={() => remove(i)}>
                   <Remove />
                 </button>
               ) : null}
             </button>
           ))}
         </div>
-      )}
+      ) : null}
+      {show && selected !== undefined ? (
+        <div className="settings-presets-applied">
+          <span>Preset applied!</span>
+          <button onClick={undo}>
+            undo <span>&#x21A9;</span>
+          </button>
+        </div>
+      ) : null}
       <style jsx>
         {`
           button {
@@ -305,6 +310,22 @@ const Presets = React.memo(({ show, presets, toggle, create, remove, apply }) =>
             border-radius: 999px;
             background-color: ${COLORS.SECONDARY};
           }
+
+          .settings-presets-applied {
+            background-color: ${COLORS.SECONDARY};
+            width: 100%;
+            color: ${COLORS.BLACK};
+            padding: 4px 8px;
+          }
+
+          .settings-presets-applied button {
+            float: right;
+          }
+
+          .settings-presets-applied button span {
+            float: right;
+            margin: 1px 0 0 2px;
+          }
         `}
       </style>
     </div>
@@ -362,7 +383,7 @@ class Settings extends React.PureComponent {
 
   render() {
     const { isVisible, selectedMenu, showPresets } = this.state
-    const { applyPreset, removePreset, presets } = this.props
+    const { applyPreset, removePreset, presets, selectedPreset, undoPreset } = this.props
 
     return (
       <div className="settings-container">
@@ -380,6 +401,8 @@ class Settings extends React.PureComponent {
             presets={presets}
             apply={applyPreset}
             remove={removePreset}
+            selected={selectedPreset}
+            undo={undoPreset}
           />
           <div className="settings-bottom">
             <div className="settings-menu">
@@ -436,7 +459,7 @@ class Settings extends React.PureComponent {
               top: 52px;
               left: 0;
               border: 2px solid ${COLORS.SECONDARY};
-              width: 320px;
+              width: 324px;
               border-radius: 3px;
               background: ${COLORS.BLACK};
             }

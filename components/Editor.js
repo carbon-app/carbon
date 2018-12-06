@@ -32,6 +32,7 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
+  SETTINGS_KEYS,
   PRESETS
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
@@ -202,7 +203,15 @@ class Editor extends React.Component {
   }
 
   updateSetting(key, value) {
-    this.setState({ [key]: value })
+    this.setState({
+      [key]: value
+    })
+
+    if (SETTINGS_KEYS.includes(key)) {
+      this.setState({
+        selectedPreset: undefined
+      })
+    }
   }
 
   export(format = 'png') {
@@ -274,10 +283,24 @@ class Editor extends React.Component {
       })
 
   // eslint-disable-next-line
-  applyPreset = ({ name, custom, ...settings }) => this.setState({ preset: name, ...settings })
+  applyPreset = (index, { custom, ...settings }) => {
+    const previousSettings = SETTINGS_KEYS.reduce((obj, settingKey) => ({
+      ...obj,
+      [settingKey]: this.state[settingKey]
+    }))
+    this.setState({ selectedPreset: index, previousSettings, ...settings })
+  }
 
-  removePreset = nameToRemove =>
-    this.setState({ presets: this.state.presets.filter(({ name }) => name !== nameToRemove) })
+  removePreset = index =>
+    this.setState({ presets: this.state.presets.filter((_, i) => i !== index) })
+
+  undoPreset = () => {
+    this.setState({
+      selectedPreset: undefined,
+      previousSettings: undefined,
+      ...this.state.previousSettings
+    })
+  }
 
   render() {
     const {
@@ -347,6 +370,7 @@ class Editor extends React.Component {
               format={this.format}
               applyPreset={this.applyPreset}
               removePreset={this.removePreset}
+              undoPreset={this.undoPreset}
             />
             <div className="buttons">
               {this.props.api.tweet &&
