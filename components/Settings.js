@@ -389,7 +389,7 @@ class Settings extends React.PureComponent {
     this.setState({ selectedPreset: null, previousSettings: null })
   }
 
-  applyPreset = (index, { custom, ...settings }) => {
+  applyPreset = (index, settings) => {
     // Do not store functions in previous state
     const previousSettings = omit(this.props, [
       'onChange',
@@ -399,7 +399,7 @@ class Settings extends React.PureComponent {
       'format'
     ])
 
-    this.props.applyPreset(settings)
+    this.props.applyPreset(omit(settings, ['custom']))
     this.setState({ selectedPreset: index, previousSettings })
   }
 
