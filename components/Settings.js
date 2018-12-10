@@ -7,7 +7,8 @@ import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
-import { COLORS, PRESETS } from '../lib/constants'
+import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
+import { getSavedPresets, savePresets } from '../lib/util'
 import { toggle } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
@@ -203,33 +204,109 @@ const MenuButton = React.memo(({ name, select, selected }) => {
   )
 })
 
-const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, undo }) => {
+const Preset = React.memo(({ remove, apply, index, selected, preset }) => (
+  <div className="preset-container">
+    <button
+      className="preset-tile"
+      style={{
+        cursor: index === selected ? 'initial' : 'pointer',
+        backgroundImage: `url('${preset.icon}'`,
+        backgroundColor: preset.icon ? 'initial' : preset.backgroundColor,
+        boxShadow: index === selected ? `inset 0px 0px 0px 2px ${COLORS.SECONDARY}` : 'initial'
+      }}
+      onClick={() => apply(index, preset)}
+    />
+    {preset.custom ? (
+      <button className="preset-remove" onClick={() => remove(index)}>
+        <Remove />
+      </button>
+    ) : null}
+    <style jsx>
+      {`
+        button {
+          outline: none;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          padding: 0;
+        }
+
+        .preset-container {
+          display: flex;
+          position: relative;
+          flex: 0 0 96px;
+          height: 96px;
+          margin-right: 8px;
+        }
+
+        .preset-tile {
+          flex: 1;
+          border-radius: 3px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: contain;
+        }
+
+        .preset-remove {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          padding: 0;
+          top: 6px;
+          right: 6px;
+          width: 11px;
+          height: 11px;
+          border-radius: 999px;
+          background-color: ${COLORS.SECONDARY};
+        }
+      `}
+    </style>
+  </div>
+))
+
+const Presets = React.memo(({ show, create, toggle, undo, presets, selected, remove, apply }) => {
+  const customPresetsLength = presets.length - DEFAULT_PRESETS.length
+
   return (
     <div className="settings-presets">
       <div className="settings-presets-header">
         <span>Presets</span>
+        {show && (
+          <button
+            className="settings-presets-create"
+            onClick={create}
+            style={{ pointerEvents: selected === null ? 'initial' : 'none' }}
+          >
+            create +
+          </button>
+        )}
         <button className="settings-presets-arrow" onClick={toggle}>
           {show ? <Arrows.Up /> : <Arrows.Down />}
         </button>
       </div>
       {show ? (
         <div className="settings-presets-content">
-          {presets.map((preset, i) => (
-            <button
+          {presets.slice(0, customPresetsLength).map((preset, i) => (
+            <Preset
               key={i}
-              className="settings-presets-preset"
-              style={{
-                backgroundColor: preset.backgroundColor,
-                border: i === selected ? `2px solid ${COLORS.SECONDARY}` : 'initial'
-              }}
-              onClick={() => apply(i, preset)}
-            >
-              {preset.custom ? (
-                <button className="settings-presets-remove" onClick={() => remove(i)}>
-                  <Remove />
-                </button>
-              ) : null}
-            </button>
+              custom
+              remove={remove}
+              apply={apply}
+              index={i}
+              preset={preset}
+              selected={selected}
+            />
+          ))}
+          {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
+          {presets.slice(customPresetsLength, presets.length).map((preset, i) => (
+            <Preset
+              key={i}
+              apply={apply}
+              index={i + customPresetsLength}
+              preset={preset}
+              selected={selected}
+            />
           ))}
         </div>
       ) : null}
@@ -283,6 +360,10 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
             padding: 0 8px;
           }
 
+          .settings-presets-create:hover {
+            color: ${COLORS.SECONDARY};
+          }
+
           .settings-presets-arrow {
             position: absolute;
             right: 16px;
@@ -292,28 +373,15 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
             display: flex;
             overflow-x: scroll;
             margin: 0 8px 12px 8px;
-          }
-
-          .settings-presets-preset {
-            border-radius: 3px;
-            height: 96px;
-            margin-right: 8px;
-            flex: 0 0 96px;
-            position: relative;
-          }
-
-          .settings-presets-remove {
-            display: flex;
             align-items: center;
-            justify-content: center;
-            position: absolute;
-            padding: 0;
-            top: 6px;
-            right: 6px;
-            width: 11px;
-            height: 11px;
-            border-radius: 999px;
-            background-color: ${COLORS.SECONDARY};
+          }
+
+          .settings-presets-divider {
+            height: 72px;
+            padding: 1px;
+            border-radius: 3px;
+            margin-right: 8px;
+            background-color: ${COLORS.DARK_GRAY};
           }
 
           .settings-presets-applied {
@@ -339,12 +407,17 @@ const Presets = React.memo(({ show, selected, presets, toggle, remove, apply, un
 
 class Settings extends React.PureComponent {
   state = {
-    presets: PRESETS,
+    presets: DEFAULT_PRESETS,
     isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
-    selectedPreset: null,
     previousSettings: null
+  }
+
+  componentDidMount() {
+    this.setState(({ presets }) => ({
+      presets: [...(getSavedPresets(localStorage) || []), ...presets]
+    }))
   }
 
   toggleVisible = () => this.setState(toggle('isVisible'))
@@ -391,33 +464,74 @@ class Settings extends React.PureComponent {
 
   handleChange = (key, value) => {
     this.props.onChange(key, value)
-    this.setState({ selectedPreset: null, previousSettings: null })
+    this.props.selectPreset(null)
+    this.setState({ previousSettings: null })
   }
 
-  applyPreset = (index, settings) => {
-    // Do not store functions in previous state
-    const previousSettings = omit(this.props, [
+  getSettings = () =>
+    omit(this.props, [
       'onChange',
       'resetDefaultSettings',
       'applyPreset',
       'removePreset',
-      'format'
+      'format',
+      'getCarbonImage',
+      'selectPreset',
+      'selectedPreset'
     ])
 
-    this.props.applyPreset(omit(settings, ['custom']))
-    this.setState({ selectedPreset: index, previousSettings })
+  applyPreset = (index, preset) => {
+    const previousSettings = this.getSettings()
+
+    this.props.applyPreset(index, preset)
+    this.setState({ previousSettings })
   }
 
   undoPreset = () => {
-    this.props.applyPreset(this.state.previousSettings)
-    this.setState({ selectedPreset: null, previousSettings: null })
+    this.props.applyPreset(null, this.state.previousSettings)
+    this.setState({ previousSettings: null })
   }
 
-  removePreset = index =>
-    this.setState(({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }))
+  removePreset = index => {
+    this.setState(
+      ({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }),
+      () => {
+        const { selectedPreset, selectPreset } = this.props
+        selectPreset(
+          index === selectedPreset ? null : selectedPreset > 0 ? selectedPreset - 1 : selectedPreset
+        )
+        this.savePresets()
+      }
+    )
+  }
+
+  createPreset = async () => {
+    const preset = this.getSettings()
+
+    preset.custom = true
+
+    preset.icon = await this.props.getCarbonImage({ format: 'png', squared: true })
+
+    this.setState(
+      ({ presets }) => ({
+        presets: [preset, ...presets]
+      }),
+      () => {
+        this.props.selectPreset(0)
+        this.savePresets()
+      }
+    )
+  }
+
+  savePresets = () =>
+    savePresets(
+      localStorage,
+      this.state.presets.slice(0, this.state.presets.length - DEFAULT_PRESETS.length)
+    )
 
   render() {
-    const { isVisible, selectedMenu, showPresets, selectedPreset, presets } = this.state
+    const { isVisible, selectedMenu, showPresets, presets } = this.state
+    const { selectedPreset } = this.props
 
     return (
       <div className="settings-container">
@@ -437,6 +551,7 @@ class Settings extends React.PureComponent {
             apply={this.applyPreset}
             undo={this.undoPreset}
             remove={this.removePreset}
+            create={this.createPreset}
           />
           <div className="settings-bottom">
             <div className="settings-menu">

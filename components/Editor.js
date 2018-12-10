@@ -34,7 +34,7 @@ import {
   DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
+import { getSavedSettings, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
@@ -94,7 +94,7 @@ class Editor extends React.Component {
 
     const newState = {
       // Load from localStorage
-      ...getState(localStorage),
+      ...getSavedSettings(localStorage),
       // and then URL params
       ...initialState,
       loading: false,
@@ -124,7 +124,7 @@ class Editor extends React.Component {
     }
   }
 
-  async getCarbonImage({ format, type } = { format: 'png' }) {
+  async getCarbonImage({ format, type, squared } = { format: 'png' }) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
@@ -157,15 +157,16 @@ class Editor extends React.Component {
     }
 
     const width = node.offsetWidth * exportSize
-    const height = this.state.squaredImage
-      ? node.offsetWidth * exportSize
-      : node.offsetHeight * exportSize
+    const height =
+      squared || this.state.squaredImage
+        ? node.offsetWidth * exportSize
+        : node.offsetHeight * exportSize
 
     const config = {
       style: {
         transform: `scale(${exportSize})`,
         'transform-origin': 'center',
-        background: this.state.squaredImage ? this.state.backgroundColor : 'none'
+        background: squared || this.state.squaredImage ? this.state.backgroundColor : 'none'
       },
       filter: n => {
         if (n.className) {
@@ -274,7 +275,9 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  applyPreset = settings => this.setState(settings)
+  applyPreset = (index, preset) => this.setState({ selectedPreset: index, ...preset })
+
+  selectPreset = index => this.setState({ selectedPreset: index })
 
   render() {
     const {
@@ -343,6 +346,8 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
               applyPreset={this.applyPreset}
+              selectPreset={this.selectPreset}
+              getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
               {this.props.api.tweet &&
