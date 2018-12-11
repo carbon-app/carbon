@@ -378,6 +378,8 @@ const Presets = React.memo(({ show, create, toggle, undo, presets, selected, rem
           }
 
           .settings-presets-applied {
+            display: flex;
+            justify-content: space-between;
             background-color: ${COLORS.SECONDARY};
             width: 100%;
             color: ${COLORS.BLACK};
