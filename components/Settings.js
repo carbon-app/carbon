@@ -411,8 +411,9 @@ class Settings extends React.PureComponent {
   }
 
   componentDidMount() {
+    const storedPresets = getPresets(localStorage) || []
     this.setState(({ presets }) => ({
-      presets: [...(getPresets(localStorage) || []), ...presets]
+      presets: [...storedPresets, ...presets]
     }))
   }
 
