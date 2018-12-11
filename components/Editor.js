@@ -34,7 +34,7 @@ import {
   DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getSavedSettings, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
+import { getSettings, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
@@ -94,7 +94,7 @@ class Editor extends React.Component {
 
     const newState = {
       // Load from localStorage
-      ...getSavedSettings(localStorage),
+      ...getSettings(localStorage),
       // and then URL params
       ...initialState,
       loading: false,

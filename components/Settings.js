@@ -8,7 +8,7 @@ import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
-import { getSavedPresets, savePresets } from '../lib/util'
+import { getPresets, savePresets } from '../lib/util'
 import { toggle } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
@@ -287,7 +287,7 @@ const Presets = React.memo(({ show, create, toggle, undo, presets, selected, rem
       </div>
       {show ? (
         <div className="settings-presets-content">
-          {presets.slice(0, customPresetsLength).map((preset, i) => (
+          {presets.filter(p => p.custom).map((preset, i) => (
             <Preset
               key={i}
               custom
@@ -299,7 +299,7 @@ const Presets = React.memo(({ show, create, toggle, undo, presets, selected, rem
             />
           ))}
           {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
-          {presets.slice(customPresetsLength, presets.length).map((preset, i) => (
+          {presets.filter(p => !p.custom).map((preset, i) => (
             <Preset
               key={i}
               apply={apply}
@@ -418,7 +418,7 @@ class Settings extends React.PureComponent {
   componentDidMount() {
     this.setState(({ presets }) => ({
       // TODO set selectedPreset from its own localStorage key
-      presets: [...(getSavedPresets(localStorage) || []), ...presets]
+      presets: [...(getPresets(localStorage) || []), ...presets]
     }))
   }
 
@@ -469,7 +469,7 @@ class Settings extends React.PureComponent {
     this.setState({ selectedPreset: null, previousSettings: null })
   }
 
-  getSettings = () =>
+  getSettingsFromProps = () =>
     // Do not store functions in previous state — TODO this could be omitBy(isFunction)?
     omit(this.props, [
       'onChange',
@@ -481,7 +481,7 @@ class Settings extends React.PureComponent {
     ])
 
   applyPreset = (index, preset) => {
-    const previousSettings = this.getSettings()
+    const previousSettings = this.getSettingsFromProps()
 
     this.props.applyPreset(preset)
     this.setState({ selectedPreset: index, previousSettings })
@@ -507,7 +507,7 @@ class Settings extends React.PureComponent {
     )
 
   createPreset = async () => {
-    const newPreset = this.getSettings()
+    const newPreset = this.getSettingsFromProps()
 
     newPreset.custom = true
 
@@ -522,11 +522,7 @@ class Settings extends React.PureComponent {
     )
   }
 
-  savePresets = () =>
-    savePresets(
-      localStorage,
-      this.state.presets.slice(0, this.state.presets.length - DEFAULT_PRESETS.length)
-    )
+  savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
 
   render() {
     const { isVisible, selectedMenu, showPresets, presets, selectedPreset } = this.state
