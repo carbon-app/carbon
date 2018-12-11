@@ -204,19 +204,9 @@ const MenuButton = React.memo(({ name, select, selected }) => {
   )
 })
 
-// TODO: move `style` into `<style jsx>`
 const Preset = React.memo(({ remove, apply, selected, preset }) => (
   <div className="preset-container">
-    <button
-      className="preset-tile"
-      style={{
-        cursor: preset.id === selected ? 'initial' : 'pointer',
-        backgroundImage: `url('${preset.icon}'`,
-        backgroundColor: preset.icon ? 'initial' : preset.backgroundColor,
-        boxShadow: preset.id === selected ? `inset 0px 0px 0px 2px ${COLORS.SECONDARY}` : 'initial'
-      }}
-      onClick={() => apply(preset)}
-    />
+    <button className="preset-tile" onClick={() => apply(preset)} />
     {preset.custom ? (
       <button className="preset-remove" onClick={() => remove(preset.id)}>
         <Remove />
@@ -246,6 +236,12 @@ const Preset = React.memo(({ remove, apply, selected, preset }) => (
           background-repeat: no-repeat;
           background-position: center center;
           background-size: contain;
+          cursor: ${preset.id === selected ? 'initial' : 'pointer'};
+          background-image: ${`url('${preset.icon}')`};
+          background-color: ${preset.icon ? 'initial' : preset.backgroundColor};
+          box-shadow: ${preset.id === selected
+            ? `inset 0px 0px 0px 2px ${COLORS.SECONDARY}`
+            : 'initial'};
         }
 
         .preset-remove {
@@ -514,6 +510,7 @@ class Settings extends React.PureComponent {
     })
 
     this.props.onChange('preset', newPreset.id)
+
     this.setState(
       ({ presets }) => ({
         presets: [newPreset, ...presets]
@@ -526,6 +523,7 @@ class Settings extends React.PureComponent {
 
   render() {
     const { isVisible, selectedMenu, showPresets, presets } = this.state
+    const { preset } = this.props
 
     return (
       <div className="settings-container">
@@ -540,7 +538,7 @@ class Settings extends React.PureComponent {
           <Presets
             show={showPresets}
             presets={presets}
-            selected={this.props.preset}
+            selected={preset}
             toggle={this.togglePresets}
             apply={this.applyPreset}
             undo={this.undoPreset}
