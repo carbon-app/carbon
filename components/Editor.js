@@ -277,7 +277,9 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  applyPreset = settings => this.setState(settings)
+  applyPreset = (index, preset) => this.setState({ selectedPreset: index, ...preset })
+
+  selectPreset = index => this.setState({ selectedPreset: index })
 
   render() {
     const {
@@ -346,6 +348,7 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
               applyPreset={this.applyPreset}
+              selectPreset={this.selectPreset}
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
