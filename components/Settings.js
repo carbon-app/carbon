@@ -269,16 +269,14 @@ const Preset = React.memo(({ remove, apply, selected, preset }) => (
 const Presets = React.memo(({ show, create, toggle, undo, presets, selected, remove, apply }) => {
   const customPresetsLength = presets.length - DEFAULT_PRESETS.length
 
+  const disabledCreate = selected != null
+
   return (
     <div className="settings-presets">
       <div className="settings-presets-header">
         <span>Presets</span>
         {show && (
-          <button
-            className="settings-presets-create"
-            onClick={create}
-            style={{ pointerEvents: selected === null ? 'initial' : 'none' }}
-          >
+          <button className="settings-presets-create" onClick={create} disabled={disabledCreate}>
             create +
           </button>
         )}
@@ -352,9 +350,10 @@ const Presets = React.memo(({ show, create, toggle, undo, presets, selected, rem
           .settings-presets-create {
             color: ${COLORS.GRAY};
             padding: 0 8px;
+            cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
           }
 
-          .settings-presets-create:hover {
+          .settings-presets-create:enabled:hover {
             color: ${COLORS.SECONDARY};
           }
 
