@@ -3,6 +3,7 @@
   "alias": "carbon-api.now.sh",
   "type": "docker",
   "public": true,
+  "version": 1,
   "env": {
     "NODE_ENV": "production",
     "TWITTER_CONSUMER_KEY": "@twitter-consumer-key",

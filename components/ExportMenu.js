@@ -37,7 +37,7 @@ class ExportMenu extends React.PureComponent {
     const { isVisible } = this.state
 
     return (
-      <div className="export-container" id="export-menu">
+      <div className="export-menu-container" id="export-menu">
         <Button
           selected={isVisible}
           className="exportButton"
@@ -127,7 +127,7 @@ class ExportMenu extends React.PureComponent {
               opacity: 0.4;
             }
 
-            .export-container {
+            .export-menu-container {
               position: relative;
               color: ${COLORS.PURPLE};
               font-size: 12px;

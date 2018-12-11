@@ -7,7 +7,7 @@ import Slider from './Slider'
 import Toggle from './Toggle'
 import WindowPointer from './WindowPointer'
 import { COLORS } from '../lib/constants'
-import { toggle, formatCode } from '../lib/util'
+import { toggle } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
 //import Remove from './svg/Remove'
@@ -304,13 +304,6 @@ class Settings extends React.PureComponent {
 
   handleClickOutside = () => this.setState({ isVisible: false })
 
-  format = () =>
-    formatCode(this.props.code)
-      .then(this.props.onChange.bind(this, 'code'))
-      .catch(() => {
-        // create toast here in the future
-      })
-
   selectMenu = selectedMenu => () => this.setState({ selectedMenu })
 
   renderContent = () => {
@@ -341,7 +334,7 @@ class Settings extends React.PureComponent {
           />
         )
       case 'Misc':
-        return <MiscSettings format={this.format} reset={this.props.resetDefaultSettings} />
+        return <MiscSettings format={this.props.format} reset={this.props.resetDefaultSettings} />
       default:
         return null
     }
