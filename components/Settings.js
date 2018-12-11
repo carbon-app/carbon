@@ -204,20 +204,21 @@ const MenuButton = React.memo(({ name, select, selected }) => {
   )
 })
 
-const Preset = React.memo(({ remove, apply, index, selected, preset }) => (
+// TODO: move `style` into `<style jsx>`
+const Preset = React.memo(({ remove, apply, selected, preset }) => (
   <div className="preset-container">
     <button
       className="preset-tile"
       style={{
-        cursor: index === selected ? 'initial' : 'pointer',
+        cursor: preset.id === selected ? 'initial' : 'pointer',
         backgroundImage: `url('${preset.icon}'`,
         backgroundColor: preset.icon ? 'initial' : preset.backgroundColor,
-        boxShadow: index === selected ? `inset 0px 0px 0px 2px ${COLORS.SECONDARY}` : 'initial'
+        boxShadow: preset.id === selected ? `inset 0px 0px 0px 2px ${COLORS.SECONDARY}` : 'initial'
       }}
-      onClick={() => apply(index, preset)}
+      onClick={() => apply(preset)}
     />
     {preset.custom ? (
-      <button className="preset-remove" onClick={() => remove(index)}>
+      <button className="preset-remove" onClick={() => remove(preset.id)}>
         <Remove />
       </button>
     ) : null}
@@ -287,26 +288,19 @@ const Presets = React.memo(({ show, create, toggle, undo, presets, selected, rem
       </div>
       {show ? (
         <div className="settings-presets-content">
-          {presets.filter(p => p.custom).map((preset, i) => (
+          {presets.filter(p => p.custom).map(preset => (
             <Preset
-              key={i}
+              key={preset.id}
               custom
               remove={remove}
               apply={apply}
-              index={i}
               preset={preset}
               selected={selected}
             />
           ))}
           {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
-          {presets.filter(p => !p.custom).map((preset, i) => (
-            <Preset
-              key={i}
-              apply={apply}
-              index={i + customPresetsLength}
-              preset={preset}
-              selected={selected}
-            />
+          {presets.filter(p => !p.custom).map(preset => (
+            <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
           ))}
         </div>
       ) : null}
@@ -480,44 +474,44 @@ class Settings extends React.PureComponent {
       'preset'
     ])
 
-  applyPreset = (index, preset) => {
+  applyPreset = preset => {
     const previousSettings = this.getSettingsFromProps()
 
-    this.props.applyPreset(index, preset)
+    this.props.applyPreset(preset)
     this.setState({ previousSettings })
   }
 
   undoPreset = () => {
-    this.props.applyPreset(null, this.state.previousSettings)
+    this.props.applyPreset(this.state.previousSettings)
     this.setState({ previousSettings: null })
   }
 
-  removePreset = index => {
+  removePreset = id => {
+    if (this.props.preset === id) {
+      this.props.onChange('preset', null)
+    }
     this.setState(
-      ({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }),
-      () => {
-        const { preset, onChange } = this.props
-        onChange('preset', index === preset ? null : preset > index ? preset - 1 : preset)
-        this.savePresets()
-      }
+      ({ presets }) => ({ presets: presets.filter(p => p.id !== id) }),
+      this.savePresets
     )
   }
 
   createPreset = async () => {
     const newPreset = this.getSettingsFromProps()
 
+    newPreset.id = `preset:${Math.random()
+      .toString(36)
+      .slice(2)}`
     newPreset.custom = true
 
     newPreset.icon = await this.props.getCarbonImage({ format: 'png', squared: true })
 
+    this.props.onChange('preset', newPreset.id)
     this.setState(
       ({ presets }) => ({
         presets: [newPreset, ...presets]
       }),
-      () => {
-        this.props.onChange('preset', 0)
-        this.savePresets()
-      }
+      this.savePresets
     )
   }
 

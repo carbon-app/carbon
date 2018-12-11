@@ -283,7 +283,7 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  applyPreset = (index, preset) => this.setState({ preset: index, ...preset })
+  applyPreset = ({ id: preset, ...settings }) => this.setState({ preset, ...settings })
 
   render() {
     const {
