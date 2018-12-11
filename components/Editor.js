@@ -207,7 +207,10 @@ class Editor extends React.Component {
   }
 
   updateSetting(key, value) {
-    this.setState({ [key]: value, preset: null })
+    this.setState({ [key]: value })
+    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
+      this.setState({ preset: null })
+    }
   }
 
   export(format = 'png') {
@@ -282,8 +285,6 @@ class Editor extends React.Component {
 
   applyPreset = (index, preset) => this.setState({ preset: index, ...preset })
 
-  selectPreset = preset => this.setState({ preset })
-
   render() {
     const {
       loading,
@@ -351,7 +352,6 @@ class Editor extends React.Component {
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
               applyPreset={this.applyPreset}
-              selectPreset={this.selectPreset}
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">

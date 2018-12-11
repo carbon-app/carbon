@@ -476,7 +476,6 @@ class Settings extends React.PureComponent {
       'removePreset',
       'format',
       'getCarbonImage',
-      'selectPreset',
       // should this be included in previous settings?
       'preset'
     ])
@@ -497,8 +496,8 @@ class Settings extends React.PureComponent {
     this.setState(
       ({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }),
       () => {
-        const { preset, selectPreset } = this.props
-        selectPreset(index === preset ? null : preset > index ? preset - 1 : preset)
+        const { preset, onChange } = this.props
+        onChange('preset', index === preset ? null : preset > index ? preset - 1 : preset)
         this.savePresets()
       }
     )
@@ -516,7 +515,7 @@ class Settings extends React.PureComponent {
         presets: [newPreset, ...presets]
       }),
       () => {
-        this.props.selectPreset(0)
+        this.props.onChange('preset', 0)
         this.savePresets()
       }
     )
