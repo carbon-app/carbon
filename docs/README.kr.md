@@ -42,7 +42,7 @@
 Carbon에 코드를 적용시키는데는 몇 가지 방법이 있습니다: 
 - 편집기에 file을 놓기
 - url에 GitHub gist id 붙여넣기 (예시. `carbon.now.sh/GIST_ID_HERE`)
-- Paste your code directly
+- 코드 복사해서 직접 붙여넣기
 
 #### Customization
 
