@@ -124,7 +124,14 @@ class Editor extends React.Component {
     }
   }
 
-  async getCarbonImage({ format, type, squared } = { format: 'png' }) {
+  async getCarbonImage(
+    {
+      format,
+      type,
+      squared = this.state.squaredImage,
+      exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+    } = { format: 'png' }
+  ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
@@ -138,8 +145,6 @@ class Editor extends React.Component {
     }
 
     const node = this.carbonNode
-
-    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
 
     const map = new Map()
     const undoMap = value => {
@@ -157,16 +162,13 @@ class Editor extends React.Component {
     }
 
     const width = node.offsetWidth * exportSize
-    const height =
-      squared || this.state.squaredImage
-        ? node.offsetWidth * exportSize
-        : node.offsetHeight * exportSize
+    const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
 
     const config = {
       style: {
         transform: `scale(${exportSize})`,
         'transform-origin': 'center',
-        background: squared || this.state.squaredImage ? this.state.backgroundColor : 'none'
+        background: squared ? this.state.backgroundColor : 'none'
       },
       filter: n => {
         if (n.className) {
