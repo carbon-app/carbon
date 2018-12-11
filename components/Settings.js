@@ -411,11 +411,13 @@ class Settings extends React.PureComponent {
     isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
+    selectedPreset: null,
     previousSettings: null
   }
 
   componentDidMount() {
     this.setState(({ presets }) => ({
+      // TODO set selectedPreset from its own localStorage key
       presets: [...(getSavedPresets(localStorage) || []), ...presets]
     }))
   }
@@ -464,62 +466,59 @@ class Settings extends React.PureComponent {
 
   handleChange = (key, value) => {
     this.props.onChange(key, value)
-    this.props.selectPreset(null)
-    this.setState({ previousSettings: null })
+    this.setState({ selectedPreset: null, previousSettings: null })
   }
 
   getSettings = () =>
+    // Do not store functions in previous state — TODO this could be omitBy(isFunction)?
     omit(this.props, [
       'onChange',
       'resetDefaultSettings',
       'applyPreset',
       'removePreset',
       'format',
-      'getCarbonImage',
-      'selectPreset',
-      'selectedPreset'
+      'getCarbonImage'
     ])
 
   applyPreset = (index, preset) => {
     const previousSettings = this.getSettings()
 
-    this.props.applyPreset(index, preset)
-    this.setState({ previousSettings })
+    this.props.applyPreset(preset)
+    this.setState({ selectedPreset: index, previousSettings })
   }
 
   undoPreset = () => {
-    this.props.applyPreset(null, this.state.previousSettings)
-    this.setState({ previousSettings: null })
+    this.props.applyPreset(this.state.previousSettings)
+    this.setState({ selectedPreset: null, previousSettings: null })
   }
 
-  removePreset = index => {
+  removePreset = index =>
     this.setState(
-      ({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }),
-      () => {
-        const { selectedPreset, selectPreset } = this.props
-        selectPreset(
-          index === selectedPreset ? null : selectedPreset > 0 ? selectedPreset - 1 : selectedPreset
-        )
-        this.savePresets()
-      }
+      ({ selectedPreset, presets }) => ({
+        presets: presets.filter((_, i) => i !== index),
+        selectedPreset:
+          index === selectedPreset
+            ? null
+            : selectedPreset > index
+              ? selectedPreset - 1
+              : selectedPreset
+      }),
+      this.savePresets
     )
-  }
 
   createPreset = async () => {
-    const preset = this.getSettings()
+    const newPreset = this.getSettings()
 
-    preset.custom = true
+    newPreset.custom = true
 
-    preset.icon = await this.props.getCarbonImage({ format: 'png', squared: true })
+    newPreset.icon = await this.props.getCarbonImage({ format: 'png', squared: true })
 
     this.setState(
       ({ presets }) => ({
-        presets: [preset, ...presets]
+        presets: [newPreset, ...presets],
+        selectedPreset: 0
       }),
-      () => {
-        this.props.selectPreset(0)
-        this.savePresets()
-      }
+      this.savePresets
     )
   }
 
@@ -530,8 +529,7 @@ class Settings extends React.PureComponent {
     )
 
   render() {
-    const { isVisible, selectedMenu, showPresets, presets } = this.state
-    const { selectedPreset } = this.props
+    const { isVisible, selectedMenu, showPresets, presets, selectedPreset } = this.state
 
     return (
       <div className="settings-container">
