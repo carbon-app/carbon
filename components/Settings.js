@@ -482,7 +482,7 @@ class Settings extends React.PureComponent {
   }
 
   undoPreset = () => {
-    this.props.applyPreset(this.state.previousSettings)
+    this.props.applyPreset({ ...this.state.previousSettings, id: null })
     this.setState({ previousSettings: null })
   }
 
@@ -504,7 +504,11 @@ class Settings extends React.PureComponent {
       .slice(2)}`
     newPreset.custom = true
 
-    newPreset.icon = await this.props.getCarbonImage({ format: 'png', squared: true })
+    newPreset.icon = await this.props.getCarbonImage({
+      format: 'png',
+      squared: true,
+      exportSize: 1
+    })
 
     this.props.onChange('preset', newPreset.id)
     this.setState(
