@@ -207,7 +207,7 @@ class Editor extends React.Component {
   }
 
   updateSetting(key, value) {
-    this.setState({ [key]: value, selectedPreset: null })
+    this.setState({ [key]: value, preset: null })
   }
 
   export(format = 'png') {
@@ -243,10 +243,10 @@ class Editor extends React.Component {
   onDrop([file]) {
     if (isImage(file)) {
       this.setState({
-        selectedPreset: null,
         backgroundImage: file.content,
         backgroundImageSelection: null,
-        backgroundMode: 'image'
+        backgroundMode: 'image',
+        preset: null
       })
     } else {
       this.setState({ code: file.content, language: 'auto' })
@@ -266,10 +266,10 @@ class Editor extends React.Component {
       this.setState(({ code = DEFAULT_CODE }) => ({
         ...changes,
         code: code + `\n\n// Photo by ${photographer.name} on Unsplash`,
-        selectedPreset: null
+        preset: null
       }))
     } else {
-      this.setState({ ...changes, selectedPreset: null })
+      this.setState({ ...changes, preset: null })
     }
   }
 
@@ -280,9 +280,9 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  applyPreset = (index, preset) => this.setState({ selectedPreset: index, ...preset })
+  applyPreset = (index, preset) => this.setState({ preset: index, ...preset })
 
-  selectPreset = index => this.setState({ selectedPreset: index })
+  selectPreset = preset => this.setState({ preset })
 
   render() {
     const {

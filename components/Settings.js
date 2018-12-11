@@ -416,7 +416,6 @@ class Settings extends React.PureComponent {
 
   componentDidMount() {
     this.setState(({ presets }) => ({
-      // TODO set selectedPreset from its own localStorage key
       presets: [...(getPresets(localStorage) || []), ...presets]
     }))
   }
@@ -465,7 +464,6 @@ class Settings extends React.PureComponent {
 
   handleChange = (key, value) => {
     this.props.onChange(key, value)
-    this.props.selectPreset(null)
     this.setState({ previousSettings: null })
   }
 
@@ -480,7 +478,7 @@ class Settings extends React.PureComponent {
       'getCarbonImage',
       'selectPreset',
       // should this be included in previous settings?
-      'selectedPreset'
+      'preset'
     ])
 
   applyPreset = (index, preset) => {
@@ -499,14 +497,8 @@ class Settings extends React.PureComponent {
     this.setState(
       ({ presets }) => ({ presets: presets.filter((_, i) => i !== index) }),
       () => {
-        const { selectedPreset, selectPreset } = this.props
-        selectPreset(
-          index === selectedPreset
-            ? null
-            : selectedPreset > index
-              ? selectedPreset - 1
-              : selectedPreset
-        )
+        const { preset, selectPreset } = this.props
+        selectPreset(index === preset ? null : preset > index ? preset - 1 : preset)
         this.savePresets()
       }
     )
@@ -534,7 +526,6 @@ class Settings extends React.PureComponent {
 
   render() {
     const { isVisible, selectedMenu, showPresets, presets } = this.state
-    const { selectedPreset } = this.props
 
     return (
       <div className="settings-container">
@@ -549,7 +540,7 @@ class Settings extends React.PureComponent {
           <Presets
             show={showPresets}
             presets={presets}
-            selected={selectedPreset}
+            selected={this.props.preset}
             toggle={this.togglePresets}
             apply={this.applyPreset}
             undo={this.undoPreset}
