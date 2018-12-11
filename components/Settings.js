@@ -1,6 +1,8 @@
 import React from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
+import omitBy from 'lodash.omitby'
 import omit from 'lodash.omit'
+import isFunction from 'lodash.isfunction'
 
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
@@ -460,18 +462,7 @@ class Settings extends React.PureComponent {
     this.setState({ previousSettings: null })
   }
 
-  // Do not store functions in previous state — TODO this could be omitBy(isFunction)?
-  getSettingsFromProps = () =>
-    omit(this.props, [
-      'onChange',
-      'resetDefaultSettings',
-      'applyPreset',
-      'removePreset',
-      'format',
-      'getCarbonImage',
-      // should this be included in previous settings?
-      'preset'
-    ])
+  getSettingsFromProps = () => omitBy(this.props, isFunction)
 
   applyPreset = preset => {
     const previousSettings = this.getSettingsFromProps()
@@ -496,7 +487,7 @@ class Settings extends React.PureComponent {
   }
 
   createPreset = async () => {
-    const newPreset = this.getSettingsFromProps()
+    const newPreset = omit(this.getSettingsFromProps(), ['preset'])
 
     newPreset.id = `preset:${Math.random()
       .toString(36)
