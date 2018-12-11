@@ -479,6 +479,7 @@ class Settings extends React.PureComponent {
       'format',
       'getCarbonImage',
       'selectPreset',
+      // should this be included in previous settings?
       'selectedPreset'
     ])
 

@@ -57,9 +57,6 @@ class Editor extends React.Component {
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
-    this.updateCode = this.updateSetting.bind(this, 'code')
-    this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
-    this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
@@ -67,8 +64,6 @@ class Editor extends React.Component {
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
 
-    this.setOffline = () => this.setState({ online: false })
-    this.setOnline = () => this.setState({ online: true })
     this.innerRef = node => (this.carbonNode = node)
   }
 
@@ -123,6 +118,12 @@ class Editor extends React.Component {
       this.props.onUpdate(this.state)
     }
   }
+
+  updateCode = code => this.setState({ code })
+  updateAspectRatio = aspectRatio => this.setState({ aspectRatio })
+  updateTitleBar = titleBar => this.setState({ titleBar })
+  setOffline = () => this.setState({ online: false })
+  setOnline = () => this.setState({ online: true })
 
   async getCarbonImage(
     {
@@ -206,7 +207,7 @@ class Editor extends React.Component {
   }
 
   updateSetting(key, value) {
-    this.setState({ [key]: value })
+    this.setState({ [key]: value, selectedPreset: null })
   }
 
   export(format = 'png') {
@@ -242,6 +243,7 @@ class Editor extends React.Component {
   onDrop([file]) {
     if (isImage(file)) {
       this.setState({
+        selectedPreset: null,
         backgroundImage: file.content,
         backgroundImageSelection: null,
         backgroundMode: 'image'
@@ -263,10 +265,11 @@ class Editor extends React.Component {
     if (photographer) {
       this.setState(({ code = DEFAULT_CODE }) => ({
         ...changes,
-        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`
+        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`,
+        selectedPreset: null
       }))
     } else {
-      this.setState(changes)
+      this.setState({ ...changes, selectedPreset: null })
     }
   }
 
