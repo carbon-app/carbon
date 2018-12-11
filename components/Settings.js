@@ -358,6 +358,7 @@ const Presets = React.memo(({ show, create, toggle, undo, presets, selected, rem
           }
 
           .settings-presets-arrow {
+            display: flex;
             position: absolute;
             right: 16px;
           }
