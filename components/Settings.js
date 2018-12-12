@@ -206,7 +206,11 @@ const MenuButton = React.memo(({ name, select, selected }) => {
 
 const Preset = React.memo(({ remove, apply, selected, preset }) => (
   <div className="preset-container">
-    <button className="preset-tile" onClick={() => apply(preset)} />
+    <button
+      className="preset-tile"
+      onClick={() => apply(preset)}
+      disabled={preset.id === selected}
+    />
     {preset.custom ? (
       <button className="preset-remove" onClick={() => remove(preset.id)}>
         <Remove />
@@ -262,140 +266,142 @@ const Preset = React.memo(({ remove, apply, selected, preset }) => (
   </div>
 ))
 
-const Presets = React.memo(({ show, create, toggle, undo, presets, selected, remove, apply }) => {
-  const customPresetsLength = presets.length - DEFAULT_PRESETS.length
+const Presets = React.memo(
+  ({ show, create, toggle, undo, presets, selected, remove, apply, applied }) => {
+    const customPresetsLength = presets.length - DEFAULT_PRESETS.length
 
-  const disabledCreate = selected != null
+    const disabledCreate = selected != null
 
-  return (
-    <div className="settings-presets">
-      <div className="settings-presets-header">
-        <span>Presets</span>
-        {show && (
-          <button className="settings-presets-create" onClick={create} disabled={disabledCreate}>
-            create +
+    return (
+      <div className="settings-presets">
+        <div className="settings-presets-header">
+          <span>Presets</span>
+          {show && (
+            <button className="settings-presets-create" onClick={create} disabled={disabledCreate}>
+              create +
+            </button>
+          )}
+          <button className="settings-presets-arrow" onClick={toggle}>
+            {show ? <Arrows.Up /> : <Arrows.Down />}
           </button>
-        )}
-        <button className="settings-presets-arrow" onClick={toggle}>
-          {show ? <Arrows.Up /> : <Arrows.Down />}
-        </button>
+        </div>
+        {show ? (
+          <div className="settings-presets-content">
+            {presets.filter(p => p.custom).map(preset => (
+              <Preset
+                key={preset.id}
+                custom
+                remove={remove}
+                apply={apply}
+                preset={preset}
+                selected={selected}
+              />
+            ))}
+            {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
+            {presets.filter(p => !p.custom).map(preset => (
+              <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
+            ))}
+          </div>
+        ) : null}
+        {show && applied ? (
+          <div className="settings-presets-applied">
+            <span>Preset applied!</span>
+            <button onClick={undo}>
+              undo <span>&#x21A9;</span>
+            </button>
+          </div>
+        ) : null}
+        <style jsx>
+          {`
+            button {
+              outline: none;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              padding: 0;
+            }
+
+            .settings-presets {
+              border-bottom: 1px solid ${COLORS.SECONDARY};
+            }
+
+            .settings-presets-header {
+              display: flex;
+              padding: 10px 8px;
+              position: relative;
+              color: ${COLORS.SECONDARY};
+              width: 100%;
+              align-items: center;
+            }
+
+            .settings-presets-header > span {
+              font-size: 14px;
+            }
+
+            .settings-presets-arrow,
+            .settings-presets-create,
+            .settings-presets-remove {
+              cursor: pointer;
+              background: transparent;
+              outline: none;
+              border: none;
+              font-size: 12px;
+            }
+
+            .settings-presets-create {
+              color: ${COLORS.GRAY};
+              padding: 0 8px;
+              cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
+            }
+
+            .settings-presets-create:enabled:hover {
+              color: ${COLORS.SECONDARY};
+            }
+
+            .settings-presets-arrow {
+              display: flex;
+              position: absolute;
+              right: 16px;
+            }
+
+            .settings-presets-content {
+              display: flex;
+              overflow-x: scroll;
+              margin: 0 8px 12px 8px;
+              align-items: center;
+            }
+
+            .settings-presets-divider {
+              height: 72px;
+              padding: 1px;
+              border-radius: 3px;
+              margin-right: 8px;
+              background-color: ${COLORS.DARK_GRAY};
+            }
+
+            .settings-presets-applied {
+              display: flex;
+              justify-content: space-between;
+              background-color: ${COLORS.SECONDARY};
+              width: 100%;
+              color: ${COLORS.BLACK};
+              padding: 4px 8px;
+            }
+
+            .settings-presets-applied button {
+              float: right;
+            }
+
+            .settings-presets-applied button span {
+              float: right;
+              margin: 1px 0 0 2px;
+            }
+          `}
+        </style>
       </div>
-      {show ? (
-        <div className="settings-presets-content">
-          {presets.filter(p => p.custom).map(preset => (
-            <Preset
-              key={preset.id}
-              custom
-              remove={remove}
-              apply={apply}
-              preset={preset}
-              selected={selected}
-            />
-          ))}
-          {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
-          {presets.filter(p => !p.custom).map(preset => (
-            <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
-          ))}
-        </div>
-      ) : null}
-      {show && selected != null ? (
-        <div className="settings-presets-applied">
-          <span>Preset applied!</span>
-          <button onClick={undo}>
-            undo <span>&#x21A9;</span>
-          </button>
-        </div>
-      ) : null}
-      <style jsx>
-        {`
-          button {
-            outline: none;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            padding: 0;
-          }
-
-          .settings-presets {
-            border-bottom: 1px solid ${COLORS.SECONDARY};
-          }
-
-          .settings-presets-header {
-            display: flex;
-            padding: 10px 8px;
-            position: relative;
-            color: ${COLORS.SECONDARY};
-            width: 100%;
-            align-items: center;
-          }
-
-          .settings-presets-header > span {
-            font-size: 14px;
-          }
-
-          .settings-presets-arrow,
-          .settings-presets-create,
-          .settings-presets-remove {
-            cursor: pointer;
-            background: transparent;
-            outline: none;
-            border: none;
-            font-size: 12px;
-          }
-
-          .settings-presets-create {
-            color: ${COLORS.GRAY};
-            padding: 0 8px;
-            cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
-          }
-
-          .settings-presets-create:enabled:hover {
-            color: ${COLORS.SECONDARY};
-          }
-
-          .settings-presets-arrow {
-            display: flex;
-            position: absolute;
-            right: 16px;
-          }
-
-          .settings-presets-content {
-            display: flex;
-            overflow-x: scroll;
-            margin: 0 8px 12px 8px;
-            align-items: center;
-          }
-
-          .settings-presets-divider {
-            height: 72px;
-            padding: 1px;
-            border-radius: 3px;
-            margin-right: 8px;
-            background-color: ${COLORS.DARK_GRAY};
-          }
-
-          .settings-presets-applied {
-            display: flex;
-            justify-content: space-between;
-            background-color: ${COLORS.SECONDARY};
-            width: 100%;
-            color: ${COLORS.BLACK};
-            padding: 4px 8px;
-          }
-
-          .settings-presets-applied button {
-            float: right;
-          }
-
-          .settings-presets-applied button span {
-            float: right;
-            margin: 1px 0 0 2px;
-          }
-        `}
-      </style>
-    </div>
-  )
-})
+    )
+  }
+)
 
 class Settings extends React.PureComponent {
   state = {
@@ -403,7 +409,8 @@ class Settings extends React.PureComponent {
     isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
-    previousSettings: null
+    previousSettings: null,
+    presetApplied: false
   }
 
   componentDidMount() {
@@ -449,7 +456,7 @@ class Settings extends React.PureComponent {
           />
         )
       case 'Misc':
-        return <MiscSettings format={this.props.format} reset={this.props.resetDefaultSettings} />
+        return <MiscSettings format={this.props.format} reset={this.handleReset} />
       default:
         return null
     }
@@ -457,7 +464,12 @@ class Settings extends React.PureComponent {
 
   handleChange = (key, value) => {
     this.props.onChange(key, value)
-    this.setState({ previousSettings: null })
+    this.setState({ previousSettings: null, presetApplied: false })
+  }
+
+  handleReset = () => {
+    this.setState({ presetApplied: false })
+    this.props.resetDefaultSettings()
   }
 
   getSettingsFromProps = () =>
@@ -467,17 +479,18 @@ class Settings extends React.PureComponent {
     const previousSettings = this.getSettingsFromProps()
 
     this.props.applyPreset(preset)
-    this.setState({ previousSettings })
+    this.setState({ previousSettings, presetApplied: true })
   }
 
   undoPreset = () => {
     this.props.applyPreset({ ...this.state.previousSettings, id: null })
-    this.setState({ previousSettings: null })
+    this.setState({ previousSettings: null, presetApplied: false })
   }
 
   removePreset = id => {
     if (this.props.preset === id) {
       this.props.onChange('preset', null)
+      this.setState({ presetApplied: false })
     }
     this.setState(
       ({ presets }) => ({ presets: presets.filter(p => p.id !== id) }),
@@ -512,7 +525,7 @@ class Settings extends React.PureComponent {
   savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
 
   render() {
-    const { isVisible, selectedMenu, showPresets, presets } = this.state
+    const { isVisible, selectedMenu, showPresets, presets, presetApplied } = this.state
     const { preset } = this.props
 
     return (
@@ -534,6 +547,7 @@ class Settings extends React.PureComponent {
             undo={this.undoPreset}
             remove={this.removePreset}
             create={this.createPreset}
+            applied={presetApplied}
           />
           <div className="settings-bottom">
             <div className="settings-menu">

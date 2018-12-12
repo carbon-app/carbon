@@ -30,7 +30,8 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE
+  DEFAULT_LANGUAGE,
+  DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
@@ -50,7 +51,8 @@ class Editor extends React.Component {
       loading: true,
       uploading: false,
       code: props.content,
-      online: true
+      online: true,
+      preset: DEFAULT_PRESET_ID
     }
 
     this.export = this.export.bind(this)
@@ -229,7 +231,7 @@ class Editor extends React.Component {
   }
 
   resetDefaultSettings() {
-    this.setState(DEFAULT_SETTINGS)
+    this.setState({ ...DEFAULT_SETTINGS, preset: DEFAULT_PRESET_ID })
     this.props.onReset()
   }
 
