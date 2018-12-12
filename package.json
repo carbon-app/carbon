@@ -65,7 +65,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "yarn lint",
+      "npm run lint",
       "prettier --write",
       "git add"
     ]
