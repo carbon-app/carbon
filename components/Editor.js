@@ -7,7 +7,6 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
 import shallowCompare from 'react-addons-shallow-compare'
-import omit from 'lodash.omit'
 
 // Ours
 import Button from './Button'
@@ -34,7 +33,7 @@ import {
   DEFAULT_LANGUAGE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getSettings, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
+import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 

@@ -1,14 +1,13 @@
 // Theirs
 import React from 'react'
 import { withRouter } from 'next/router'
-import omit from 'lodash.omit'
 
 // Ours
 import Editor from '../components/Editor'
 import Page from '../components/Page'
 import api from '../lib/api'
 import { updateQueryString } from '../lib/routing'
-import { saveSettings, clearSettings } from '../lib/util'
+import { saveSettings, clearSettings, omit } from '../lib/util'
 
 class Index extends React.Component {
   onEditorUpdate = state => {
