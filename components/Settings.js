@@ -464,7 +464,7 @@ class Settings extends React.PureComponent {
   getSettingsFromProps = () => omitBy(this.props, v => typeof v === 'function')
 
   applyPreset = preset => {
-    const previousSettings = this.getSettingsFromProps()
+    const previousSettings = omit(this.getSettingsFromProps(), ['preset'])
 
     this.props.applyPreset(preset)
     this.setState({ previousSettings })
