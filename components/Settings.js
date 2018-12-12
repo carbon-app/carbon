@@ -461,10 +461,10 @@ class Settings extends React.PureComponent {
     this.setState({ previousSettings: null })
   }
 
-  getSettingsFromProps = () => omitBy(this.props, v => typeof v === 'function')
+  getSettingsFromProps = () => omit(omitBy(this.props, v => typeof v === 'function'), ['preset'])
 
   applyPreset = preset => {
-    const previousSettings = omit(this.getSettingsFromProps(), ['preset'])
+    const previousSettings = this.getSettingsFromProps()
 
     this.props.applyPreset(preset)
     this.setState({ previousSettings })
@@ -486,7 +486,7 @@ class Settings extends React.PureComponent {
   }
 
   createPreset = async () => {
-    const newPreset = omit(this.getSettingsFromProps(), ['preset'])
+    const newPreset = this.getSettingsFromProps()
 
     newPreset.id = `preset:${Math.random()
       .toString(36)
