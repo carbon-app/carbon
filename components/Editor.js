@@ -7,7 +7,6 @@ import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
 import shallowCompare from 'react-addons-shallow-compare'
-import omit from 'lodash.omit'
 
 // Ours
 import Button from './Button'
@@ -31,12 +30,18 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE
+  DEFAULT_LANGUAGE,
+  DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml, unescapeHtml, formatCode } from '../lib/util'
+import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
+
+const themeIcon = <ThemeIcon />
+const languageIcon = <LanguageIcon />
+
+const tweetButtonStyle = { marginRight: '8px' }
 
 class Editor extends React.Component {
   constructor(props) {
@@ -46,15 +51,13 @@ class Editor extends React.Component {
       loading: true,
       uploading: false,
       code: props.content,
-      online: true
+      online: true,
+      preset: DEFAULT_PRESET_ID
     }
 
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
-    this.updateCode = this.updateSetting.bind(this, 'code')
-    this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
-    this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
@@ -62,8 +65,6 @@ class Editor extends React.Component {
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
 
-    this.setOffline = () => this.setState({ online: false })
-    this.setOnline = () => this.setState({ online: true })
     this.innerRef = node => (this.carbonNode = node)
   }
 
@@ -89,7 +90,7 @@ class Editor extends React.Component {
 
     const newState = {
       // Load from localStorage
-      ...getState(localStorage),
+      ...getSettings(localStorage),
       // and then URL params
       ...initialState,
       loading: false,
@@ -119,7 +120,20 @@ class Editor extends React.Component {
     }
   }
 
-  async getCarbonImage({ format, type } = { format: 'png' }) {
+  updateCode = code => this.setState({ code })
+  updateAspectRatio = aspectRatio => this.setState({ aspectRatio })
+  updateTitleBar = titleBar => this.setState({ titleBar })
+  setOffline = () => this.setState({ online: false })
+  setOnline = () => this.setState({ online: true })
+
+  async getCarbonImage(
+    {
+      format,
+      type,
+      squared = this.state.squaredImage,
+      exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+    } = { format: 'png' }
+  ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
@@ -133,8 +147,6 @@ class Editor extends React.Component {
     }
 
     const node = this.carbonNode
-
-    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
 
     const map = new Map()
     const undoMap = value => {
@@ -152,15 +164,13 @@ class Editor extends React.Component {
     }
 
     const width = node.offsetWidth * exportSize
-    const height = this.state.squaredImage
-      ? node.offsetWidth * exportSize
-      : node.offsetHeight * exportSize
+    const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
 
     const config = {
       style: {
         transform: `scale(${exportSize})`,
         'transform-origin': 'center',
-        background: this.state.squaredImage ? this.state.backgroundColor : 'none'
+        background: squared ? this.state.backgroundColor : 'none'
       },
       filter: n => {
         if (n.className) {
@@ -192,8 +202,6 @@ class Editor extends React.Component {
 
       // Twitter needs regular dataurls
       return await domtoimage.toPng(node, config)
-    } catch (error) {
-      throw error
     } finally {
       undoMap()
     }
@@ -201,6 +209,9 @@ class Editor extends React.Component {
 
   updateSetting(key, value) {
     this.setState({ [key]: value })
+    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
+      this.setState({ preset: null })
+    }
   }
 
   export(format = 'png') {
@@ -220,7 +231,7 @@ class Editor extends React.Component {
   }
 
   resetDefaultSettings() {
-    this.setState(DEFAULT_SETTINGS)
+    this.setState({ ...DEFAULT_SETTINGS, preset: DEFAULT_PRESET_ID })
     this.props.onReset()
   }
 
@@ -238,7 +249,8 @@ class Editor extends React.Component {
       this.setState({
         backgroundImage: file.content,
         backgroundImageSelection: null,
-        backgroundMode: 'image'
+        backgroundMode: 'image',
+        preset: null
       })
     } else {
       this.setState({ code: file.content, language: 'auto' })
@@ -257,10 +269,11 @@ class Editor extends React.Component {
     if (photographer) {
       this.setState(({ code = DEFAULT_CODE }) => ({
         ...changes,
-        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`
+        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`,
+        preset: null
       }))
     } else {
-      this.setState(changes)
+      this.setState({ ...changes, preset: null })
     }
   }
 
@@ -270,6 +283,8 @@ class Editor extends React.Component {
       .catch(() => {
         // create toast here in the future
       })
+
+  applyPreset = ({ id: preset, ...settings }) => this.setState({ preset, ...settings })
 
   render() {
     const {
@@ -302,20 +317,20 @@ class Editor extends React.Component {
       )
     }
 
-    const config = omit(this.state, ['code', 'aspectRatio'])
+    const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
 
     return (
       <React.Fragment>
         <div className="editor">
           <Toolbar>
             <Dropdown
-              icon={<ThemeIcon />}
+              icon={themeIcon}
               selected={THEMES_HASH[theme] || DEFAULT_THEME}
               list={THEMES}
               onChange={this.updateTheme}
             />
             <Dropdown
-              icon={<LanguageIcon />}
+              icon={languageIcon}
               selected={
                 LANGUAGE_NAME_HASH[language] ||
                 LANGUAGE_MIME_HASH[language] ||
@@ -337,6 +352,8 @@ class Editor extends React.Component {
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
               format={this.format}
+              applyPreset={this.applyPreset}
+              getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
               {this.props.api.tweet &&
@@ -346,7 +363,7 @@ class Editor extends React.Component {
                     onClick={this.upload}
                     title={uploading ? 'Loading...' : 'Tweet'}
                     color="#57b5f9"
-                    style={{ marginRight: '8px' }}
+                    style={tweetButtonStyle}
                   />
                 )}
               <ExportMenu

@@ -22,10 +22,11 @@ class BackgroundSelect extends React.Component {
   }
 
   shouldComponentUpdate(prevProps, prevState) {
-    return (
-      prevState.isVisible !== this.state.isVisible ||
-      (prevState.isVisible && shallowCompare(this, prevProps, prevState))
-    )
+    return [
+      prevState.isVisible !== this.state.isVisible,
+      prevProps.color !== this.props.color,
+      prevState.isVisible && shallowCompare(this, prevProps, prevState)
+    ].some(Boolean)
   }
 
   toggle() {
