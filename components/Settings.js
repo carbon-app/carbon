@@ -290,7 +290,6 @@ const Presets = React.memo(
             {presets.filter(p => p.custom).map(preset => (
               <Preset
                 key={preset.id}
-                custom
                 remove={remove}
                 apply={apply}
                 preset={preset}
@@ -369,6 +368,9 @@ const Presets = React.memo(
               overflow-x: scroll;
               margin: 0 8px 12px 8px;
               align-items: center;
+              /* https://iamsteve.me/blog/entry/using-flexbox-for-horizontal-scrolling-navigation */
+              flex-wrap: nowrap;
+              -webkit-overflow-scrolling: touch;
             }
 
             .settings-presets-divider {
