@@ -480,7 +480,12 @@ class Settings extends React.PureComponent {
     const previousSettings = this.getSettingsFromProps()
 
     this.props.applyPreset(preset)
-    this.setState({ previousSettings })
+
+    // TODO: this is a hack to prevent the scrollLeft position from changing when preset is applied
+    const { scrollLeft: previousScrollLeft } = document.querySelector('.settings-presets-content')
+    this.setState({ previousSettings }, () => {
+      document.querySelector('.settings-presets-content').scrollLeft = previousScrollLeft
+    })
   }
 
   undoPreset = () => {
