@@ -409,8 +409,7 @@ class Settings extends React.PureComponent {
     isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
-    previousSettings: null,
-    presetApplied: false
+    previousSettings: null
   }
 
   componentDidMount() {
@@ -464,12 +463,12 @@ class Settings extends React.PureComponent {
 
   handleChange = (key, value) => {
     this.props.onChange(key, value)
-    this.setState({ previousSettings: null, presetApplied: false })
+    this.setState({ previousSettings: null })
   }
 
   handleReset = () => {
-    this.setState({ presetApplied: false })
     this.props.resetDefaultSettings()
+    this.setState({ previousSettings: null })
   }
 
   getSettingsFromProps = () =>
@@ -479,18 +478,18 @@ class Settings extends React.PureComponent {
     const previousSettings = this.getSettingsFromProps()
 
     this.props.applyPreset(preset)
-    this.setState({ previousSettings, presetApplied: true })
+    this.setState({ previousSettings })
   }
 
   undoPreset = () => {
     this.props.applyPreset({ ...this.state.previousSettings, id: null })
-    this.setState({ previousSettings: null, presetApplied: false })
+    this.setState({ previousSettings: null })
   }
 
   removePreset = id => {
     if (this.props.preset === id) {
       this.props.onChange('preset', null)
-      this.setState({ presetApplied: false })
+      this.setState({ previousSettings: null })
     }
     this.setState(
       ({ presets }) => ({ presets: presets.filter(p => p.id !== id) }),
@@ -516,6 +515,7 @@ class Settings extends React.PureComponent {
 
     this.setState(
       ({ presets }) => ({
+        previousSettings: null,
         presets: [newPreset, ...presets]
       }),
       this.savePresets
@@ -525,7 +525,7 @@ class Settings extends React.PureComponent {
   savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
 
   render() {
-    const { isVisible, selectedMenu, showPresets, presets, presetApplied } = this.state
+    const { isVisible, selectedMenu, showPresets, presets, previousSettings } = this.state
     const { preset } = this.props
 
     return (
@@ -547,7 +547,7 @@ class Settings extends React.PureComponent {
             undo={this.undoPreset}
             remove={this.removePreset}
             create={this.createPreset}
-            applied={presetApplied}
+            applied={!!previousSettings}
           />
           <div className="settings-bottom">
             <div className="settings-menu">
