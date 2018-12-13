@@ -3,12 +3,12 @@ import React from 'react'
 import { COLORS } from '../lib/constants'
 
 class Slider extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
+  static defaultProps = {
+    onMouseDown: () => {},
+    onMouseUp: () => {}
   }
 
-  handleChange(e) {
+  handleChange = e => {
     this.props.onChange(`${e.target.value}${this.props.usePercentage ? '%' : 'px'}`)
   }
 
@@ -32,6 +32,8 @@ class Slider extends React.Component {
           type="range"
           defaultValue={this.props.value}
           onChange={this.handleChange}
+          onMouseDown={this.props.onMouseDown}
+          onMouseUp={this.props.onMouseUp}
           min={minValue}
           max={maxValue}
           step={step}
