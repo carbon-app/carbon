@@ -6,7 +6,9 @@ import WindowPointer from './WindowPointer'
 import ImagePicker from './ImagePicker'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { validateColor } from '../lib/colors'
-import { parseRGBA, capitalizeFirstLetter } from '../lib/util'
+
+const stringifyRGBA = obj => `rgba(${obj.r},${obj.g},${obj.b},${obj.a})`
+const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1)
 
 class BackgroundSelect extends React.Component {
   constructor(props) {
@@ -44,7 +46,7 @@ class BackgroundSelect extends React.Component {
   }
 
   handlePickColor(color) {
-    this.props.onChange({ backgroundColor: parseRGBA(color.rgb) })
+    this.props.onChange({ backgroundColor: stringifyRGBA(color.rgb) })
   }
 
   render() {
