@@ -26,7 +26,9 @@ const WindowSettings = React.memo(
     windowControls,
     lineNumbers,
     widthAdjustment,
-    watermark
+    watermark,
+    onWidthChanging,
+    onWidthChanged
   }) => {
     return (
       <div className="settings-content">
@@ -45,6 +47,8 @@ const WindowSettings = React.memo(
             label="Padding (horiz)"
             value={paddingHorizontal}
             onChange={onChange.bind(null, 'paddingHorizontal')}
+            onMouseDown={onWidthChanging}
+            onMouseUp={onWidthChanged}
           />
         </div>
         <Toggle
@@ -102,29 +106,33 @@ const WindowSettings = React.memo(
   }
 )
 
-const TypeSettings = React.memo(({ onChange, font, size, lineHeight }) => {
-  return (
-    <div className="settings-content">
-      <FontSelect selected={font} onChange={onChange.bind(null, 'fontFamily')} />
-      <Slider
-        label="Size"
-        value={size}
-        minValue={10}
-        maxValue={18}
-        step={0.5}
-        onChange={onChange.bind(null, 'fontSize')}
-      />
-      <Slider
-        label="Line height"
-        value={lineHeight}
-        minValue={90}
-        maxValue={250}
-        usePercentage={true}
-        onChange={onChange.bind(null, 'lineHeight')}
-      />
-    </div>
-  )
-})
+const TypeSettings = React.memo(
+  ({ onChange, font, size, lineHeight, onWidthChanging, onWidthChanged }) => {
+    return (
+      <div className="settings-content">
+        <FontSelect selected={font} onChange={onChange.bind(null, 'fontFamily')} />
+        <Slider
+          label="Size"
+          value={size}
+          minValue={10}
+          maxValue={18}
+          step={0.5}
+          onChange={onChange.bind(null, 'fontSize')}
+          onMouseDown={onWidthChanging}
+          onMouseUp={onWidthChanged}
+        />
+        <Slider
+          label="Line height"
+          value={lineHeight}
+          minValue={90}
+          maxValue={250}
+          usePercentage={true}
+          onChange={onChange.bind(null, 'lineHeight')}
+        />
+      </div>
+    )
+  }
+)
 
 const MiscSettings = React.memo(({ format, reset }) => {
   return (
@@ -411,8 +419,11 @@ class Settings extends React.PureComponent {
     isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
-    previousSettings: null
+    previousSettings: null,
+    widthChanging: false
   }
+
+  settingsRef = React.createRef()
 
   presetContentRef = React.createRef()
 
@@ -431,39 +442,13 @@ class Settings extends React.PureComponent {
 
   selectMenu = selectedMenu => () => this.setState({ selectedMenu })
 
-  renderContent = () => {
-    switch (this.state.selectedMenu) {
-      case 'Window':
-        return (
-          <WindowSettings
-            onChange={this.handleChange}
-            windowTheme={this.props.windowTheme}
-            paddingHorizontal={this.props.paddingHorizontal}
-            paddingVertical={this.props.paddingVertical}
-            dropShadow={this.props.dropShadow}
-            dropShadowBlurRadius={this.props.dropShadowBlurRadius}
-            dropShadowOffsetY={this.props.dropShadowOffsetY}
-            windowControls={this.props.windowControls}
-            lineNumbers={this.props.lineNumbers}
-            widthAdjustment={this.props.widthAdjustment}
-            watermark={this.props.watermark}
-          />
-        )
-      case 'Type':
-        return (
-          <TypeSettings
-            onChange={this.handleChange}
-            font={this.props.fontFamily}
-            size={this.props.fontSize}
-            lineHeight={this.props.lineHeight}
-          />
-        )
-      case 'Misc':
-        return <MiscSettings format={this.props.format} reset={this.handleReset} />
-      default:
-        return null
-    }
+  handleWidthChanging = () => {
+    const rect = this.settingsRef.current.getBoundingClientRect()
+    this.settingPosition = { top: rect.bottom + 12, left: rect.left }
+    this.setState({ widthChanging: true })
   }
+
+  handleWidthChanged = () => this.setState({ widthChanging: false })
 
   handleChange = (key, value) => {
     this.props.onChange(key, value)
@@ -533,12 +518,50 @@ class Settings extends React.PureComponent {
 
   savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
 
+  renderContent = () => {
+    switch (this.state.selectedMenu) {
+      case 'Window':
+        return (
+          <WindowSettings
+            onChange={this.handleChange}
+            onWidthChanging={this.handleWidthChanging}
+            onWidthChanged={this.handleWidthChanged}
+            windowTheme={this.props.windowTheme}
+            paddingHorizontal={this.props.paddingHorizontal}
+            paddingVertical={this.props.paddingVertical}
+            dropShadow={this.props.dropShadow}
+            dropShadowBlurRadius={this.props.dropShadowBlurRadius}
+            dropShadowOffsetY={this.props.dropShadowOffsetY}
+            windowControls={this.props.windowControls}
+            lineNumbers={this.props.lineNumbers}
+            widthAdjustment={this.props.widthAdjustment}
+            watermark={this.props.watermark}
+          />
+        )
+      case 'Type':
+        return (
+          <TypeSettings
+            onChange={this.handleChange}
+            onWidthChanging={this.handleWidthChanging}
+            onWidthChanged={this.handleWidthChanged}
+            font={this.props.fontFamily}
+            size={this.props.fontSize}
+            lineHeight={this.props.lineHeight}
+          />
+        )
+      case 'Misc':
+        return <MiscSettings format={this.props.format} reset={this.handleReset} />
+      default:
+        return null
+    }
+  }
+
   render() {
-    const { isVisible, selectedMenu, showPresets, presets, previousSettings } = this.state
+    const { isVisible, selectedMenu, showPresets, presets, previousSettings, widthChanging } = this.state
     const { preset } = this.props
 
     return (
-      <div className="settings-container">
+      <div className="settings-container" ref={this.settingsRef}>
         <div
           className={`settings-display ${isVisible ? 'is-visible' : ''}`}
           onClick={this.toggleVisible}
@@ -610,9 +633,9 @@ class Settings extends React.PureComponent {
 
             .settings-settings {
               display: none;
-              position: absolute;
-              top: 52px;
-              left: 0;
+              position: ${widthChanging ? 'fixed' : 'absolute'};
+              top: ${widthChanging ? this.settingPosition.top : 52}px;
+              left: ${widthChanging ? this.settingPosition.left : 0}px;
               border: 2px solid ${COLORS.SECONDARY};
               width: 324px;
               border-radius: 3px;
