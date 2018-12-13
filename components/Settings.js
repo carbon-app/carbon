@@ -191,6 +191,7 @@ const MenuButton = React.memo(({ name, select, selected }) => {
             font-size: 14px;
             border-bottom: 1px solid ${COLORS.SECONDARY};
             position: relative;
+            align-items: center;
           }
 
           button:last-child {
@@ -557,7 +558,14 @@ class Settings extends React.PureComponent {
   }
 
   render() {
-    const { isVisible, selectedMenu, showPresets, presets, previousSettings, widthChanging } = this.state
+    const {
+      isVisible,
+      selectedMenu,
+      showPresets,
+      presets,
+      previousSettings,
+      widthChanging
+    } = this.state
     const { preset } = this.props
 
     return (
