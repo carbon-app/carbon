@@ -267,148 +267,142 @@ const Preset = React.memo(({ remove, apply, selected, preset }) => (
 ))
 
 const Presets = React.memo(
-  React.forwardRef(
-    ({ show, create, toggle, undo, presets, selected, remove, apply, applied, contentRef }) => {
-      const customPresetsLength = presets.length - DEFAULT_PRESETS.length
+  ({ show, create, toggle, undo, presets, selected, remove, apply, applied, contentRef }) => {
+    const customPresetsLength = presets.length - DEFAULT_PRESETS.length
 
-      const disabledCreate = selected != null
+    const disabledCreate = selected != null
 
-      return (
-        <div className="settings-presets">
-          <div className="settings-presets-header">
-            <span>Presets</span>
-            {show && (
-              <button
-                className="settings-presets-create"
-                onClick={create}
-                disabled={disabledCreate}
-              >
-                create +
-              </button>
-            )}
-            <button className="settings-presets-arrow" onClick={toggle}>
-              {show ? <Arrows.Up /> : <Arrows.Down />}
+    return (
+      <div className="settings-presets">
+        <div className="settings-presets-header">
+          <span>Presets</span>
+          {show && (
+            <button className="settings-presets-create" onClick={create} disabled={disabledCreate}>
+              create +
+            </button>
+          )}
+          <button className="settings-presets-arrow" onClick={toggle}>
+            {show ? <Arrows.Up /> : <Arrows.Down />}
+          </button>
+        </div>
+        {show ? (
+          <div className="settings-presets-content" ref={contentRef}>
+            {presets.filter(p => p.custom).map(preset => (
+              <Preset
+                key={preset.id}
+                remove={remove}
+                apply={apply}
+                preset={preset}
+                selected={selected}
+              />
+            ))}
+            {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
+            {presets.filter(p => !p.custom).map(preset => (
+              <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
+            ))}
+          </div>
+        ) : null}
+        {show && applied ? (
+          <div className="settings-presets-applied">
+            <span>Preset applied!</span>
+            <button onClick={undo}>
+              undo <span>&#x21A9;</span>
             </button>
           </div>
-          {show ? (
-            <div className="settings-presets-content" ref={contentRef}>
-              {presets.filter(p => p.custom).map(preset => (
-                <Preset
-                  key={preset.id}
-                  remove={remove}
-                  apply={apply}
-                  preset={preset}
-                  selected={selected}
-                />
-              ))}
-              {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
-              {presets.filter(p => !p.custom).map(preset => (
-                <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
-              ))}
-            </div>
-          ) : null}
-          {show && applied ? (
-            <div className="settings-presets-applied">
-              <span>Preset applied!</span>
-              <button onClick={undo}>
-                undo <span>&#x21A9;</span>
-              </button>
-            </div>
-          ) : null}
-          <style jsx>
-            {`
-              button {
-                outline: none;
-                border: none;
-                background: transparent;
-                cursor: pointer;
-                padding: 0;
-              }
+        ) : null}
+        <style jsx>
+          {`
+            button {
+              outline: none;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              padding: 0;
+            }
 
-              .settings-presets {
-                border-bottom: 1px solid ${COLORS.SECONDARY};
-              }
+            .settings-presets {
+              border-bottom: 1px solid ${COLORS.SECONDARY};
+            }
 
-              .settings-presets-header {
-                display: flex;
-                padding: 10px 8px;
-                position: relative;
-                color: ${COLORS.SECONDARY};
-                width: 100%;
-                align-items: center;
-              }
+            .settings-presets-header {
+              display: flex;
+              padding: 10px 8px;
+              position: relative;
+              color: ${COLORS.SECONDARY};
+              width: 100%;
+              align-items: center;
+            }
 
-              .settings-presets-header > span {
-                font-size: 14px;
-              }
+            .settings-presets-header > span {
+              font-size: 14px;
+            }
 
-              .settings-presets-arrow,
-              .settings-presets-create,
-              .settings-presets-remove {
-                cursor: pointer;
-                background: transparent;
-                outline: none;
-                border: none;
-                font-size: 12px;
-              }
+            .settings-presets-arrow,
+            .settings-presets-create,
+            .settings-presets-remove {
+              cursor: pointer;
+              background: transparent;
+              outline: none;
+              border: none;
+              font-size: 12px;
+            }
 
-              .settings-presets-create {
-                color: ${COLORS.GRAY};
-                padding: 0 8px;
-                cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
-              }
+            .settings-presets-create {
+              color: ${COLORS.GRAY};
+              padding: 0 8px;
+              cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
+            }
 
-              .settings-presets-create:enabled:hover {
-                color: ${COLORS.SECONDARY};
-              }
+            .settings-presets-create:enabled:hover {
+              color: ${COLORS.SECONDARY};
+            }
 
-              .settings-presets-arrow {
-                display: flex;
-                position: absolute;
-                right: 16px;
-              }
+            .settings-presets-arrow {
+              display: flex;
+              position: absolute;
+              right: 16px;
+            }
 
-              .settings-presets-content {
-                display: flex;
-                overflow-x: scroll;
-                margin: 0 8px 12px 8px;
-                align-items: center;
-                /* https://iamsteve.me/blog/entry/using-flexbox-for-horizontal-scrolling-navigation */
-                flex-wrap: nowrap;
-                -webkit-overflow-scrolling: touch;
-              }
+            .settings-presets-content {
+              display: flex;
+              overflow-x: scroll;
+              margin: 0 8px 12px 8px;
+              align-items: center;
+              /* https://iamsteve.me/blog/entry/using-flexbox-for-horizontal-scrolling-navigation */
+              flex-wrap: nowrap;
+              -webkit-overflow-scrolling: touch;
+            }
 
-              .settings-presets-divider {
-                height: 72px;
-                padding: 1px;
-                border-radius: 3px;
-                margin-right: 8px;
-                background-color: ${COLORS.DARK_GRAY};
-              }
+            .settings-presets-divider {
+              height: 72px;
+              padding: 1px;
+              border-radius: 3px;
+              margin-right: 8px;
+              background-color: ${COLORS.DARK_GRAY};
+            }
 
-              .settings-presets-applied {
-                display: flex;
-                justify-content: space-between;
-                background-color: ${COLORS.SECONDARY};
-                width: 100%;
-                color: ${COLORS.BLACK};
-                padding: 4px 8px;
-              }
+            .settings-presets-applied {
+              display: flex;
+              justify-content: space-between;
+              background-color: ${COLORS.SECONDARY};
+              width: 100%;
+              color: ${COLORS.BLACK};
+              padding: 4px 8px;
+            }
 
-              .settings-presets-applied button {
-                float: right;
-              }
+            .settings-presets-applied button {
+              float: right;
+            }
 
-              .settings-presets-applied button span {
-                float: right;
-                margin: 1px 0 0 2px;
-              }
-            `}
-          </style>
-        </div>
-      )
-    }
-  )
+            .settings-presets-applied button span {
+              float: right;
+              margin: 1px 0 0 2px;
+            }
+          `}
+        </style>
+      </div>
+    )
+  }
 )
 
 class Settings extends React.PureComponent {
