@@ -1,6 +1,5 @@
 import React from 'react'
 import Page from '../components/Page'
-import { COLORS } from '../lib/constants'
 
 export default () => (
   <Page>
@@ -66,9 +65,13 @@ export default () => (
     </div>
     <style jsx>
       {`
+        h4 {
+          font-weight: 600;
+        }
+
         p,
         li {
-          color: ${COLORS.GRAY};
+          color: #fff;
         }
 
         span {

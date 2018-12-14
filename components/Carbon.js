@@ -211,6 +211,7 @@ class Carbon extends React.PureComponent {
               height: auto;
               min-width: inherit;
               padding: 18px 18px;
+              padding-left: 12px;
               ${config.lineNumbers ? 'padding-left: 12px;' : ''} border-radius: 5px;
               font-family: ${config.fontFamily}, monospace !important;
               font-size: ${config.fontSize};
