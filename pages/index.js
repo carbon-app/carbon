@@ -10,6 +10,8 @@ import { updateQueryString } from '../lib/routing'
 import { saveSettings, clearSettings, omit } from '../lib/util'
 
 class Index extends React.Component {
+  shouldComponentUpdate = () => false
+
   onEditorUpdate = state => {
     updateQueryString(this.props.router, state)
     saveSettings(
