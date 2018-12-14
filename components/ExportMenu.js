@@ -98,6 +98,7 @@ class ExportMenu extends React.PureComponent {
         <style jsx>
           {`
             button {
+              font-size: 12px;
               display: flex;
               user-select: none;
               cursor: pointer;
@@ -197,7 +198,7 @@ class ExportMenu extends React.PureComponent {
             }
 
             .copy-button {
-              flex-basis: 72px;
+              white-space: nowrap;
             }
 
             .copy-button,

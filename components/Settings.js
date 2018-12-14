@@ -335,7 +335,7 @@ const Presets = React.memo(
 
             .settings-presets-header {
               display: flex;
-              padding: 10px 8px;
+              padding: 8px 8px;
               position: relative;
               color: ${COLORS.SECONDARY};
               width: 100%;
@@ -357,6 +357,7 @@ const Presets = React.memo(
             }
 
             .settings-presets-create {
+              line-height: 1;
               color: ${COLORS.GRAY};
               padding: 0 8px;
               cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
