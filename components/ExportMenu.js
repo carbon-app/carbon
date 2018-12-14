@@ -1,5 +1,4 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import enhanceWithClickOutside from 'react-click-outside'
 import { withRouter } from 'next/router'
 
@@ -18,16 +17,48 @@ const toIFrame = url =>
 </iframe>
 `
 
-class ExportMenu extends React.Component {
+const CopyEmbed = withRouter(
+  React.memo(
+    ({ router: { asPath } }) => (
+      <React.Fragment>
+        <CopyButton text={toIFrame(asPath)}>
+          {({ copied }) => (
+            <button className="copy-button">{copied ? 'Copied!' : 'Copy Embed'}</button>
+          )}
+        </CopyButton>
+        <style jsx>
+          {`
+            .copy-button {
+              display: flex;
+              flex: 1;
+              justify-content: center;
+              align-items: center;
+              padding: 12px 16px;
+              font-size: 12px;
+              white-space: nowrap;
+              user-select: none;
+              cursor: pointer;
+              outline: none;
+              border: none;
+              background: inherit;
+              color: ${COLORS.PURPLE};
+              border-right: 1px solid ${COLORS.PURPLE};
+            }
+
+            .copy-button:hover {
+              opacity: 1;
+            }
+          `}
+        </style>
+      </React.Fragment>
+    ),
+    (prevProps, nextProps) => prevProps.router.asPath === nextProps.router.asPath
+  )
+)
+
+class ExportMenu extends React.PureComponent {
   state = {
     isVisible: false
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      shallowCompare(this, nextProps, nextState) ||
-      nextProps.router.asPath !== this.props.router.asPath
-    )
   }
 
   toggle = () => this.setState(toggle('isVisible'))
@@ -41,7 +72,7 @@ class ExportMenu extends React.Component {
   handleExport = format => () => this.props.export(format)
 
   render() {
-    const { exportSize, filename, router } = this.props
+    const { exportSize, filename } = this.props
     const { isVisible } = this.state
 
     return (
@@ -85,11 +116,7 @@ class ExportMenu extends React.Component {
             <button className="open-button" onClick={this.handleExport('open')}>
               Open ↗
             </button>
-            <CopyButton text={toIFrame(router.asPath)}>
-              {({ copied }) => (
-                <button className="copy-button">{copied ? 'Copied!' : 'Copy Embed'}</button>
-              )}
-            </CopyButton>
+            <CopyEmbed />
             <div className="save-container">
               <span>Save as</span>
               <div>
@@ -195,7 +222,6 @@ class ExportMenu extends React.Component {
               opacity: 1;
             }
 
-            .copy-button,
             .open-button,
             .save-container {
               display: flex;
@@ -205,11 +231,6 @@ class ExportMenu extends React.Component {
               padding: 12px 16px;
             }
 
-            .copy-button {
-              white-space: nowrap;
-            }
-
-            .copy-button,
             .open-button {
               border-right: 1px solid ${COLORS.PURPLE};
             }
@@ -237,4 +258,4 @@ class ExportMenu extends React.Component {
   }
 }
 
-export default withRouter(enhanceWithClickOutside(ExportMenu))
+export default enhanceWithClickOutside(ExportMenu)
