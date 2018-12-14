@@ -6,7 +6,6 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
-import shallowCompare from 'react-addons-shallow-compare'
 
 // Ours
 import Button from './Button'
@@ -102,7 +101,7 @@ class Editor extends React.Component {
       newState.language = unescapeHtml(newState.language)
     }
 
-    this.setState(newState)
+    this.updateState(newState)
 
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
@@ -113,18 +112,13 @@ class Editor extends React.Component {
     window.removeEventListener('online', this.setOnline)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // this.props ensures props are not compared, only state
-    if (shallowCompare(this, this.props, prevState)) {
-      this.props.onUpdate(this.state)
-    }
-  }
+  updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
 
-  updateCode = code => this.setState({ code })
-  updateAspectRatio = aspectRatio => this.setState({ aspectRatio })
-  updateTitleBar = titleBar => this.setState({ titleBar })
-  setOffline = () => this.setState({ online: false })
-  setOnline = () => this.setState({ online: true })
+  updateCode = code => this.updateState({ code })
+  updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
+  updateTitleBar = titleBar => this.updateState({ titleBar })
+  setOffline = () => this.updateState({ online: false })
+  setOnline = () => this.updateState({ online: true })
 
   async getCarbonImage(
     {
@@ -208,9 +202,9 @@ class Editor extends React.Component {
   }
 
   updateSetting(key, value) {
-    this.setState({ [key]: value })
+    this.updateState({ [key]: value })
     if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
-      this.setState({ preset: null })
+      this.updateState({ preset: null })
     }
   }
 
@@ -231,29 +225,29 @@ class Editor extends React.Component {
   }
 
   resetDefaultSettings() {
-    this.setState({ ...DEFAULT_SETTINGS, preset: DEFAULT_PRESET_ID })
+    this.updateState({ ...DEFAULT_SETTINGS, preset: DEFAULT_PRESET_ID })
     this.props.onReset()
   }
 
   upload() {
-    this.setState({ uploading: true })
+    this.updateState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
       .then(this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE))
       // eslint-disable-next-line
       .catch(console.error)
-      .then(() => this.setState({ uploading: false }))
+      .then(() => this.updateState({ uploading: false }))
   }
 
   onDrop([file]) {
     if (isImage(file)) {
-      this.setState({
+      this.updateState({
         backgroundImage: file.content,
         backgroundImageSelection: null,
         backgroundMode: 'image',
         preset: null
       })
     } else {
-      this.setState({ code: file.content, language: 'auto' })
+      this.updateState({ code: file.content, language: 'auto' })
     }
   }
 
@@ -267,13 +261,13 @@ class Editor extends React.Component {
 
   updateBackground({ photographer, ...changes } = {}) {
     if (photographer) {
-      this.setState(({ code = DEFAULT_CODE }) => ({
+      this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
         code: code + `\n\n// Photo by ${photographer.name} on Unsplash`,
         preset: null
       }))
     } else {
-      this.setState({ ...changes, preset: null })
+      this.updateState({ ...changes, preset: null })
     }
   }
 
@@ -284,7 +278,7 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  applyPreset = ({ id: preset, ...settings }) => this.setState({ preset, ...settings })
+  applyPreset = ({ id: preset, ...settings }) => this.updateState({ preset, ...settings })
 
   render() {
     const {
