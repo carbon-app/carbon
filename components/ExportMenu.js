@@ -1,4 +1,5 @@
 import React from 'react'
+import shallowCompare from 'react-addons-shallow-compare'
 import enhanceWithClickOutside from 'react-click-outside'
 import { withRouter } from 'next/router'
 
@@ -17,9 +18,16 @@ const toIFrame = url =>
 </iframe>
 `
 
-class ExportMenu extends React.PureComponent {
+class ExportMenu extends React.Component {
   state = {
     isVisible: false
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      shallowCompare(this, nextProps, nextState) ||
+      nextProps.router.asPath !== this.props.router.asPath
+    )
   }
 
   toggle = () => this.setState(toggle('isVisible'))
