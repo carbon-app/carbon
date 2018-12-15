@@ -31,6 +31,7 @@ const CopyEmbed = withRouter(
             .copy-button {
               display: flex;
               flex: 1;
+              flex-basis: 68px;
               justify-content: center;
               align-items: center;
               padding: 12px 16px;
