@@ -47,11 +47,23 @@ export default () => (
         </p>
         <p className="mt2 mb3">
           If you use the &apos;Tweet&apos; button, Carbon will automatically make your image
-          accessible. However, if you want to manually tweet your carbon image, please check out{' '}
+          accessible. However, if you want to manually tweet your carbon image, please check out (
           <a className="link" href="https://help.twitter.com/en/using-twitter/picture-descriptions">
-            this page
-          </a>{' '}
-          to found out how to make your Twitter images accessible.
+            how to make your Twitter images accessible
+          </a>
+          ).
+        </p>
+        <p className="mt2 mb3">
+          If you include a Carbon image in a post, the source code will be invisible to assistive
+          technology — it will not be possible to enlarge or copy it, etc. Please, think about
+          adding another element with the source code as text, like (
+          <a
+            className="link"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details"
+          >
+            an HTML Details Element
+          </a>
+          ) below the image.
         </p>
       </div>
       <div>
