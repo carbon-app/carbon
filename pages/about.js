@@ -54,14 +54,14 @@ export default () => (
           ).
         </p>
         <p className="mt2 mb3">
-          If you include a carbon image in a post, the source code will be invisible for assistive
+          If you include a Carbon image in a post, the source code will be invisible for assistive
           technology, it will not be possible to enlarge it or copy it, etc. Please, think about
-          adding another element with the source code as text. For example, you can add (
+          adding another element with the source code as text, like (
           <a
             className="link"
             href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details"
           >
-            a HTML Details Element
+            an HTML Details Element
           </a>
           ) below the image.
         </p>
