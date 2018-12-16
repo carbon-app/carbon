@@ -54,8 +54,8 @@ export default () => (
           ).
         </p>
         <p className="mt2 mb3">
-          If you include a Carbon image in a post, the source code will be invisible for assistive
-          technology, it will not be possible to enlarge it or copy it, etc. Please, think about
+          If you include a Carbon image in a post, the source code will be invisible to assistive
+          technology — it will not be possible to enlarge or copy it, etc. Please, think about
           adding another element with the source code as text, like (
           <a
             className="link"
