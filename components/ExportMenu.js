@@ -115,7 +115,7 @@ class ExportMenu extends React.PureComponent {
           </div>
           <div className="export-option">
             <button className="open-button" onClick={this.handleExport('open')}>
-              Open ↗
+              Open
             </button>
             <CopyEmbed />
             <div className="save-container">

@@ -148,7 +148,7 @@ class BackgroundSelect extends React.Component {
 
             .picker-tabs {
               display: flex;
-              border-bottom: 1px solid ${COLORS.SECONDARY};
+              border-bottom: 2px solid ${COLORS.SECONDARY};
             }
 
             .picker-tab {

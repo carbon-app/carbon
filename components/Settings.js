@@ -330,7 +330,7 @@ const Presets = React.memo(
             }
 
             .settings-presets {
-              border-bottom: 1px solid ${COLORS.SECONDARY};
+              border-bottom: 2px solid ${COLORS.SECONDARY};
             }
 
             .settings-presets-header {
@@ -646,7 +646,7 @@ class Settings extends React.PureComponent {
               top: ${widthChanging ? this.settingPosition.top : 52}px;
               left: ${widthChanging ? this.settingPosition.left : 0}px;
               border: 2px solid ${COLORS.SECONDARY};
-              width: 324px;
+              width: 316px;
               border-radius: 3px;
               background: ${COLORS.BLACK};
             }
@@ -667,7 +667,7 @@ class Settings extends React.PureComponent {
           {`
             .settings-content {
               width: 100%;
-              border-left: 1px solid ${COLORS.SECONDARY};
+              border-left: 2px solid ${COLORS.SECONDARY};
             }
 
             .settings-content > div:not(:first-child) {
