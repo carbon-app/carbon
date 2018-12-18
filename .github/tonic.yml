@@ -1,11 +1,7 @@
 labels:
-  - duplicate
-  - wontfix
-  - invalid
-  - stale
-  - theme/language
-
-labelConfig:
+  wontfix: true
+  invalid: true
+  stale: true
   duplicate:
     delayTime: 3 days
     comment: This issue has been marked as a $LABEL. It will be closed in $CLOSE_TIME . . .
