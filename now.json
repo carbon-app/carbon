@@ -1,14 +1,21 @@
 {
   "name": "carbon",
-  "type": "static",
+  "version": 2,
   "public": true,
-  "static": {
-    "rewrites": [
-      {
-        "source": "!/?(about)?(embed)",
-        "destination": "/index.html"
-      }
-    ]
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ],
+  "routes": [
+    { "src": "^/about(.*)", "dest": "/about" },
+    { "src": "^/embed(.*)", "dest": "/embed" },
+    { "src": "^/_next/(.*)", "dest": "/_next/$1" },
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    { "src": "^/(.*)", "dest": "/index.html" }
+  ],
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
   },
   "github": {
     "autoAlias": false
