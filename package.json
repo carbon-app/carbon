@@ -15,13 +15,15 @@
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "codemirror": "^5.40.2",
     "codemirror-graphql": "0.7.1",
     "codemirror-mode-elixir": "^1.1.1",
+    "cross-env": "^5.2.0",
     "dom-to-image": "^2.5.2",
     "downshift": "^3.1.4",
     "dropperx": "0.2.1",
@@ -34,6 +36,7 @@
     "ms": "^2.0.0",
     "next": "^7.0.2",
     "next-offline": "^3.0.3",
+    "prettier": "^1.14.3",
     "react": "^16.6.0",
     "react-addons-shallow-compare": "^15.6.2",
     "react-click-outside": "^3.0.0",
@@ -60,8 +63,7 @@
     "hex2rgb": "^2.2.0",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
-    "now": "^11.4.6",
-    "prettier": "^1.14.3"
+    "now": "^11.4.6"
   },
   "lint-staged": {
     "*.js": [
