@@ -74,10 +74,12 @@
   },
   "greenkeeper": {
     "ignore": [
-      "webpack",
+      "graphql",
       "react",
+      "react-dnd",
+      "react-dnd-html5-backend",
       "react-dom",
-      "graphql"
+      "webpack"
     ]
   },
   "description": "Create and share beautiful images of your source code",
