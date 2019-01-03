@@ -296,19 +296,23 @@ const Presets = React.memo(
         </div>
         {show ? (
           <div className="settings-presets-content" ref={contentRef}>
-            {presets.filter(p => p.custom).map(preset => (
-              <Preset
-                key={preset.id}
-                remove={remove}
-                apply={apply}
-                preset={preset}
-                selected={selected}
-              />
-            ))}
+            {presets
+              .filter(p => p.custom)
+              .map(preset => (
+                <Preset
+                  key={preset.id}
+                  remove={remove}
+                  apply={apply}
+                  preset={preset}
+                  selected={selected}
+                />
+              ))}
             {customPresetsLength > 0 ? <div className="settings-presets-divider" /> : null}
-            {presets.filter(p => !p.custom).map(preset => (
-              <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
-            ))}
+            {presets
+              .filter(p => !p.custom)
+              .map(preset => (
+                <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
+              ))}
           </div>
         ) : null}
         {show && applied ? (

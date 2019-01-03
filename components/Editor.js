@@ -350,16 +350,15 @@ class Editor extends React.Component {
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
-              {this.props.api.tweet &&
-                online && (
-                  <Button
-                    className="tweetButton"
-                    onClick={this.upload}
-                    title={uploading ? 'Loading...' : 'Tweet'}
-                    color="#57b5f9"
-                    style={tweetButtonStyle}
-                  />
-                )}
+              {this.props.api.tweet && online && (
+                <Button
+                  className="tweetButton"
+                  onClick={this.upload}
+                  title={uploading ? 'Loading...' : 'Tweet'}
+                  color="#57b5f9"
+                  style={tweetButtonStyle}
+                />
+              )}
               <ExportMenu
                 onChange={this.updateSetting}
                 export={this.export}

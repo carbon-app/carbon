@@ -11,7 +11,7 @@
     "test": "npm run cy:run --",
     "deploy": "now",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages,packages}/**/*.js",
-    "lint": "eslint components/*.js lib/*.js pages/*.js",
+    "lint": "eslint .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
@@ -67,7 +67,7 @@
   "lint-staged": {
     "*.js": [
       "npm run lint",
-      "prettier --write",
+      "prettier --config .prettierrc --write",
       "git add"
     ]
   },

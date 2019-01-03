@@ -3,6 +3,8 @@
  * https://css-tricks.com/font-display-masses/#article-header-id-2
  * for `font-display` information
  */
+import React from 'react'
+
 export default () => (
   <style jsx global>
     {`
