@@ -1,7 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -11,6 +12,7 @@
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### Çeviriler
+
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
@@ -27,9 +29,9 @@
 
 ## Özellikler
 
-* **GitHub gist'ten import edebilme**. Basitce Github Gist id'sini url'e ekleyin
-* **Kişiselleştirme**. Ekran görüntüsünün syntax renklendirmesini, pencere yapısını ve daha pek çok şeyi değiştirin
-* **Kolayca Paylaşabilme**. Görüntüyü kaydedin veya tek bir tık ile Twitter'da paylaşın
+- **GitHub gist'ten import edebilme**. Basitce Github Gist id'sini url'e ekleyin
+- **Kişiselleştirme**. Ekran görüntüsünün syntax renklendirmesini, pencere yapısını ve daha pek çok şeyi değiştirin
+- **Kolayca Paylaşabilme**. Görüntüyü kaydedin veya tek bir tık ile Twitter'da paylaşın
 
 ## Örnek
 
@@ -40,8 +42,9 @@
 #### Import
 
 Carbon'da kod import etmenin birkaç yolu vardır:
+
 - Editöre bir dosya sürükleyin
-- Github Gist id'sini url'e ekleyin  (örneğin: `carbon.now.sh/GIST_ID_HERE`)
+- Github Gist id'sini url'e ekleyin (örneğin: `carbon.now.sh/GIST_ID_HERE`)
 - Kodunuzu kopyalayıp yapıştırın
 
 #### Kişiselleştirme
@@ -53,33 +56,42 @@ Kodunuzu Carbon editörüne aldıktan sonra, syntax renklendirmesini, arka plan 
 Kodunuzun görüntüsünü kişiselleştirdikten sonra, görüntüyü kaydedebilir veya tek bir tık ile Twitter'da paylaşabilirsiniz.
 
 ## Topluluk
+
 Topluluğun yarattığı muhteşem projelere göz atın:
 
 ##### Editör Eklentileri (Pluginler)
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - IntelliJ IDEA dosyanızı context menüsü ile Carbon'da açın
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Atom dosyanızı `shift-cmd-A` ile Carbon'da açın 
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - VS Code dosyanızı `carbon` komutu ile Carbon'da açın  
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Atom dosyanızı `shift-cmd-A` ile Carbon'da açın
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - VS Code dosyanızı `carbon` komutu ile Carbon'da açın
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Sublime Text 3 dosyanızı kişisel tuş kombinasyonunuz ile Carbon'da açın
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Vim/Neovim'deki seçili dosyayı `CarbonNowSh()` komutu ile Carbon'da açın
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Açık olan Emacs'teki kodu `carbon-now-sh` interaktif fonksiyonunu kullanarak Carbon'da açın
 
 ##### CLI'lar
+
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Bir dosyayı Carbon'da açın, veya `carbon-now` komutu ile bilgisayarınıza indirin. İnteraktif mod ve highlighting desteği ile
 
 ##### Kütüphaneler
+
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Görüntü özelliklerini iteratif olarak `R`'de değiştirin, Carbon'da açın, veya bilgisayarınıza indirin
 
 ##### Kitaplar
+
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy'un bilgisayar bilimleri kitabı.
 
 ## Katkıda Bulunun
+
 PRlara açığız! Lütfen [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) linkine bakın.
 
 ## Teşekkürler
+
 [ ▲ ZEIT ](https://zeit.co/) Carbon'un hostingine sponsor oldukları için
 
 ## Yaratıcılar
-Carbon bir  <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> projesidir
+
+Carbon bir <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> projesidir
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))

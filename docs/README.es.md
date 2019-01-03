@@ -1,6 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -17,9 +19,9 @@ Visite [carbon.now.sh](https://carbon.now.sh) o lea [nuestra publicación](https
 
 ## Caracteristicas
 
-* **Importar de GitHub gist**. Simplemente agregue un ID de gitHub gist a la url
-* **Personalización**. Personaliza cosas como el tema de sintaxis de tu imagen, el estilo de la ventana y más
-* **Comparte rápidamente**. Guarde su imagen o twittee un enlace con un clic
+- **Importar de GitHub gist**. Simplemente agregue un ID de gitHub gist a la url
+- **Personalización**. Personaliza cosas como el tema de sintaxis de tu imagen, el estilo de la ventana y más
+- **Comparte rápidamente**. Guarde su imagen o twittee un enlace con un clic
 
 ## Ejemplo
 
@@ -30,6 +32,7 @@ Visite [carbon.now.sh](https://carbon.now.sh) o lea [nuestra publicación](https
 #### Importar
 
 Hay algunas formas diferentes de importar código en Carbon:
+
 - Coloca un archivo en el editor
 - Agregar una ID de GitHub gist a la url (por ejemplo, `carbon.now.sh/GIST_ID_HERE`)
 - Pega tu código directamente
@@ -38,40 +41,47 @@ Hay algunas formas diferentes de importar código en Carbon:
 
 Una vez que tenga todo su código en Carbon, puede personalizar su imagen cambiando el tema de sintaxis, el color de fondo, el tema de la ventana o el relleno.
 
-
-
 #### Exportar/Compartir
 
 Después de que hayas personalizado tu fragmento de código puedes compartirlo en un Tweet haciendo un enlace a la imagen, o guardando la imagen directamente.
 
 ## Comunidad
+
 Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 
 ##### Complementos del editor
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Abra la selección en su archivo IntelliJ IDEA actual en Carbon a través de un menú contextual
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Abre tu archivo Atom actual en Carbon con `shift-cmd-A`
 - [Código VS `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Abre tu actual archivo VS Code en Carbon con el comando `carbon`
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Abre la selección en tu archivo Sublime Text 3 actual con una clave de límite personalizada
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Abre la selección en tu actual Vim / Neovim usando la función `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Abre la selección en tu Emacs actual usando la función interactiva ` carbon-now-sh`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Abre la selección en tu Emacs actual usando la función interactiva `carbon-now-sh`
 
 ##### CLIs
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abre un archivo en Carbon o descárgalo directamente usando ` carbon-now`, con un modo interactivo, resaltado selectivo y más
+
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abre un archivo en Carbon o descárgalo directamente usando `carbon-now`, con un modo interactivo, resaltado selectivo y más
 
 ##### Libraries
+
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Iterativamente manipule la estética de la imagen en `R` y abra en Carbon o descargue directamente.
 
 ##### Libros de texto
+
 - ["CS 101 - Una introducción al pensamiento computacional"](https://itunes.apple.com/us/book/id1435714196) - un libro de texto de ciencias de la computación por Sarbo Roy.
 
 ## Contribuir
+
 ¡Bienvenido! Consulte nuestro [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) para obtener más detalles.
 
 ## Gracias a
+
 [▲ ZEIT](https://zeit.co/) para patrocinar el alojamiento de Carbon.
 
 ## Autores
+
 Carbon es un proyecto de <a href="http://dawnlabs.io/"><img width="8%" src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))

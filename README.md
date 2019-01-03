@@ -1,7 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -11,6 +12,7 @@
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### Translations
+
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
@@ -29,9 +31,9 @@ Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs
 
 ## Features
 
-* **Import from GitHub gist**. Simply append a GitHub gist id to the url
-* **Customization**. Customize things like your image's syntax theme, window style, and more
-* **Share quickly**. Save your image or Tweet a link with one click
+- **Import from GitHub gist**. Simply append a GitHub gist id to the url
+- **Customization**. Customize things like your image's syntax theme, window style, and more
+- **Share quickly**. Save your image or Tweet a link with one click
 
 ## Example
 
@@ -42,8 +44,9 @@ Visit [carbon.now.sh](https://carbon.now.sh) or read [our post](https://dawnlabs
 #### Import
 
 There are a few different ways to import code into Carbon:
+
 - Drop a file onto the editor
-- Append a GitHub gist id to the url  (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- Append a GitHub gist id to the url (e.g. `carbon.now.sh/GIST_ID_HERE`)
 - Paste your code directly
 
 #### Customization
@@ -59,9 +62,11 @@ If you use the &apos;Tweet&apos; button, Carbon will automatically make your ima
 If you include a Carbon image in a post, the source code will be invisible for assistive technology, it will not be possible to enlarge it or copy it, etc. Please, think about adding another element with the source code as text, like an [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) below the image.
 
 ## Community
+
 Check out these projects our awesome community has created:
 
 ##### Editor Plugins
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
@@ -70,22 +75,29 @@ Check out these projects our awesome community has created:
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
 
 ##### CLIs
+
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
 
 ##### Libraries
+
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
 
 ##### Textbooks
+
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
 
 ## Contribute
+
 PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
 
 ## Thanks To
+
 [ ▲ ZEIT ](https://zeit.co/) for sponsoring Carbon's hosting.
 
 ## Authors
+
 Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))

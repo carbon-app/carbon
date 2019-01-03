@@ -1,7 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -11,6 +12,7 @@
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### अनुवाद
+
 [Español](/README.es.md)
 [English](/README.md)
 
@@ -22,9 +24,9 @@
 
 ## विशेषताएं
 
-* **GitHub gist से आयात करें**. बस यूआरएल में एक GitHub gist आईडी संलग्न करें
-* **अनुकूलन**. थीम, विंडो शैली आदि जैसी चीजों को कस्टमाइज़ करें
-* **जल्दी से साझा करें**. अपनी छवि को सहेजें या एक क्लिक के साथ एक लिंक ट्वीट करें
+- **GitHub gist से आयात करें**. बस यूआरएल में एक GitHub gist आईडी संलग्न करें
+- **अनुकूलन**. थीम, विंडो शैली आदि जैसी चीजों को कस्टमाइज़ करें
+- **जल्दी से साझा करें**. अपनी छवि को सहेजें या एक क्लिक के साथ एक लिंक ट्वीट करें
 
 ## उदाहरण
 
@@ -35,8 +37,9 @@
 #### Import
 
 कार्बन में कोड import करने के कुछ अलग तरीके हैं:
+
 - एक फ़ाइल को editor पर छोड़ दें
-- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें  (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें (e.g. `carbon.now.sh/GIST_ID_HERE`)
 - अपना कोड सीधे paste
 
 #### अनुकूलन
@@ -48,33 +51,42 @@
 अपनी छवि को अनुकूलित करने के बाद आप या तो छवि के लिंक को ट्वीट कर सकते हैं, या इसे सीधे सहेज सकते हैं।
 
 ## समुदाय
+
 इन परियोजनाओं को देखें हमारे भयानक समुदाय ने बनाया है:
 
 ##### Editor Plugins
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - एक context menu के माध्यम से कार्बन में अपनी वर्तमान IntelliJ IDEA फ़ाइल में चयन खोलें
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A` के साथ कार्बन में अपनी वर्तमान एटम फ़ाइल खोलें
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - कार्बन में कमांड `carbon` के साथ अपनी वर्तमान VS Code फ़ाइल खोलें
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - एक कस्टम बाध्य कुंजी के साथ अपने वर्तमान sublime text 3 फ़ाइल में चयन खोलें
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - फ़ंक्शन `CarbonNowSh()` का उपयोग करके अपने वर्तमान Vim/Neovim में चयन को खोलें
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) -  इंटरैक्टिव फ़ंक्शन `carbon-now-sh` का उपयोग करके अपने वर्तमान Emacs में चयन को खोलें
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - इंटरैक्टिव फ़ंक्शन `carbon-now-sh` का उपयोग करके अपने वर्तमान Emacs में चयन को खोलें
 
 ##### CLIs
+
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - कार्बन में एक फ़ाइल खोलें या इसे `carbon-now` का उपयोग करके सीधे डाउनलोड करें, जिसमें एक इंटरैक्टिव मोड, चुनिंदा हाइलाइटिंग और बहुत कुछ शामिल है
 
 ##### Libraries
+
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - `R` में छवि सौंदर्यशास्त्र का आंशिक रूप से उपयोग करें और या तो कार्बन में खुलें या सीधे डाउनलोड करें।
 
 ##### पाठ्यपुस्तकें
+
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - सरबो रॉय द्वारा एक कंप्यूटर विज्ञान पाठ्यपुस्तक।
 
 ## Contribute
+
 PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) देखें।
 
 ## धन्यवाद
+
 [ ▲ ZEIT ](https://zeit.co/) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
 
 ## लेखक
+
 कार्बन <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> द्वारा एक परियोजना है
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))

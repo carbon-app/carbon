@@ -1,7 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -18,9 +19,9 @@ Visite [carbon.now.sh](https://carbon.now.sh) ou leia [nosso post (em inglês)](
 
 ## Funcionalidades
 
-* **Importar de um gist do GitHub**. É só colocar o id de um gist do GitHub no fim da url;
-* **Customização**. Personalize coisas como o tema usado no editor de acordo com a sintaxe da linguagem, o estilo de janela e mais;
-* **Compartilhe rapidamente**. Salve sua imagem ou tweet o link com a imagem em um clique.
+- **Importar de um gist do GitHub**. É só colocar o id de um gist do GitHub no fim da url;
+- **Customização**. Personalize coisas como o tema usado no editor de acordo com a sintaxe da linguagem, o estilo de janela e mais;
+- **Compartilhe rapidamente**. Salve sua imagem ou tweet o link com a imagem em um clique.
 
 ## Exemplo
 
@@ -31,6 +32,7 @@ Visite [carbon.now.sh](https://carbon.now.sh) ou leia [nosso post (em inglês)](
 #### Importar
 
 Existem alguns jeitos diferentes de importar código fonte para o Carbon:
+
 - Arraste um arquivo para o editor;
 - Cole o id de um gist do GitHub no fim da url (e.g. `carbon.now.sh/ID_DO_GIST_AQUI`);
 - Copie e cole o trecho de código diretamente no editor.
@@ -44,9 +46,11 @@ Assim que você colocar o trecho de código no editor do Carbon, você pode pers
 Depois que você customizar a sua imagem, você pode tweetar um link para a imagem ou salvá-la diretamente.
 
 ## Comunidade
+
 Confira os projetos top da nossa comunidade:
 
 ##### Plugins para editores de texto
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Selecione o trecho de código aberto no seu IntelliJ IDEA e o use o botão direito para abrir o menu de opções onde você pode acionar o Carbon;
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Abra o arquivo atual do seu Atom no Carbon com o comando `shift-cmd-A`;
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Abra seu arquivo do VS Code no Carbon usando o comando `carbon`;
@@ -55,22 +59,29 @@ Confira os projetos top da nossa comunidade:
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Selecione o trecho de código aberto no seu Emacs usando a função interativa `carbon-now-sh`.
 
 ##### CLIs
+
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abra um arquivo no Carbon ou faça download da imagem diretamente com `carbon-now`, apresentando um modo interativo, seleção destacada e muito mais.
 
 ##### Bibliotecas
+
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Manipule iterativamente a estética da imagem em `R` e abra no Carbon ou faça download diretamente.
 
 ##### Livros Didáticos
+
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - um livro didático de ciência da computação escrito por Sarbo Roy.
 
 ## Contribua
+
 PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) para mais detalhes.
 
 ## Agradecimentos
+
 [ ▲ ZEIT ](https://zeit.co/) por patrocinar a hospedagem do Carbon.
 
 ## Autores
+
 Carbon é um projeto feito pela <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))

@@ -1,7 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -11,6 +12,7 @@
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### Translations
+
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
@@ -25,11 +27,12 @@
 트위터에서 공유되고 있는 [그](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 합니다. 무엇을 망설이나요? 당신의 디자인 감각으로 follower들을 감동시키세요!
 
 이 프로젝트를 더 알고싶다면 [carbon.now.sh](https://carbon.now.sh)에 방문하시거나 [우리의 post](https://dawnlabs.io/case-studies/carbon/)를 읽어주세요.
+
 ## Features
 
-* **GitHub gist에서 가져오기**. 그저 url에 github gist id를 입력하세요.
-* **커스터마이징**.  코드 스크린샷의 syntax theme, window style 등 많은 것들을 커스터마이징하세요.
-* **빠르게 공유하기**. 클릭 한 번으로 이미지를 저장하거나 Tweet에 공유하세요.
+- **GitHub gist에서 가져오기**. 그저 url에 github gist id를 입력하세요.
+- **커스터마이징**. 코드 스크린샷의 syntax theme, window style 등 많은 것들을 커스터마이징하세요.
+- **빠르게 공유하기**. 클릭 한 번으로 이미지를 저장하거나 Tweet에 공유하세요.
 
 ## Example
 
@@ -39,7 +42,8 @@
 
 #### Import
 
-Carbon에 코드를 적용시키는데는 몇 가지 방법이 있습니다: 
+Carbon에 코드를 적용시키는데는 몇 가지 방법이 있습니다:
+
 - 편집기에 file을 놓기
 - url에 GitHub gist id 붙여넣기 (예시. `carbon.now.sh/GIST_ID_HERE`)
 - 코드 복사해서 직접 붙여넣기
@@ -50,37 +54,47 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme 그리�
 
 #### Export/Sharing
 
-코드 이미지를 커스터마이징 하고 나면, 곧바로 이미지를 저장하고, Tweet에 공유 할 수 있습니다. 
+코드 이미지를 커스터마이징 하고 나면, 곧바로 이미지를 저장하고, Tweet에 공유 할 수 있습니다.
 
 ## Community
+
 우리의 멋진 커뮤니티가 만든 아래의 프로젝트들을 확인해보세요:
 
 ##### Editor Plugins
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - context menu를 통해서 IntelliJ IDEA file의 선택 영역을 Carbon에서 엽니다.
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A`를 사용해 현재 보고있는 Atom 파일을 Carbon에서 엽니다. 
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A`를 사용해 현재 보고있는 Atom 파일을 Carbon에서 엽니다.
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - `carbon`명령어를 사용해 현재 보고있는 VS Code 파일을 Carbon에서 엽니다.
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 
-커스텀 키를 사용해 Sublime Text 3 파일의 선택 영역을 Carbon에서 엽니다. 
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 
-`CarbonNowSh()` 함수를 사용해 현재 보고 있는 Vim/Neovim 선택 영역을 엽니다.
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) -
+  커스텀 키를 사용해 Sublime Text 3 파일의 선택 영역을 Carbon에서 엽니다.
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) -
+  `CarbonNowSh()` 함수를 사용해 현재 보고 있는 Vim/Neovim 선택 영역을 엽니다.
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - ineractive 함수인 `carbon-now-sh`를 사용해 현재 보고있는 Emacs 선택 영역을 엽니다.
 
 ##### CLIs
+
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - `carbon-now` 명령을 사용해서 곧바로 파일을 열거나 다운로드 받으세요. 이 것은 대화형 모드가 지원되고 선택인 하이라이팅 등 많은 것들을 지원합니다.
 
 ##### Libraries
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R`을 통해서 이미지의 미적인 부분을 조작하고, 그 이미지를 다운 받거나 Carbon에서 열 수 있습니다. 
+
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R`을 통해서 이미지의 미적인 부분을 조작하고, 그 이미지를 다운 받거나 Carbon에서 열 수 있습니다.
 
 ##### Textbooks
+
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy가 쓴 컴퓨터 사이언스 교과서.
 
 ## Contribute
+
 풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md)를 참조해주세요.
+
 ## Thanks To
+
 [ ▲ ZEIT ](https://zeit.co/)가 Carbon 호스팅을 지원해주고 있습니다..
 
 ## Authors
+
 Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))

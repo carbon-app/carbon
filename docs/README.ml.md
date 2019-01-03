@@ -1,7 +1,8 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
@@ -11,6 +12,7 @@
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### വിവർത്തനങ്ങൾ
+
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
@@ -26,9 +28,9 @@
 
 ## സവിശേഷതകൾ
 
-* **GitHub gist ൽ നിന്ന് ഇമ്പോർട്ടുചെയ്യുക**. ലളിതമായി ഒരു GitHub gist id url ലിൽ ആയി ചേർക്കുക
-* **ഇഷ്ടാനുസൃതമാക്കൽ**. നിങ്ങളുടെ ഇമേജ് സിന്റാക്സ് തീം, വിൻഡോ ശൈലി തുടങ്ങിയവയും മറ്റും ഇഷ്ടാനുസൃതമാക്കുക
-* **വേഗത്തിൽ പങ്കിടുക**. നിങ്ങളുടെ ചിത്രം save ചെയ്യുക അല്ലെങ്കിൽ ഒരു ക്ലിക്കിലൂടെ ഒരു ലിങ്ക് ട്വീറ്റ് ചെയ്യുക
+- **GitHub gist ൽ നിന്ന് ഇമ്പോർട്ടുചെയ്യുക**. ലളിതമായി ഒരു GitHub gist id url ലിൽ ആയി ചേർക്കുക
+- **ഇഷ്ടാനുസൃതമാക്കൽ**. നിങ്ങളുടെ ഇമേജ് സിന്റാക്സ് തീം, വിൻഡോ ശൈലി തുടങ്ങിയവയും മറ്റും ഇഷ്ടാനുസൃതമാക്കുക
+- **വേഗത്തിൽ പങ്കിടുക**. നിങ്ങളുടെ ചിത്രം save ചെയ്യുക അല്ലെങ്കിൽ ഒരു ക്ലിക്കിലൂടെ ഒരു ലിങ്ക് ട്വീറ്റ് ചെയ്യുക
 
 ## ഉദാഹരണം
 
@@ -39,6 +41,7 @@
 #### ഇറക്കുമതി ചെയ്യുക
 
 കാർബണിലേക്ക് കോഡ് ഇംപോർട്ട് ചെയ്യുന്നതിന് കുറച്ച് വ്യത്യസ്ത മാർഗ്ഗങ്ങളുണ്ട്:
+
 - എഡിറ്ററിലേക്ക് ഒരു ഫയൽ വലിച്ചിടുക
 - ഒരു GitHub gist idി url ലേക്ക് കൂട്ടിച്ചേർക്കുക (ഉദാ. `carbon.now.sh/GIST_ID_HERE`)
 - നിങ്ങളുടെ കോഡ് നേരിട്ട് കൂട്ടിച്ചേര്ക്കുക
@@ -56,6 +59,7 @@
 ഞങ്ങളുടെ ആകർഷണീയമായ കമ്മ്യൂണിറ്റി സൃഷ്ടിച്ച ഈ പ്രോജക്ടുകൾ പരിശോധിക്കുക:
 
 ##### എഡിറ്റർ പ്ലഗിനുകൾ
+
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - ഒരു കോൺടെക്സ്റ്റ് മെനുവിലൂടെ കാർബണിൽ നിങ്ങളുടെ നിലവിലെ IntelliJ IDEA ഫയലിൽ തിരഞ്ഞെടുത്ത ഭാഗം തുറക്കുക
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - നിങ്ങളുടെ നിലവിലെ ആറ്റം ഫയൽ കാർബണിൽ `shift-cmd-A` ഉപയോഗിച്ച് തുറക്കുക
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - നിങ്ങളുടെ നിലവിലുള്ള VS Code ഫയൽ കാർബണിൽ 'carbon' എന്ന കമാൻഡ് ഉപയോഗിച്ച് തുറക്കുക
@@ -64,22 +68,29 @@
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - നിങ്ങളുടെ നിലവിലുള്ള Emacs ലെ തിരഞ്ഞെടുത്ത ഭാഗം 'carbon-now-sh` എന്ന ഇന്ററാക്ടീവ് ഫങ്ഷൻ ഉപയോഗിച്ച് തുറക്കുക
 
 ##### CLI- കൾ
+
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - കാർബണിൽ ഒരു ഫയൽ തുറക്കുക അല്ലെങ്കിൽ 'carbon-now' ഉപയോഗിച്ച് നേരിട്ട് ഡൌൺലോഡ് ചെയ്യുക, ഒരു ഇന്ററാക്ടീവ് മോഡ് അവതരിപ്പിക്കുന്നു, തിരഞ്ഞെടുത്ത ഹൈലൈറ്റിംഗ് തുടങ്ങിയവ
 
 ##### ലൈബ്രറികൾ
+
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - 'R' ൽ ഇമേജ് സൗന്ദര്യാത്മകത കൈകാര്യം ചെയ്യുക കൂടാതെ ഒന്നുകിൽ കാർബണിൽ തുറക്കുക അല്ലെങ്കിൽ നേരിട്ട് ഡൗൺലോഡുചെയ്യുക..
 
 ##### പാഠപുസ്തകങ്ങൾ
+
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - സർബോ റോയുടെ ഒരു കമ്പ്യൂട്ടർ സയൻസ് പാഠപുസ്തകം.
 
 ## സംഭാവന ചെയ്യുക
+
 PR കൾ സ്വാഗതം ചെയ്യുന്നു! കൂടുതൽ വിവരങ്ങൾക്ക് ദയവായി ഞങ്ങളുടെ [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) കാണുക.
 
 ## നന്ദി
+
 [ ▲ ZEIT ](https://zeit.co/) കാർബൺ ഹോസ്റ്റുചെയ്യുന്നതിനുള്ള സ്പോൺസർ.
 
 ## രചയിതാക്കൾ
+
 കാർബൺ ഒരു <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> പ്രോജക്റ്റ് ആണ്
+
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
