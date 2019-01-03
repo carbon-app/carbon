@@ -3,6 +3,8 @@
  * https://css-tricks.com/font-display-masses/#article-header-id-2
  * for `font-display` information
  */
+import React from 'react'
+
 export default () => (
   <style jsx global>
     {`
@@ -33,6 +35,15 @@ export default () => (
             format('woff2'),
           url('//cdn.jsdelivr.net/npm/@typopro/web-fantasque-sans-mono@3.7.5/TypoPRO-FantasqueSansMono-Regular.woff')
             format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Operator Mono';
+        font-display: swap;
+        src: url('//cdn.jsdelivr.net/gh/Seaony/Operator-Mono@master/src/OperatorMono-Book.otf')
+          format('otf');
         font-weight: 400;
         font-style: normal;
       }
