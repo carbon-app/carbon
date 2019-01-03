@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "codemirror": "^5.40.2",
-    "codemirror-graphql": "0.7.1",
+    "codemirror-graphql": "0.8.3",
     "codemirror-mode-elixir": "^1.1.1",
     "cross-env": "^5.2.0",
     "dom-to-image": "^2.5.2",
@@ -43,8 +43,8 @@
     "react-codemirror2": "^5.1.0",
     "react-color": "^2.13.8",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dnd": "^5.0.0",
-    "react-dnd-html5-backend": "^5.0.0",
+    "react-dnd": "^7.0.2",
+    "react-dnd-html5-backend": "^7.0.2",
     "react-dom": "^16.6.0",
     "react-image-crop": "^6.0.0",
     "react-spinner": "^0.2.7",
@@ -62,8 +62,8 @@
     "eslint-plugin-react": "^7.7.0",
     "hex2rgb": "^2.2.0",
     "husky": "^1.1.2",
-    "lint-staged": "^7.3.0",
-    "now": "^11.4.6"
+    "lint-staged": "^8.1.0",
+    "now": "^12.1.14"
   },
   "lint-staged": {
     "*.js": [
