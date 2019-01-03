@@ -1872,14 +1872,12 @@ codemirror-graphql@0.7.1:
     graphql-language-service-interface "^1.3.2"
     graphql-language-service-parser "^1.2.2"
 
-codemirror-mode-elixir@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/codemirror-mode-elixir/-/codemirror-mode-elixir-1.1.1.tgz#cc5b79bf5f93b6da426e32364a673a681391416c"
-  integrity sha1-zFt5v1+TttpCbjI2Smc6aBORQWw=
-  dependencies:
-    codemirror "^5.20.2"
+codemirror-mode-elixir@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/codemirror-mode-elixir/-/codemirror-mode-elixir-1.1.2.tgz#61227208d2684d928500af6934e4b9c995fb0960"
+  integrity sha512-1oIuRVHyUhLv0Za9sEIsI7urAj06EohwO/yVj10bg7aHnimHQ964Wk3uuoPH0Yn8L38EkOd+SwULYpDiCQtoTA==
 
-codemirror@^5.20.2, codemirror@^5.40.2:
+codemirror@^5.40.2:
   version "5.40.2"
   resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.40.2.tgz#f4a41fee2d84e679543591b3680af259d903330b"
   integrity sha512-yoWuvEiD3v5vTwdoMc/wu/Ld6dh9K/yEiEBTKOPGM+/pN0gTAqFNtrLHv1IJ1UJvzFpNRvMi92XCi3+8/iIaEw==
@@ -2457,10 +2455,10 @@ domain-browser@^1.1.1:
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
 
-downshift@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-3.1.4.tgz#4c99e62b39a58f021935ec1d6ef64ace15b9c6b3"
-  integrity sha512-BR8qqszmRoCHGhFi9TLleV1o0ATo18CJhxjBncnIebscCVRk29WoLxrHUWgG8ND8Tl5CeH+Tc86ATYyZefikAw==
+downshift@^3.1.8:
+  version "3.1.8"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-3.1.8.tgz#0f4c64efeffae1fb978139522035a2e640cb2a01"
+  integrity sha512-giO9makvijAxDmG60XpVk84v8ovI4ex11/im4H354kq9kjxDP7SlylF6Gua2V6hRPrz7FtQM/c6rrOkXyO1Q+Q==
   dependencies:
     "@babel/runtime" "^7.1.2"
     compute-scroll-into-view "^1.0.9"
@@ -5694,10 +5692,10 @@ react-error-overlay@4.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
   integrity sha512-FlsPxavEyMuR6TjVbSSywovXSEyOg6ZDj5+Z8nbsRl9EkOzAhEIcS+GLoQDC5fz/t9suhUXWmUrOBrgeUvrMxw==
 
-react-image-crop@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.0.tgz#e5875c2a784e490c66bfb21b17c0c21f3823efcf"
-  integrity sha512-rVCyy+x/SDaonl/wgBMM9H8Kr0aj1hVZIBCSH0I7/fvwU8jXpWdBSJfdL2B4noxDzlLUOOPFFqqWHlw/dHEMZw==
+react-image-crop@^6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.10.tgz#77e73c88d3f77d707e53a790578e4be81d781ad4"
+  integrity sha512-mQVBSdu9rSY7EqMbJwGwvTtPIoQSiVGuNIQrAEfv+O/qiPM0r9qHlQ5Sue2dptnYWBkVxRhrUGt11SY3mjuJxg==
   dependencies:
     "@types/react-image-crop" "^3.0.1"
 
@@ -6005,10 +6003,10 @@ require-uncached@^1.0.3:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
 
-resize-observer-polyfill@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
-  integrity sha512-M2AelyJDVR/oLnToJLtuDJRBBWUGUvvGigj1411hXhAdyFWqMaqHp7TixW3FpiLuVaikIcR1QL+zqoJoZlOgpg==
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-from@^1.0.0:
   version "1.0.1"
