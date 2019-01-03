@@ -15,7 +15,7 @@ export const StylesheetLink = ({ theme }) => {
     href = `/static/themes/${theme}.css`
   } else {
     const themeDef = THEMES_HASH[theme]
-    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${themeDef &&
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/${themeDef &&
       (themeDef.link || themeDef.id)}.min.css`
   }
 
@@ -29,9 +29,9 @@ export const StylesheetLink = ({ theme }) => {
 export const CodeMirrorLink = () => (
   <Head>
     <link
-      key="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+      key="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.css"
       rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.css"
     />
   </Head>
 )
