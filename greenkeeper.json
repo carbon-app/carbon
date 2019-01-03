@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/gatsby-remark-embed-carbon/package.json"
+      ]
+    }
+  }
+}
