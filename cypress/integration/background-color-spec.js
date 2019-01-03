@@ -1,6 +1,5 @@
 /* eslint-env mocha */
 /* global cy */
-import hex2rgb from 'hex2rgb'
 import { editorVisible } from '../support'
 
 // usually we can visit the page before each test
@@ -40,7 +39,7 @@ describe('background color', () => {
     cy.url().should('contain', '?bg=')
 
     // confirm color change
-    cy.get('.container-bg .bg').should('have.css', 'background-color', hex2rgb(darkRed).rgbString)
+    cy.get('.container-bg .bg').should('have.css', 'background-color', 'rgb(208, 2, 27)')
   })
 
   it('specifies color in url', () => {

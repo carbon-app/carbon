@@ -3525,11 +3525,6 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-hex2rgb@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/hex2rgb/-/hex2rgb-2.2.0.tgz#dbae1d6bf9b22c7907d017a3e6b98608eba0b6fc"
-  integrity sha1-264da/myLHkH0Bej5rmGCOugtvw=
-
 highlight.js@^9.12.0, highlight.js@^9.13.1:
   version "9.13.1"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
