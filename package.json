@@ -72,14 +72,24 @@
     ]
   },
   "greenkeeper": {
-    "ignore": [
-      "graphql",
-      "react",
-      "react-dnd",
-      "react-dnd-html5-backend",
-      "react-dom",
-      "webpack"
-    ]
+    "groups": {
+      "app": {
+        "packages": [
+          "package.json"
+        ],
+        "ignore": [
+          "graphql",
+          "react-dnd-html5-backend",
+          "react-dom",
+          "webpack"
+        ]
+      },
+      "integrations": {
+        "packages": [
+          "packages/gatsby-remark-embed-carbon/package.json"
+        ]
+      }
+    }
   },
   "description": "Create and share beautiful images of your source code",
   "repository": {
