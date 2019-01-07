@@ -1,15 +1,14 @@
 import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
 import omitBy from 'lodash.omitby'
 
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
-import WindowPointer from './WindowPointer'
+import Popout from './Popout'
+import Button from './Button'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
-import { getPresets, savePresets } from '../lib/util'
-import { toggle } from '../lib/util'
+import { toggle, getPresets, savePresets } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
 import Remove from './svg/Remove'
@@ -134,34 +133,24 @@ const TypeSettings = React.memo(
   }
 )
 
+const resetButtonStyle = { borderTop: `1px solid ${COLORS.SECONDARY}` }
+
 const MiscSettings = React.memo(({ format, reset }) => {
   return (
     <div className="settings-content">
-      <button onClick={format}>Prettify code</button>
-      <button onClick={reset} className="reset-button">
-        Reset settings
-      </button>
+      <Button center title="Prettify code" onClick={format} />
+      <Button
+        center
+        title="Reset settings"
+        color={COLORS.RED}
+        onClick={reset}
+        style={resetButtonStyle}
+      />
       <style jsx>
         {`
-          button {
-            outline: none;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            flex: 1;
-            color: ${COLORS.SECONDARY};
-            font-size: 12px;
-            padding: 0;
-          }
-
           .settings-content {
             display: flex;
             flex-direction: column;
-          }
-
-          .reset-button {
-            border-top: 1px solid ${COLORS.SECONDARY};
-            color: ${COLORS.RED};
           }
         `}
       </style>
@@ -171,35 +160,29 @@ const MiscSettings = React.memo(({ format, reset }) => {
 
 const MenuButton = React.memo(({ name, select, selected }) => {
   return (
-    <button onClick={select(name)} className={selected === name ? 'selected' : ''}>
-      {name}
-      <div className="arrow-icon">
-        <Arrows.Right />
-      </div>
+    <div className="menu-button">
+      <Button
+        padding="8px"
+        onClick={select(name)}
+        background={selected === name ? COLORS.BLACK : COLORS.DARK_GRAY}
+      >
+        {name}
+        <div className="arrow-icon">
+          <Arrows.Right />
+        </div>
+      </Button>
       <style jsx>
         {`
-          button {
-            outline: none;
-            border: none;
-            background: transparent;
-            color: ${COLORS.SECONDARY};
+          .menu-button {
             display: flex;
-            padding: 8px;
             height: 33px;
-            line-height: 0;
-            cursor: pointer;
-            font-size: 14px;
             border-bottom: 1px solid ${COLORS.SECONDARY};
             position: relative;
             align-items: center;
           }
 
-          button:last-child {
+          .menu-button:last-child {
             ${selected === 'Window' ? '' : 'border-bottom: none;'};
-          }
-
-          button.selected {
-            background-color: ${COLORS.BLACK};
           }
 
           .arrow-icon {
@@ -209,71 +192,70 @@ const MenuButton = React.memo(({ name, select, selected }) => {
           }
         `}
       </style>
-    </button>
+    </div>
   )
 })
 
-const Preset = React.memo(({ remove, apply, selected, preset }) => (
-  <div className="preset-container">
-    <button
-      className="preset-tile"
-      onClick={() => apply(preset)}
-      disabled={preset.id === selected}
-    />
-    {preset.custom ? (
-      <button className="preset-remove" onClick={() => remove(preset.id)}>
-        <Remove />
-      </button>
-    ) : null}
-    <style jsx>
-      {`
-        button {
-          outline: none;
-          border: none;
-          background: transparent;
-          cursor: pointer;
-          padding: 0;
-        }
+const removeButtonStyles = {
+  position: 'absolute',
+  top: '6px',
+  right: '6px',
+  width: '11px',
+  height: '11px',
+  borderRadius: '999px'
+}
 
-        .preset-container {
-          display: flex;
-          position: relative;
-          flex: 0 0 96px;
-          height: 96px;
-          margin-right: 8px;
-        }
+const Preset = React.memo(({ remove, apply, selected, preset }) => {
+  const isSelected = preset.id === selected
 
-        .preset-tile {
-          flex: 1;
-          border-radius: 3px;
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: contain;
-          cursor: ${preset.id === selected ? 'initial' : 'pointer'};
-          background-image: ${`url('${preset.icon}')`};
-          background-color: ${preset.icon ? 'initial' : preset.backgroundColor};
-          box-shadow: ${preset.id === selected
-            ? `inset 0px 0px 0px 2px ${COLORS.SECONDARY}`
-            : 'initial'};
-        }
+  return (
+    <div className="preset-container">
+      <Button
+        onClick={() => apply(preset)}
+        disabled={isSelected}
+        border={isSelected}
+        selected={isSelected}
+        hoverBackground={preset.backgroundColor}
+        style={{
+          height: '96px',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center center',
+          backgroundSize: 'contain',
+          backgroundImage: `url('${preset.icon}')`,
+          backgroundColor: preset.backgroundColor
+        }}
+      />
+      {preset.custom && (
+        <Button
+          center
+          hoverBackground={COLORS.SECONDARY}
+          background={COLORS.SECONDARY}
+          onClick={() => remove(preset.id)}
+          style={removeButtonStyles}
+        >
+          <Remove />
+        </Button>
+      )}
+      <style jsx>
+        {`
+          .preset-container {
+            display: flex;
+            position: relative;
+            flex: 0 0 96px;
+            margin-right: 8px;
+          }
+        `}
+      </style>
+    </div>
+  )
+})
 
-        .preset-remove {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          padding: 0;
-          top: 6px;
-          right: 6px;
-          width: 11px;
-          height: 11px;
-          border-radius: 999px;
-          background-color: ${COLORS.SECONDARY};
-        }
-      `}
-    </style>
-  </div>
-))
+const arrowButtonStyle = {
+  position: 'absolute',
+  top: 0,
+  right: '16px',
+  height: '100%'
+}
 
 const Presets = React.memo(
   ({ show, create, toggle, undo, presets, selected, remove, apply, applied, contentRef }) => {
@@ -286,15 +268,22 @@ const Presets = React.memo(
         <div className="settings-presets-header">
           <span>Presets</span>
           {show && (
-            <button className="settings-presets-create" onClick={create} disabled={disabledCreate}>
-              create +
-            </button>
+            <Button
+              title="create +"
+              margin="0 0 0 8px"
+              flex="0 0 48px"
+              color={COLORS.GRAY}
+              hoverBackground="transparent"
+              hoverColor={disabledCreate ? COLORS.GRAY : COLORS.SECONDARY}
+              onClick={create}
+              notAllowed={disabledCreate}
+            />
           )}
-          <button className="settings-presets-arrow" onClick={toggle}>
+          <Button center onClick={toggle} style={arrowButtonStyle} hoverBackground={COLORS.BLACK}>
             {show ? <Arrows.Up /> : <Arrows.Down />}
-          </button>
+          </Button>
         </div>
-        {show ? (
+        {show && (
           <div className="settings-presets-content" ref={contentRef}>
             {presets
               .filter(p => p.custom)
@@ -314,32 +303,31 @@ const Presets = React.memo(
                 <Preset key={preset.id} apply={apply} preset={preset} selected={selected} />
               ))}
           </div>
-        ) : null}
-        {show && applied ? (
+        )}
+        {show && applied && (
           <div className="settings-presets-applied">
             <span>Preset applied!</span>
-            <button onClick={undo}>
+            <Button
+              center
+              flex="0"
+              onClick={undo}
+              color={COLORS.BLACK}
+              hoverBackground="transparent"
+              background="transparent"
+            >
               undo <span>&#x21A9;</span>
-            </button>
+            </Button>
           </div>
-        ) : null}
+        )}
         <style jsx>
           {`
-            button {
-              outline: none;
-              border: none;
-              background: transparent;
-              cursor: pointer;
-              padding: 0;
-            }
-
             .settings-presets {
               border-bottom: 2px solid ${COLORS.SECONDARY};
             }
 
             .settings-presets-header {
               display: flex;
-              padding: 8px 8px;
+              padding: 8px;
               position: relative;
               color: ${COLORS.SECONDARY};
               width: 100%;
@@ -348,33 +336,6 @@ const Presets = React.memo(
 
             .settings-presets-header > span {
               font-size: 14px;
-            }
-
-            .settings-presets-arrow,
-            .settings-presets-create,
-            .settings-presets-remove {
-              cursor: pointer;
-              background: transparent;
-              outline: none;
-              border: none;
-              font-size: 12px;
-            }
-
-            .settings-presets-create {
-              line-height: 1;
-              color: ${COLORS.GRAY};
-              padding: 0 8px;
-              cursor: ${disabledCreate ? 'not-allowed' : 'pointer'};
-            }
-
-            .settings-presets-create:enabled:hover {
-              color: ${COLORS.SECONDARY};
-            }
-
-            .settings-presets-arrow {
-              display: flex;
-              position: absolute;
-              right: 16px;
             }
 
             .settings-presets-content {
@@ -399,18 +360,13 @@ const Presets = React.memo(
               display: flex;
               justify-content: space-between;
               background-color: ${COLORS.SECONDARY};
-              width: 100%;
               color: ${COLORS.BLACK};
               padding: 4px 8px;
             }
 
-            .settings-presets-applied button {
+            .settings-presets-applied span {
               float: right;
-            }
-
-            .settings-presets-applied button span {
-              float: right;
-              margin: 1px 0 0 2px;
+              margin: 2px 0 0 2px;
             }
           `}
         </style>
@@ -418,6 +374,11 @@ const Presets = React.memo(
     )
   }
 )
+
+const settingButtonStyle = {
+  width: '40px',
+  height: '100%'
+}
 
 class Settings extends React.PureComponent {
   state = {
@@ -440,17 +401,18 @@ class Settings extends React.PureComponent {
     }))
   }
 
-  toggleVisible = () => this.setState(toggle('isVisible'))
+  toggleVisible = e => {
+    e.stopPropagation()
+    this.setState(toggle('isVisible'))
+  }
 
   togglePresets = () => this.setState(toggle('showPresets'))
-
-  handleClickOutside = () => this.setState({ isVisible: false })
 
   selectMenu = selectedMenu => () => this.setState({ selectedMenu })
 
   handleWidthChanging = () => {
     const rect = this.settingsRef.current.getBoundingClientRect()
-    this.settingPosition = { top: rect.bottom + 12, left: rect.left }
+    this.settingPosition = { top: rect.bottom, left: rect.left }
     this.setState({ widthChanging: true })
   }
 
@@ -575,14 +537,26 @@ class Settings extends React.PureComponent {
 
     return (
       <div className="settings-container" ref={this.settingsRef}>
-        <div
-          className={`settings-display ${isVisible ? 'is-visible' : ''}`}
+        <Button
+          border
+          center
+          selected={isVisible}
+          style={settingButtonStyle}
           onClick={this.toggleVisible}
         >
           <SettingsIcon />
-        </div>
-        <div className="settings-settings">
-          <WindowPointer fromLeft="15px" />
+        </Button>
+        <Popout
+          pointerLeft="15px"
+          onClickOutside={this.toggleVisible}
+          hidden={!isVisible}
+          style={{
+            position: widthChanging ? 'fixed' : 'absolute',
+            width: '316px',
+            top: widthChanging ? this.settingPosition.top : 'initial',
+            left: widthChanging ? this.settingPosition.left : 'initial'
+          }}
+        >
           <Presets
             show={showPresets}
             presets={presets}
@@ -603,56 +577,11 @@ class Settings extends React.PureComponent {
             </div>
             {this.renderContent()}
           </div>
-        </div>
+        </Popout>
         <style jsx>
           {`
             .settings-container {
-              display: flex;
               position: relative;
-              height: 100%;
-              width: 40px;
-              align-items: center;
-              justify-content: center;
-              border-radius: 3px;
-              color: #fff;
-              font-size: 12px;
-            }
-
-            .settings-display {
-              height: 100%;
-              width: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              border: 1px solid ${COLORS.SECONDARY};
-              border-radius: 3px;
-              user-select: none;
-              position: relative;
-              z-index: 1;
-              cursor: pointer;
-            }
-
-            .settings-display.is-visible {
-              border-width: 2px;
-            }
-
-            .settings-display:hover {
-              background: ${COLORS.HOVER};
-            }
-
-            .is-visible + .settings-settings {
-              display: block;
-            }
-
-            .settings-settings {
-              display: none;
-              position: ${widthChanging ? 'fixed' : 'absolute'};
-              top: ${widthChanging ? this.settingPosition.top : 52}px;
-              left: ${widthChanging ? this.settingPosition.left : 0}px;
-              border: 2px solid ${COLORS.SECONDARY};
-              width: 316px;
-              border-radius: 3px;
-              background: ${COLORS.BLACK};
             }
 
             .settings-bottom {
@@ -684,4 +613,4 @@ class Settings extends React.PureComponent {
   }
 }
 
-export default enhanceWithClickOutside(Settings)
+export default Settings
