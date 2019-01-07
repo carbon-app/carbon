@@ -40,8 +40,6 @@ import ThemeIcon from './svg/Theme'
 const themeIcon = <ThemeIcon />
 const languageIcon = <LanguageIcon />
 
-const tweetButtonStyle = { marginRight: '8px' }
-
 class Editor extends React.Component {
   constructor(props) {
     super(props)
@@ -352,11 +350,13 @@ class Editor extends React.Component {
             <div className="buttons">
               {this.props.api.tweet && online && (
                 <Button
-                  className="tweetButton"
+                  border
+                  large
+                  padding="0 16px"
+                  margin="0 8px 0 0"
                   onClick={this.upload}
                   title={uploading ? 'Loading...' : 'Tweet'}
                   color="#57b5f9"
-                  style={tweetButtonStyle}
                 />
               )}
               <ExportMenu
