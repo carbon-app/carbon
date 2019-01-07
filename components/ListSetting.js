@@ -1,24 +1,19 @@
 import React from 'react'
+
 import Checkmark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
+import { toggle } from '../lib/util'
 
 class ListSetting extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { isVisible: false }
-    this.select = this.select.bind(this)
-    this.toggle = this.toggle.bind(this)
-  }
+  state = { isVisible: false }
 
-  select(item) {
-    if (this.props.selected !== item) {
-      this.props.onChange(item)
+  select = id => {
+    if (this.props.selected !== id) {
+      this.props.onChange(id)
     }
   }
 
-  toggle() {
-    this.setState({ isVisible: !this.state.isVisible })
-  }
+  toggle = () => this.setState(toggle('isVisible'))
 
   renderListItems() {
     return this.props.items.map(item => (
