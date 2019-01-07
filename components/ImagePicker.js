@@ -3,8 +3,8 @@ import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 
 import RandomImage, { downloadThumbnailImage } from './RandomImage'
 import PhotoCredit from './PhotoCredit'
+import Input from './Input'
 import { fileToDataURL } from '../lib/util'
-import { COLORS } from '../lib/constants'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
   const canvas = document.createElement('canvas')
@@ -41,7 +41,7 @@ const INITIAL_STATE = {
   photographer: null
 }
 
-export default class extends React.Component {
+export default class ImagePicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
@@ -165,14 +165,14 @@ export default class extends React.Component {
             URL
           </button>
           {this.state.mode === 'file' ? (
-            <input
+            <Input
               type="file"
               accept="image/png,image/x-png,image/jpeg,image/jpg"
               onChange={this.selectImage}
             />
           ) : (
             <form onSubmit={this.handleURLInput}>
-              <input type="text" title="Background Image" placeholder="Image URL..." />
+              <Input type="text" title="Background Image" placeholder="Image URL..." align="left" />
               <button type="submit">Upload</button>
             </form>
           )}
@@ -210,11 +210,6 @@ export default class extends React.Component {
               opacity: 0.4;
             }
 
-            input[type='file'] {
-              cursor: pointer;
-              outline: none;
-            }
-
             form {
               display: flex;
               justify-content: space-between;
@@ -222,20 +217,6 @@ export default class extends React.Component {
 
             form > button {
               padding: 1px 18px 2px 7px;
-            }
-
-            form > input {
-              display: inline-block;
-              width: 100%;
-              font-size: 12px;
-              color: ${COLORS.SECONDARY};
-              background: #1a1a1a;
-              border: none;
-              outline: none;
-              margin-right: 8px;
-              overflow: hidden;
-              white-space: nowrap;
-              text-overflow: ellipsis;
             }
 
             span {
@@ -316,8 +297,8 @@ export default class extends React.Component {
     }
 
     return (
-      <div>
-        <div className="image-picker-container">{content}</div>
+      <div className="image-picker-container">
+        {content}
         <style jsx>
           {`
             .image-picker-container {
