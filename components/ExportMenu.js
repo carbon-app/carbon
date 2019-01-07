@@ -1,11 +1,11 @@
 import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
 import { withRouter } from 'next/router'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
+import Input from './Input'
 import CopyButton from './CopyButton'
-import WindowPointer from './WindowPointer'
+import Popout from './Popout'
 
 import { toggle } from '../lib/util'
 
@@ -20,53 +20,35 @@ const toIFrame = url =>
 const CopyEmbed = withRouter(
   React.memo(
     ({ router: { asPath } }) => (
-      <React.Fragment>
-        <CopyButton text={toIFrame(asPath)}>
-          {({ copied }) => (
-            <button className="copy-button">{copied ? 'Copied!' : 'Copy Embed'}</button>
-          )}
-        </CopyButton>
-        <style jsx>
-          {`
-            .copy-button {
-              display: flex;
-              flex: 1;
-              flex-basis: 68px;
-              justify-content: center;
-              align-items: center;
-              padding: 12px 16px;
-              font-size: 12px;
-              white-space: nowrap;
-              user-select: none;
-              cursor: pointer;
-              outline: none;
-              border: none;
-              background: inherit;
-              color: ${COLORS.PURPLE};
-              border-right: 1px solid ${COLORS.PURPLE};
-            }
-
-            .copy-button:hover {
-              opacity: 1;
-            }
-          `}
-        </style>
-      </React.Fragment>
+      <CopyButton text={toIFrame(asPath)}>
+        {({ copied }) => (
+          <Button
+            center
+            title={copied ? 'Copied!' : 'Copy Embed'}
+            color={COLORS.PURPLE}
+            padding="12px 16px"
+            flex="1 0 68px"
+          />
+        )}
+      </CopyButton>
     ),
     (prevProps, nextProps) => prevProps.router.asPath === nextProps.router.asPath
   )
 )
+
+const popoutStyle = { width: '280px', right: 0 }
 
 class ExportMenu extends React.PureComponent {
   state = {
     isVisible: false
   }
 
-  toggle = () => this.setState(toggle('isVisible'))
+  toggle = e => {
+    e.stopPropagation()
+    this.setState(toggle('isVisible'))
+  }
 
-  handleClickOutside = () => this.setState({ isVisible: false })
-
-  handleInputChange = e => this.props.onChange(e.target.name, e.target.value)
+  handleInputChange = ({ target: { name, value } }) => this.props.onChange(name, value)
 
   handleExportSizeChange = selectedSize => () => this.props.onChange('exportSize', selectedSize)
 
@@ -77,180 +59,120 @@ class ExportMenu extends React.PureComponent {
     const { isVisible } = this.state
 
     return (
-      <div className="export-menu-container" id="export-menu">
-        <Button
-          selected={isVisible}
-          className="exportButton"
-          onClick={this.toggle}
-          title="Export"
-          color={COLORS.PURPLE}
-        />
-        <div className="export-menu" hidden={!isVisible}>
-          <WindowPointer fromRight="28px" color={COLORS.PURPLE} />
-          <div className="export-option filename-option">
-            <span>File name</span>
-            <input
+      <div className="export-menu-container">
+        <div className="flex">
+          <Button
+            border
+            large
+            title="Export"
+            color={COLORS.PURPLE}
+            padding="0 16px"
+            selected={isVisible}
+            onClick={this.toggle}
+          />
+        </div>
+        <Popout
+          hidden={!isVisible}
+          borderColor={COLORS.PURPLE}
+          onClickOutside={this.toggle}
+          pointerRight="28px"
+          style={popoutStyle}
+        >
+          <div className="export-row">
+            <span className="filename">File name</span>
+            <Input
               title="filename"
               placeholder="carbon"
               value={filename}
               name="filename"
               onChange={this.handleInputChange}
+              color={COLORS.PURPLE}
             />
           </div>
-          <div className="export-option">
-            <div className="size-container">
-              <span>Size</span>
-              <div>
-                {EXPORT_SIZES.map(({ name }) => (
-                  <button
-                    key={name}
-                    onClick={this.handleExportSizeChange(name)}
-                    className={`size-button ${exportSize === name ? 'selected' : ''}`}
-                  >
-                    {name}
-                  </button>
-                ))}
-              </div>
+          <div className="export-row">
+            <span>Size</span>
+            <div className="flex">
+              {EXPORT_SIZES.map(({ name }, i) => (
+                <Button
+                  center
+                  key={name}
+                  title={name}
+                  hoverColor={COLORS.PURPLE}
+                  margin={i === EXPORT_SIZES.length - 1 ? 0 : '0 10px 0 0'}
+                  color={exportSize === name ? COLORS.PURPLE : COLORS.DARK_PURPLE}
+                  onClick={this.handleExportSizeChange(name)}
+                />
+              ))}
             </div>
           </div>
-          <div className="export-option">
-            <button className="open-button" onClick={this.handleExport('open')}>
-              Open
-            </button>
+          <div className="export-row">
+            <Button center title="Open" color={COLORS.PURPLE} onClick={this.handleExport('open')} />
             <CopyEmbed />
             <div className="save-container">
               <span>Save as</span>
               <div>
-                <button onClick={this.handleExport('png')} className="save-button" id="export-png">
-                  PNG
-                </button>
-                <button onClick={this.handleExport('svg')} className="save-button" id="export-svg">
-                  SVG
-                </button>
+                <Button
+                  center
+                  title="PNG"
+                  margin="0 8px 0 0"
+                  hoverColor={COLORS.PURPLE}
+                  color={COLORS.DARK_PURPLE}
+                  onClick={this.handleExport('png')}
+                />
+                <Button
+                  center
+                  title="SVG"
+                  hoverColor={COLORS.PURPLE}
+                  color={COLORS.DARK_PURPLE}
+                  onClick={this.handleExport('svg')}
+                />
               </div>
             </div>
           </div>
-        </div>
+        </Popout>
         <style jsx>
           {`
-            button {
-              font-size: 12px;
-              display: flex;
-              user-select: none;
-              cursor: pointer;
-              background: inherit;
-              outline: none;
-              border: none;
-              padding: 0;
-              color: ${COLORS.PURPLE};
-            }
-
-            button:hover {
-              opacity: 1;
-            }
-
-            input {
-              padding: 8px 16px;
-              width: 100%;
-              font-size: 12px;
-              color: ${COLORS.PURPLE};
-              background: transparent;
-              border: none;
-              outline: none;
-            }
-
-            input::placeholder {
-              color: ${COLORS.PURPLE};
-              opacity: 0.4;
-            }
-
             .export-menu-container {
               position: relative;
               color: ${COLORS.PURPLE};
-              font-size: 12px;
             }
 
-            .export-menu {
-              box-sizing: content-box;
-              position: absolute;
-              margin-top: 10px;
-              width: 280px;
-              border-radius: 3px;
-              border: 2px solid ${COLORS.PURPLE};
-              right: 0;
-              background-color: ${COLORS.BLACK};
+            .flex {
+              display: flex;
+              height: 100%;
             }
 
-            .filename-option {
+            .export-row {
+              display: flex;
               align-items: center;
               justify-content: space-between;
-              padding: 0 16px;
-            }
-
-            .filename-option input {
-              padding: 8px 0;
-              width: 60%;
-              text-align: right;
-            }
-
-            .export-option {
-              display: flex;
+              padding: 8px 16px;
               border-bottom: 1px solid ${COLORS.PURPLE};
             }
-            .export-option:last-child {
+            .export-row > :global(button) {
+              border-right: 1px solid ${COLORS.PURPLE};
+            }
+            .export-row:last-child {
               border-bottom: none;
+              padding: 0;
             }
 
-            .size-container {
-              display: flex;
-              flex: 1;
-              padding: 8px 16px;
-              justify-content: space-between;
-            }
-            .size-container > div {
-              display: flex;
+            .filename {
+              flex-basis: 72px;
             }
 
-            .size-button {
-              line-height: 0;
-              opacity: 0.4;
-              margin-right: 10px;
-            }
-            .size-button:last-child {
-              margin-right: 0;
-            }
-            .size-button.selected {
-              opacity: 1;
-            }
-
-            .open-button,
             .save-container {
               display: flex;
               flex: 1;
+              flex-direction: column;
               justify-content: center;
               align-items: center;
               padding: 12px 16px;
             }
-
-            .open-button {
-              border-right: 1px solid ${COLORS.PURPLE};
-            }
-
-            .save-container {
-              flex-direction: column;
-            }
-            .save-container > span {
-              margin-bottom: 6px;
-            }
             .save-container > div {
+              margin-top: 6px;
               display: flex;
-            }
-
-            .save-button {
-              opacity: 0.4;
-            }
-            .save-button:first-child {
-              margin-right: 8px;
+              flex: 1;
             }
           `}
         </style>
@@ -259,4 +181,4 @@ class ExportMenu extends React.PureComponent {
   }
 }
 
-export default enhanceWithClickOutside(ExportMenu)
+export default ExportMenu
