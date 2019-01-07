@@ -1,23 +1,15 @@
 import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
-import { SketchPicker } from 'react-color'
 import shallowCompare from 'react-addons-shallow-compare'
-import WindowPointer from './WindowPointer'
+
 import ImagePicker from './ImagePicker'
+import ColorPicker from './ColorPicker'
+import Popout from './Popout'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { validateColor } from '../lib/colors'
-
-const stringifyRGBA = obj => `rgba(${obj.r},${obj.g},${obj.b},${obj.a})`
-const capitalizeFirstLetter = s => s.charAt(0).toUpperCase() + s.slice(1)
+import { toggle, capitalize, stringifyRGBA } from '../lib/util'
 
 class BackgroundSelect extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { isVisible: false, mounted: false }
-    this.toggle = this.toggle.bind(this)
-    this.selectTab = this.selectTab.bind(this)
-    this.handlePickColor = this.handlePickColor.bind(this)
-  }
+  state = { isVisible: false, mounted: false }
 
   componentDidMount() {
     this.setState({ mounted: true })
@@ -31,23 +23,18 @@ class BackgroundSelect extends React.Component {
     ].some(Boolean)
   }
 
-  toggle() {
-    this.setState({ isVisible: !this.state.isVisible })
+  toggle = e => {
+    e.stopPropagation()
+    this.setState(toggle('isVisible'))
   }
 
-  selectTab(name) {
+  selectTab = name => {
     if (this.props.mode !== name) {
       this.props.onChange({ backgroundMode: name })
     }
   }
 
-  handleClickOutside() {
-    this.setState({ isVisible: false })
-  }
-
-  handlePickColor(color) {
-    this.props.onChange({ backgroundColor: stringifyRGBA(color.rgb) })
-  }
+  handlePickColor = ({ rgb }) => this.props.onChange({ backgroundColor: stringifyRGBA(rgb) })
 
   render() {
     const { color, mode, image, onChange, aspectRatio } = this.props
@@ -76,8 +63,12 @@ class BackgroundSelect extends React.Component {
             <div className="bg-color" />
           </div>
         </div>
-        <div className="bg-select-pickers" hidden={!isVisible}>
-          <WindowPointer fromLeft="15px" />
+        <Popout
+          pointerLeft="15px"
+          onClickOutside={this.toggle}
+          hidden={!isVisible}
+          style={{ width: '222px' }}
+        >
           <div className="picker-tabs">
             {['color', 'image'].map(tab => (
               <div
@@ -85,19 +76,19 @@ class BackgroundSelect extends React.Component {
                 className={`picker-tab ${mode === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}
               >
-                {capitalizeFirstLetter(tab)}
+                {capitalize(tab)}
               </div>
             ))}
           </div>
           <div className="picker-tabs-contents">
             <div style={mode === 'color' ? {} : { display: 'none' }}>
-              {mounted && <SketchPicker color={color} onChangeComplete={this.handlePickColor} />}
+              {mounted && <ColorPicker color={color} onChange={this.handlePickColor} />}
             </div>
             <div style={mode === 'image' ? {} : { display: 'none' }}>
               <ImagePicker onChange={onChange} imageDataURL={image} aspectRatio={aspectRatio} />
             </div>
           </div>
-        </div>
+        </Popout>
         <style jsx>
           {`
             .bg-select-container {
@@ -168,40 +159,6 @@ class BackgroundSelect extends React.Component {
             .picker-tab.active {
               background: none;
             }
-
-            .bg-select-pickers {
-              position: absolute;
-              width: 222px;
-              margin-top: 12px;
-              border: 2px solid ${COLORS.SECONDARY};
-              border-radius: 3px;
-              background: #1a1a1a;
-            }
-
-            /* react-color overrides */
-            .bg-select-pickers :global(.sketch-picker) {
-              background: #1a1a1a !important;
-              padding: 8px 8px 0 !important;
-              margin: 0 auto 1px !important;
-            }
-
-            .bg-select-pickers :global(.sketch-picker > div:nth-child(3) > div > div > span) {
-              color: ${COLORS.SECONDARY} !important;
-            }
-
-            .bg-select-pickers :global(.sketch-picker > div:nth-child(3) > div > div > input) {
-              width: 100% !important;
-              box-shadow: none;
-              outline: none;
-              border-radius: 2px;
-              background: ${COLORS.DARK_GRAY};
-              color: #fff !important;
-            }
-
-            /* prettier-ignore */
-            .bg-select-pickers :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
-            background: #fff;
-          }
           `}
         </style>
       </div>
@@ -209,4 +166,4 @@ class BackgroundSelect extends React.Component {
   }
 }
 
-export default enhanceWithClickOutside(BackgroundSelect)
+export default BackgroundSelect
