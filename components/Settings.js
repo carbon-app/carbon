@@ -5,7 +5,7 @@ import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
-import Popout from './Popout'
+import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
@@ -202,7 +202,6 @@ const settingButtonStyle = {
 class Settings extends React.PureComponent {
   state = {
     presets: DEFAULT_PRESETS,
-    isVisible: false,
     selectedMenu: 'Window',
     showPresets: false,
     previousSettings: null,
@@ -218,11 +217,6 @@ class Settings extends React.PureComponent {
     this.setState(({ presets }) => ({
       presets: [...storedPresets, ...presets]
     }))
-  }
-
-  toggleVisible = e => {
-    e.stopPropagation()
-    this.setState(toggle('isVisible'))
   }
 
   togglePresets = () => this.setState(toggle('showPresets'))
@@ -344,15 +338,8 @@ class Settings extends React.PureComponent {
   }
 
   render() {
-    const {
-      isVisible,
-      selectedMenu,
-      showPresets,
-      presets,
-      previousSettings,
-      widthChanging
-    } = this.state
-    const { preset } = this.props
+    const { selectedMenu, showPresets, presets, previousSettings, widthChanging } = this.state
+    const { preset, isVisible, toggleVisibility } = this.props
 
     return (
       <div className="settings-container" ref={this.settingsRef}>
@@ -361,13 +348,12 @@ class Settings extends React.PureComponent {
           center
           selected={isVisible}
           style={settingButtonStyle}
-          onClick={this.toggleVisible}
+          onClick={toggleVisibility}
         >
           <SettingsIcon />
         </Button>
         <Popout
           pointerLeft="15px"
-          onClickOutside={this.toggleVisible}
           hidden={!isVisible}
           style={{
             position: widthChanging ? 'fixed' : 'absolute',
@@ -432,4 +418,4 @@ class Settings extends React.PureComponent {
   }
 }
 
-export default Settings
+export default managePopout(Settings)

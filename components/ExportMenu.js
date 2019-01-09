@@ -5,9 +5,7 @@ import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
 import Input from './Input'
 import CopyButton from './CopyButton'
-import Popout from './Popout'
-
-import { toggle } from '../lib/util'
+import Popout, { managePopout } from './Popout'
 
 const toIFrame = url =>
   `<iframe
@@ -35,15 +33,6 @@ const CopyEmbed = withRouter(
 const popoutStyle = { width: '280px', right: 0 }
 
 class ExportMenu extends React.PureComponent {
-  state = {
-    isVisible: false
-  }
-
-  toggle = e => {
-    e.stopPropagation()
-    this.setState(toggle('isVisible'))
-  }
-
   handleInputChange = ({ target: { name, value } }) => this.props.onChange(name, value)
 
   handleExportSizeChange = selectedSize => () => this.props.onChange('exportSize', selectedSize)
@@ -51,8 +40,7 @@ class ExportMenu extends React.PureComponent {
   handleExport = format => () => this.props.export(format)
 
   render() {
-    const { exportSize, filename } = this.props
-    const { isVisible } = this.state
+    const { exportSize, filename, isVisible, toggleVisibility } = this.props
 
     return (
       <div className="export-menu-container">
@@ -63,7 +51,7 @@ class ExportMenu extends React.PureComponent {
             color={COLORS.PURPLE}
             padding="0 16px"
             selected={isVisible}
-            onClick={this.toggle}
+            onClick={toggleVisibility}
           >
             Export
           </Button>
@@ -71,7 +59,6 @@ class ExportMenu extends React.PureComponent {
         <Popout
           hidden={!isVisible}
           borderColor={COLORS.PURPLE}
-          onClickOutside={this.toggle}
           pointerRight="28px"
           style={popoutStyle}
         >
@@ -183,4 +170,4 @@ class ExportMenu extends React.PureComponent {
   }
 }
 
-export default ExportMenu
+export default managePopout(ExportMenu)
