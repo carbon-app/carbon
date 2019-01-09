@@ -22,13 +22,9 @@ const CopyEmbed = withRouter(
     ({ router: { asPath } }) => (
       <CopyButton text={toIFrame(asPath)}>
         {({ copied }) => (
-          <Button
-            center
-            title={copied ? 'Copied!' : 'Copy Embed'}
-            color={COLORS.PURPLE}
-            padding="12px 16px"
-            flex="1 0 68px"
-          />
+          <Button center color={COLORS.PURPLE} padding="12px 16px" flex="1 0 68px">
+            {copied ? 'Copied!' : 'Copy Embed'}
+          </Button>
         )}
       </CopyButton>
     ),
@@ -64,12 +60,13 @@ class ExportMenu extends React.PureComponent {
           <Button
             border
             large
-            title="Export"
             color={COLORS.PURPLE}
             padding="0 16px"
             selected={isVisible}
             onClick={this.toggle}
-          />
+          >
+            Export
+          </Button>
         </div>
         <Popout
           hidden={!isVisible}
@@ -96,36 +93,41 @@ class ExportMenu extends React.PureComponent {
                 <Button
                   center
                   key={name}
-                  title={name}
                   hoverColor={COLORS.PURPLE}
                   margin={i === EXPORT_SIZES.length - 1 ? 0 : '0 10px 0 0'}
                   color={exportSize === name ? COLORS.PURPLE : COLORS.DARK_PURPLE}
                   onClick={this.handleExportSizeChange(name)}
-                />
+                >
+                  {name}
+                </Button>
               ))}
             </div>
           </div>
           <div className="export-row">
-            <Button center title="Open" color={COLORS.PURPLE} onClick={this.handleExport('open')} />
+            <Button center color={COLORS.PURPLE} onClick={this.handleExport('open')}>
+              Open
+            </Button>
             <CopyEmbed />
             <div className="save-container">
               <span>Save as</span>
               <div>
                 <Button
                   center
-                  title="PNG"
                   margin="0 8px 0 0"
                   hoverColor={COLORS.PURPLE}
                   color={COLORS.DARK_PURPLE}
                   onClick={this.handleExport('png')}
-                />
+                >
+                  PNG
+                </Button>
                 <Button
                   center
-                  title="SVG"
                   hoverColor={COLORS.PURPLE}
                   color={COLORS.DARK_PURPLE}
                   onClick={this.handleExport('svg')}
-                />
+                >
+                  SVG
+                </Button>
               </div>
             </div>
           </div>
