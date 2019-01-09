@@ -7,10 +7,6 @@ export default () => (
       <div className="mb4">
         <h2>What does this do?</h2>
         <p>
-          You know all of those code screenshots you see on Twitter? Although the code&apos;s
-          usually impressive, we saw room for improvement in the aesthetic department. Carbon is the
-          easiest way to create beautiful images of your source code. So what are you waiting for?
-          Go impress all of your followers with your newfound design prowess.{' '}
           <span role="img" aria-label="Palette">
             🎨
           </span>
