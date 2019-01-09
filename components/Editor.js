@@ -355,9 +355,10 @@ class Editor extends React.Component {
                   padding="0 16px"
                   margin="0 8px 0 0"
                   onClick={this.upload}
-                  title={uploading ? 'Loading...' : 'Tweet'}
                   color="#57b5f9"
-                />
+                >
+                  {uploading ? 'Loading...' : 'Tweet'}
+                </Button>
               )}
               <ExportMenu
                 onChange={this.updateSetting}

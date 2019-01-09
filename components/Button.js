@@ -12,7 +12,6 @@ const Button = ({
   disabled,
   notAllowed,
   selected,
-  title,
   children,
   border,
   center,
@@ -23,7 +22,6 @@ const Button = ({
   margin = 0
 }) => (
   <button onClick={onClick} className={className} disabled={disabled || notAllowed} style={style}>
-    {title && <span className="button-title">{title}</span>}
     {children}
     <style jsx>
       {`
@@ -49,10 +47,6 @@ const Button = ({
         button:hover {
           background-color: ${hoverBackground} !important;
           color: ${hoverColor || color};
-        }
-
-        .button-title {
-          font-size: ${large ? '14px' : '12px'};
         }
       `}
     </style>

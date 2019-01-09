@@ -138,14 +138,12 @@ const resetButtonStyle = { borderTop: `1px solid ${COLORS.SECONDARY}` }
 const MiscSettings = React.memo(({ format, reset }) => {
   return (
     <div className="settings-content">
-      <Button center title="Prettify code" onClick={format} />
-      <Button
-        center
-        title="Reset settings"
-        color={COLORS.RED}
-        onClick={reset}
-        style={resetButtonStyle}
-      />
+      <Button center onClick={format}>
+        Prettify code
+      </Button>
+      <Button center color={COLORS.RED} onClick={reset} style={resetButtonStyle}>
+        Reset settings
+      </Button>
       <style jsx>
         {`
           .settings-content {
@@ -269,7 +267,6 @@ const Presets = React.memo(
           <span>Presets</span>
           {show && (
             <Button
-              title="create +"
               margin="0 0 0 8px"
               flex="0 0 48px"
               color={COLORS.GRAY}
@@ -277,7 +274,9 @@ const Presets = React.memo(
               hoverColor={disabledCreate ? COLORS.GRAY : COLORS.SECONDARY}
               onClick={create}
               notAllowed={disabledCreate}
-            />
+            >
+              create +
+            </Button>
           )}
           <Button center onClick={toggle} style={arrowButtonStyle} hoverBackground={COLORS.BLACK}>
             {show ? <Arrows.Up /> : <Arrows.Down />}
