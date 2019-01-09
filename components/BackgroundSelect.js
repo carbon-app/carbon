@@ -1,31 +1,17 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 
 import ImagePicker from './ImagePicker'
 import ColorPicker from './ColorPicker'
-import Popout from './Popout'
+import Popout, { managePopout } from './Popout'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { validateColor } from '../lib/colors'
-import { toggle, capitalize, stringifyRGBA } from '../lib/util'
+import { capitalize, stringifyRGBA } from '../lib/util'
 
-class BackgroundSelect extends React.Component {
-  state = { isVisible: false, mounted: false }
+class BackgroundSelect extends React.PureComponent {
+  state = { mounted: false }
 
   componentDidMount() {
     this.setState({ mounted: true })
-  }
-
-  shouldComponentUpdate(prevProps, prevState) {
-    return [
-      prevState.isVisible !== this.state.isVisible,
-      prevProps.color !== this.props.color,
-      prevState.isVisible && shallowCompare(this, prevProps, prevState)
-    ].some(Boolean)
-  }
-
-  toggle = e => {
-    e.stopPropagation()
-    this.setState(toggle('isVisible'))
   }
 
   selectTab = name => {
@@ -37,8 +23,8 @@ class BackgroundSelect extends React.Component {
   handlePickColor = ({ rgb }) => this.props.onChange({ backgroundColor: stringifyRGBA(rgb) })
 
   render() {
-    const { color, mode, image, onChange, aspectRatio } = this.props
-    const { isVisible, mounted } = this.state
+    const { color, mode, image, onChange, aspectRatio, isVisible, toggleVisibility } = this.props
+    const { mounted } = this.state
 
     let background =
       typeof color === 'string'
@@ -58,17 +44,12 @@ class BackgroundSelect extends React.Component {
     return (
       <div className="bg-select-container">
         <div className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}>
-          <div className="bg-color-container" onClick={this.toggle}>
+          <div className="bg-color-container" onClick={toggleVisibility}>
             <div className="bg-color-alpha" />
             <div className="bg-color" />
           </div>
         </div>
-        <Popout
-          pointerLeft="15px"
-          onClickOutside={this.toggle}
-          hidden={!isVisible}
-          style={{ width: '222px' }}
-        >
+        <Popout pointerLeft="15px" hidden={!isVisible} style={{ width: '222px' }}>
           <div className="picker-tabs">
             {['color', 'image'].map(tab => (
               <div
@@ -166,4 +147,4 @@ class BackgroundSelect extends React.Component {
   }
 }
 
-export default BackgroundSelect
+export default managePopout(BackgroundSelect)
