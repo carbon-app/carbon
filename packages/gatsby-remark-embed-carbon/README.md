@@ -55,4 +55,4 @@ https://carbon.now.sh/?bg=red
 ```
 
 ## Thanks
-This project was completely inspired by (copied from) @garetmckinley's [`gatsby-remark-embed-spotify`](gatsby-remark-embed-spotify) :star:
+This project was completely inspired by (copied from) @garetmckinley's [`gatsby-remark-embed-spotify`](https://github.com/garetmckinley/gatsby-remark-embed-spotify) :star:
