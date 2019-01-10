@@ -2,9 +2,7 @@
   "name": "carbon",
   "version": 2,
   "public": true,
-  "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
-  ],
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
@@ -18,6 +16,7 @@
     }
   },
   "github": {
-    "autoAlias": false
+    "autoAlias": false,
+    "silent": true
   }
 }
