@@ -16,14 +16,12 @@ import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
+import Themes from './Themes'
 import {
-  THEMES,
-  THEMES_HASH,
   LANGUAGES,
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
-  DEFAULT_THEME,
   DEFAULT_EXPORT_SIZE,
   COLORS,
   EXPORT_SIZES_HASH,
@@ -35,9 +33,7 @@ import {
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
-import ThemeIcon from './svg/Theme'
 
-const themeIcon = <ThemeIcon />
 const languageIcon = <LanguageIcon />
 
 class Editor extends React.Component {
@@ -250,7 +246,7 @@ class Editor extends React.Component {
   }
 
   updateTheme(theme) {
-    this.updateSetting('theme', theme.id)
+    this.updateSetting('theme', theme)
   }
 
   updateLanguage(language) {
@@ -315,12 +311,7 @@ class Editor extends React.Component {
       <React.Fragment>
         <div className="editor">
           <Toolbar>
-            <Dropdown
-              icon={themeIcon}
-              selected={THEMES_HASH[theme] || DEFAULT_THEME}
-              list={THEMES}
-              onChange={this.updateTheme}
-            />
+            <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
             <Dropdown
               icon={languageIcon}
               selected={

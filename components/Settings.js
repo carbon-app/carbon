@@ -9,7 +9,7 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
-import { toggle, getPresets, savePresets } from '../lib/util'
+import { toggle, getPresets, savePresets, generateId } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
 
@@ -275,9 +275,7 @@ class Settings extends React.PureComponent {
   createPreset = async () => {
     const newPreset = this.getSettingsFromProps()
 
-    newPreset.id = `preset:${Math.random()
-      .toString(36)
-      .slice(2)}`
+    newPreset.id = `preset:${generateId()}`
     newPreset.custom = true
 
     newPreset.icon = await this.props.getCarbonImage({

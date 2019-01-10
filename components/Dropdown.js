@@ -43,11 +43,13 @@ class Dropdown extends React.PureComponent {
         // clear on open
         if (changes.isOpen) {
           inputValue = ''
-        }
-
-        // set on close
-        if (changes.isOpen === false && !inputValue) {
-          inputValue = this.props.selected.name
+          this.props.onOpen && this.props.onOpen()
+        } else if (changes.isOpen === false) {
+          this.props.onClose && this.props.onClose()
+          if (!inputValue) {
+            // set on close
+            inputValue = this.props.selected.name
+          }
         }
       }
 
@@ -58,7 +60,15 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { color, selected, onChange, itemWrapper, icon } = this.props
+    const {
+      color,
+      selected,
+      onChange,
+      itemWrapper,
+      itemWrapperProps,
+      icon,
+      disableInput
+    } = this.props
     const { itemsToShow, inputValue } = this.state
 
     const minWidth = calcMinWidth(itemsToShow)
@@ -78,14 +88,24 @@ class Dropdown extends React.PureComponent {
           selected,
           minWidth,
           itemWrapper,
-          icon
+          itemWrapperProps,
+          icon,
+          disableInput
         })}
       </Downshift>
     )
   }
 }
 
-const renderDropdown = ({ color, list, minWidth, itemWrapper, icon }) => ({
+const renderDropdown = ({
+  color,
+  list,
+  minWidth,
+  itemWrapper,
+  itemWrapperProps,
+  icon,
+  disableInput
+}) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -103,6 +123,7 @@ const renderDropdown = ({ color, list, minWidth, itemWrapper, icon }) => ({
         isOpen={isOpen}
         color={color}
         hasIcon={!!icon}
+        disabled={disableInput}
       >
         {selectedItem.name}
       </SelectedItem>
@@ -112,7 +133,9 @@ const renderDropdown = ({ color, list, minWidth, itemWrapper, icon }) => ({
             <ListItem
               key={index}
               color={color}
+              item={item}
               itemWrapper={itemWrapper}
+              itemWrapperProps={itemWrapperProps}
               {...getItemProps({
                 item,
                 isSelected: selectedItem === item,
@@ -181,7 +204,8 @@ const SelectedItem = ({
   children,
   isOpen,
   color,
-  hasIcon
+  hasIcon,
+  disabled
 }) => {
   const itemColor = color || COLORS.SECONDARY
 
@@ -192,7 +216,7 @@ const SelectedItem = ({
       className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
     >
       <input
-        {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
+        {...getInputProps({ placeholder: children, id: `downshift-input-${children}`, disabled })}
         className="dropdown-display-text"
       />
       <div className="dropdown-arrow">
@@ -260,13 +284,22 @@ const ListItems = ({ children, color }) => {
   )
 }
 
-const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ...rest }) => {
+const ListItem = ({
+  children,
+  color,
+  isHighlighted,
+  isSelected,
+  itemWrapper,
+  item,
+  itemWrapperProps,
+  ...rest
+}) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
     <li {...rest} role="option" className="dropdown-list-item">
       {itemWrapper ? (
-        itemWrapper({ children, color: itemColor })
+        itemWrapper({ children, color: itemColor, item, ...itemWrapperProps })
       ) : (
         <span className="dropdown-list-item-text">{children}</span>
       )}
