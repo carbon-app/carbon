@@ -8,7 +8,7 @@ import { editorVisible } from '../support'
 
 describe('background color', () => {
   const bgColor = '.bg-color-container .bg-color'
-  const picker = '.bg-select-pickers'
+  const picker = '#bg-select-pickers'
 
   const openPicker = () => {
     cy.get(bgColor).click()

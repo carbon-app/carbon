@@ -36,14 +36,14 @@ class Popout extends React.PureComponent {
   }
 
   render() {
-    const { children, borderColor, style, hidden, pointerLeft, pointerRight } = this.props
+    const { id, children, borderColor, style, hidden, pointerLeft, pointerRight } = this.props
 
     if (hidden) {
       return null
     }
 
     return (
-      <div className="popout" style={style}>
+      <div id={id} className="popout" style={style}>
         <WindowPointer fromLeft={pointerLeft} fromRight={pointerRight} color={borderColor} />
         {children}
         <style jsx>

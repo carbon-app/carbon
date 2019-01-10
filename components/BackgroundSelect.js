@@ -49,7 +49,12 @@ class BackgroundSelect extends React.PureComponent {
             <div className="bg-color" />
           </div>
         </div>
-        <Popout pointerLeft="15px" hidden={!isVisible} style={{ width: '222px' }}>
+        <Popout
+          id="bg-select-pickers"
+          pointerLeft="15px"
+          hidden={!isVisible}
+          style={{ width: '222px' }}
+        >
           <div className="picker-tabs">
             {['color', 'image'].map(tab => (
               <div
