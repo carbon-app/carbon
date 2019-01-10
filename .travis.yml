@@ -10,3 +10,5 @@ install:
   - yarn
 script:
   - yarn lint
+  - yarn build
+  - yarn start & wait-on http://localhost:3000 && CYPRESS_CI=true yarn cy:run --config baseUrl=http://localhost:3000
