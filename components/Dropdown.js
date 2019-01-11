@@ -138,7 +138,7 @@ const renderDropdown = ({
               itemWrapperProps={itemWrapperProps}
               {...getItemProps({
                 item,
-                isSelected: selectedItem === item,
+                isSelected: selectedItem.name === item.name,
                 isHighlighted: highlightedIndex === index
               })}
             >
@@ -299,7 +299,7 @@ const ListItem = ({
   return (
     <li {...rest} role="option" className="dropdown-list-item">
       {itemWrapper ? (
-        itemWrapper({ children, color: itemColor, item, ...itemWrapperProps })
+        itemWrapper({ children, color: itemColor, item, isSelected, ...itemWrapperProps })
       ) : (
         <span className="dropdown-list-item-text">{children}</span>
       )}

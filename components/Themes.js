@@ -171,10 +171,10 @@ const ThemeCreate = ({
   </Popout>
 )
 
-const ThemeItem = ({ children, item, onClick }) => (
+const ThemeItem = ({ children, item, isSelected, onClick }) => (
   <div className="theme-item">
     {children}
-    {item.custom && (
+    {item.custom && !isSelected && (
       <div className="icon" onClick={onClick(item.id)}>
         <RemoveIcon color={COLORS.SECONDARY} />
       </div>
