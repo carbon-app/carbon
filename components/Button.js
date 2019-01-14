@@ -3,6 +3,7 @@ import React from 'react'
 import { COLORS } from '../lib/constants'
 
 const Button = ({
+  id,
   onClick = () => {},
   className = '',
   background = COLORS.BLACK,
@@ -21,7 +22,13 @@ const Button = ({
   padding = 0,
   margin = 0
 }) => (
-  <button onClick={onClick} className={className} disabled={disabled || notAllowed} style={style}>
+  <button
+    id={id}
+    onClick={onClick}
+    className={className}
+    disabled={disabled || notAllowed}
+    style={style}
+  >
     {children}
     <style jsx>
       {`
