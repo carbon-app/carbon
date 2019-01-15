@@ -5704,10 +5704,10 @@ react-error-overlay@4.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
   integrity sha512-FlsPxavEyMuR6TjVbSSywovXSEyOg6ZDj5+Z8nbsRl9EkOzAhEIcS+GLoQDC5fz/t9suhUXWmUrOBrgeUvrMxw==
 
-react-image-crop@^6.0.10:
-  version "6.0.10"
-  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.10.tgz#77e73c88d3f77d707e53a790578e4be81d781ad4"
-  integrity sha512-mQVBSdu9rSY7EqMbJwGwvTtPIoQSiVGuNIQrAEfv+O/qiPM0r9qHlQ5Sue2dptnYWBkVxRhrUGt11SY3mjuJxg==
+react-image-crop@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.0.tgz#e5875c2a784e490c66bfb21b17c0c21f3823efcf"
+  integrity sha512-rVCyy+x/SDaonl/wgBMM9H8Kr0aj1hVZIBCSH0I7/fvwU8jXpWdBSJfdL2B4noxDzlLUOOPFFqqWHlw/dHEMZw==
   dependencies:
     "@types/react-image-crop" "^3.0.1"
 
