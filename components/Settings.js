@@ -1,230 +1,415 @@
 import React from 'react'
-import enhanceWithClickOutside from 'react-click-outside'
-import SettingsIcon from './svg/Settings'
+import omitBy from 'lodash.omitby'
+
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
-import ExportSizeSelect from './ExportSizeSelect'
 import Slider from './Slider'
 import Toggle from './Toggle'
-import WindowPointer from './WindowPointer'
-import Collapse from './Collapse'
+import Popout, { managePopout } from './Popout'
+import Button from './Button'
+import Presets from './Presets'
+import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
+import { toggle, getPresets, savePresets } from '../lib/util'
+import SettingsIcon from './svg/Settings'
+import * as Arrows from './svg/Arrows'
 
-import { COLORS } from '../lib/constants'
-import { toggle, formatCode } from '../lib/util'
+const WindowSettings = React.memo(
+  ({
+    onChange,
+    windowTheme,
+    paddingHorizontal,
+    paddingVertical,
+    dropShadow,
+    dropShadowBlurRadius,
+    dropShadowOffsetY,
+    windowControls,
+    lineNumbers,
+    widthAdjustment,
+    watermark,
+    onWidthChanging,
+    onWidthChanged
+  }) => {
+    return (
+      <div className="settings-content">
+        <ThemeSelect
+          selected={windowTheme || 'none'}
+          onChange={onChange.bind(null, 'windowTheme')}
+        />
+        <div className="row">
+          <Slider
+            label="Padding (vert)"
+            value={paddingVertical}
+            maxValue={200}
+            onChange={onChange.bind(null, 'paddingVertical')}
+          />
+          <Slider
+            label="Padding (horiz)"
+            value={paddingHorizontal}
+            onChange={onChange.bind(null, 'paddingHorizontal')}
+            onMouseDown={onWidthChanging}
+            onMouseUp={onWidthChanged}
+          />
+        </div>
+        <Toggle
+          label="Drop shadow"
+          enabled={dropShadow}
+          onChange={onChange.bind(null, 'dropShadow')}
+        />
+        {dropShadow && (
+          <div className="row drop-shadow-options">
+            <Slider
+              label="(offset-y)"
+              value={dropShadowOffsetY}
+              onChange={onChange.bind(null, 'dropShadowOffsetY')}
+            />
+            <Slider
+              label="(blur-radius)"
+              value={dropShadowBlurRadius}
+              onChange={onChange.bind(null, 'dropShadowBlurRadius')}
+            />
+          </div>
+        )}
+        <Toggle
+          label="Window controls"
+          enabled={windowControls}
+          onChange={onChange.bind(null, 'windowControls')}
+        />
+        <Toggle
+          label="Line numbers"
+          enabled={lineNumbers}
+          onChange={onChange.bind(null, 'lineNumbers')}
+        />
+        <Toggle
+          label="Auto-adjust width"
+          enabled={widthAdjustment}
+          onChange={onChange.bind(null, 'widthAdjustment')}
+        />
+        <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
+        <style jsx>
+          {`
+            .row {
+              display: flex;
+            }
+
+            .row > :global(div:first-child) {
+              border-right: 1px solid ${COLORS.SECONDARY};
+            }
+
+            .drop-shadow-options {
+              opacity: 0.5;
+            }
+          `}
+        </style>
+      </div>
+    )
+  }
+)
+
+const TypeSettings = React.memo(
+  ({ onChange, font, size, lineHeight, onWidthChanging, onWidthChanged }) => {
+    return (
+      <div className="settings-content">
+        <FontSelect selected={font} onChange={onChange.bind(null, 'fontFamily')} />
+        <Slider
+          label="Size"
+          value={size}
+          minValue={10}
+          maxValue={18}
+          step={0.5}
+          onChange={onChange.bind(null, 'fontSize')}
+          onMouseDown={onWidthChanging}
+          onMouseUp={onWidthChanged}
+        />
+        <Slider
+          label="Line height"
+          value={lineHeight}
+          minValue={90}
+          maxValue={250}
+          usePercentage={true}
+          onChange={onChange.bind(null, 'lineHeight')}
+        />
+      </div>
+    )
+  }
+)
+
+const resetButtonStyle = { borderTop: `1px solid ${COLORS.SECONDARY}` }
+
+const MiscSettings = React.memo(({ format, reset }) => {
+  return (
+    <div className="settings-content">
+      <Button center onClick={format}>
+        Prettify code
+      </Button>
+      <Button center color={COLORS.RED} onClick={reset} style={resetButtonStyle}>
+        Reset settings
+      </Button>
+      <style jsx>
+        {`
+          .settings-content {
+            display: flex;
+            flex-direction: column;
+          }
+        `}
+      </style>
+    </div>
+  )
+})
+
+const MenuButton = React.memo(({ name, select, selected }) => {
+  return (
+    <div className="menu-button">
+      <Button
+        padding="8px"
+        onClick={select(name)}
+        background={selected === name ? COLORS.BLACK : COLORS.DARK_GRAY}
+      >
+        {name}
+        <div className="arrow-icon">
+          <Arrows.Right />
+        </div>
+      </Button>
+      <style jsx>
+        {`
+          .menu-button {
+            display: flex;
+            height: 33px;
+            border-bottom: 1px solid ${COLORS.SECONDARY};
+            position: relative;
+            align-items: center;
+          }
+
+          .menu-button:last-child {
+            ${selected === 'Window' ? '' : 'border-bottom: none;'};
+          }
+
+          .arrow-icon {
+            position: absolute;
+            right: 14px;
+            top: 11px;
+          }
+        `}
+      </style>
+    </div>
+  )
+})
+
+const settingButtonStyle = {
+  width: '40px',
+  height: '100%'
+}
 
 class Settings extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isVisible: false
+  state = {
+    presets: DEFAULT_PRESETS,
+    selectedMenu: 'Window',
+    showPresets: false,
+    previousSettings: null,
+    widthChanging: false
+  }
+
+  settingsRef = React.createRef()
+
+  presetContentRef = React.createRef()
+
+  componentDidMount() {
+    const storedPresets = getPresets(localStorage) || []
+    this.setState(({ presets }) => ({
+      presets: [...storedPresets, ...presets]
+    }))
+  }
+
+  togglePresets = () => this.setState(toggle('showPresets'))
+
+  selectMenu = selectedMenu => () => this.setState({ selectedMenu })
+
+  handleWidthChanging = () => {
+    const rect = this.settingsRef.current.getBoundingClientRect()
+    this.settingPosition = { top: rect.bottom, left: rect.left }
+    this.setState({ widthChanging: true })
+  }
+
+  handleWidthChanged = () => this.setState({ widthChanging: false })
+
+  handleChange = (key, value) => {
+    this.props.onChange(key, value)
+    this.setState({ previousSettings: null })
+  }
+
+  handleReset = () => {
+    this.props.resetDefaultSettings()
+    this.setState({ previousSettings: null })
+  }
+
+  getSettingsFromProps = () =>
+    omitBy(this.props, (v, k) => typeof v === 'function' || k === 'preset')
+
+  applyPreset = preset => {
+    const previousSettings = this.getSettingsFromProps()
+
+    this.props.applyPreset(preset)
+
+    // TODO: this is a hack to prevent the scrollLeft position from changing when preset is applied
+    const { scrollLeft: previousScrollLeft } = this.presetContentRef.current
+    this.setState({ previousSettings }, () => {
+      this.presetContentRef.current.scrollLeft = previousScrollLeft
+    })
+  }
+
+  undoPreset = () => {
+    this.props.applyPreset({ ...this.state.previousSettings, id: null })
+    this.setState({ previousSettings: null })
+  }
+
+  removePreset = id => {
+    if (this.props.preset === id) {
+      this.props.onChange('preset', null)
+      this.setState({ previousSettings: null })
     }
-    this.toggle = this.toggle.bind(this)
-    this.format = this.format.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
+    this.setState(
+      ({ presets }) => ({ presets: presets.filter(p => p.id !== id) }),
+      this.savePresets
+    )
   }
 
-  toggle() {
-    this.setState(toggle('isVisible'))
+  createPreset = async () => {
+    const newPreset = this.getSettingsFromProps()
+
+    newPreset.id = `preset:${Math.random()
+      .toString(36)
+      .slice(2)}`
+    newPreset.custom = true
+
+    newPreset.icon = await this.props.getCarbonImage({
+      format: 'png',
+      squared: true,
+      exportSize: 1
+    })
+
+    this.props.onChange('preset', newPreset.id)
+
+    this.setState(
+      ({ presets }) => ({
+        previousSettings: null,
+        presets: [newPreset, ...presets]
+      }),
+      this.savePresets
+    )
   }
 
-  handleClickOutside() {
-    this.setState({ isVisible: false })
-  }
+  savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
 
-  handleInputChange(e) {
-    this.props.onChange(e.target.name, e.target.value)
-  }
-
-  format() {
-    return formatCode(this.props.code)
-      .then(this.props.onChange.bind(this, 'code'))
-      .catch(() => {
-        // create toast here in the future
-      })
+  renderContent = () => {
+    switch (this.state.selectedMenu) {
+      case 'Window':
+        return (
+          <WindowSettings
+            onChange={this.handleChange}
+            onWidthChanging={this.handleWidthChanging}
+            onWidthChanged={this.handleWidthChanged}
+            windowTheme={this.props.windowTheme}
+            paddingHorizontal={this.props.paddingHorizontal}
+            paddingVertical={this.props.paddingVertical}
+            dropShadow={this.props.dropShadow}
+            dropShadowBlurRadius={this.props.dropShadowBlurRadius}
+            dropShadowOffsetY={this.props.dropShadowOffsetY}
+            windowControls={this.props.windowControls}
+            lineNumbers={this.props.lineNumbers}
+            widthAdjustment={this.props.widthAdjustment}
+            watermark={this.props.watermark}
+          />
+        )
+      case 'Type':
+        return (
+          <TypeSettings
+            onChange={this.handleChange}
+            onWidthChanging={this.handleWidthChanging}
+            onWidthChanged={this.handleWidthChanged}
+            font={this.props.fontFamily}
+            size={this.props.fontSize}
+            lineHeight={this.props.lineHeight}
+          />
+        )
+      case 'Misc':
+        return <MiscSettings format={this.props.format} reset={this.handleReset} />
+      default:
+        return null
+    }
   }
 
   render() {
+    const { selectedMenu, showPresets, presets, previousSettings, widthChanging } = this.state
+    const { preset, isVisible, toggleVisibility } = this.props
+
     return (
-      <div className="settings-container">
-        <div
-          className={`settings-display ${this.state.isVisible ? 'is-visible' : ''}`}
-          onClick={this.toggle}
+      <div className="settings-container" ref={this.settingsRef}>
+        <Button
+          border
+          center
+          selected={isVisible}
+          style={settingButtonStyle}
+          onClick={toggleVisibility}
         >
           <SettingsIcon />
-        </div>
-        <div className="settings-settings">
-          <WindowPointer fromLeft="15px" />
-          <ThemeSelect
-            selected={this.props.windowTheme || 'none'}
-            onChange={this.props.onChange.bind(null, 'windowTheme')}
+        </Button>
+        <Popout
+          pointerLeft="15px"
+          hidden={!isVisible}
+          style={{
+            position: widthChanging ? 'fixed' : 'absolute',
+            width: '316px',
+            top: widthChanging ? this.settingPosition.top : 'initial',
+            left: widthChanging ? this.settingPosition.left : 'initial'
+          }}
+        >
+          <Presets
+            show={showPresets}
+            presets={presets}
+            selected={preset}
+            toggle={this.togglePresets}
+            apply={this.applyPreset}
+            undo={this.undoPreset}
+            remove={this.removePreset}
+            create={this.createPreset}
+            applied={!!previousSettings}
+            contentRef={this.presetContentRef}
           />
-          <input
-            title="filename"
-            placeholder="File name..."
-            value={this.props.filename}
-            name="filename"
-            onChange={this.handleInputChange}
-          />
-          <FontSelect
-            selected={this.props.fontFamily || 'Hack'}
-            onChange={this.props.onChange.bind(null, 'fontFamily')}
-          />
-          <Slider
-            label="Font size"
-            value={this.props.fontSize || 13}
-            minValue={10}
-            maxValue={18}
-            step={0.5}
-            onChange={this.props.onChange.bind(null, 'fontSize')}
-          />
-          <Toggle
-            label="Window controls"
-            enabled={this.props.windowControls}
-            onChange={this.props.onChange.bind(null, 'windowControls')}
-          />
-          <Toggle
-            label="Line numbers"
-            enabled={this.props.lineNumbers}
-            onChange={this.props.onChange.bind(null, 'lineNumbers')}
-          />
-          <Toggle
-            label="Auto-adjust width"
-            enabled={this.props.widthAdjustment}
-            onChange={this.props.onChange.bind(null, 'widthAdjustment')}
-          />
-          <Collapse label="Advanced">
-            <Slider
-              label="Line height"
-              value={this.props.lineHeight}
-              minValue={90}
-              maxValue={250}
-              usePercentage={true}
-              onChange={this.props.onChange.bind(null, 'lineHeight')}
-            />
-            <Slider
-              label="Padding (vertical)"
-              value={this.props.paddingVertical || 16}
-              maxValue={200}
-              onChange={this.props.onChange.bind(null, 'paddingVertical')}
-            />
-            <Slider
-              label="Padding (horizontal)"
-              value={this.props.paddingHorizontal || 32}
-              onChange={this.props.onChange.bind(null, 'paddingHorizontal')}
-            />
-            <Toggle
-              label="Drop shadow"
-              enabled={this.props.dropShadow}
-              onChange={this.props.onChange.bind(null, 'dropShadow')}
-            />
-            <Slider
-              label="Drop shadow (offset-y)"
-              value={this.props.dropShadowOffsetY || 20}
-              onChange={this.props.onChange.bind(null, 'dropShadowOffsetY')}
-            />
-            <Slider
-              label="Drop shadow (blur-radius)"
-              value={this.props.dropShadowBlurRadius || 68}
-              onChange={this.props.onChange.bind(null, 'dropShadowBlurRadius')}
-            />
-            <Toggle
-              label="Squared image"
-              enabled={this.props.squaredImage}
-              onChange={this.props.onChange.bind(null, 'squaredImage')}
-            />
-            <Toggle
-              label="Watermark"
-              enabled={this.props.watermark}
-              onChange={this.props.onChange.bind(null, 'watermark')}
-            />
-            <Toggle
-              label="Timestamp file name"
-              enabled={this.props.timestamp}
-              onChange={this.props.onChange.bind(null, 'timestamp')}
-            />
-            <ExportSizeSelect
-              selected={this.props.exportSize || '2x'}
-              onChange={this.props.onChange.bind(null, 'exportSize')}
-            />
-            <Toggle label="Prettify code" center={true} enabled={false} onChange={this.format} />
-            <Toggle
-              label={<center className="red">Reset settings</center>}
-              center={true}
-              enabled={false}
-              onChange={this.props.resetDefaultSettings}
-            />
-          </Collapse>
-        </div>
+          <div className="settings-bottom">
+            <div className="settings-menu">
+              <MenuButton name="Window" select={this.selectMenu} selected={selectedMenu} />
+              <MenuButton name="Type" select={this.selectMenu} selected={selectedMenu} />
+              <MenuButton name="Misc" select={this.selectMenu} selected={selectedMenu} />
+            </div>
+            {this.renderContent()}
+          </div>
+        </Popout>
         <style jsx>
           {`
             .settings-container {
-              display: flex;
               position: relative;
-              height: 100%;
-              width: 37px;
-              align-items: center;
-              justify-content: center;
-              border-radius: 3px;
-              color: #fff;
-              font-size: 12px;
             }
 
-            .settings-display {
-              height: 100%;
-              width: 100%;
+            .settings-bottom {
               display: flex;
-              justify-content: center;
-              align-items: center;
-              border: 1px solid ${COLORS.SECONDARY};
-              border-radius: 3px;
-              user-select: none;
-              position: relative;
-              z-index: 1;
-              cursor: pointer;
             }
 
-            .settings-display:hover {
-              background: ${COLORS.HOVER};
+            .settings-menu {
+              display: flex;
+              flex-direction: column;
+              flex: 0 0 96px;
+              background-color: ${COLORS.DARK_GRAY};
             }
-
-            .is-visible + .settings-settings {
-              display: block;
-            }
-
-            .settings-settings {
-              display: none;
-              position: absolute;
-              top: 44px;
-              left: 0;
-              border: 1px solid ${COLORS.SECONDARY};
-              width: 184px;
-              border-radius: 3px;
-              background: ${COLORS.BLACK};
-            }
-
-            .settings-settings > :global(div) {
-              border-bottom: solid 1px ${COLORS.SECONDARY};
-            }
-
-            .settings-settings > :global(div):first-child,
-            .settings-settings > :global(div):last-child,
-            .settings-settings > :global(.collapse) {
-              border-bottom: none;
-            }
-
-            .red {
-              color: red;
-            }
-
-            input {
-              padding: 8px;
+          `}
+        </style>
+        <style jsx global>
+          {`
+            .settings-content {
               width: 100%;
-              font-size: 12px;
-              color: ${COLORS.SECONDARY};
-              background: ${COLORS.BLACK};
-              border: none;
-              border-bottom: solid 1px ${COLORS.SECONDARY};
-              outline: none;
+              border-left: 2px solid ${COLORS.SECONDARY};
+            }
+
+            .settings-content > div:not(:first-child) {
+              border-top: solid 1px ${COLORS.SECONDARY};
             }
           `}
         </style>
@@ -233,4 +418,4 @@ class Settings extends React.PureComponent {
   }
 }
 
-export default enhanceWithClickOutside(Settings)
+export default managePopout(Settings)

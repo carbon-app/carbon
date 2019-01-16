@@ -1,38 +1,63 @@
 import React from 'react'
+
 import { COLORS } from '../lib/constants'
 
-export default props => (
+const Button = ({
+  id,
+  onClick = () => {},
+  className = '',
+  background = COLORS.BLACK,
+  color = COLORS.SECONDARY,
+  hoverBackground = COLORS.HOVER,
+  hoverColor,
+  disabled,
+  notAllowed,
+  selected,
+  children,
+  border,
+  center,
+  large,
+  style = {},
+  flex = 1,
+  padding = 0,
+  margin = 0
+}) => (
   <button
-    onClick={props.onClick}
-    style={{
-      ...props.style,
-      background: COLORS.BLACK,
-      color: props.color,
-      border: `1px solid ${props.color}`
-    }}
-    disabled={props.disabled}
+    id={id}
+    onClick={onClick}
+    className={className}
+    disabled={disabled || notAllowed}
+    style={style}
   >
-    <span>{props.title}</span>
+    {children}
     <style jsx>
       {`
         button {
-          cursor: pointer;
+          display: flex;
+          flex: ${flex};
+          background-color: ${background};
+          color: ${color};
+          box-shadow: ${border ? `inset 0px 0px 0px ${selected ? 2 : 1}px ${color}` : 'initial'};
+          cursor: ${notAllowed ? 'not-allowed' : 'pointer'};
           outline: none;
-          height: 100%;
-          padding: 0 16px;
-          border-radius: 3px;
+          border: none;
+          padding: ${padding};
+          margin: ${margin};
+          border-radius: ${border ? '3px' : 0};
           user-select: none;
+          justify-content: ${center ? 'center' : 'initial'};
+          align-items: ${center ? 'center' : 'initial'};
+          align-self: stretch;
+          font-size: ${large ? '14px' : '12px'};
         }
 
         button:hover {
-          background: ${COLORS.HOVER} !important;
-        }
-
-        button > span {
-          font-size: 14px;
-          line-height: 1;
+          background-color: ${hoverBackground} !important;
+          color: ${hoverColor || color};
         }
       `}
     </style>
   </button>
 )
+
+export default Button

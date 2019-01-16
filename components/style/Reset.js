@@ -1,3 +1,4 @@
+import React from 'react'
 import { COLORS } from '../../lib/constants'
 
 export default () => (

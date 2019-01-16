@@ -1,7 +1,7 @@
 import React from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
-import ArrowDown from './svg/Arrowdown'
+import { Down as ArrowDown } from './svg/Arrows'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
 
@@ -58,10 +58,10 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { button, color, selected, onChange, itemWrapper } = this.props
+    const { color, selected, onChange, itemWrapper, icon } = this.props
     const { itemsToShow, inputValue } = this.state
 
-    const minWidth = calcMinWidth(button, selected, itemsToShow)
+    const minWidth = calcMinWidth(itemsToShow)
 
     return (
       <Downshift
@@ -72,13 +72,20 @@ class Dropdown extends React.PureComponent {
         onChange={onChange}
         onUserAction={this.onUserAction}
       >
-        {renderDropdown({ button, color, list: itemsToShow, selected, minWidth, itemWrapper })}
+        {renderDropdown({
+          color,
+          list: itemsToShow,
+          selected,
+          minWidth,
+          itemWrapper,
+          icon
+        })}
       </Downshift>
     )
   }
 }
 
-const renderDropdown = ({ button, color, list, minWidth, itemWrapper }) => ({
+const renderDropdown = ({ color, list, minWidth, itemWrapper, icon }) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -89,12 +96,13 @@ const renderDropdown = ({ button, color, list, minWidth, itemWrapper }) => ({
 }) => {
   return (
     <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
+      <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
       <SelectedItem
         getToggleButtonProps={getToggleButtonProps}
         getInputProps={getInputProps}
         isOpen={isOpen}
         color={color}
-        button={button}
+        hasIcon={!!icon}
       >
         {selectedItem.name}
       </SelectedItem>
@@ -127,9 +135,11 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
       <style jsx>
         {`
           .dropdown-container {
+            position: relative;
             min-width: ${minWidth}px;
             cursor: pointer;
             user-select: none;
+            margin-left: 40px;
           }
         `}
       </style>
@@ -137,7 +147,42 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
   )
 }
 
-const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, color, button }) => {
+const DropdownIcon = ({ children, isOpen }) => {
+  if (children) {
+    return (
+      <div className="dropdown-icon">
+        {children}
+        <style jsx>
+          {`
+            .dropdown-icon {
+              position: absolute;
+              left: -${isOpen ? 38 : 39}px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 40px;
+              height: 40px;
+              box-shadow: inset 0px 0px 0px ${isOpen ? 2 : 1}px white;
+              border-radius: 3px 0 0 3px;
+              cursor: initial;
+            }
+          `}
+        </style>
+      </div>
+    )
+  } else {
+    return null
+  }
+}
+
+const SelectedItem = ({
+  getToggleButtonProps,
+  getInputProps,
+  children,
+  isOpen,
+  color,
+  hasIcon
+}) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
@@ -146,26 +191,22 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
       tabIndex="0"
       className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
     >
-      {button ? (
-        <span className="dropdown-display-text">{children}</span>
-      ) : (
-        <input
-          {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
-          className="dropdown-display-text"
-        />
-      )}
+      <input
+        {...getInputProps({ placeholder: children, id: `downshift-input-${children}` })}
+        className="dropdown-display-text"
+      />
       <div className="dropdown-arrow">
-        <ArrowDown fill={itemColor} />
+        <ArrowDown color={itemColor} />
       </div>
       <style jsx>
         {`
           .dropdown-display {
             display: flex;
             align-items: center;
-            height: 100%;
-            border: 1px solid ${itemColor};
-            border-radius: 3px;
-            padding: 8px 16px;
+            height: 40px;
+            padding: 0 16px;
+            box-shadow: inset 0px 0px 0px 1px ${itemColor};
+            border-radius: ${hasIcon ? '0 3px 3px 0' : '3px'};
             outline: none;
           }
           .dropdown-display:hover {
@@ -173,7 +214,8 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
           }
 
           .dropdown-display.is-open {
-            border-radius: 3px 3px 0 0;
+            border-radius: ${hasIcon ? '0 3px 0 0' : '3px 3px 0 0'};
+            box-shadow: inset 0px 0px 0px 2px ${itemColor};
           }
 
           .dropdown-display-text {
@@ -185,6 +227,11 @@ const SelectedItem = ({ getToggleButtonProps, getInputProps, children, isOpen, c
             font-size: inherit;
             font-family: inherit;
           }
+
+          .dropdown-arrow {
+            display: flex;
+          }
+
           .is-open > .dropdown-arrow {
             transform: rotate(180deg);
           }
@@ -201,8 +248,8 @@ const ListItems = ({ children, color }) => {
       <style jsx>
         {`
           .dropdown-list {
-            margin-top: -1px;
-            border: 1px solid ${color || COLORS.SECONDARY};
+            margin-top: -2px;
+            border: 2px solid ${color || COLORS.SECONDARY};
             border-radius: 0 0 3px 3px;
             max-height: 350px;
             overflow-y: scroll;
@@ -251,9 +298,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ...
   )
 }
 
-function calcMinWidth(isButton, selected, list) {
-  const items = isButton ? [...list, selected] : list
-
+function calcMinWidth(items) {
   return items.reduce((max, { name }) => {
     const wordSize = name.length * 10 + 32
     return wordSize > max ? wordSize : max

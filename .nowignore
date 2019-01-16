@@ -1,0 +1,8 @@
+.github
+LICENSE
+README.md
+bin
+node_modules
+cypress
+cypress.json
+docs

@@ -1,12 +1,14 @@
 import React from 'react'
 
+import { COLORS } from '../lib/constants'
+
 class Slider extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleChange = this.handleChange.bind(this)
+  static defaultProps = {
+    onMouseDown: () => {},
+    onMouseUp: () => {}
   }
 
-  handleChange(e) {
+  handleChange = e => {
     this.props.onChange(`${e.target.value}${this.props.usePercentage ? '%' : 'px'}`)
   }
 
@@ -17,15 +19,6 @@ class Slider extends React.Component {
 
     return (
       <div className="slider">
-        <span className="label">{this.props.label}</span>
-        <input
-          type="range"
-          defaultValue={this.props.value}
-          onChange={this.handleChange}
-          min={minValue}
-          max={maxValue}
-          step={step}
-        />
         <div
           className="slider-bg"
           style={{
@@ -34,11 +27,22 @@ class Slider extends React.Component {
               100}%, 0px, 0px)`
           }}
         />
+        <span className="label">{this.props.label}</span>
+        <input
+          type="range"
+          defaultValue={this.props.value}
+          onChange={this.handleChange}
+          onMouseDown={this.props.onMouseDown}
+          onMouseUp={this.props.onMouseUp}
+          min={minValue}
+          max={maxValue}
+          step={step}
+        />
         <style jsx>
           {`
             .slider {
               position: relative;
-              height: 32px;
+              height: 33px;
               overflow: hidden;
               user-select: none;
             }
@@ -50,8 +54,8 @@ class Slider extends React.Component {
             .label {
               position: absolute;
               left: 8px;
-              height: 32px;
-              line-height: 32px;
+              height: 33px;
+              line-height: 33px;
             }
 
             .slider input {
@@ -67,9 +71,9 @@ class Slider extends React.Component {
               top: 0;
               bottom: 0;
               pointer-events: none;
-              height: 32px;
+              height: 33px;
               width: 100%;
-              background: rgba(255, 255, 255, 0.165);
+              background: ${COLORS.DARK_GRAY};
             }
           `}
         </style>

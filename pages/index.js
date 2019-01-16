@@ -1,19 +1,20 @@
 // Theirs
 import React from 'react'
 import { withRouter } from 'next/router'
-import omit from 'lodash.omit'
 
 // Ours
 import Editor from '../components/Editor'
 import Page from '../components/Page'
 import api from '../lib/api'
 import { updateQueryString } from '../lib/routing'
-import { saveState } from '../lib/util'
+import { saveSettings, clearSettings, omit } from '../lib/util'
 
 class Index extends React.Component {
+  shouldComponentUpdate = () => false
+
   onEditorUpdate = state => {
     updateQueryString(this.props.router, state)
-    saveState(
+    saveSettings(
       localStorage,
       omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'filename'])
     )
@@ -34,7 +35,7 @@ class Index extends React.Component {
 }
 
 function onReset() {
-  localStorage.clear()
+  clearSettings()
 
   if (window.navigator && navigator.serviceWorker) {
     navigator.serviceWorker.getRegistrations().then(registrations => {

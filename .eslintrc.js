@@ -19,11 +19,12 @@ module.exports = {
     'react/display-name': 'off',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
-    'import/no-unresolved': 2
+    'import/no-unresolved': 'error',
+    'no-duplicate-imports': 'error'
   },
   settings: {
     react: {
-      version: '16.5'
+      version: '16.7'
     }
   }
 }

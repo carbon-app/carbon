@@ -40,7 +40,7 @@ export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
     <div className="window-title-container">
       <input
         aria-label="Image Title"
-        value={titleBar}
+        value={titleBar || ''}
         type="text"
         spellCheck="false"
         onChange={e => handleTitleBarChange(e.target.value)}
@@ -53,11 +53,11 @@ export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
     )}
     <style jsx>
       {`
-        div {
+        .window-controls {
           margin-top: -24px;
           position: relative;
-          top: 34px;
-          margin-left: 18px;
+          top: ${theme === 'bw' ? 36 : 34}px;
+          margin-left: ${theme === 'bw' ? 16 : 14}px;
           z-index: 2;
         }
 

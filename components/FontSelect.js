@@ -5,12 +5,11 @@ import { COLORS, FONTS } from '../lib/constants'
 const Font = (font, selected) => (
   <React.Fragment>
     <span style={{ fontFamily: font.id }}>{font.name}</span>
-    {font.link &&
-      selected === font.id && (
-        <a href={font.link} target="_blank" rel="noopener noreferrer">
-          <span style={{ fontFamily: font.id }}>Purchase</span>
-        </a>
-      )}
+    {font.link && selected === font.id && (
+      <a href={font.link} target="_blank" rel="noopener noreferrer">
+        <span style={{ fontFamily: font.id }}>Purchase</span>
+      </a>
+    )}
     <style jsx>
       {`
         /* Prod Only */
@@ -29,7 +28,7 @@ const Font = (font, selected) => (
 
 function FontSelect(props) {
   return (
-    <ListSetting title="Font family" items={FONTS} {...props}>
+    <ListSetting title="Font" items={FONTS} {...props}>
       {Font}
     </ListSetting>
   )

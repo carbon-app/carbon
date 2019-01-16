@@ -1,10 +1,14 @@
 language: node_js
-node_js: "9"
+node_js:
+  - 10
 cache:
   yarn: true
   directories:
     - node_modules
+    - ~/.cache
 install:
   - yarn
 script:
   - yarn lint
+  - yarn build
+  - yarn start & wait-on http://localhost:3000 && CYPRESS_CI=true yarn cy:run --config baseUrl=http://localhost:3000

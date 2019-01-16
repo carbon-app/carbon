@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default ({ fromLeft }) => (
-  <div style={{ left: fromLeft }}>
+export default ({ fromLeft, fromRight, color = '#fff' }) => (
+  <div>
     <div className="window-pointer" />
     <style jsx>
       {`
@@ -9,11 +9,12 @@ export default ({ fromLeft }) => (
           width: 0px;
           height: 0px;
           border-style: solid;
-          border-width: 0 4px 5px 4px;
-          border-color: transparent transparent #fff transparent;
+          border-width: 0 5px 6px 5px;
+          border-color: transparent transparent ${color} transparent;
           position: absolute;
-          top: -5px;
-          left: 15px;
+          top: -8px;
+          left: ${fromLeft || 'initial'};
+          right: ${fromRight || 'initial'};
         }
       `}
     </style>

@@ -3,8 +3,8 @@ import React from 'react'
 export const Sharp = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
+    width="60"
+    height="60"
     viewBox="0 0 81 81"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
@@ -52,8 +52,8 @@ export const Sharp = () => (
 export const BW = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
+    width="60"
+    height="60"
     viewBox="0 0 81 81"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
@@ -84,8 +84,8 @@ export const BW = () => (
 export const None = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="50"
-    height="50"
+    width="60"
+    height="60"
     viewBox="0 0 81 81"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >

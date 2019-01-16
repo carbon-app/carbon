@@ -7,8 +7,6 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
-import shallowCompare from 'react-addons-shallow-compare'
-import omit from 'lodash.omit'
 
 // Ours
 import Button from './Button'
@@ -18,7 +16,7 @@ import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
-import ExportButton from './ExportButton'
+import ExportMenu from './ExportMenu'
 import {
   GA_TRACKING_ID,
   THEMES,
@@ -33,18 +31,16 @@ import {
   EXPORT_SIZES_HASH,
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
-  DEFAULT_LANGUAGE
+  DEFAULT_LANGUAGE,
+  DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getState, escapeHtml, unescapeHtml } from '../lib/util'
+import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
+import LanguageIcon from './svg/Language'
+import ThemeIcon from './svg/Theme'
 
-const saveButtonOptions = {
-  button: true,
-  color: '#c198fb',
-  selected: { id: 'SAVE_IMAGE', name: 'Export Image' },
-  list: ['png', 'svg', 'copy embed', 'open ↗'].map(id => ({ id, name: id.toUpperCase() })),
-  itemWrapper: props => <ExportButton {...props} />
-}
+const themeIcon = <ThemeIcon />
+const languageIcon = <LanguageIcon />
 
 class Editor extends React.Component {
   constructor(props) {
@@ -54,15 +50,13 @@ class Editor extends React.Component {
       loading: true,
       uploading: false,
       code: props.content,
-      online: true
+      online: true,
+      preset: DEFAULT_PRESET_ID
     }
 
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
-    this.updateCode = this.updateSetting.bind(this, 'code')
-    this.updateAspectRatio = this.updateSetting.bind(this, 'aspectRatio')
-    this.updateTitleBar = this.updateSetting.bind(this, 'titleBar')
     this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
@@ -70,8 +64,6 @@ class Editor extends React.Component {
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
 
-    this.setOffline = () => this.setState({ online: false })
-    this.setOnline = () => this.setState({ online: true })
     this.innerRef = node => (this.carbonNode = node)
   }
 
@@ -99,7 +91,7 @@ class Editor extends React.Component {
 
     const newState = {
       // Load from localStorage
-      ...getState(localStorage),
+      ...getSettings(localStorage),
       // and then URL params
       ...initialState,
       loading: false,
@@ -111,7 +103,7 @@ class Editor extends React.Component {
       newState.language = unescapeHtml(newState.language)
     }
 
-    this.setState(newState)
+    this.updateState(newState)
 
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
@@ -122,14 +114,22 @@ class Editor extends React.Component {
     window.removeEventListener('online', this.setOnline)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // this.props ensures props are not compared, only state
-    if (shallowCompare(this, this.props, prevState)) {
-      this.props.onUpdate(this.state)
-    }
-  }
+  updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
 
-  async getCarbonImage({ format, type } = { format: 'png' }) {
+  updateCode = code => this.updateState({ code })
+  updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
+  updateTitleBar = titleBar => this.updateState({ titleBar })
+  setOffline = () => this.updateState({ online: false })
+  setOnline = () => this.updateState({ online: true })
+
+  async getCarbonImage(
+    {
+      format,
+      type,
+      squared = this.state.squaredImage,
+      exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+    } = { format: 'png' }
+  ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (
@@ -144,8 +144,6 @@ class Editor extends React.Component {
 
     const node = this.carbonNode
 
-    const exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
-
     const map = new Map()
     const undoMap = value => {
       map.forEach((value, node) => (node.innerText = value))
@@ -154,7 +152,7 @@ class Editor extends React.Component {
 
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
-        if (node.innerText && node.innerText.match(/%\d\S/)) {
+        if (node.innerText && node.innerText.match(/%[A-Za-z0-9]{2}/)) {
           map.set(node, node.innerText)
           node.innerText = encodeURIComponent(node.innerText)
         }
@@ -162,15 +160,13 @@ class Editor extends React.Component {
     }
 
     const width = node.offsetWidth * exportSize
-    const height = this.state.squaredImage
-      ? node.offsetWidth * exportSize
-      : node.offsetHeight * exportSize
+    const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
 
     const config = {
       style: {
         transform: `scale(${exportSize})`,
         'transform-origin': 'center',
-        background: this.state.squaredImage ? this.state.backgroundColor : 'none'
+        background: squared ? this.state.backgroundColor : 'none'
       },
       filter: n => {
         if (n.className) {
@@ -185,12 +181,16 @@ class Editor extends React.Component {
     try {
       if (type === 'blob') {
         if (format === 'svg') {
-          return domtoimage
-            .toSvg(node, config)
-            .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
-            .then(uri => uri.slice(uri.indexOf(',') + 1))
-            .then(data => new Blob([data], { type: 'image/svg+xml' }))
-            .then(data => window.URL.createObjectURL(data))
+          return (
+            domtoimage
+              .toSvg(node, config)
+              .then(dataUrl => dataUrl.replace(/&nbsp;/g, '&#160;'))
+              // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
+              .then(dataUrl => dataUrl.replace(/&(?!#?[a-z0-9]+;)/g, '&amp;'))
+              .then(uri => uri.slice(uri.indexOf(',') + 1))
+              .then(data => new Blob([data], { type: 'image/svg+xml' }))
+              .then(data => window.URL.createObjectURL(data))
+          )
         }
 
         return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
@@ -198,31 +198,27 @@ class Editor extends React.Component {
 
       // Twitter needs regular dataurls
       return await domtoimage.toPng(node, config)
-    } catch (error) {
-      throw error
     } finally {
       undoMap()
     }
   }
 
   updateSetting(key, value) {
-    this.setState({ [key]: value })
+    this.updateState({ [key]: value })
+    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
+      this.updateState({ preset: null })
+    }
   }
 
-  export({ id: format = 'png' }) {
-    if (format === 'copy embed') {
-      return
-    }
-
+  export(format = 'png') {
     const link = document.createElement('a')
 
-    const timestamp = this.state.timestamp ? `_${formatTimestamp()}` : ''
     const prefix = this.state.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' })
       .then(url => {
-        if (format !== 'open ↗') {
-          link.download = `${prefix}${timestamp}.${format}`
+        if (format !== 'open') {
+          link.download = `${prefix}.${format}`
         }
         link.href = url
         document.body.appendChild(link)
@@ -238,28 +234,29 @@ class Editor extends React.Component {
   }
 
   resetDefaultSettings() {
-    this.setState(DEFAULT_SETTINGS)
+    this.updateState({ ...DEFAULT_SETTINGS, preset: DEFAULT_PRESET_ID })
     this.props.onReset()
   }
 
   upload() {
-    this.setState({ uploading: true })
+    this.updateState({ uploading: true })
     this.getCarbonImage({ format: 'png' })
       .then(this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE))
       // eslint-disable-next-line
       .catch(console.error)
-      .then(() => this.setState({ uploading: false }))
+      .then(() => this.updateState({ uploading: false }))
   }
 
   onDrop([file]) {
     if (isImage(file)) {
-      this.setState({
+      this.updateState({
         backgroundImage: file.content,
         backgroundImageSelection: null,
-        backgroundMode: 'image'
+        backgroundMode: 'image',
+        preset: null
       })
     } else {
-      this.setState({ code: file.content, language: 'auto' })
+      this.updateState({ code: file.content, language: 'auto' })
     }
   }
 
@@ -273,17 +270,42 @@ class Editor extends React.Component {
 
   updateBackground({ photographer, ...changes } = {}) {
     if (photographer) {
-      this.setState(({ code = DEFAULT_CODE }) => ({
+      this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
-        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`
+        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`,
+        preset: null
       }))
     } else {
-      this.setState(changes)
+      this.updateState({ ...changes, preset: null })
     }
   }
 
+  format = () =>
+    formatCode(this.state.code)
+      .then(this.updateCode)
+      .catch(() => {
+        // create toast here in the future
+      })
+
+  applyPreset = ({ id: preset, ...settings }) => this.updateState({ preset, ...settings })
+
   render() {
-    if (this.state.loading) {
+    const {
+      loading,
+      theme,
+      language,
+      backgroundColor,
+      backgroundImage,
+      backgroundMode,
+      aspectRatio,
+      uploading,
+      online,
+      titleBar,
+      code,
+      exportSize
+    } = this.state
+
+    if (loading) {
       return (
         <div>
           <Spinner />
@@ -298,22 +320,24 @@ class Editor extends React.Component {
       )
     }
 
-    const config = omit(this.state, ['code', 'aspectRatio'])
+    const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
 
     return (
       <React.Fragment>
         <div className="editor">
           <Toolbar>
             <Dropdown
-              selected={THEMES_HASH[this.state.theme] || DEFAULT_THEME}
+              icon={themeIcon}
+              selected={THEMES_HASH[theme] || DEFAULT_THEME}
               list={THEMES}
               onChange={this.updateTheme}
             />
             <Dropdown
+              icon={languageIcon}
               selected={
-                LANGUAGE_NAME_HASH[this.state.language] ||
-                LANGUAGE_MIME_HASH[this.state.language] ||
-                LANGUAGE_MODE_HASH[this.state.language] ||
+                LANGUAGE_NAME_HASH[language] ||
+                LANGUAGE_MIME_HASH[language] ||
+                LANGUAGE_MODE_HASH[language] ||
                 LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
               }
               list={LANGUAGES}
@@ -321,28 +345,37 @@ class Editor extends React.Component {
             />
             <BackgroundSelect
               onChange={this.updateBackground}
-              mode={this.state.backgroundMode}
-              color={this.state.backgroundColor}
-              image={this.state.backgroundImage}
-              aspectRatio={this.state.aspectRatio}
+              mode={backgroundMode}
+              color={backgroundColor}
+              image={backgroundImage}
+              aspectRatio={aspectRatio}
             />
             <Settings
               {...config}
               onChange={this.updateSetting}
               resetDefaultSettings={this.resetDefaultSettings}
+              format={this.format}
+              applyPreset={this.applyPreset}
+              getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
-              {this.props.api.tweet &&
-                this.state.online && (
-                  <Button
-                    className="tweetButton"
-                    onClick={this.upload}
-                    title={this.state.uploading ? 'Loading...' : 'Tweet Image'}
-                    color="#57b5f9"
-                    style={{ marginRight: '8px' }}
-                  />
-                )}
-              <Dropdown {...saveButtonOptions} onChange={this.export} />
+              {this.props.api.tweet && online && (
+                <Button
+                  border
+                  large
+                  padding="0 16px"
+                  margin="0 8px 0 0"
+                  onClick={this.upload}
+                  color="#57b5f9"
+                >
+                  {uploading ? 'Loading...' : 'Tweet'}
+                </Button>
+              )}
+              <ExportMenu
+                onChange={this.updateSetting}
+                export={this.export}
+                exportSize={exportSize}
+              />
             </div>
           </Toolbar>
 
@@ -354,15 +387,15 @@ class Editor extends React.Component {
               >
                 {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
                 <Carbon
-                  key={this.state.language}
+                  key={language}
                   config={this.state}
                   updateCode={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
-                  titleBar={this.state.titleBar}
+                  titleBar={titleBar}
                   updateTitleBar={this.updateTitleBar}
                   innerRef={this.innerRef}
                 >
-                  {this.state.code != null ? this.state.code : DEFAULT_CODE}
+                  {code != null ? code : DEFAULT_CODE}
                 </Carbon>
               </Overlay>
             )}
@@ -386,17 +419,6 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
-}
-
-function formatTimestamp() {
-  const timezoneOffset = new Date().getTimezoneOffset() * 60000
-  const timeString = new Date(Date.now() - timezoneOffset)
-    .toISOString()
-    .slice(0, 19)
-    .replace(/:/g, '-')
-    .replace('T', '_')
-
-  return timeString
 }
 
 function isImage(file) {

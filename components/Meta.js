@@ -1,11 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import { THEMES, THEMES_HASH } from '../lib/constants'
+import { THEMES, THEMES_HASH, GA_TRACKING_ID } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
-
-import { GA_TRACKING_ID } from '../lib/constants'
 
 const LOCAL_STYLESHEETS = ['one-light', 'one-dark', 'verminal', 'night-owl', 'nord']
 
@@ -17,7 +15,7 @@ export const StylesheetLink = ({ theme }) => {
     href = `/static/themes/${theme}.css`
   } else {
     const themeDef = THEMES_HASH[theme]
-    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/theme/${themeDef &&
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/${themeDef &&
       (themeDef.link || themeDef.id)}.min.css`
   }
 
@@ -31,9 +29,9 @@ export const StylesheetLink = ({ theme }) => {
 export const CodeMirrorLink = () => (
   <Head>
     <link
-      key="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+      key="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.css"
       rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.css"
+      href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.css"
     />
   </Head>
 )

@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.5.3",
+  "version": "3.8.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -10,73 +10,87 @@
     "export": "next export",
     "test": "npm run cy:run --",
     "deploy": "now",
-    "prettier": "prettier --config .prettierrc --write {.,components,api,lib,pages}/*.js {components,api,lib,pages,packages}/**/*.js",
-    "lint": "eslint components/*.js lib/*.js pages/*.js api/handlers/*.js api/*.js",
+    "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages,packages}/**/*.js",
+    "lint": "eslint .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "codemirror": "^5.40.2",
-    "codemirror-graphql": "0.7.1",
-    "codemirror-mode-elixir": "^1.1.1",
+    "codemirror": "^5.42.2",
+    "codemirror-graphql": "^0.8.3",
+    "codemirror-mode-elixir": "^1.1.2",
+    "cross-env": "^5.2.0",
     "dom-to-image": "^2.5.2",
-    "downshift": "^3.1.4",
+    "downshift": "^3.1.12",
     "dropperx": "0.2.1",
-    "graphql": "^14.0.2",
+    "graphql": "^14.1.1",
     "highlight.js": "^9.13.1",
     "lodash.debounce": "^4.0.8",
-    "lodash.omit": "^4.5.0",
+    "lodash.omitby": "^4.6.0",
     "match-sorter": "^2.3.0",
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
     "next": "^7.0.2",
-    "next-offline": "^3.0.3",
-    "react": "^16.6.0",
-    "react-addons-shallow-compare": "^15.6.2",
+    "next-offline": "^3.3.1",
+    "prettier": "^1.14.3",
+    "react": "^16.7.0",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^5.1.0",
-    "react-color": "^2.13.8",
+    "react-color": "^2.17.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dnd": "^5.0.0",
     "react-dnd-html5-backend": "^5.0.0",
-    "react-dom": "^16.6.0",
+    "react-dom": "^16.7.0",
     "react-ga": "^2.5.3",
-    "react-image-crop": "^6.0.0",
+    "react-image-crop": "6.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
-    "resize-observer-polyfill": "^1.5.0",
+    "resize-observer-polyfill": "^1.5.1",
     "tohash": "^1.0.2",
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "all-contributors-cli": "^5.4.1",
+    "all-contributors-cli": "^5.10.0",
     "babel-eslint": "^10.0.1",
-    "cypress": "^3.0.0",
-    "eslint": "^5.7.0",
+    "cypress": "^3.1.4",
+    "eslint": "^5.12.0",
     "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-react": "^7.7.0",
-    "hex2rgb": "^2.2.0",
-    "husky": "^1.1.2",
-    "lint-staged": "^7.3.0",
-    "now": "^11.4.6",
-    "prettier": "^1.14.3"
+    "eslint-plugin-react": "^7.12.3",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0",
+    "now": "^13.0.6",
+    "wait-on": "^3.2.0"
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write",
+      "npm run lint",
+      "prettier --config .prettierrc --write",
       "git add"
     ]
   },
   "greenkeeper": {
-    "ignore": [
-      "webpack",
-      "react",
-      "react-dom",
-      "graphql"
-    ]
+    "groups": {
+      "app": {
+        "packages": [
+          "package.json"
+        ],
+        "ignore": [
+          "graphql",
+          "react-dnd-html5-backend",
+          "react-dom",
+          "webpack"
+        ]
+      },
+      "integrations": {
+        "packages": [
+          "packages/gatsby-remark-embed-carbon/package.json"
+        ]
+      }
+    }
   },
   "description": "Create and share beautiful images of your source code",
   "repository": {
