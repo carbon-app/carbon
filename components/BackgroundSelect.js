@@ -8,12 +8,6 @@ import { validateColor } from '../lib/colors'
 import { capitalize, stringifyRGBA } from '../lib/util'
 
 class BackgroundSelect extends React.PureComponent {
-  state = { mounted: false }
-
-  componentDidMount() {
-    this.setState({ mounted: true })
-  }
-
   selectTab = name => {
     if (this.props.mode !== name) {
       this.props.onChange({ backgroundMode: name })
@@ -24,7 +18,6 @@ class BackgroundSelect extends React.PureComponent {
 
   render() {
     const { color, mode, image, onChange, aspectRatio, isVisible, toggleVisibility } = this.props
-    const { mounted } = this.state
 
     let background =
       typeof color === 'string'
@@ -68,7 +61,7 @@ class BackgroundSelect extends React.PureComponent {
           </div>
           <div className="picker-tabs-contents">
             <div style={mode === 'color' ? {} : { display: 'none' }}>
-              {mounted && <ColorPicker color={color} onChange={this.handlePickColor} />}
+              <ColorPicker color={color} onChange={this.handlePickColor} />
             </div>
             <div style={mode === 'image' ? {} : { display: 'none' }}>
               <ImagePicker onChange={onChange} imageDataURL={image} aspectRatio={aspectRatio} />
