@@ -1,4 +1,5 @@
 import React from 'react'
+import { escape } from 'escape-goat'
 
 import ImagePicker from './ImagePicker'
 import ColorPicker from './ColorPicker'
@@ -19,16 +20,7 @@ class BackgroundSelect extends React.PureComponent {
   render() {
     const { color, mode, image, onChange, aspectRatio, isVisible, toggleVisibility } = this.props
 
-    let background =
-      typeof color === 'string'
-        ? color
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#x27;')
-            .replace(/\//g, '&#x2F;')
-        : color
+    let background = typeof color === 'string' ? escape(color).replace(/\//g, '&#x2F;') : color
 
     if (!validateColor(background)) {
       background = DEFAULT_BG_COLOR
