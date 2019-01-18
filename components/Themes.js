@@ -267,7 +267,7 @@ class Themes extends React.PureComponent {
   createTheme = () => {
     const { themes, name, highlights } = this.state
 
-    const id = generateId()
+    const id = `theme:${generateId()}`
 
     const newTheme = {
       id,
