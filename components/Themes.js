@@ -97,6 +97,7 @@ const ThemeCreate = ({
       </div>
       <Button
         center
+        disabled={!name}
         className="create-button"
         padding="8px 0"
         background={COLORS.SECONDARY}
@@ -117,11 +118,12 @@ const ThemeCreate = ({
     <style jsx>
       {`
         .field {
-          position: relative;
-          display: flex;
           align-items: center;
-          justify-content: space-between;
           border-bottom: solid 1px ${COLORS.SECONDARY};
+          display: flex;
+          height: 35px;
+          justify-content: space-between;
+          position: relative;
         }
 
         .field:nth-last-child(-n + 2) {
