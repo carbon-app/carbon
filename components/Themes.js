@@ -100,6 +100,7 @@ const ThemeCreate = ({
         className="create-button"
         padding="8px 0"
         background={COLORS.SECONDARY}
+        hoverBackground={COLORS.SECONDARY}
         color={COLORS.BLACK}
         onClick={createTheme}
       >
