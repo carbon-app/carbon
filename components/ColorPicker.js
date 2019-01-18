@@ -12,10 +12,10 @@ const pickerStyle = {
   }
 }
 
-const ColorPicker = ({ onChange = () => {}, color, presets }) => (
+const ColorPicker = ({ onChange = () => {}, color, presets, style = {} }) => (
   <React.Fragment>
     <SketchPicker
-      styles={pickerStyle}
+      styles={{ pickerStyle, ...style }}
       color={color}
       onChangeComplete={onChange}
       presetColors={presets}

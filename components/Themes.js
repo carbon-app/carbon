@@ -16,12 +16,24 @@ const HighlightPicker = ({ title, onChange, color }) => (
     <div className="color-picker-header">
       <span>{title}</span>
     </div>
-    <ColorPicker color={color} onChange={onChange} presets={[]} />
+    <ColorPicker
+      color={color}
+      onChange={onChange}
+      presets={[]}
+      style={{
+        picker: {
+          backgroundColor: COLORS.BLACK,
+          padding: 0,
+          margin: '4px'
+        }
+      }}
+    />
     <style jsx>
       {`
         .color-picker-container {
           width: 218px;
           border-left: 2px solid ${COLORS.SECONDARY};
+          padding: 2px;
         }
 
         .color-picker-header {
@@ -29,7 +41,8 @@ const HighlightPicker = ({ title, onChange, color }) => (
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 4px;
+          padding: 8px 0;
+          font-size: 14px;
         }
       `}
     </style>
