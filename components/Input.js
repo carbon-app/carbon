@@ -11,7 +11,8 @@ const Input = ({
   title,
   type,
   value,
-  align = 'right'
+  align = 'right',
+  maxLength
 }) => {
   return (
     <React.Fragment>
@@ -23,6 +24,7 @@ const Input = ({
         value={value}
         name={name}
         onChange={onChange}
+        maxLength={maxLength}
       />
       <style jsx>
         {`

@@ -59,6 +59,7 @@ const ThemeCreate = ({
           placeholder="Custom Theme"
           value={name}
           onChange={updateName}
+          maxLength="32"
         />
       </div>
       <div className="theme-select">
@@ -190,6 +191,7 @@ const ThemeItem = ({ children, item, isSelected, onClick }) => (
 
         .icon {
           display: flex;
+          margin-right: 6px;
         }
       `}
     </style>
@@ -210,7 +212,8 @@ class Themes extends React.PureComponent {
       preset: props.theme,
       themes,
       highlights,
-      name: '',
+      name: `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length +
+        1}`,
       selected: null
     }
   }
@@ -310,6 +313,7 @@ class Themes extends React.PureComponent {
           <ThemeCreate
             key={theme}
             preset={preset}
+            name={name}
             theme={theme}
             themes={themes}
             highlights={highlights}
@@ -327,13 +331,21 @@ class Themes extends React.PureComponent {
               position: relative;
             }
 
-            :global(.cm-string) {
+            :global(.CodeMirror) {
+              color: ${highlights.text};
+              background-color: ${highlights.background};
+            }
+
+            :global(.cm-string),
+            :global(.cm-string-2) {
               color: ${highlights.string} !important;
             }
             :global(.cm-comment) {
               color: ${highlights.comment} !important;
             }
-            :global(.cm-variable) {
+            :global(.cm-variable),
+            :global(.cm-variable-2),
+            :global(.cm-variable-3) {
               color: ${highlights.variable} !important;
             }
             :global(.cm-number) {
