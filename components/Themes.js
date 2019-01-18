@@ -247,7 +247,9 @@ class Themes extends React.PureComponent {
       }
     })
 
-  removeTheme = id => () => {
+  removeTheme = id => event => {
+    event.stopPropagation()
+
     const { themes } = this.state
 
     const newThemes = themes.filter(t => t.id !== id)
