@@ -333,8 +333,7 @@ class Themes extends React.PureComponent {
           inputValue={dropdownValue}
           selected={dropdownValue}
           list={dropdownList}
-          itemWrapper={ThemeItem}
-          itemWrapperProps={{ onClick: this.removeTheme }}
+          itemWrapper={props => <ThemeItem {...props} onClick={this.removeTheme} />}
           onChange={this.handleDropdown}
           onOpen={isVisible && toggleVisibility}
         />

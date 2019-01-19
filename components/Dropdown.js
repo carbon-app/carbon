@@ -60,15 +60,7 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const {
-      color,
-      selected,
-      onChange,
-      itemWrapper,
-      itemWrapperProps,
-      icon,
-      disableInput
-    } = this.props
+    const { color, selected, onChange, itemWrapper, icon, disableInput } = this.props
     const { itemsToShow, inputValue } = this.state
 
     const minWidth = calcMinWidth(itemsToShow)
@@ -88,7 +80,6 @@ class Dropdown extends React.PureComponent {
           selected,
           minWidth,
           itemWrapper,
-          itemWrapperProps,
           icon,
           disableInput
         })}
@@ -97,15 +88,7 @@ class Dropdown extends React.PureComponent {
   }
 }
 
-const renderDropdown = ({
-  color,
-  list,
-  minWidth,
-  itemWrapper,
-  itemWrapperProps,
-  icon,
-  disableInput
-}) => ({
+const renderDropdown = ({ color, list, minWidth, itemWrapper, icon, disableInput }) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -135,7 +118,6 @@ const renderDropdown = ({
               color={color}
               item={item}
               itemWrapper={itemWrapper}
-              itemWrapperProps={itemWrapperProps}
               {...getItemProps({
                 item,
                 isSelected: selectedItem.name === item.name,
@@ -284,22 +266,13 @@ const ListItems = ({ children, color }) => {
   )
 }
 
-const ListItem = ({
-  children,
-  color,
-  isHighlighted,
-  isSelected,
-  itemWrapper,
-  item,
-  itemWrapperProps,
-  ...rest
-}) => {
+const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, item, ...rest }) => {
   const itemColor = color || COLORS.SECONDARY
 
   return (
     <li {...rest} role="option" className="dropdown-list-item">
       {itemWrapper ? (
-        itemWrapper({ children, color: itemColor, item, isSelected, ...itemWrapperProps })
+        itemWrapper({ children, color: itemColor, item, isSelected })
       ) : (
         <span className="dropdown-list-item-text">{children}</span>
       )}
