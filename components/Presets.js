@@ -85,7 +85,7 @@ const Presets = React.memo(
               hoverBackground="transparent"
               hoverColor={disabledCreate ? COLORS.GRAY : COLORS.SECONDARY}
               onClick={create}
-              notAllowed={disabledCreate}
+              disabled={disabledCreate}
             >
               create +
             </Button>

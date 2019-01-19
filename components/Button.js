@@ -10,7 +10,6 @@ const Button = ({
   hoverBackground = COLORS.HOVER,
   hoverColor,
   disabled,
-  notAllowed,
   selected,
   children,
   border,
@@ -21,7 +20,7 @@ const Button = ({
   padding = 0,
   margin = 0
 }) => (
-  <button onClick={onClick} className={className} disabled={disabled || notAllowed} style={style}>
+  <button onClick={onClick} className={className} disabled={disabled} style={style}>
     {children}
     <style jsx>
       {`
@@ -31,7 +30,7 @@ const Button = ({
           background-color: ${background};
           color: ${color};
           box-shadow: ${border ? `inset 0px 0px 0px ${selected ? 2 : 1}px ${color}` : 'initial'};
-          cursor: ${notAllowed ? 'not-allowed' : 'pointer'};
+          cursor: ${disabled ? 'not-allowed' : 'pointer'};
           outline: none;
           border: none;
           padding: ${padding};
