@@ -12,11 +12,9 @@ import { THEMES, HIGHLIGHT_KEYS, COLORS, DEFAULT_THEME } from '../lib/constants'
 import { getThemes, saveThemes, capitalize, stringifyRGBA, generateId } from '../lib/util'
 
 const colorPickerStyle = {
-  picker: {
-    backgroundColor: COLORS.BLACK,
-    padding: 0,
-    margin: '4px'
-  }
+  backgroundColor: COLORS.BLACK,
+  padding: 0,
+  margin: '4px'
 }
 const colorPresets = []
 
