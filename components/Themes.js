@@ -311,6 +311,8 @@ class Themes extends React.PureComponent {
     this.props.updateTheme(id)
   }
 
+  itemWrapper = props => <ThemeItem {...props} onClick={this.removeTheme} />
+
   render() {
     const { theme, isVisible, toggleVisibility } = this.props
     const { name, themes, highlights, selected, preset } = this.state
@@ -333,7 +335,7 @@ class Themes extends React.PureComponent {
           inputValue={dropdownValue}
           selected={dropdownValue}
           list={dropdownList}
-          itemWrapper={props => <ThemeItem {...props} onClick={this.removeTheme} />}
+          itemWrapper={this.itemWrapper}
           onChange={this.handleDropdown}
           onOpen={isVisible && toggleVisibility}
         />
