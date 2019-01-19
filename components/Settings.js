@@ -203,7 +203,7 @@ class Settings extends React.PureComponent {
   state = {
     presets: DEFAULT_PRESETS,
     selectedMenu: 'Window',
-    showPresets: false,
+    showPresets: true,
     previousSettings: null,
     widthChanging: false
   }
