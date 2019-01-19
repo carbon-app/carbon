@@ -21,6 +21,15 @@ describe('Basic', () => {
     cy.contains('.container', '%')
   })
 
+  it("Should contain id's for CLI integrations to use", () => {
+    cy.get('#export-container').should('have.length', 1)
+    cy.get('.export-container').should('have.length', 1)
+    cy.get('#export-menu').should('have.length', 1)
+    cy.get('#export-menu').click()
+    cy.get('#export-png').should('have.length', 1)
+    cy.get('#export-svg').should('have.length', 1)
+  })
+
   /*
    * This test should only be run locally since it actually downloads a file
    * for verification.

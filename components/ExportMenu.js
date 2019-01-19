@@ -43,7 +43,7 @@ class ExportMenu extends React.PureComponent {
     const { exportSize, filename, isVisible, toggleVisibility } = this.props
 
     return (
-      <div className="export-menu-container">
+      <div className="export-menu-container" id="export-menu">
         <div className="flex">
           <Button
             border
@@ -104,6 +104,7 @@ class ExportMenu extends React.PureComponent {
                   hoverColor={COLORS.PURPLE}
                   color={COLORS.DARK_PURPLE}
                   onClick={this.handleExport('png')}
+                  id="export-png"
                 >
                   PNG
                 </Button>
@@ -112,6 +113,7 @@ class ExportMenu extends React.PureComponent {
                   hoverColor={COLORS.PURPLE}
                   color={COLORS.DARK_PURPLE}
                   onClick={this.handleExport('svg')}
+                  id="export-svg"
                 >
                   SVG
                 </Button>
