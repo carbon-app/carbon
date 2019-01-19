@@ -11,6 +11,15 @@ import RemoveIcon from './svg/Remove'
 import { THEMES, HIGHLIGHT_KEYS, COLORS, DEFAULT_THEME } from '../lib/constants'
 import { getThemes, saveThemes, capitalize, stringifyRGBA, generateId } from '../lib/util'
 
+const colorPickerStyle = {
+  picker: {
+    backgroundColor: COLORS.BLACK,
+    padding: 0,
+    margin: '4px'
+  }
+}
+const colorPresets = []
+
 const HighlightPicker = ({ title, onChange, color }) => (
   <div className="color-picker-container">
     <div className="color-picker-header">
@@ -19,14 +28,8 @@ const HighlightPicker = ({ title, onChange, color }) => (
     <ColorPicker
       color={color}
       onChange={onChange}
-      presets={[]}
-      style={{
-        picker: {
-          backgroundColor: COLORS.BLACK,
-          padding: 0,
-          margin: '4px'
-        }
-      }}
+      presets={colorPresets}
+      style={colorPickerStyle}
     />
     <style jsx>
       {`
@@ -217,21 +220,33 @@ const ThemeItem = ({ children, item, isSelected, onClick }) => (
 const themeIcon = <ThemeIcon />
 
 class Themes extends React.PureComponent {
-  constructor(props) {
-    super(props)
+  selectedTheme = DEFAULT_THEME
 
+  state = {
+    themes: THEMES,
+    preset: this.props.theme,
+    highlights: {},
+    name: 'Custom Theme',
+    selected: null
+  }
+
+  componentDidMount() {
     const storedThemes = getThemes(localStorage) || []
-    const themes = [...storedThemes, ...THEMES]
-    const highlights = themes.find(({ id }) => id === props.theme).highlights
 
-    this.state = {
-      preset: props.theme,
-      themes,
-      highlights,
-      name: `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length +
-        1}`,
-      selected: null
-    }
+    this.setState(({ themes }) => {
+      const newThemes = [...storedThemes, ...themes]
+
+      const name = `Custom Theme ${newThemes.filter(({ name }) => name.startsWith('Custom Theme'))
+        .length + 1}`
+
+      this.selectedTheme = newThemes.find(({ id }) => id === this.props.theme) || DEFAULT_THEME
+
+      return {
+        themes: newThemes,
+        highlights: this.selectedTheme.highlights,
+        name
+      }
+    })
   }
 
   applyPreset = preset =>
@@ -302,9 +317,7 @@ class Themes extends React.PureComponent {
     const { theme, isVisible, toggleVisibility } = this.props
     const { name, themes, highlights, selected, preset } = this.state
 
-    const dropdownValue = isVisible
-      ? { name }
-      : { id: theme, name: themes.find(({ id }) => id === theme).name }
+    const dropdownValue = isVisible ? { name } : { id: theme, name: this.selectedTheme.name }
 
     const dropdownList = [
       {
