@@ -44,12 +44,9 @@ class Dropdown extends React.PureComponent {
         if (changes.isOpen) {
           inputValue = ''
           this.props.onOpen && this.props.onOpen()
-        } else if (changes.isOpen === false) {
-          this.props.onClose && this.props.onClose()
-          if (!inputValue) {
-            // set on close
-            inputValue = this.props.selected.name
-          }
+        } else if (changes.isOpen === false && !inputValue) {
+          // set on close
+          inputValue = this.props.selected.name
         }
       }
 
