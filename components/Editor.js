@@ -30,10 +30,19 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
-  DEFAULT_PRESET_ID
+  DEFAULT_PRESET_ID,
+  MAX_PAYLOAD_SIZE
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
+import {
+  getSettings,
+  escapeHtml,
+  unescapeHtml,
+  formatCode,
+  omit,
+  isSafari,
+  sizeOf
+} from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
@@ -103,6 +112,8 @@ class Editor extends React.Component {
 
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
+
+    this.isSafari = isSafari()
   }
 
   componentWillUnmount() {
@@ -128,12 +139,7 @@ class Editor extends React.Component {
   ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
-    if (
-      this.props.api.image &&
-      navigator.userAgent.indexOf('Safari') !== -1 &&
-      navigator.userAgent.indexOf('Chrome') === -1 &&
-      isPNG
-    ) {
+    if (this.props.api.image && this.isSafari && isPNG) {
       const encodedState = serializeState(this.state)
       return this.props.api.image(encodedState)
     }
@@ -264,6 +270,12 @@ class Editor extends React.Component {
   }
 
   updateBackground({ photographer, ...changes } = {}) {
+    if (this.isSafari) {
+      this.disablePNG =
+        typeof changes.backgroundImage === 'string' &&
+        sizeOf(changes.backgroundImage) > MAX_PAYLOAD_SIZE
+    }
+
     if (photographer) {
       this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
@@ -370,6 +382,7 @@ class Editor extends React.Component {
                 onChange={this.updateSetting}
                 export={this.export}
                 exportSize={exportSize}
+                disablePNG={this.disablePNG}
               />
             </div>
           </Toolbar>
