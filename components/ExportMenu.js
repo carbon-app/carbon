@@ -40,7 +40,7 @@ class ExportMenu extends React.PureComponent {
   handleExport = format => () => this.props.export(format)
 
   render() {
-    const { exportSize, filename, isVisible, toggleVisibility } = this.props
+    const { exportSize, filename, isVisible, toggleVisibility, disablePNG } = this.props
 
     return (
       <div className="export-menu-container" id="export-menu">
@@ -98,16 +98,18 @@ class ExportMenu extends React.PureComponent {
             <div className="save-container">
               <span>Save as</span>
               <div>
-                <Button
-                  center
-                  margin="0 8px 0 0"
-                  hoverColor={COLORS.PURPLE}
-                  color={COLORS.DARK_PURPLE}
-                  onClick={this.handleExport('png')}
-                  id="export-png"
-                >
-                  PNG
-                </Button>
+                {!disablePNG && (
+                  <Button
+                    center
+                    margin="0 8px 0 0"
+                    hoverColor={COLORS.PURPLE}
+                    color={COLORS.DARK_PURPLE}
+                    onClick={this.handleExport('png')}
+                    id="export-png"
+                  >
+                    PNG
+                  </Button>
+                )}
                 <Button
                   center
                   hoverColor={COLORS.PURPLE}
