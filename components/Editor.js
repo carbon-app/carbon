@@ -30,8 +30,7 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
-  DEFAULT_PRESET_ID,
-  MAX_PAYLOAD_SIZE
+  DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
 import {
@@ -40,8 +39,7 @@ import {
   unescapeHtml,
   formatCode,
   omit,
-  isSafari,
-  sizeOf
+  verifyPayloadSize
 } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
@@ -113,7 +111,10 @@ class Editor extends React.Component {
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
 
-    this.isSafari = isSafari()
+    this.isSafari =
+      window.navigator &&
+      window.navigator.userAgent.indexOf('Safari') !== -1 &&
+      window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
   componentWillUnmount() {
@@ -271,9 +272,7 @@ class Editor extends React.Component {
 
   updateBackground({ photographer, ...changes } = {}) {
     if (this.isSafari) {
-      this.disablePNG =
-        typeof changes.backgroundImage === 'string' &&
-        sizeOf(changes.backgroundImage) > MAX_PAYLOAD_SIZE
+      this.disablePNG = !verifyPayloadSize(changes.backgroundImage)
     }
 
     if (photographer) {
