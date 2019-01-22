@@ -33,14 +33,7 @@ import {
   DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import {
-  getSettings,
-  escapeHtml,
-  unescapeHtml,
-  formatCode,
-  omit,
-  verifyPayloadSize
-} from '../lib/util'
+import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 import ThemeIcon from './svg/Theme'
 
@@ -426,6 +419,13 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
+}
+
+const MAX_PAYLOAD_SIZE = 5e6 // bytes
+function verifyPayloadSize(str) {
+  if (typeof str !== 'string') return true
+
+  return new Blob([str]).size < MAX_PAYLOAD_SIZE
 }
 
 function isImage(file) {
