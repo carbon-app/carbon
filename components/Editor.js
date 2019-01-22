@@ -17,15 +17,13 @@ import Toolbar from './Toolbar'
 import Overlay from './Overlay'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
+import Themes from './Themes'
 import {
   GA_TRACKING_ID,
-  THEMES,
-  THEMES_HASH,
   LANGUAGES,
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
-  DEFAULT_THEME,
   DEFAULT_EXPORT_SIZE,
   COLORS,
   EXPORT_SIZES_HASH,
@@ -37,9 +35,7 @@ import {
 import { serializeState, getQueryStringState } from '../lib/routing'
 import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
-import ThemeIcon from './svg/Theme'
 
-const themeIcon = <ThemeIcon />
 const languageIcon = <LanguageIcon />
 
 class Editor extends React.Component {
@@ -107,6 +103,11 @@ class Editor extends React.Component {
 
     window.addEventListener('offline', this.setOffline)
     window.addEventListener('online', this.setOnline)
+
+    this.isSafari =
+      window.navigator &&
+      window.navigator.userAgent.indexOf('Safari') !== -1 &&
+      window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
   componentWillUnmount() {
@@ -132,12 +133,7 @@ class Editor extends React.Component {
   ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
-    if (
-      this.props.api.image &&
-      navigator.userAgent.indexOf('Safari') !== -1 &&
-      navigator.userAgent.indexOf('Chrome') === -1 &&
-      isPNG
-    ) {
+    if (this.props.api.image && this.isSafari && isPNG) {
       const encodedState = serializeState(this.state)
       return this.props.api.image(encodedState)
     }
@@ -267,7 +263,7 @@ class Editor extends React.Component {
   }
 
   updateTheme(theme) {
-    this.updateSetting('theme', theme.id)
+    this.updateSetting('theme', theme)
   }
 
   updateLanguage(language) {
@@ -275,6 +271,10 @@ class Editor extends React.Component {
   }
 
   updateBackground({ photographer, ...changes } = {}) {
+    if (this.isSafari) {
+      this.disablePNG = !verifyPayloadSize(changes.backgroundImage)
+    }
+
     if (photographer) {
       this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
@@ -332,12 +332,7 @@ class Editor extends React.Component {
       <React.Fragment>
         <div className="editor">
           <Toolbar>
-            <Dropdown
-              icon={themeIcon}
-              selected={THEMES_HASH[theme] || DEFAULT_THEME}
-              list={THEMES}
-              onChange={this.updateTheme}
-            />
+            <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
             <Dropdown
               icon={languageIcon}
               selected={
@@ -381,6 +376,7 @@ class Editor extends React.Component {
                 onChange={this.updateSetting}
                 export={this.export}
                 exportSize={exportSize}
+                disablePNG={this.disablePNG}
               />
             </div>
           </Toolbar>
@@ -425,6 +421,13 @@ class Editor extends React.Component {
       </React.Fragment>
     )
   }
+}
+
+const MAX_PAYLOAD_SIZE = 5e6 // bytes
+function verifyPayloadSize(str) {
+  if (typeof str !== 'string') return true
+
+  return new Blob([str]).size < MAX_PAYLOAD_SIZE
 }
 
 function isImage(file) {

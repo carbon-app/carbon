@@ -4,18 +4,15 @@ import { SketchPicker } from 'react-color'
 import { COLORS } from '../lib/constants'
 
 const pickerStyle = {
-  picker: {
-    backgroundColor: COLORS.BLACK,
-    padding: '8px 8px 0',
-    margin: '0 auto 1px',
-    flex: '1 0 200px'
-  }
+  backgroundColor: COLORS.BLACK,
+  padding: '8px 8px 0',
+  margin: '0 auto 1px'
 }
 
-const ColorPicker = ({ onChange = () => {}, color, presets }) => (
+const ColorPicker = ({ onChange = () => {}, color, presets, style }) => (
   <React.Fragment>
     <SketchPicker
-      styles={pickerStyle}
+      styles={{ picker: style || pickerStyle }}
       color={color}
       onChangeComplete={onChange}
       presetColors={presets}

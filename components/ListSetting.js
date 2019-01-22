@@ -5,6 +5,11 @@ import { COLORS } from '../lib/constants'
 import { toggle } from '../lib/util'
 
 class ListSetting extends React.Component {
+  static defaultProps = {
+    onOpen: () => {},
+    onClose: () => {}
+  }
+
   state = { isVisible: false }
 
   select = id => {
@@ -13,7 +18,11 @@ class ListSetting extends React.Component {
     }
   }
 
-  toggle = () => this.setState(toggle('isVisible'))
+  toggle = () => {
+    const handler = this.state.isVisible ? this.props.onClose : this.props.onOpen
+    handler()
+    this.setState(toggle('isVisible'))
+  }
 
   renderListItems() {
     return this.props.items.map(item => (
@@ -45,15 +54,16 @@ class ListSetting extends React.Component {
   }
 
   render() {
-    const selectedItem = this.props.items.filter(item => item.id === this.props.selected)[0] || {}
+    const { items, selected, title, children } = this.props
+    const { isVisible } = this.state
+
+    const selectedItem = items.filter(item => item.id === selected)[0] || {}
+
     return (
       <div className="list-select-container">
-        <div
-          className={`display ${this.state.isVisible ? 'is-visible' : ''}`}
-          onClick={this.toggle}
-        >
-          <span className="label">{this.props.title}</span>
-          {this.props.children(selectedItem)}
+        <div className={`display ${isVisible ? 'is-visible' : ''}`} onClick={this.toggle}>
+          <span className="label">{title}</span>
+          {children(selectedItem)}
         </div>
         <div className="list">{this.renderListItems()}</div>
         <style jsx>
