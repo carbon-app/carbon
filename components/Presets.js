@@ -80,7 +80,7 @@ const Presets = React.memo(
           {show && (
             <Button
               margin="0 0 0 8px"
-              flex="0 0 48px"
+              flex="0 0 54px"
               color={COLORS.GRAY}
               hoverBackground="transparent"
               hoverColor={disabledCreate ? COLORS.GRAY : COLORS.SECONDARY}
@@ -143,10 +143,6 @@ const Presets = React.memo(
               color: ${COLORS.SECONDARY};
               width: 100%;
               align-items: center;
-            }
-
-            .settings-presets-header > span {
-              font-size: 14px;
             }
 
             .settings-presets-content {

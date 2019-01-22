@@ -43,7 +43,6 @@ const HighlightPicker = ({ title, onChange, color }) => (
           justify-content: center;
           align-items: center;
           padding: 8px 0;
-          font-size: 14px;
         }
       `}
     </style>
