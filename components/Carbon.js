@@ -1,4 +1,5 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import * as hljs from 'highlight.js'
 import ResizeObserver from 'resize-observer-polyfill'
 import debounce from 'lodash.debounce'
@@ -6,7 +7,6 @@ import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
 
 import WindowControls from '../components/WindowControls'
-import Watermark from '../components/svg/Watermark'
 import {
   COLORS,
   LANGUAGE_MODE_HASH,
@@ -14,6 +14,10 @@ import {
   THEMES_HASH,
   DEFAULT_SETTINGS
 } from '../lib/constants'
+
+const Watermark = dynamic(() => import('../components/svg/Watermark'), {
+  loading: () => null
+})
 
 class Carbon extends React.PureComponent {
   static defaultProps = {

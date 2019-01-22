@@ -6,11 +6,11 @@ import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
 import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
+import dynamic from 'next/dynamic'
 
 // Ours
 import Button from './Button'
 import Dropdown from './Dropdown'
-import BackgroundSelect from './BackgroundSelect'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
@@ -35,6 +35,10 @@ import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/
 import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
+
+const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
+  loading: () => null
+})
 
 class Editor extends React.Component {
   constructor(props) {
