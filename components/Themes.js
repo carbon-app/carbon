@@ -360,9 +360,9 @@ class Themes extends React.PureComponent {
               position: relative;
             }
 
-            :global(.CodeMirror) {
-              color: ${highlights.text};
-              background-color: ${highlights.background};
+            :global(.react-codemirror2 .CodeMirror) {
+              color: ${highlights.text} !important;
+              background-color: ${highlights.background} !important;
             }
 
             :global(.cm-string),
