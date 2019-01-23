@@ -59,6 +59,13 @@ class Editor extends React.Component {
     this.onDrop = this.onDrop.bind(this)
 
     this.innerRef = node => (this.carbonNode = node)
+    
+    // expose updateCode method
+    // why expose this?
+    // eg. for headless browser to generate image
+    if (typeof window !== "undefined") {
+      window.updateCode = this.updateCode.bind(this)
+    }
   }
 
   async componentDidMount() {
