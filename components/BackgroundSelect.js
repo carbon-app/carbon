@@ -29,7 +29,7 @@ class BackgroundSelect extends React.PureComponent {
     return (
       <div className="bg-select-container">
         <div className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}>
-          <div className="bg-color-container" onClick={toggleVisibility}>
+          <div role="button" tabIndex={0} className="bg-color-container" onClick={toggleVisibility}>
             <div className="bg-color-alpha" />
             <div className="bg-color" />
           </div>
@@ -43,6 +43,8 @@ class BackgroundSelect extends React.PureComponent {
           <div className="picker-tabs">
             {['color', 'image'].map(tab => (
               <div
+                role="button"
+                tabIndex={0}
                 key={tab}
                 className={`picker-tab ${mode === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}

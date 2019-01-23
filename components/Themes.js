@@ -192,7 +192,7 @@ const ThemeItem = ({ children, item, isSelected, onClick }) => (
   <div className="theme-item">
     {children}
     {item.custom && !isSelected && (
-      <div className="icon" onClick={onClick(item.id)}>
+      <div role="button" tabIndex={0} className="icon" onClick={onClick(item.id)}>
         <RemoveIcon color={COLORS.SECONDARY} />
       </div>
     )}

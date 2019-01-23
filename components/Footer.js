@@ -6,7 +6,9 @@ const Footer = () => (
   <footer role="contentinfo" className="mt3">
     <nav className="mt3">
       <Link href="/about">
-        <a className="link">about</a>
+        <a className="link" href="/about">
+          about
+        </a>
       </Link>
       <a className="link" href="https://github.com/dawnlabs/carbon/issues/new">
         send feedback

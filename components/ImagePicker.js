@@ -249,9 +249,7 @@ export default class ImagePicker extends React.Component {
           <div className="image-container">
             <div className="label">
               <span>Background image</span>
-              <a href="#" onClick={this.removeImage}>
-                &times;
-              </a>
+              <button onClick={this.removeImage}>&times;</button>
             </div>
             <ReactCrop
               src={this.props.imageDataURL}
@@ -267,6 +265,18 @@ export default class ImagePicker extends React.Component {
           </div>
           <style jsx>
             {`
+              button {
+                cursor: pointer;
+                color: inherit;
+                appearance: none;
+                border: none;
+                background: none;
+                display: block;
+                padding: 0;
+                margin: 0;
+                line-height: 16px;
+              }
+
               .settings-container img {
                 width: 100%;
               }

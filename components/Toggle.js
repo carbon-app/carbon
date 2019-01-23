@@ -12,7 +12,13 @@ class Toggle extends React.PureComponent {
 
   render() {
     return (
-      <div className={`toggle ${this.props.className}`} onClick={this.toggle}>
+      <div
+        role="checkbox"
+        tabIndex={0}
+        className={`toggle ${this.props.className}`}
+        onClick={this.toggle}
+        aria-checked={this.props.enabled}
+      >
         <span className="label">{this.props.label}</span>
         {this.props.enabled ? <Checkmark /> : <div className="checkmark-disabled" />}
         <style jsx>

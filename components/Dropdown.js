@@ -190,8 +190,7 @@ const SelectedItem = ({
 
   return (
     <span
-      {...getToggleButtonProps()}
-      tabIndex="0"
+      {...getToggleButtonProps({ tabIndex: 0 })}
       className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
     >
       <input
@@ -267,7 +266,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ite
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <li {...rest} role="option" className="dropdown-list-item">
+    <li {...rest} className="dropdown-list-item">
       {itemWrapper ? (
         itemWrapper({ children, color: itemColor, item, isSelected })
       ) : (
