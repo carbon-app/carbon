@@ -57,13 +57,14 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { color, selected, onChange, itemWrapper, icon, disableInput } = this.props
+    const { innerRef, color, selected, onChange, itemWrapper, icon, disableInput } = this.props
     const { itemsToShow, inputValue } = this.state
 
     const minWidth = calcMinWidth(itemsToShow)
 
     return (
       <Downshift
+        ref={innerRef}
         inputValue={inputValue}
         selectedItem={selected}
         defaultHighlightedIndex={itemsToShow.findIndex(it => it === selected)}

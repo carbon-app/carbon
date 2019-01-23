@@ -51,6 +51,8 @@ class Themes extends React.PureComponent {
     selected: null
   }
 
+  dropdown = React.createRef()
+
   componentDidMount() {
     const storedThemes = getThemes(localStorage) || []
 
@@ -76,9 +78,10 @@ class Themes extends React.PureComponent {
       highlights: themes.find(({ id }) => id === preset).highlights
     }))
 
-  handleDropdown = ({ id }) => {
+  handleChange = ({ id }) => {
     if (id === 'create') {
       this.props.toggleVisibility()
+      this.dropdown.current.closeMenu()
     } else {
       this.props.updateTheme(id)
     }
@@ -153,13 +156,14 @@ class Themes extends React.PureComponent {
     return (
       <div className="themes">
         <Dropdown
+          innerRef={this.dropdown}
           icon={themeIcon}
           disableInput={isVisible}
           inputValue={dropdownValue}
           selected={dropdownValue}
           list={dropdownList}
           itemWrapper={this.itemWrapper}
-          onChange={this.handleDropdown}
+          onChange={this.handleChange}
           onOpen={isVisible && toggleVisibility}
         />
         {isVisible && (
