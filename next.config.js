@@ -1,23 +1,32 @@
 // const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 // const withOffline = require('next-offline')
 
-module.exports = (/* phase  { defaultConfig } */) => {
-  const config = {
-    async exportPathMap() {
-      return {
-        '/about': { page: '/about' },
-        '/embed': { page: '/embed' },
-        '/index': { page: '/index' },
-        '/': { page: '/' }
-      }
+const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
+
+module.exports = withBundleAnalyzer({
+  analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+  bundleAnalyzerConfig: {
+    server: {
+      analyzerMode: 'static',
+      reportFilename: '../bundles/server.html'
     },
-    publicRuntimeConfig: {
-      API_URL:
-        process.env.NODE_ENV === 'production'
-          ? 'https://carbon-api.now.sh'
-          : 'http://localhost:4000'
+    browser: {
+      analyzerMode: 'static',
+      reportFilename: '../bundles/client.html'
     }
   }
 
-  return config
-}
+  // async exportPathMap() {
+  //   return {
+  //     '/about': { page: '/about' },
+  //     '/embed': { page: '/embed' },
+  //     '/index': { page: '/index' },
+  //     '/': { page: '/' }
+  //   }
+  // },
+  // publicRuntimeConfig: {
+  //   API_URL:
+  //     process.env.NODE_ENV === 'production' ? 'https://carbon-api.now.sh' : 'http://localhost:4000'
+  // },
+})
