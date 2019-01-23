@@ -17,6 +17,8 @@ class ThemeSelect extends React.Component {
       const Img = WINDOW_THEMES_MAP[theme]
       return (
         <div
+          role="button"
+          tabIndex={0}
           className={`theme ${this.props.selected === theme ? 'selected' : ''}`}
           key={theme}
           onClick={this.select.bind(null, theme)}
