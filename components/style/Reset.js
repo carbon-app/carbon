@@ -213,6 +213,12 @@ export default () => (
         top: -3.9%;
         left: -10%;
       }
+
+      /* include just until we have a keyboard navigation style system */
+      [role='button']:focus {
+        outline: none;
+      }
+
       @keyframes react-spinner_spin {
         0% {
           opacity: 1;
