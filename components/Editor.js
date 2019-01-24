@@ -4,7 +4,7 @@ import React from 'react'
 import domtoimage from 'dom-to-image'
 import Spinner from 'react-spinner'
 import dynamic from 'next/dynamic'
-import Dropzone from 'react-dropzone'
+import Dropzone from 'dropperx'
 
 // Ours
 import Button from './Button'
@@ -243,30 +243,15 @@ class Editor extends React.Component {
   }
 
   onDrop([file]) {
-    if (!file) return
-
-    const reader = new FileReader()
-
-    // TODO abstract this into Dropperx
-    reader.onload = event => {
-      file.content = event.target.result
-
-      if (isImage(file)) {
-        this.updateState({
-          backgroundImage: file.content,
-          backgroundImageSelection: null,
-          backgroundMode: 'image',
-          preset: null
-        })
-      } else {
-        this.updateState({ code: file.content, language: 'auto' })
-      }
-    }
-
     if (isImage(file)) {
-      reader.readAsDataURL(file)
+      this.updateState({
+        backgroundImage: file.content,
+        backgroundImageSelection: null,
+        backgroundMode: 'image',
+        preset: null
+      })
     } else {
-      reader.readAsText(file, 'UTF-8')
+      this.updateState({ code: file.content, language: 'auto' })
     }
   }
 
@@ -338,86 +323,82 @@ class Editor extends React.Component {
 
     return (
       <React.Fragment>
-        <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
-          {({ getRootProps, isDragAccept }) => {
-            const root = getRootProps()
-            return (
-              <div className="editor" {...root}>
-                <Toolbar>
-                  <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
-                  <Dropdown
-                    icon={languageIcon}
-                    selected={
-                      LANGUAGE_NAME_HASH[language] ||
-                      LANGUAGE_MIME_HASH[language] ||
-                      LANGUAGE_MODE_HASH[language] ||
-                      LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
-                    }
-                    list={LANGUAGES}
-                    onChange={this.updateLanguage}
-                  />
-                  <BackgroundSelect
-                    onChange={this.updateBackground}
-                    mode={backgroundMode}
-                    color={backgroundColor}
-                    image={backgroundImage}
-                    aspectRatio={aspectRatio}
-                  />
-                  <Settings
-                    {...config}
-                    onChange={this.updateSetting}
-                    resetDefaultSettings={this.resetDefaultSettings}
-                    format={this.format}
-                    applyPreset={this.applyPreset}
-                    getCarbonImage={this.getCarbonImage}
-                  />
-                  <div className="buttons">
-                    {this.props.api.tweet && online && (
-                      <Button
-                        border
-                        large
-                        padding="0 16px"
-                        margin="0 8px 0 0"
-                        onClick={this.upload}
-                        color="#57b5f9"
-                      >
-                        {uploading ? 'Loading...' : 'Tweet'}
-                      </Button>
-                    )}
-                    <ExportMenu
-                      onChange={this.updateSetting}
-                      export={this.export}
-                      exportSize={exportSize}
-                      disablePNG={this.disablePNG}
-                    />
-                  </div>
-                </Toolbar>
-
-                <Overlay
-                  isOver={isDragAccept}
-                  title={`Drop your file here to import ${isDragAccept ? '✋' : '✊'}`}
+        <div className="editor">
+          <Toolbar>
+            <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
+            <Dropdown
+              icon={languageIcon}
+              selected={
+                LANGUAGE_NAME_HASH[language] ||
+                LANGUAGE_MIME_HASH[language] ||
+                LANGUAGE_MODE_HASH[language] ||
+                LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
+              }
+              list={LANGUAGES}
+              onChange={this.updateLanguage}
+            />
+            <BackgroundSelect
+              onChange={this.updateBackground}
+              mode={backgroundMode}
+              color={backgroundColor}
+              image={backgroundImage}
+              aspectRatio={aspectRatio}
+            />
+            <Settings
+              {...config}
+              onChange={this.updateSetting}
+              resetDefaultSettings={this.resetDefaultSettings}
+              format={this.format}
+              applyPreset={this.applyPreset}
+              getCarbonImage={this.getCarbonImage}
+            />
+            <div className="buttons">
+              {this.props.api.tweet && online && (
+                <Button
+                  border
+                  large
+                  padding="0 16px"
+                  margin="0 8px 0 0"
+                  onClick={this.upload}
+                  color="#57b5f9"
                 >
-                  {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
-                  <Carbon
-                    key={language}
-                    config={this.state}
-                    updateCode={this.updateCode}
-                    onAspectRatioChange={this.updateAspectRatio}
-                    titleBar={titleBar}
-                    updateTitleBar={this.updateTitleBar}
-                    innerRef={this.innerRef}
-                  >
-                    {code != null ? code : DEFAULT_CODE}
-                  </Carbon>
-                </Overlay>
-              </div>
-            )
-          }}
-        </Dropzone>
+                  {uploading ? 'Loading...' : 'Tweet'}
+                </Button>
+              )}
+              <ExportMenu
+                onChange={this.updateSetting}
+                export={this.export}
+                exportSize={exportSize}
+                disablePNG={this.disablePNG}
+              />
+            </div>
+          </Toolbar>
+
+          <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
+            {({ canDrop }) => (
+              <Overlay
+                isOver={canDrop}
+                title={`Drop your file here to import ${canDrop ? '✋' : '✊'}`}
+              >
+                {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
+                <Carbon
+                  key={language}
+                  config={this.state}
+                  updateCode={this.updateCode}
+                  onAspectRatioChange={this.updateAspectRatio}
+                  titleBar={titleBar}
+                  updateTitleBar={this.updateTitleBar}
+                  innerRef={this.innerRef}
+                >
+                  {code != null ? code : DEFAULT_CODE}
+                </Carbon>
+              </Overlay>
+            )}
+          </Dropzone>
+        </div>
         <style jsx>
           {`
             .editor {
-              outline: none;
               background: ${COLORS.BLACK};
               border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;

@@ -2645,6 +2645,13 @@ downshift@^3.1.12:
     prop-types "^15.6.0"
     react-is "^16.5.2"
 
+dropperx@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/dropperx/-/dropperx-1.0.1.tgz#1babe42121fa8f4d8855ab515d9d078b4c41a9c5"
+  integrity sha512-xycbCU3uYxWjoa4ZGJQtqC1YheSvpJDkRk44WSK5EJq39fQVXDbY9ZLeCcG0XgQvg2UHB3/sB0VQ+CvZqZ3MMw==
+  dependencies:
+    react-dropzone "^8.0.3"
+
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-3.6.1.tgz#b1a7a29c4abfd639585efaecce80d666b1e34125"
