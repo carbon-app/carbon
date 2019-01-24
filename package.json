@@ -26,7 +26,6 @@
     "cross-env": "^5.2.0",
     "dom-to-image": "^2.5.2",
     "downshift": "^3.1.12",
-    "dropperx": "0.2.1",
     "escape-goat": "^1.3.0",
     "graphql": "^14.1.1",
     "highlight.js": "^9.13.1",
@@ -43,9 +42,8 @@
     "react-codemirror2": "^5.1.0",
     "react-color": "^2.17.0",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dnd": "^5.0.0",
-    "react-dnd-html5-backend": "^5.0.0",
     "react-dom": "^16.7.0",
+    "react-dropzone": "^8.0.3",
     "react-image-crop": "6.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
@@ -81,7 +79,6 @@
         ],
         "ignore": [
           "graphql",
-          "react-dnd-html5-backend",
           "react-dom",
           "webpack"
         ]
