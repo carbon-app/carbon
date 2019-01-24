@@ -5,7 +5,7 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
@@ -13,14 +13,15 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  plugins: ['react', 'import'],
+  plugins: ['react', 'import', 'jsx-a11y'],
   rules: {
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'import/no-unresolved': 'error',
-    'no-duplicate-imports': 'error'
+    'no-duplicate-imports': 'error',
+    'jsx-a11y/click-events-have-key-events': 'off'
   },
   settings: {
     react: {

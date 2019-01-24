@@ -20,3 +20,6 @@ comments:
     pattern: /duplicate of/i
     labels: 
       - duplicate
+
+merges:
+  - action: delete_branch

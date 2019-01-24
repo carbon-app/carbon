@@ -26,7 +26,13 @@ class ListSetting extends React.Component {
 
   renderListItems() {
     return this.props.items.map(item => (
-      <div className="list-item" key={item.id} onClick={this.select.bind(null, item.id)}>
+      <div
+        role="button"
+        tabIndex={0}
+        className="list-item"
+        key={item.id}
+        onClick={this.select.bind(null, item.id)}
+      >
         {this.props.children(item, this.props.selected)}
         {this.props.selected === item.id ? <Checkmark /> : null}
         <style jsx>
@@ -61,7 +67,12 @@ class ListSetting extends React.Component {
 
     return (
       <div className="list-select-container">
-        <div className={`display ${isVisible ? 'is-visible' : ''}`} onClick={this.toggle}>
+        <div
+          role="button"
+          tabIndex={0}
+          className={`display ${isVisible ? 'is-visible' : ''}`}
+          onClick={this.toggle}
+        >
           <span className="label">{title}</span>
           {children(selectedItem)}
         </div>

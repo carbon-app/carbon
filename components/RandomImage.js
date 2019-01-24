@@ -83,8 +83,12 @@ class RandomImage extends React.Component {
     return (
       <div className="random-image-container">
         <div className="controls">
-          <span onClick={this.selectImage}>Use Image</span>
-          <span onClick={this.nextImage}>Try Another</span>
+          <span role="button" tabIndex={0} onClick={this.selectImage}>
+            Use Image
+          </span>
+          <span role="button" tabIndex={0} onClick={this.nextImage}>
+            Try Another
+          </span>
         </div>
         <div className="image">{this.state.loading && <Spinner />}</div>
         {photographer && <PhotoCredit photographer={photographer} />}
