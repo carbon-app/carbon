@@ -188,7 +188,7 @@ class Themes extends React.PureComponent {
               position: relative;
             }
 
-            :global(.react-codemirror2 .CodeMirror) {
+            :global(.CodeMirror__container .CodeMirror) {
               color: ${highlights.text} !important;
               background-color: ${highlights.background} !important;
             }
@@ -225,6 +225,28 @@ class Themes extends React.PureComponent {
             }
             :global(.cm-attribute) {
               color: ${highlights.attribute} !important;
+            }
+
+            :global(.cm-s-dracula .CodeMirror-cursor) {
+              border-left: solid 2px #159588 !important;
+            }
+
+            :global(.cm-s-solarized) {
+              box-shadow: none !important;
+            }
+
+            :global(.cm-s-solarized.cm-s-light) {
+              text-shadow: #eee8d5 0 1px !important;
+            }
+
+            :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumber),
+            :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumbers) {
+              background-color: #fdf6e3 !important;
+            }
+
+            :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumber),
+            :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumbers) {
+              background-color: #002b36 !important;
             }
           `}
         </style>
