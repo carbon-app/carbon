@@ -150,7 +150,9 @@ class Editor extends React.Component {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
         if (node.innerText && node.innerText.match(/%[A-Za-z0-9]{2}/)) {
           map.set(node, node.innerText)
-          node.innerText = encodeURIComponent(node.innerText)
+          node.innerText.match(/%[A-Za-z0-9]{2}/g).forEach(t => {
+            node.innerText = node.innerText.replace(t, encodeURIComponent(t))
+          })
         }
       })
     }
