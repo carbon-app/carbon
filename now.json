@@ -12,7 +12,8 @@
   ],
   "build": {
     "env": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "API_URL": "@carbon_api_url"
     }
   },
   "github": {
