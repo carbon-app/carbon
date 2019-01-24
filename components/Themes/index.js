@@ -220,6 +220,12 @@ class Themes extends React.PureComponent {
             :global(.cm-meta) {
               color: ${highlights.meta} !important;
             }
+            :global(.cm-operator) {
+              color: ${highlights.operator} !important;
+            }
+            :global(.cm-attribute) {
+              color: ${highlights.attribute} !important;
+            }
           `}
         </style>
       </div>
