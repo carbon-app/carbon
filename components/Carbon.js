@@ -1,7 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import * as hljs from 'highlight.js'
-import ResizeObserver from 'resize-observer-polyfill'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
@@ -22,16 +21,21 @@ const Watermark = dynamic(() => import('../components/svg/Watermark'), {
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onAspectRatioChange: () => {},
-    updateCode: () => {},
+    onChange: () => {},
     innerRef: () => {}
   }
 
   componentDidMount() {
-    const ro = new ResizeObserver(entries => {
-      const cr = entries[0].contentRect
-      this.props.onAspectRatioChange(cr.width / cr.height)
+    const node = this.exportContainerNode
+    this.mo = new MutationObserver(() => {
+      const ratio = node.clientWidth / node.clientHeight
+      this.props.onAspectRatioChange(ratio)
     })
-    ro.observe(this.exportContainerNode)
+    this.mo.observe(node, { attributes: true, childList: true, subtree: true })
+  }
+
+  componentWillUnmount() {
+    this.mo.disconnect()
   }
 
   handleLanguageChange = debounce(
@@ -58,7 +62,7 @@ class Carbon extends React.PureComponent {
 
   onBeforeChange = (editor, meta, code) => {
     if (!this.props.readOnly) {
-      this.props.updateCode(code)
+      this.props.onChange(code)
     }
   }
 
