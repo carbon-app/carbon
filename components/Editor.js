@@ -2,12 +2,10 @@
 import ReactGA from 'react-ga'
 import url from 'url'
 import React from 'react'
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
 import domtoimage from 'dom-to-image'
-import ReadFileDropContainer, { DATA_URL, TEXT } from 'dropperx'
 import Spinner from 'react-spinner'
 import dynamic from 'next/dynamic'
+import Dropzone from 'dropperx'
 
 // Ours
 import Button from './Button'
@@ -387,11 +385,11 @@ class Editor extends React.Component {
             </div>
           </Toolbar>
 
-          <ReadFileDropContainer readAs={readAs} onDrop={this.onDrop}>
-            {({ isOver, canDrop }) => (
+          <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
+            {({ canDrop }) => (
               <Overlay
-                isOver={isOver || canDrop}
-                title={`Drop your file here to import ${isOver ? '✋' : '✊'}`}
+                isOver={canDrop}
+                title={`Drop your file here to import ${canDrop ? '✋' : '✊'}`}
               >
                 {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
                 <Carbon
@@ -407,7 +405,7 @@ class Editor extends React.Component {
                 </Carbon>
               </Overlay>
             )}
-          </ReadFileDropContainer>
+          </Dropzone>
         </div>
         <style jsx>
           {`
@@ -440,17 +438,10 @@ function isImage(file) {
   return file.type.split('/')[0] === 'image'
 }
 
-function readAs(file) {
-  if (isImage(file)) {
-    return DATA_URL
-  }
-  return TEXT
-}
-
 Editor.defaultProps = {
   api: {},
   onUpdate: () => {},
   onReset: () => {}
 }
 
-export default DragDropContext(HTML5Backend)(Editor)
+export default Editor
