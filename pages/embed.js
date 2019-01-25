@@ -114,7 +114,7 @@ class Embed extends React.Component {
             config={this.state}
             readOnly={this.state.readOnly}
             copyable={this.state.copyable}
-            updateCode={this.updateCode}
+            onChange={this.updateCode}
           >
             {this.state.code}
           </Carbon>

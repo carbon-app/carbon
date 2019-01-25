@@ -395,7 +395,7 @@ class Editor extends React.Component {
                 <Carbon
                   key={language}
                   config={this.state}
-                  updateCode={this.updateCode}
+                  onChange={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={titleBar}
                   updateTitleBar={this.updateTitleBar}

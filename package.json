@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.8.8",
+  "version": "3.8.9",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -48,7 +48,6 @@
     "react-image-crop": "6.0.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
-    "resize-observer-polyfill": "^1.5.1",
     "tohash": "^1.0.2",
     "url": "^0.11.0"
   },
