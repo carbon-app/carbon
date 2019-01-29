@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { THEMES, THEMES_HASH, GA_TRACKING_ID } from '../lib/constants'
+import { THEMES, THEMES_HASH } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
@@ -86,19 +86,6 @@ export default function Meta() {
       {onBrowser
         ? CDN_STYLESHEETS.map(theme => <StylesheetLink key={theme.id} theme={theme.id} />)
         : null}
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-        window.dataLayer = window.dataLayer || []
-        function gtag(){
-          dataLayer.push(arguments)
-        }
-        gtag('js', new Date())
-        gtag('config', '${GA_TRACKING_ID}')
-      `
-        }}
-      />
       <Reset />
       <Font />
       <Typography />
