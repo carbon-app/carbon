@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 /* global cy Cypress */
 import { editorVisible } from '../support'
 describe('Gist', () => {

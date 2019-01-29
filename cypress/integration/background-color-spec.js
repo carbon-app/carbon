@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 /* global cy */
 import { editorVisible } from '../support'
 
