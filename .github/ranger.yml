@@ -1,12 +1,14 @@
+default:
+  close:
+    comment: ⚠️ This issue has been marked as a $LABEL. It will be closed in $DELAY...
+    delay: 1 days
+
 labels:
   "merge when passing": merge
   wontfix: close
   invalid: close
   stale: close
-  duplicate:
-    action: close
-    delay: 1 days
-    comment: This issue has been marked as a $LABEL. It will be closed in $DELAY...
+  duplicate: close
   "theme/language":
     action: close
     delay: 5 days
