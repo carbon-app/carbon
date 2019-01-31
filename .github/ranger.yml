@@ -6,7 +6,7 @@ labels:
   duplicate:
     action: close
     delay: 1 days
-    comment: This issue has been marked as a $LABEL. It will be closed in $DELAY . . .
+    comment: This issue has been marked as a $LABEL. It will be closed in $DELAY...
   "theme/language":
     action: close
     delay: 5 days
