@@ -416,6 +416,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "MatthewNielsen27",
+      "name": "Matthew Nielsen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/35040439?v=4",
+      "profile": "http://matthewnielsen.ca",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
