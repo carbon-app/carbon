@@ -2626,10 +2626,10 @@ domain-browser@^1.1.1:
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
 
-downshift@^3.1.12:
-  version "3.1.13"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-3.1.13.tgz#0535be2c90323675233aba00fe1859ab39dec604"
-  integrity sha512-xXqgnH/bwyAOnliGoDq0kCbmKxhnuX9sz9SpuS8am9FBeg+pI8heLXh2VTOnxjcx8xdvN9CdiyHumBTmOmAWjw==
+downshift@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-3.2.2.tgz#5a51112cb19c4d2d611c27d5d27ff4d6fcdb1f69"
+  integrity sha512-z4rkPnfC/ax1LnZkipQOlEu8WSDKduPudRjurlU85Qxy39eeY1ArAi0xU24qXcxd27bMS81mBMgkH7X/pEH2GA==
   dependencies:
     "@babel/runtime" "^7.1.2"
     compute-scroll-into-view "^1.0.9"
@@ -3656,10 +3656,15 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-highlight.js@^9.12.0, highlight.js@^9.13.1:
+highlight.js@^9.12.0:
   version "9.13.1"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.13.1.tgz#054586d53a6863311168488a0f58d6c505ce641e"
   integrity sha512-Sc28JNQNDzaH6PORtRLMvif9RSn1mYuOoX3omVjnb0+HbpPygU2ALBI0R/wsiqCb4/fcp07Gdo8g+fhtFrQl6A==
+
+highlight.js@^9.14.2:
+  version "9.14.2"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.14.2.tgz#efbfb22dc701406e4da406056ef8c2b70ebe5b26"
+  integrity sha512-Nc6YNECYpxyJABGYJAyw7dBAYbXEuIzwzkqoJnwbc1nIpCiN+3ioYf0XrBnLiyyG0JLuJhpPtt2iTSbXiKLoyA==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5570,10 +5575,10 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@^1.14.3:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.1.tgz#534c2c9d7853f8845e5e078384e71973bd74089f"
-  integrity sha512-XXUITwIkGb3CPJ2hforHah/zTINRyie5006Jd2HKy2qz7snEJXl0KLfsJZW/wst9g6R2rFvqba3VpNYdu1hDcA==
+prettier@^1.16.4:
+  version "1.16.4"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
+  integrity sha512-ZzWuos7TI5CKUeQAtFd6Zhm2s6EpAD/ZLApIhsF9pRvRtM1RFo61dM/4MSRUA0SuLugA/zgrZD8m0BaY46Og7g==
 
 pretty-bytes@^4.0.2:
   version "4.0.2"
