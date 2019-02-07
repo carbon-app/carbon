@@ -68,16 +68,14 @@ export const MetaTags = () => (
  * Before supporting <link rel="preload"> verify that it is widely supported in FireFox
  * with out a flag here: https://caniuse.com/#feat=link-rel-preload
  */
-export default function Meta() {
+export const MetaLinks = () => {
   const onBrowser = typeof window !== 'undefined'
   return (
-    <div className="meta">
+    <React.Fragment>
       <Head>
-        <title>Carbon</title>
         <link rel="stylesheet" href="/static/react-crop.css" />
+        <link rel="stylesheet" href="/static/fonts/dank-mono.css" />
       </Head>
-      <MetaTags />
-      <link rel="stylesheet" href="/static/fonts/dank-mono.css" />
       <StylesheetLink theme="seti" />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (
@@ -86,16 +84,23 @@ export default function Meta() {
       {onBrowser
         ? CDN_STYLESHEETS.map(theme => <StylesheetLink key={theme.id} theme={theme.id} />)
         : null}
-      <Reset />
-      <Font />
-      <Typography />
-      <style jsx>
-        {`
-          .meta {
-            display: none;
-          }
-        `}
-      </style>
-    </div>
+    </React.Fragment>
+  )
+}
+
+export const Styles = () => (
+  <React.Fragment>
+    <Reset />
+    <Font />
+    <Typography />
+  </React.Fragment>
+)
+
+export default function Meta() {
+  return (
+    <React.Fragment>
+      <MetaTags />
+      <Styles />
+    </React.Fragment>
   )
 }
