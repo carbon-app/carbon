@@ -1,6 +1,6 @@
 import React from 'react'
+import { useCopyTextHandler } from '@dawnlabs/tacklebox'
 
-import CopyButton from './CopyButton'
 import { COLORS } from '../lib/constants'
 import { Controls, ControlsBW } from './svg/Controls'
 import CopySVG from './svg/Copy'
@@ -8,9 +8,11 @@ import CheckMark from './svg/Checkmark'
 
 const size = 24
 
-function renderCopyButton({ copied }) {
+const CopyButton = React.memo(function CopyButton({ text }) {
+  const { onClick, copied } = useCopyTextHandler(text)
+
   return (
-    <button aria-label="Copy Button">
+    <button onClick={onClick} aria-label="Copy Button">
       {copied ? (
         <CheckMark color={COLORS.GRAY} width={size} height={size} />
       ) : (
@@ -32,7 +34,7 @@ function renderCopyButton({ copied }) {
       </style>
     </button>
   )
-}
+})
 
 export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
   <div className="window-controls">
@@ -48,7 +50,7 @@ export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
     </div>
     {copyable && (
       <div className="copy-button">
-        <CopyButton text={code}>{renderCopyButton}</CopyButton>
+        <CopyButton text={code} />
       </div>
     )}
     <style jsx>

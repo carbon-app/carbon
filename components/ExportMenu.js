@@ -1,10 +1,10 @@
 import React from 'react'
 import { withRouter } from 'next/router'
+import { useCopyTextHandler } from '@dawnlabs/tacklebox'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
 import Input from './Input'
-import CopyButton from './CopyButton'
 import Popout, { managePopout } from './Popout'
 
 const toIFrame = url =>
@@ -17,15 +17,15 @@ const toIFrame = url =>
 
 const CopyEmbed = withRouter(
   React.memo(
-    ({ router: { asPath } }) => (
-      <CopyButton text={toIFrame(asPath)}>
-        {({ copied }) => (
-          <Button center color={COLORS.PURPLE} padding="12px 16px" flex="1 0 68px">
-            {copied ? 'Copied!' : 'Copy Embed'}
-          </Button>
-        )}
-      </CopyButton>
-    ),
+    ({ router: { asPath } }) => {
+      const { onClick, copied } = useCopyTextHandler(toIFrame(asPath))
+
+      return (
+        <Button onClick={onClick} center color={COLORS.PURPLE} padding="12px 16px" flex="1 0 68px">
+          {copied ? 'Copied!' : 'Copy Embed'}
+        </Button>
+      )
+    },
     (prevProps, nextProps) => prevProps.router.asPath === nextProps.router.asPath
   )
 )
