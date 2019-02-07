@@ -1,20 +1,59 @@
 {
   "name": "carbon",
   "version": 2,
-  "public": true,
-  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" },
+    { "src": "api/image.js", "use": "@now/node@canary", "config": { "maxLambdaSize": "40mb" } },
+    { "src": "api/**/*.js", "use": "@now/node" }
+  ],
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
     { "src": "^/_next/(.*)", "dest": "/_next/$1" },
     { "src": "^/static/(.*)", "dest": "/static/$1" },
+    {
+      "src": "/api/oembed",
+      "dest": "api/oembed.js",
+      "headers": { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*" }
+    },
+    {
+      "src": "/api/twitter",
+      "dest": "api/twitter.js",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/api/unsplash/download/(?<id>[^/]*)",
+      "dest": "api/unsplash/download.js?id=$id",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api/unsplash/random",
+      "dest": "api/unsplash/random.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/api/image",
+      "dest": "api/image.js",
+      "methods": ["POST"]
+    },
+    { "src": "/api/.*", "status": 404 },
     { "src": "^/(.*)", "dest": "/index.html" }
   ],
   "build": {
     "env": {
-      "NODE_ENV": "production",
-      "API_URL": "@carbon_api_url"
+      "NODE_ENV": "production"
     }
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "TWITTER_CONSUMER_KEY": "@twitter-consumer-key",
+    "TWITTER_CONSUMER_SECRET": "@twitter-consumer-secret",
+    "TWITTER_ACCESS_TOKEN_KEY": "@twitter-access-token-key",
+    "TWITTER_ACCESS_TOKEN_SECRET": "@twitter-access-token-secret",
+    "LOGS_SECRET_PREFIX": "@logs_secret_prefix",
+    "UNSPLASH_SECRET_KEY": "@unsplash_secret_key",
+    "UNSPLASH_ACCESS_KEY": "@unsplash_access_key",
+    "UNSPLASH_CALLBACK_URL": "@unsplash_callback_url"
   },
   "github": {
     "autoAlias": false,
