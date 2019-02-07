@@ -14,7 +14,7 @@ module.exports = {
     },
     sourceType: 'module'
   },
-  plugins: ['react', 'import', 'jsx-a11y'],
+  plugins: ['react', 'import', 'jsx-a11y', 'react-hooks'],
   rules: {
     'react/prop-types': 'off',
     'react/display-name': 'off',
@@ -22,7 +22,8 @@ module.exports = {
     'react/jsx-uses-vars': 'error',
     'import/no-unresolved': 'error',
     'no-duplicate-imports': 'error',
-    'jsx-a11y/click-events-have-key-events': 'off'
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'react-hooks/rules-of-hooks': 'error'
   },
   settings: {
     react: {
