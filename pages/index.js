@@ -5,6 +5,7 @@ import { withRouter } from 'next/router'
 // Ours
 import Editor from '../components/Editor'
 import Page from '../components/Page'
+import { MetaLinks } from '../components/Meta'
 import api from '../lib/api'
 import { updateQueryString } from '../lib/routing'
 import { saveSettings, clearSettings, omit } from '../lib/util'
@@ -23,6 +24,7 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
+        <MetaLinks />
         <Editor
           router={this.props.router}
           onUpdate={this.onEditorUpdate}
