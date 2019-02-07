@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 
 // Ours
-import Button from './Button'
 import Dropdown from './Dropdown'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
@@ -15,6 +14,7 @@ import Overlay from './Overlay'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
+import TweetButton from './TweetButton'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -44,7 +44,6 @@ class Editor extends React.Component {
     this.state = {
       ...DEFAULT_SETTINGS,
       loading: true,
-      uploading: false,
       code: props.content,
       online: true,
       preset: DEFAULT_PRESET_ID
@@ -234,12 +233,9 @@ class Editor extends React.Component {
   }
 
   upload() {
-    this.updateState({ uploading: true })
-    this.getCarbonImage({ format: 'png' })
-      .then(this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE))
-      // eslint-disable-next-line
-      .catch(console.error)
-      .then(() => this.updateState({ uploading: false }))
+    this.getCarbonImage({ format: 'png' }).then(
+      this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE)
+    )
   }
 
   onDrop([file]) {
@@ -297,7 +293,6 @@ class Editor extends React.Component {
       backgroundImage,
       backgroundMode,
       aspectRatio,
-      uploading,
       online,
       titleBar,
       code,
@@ -353,18 +348,7 @@ class Editor extends React.Component {
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
-              {this.props.api.tweet && online && (
-                <Button
-                  border
-                  large
-                  padding="0 16px"
-                  margin="0 8px 0 0"
-                  onClick={this.upload}
-                  color="#57b5f9"
-                >
-                  {uploading ? 'Loading...' : 'Tweet'}
-                </Button>
-              )}
+              {this.props.api.tweet && online && <TweetButton onClick={this.upload} />}
               <ExportMenu
                 onChange={this.updateSetting}
                 export={this.export}
