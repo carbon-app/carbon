@@ -43,9 +43,8 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
-      loading: true,
-      code: props.content,
-      preset: DEFAULT_PRESET_ID
+      preset: DEFAULT_PRESET_ID,
+      loading: true
     }
 
     this.export = this.export.bind(this)
