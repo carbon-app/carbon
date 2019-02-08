@@ -55,8 +55,6 @@ class Editor extends React.Component {
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
-
-    this.innerRef = node => (this.carbonNode = node)
   }
 
   async componentDidMount() {
@@ -99,6 +97,8 @@ class Editor extends React.Component {
       window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
+  carbonNode = React.createRef()
+
   updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
@@ -120,7 +120,7 @@ class Editor extends React.Component {
       return this.props.api.image(encodedState)
     }
 
-    const node = this.carbonNode
+    const node = this.carbonNode.current
 
     const map = new Map()
     const undoMap = value => {
@@ -340,7 +340,7 @@ class Editor extends React.Component {
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={titleBar}
                   updateTitleBar={this.updateTitleBar}
-                  innerRef={this.innerRef}
+                  ref={this.carbonNode}
                 >
                   {code != null ? code : DEFAULT_CODE}
                 </Carbon>
