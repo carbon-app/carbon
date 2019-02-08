@@ -45,7 +45,6 @@ class Editor extends React.Component {
       ...DEFAULT_SETTINGS,
       loading: true,
       code: props.content,
-      online: true,
       preset: DEFAULT_PRESET_ID
     }
 
@@ -87,8 +86,7 @@ class Editor extends React.Component {
       ...getSettings(localStorage),
       // and then URL params
       ...initialState,
-      loading: false,
-      online: Boolean(window && window.navigator && window.navigator.onLine)
+      loading: false
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -98,18 +96,10 @@ class Editor extends React.Component {
 
     this.updateState(newState)
 
-    window.addEventListener('offline', this.setOffline)
-    window.addEventListener('online', this.setOnline)
-
     this.isSafari =
       window.navigator &&
       window.navigator.userAgent.indexOf('Safari') !== -1 &&
       window.navigator.userAgent.indexOf('Chrome') === -1
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('offline', this.setOffline)
-    window.removeEventListener('online', this.setOnline)
   }
 
   updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
@@ -117,8 +107,6 @@ class Editor extends React.Component {
   updateCode = code => this.updateState({ code })
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
   updateTitleBar = titleBar => this.updateState({ titleBar })
-  setOffline = () => this.updateState({ online: false })
-  setOnline = () => this.updateState({ online: true })
 
   async getCarbonImage(
     {
@@ -293,7 +281,6 @@ class Editor extends React.Component {
       backgroundImage,
       backgroundMode,
       aspectRatio,
-      online,
       titleBar,
       code,
       exportSize
@@ -348,7 +335,7 @@ class Editor extends React.Component {
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
-              {this.props.api.tweet && online && <TweetButton onClick={this.upload} />}
+              {this.props.api.tweet && <TweetButton onClick={this.upload} />}
               <ExportMenu
                 onChange={this.updateSetting}
                 export={this.export}
