@@ -1,6 +1,6 @@
 import React from 'react'
 
-const key = 'CARBON_DAWN_TOAST'
+const key = 'CARBON_CTA'
 
 class Toast extends React.Component {
   state = {
@@ -13,6 +13,7 @@ class Toast extends React.Component {
   }
 
   componentDidMount() {
+    window.localStorage.removeItem('CARBON_DAWN_TOAST')
     if (!window.localStorage.getItem(key)) {
       this.setState({ open: true })
     }
