@@ -2,7 +2,6 @@
 import url from 'url'
 import React from 'react'
 import domtoimage from 'dom-to-image'
-import Spinner from 'react-spinner'
 import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 
@@ -15,6 +14,7 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
+import SpinnerWrapper from './SpinnerWrapper'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -43,8 +43,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
-      preset: DEFAULT_PRESET_ID,
-      loading: true
+      preset: DEFAULT_PRESET_ID
     }
 
     this.export = this.export.bind(this)
@@ -84,8 +83,7 @@ class Editor extends React.Component {
       // Load from localStorage
       ...getSettings(localStorage),
       // and then URL params
-      ...initialState,
-      loading: false
+      ...initialState
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -273,7 +271,6 @@ class Editor extends React.Component {
 
   render() {
     const {
-      loading,
       theme,
       language,
       backgroundColor,
@@ -285,25 +282,10 @@ class Editor extends React.Component {
       exportSize
     } = this.state
 
-    if (loading) {
-      return (
-        <div>
-          <Spinner />
-          <style jsx>
-            {`
-              div {
-                height: 160px;
-              }
-            `}
-          </style>
-        </div>
-      )
-    }
-
     const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
 
     return (
-      <React.Fragment>
+      <SpinnerWrapper>
         <div className="editor">
           <Toolbar>
             <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
@@ -381,7 +363,7 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </React.Fragment>
+      </SpinnerWrapper>
     )
   }
 }
