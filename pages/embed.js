@@ -78,7 +78,7 @@ class Embed extends React.Component {
         // Used by embed provider
         src: window.location.toString(),
         context: 'iframe.resize',
-        height: this.ref.current.exportContainerNode.offsetHeight
+        height: this.ref.current.offsetHeight
       }),
       '*'
     )
