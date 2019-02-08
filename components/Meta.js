@@ -72,9 +72,6 @@ export const MetaLinks = () => {
   const onBrowser = typeof window !== 'undefined'
   return (
     <React.Fragment>
-      <Head>
-        <link rel="stylesheet" href="/static/react-crop.css" />
-      </Head>
       <StylesheetLink theme="seti" />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (

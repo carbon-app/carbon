@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 
 import RandomImage, { downloadThumbnailImage } from './RandomImage'
@@ -308,6 +309,9 @@ export default class ImagePicker extends React.Component {
 
     return (
       <div className="image-picker-container">
+        <Head>
+          <link rel="stylesheet" href="/static/react-crop.css" />
+        </Head>
         {content}
         <style jsx>
           {`
