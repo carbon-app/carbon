@@ -14,7 +14,6 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
-import SpinnerWrapper from './SpinnerWrapper'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -285,7 +284,7 @@ class Editor extends React.Component {
     const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
 
     return (
-      <SpinnerWrapper>
+      <>
         <div className="editor">
           <Toolbar>
             <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
@@ -363,7 +362,7 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </SpinnerWrapper>
+      </>
     )
   }
 }
