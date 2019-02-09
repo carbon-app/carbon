@@ -85,7 +85,7 @@ export default ({ titleBar, theme, handleTitleBarChange, copyable, code }) => (
         .copy-button {
           cursor: pointer;
           position: absolute;
-          top: 20px;
+          top: 0px;
           right: 16px;
         }
       `}
