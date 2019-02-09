@@ -15,7 +15,8 @@ export default function SpinnerWrapper(props) {
         <style jsx>
           {`
             div {
-              height: 160px;
+              width: 876px;
+              height: 240px;
             }
           `}
         </style>

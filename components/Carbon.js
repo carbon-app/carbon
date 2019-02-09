@@ -4,8 +4,9 @@ import * as hljs from 'highlight.js'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
+import SpinnerWrapper from './SpinnerWrapper'
 
-import WindowControls from '../components/WindowControls'
+import WindowControls from './WindowControls'
 import {
   COLORS,
   LANGUAGE_MODE_HASH,
@@ -14,7 +15,7 @@ import {
   DEFAULT_SETTINGS
 } from '../lib/constants'
 
-const Watermark = dynamic(() => import('../components/svg/Watermark'), {
+const Watermark = dynamic(() => import('./svg/Watermark'), {
   loading: () => null
 })
 
@@ -223,7 +224,7 @@ class Carbon extends React.PureComponent {
     return (
       <div className="section">
         <div className="export-container" ref={this.props.innerRef} id="export-container">
-          {content}
+          <SpinnerWrapper>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
         <style jsx>
