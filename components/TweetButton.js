@@ -26,7 +26,15 @@ function TweetButton(props) {
   }
 
   return (
-    <Button border large padding="0 16px" margin="0 8px 0 0" onClick={onClick} color="#57b5f9">
+    <Button
+      center
+      border
+      large
+      padding="0 16px"
+      margin="0 8px 0 0"
+      onClick={onClick}
+      color="#57b5f9"
+    >
       {loading ? 'Loading...' : 'Tweet'}
     </Button>
   )
