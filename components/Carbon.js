@@ -21,12 +21,11 @@ const Watermark = dynamic(() => import('../components/svg/Watermark'), {
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onAspectRatioChange: () => {},
-    onChange: () => {},
-    innerRef: () => {}
+    onChange: () => {}
   }
 
   componentDidMount() {
-    const node = this.exportContainerNode
+    const node = this.props.innerRef.current
     this.mo = new MutationObserver(() => {
       const ratio = node.clientWidth / node.clientHeight
       this.props.onAspectRatioChange(ratio)
@@ -64,11 +63,6 @@ class Carbon extends React.PureComponent {
     if (!this.props.readOnly) {
       this.props.onChange(code)
     }
-  }
-
-  getRef = ele => {
-    this.exportContainerNode = ele
-    this.props.innerRef(ele)
   }
 
   render() {
@@ -228,7 +222,7 @@ class Carbon extends React.PureComponent {
 
     return (
       <div className="section">
-        <div className="export-container" ref={this.getRef} id="export-container">
+        <div className="export-container" ref={this.props.innerRef} id="export-container">
           {content}
           <div className="twitter-png-fix" />
         </div>
@@ -257,4 +251,4 @@ class Carbon extends React.PureComponent {
   }
 }
 
-export default Carbon
+export default React.forwardRef((props, ref) => <Carbon {...props} innerRef={ref} />)

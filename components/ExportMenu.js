@@ -48,6 +48,7 @@ class ExportMenu extends React.PureComponent {
           <Button
             border
             large
+            center
             color={COLORS.PURPLE}
             padding="0 16px"
             selected={isVisible}

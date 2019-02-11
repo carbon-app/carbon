@@ -4,6 +4,7 @@ import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 import RandomImage, { downloadThumbnailImage } from './RandomImage'
 import PhotoCredit from './PhotoCredit'
 import Input from './Input'
+import { Link } from './Meta'
 import { fileToDataURL } from '../lib/util'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
@@ -308,6 +309,7 @@ export default class ImagePicker extends React.Component {
 
     return (
       <div className="image-picker-container">
+        <Link href="/static/react-crop.css" />
         {content}
         <style jsx>
           {`

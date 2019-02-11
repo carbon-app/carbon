@@ -3,7 +3,6 @@ import ReactGA from 'react-ga'
 import url from 'url'
 import React from 'react'
 import domtoimage from 'dom-to-image'
-import Spinner from 'react-spinner'
 import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 
@@ -16,6 +15,7 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
+import SpinnerWrapper from './SpinnerWrapper'
 import {
   GA_TRACKING_ID,
   LANGUAGES,
@@ -45,9 +45,6 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
-      loading: true,
-      code: props.content,
-      online: true,
       preset: DEFAULT_PRESET_ID
     }
 
@@ -60,8 +57,6 @@ class Editor extends React.Component {
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
-
-    this.innerRef = node => (this.carbonNode = node)
   }
 
   async componentDidMount() {
@@ -90,9 +85,7 @@ class Editor extends React.Component {
       // Load from localStorage
       ...getSettings(localStorage),
       // and then URL params
-      ...initialState,
-      loading: false,
-      online: Boolean(window && window.navigator && window.navigator.onLine)
+      ...initialState
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -102,27 +95,19 @@ class Editor extends React.Component {
 
     this.updateState(newState)
 
-    window.addEventListener('offline', this.setOffline)
-    window.addEventListener('online', this.setOnline)
-
     this.isSafari =
       window.navigator &&
       window.navigator.userAgent.indexOf('Safari') !== -1 &&
       window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('offline', this.setOffline)
-    window.removeEventListener('online', this.setOnline)
-  }
+  carbonNode = React.createRef()
 
   updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
   updateTitleBar = titleBar => this.updateState({ titleBar })
-  setOffline = () => this.updateState({ online: false })
-  setOnline = () => this.updateState({ online: true })
 
   async getCarbonImage(
     {
@@ -139,7 +124,7 @@ class Editor extends React.Component {
       return this.props.api.image(encodedState)
     }
 
-    const node = this.carbonNode
+    const node = this.carbonNode.current
 
     const map = new Map()
     const undoMap = value => {
@@ -297,38 +282,21 @@ class Editor extends React.Component {
 
   render() {
     const {
-      loading,
       theme,
       language,
       backgroundColor,
       backgroundImage,
       backgroundMode,
       aspectRatio,
-      online,
       titleBar,
       code,
       exportSize
     } = this.state
 
-    if (loading) {
-      return (
-        <div>
-          <Spinner />
-          <style jsx>
-            {`
-              div {
-                height: 160px;
-              }
-            `}
-          </style>
-        </div>
-      )
-    }
-
     const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
 
     return (
-      <React.Fragment>
+      <SpinnerWrapper>
         <div className="editor">
           <Toolbar>
             <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
@@ -359,7 +327,7 @@ class Editor extends React.Component {
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
-              {this.props.api.tweet && online && <TweetButton onClick={this.upload} />}
+              {this.props.api.tweet && <TweetButton onClick={this.upload} />}
               <ExportMenu
                 onChange={this.updateSetting}
                 export={this.export}
@@ -383,7 +351,7 @@ class Editor extends React.Component {
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={titleBar}
                   updateTitleBar={this.updateTitleBar}
-                  innerRef={this.innerRef}
+                  ref={this.carbonNode}
                 >
                   {code != null ? code : DEFAULT_CODE}
                 </Carbon>
@@ -406,7 +374,7 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </React.Fragment>
+      </SpinnerWrapper>
     )
   }
 }

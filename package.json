@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.8.12",
+  "version": "3.8.13",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -39,7 +39,7 @@
     "micro": "^9.3.3",
     "morphmorph": "^0.1.2",
     "ms": "^2.0.0",
-    "next": "^7.0.2",
+    "next": "^8.0.0",
     "next-offline": "^3.3.1",
     "prettier": "^1.16.4",
     "puppeteer-core": "^1.12.1",
@@ -61,6 +61,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.0.0",
     "babel-eslint": "^10.0.1",
+    "clipboardy": "^1.2.3",
     "cypress": "^3.1.5",
     "eslint": "^5.13.0",
     "eslint-plugin-import": "^2.16.0",
