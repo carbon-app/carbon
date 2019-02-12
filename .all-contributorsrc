@@ -425,6 +425,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "boyvanamstel",
+      "name": "Boy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/225410?v=4",
+      "profile": "https://www.boy.sh",
+      "contributions": [
+        "platform"
+      ]
     }
   ],
   "repoType": "github"
