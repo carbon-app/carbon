@@ -86,6 +86,10 @@ Check out these projects our awesome community has created:
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
 
+##### Apps
+
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - a macOS wrapper that adds native features like 'drag and drop' and more
+
 ## Contribute
 
 PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
