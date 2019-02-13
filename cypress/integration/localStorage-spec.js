@@ -41,6 +41,7 @@ describe('localStorage', () => {
     themeDropdown()
       .click()
       .contains('Blackboard')
+    cy.wait(1000) // URL updates are debounced
     cy.url().should('contain', 't=blackboard')
   })
 })
