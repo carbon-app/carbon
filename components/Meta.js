@@ -12,7 +12,7 @@ export function Link({ href }) {
   return (
     <Head>
       <link rel="preload" as="style" href={href} />
-      <link key={href} rel="stylesheet" href={href} />
+      <link rel="stylesheet" href={href} />
     </Head>
   )
 }
@@ -64,8 +64,7 @@ export const MetaLinks = () => {
       {LOCAL_STYLESHEETS.map(id => (
         <Link key={id} href={`/static/themes/${id}.css`} />
       ))}
-      {CDN_STYLESHEETS.map(theme => {
-        const themeDef = THEMES_HASH[theme]
+      {CDN_STYLESHEETS.map(themeDef => {
         const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/${themeDef &&
           (themeDef.link || themeDef.id)}.min.css`
         return <Link key={href} href={href} />
