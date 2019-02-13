@@ -425,6 +425,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "vetrivelcsamy",
+      "name": "Vetrivel Chinnasamy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/26738977?v=4",
+      "profile": "https://vetrivelcsamy.xyz",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github"
