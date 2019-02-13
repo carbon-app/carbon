@@ -74,9 +74,10 @@ Check out these projects our awesome community has created:
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
 
-##### CLIs
+##### Tools
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - A MacOS wrapper with extended native features
 
 ##### Libraries
 
@@ -85,10 +86,6 @@ Check out these projects our awesome community has created:
 ##### Textbooks
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
-
-##### Apps
-
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - a macOS wrapper that adds native features like 'drag and drop' and more
 
 ## Contribute
 
