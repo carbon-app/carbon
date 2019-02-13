@@ -8,11 +8,11 @@ import Typography from './style/Typography'
 const LOCAL_STYLESHEETS = ['one-light', 'one-dark', 'verminal', 'night-owl', 'nord']
 const CDN_STYLESHEETS = THEMES.filter(t => LOCAL_STYLESHEETS.indexOf(t.id) < 0)
 
-export function Link({ key, href }) {
+export function Link({ href }) {
   return (
     <Head>
       <link rel="preload" as="style" href={href} />
-      <link key={key} rel="stylesheet" href={href} />
+      <link key={href} rel="stylesheet" href={href} />
     </Head>
   )
 }
@@ -59,7 +59,7 @@ export const MetaTags = () => (
 export const MetaLinks = () => {
   return (
     <React.Fragment>
-      <Link href="/static/themes/seti.css" />
+      <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/seti.min.css" />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (
         <Link key={id} href={`/static/themes/${id}.css`} />
