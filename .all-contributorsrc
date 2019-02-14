@@ -443,6 +443,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "farskid",
+      "name": "Farzad YZ",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8332043?s=460&v=4",
+      "profile": "https://farzadyz.com",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "repoType": "github"
