@@ -224,7 +224,7 @@ class Carbon extends React.PureComponent {
     return (
       <div className="section">
         <div className="export-container" ref={this.props.innerRef} id="export-container">
-          <SpinnerWrapper>{content}</SpinnerWrapper>
+          <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
         <style jsx>

@@ -44,7 +44,8 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
-      preset: DEFAULT_PRESET_ID
+      preset: DEFAULT_PRESET_ID,
+      loading: true
     }
 
     this.export = this.export.bind(this)
@@ -84,7 +85,8 @@ class Editor extends React.Component {
       // Load from localStorage
       ...getSettings(localStorage),
       // and then URL params
-      ...initialState
+      ...initialState,
+      loading: false
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -345,12 +347,13 @@ class Editor extends React.Component {
                 {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
                 <Carbon
                   key={language}
+                  ref={this.carbonNode}
                   config={this.state}
                   onChange={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
                   titleBar={titleBar}
                   updateTitleBar={this.updateTitleBar}
-                  ref={this.carbonNode}
+                  loading={this.state.loading}
                 >
                   {code != null ? code : DEFAULT_CODE}
                 </Carbon>
