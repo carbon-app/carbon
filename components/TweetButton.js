@@ -10,16 +10,26 @@ function useWindowListener(key, fn) {
   }, [])
 }
 
-function TweetButton(props) {
+function useOnlineListener() {
   const [online, setOnline] = React.useState(true)
-  const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
   React.useEffect(() => {
-    setOnline(Boolean(window && window.navigator && window.navigator.onLine))
+    setOnline(
+      typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean'
+        ? navigator.onLine
+        : true
+    )
   }, [])
 
   useWindowListener('offline', () => setOnline(false))
   useWindowListener('online', () => setOnline(true))
+
+  return online
+}
+
+function TweetButton(props) {
+  const online = useOnlineListener()
+  const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
   if (!online) {
     return null
