@@ -11,84 +11,89 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-## Introdução
+## Introduction
 
-Sabe [todos](https://twitter.com/dan_abramov/status/890191815567175680) [aqueles](https://twitter.com/reactjs/status/890511993261654017) [prints](https://twitter.com/notquiteleo/status/873483329345028096) [de código](https://twitter.com/zeithq/status/805779711154647040) que você vê no Twitter? Apesar do código geralmente ser impressionante, nós vimos que a parte estética podia ser melhorada. Carbon facilita bastante criar e compartilhar imagens muito boas do seu código fonte. Então o que você está esperando? Vai lá impressionar todos os seus seguidores com esse design foda que você conseguiu aqui!
+Vous connaissez [tous](https://twitter.com/dan_abramov/status/890191815567175680) [ces](https://twitter.com/reactjs/status/890511993261654017) [captures d'écran](https://twitter.com/notquiteleo/status/873483329345028096) [de code](https://twitter.com/zeithq/status/805779711154647040) que vous avez croisé sur Twitter ? Bien que le code seul soit généralement impressionnant, nous avons estimé qu'il était possible d'améliorer la partie esthétique. Carbon facilite la création et le partage de votre code source au travers de superbes images. Alors qu'est-ce que vous attendez ? Impressionnez tous vos abonnés avec vos nouvelles prouesses en matière de conception graphique.
 
-Visite [carbon.now.sh](https://carbon.now.sh) ou leia [nosso post (em inglês)](https://dawnlabs.io/case-studies/carbon/) para aprender mais sobre o nosso projeto.
+Rendez-vous sur le site [carbon.now.sh](https://carbon.now.sh) ou allez lire [notre article](https://dawnlabs.io/case-studies/carbon/) pour en apprendre plus à propos du projet.
 
-## Funcionalidades
+## Fonctionnalités
 
-- **Importar de um gist do GitHub**. É só colocar o id de um gist do GitHub no fim da url;
-- **Customização**. Personalize coisas como o tema usado no editor de acordo com a sintaxe da linguagem, o estilo de janela e mais;
-- **Compartilhe rapidamente**. Salve sua imagem ou tweet o link com a imagem em um clique.
+- **Import depuis GitHub gist**. Ajoutez simplement un ID de gist GitHub à l'URL
+- **Personnalisation**. Personnalisez des éléments tels que le thème de la syntaxe de votre image, le style de la fenêtre, etc.
+- **Partage rapide**. Enregistrez votre image ou tweetez un lien en un clic
 
-## Exemplo
+## Exemple
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## Uso
+## Usage
 
-#### Importar
+#### Import
 
-Existem alguns jeitos diferentes de importar código fonte para o Carbon:
+Il existe différentes manières d'importer du code dans Carbon :
 
-- Arraste um arquivo para o editor;
-- Cole o id de um gist do GitHub no fim da url (e.g. `carbon.now.sh/ID_DO_GIST_AQUI`);
-- Copie e cole o trecho de código diretamente no editor.
+- Déposer un fichier dans l'éditeur
+- Ajouter un identifiant de GitHub gist à l'URL (ex. `carbon.now.sh/ICI_LE_GIST_ID`)
+- Collez votre code directement
 
-#### Customização
+#### Personnalisation
 
-Assim que você colocar o trecho de código no editor do Carbon, você pode personalizar a imagem mudando o tema e sintaxe, cor de fundo, tema da janela, e o espaçamento entre a imagem do editor e as bordas.
+Une fois que tout votre code est saisi dans Carbon, vous pouvez personnaliser votre image en modifiant le thème de la syntaxe, la couleur d'arrière-plan, le thème de la fenêtre ou le remplissage.
 
-#### Exportar/Compartilhar
+#### Export / Partage
 
-Depois que você customizar a sua imagem, você pode tweetar um link para a imagem ou salvá-la diretamente.
+Une fois que vous avez personnalisé votre image, vous pouvez soit twetté let lien vers l’image, soit l'enregistrer directement.
 
-## Comunidade
+Si vous utilisez le bouton &apos;Tweet&apos;, Carbon rendra automatiquement votre image accessible aux utilisateurs malvoyants. Toutefois, si vous souhaitez tweeter manuellement votre image carbone, veuillez vérifier [comment rendre les images accessibles aux utilisateurs malvoyants de Twitter](https://help.twitter.com/fr/using-twitter/picture-descriptions).
 
-Confira os projetos top da nossa comunidade:
+Si vous incluez une image Carbon dans un article, le code source sera invisible pour les technologies d'assistance, il ne sera pas possible de l'agrandir ou de le copier, etc. Veuillez penser à ajouter un autre élément avec le code source sous forme de texte, comme une [balise HTML Details](https://developer.mozilla.org/fr/docs/Web/HTML/Element/details) sous l'image.
 
-##### Plugins para editores de texto
+## Communauté
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Selecione o trecho de código aberto no seu IntelliJ IDEA e o use o botão direito para abrir o menu de opções onde você pode acionar o Carbon;
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Abra o arquivo atual do seu Atom no Carbon com o comando `shift-cmd-A`;
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Abra seu arquivo do VS Code no Carbon usando o comando `carbon`;
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Selecione o trecho de código aberto no seu Sublime Text 3 com um atalho de teclado customizado;
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Selecione o trecho de código aberto no seu Vim/Neovim usando a função `CarbonNowSh()`;
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Selecione o trecho de código aberto no seu Emacs usando a função interativa `carbon-now-sh`.
+Découvrez les projets créés par notre fantastique communauté :
 
-##### CLIs
+##### Plugins pour les éditeurs de code
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abra um arquivo no Carbon ou faça download da imagem diretamente com `carbon-now`, apresentando um modo interativo, seleção destacada e muito mais.
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Ouvrez la sélection de votre fichier IntelliJ IDEA actuel dans Carbon via un menu contextuel
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Ouvrez votre fichier Atom actuel dans Carbon avec `shift-cmd-A`
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Ouvrez votre fichier VS Code actuel dans Carbon avec la commande `carbon`
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Ouvrez la sélection de votre fichier Sublime Text 3 actuel avec une clé liée personnalisée
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Ouvrez la sélection dans votre Vim / Neovim actuelle en utilisant la fonction `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Ouvrez la sélection dans votre Emacs actuel en utilisant la fonction interactive `carbon-now-sh`
 
-##### Bibliotecas
+##### Outils
 
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Manipule iterativamente a estética da imagem em `R` e abra no Carbon ou faça download diretamente.
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Ouvrez un fichier dans Carbon ou téléchargez-le directement en utilisant `carbon-now`, comportant un mode interactif, une mise en évidence sélective et plus encore
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - Un wrapper macOS avec des fonctionnalités natives étendues
 
-##### Livros Didáticos
+##### Bibliothèques
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - um livro didático de ciência da computação escrito por Sarbo Roy.
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Manipulez de manière itérative l’esthétique de l’image dans `R` et ouvrez-la dans Carbon, ou téléchargez-la directement.
 
-## Contribua
+##### Manuels
 
-PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) para mais detalhes.
+- ["CS 101 - Une ntroduction à la pensée informatique"](https://itunes.apple.com/us/book/id1435714196) - un manuel d'informatique de Sarbo Roy.
 
-## Agradecimentos
+## Contribuer
 
-[ ▲ ZEIT ](https://zeit.co/) por patrocinar a hospedagem do Carbon.
+Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) pour plus de détails.
 
-## Autores
+## Merci à
 
-Carbon é um projeto feito pela <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+[ ▲ ZEIT ](https://zeit.co/) pour sponsoriser l'hébergement de Carbon.
+
+## Auteurs
+
+Carbon est un projet de <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contribuidores
+## Contributeurs
 
-Agradecemos imensamente a todas essas pessoas maravilhosas pela grande ajuda ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Merci à toutes ces personnes merveilleuses ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
