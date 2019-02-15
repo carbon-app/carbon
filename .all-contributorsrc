@@ -11,7 +11,8 @@
     "docs/README.ml.md",
     "docs/README.tr.md",
     "docs/README.kr.md",
-    "docs/README.ta.md"
+    "docs/README.ta.md",
+    "docs/README.fr.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -453,7 +454,16 @@
         "code",
         "ideas"
       ]
-    }
+    },
+    {
+      "login": "yannickl",
+      "name": "Yannick Loriot",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/798235?s=460&v=4",
+      "profile": "https://github.com/yannickl",
+      "contributions": [
+        "translation"
+      ]
+    },
   ],
   "repoType": "github"
 }
