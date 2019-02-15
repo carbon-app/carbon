@@ -21,7 +21,7 @@
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.2",
     "axios": "^0.18.0",
-    "chrome-aws-lambda": "^1.11.2",
+    "chrome-aws-lambda": "^1.12.0",
     "codemirror": "^5.42.2",
     "codemirror-graphql": "^0.8.3",
     "codemirror-mode-elixir": "^1.1.2",
