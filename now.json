@@ -3,7 +3,7 @@
   "version": 2,
   "builds": [
     { "src": "package.json", "use": "@now/static-build" },
-    { "src": "api/image.js", "use": "@now/node@canary", "config": { "maxLambdaSize": "40mb" } },
+    { "src": "api/image.js", "use": "@now/node", "config": { "maxLambdaSize": "40mb" } },
     { "src": "api/**/*.js", "use": "@now/node" }
   ],
   "routes": [
