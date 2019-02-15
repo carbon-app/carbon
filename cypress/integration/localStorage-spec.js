@@ -30,6 +30,8 @@ describe('localStorage', () => {
       .click()
       .contains('Blackboard')
 
+    cy.wait(1000) // URL updates are debounced
+
     cy.window()
       .its('localStorage.CARBON_STATE')
       .then(JSON.parse)

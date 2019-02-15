@@ -37,7 +37,7 @@ export const CodeMirrorLink = () => (
 const title = 'Carbon'
 const description =
   'Carbon is the easiest way to create and share beautiful images of your source code.'
-export const MetaTags = () => (
+export const MetaTags = React.memo(() => (
   <Head>
     <meta charSet="utf-8" />
     <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -54,9 +54,9 @@ export const MetaTags = () => (
     <link rel="shortcut icon" href="/static/favicon.ico" />
     <link rel="manifest" href="/static/manifest.json" />
   </Head>
-)
+))
 
-export const MetaLinks = () => {
+export const MetaLinks = React.memo(() => {
   return (
     <React.Fragment>
       <Link href="/static/fonts/dank-mono.css" />
@@ -72,21 +72,15 @@ export const MetaLinks = () => {
       })}
     </React.Fragment>
   )
-}
+})
 
-export const Styles = () => (
-  <React.Fragment>
-    <Reset />
-    <Font />
-    <Typography />
-  </React.Fragment>
-)
-
-export default function Meta() {
+export default React.memo(function Meta() {
   return (
     <React.Fragment>
       <MetaTags />
-      <Styles />
+      <Reset />
+      <Font />
+      <Typography />
     </React.Fragment>
   )
-}
+})

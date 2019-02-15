@@ -427,12 +427,31 @@
       ]
     },
     {
+      "login": "boyvanamstel",
+      "name": "Boy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/225410?v=4",
+      "profile": "https://www.boy.sh",
+      "contributions": [
+        "platform"
+      ]
+    },
+    {
       "login": "vetrivelcsamy",
       "name": "Vetrivel Chinnasamy",
       "avatar_url": "https://avatars2.githubusercontent.com/u/26738977?v=4",
       "profile": "https://vetrivelcsamy.xyz",
       "contributions": [
         "translation"
+      ]
+    },
+    {
+      "login": "farskid",
+      "name": "Farzad YZ",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8332043?s=460&v=4",
+      "profile": "https://farzadyz.com",
+      "contributions": [
+        "code",
+        "ideas"
       ]
     }
   ],
