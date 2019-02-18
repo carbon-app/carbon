@@ -7,7 +7,21 @@
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
     { "src": "^/_next/(.*)", "dest": "/_next/$1" },
-    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    {
+      "src": "^/service-worker.js$",
+      "dest": "/_next/static/service-worker.js",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1",
+      "headers": {
+        "cache-control": "public, max-age=43200, immutable"
+      }
+    },
     { "src": "^/(.*)", "dest": "/index.html" }
   ],
   "build": {
