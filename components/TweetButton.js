@@ -4,10 +4,12 @@ import { useAsyncCallback } from '@dawnlabs/tacklebox'
 import Button from './Button'
 
 function useWindowListener(key, fn) {
+  const callback = React.useRef(fn)
+
   React.useEffect(() => {
-    window.addEventListener(key, fn)
-    return () => window.removeEventListener(key, fn)
-  }, [])
+    window.addEventListener(key, callback.current)
+    return () => window.removeEventListener(key, callback.current)
+  }, [key, callback])
 }
 
 function useOnlineListener() {
@@ -19,7 +21,7 @@ function useOnlineListener() {
         ? navigator.onLine
         : true
     )
-  }, [])
+  }, [setOnline])
 
   useWindowListener('offline', () => setOnline(false))
   useWindowListener('online', () => setOnline(true))
