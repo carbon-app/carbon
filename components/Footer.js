@@ -1,6 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
 import { COLORS } from '../lib/constants'
+
+const EmailSubscribe = dynamic(() => import('./EmailSubscribe'), {
+  loading: () => null
+})
 
 const Footer = () => (
   <footer role="contentinfo" className="mt3">
@@ -11,13 +17,15 @@ const Footer = () => (
         </a>
       </Link>
       <a className="link" href="https://github.com/dawnlabs/carbon/issues/new">
-        send feedback
+        feedback
       </a>
       <a className="link" href="https://github.com/dawnlabs/carbon">
         source
       </a>
+      <EmailSubscribe />
     </nav>
-    <div className="mt3 mb2">
+
+    <div className="mt2 mb2">
       a project by{' '}
       <a className="dawn-link" href="https://dawnlabs.io">
         Dawn Labs
@@ -35,8 +43,13 @@ const Footer = () => (
           color: ${COLORS.GRAY};
         }
 
+        nav {
+          display: flex;
+          align-items: center;
+        }
+
         a {
-          margin-right: 16px;
+          margin-right: 1rem;
         }
 
         a:last-child {
