@@ -8,6 +8,7 @@ import morph from 'morphmorph'
 // Ours
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
+import GistParser from '../components/GistParser'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
 
@@ -100,15 +101,18 @@ class Embed extends React.Component {
     return (
       <Page theme={this.state.theme}>
         {this.state.mounted && (
-          <Carbon
-            ref={this.ref}
-            config={this.state}
-            readOnly={this.state.readOnly}
-            copyable={this.state.copyable}
-            onChange={this.updateCode}
-          >
-            {this.state.code}
-          </Carbon>
+          <>
+            <Carbon
+              ref={this.ref}
+              config={this.state}
+              readOnly={this.state.readOnly}
+              copyable={this.state.copyable}
+              onChange={this.updateCode}
+            >
+              {this.state.code}
+            </Carbon>
+            <GistParser onChange={stateFromGist => this.setState(stateFromGist)} />
+          </>
         )}
       </Page>
     )
