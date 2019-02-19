@@ -42,13 +42,13 @@ function RandomImage(props) {
     if (cacheIndex === 0 || cacheIndex > cache.length - 2) {
       updateCache()
     }
-  }, [cacheIndex])
+  }, [cacheIndex, cache.length, updateCache])
 
   React.useEffect(() => {
     if (imgs) {
       cache.push(...imgs)
     }
-  }, [imgs])
+  }, [cache, imgs])
 
   const loading = updating || selecting
 
