@@ -775,14 +775,14 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@dawnlabs/tacklebox@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.2.tgz#be9afc9fdd0a0dae04ea56c83b04e874bf2ae43a"
-  integrity sha512-TCcIQyQlPTQ4LcremkwvFIdVvqSo9Xz4Ayj8tVdsIHrZxp7VZSSgYKfi3K56w2TLdWu3pINUMmV46u1O1ryZpQ==
+"@dawnlabs/tacklebox@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.3.tgz#b2d6c0efe5213e9f7cefdea0380eac574d934c79"
+  integrity sha512-RhnQ5siGeAi3OPdal7mtlIy+UCn0CafLP6weZnuGgucraL/HGkAbWRpMa5DwxH86HS7E7ujtDs2eLeLYM+NjIw==
   dependencies:
     copy-to-clipboard "^3.0.8"
     react-click-outside "^3.0.1"
-    react-fast-compare "^2.0.2"
+    react-fast-compare "^2.0.4"
 
 "@iamstarkov/listr-update-renderer@0.4.1":
   version "0.4.1"
@@ -5754,7 +5754,7 @@ react-error-overlay@4.0.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
   integrity sha512-FlsPxavEyMuR6TjVbSSywovXSEyOg6ZDj5+Z8nbsRl9EkOzAhEIcS+GLoQDC5fz/t9suhUXWmUrOBrgeUvrMxw==
 
-react-fast-compare@^2.0.2:
+react-fast-compare@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
