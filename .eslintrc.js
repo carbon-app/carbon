@@ -24,7 +24,7 @@ module.exports = {
     'no-duplicate-imports': 'error',
     'jsx-a11y/click-events-have-key-events': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/reactive-deps': 'error'
+    'react-hooks/exhaustive-deps': 'error'
   },
   settings: {
     react: {
