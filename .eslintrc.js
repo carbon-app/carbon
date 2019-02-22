@@ -23,8 +23,7 @@ module.exports = {
     'import/no-unresolved': 'error',
     'no-duplicate-imports': 'error',
     'jsx-a11y/click-events-have-key-events': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error'
+    'react-hooks/rules-of-hooks': 'error'
   },
   settings: {
     react: {
