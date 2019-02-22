@@ -19,7 +19,7 @@
     "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
-    "@dawnlabs/tacklebox": "^0.0.3",
+    "@dawnlabs/tacklebox": "0.0.2",
     "axios": "^0.18.0",
     "codemirror": "^5.42.2",
     "codemirror-graphql": "^0.8.3",
