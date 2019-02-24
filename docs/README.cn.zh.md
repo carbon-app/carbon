@@ -2,91 +2,104 @@
 
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-47-orange.svg?style=flat-square)](#contributors)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
+[![贡献者列表](https://img.shields.io/badge/all_contributors-47-orange.svg?style=flat-square)](#contributors)
+[![使用 prettier 样式化](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![欢迎提交合并请求](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![MIT 授权](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
+[![Greenkeeper 徽章](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
+[![加入在 Spectrum 上的社区](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+[![部署至 Now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### 翻译
+##### 文档译文
 
 - [Español](/docs/README.es.md)
 - [हिंदी](/docs/README.hi.md)
 - [Deutsch](/docs/README.de.md)
+- [简体中文](/docs/README.cn.zh.md)
+- [Português](/docs/README.br.pt.md)
+- [മലയാളം](/docs/README.ml.md)
+- [Türkçe](/docs/README.tr.md)
+- [한국어](/docs/README.kr.md)
+- [தமிழ்](/docs/README.ta.md)
+- [Français](/docs/README.fr.md)
 
-## 简介
+## 导览
 
-你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码图片给人印象深刻，但就审美程度来说还有可改进的地方。Carbon 可以很容易的为你的代码创建漂亮的图片。那么还等什么呢？用这个新学到的美化设计给你的 followers 秀一秀吧。
+还记得在微博上看到的[那些](https://twitter.com/notquiteleo/status/873483329345028096)[代码](https://twitter.com/dan_abramov/status/890191815567175680)[的](https://twitter.com/reactjs/status/890511993261654017)[截图](https://twitter.com/zeithq/status/805779711154647040)吗？虽然代码本身就很一鸣惊人，但仍可使其更加美观。Carbon 将创建并分享优美的代码截图的过程变得易如反掌。你还在等什么？快来用你新发现的宝藏来惊诧你的粉丝吧！
 
-可以访问 [carbon.now.sh](https://carbon.now.sh)或者浏览 [博客文章](https://dawnlabs.io/case-studies/carbon/) 了解关于这个项目更多的内容。
+请访问 [carbon.now.sh](https://carbon.now.sh) 或阅读[我们的博文](https://dawnlabs.io/case-studies/carbon/)来深入了解此项目。
 
 ## 特性
 
-- **GitHub gist 导入**. 只需要在 url 后面加上 github gist id 就可以导入
-- **定制化**. 可定制图片的语法主题，窗口样式等
-- **所见即分享**. 点下鼠标就可以分享到推特上面
+- **从 GitHub 导入** - 您仅需要在网址后加上 GitHub gist 编号即可。
+- **可自定义** - 自定义图像语法主题、窗口样式等等。
+- **快速分享** - 轻松保存图像或分享至推特。
 
 ## 示例
 
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
-## 使用
+## 用法
 
 #### 导入
 
-有几种不同的方法可以将代码导入到 Carbon：
+下面是几种将代码导入 Carbon 的方法：
 
-- 把文件拖到编辑器
-- 在 carbon url 后添加 GitHub gist id(比如 `carbon.now.sh/你的gist id`)
-- 直接粘贴代码
+- 拖拽文件至编辑器
+- 在网址后加上 GitHub gist 编号（例如：`carbon.now.sh/在此填写GIST的编号`）
+- 直接粘贴源码
 
-#### 定制化
+#### 自定义
 
-当你把代码导入到 Carbon 后，你可以定制生成的代码图片。可定制的内容有语法主题，背景颜色，窗口主题，或者 padding 距离。
+一旦您将代码导入了 Carbon，您可通过修改语法主题、背景颜色、窗口主题或填充来自定义源码截图。
 
 #### 导出/分享
 
-当你定制完图片样式后，可以分享到推特上面，或者直接保存。
+在自定义完图像之后，您可发送推文链接或直接保存到本地。
+
+若您使用 "Tweet" 按钮，Carbon 将自动使您的源码截图可被访问。然而，若您想自动发送推文图片，您需要参阅[如何使推特图像可被访问](https://help.twitter.com/en/using-twitter/picture-descriptions)。
+
+若您想在博文中插入 Carbon 截图，辅助技术将无法查看源代码，其也无法被放大或复制等等。请在添加其他元素及源码文本前（如图像下的[HTML Details 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)）三思。
 
 ## 社区
 
-下面是我们社区已经创建的一些优秀的项目：
+查看由我们的优秀社区所打造的项目：
 
 ##### 编辑器插件
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 在 IntelliJ IDEA 中选中当前文件的一段代码到 Carbon 中
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 用`shift-cmd-A`命令在 Carbon 中导入你当前的 Atom 文件
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 用`carbon`命令在 Carbon 中导入你当前的 VS Code 文件
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 在 Sublime Text3 中选中当前文件的一段代码到 Carbon 中
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 用`CarbonNowSh()`函数在 Carbon 中导入你当前的 Vim/Neovim 文件
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - 用交互式函数`carbon-now-sh`在 Carbon 中导入你当前的 Emacs 文件
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 通过上下文菜单将 IntelliJ IDEA 文件中的选择项导入至 Carbon
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 使用 `shift-cmd-A` 将当前打开的 Atom 文件导入至 Carbon
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 使用 `carbon` 命令将当前打开的 VS Code 文件导入至 Carbon
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 使用自定义键位将 Sublime Text 3 文件中的选择项导入至 Carbon
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 使用 `CarbonNowSh()` 函数将当前打开的 Vim/Neovim 文件导入至 Carbon
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - 使用交互函数 `carbon-now-sh` 将当前打开的 Emacs 文件导入至 Carbon
+- [Xcode `carbon-now-sh for Xcode`](https://github.com/StevenMagdy/CarboNow4Xcode) - 在  `carbon.now.sh` 上打开选择项
 
-##### 命令行工具
+##### 工具
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 在 Carbon 中打开一个文件或者直接使用`carbon-now`下载它，特色是交互式模式，可选高亮等
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 在 Carbon 上打开文件或直接通过可交互、可选择、可高亮等等的 `carbon-now` 下载。
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 带有拓展原生特性的 macOS 封装。
 
-##### Libraries
+##### 库
 
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - 迭代式处理`R`中的图片并在 Carbon 中打开，或者直接下载。
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - 迭代控制 `R` 中的图像或在 Carbon 上打开或直接下载。
 
-##### 书籍
+##### 课本
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy 写的一本计算机科学书.
+- ["CS 101 - 计算思维导论"](https://itunes.apple.com/us/book/id1435714196) - 由 Sarbo Roy 所著的计算机科学课本。
 
-## 贡献代码
+## 贡献
 
-欢迎 PRs！请阅读 [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) 了解更多.
+欢迎您提交合并请求！请参阅 [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) 了解详情。
 
-## 感谢
+## 致谢
 
-[ ▲ ZEIT ](https://zeit.co/) 赞助了 Carbon 网站的托管
+感谢 [ ▲ ZEIT ](https://zeit.co/) 赞助 Carbon 的网页托管。
 
 ## 作者
 
-Carbon 项目由 TA 们发起 <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+Carbon 由 <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a> 精心打造。
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
@@ -94,7 +107,7 @@ Carbon 项目由 TA 们发起 <a href="http://dawnlabs.io/"><img width=8% src="h
 
 ## 贡献者
 
-感谢以下所有的优秀贡献者们 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+感谢下列优秀的人才（[Emoji 代表所做贡献](https://github.com/kentcdodds/all-contributors#emoji-key)）:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
