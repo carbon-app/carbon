@@ -104,7 +104,6 @@ class Editor extends React.Component {
 
   updateCode = code => this.updateState({ code })
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
-  updateTitleBar = titleBar => this.updateState({ titleBar })
 
   async getCarbonImage(
     {
@@ -285,12 +284,11 @@ class Editor extends React.Component {
       backgroundImage,
       backgroundMode,
       aspectRatio,
-      titleBar,
       code,
       exportSize
     } = this.state
 
-    const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
+    const config = omit(this.state, ['code', 'aspectRatio'])
 
     return (
       <>
@@ -347,8 +345,6 @@ class Editor extends React.Component {
                   config={this.state}
                   onChange={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
-                  titleBar={titleBar}
-                  updateTitleBar={this.updateTitleBar}
                   loading={this.state.loading}
                 >
                   {code != null ? code : DEFAULT_CODE}
