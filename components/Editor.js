@@ -108,7 +108,6 @@ class Editor extends React.Component {
 
   updateCode = code => this.updateState({ code })
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
-  updateTitleBar = titleBar => this.updateState({ titleBar })
 
   async getCarbonImage(
     {
@@ -163,6 +162,8 @@ class Editor extends React.Component {
       height
     }
 
+    // current font-family used
+    const fontFamily = this.state.fontFamily
     try {
       if (type === 'blob') {
         if (format === 'svg') {
@@ -175,6 +176,11 @@ class Editor extends React.Component {
                   // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
                   .replace(/%23/g, '#')
                   .replace(/%0A/g, '\n')
+                  // remove other fonts which are not used
+                  .replace(
+                    new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+                    ''
+                  )
               )
               // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
               .then(dataUrl => dataUrl.replace(/&(?!#?[a-z0-9]+;)/g, '&amp;'))
@@ -289,12 +295,11 @@ class Editor extends React.Component {
       backgroundImage,
       backgroundMode,
       aspectRatio,
-      titleBar,
       code,
       exportSize
     } = this.state
 
-    const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
+    const config = omit(this.state, ['code', 'aspectRatio'])
 
     return (
       <>
@@ -351,8 +356,6 @@ class Editor extends React.Component {
                   config={this.state}
                   onChange={this.updateCode}
                   onAspectRatioChange={this.updateAspectRatio}
-                  titleBar={titleBar}
-                  updateTitleBar={this.updateTitleBar}
                   loading={this.state.loading}
                 >
                   {code != null ? code : DEFAULT_CODE}

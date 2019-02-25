@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.3",
+  "version": "3.9.4",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,7 @@
     "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
-    "@dawnlabs/tacklebox": "^0.0.2",
+    "@dawnlabs/tacklebox": "^0.0.4",
     "axios": "^0.18.0",
     "chrome-aws-lambda": "^1.12.0",
     "codemirror": "^5.42.2",
@@ -40,18 +40,18 @@
     "micro": "^9.3.3",
     "morphmorph": "^0.1.2",
     "ms": "^2.0.0",
-    "next": "^8.0.0",
+    "next": "^8.0.3",
     "next-offline": "^3.3.1",
     "prettier": "^1.16.4",
     "puppeteer-core": "^1.12.1",
-    "react": "^16.8.1",
+    "react": "^16.8.3",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^5.1.0",
     "react-color": "^2.17.0",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.8.1",
+    "react-dom": "^16.8.3",
     "react-ga": "^2.5.3",
-    "react-image-crop": "6.0.13",
+    "react-image-crop": "6.0.14",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
@@ -69,7 +69,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.3",
-    "eslint-plugin-react-hooks": "^1.0.1",
+    "eslint-plugin-react-hooks": "^1.1.0-rc.0",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.3",
     "now": "^14.0.0",
@@ -90,7 +90,6 @@
         ],
         "ignore": [
           "graphql",
-          "react-dom",
           "webpack"
         ]
       },
