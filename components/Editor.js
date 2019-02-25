@@ -173,14 +173,11 @@ class Editor extends React.Component {
                   // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
                   .replace(/%23/g, '#')
                   .replace(/%0A/g, '\n')
-              )
-              // remove other fonts which are not used
-              .then(
-                dataUrl =>
-                  (dataUrl = dataUrl.replace(
-                    new RegExp('@font-face { font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+                  // remove other fonts which are not used
+                  .replace(
+                    new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
                     ''
-                  ))
+                  )
               )
               // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
               .then(dataUrl => dataUrl.replace(/&(?!#?[a-z0-9]+;)/g, '&amp;'))
