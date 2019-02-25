@@ -178,7 +178,7 @@ class Editor extends React.Component {
               .then(
                 dataUrl =>
                   (dataUrl = dataUrl.replace(
-                    new RegExp('@font-face { font-family: (?!"*' + fontFamily + ').*?}s?', 'g'),
+                    new RegExp('@font-face { font-family: (?!"*' + fontFamily + ').*?}', 'g'),
                     ''
                   ))
               )
