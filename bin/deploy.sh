@@ -3,7 +3,7 @@ set -e
 
 now switch dawn
 
-NOW_URL=now
+NOW_URL=$(now)
 
 yarn cy:run --config baseUrl="$NOW_URL"
 
