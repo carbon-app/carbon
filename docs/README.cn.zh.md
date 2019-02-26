@@ -2,14 +2,14 @@
 
 <!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
 
-[![贡献者列表](https://img.shields.io/badge/all_contributors-47-orange.svg?style=flat-square)](#contributors)
-[![使用 prettier 样式化](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![欢迎提交合并请求](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT 授权](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
-[![Greenkeeper 徽章](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
-[![加入在 Spectrum 上的社区](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
+[![All Contributors](https://img.shields.io/badge/all_contributors-47-orange.svg?style=flat-square)](#contributors)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
+[![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
-[![部署至 Now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### 文档译文
 
