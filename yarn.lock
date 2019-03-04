@@ -5710,10 +5710,10 @@ react-fast-compare@2.0.2:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.2.tgz#0560ba7a61a1662d9cea8cd97a0d9db7591bab1c"
   integrity sha512-EdPU5vXIzvNvQFNuej3oQ1PZ6YmDunTPZJ3V5EmwRqOhEmW0PNxzUdbYhXnZKZFtrrjGiu9718f6iQRdj0l2JA==
 
-react-image-crop@6.0.14:
-  version "6.0.14"
-  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.14.tgz#e21bd72b44a81087d71410de29d2a517c246968f"
-  integrity sha512-ozZwgRDSLyRnO2bVWGYJJxPBVfkgDsQy37I2Dqg4RiDFSkVbloGd2GgavBTIyasH1dXRDtrGr8y5zNZ/g8C+9w==
+react-image-crop@6.0.15:
+  version "6.0.15"
+  resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-6.0.15.tgz#df2e434e493643bad7e7da2fcca268b4e0000c2c"
+  integrity sha512-vg9l5DbPaTETmuP62ILcickIc+dXjwSOBjzDJNEJlqF/bgpjeOKKiQN3cWpHAVjJJVcvTh5czwraJDN1yfgdXA==
   dependencies:
     "@types/react-image-crop" "^3.0.1"
 
