@@ -67,8 +67,8 @@ class Editor extends React.Component {
     const initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
       // TODO fix this hack
-      if (this.context.getGist && path.length >= 19 && path.indexOf('.') === -1) {
-        const { content, language } = await this.context.getGist(path)
+      if (this.context.gist && path.length >= 19 && path.indexOf('.') === -1) {
+        const { content, language } = await this.context.gist.get(path)
         if (language) {
           initialState.language = language.toLowerCase()
         }
