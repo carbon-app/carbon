@@ -1,14 +1,15 @@
 import React from 'react'
 import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
+import ApiContext from './ApiContext'
 import Button from './Button'
 
 function useWindowListener(key, fn) {
-  const callback = React.useRef(fn)
+  const { current: callback } = React.useRef(fn)
 
   React.useEffect(() => {
-    window.addEventListener(key, callback.current)
-    return () => window.removeEventListener(key, callback.current)
+    window.addEventListener(key, callback)
+    return () => window.removeEventListener(key, callback)
   }, [key, callback])
 }
 
@@ -30,8 +31,13 @@ function useOnlineListener() {
 }
 
 function TweetButton(props) {
+  const api = React.useContext(ApiContext)
   const online = useOnlineListener()
   const [onClick, { loading }] = useAsyncCallback(props.onClick)
+
+  if (!api || !api.tweet) {
+    return null
+  }
 
   if (!online) {
     return null
