@@ -10,7 +10,13 @@
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
     { "src": "^/_next/(.*)", "dest": "/_next/$1" },
-    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=30672000"
+      }
+    },
     {
       "src": "/api/oembed",
       "dest": "api/oembed.js",
@@ -37,6 +43,7 @@
       "methods": ["POST"]
     },
     { "src": "/api/.*", "status": 404 },
+    { "src": "/", "dest": "/index.html" },
     { "src": "^/(.*)", "dest": "/index.html" }
   ],
   "build": {
