@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 
 // Ours
+import ApiContext from './ApiContext'
 import Dropdown from './Dropdown'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
@@ -40,6 +41,7 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
 })
 
 class Editor extends React.Component {
+  static contextType = ApiContext
   constructor(props) {
     super(props)
     this.state = {
@@ -69,8 +71,8 @@ class Editor extends React.Component {
     const initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
       // TODO fix this hack
-      if (this.props.api.getGist && path.length >= 19 && path.indexOf('.') === -1) {
-        const { content, language } = await this.props.api.getGist(path)
+      if (this.context.gist && path.length >= 19 && path.indexOf('.') === -1) {
+        const { content, language } = await this.context.gist.get(path)
         if (language) {
           initialState.language = language.toLowerCase()
         }
@@ -119,9 +121,9 @@ class Editor extends React.Component {
   ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
-    if (this.props.api.image && this.isSafari && isPNG) {
+    if (this.context.image && this.isSafari && isPNG) {
       const encodedState = serializeState(this.state)
-      return this.props.api.image(encodedState)
+      return this.context.image(encodedState)
     }
 
     const node = this.carbonNode.current
@@ -237,7 +239,7 @@ class Editor extends React.Component {
 
   upload() {
     this.getCarbonImage({ format: 'png' }).then(
-      this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE)
+      this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
     )
   }
 
@@ -333,7 +335,7 @@ class Editor extends React.Component {
               getCarbonImage={this.getCarbonImage}
             />
             <div className="buttons">
-              {this.props.api.tweet && <TweetButton onClick={this.upload} />}
+              <TweetButton onClick={this.upload} />
               <ExportMenu
                 onChange={this.updateSetting}
                 export={this.export}
@@ -396,7 +398,6 @@ function isImage(file) {
 }
 
 Editor.defaultProps = {
-  api: {},
   onUpdate: () => {},
   onReset: () => {}
 }
