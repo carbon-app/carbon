@@ -13,11 +13,7 @@ function RandomImage(props) {
   const [selectImage, { loading: selecting }] = useAsyncCallback(() => {
     const image = cache[cacheIndex]
 
-    return api.unsplash
-      .download(image.id)
-      .then(url => api.client.get(url, { responseType: 'blob' }))
-      .then(res => res.data)
-      .then(blob => props.onChange(blob, image))
+    return api.unsplash.download(image.id).then(blob => props.onChange(blob, image))
   })
 
   const [updateCache, { loading: updating, data: imgs }] = useAsyncCallback(api.unsplash.random)
