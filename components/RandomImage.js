@@ -16,10 +16,12 @@ function RandomImage(props) {
     return api.unsplash.download(image.id).then(blob => props.onChange(blob, image))
   })
 
-  const [updateCache, { loading: updating, data: imgs }] = useAsyncCallback(api.unsplash.random)
+  const [updateCache, { loading: updating, error, data: imgs }] = useAsyncCallback(
+    api.unsplash.random
+  )
 
   React.useEffect(() => {
-    if (cacheIndex === 0 || cacheIndex > cache.length - 2) {
+    if (!error && (cacheIndex === 0 || cacheIndex > cache.length - 2)) {
       updateCache()
     }
   }, [cacheIndex, cache.length, updateCache])
