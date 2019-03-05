@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
 
-import RandomImage, { downloadThumbnailImage } from './RandomImage'
+import RandomImage from './RandomImage'
 import PhotoCredit from './PhotoCredit'
 import Input from './Input'
 import { Link } from './Meta'
 import { fileToDataURL } from '../lib/util'
+import ApiContext from './ApiContext'
 
 const getCroppedImg = (imageDataURL, pixelCrop) => {
   const canvas = document.createElement('canvas')
@@ -43,6 +44,7 @@ const INITIAL_STATE = {
 }
 
 export default class ImagePicker extends React.Component {
+  static contextType = ApiContext
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
@@ -103,7 +105,8 @@ export default class ImagePicker extends React.Component {
   handleURLInput(e) {
     e.preventDefault()
     const url = e.target[0].value
-    return downloadThumbnailImage({ url })
+    return this.context
+      .downloadThumbnailImage({ url })
       .then(({ dataURL }) =>
         this.props.onChange({
           backgroundImage: dataURL,
