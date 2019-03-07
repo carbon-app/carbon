@@ -68,7 +68,7 @@ class Editor extends React.Component {
     try {
       // TODO fix this hack
       if (path.length >= 19 && path.indexOf('.') === -1 && this.context.gist) {
-        const { code, language, config } = await await this.context.gist.get(path)
+        const { code, language, config } = await this.context.gist.get(path)
 
         if (typeof config === 'object') {
           initialState = config
