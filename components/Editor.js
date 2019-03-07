@@ -64,15 +64,21 @@ class Editor extends React.Component {
     const { query, pathname } = url.parse(asPath, true)
     const path = escapeHtml(pathname.split('/').pop())
     const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    let initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
       // TODO fix this hack
-      if (this.context.gist && path.length >= 19 && path.indexOf('.') === -1) {
-        const { content, language } = await this.context.gist.get(path)
+      if (path.length >= 19 && path.indexOf('.') === -1 && this.context.gist) {
+        const { code, language, config } = await await this.context.gist.get(path)
+
+        if (typeof config === 'object') {
+          initialState = config
+        }
+
         if (language) {
           initialState.language = language.toLowerCase()
         }
-        initialState.code = content
+
+        initialState.code = code
       }
     } catch (e) {
       // eslint-disable-next-line
@@ -293,68 +299,66 @@ class Editor extends React.Component {
     const config = omit(this.state, ['code', 'aspectRatio'])
 
     return (
-      <>
-        <div className="editor">
-          <Toolbar>
-            <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
-            <Dropdown
-              icon={languageIcon}
-              selected={
-                LANGUAGE_NAME_HASH[language] ||
-                LANGUAGE_MIME_HASH[language] ||
-                LANGUAGE_MODE_HASH[language] ||
-                LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
-              }
-              list={LANGUAGES}
-              onChange={this.updateLanguage}
-            />
-            <BackgroundSelect
-              onChange={this.updateBackground}
-              mode={backgroundMode}
-              color={backgroundColor}
-              image={backgroundImage}
-              aspectRatio={aspectRatio}
-            />
-            <Settings
-              {...config}
+      <div className="editor">
+        <Toolbar>
+          <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
+          <Dropdown
+            icon={languageIcon}
+            selected={
+              LANGUAGE_NAME_HASH[language] ||
+              LANGUAGE_MIME_HASH[language] ||
+              LANGUAGE_MODE_HASH[language] ||
+              LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
+            }
+            list={LANGUAGES}
+            onChange={this.updateLanguage}
+          />
+          <BackgroundSelect
+            onChange={this.updateBackground}
+            mode={backgroundMode}
+            color={backgroundColor}
+            image={backgroundImage}
+            aspectRatio={aspectRatio}
+          />
+          <Settings
+            {...config}
+            onChange={this.updateSetting}
+            resetDefaultSettings={this.resetDefaultSettings}
+            format={this.format}
+            applyPreset={this.applyPreset}
+            getCarbonImage={this.getCarbonImage}
+          />
+          <div className="buttons">
+            <TweetButton onClick={this.upload} />
+            <ExportMenu
               onChange={this.updateSetting}
-              resetDefaultSettings={this.resetDefaultSettings}
-              format={this.format}
-              applyPreset={this.applyPreset}
-              getCarbonImage={this.getCarbonImage}
+              export={this.export}
+              exportSize={exportSize}
+              disablePNG={this.disablePNG}
             />
-            <div className="buttons">
-              <TweetButton onClick={this.upload} />
-              <ExportMenu
-                onChange={this.updateSetting}
-                export={this.export}
-                exportSize={exportSize}
-                disablePNG={this.disablePNG}
-              />
-            </div>
-          </Toolbar>
+          </div>
+        </Toolbar>
 
-          <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
-            {({ canDrop }) => (
-              <Overlay
-                isOver={canDrop}
-                title={`Drop your file here to import ${canDrop ? '✋' : '✊'}`}
+        <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
+          {({ canDrop }) => (
+            <Overlay
+              isOver={canDrop}
+              title={`Drop your file here to import ${canDrop ? '✋' : '✊'}`}
+            >
+              {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
+              <Carbon
+                key={language}
+                ref={this.carbonNode}
+                config={this.state}
+                onChange={this.updateCode}
+                onAspectRatioChange={this.updateAspectRatio}
+                loading={this.state.loading}
               >
-                {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
-                <Carbon
-                  key={language}
-                  ref={this.carbonNode}
-                  config={this.state}
-                  onChange={this.updateCode}
-                  onAspectRatioChange={this.updateAspectRatio}
-                  loading={this.state.loading}
-                >
-                  {code != null ? code : DEFAULT_CODE}
-                </Carbon>
-              </Overlay>
-            )}
-          </Dropzone>
-        </div>
+                {code != null ? code : DEFAULT_CODE}
+              </Carbon>
+            </Overlay>
+          )}
+        </Dropzone>
         <style jsx>
           {`
             .editor {
@@ -370,7 +374,7 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </>
+      </div>
     )
   }
 }
