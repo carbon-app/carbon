@@ -2,47 +2,29 @@ import React from 'react'
 import Spinner from 'react-spinner'
 import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
-import api from '../lib/api'
-
+import ApiContext from './ApiContext'
 import PhotoCredit from './PhotoCredit'
-import { fileToDataURL } from '../lib/util'
-
-export const downloadThumbnailImage = img => {
-  return api.client
-    .get(img.url.replace('http://', 'https://'), { responseType: 'blob' })
-    .then(res => res.data)
-    .then(fileToDataURL)
-    .then(dataURL => Object.assign(img, { dataURL }))
-}
-
-const getImageDownloadUrl = img =>
-  api.client.get(`/unsplash/download/${img.id}`).then(res => res.data.url)
-
-async function getImages() {
-  const imageUrls = await api.client.get('/unsplash/random')
-  return Promise.all(imageUrls.data.map(downloadThumbnailImage))
-}
 
 function RandomImage(props) {
   const { current: cache } = React.useRef([])
   const [cacheIndex, updateIndex] = React.useState(0)
+  const api = React.useContext(ApiContext)
 
   const [selectImage, { loading: selecting }] = useAsyncCallback(() => {
     const image = cache[cacheIndex]
 
-    return getImageDownloadUrl(image)
-      .then(url => api.client.get(url, { responseType: 'blob' }))
-      .then(res => res.data)
-      .then(blob => props.onChange(blob, image))
+    return api.unsplash.download(image.id).then(blob => props.onChange(blob, image))
   })
 
-  const [updateCache, { loading: updating, data: imgs }] = useAsyncCallback(getImages)
+  const [updateCache, { loading: updating, error, data: imgs }] = useAsyncCallback(
+    api.unsplash.random
+  )
 
   React.useEffect(() => {
-    if (cacheIndex === 0 || cacheIndex > cache.length - 2) {
+    if (!error && !updating && (!imgs || cacheIndex > cache.length - 2)) {
       updateCache()
     }
-  }, [cacheIndex, cache.length, updateCache])
+  }, [error, updating, imgs, cacheIndex, cache.length, updateCache])
 
   React.useEffect(() => {
     if (imgs) {

@@ -94,9 +94,7 @@ class Carbon extends React.PureComponent {
       <div className="container">
         {config.windowControls ? (
           <WindowControls
-            titleBar={this.props.titleBar}
             theme={config.windowTheme}
-            handleTitleBarChange={this.props.updateTitleBar}
             code={this.props.children}
             copyable={this.props.copyable}
           />

@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 
 // Ours
+import ApiContext from './ApiContext'
 import Dropdown from './Dropdown'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
@@ -38,6 +39,7 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
 })
 
 class Editor extends React.Component {
+  static contextType = ApiContext
   constructor(props) {
     super(props)
     this.state = {
@@ -62,15 +64,21 @@ class Editor extends React.Component {
     const { query, pathname } = url.parse(asPath, true)
     const path = escapeHtml(pathname.split('/').pop())
     const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    let initialState = Object.keys(queryParams).length ? queryParams : {}
     try {
       // TODO fix this hack
-      if (this.props.api.getGist && path.length >= 19 && path.indexOf('.') === -1) {
-        const { content, language } = await this.props.api.getGist(path)
+      if (path.length >= 19 && path.indexOf('.') === -1 && this.context.gist) {
+        const { code, language, config } = await this.context.gist.get(path)
+
+        if (typeof config === 'object') {
+          initialState = config
+        }
+
         if (language) {
           initialState.language = language.toLowerCase()
         }
-        initialState.code = content
+
+        initialState.code = code
       }
     } catch (e) {
       // eslint-disable-next-line
@@ -104,7 +112,6 @@ class Editor extends React.Component {
 
   updateCode = code => this.updateState({ code })
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
-  updateTitleBar = titleBar => this.updateState({ titleBar })
 
   async getCarbonImage(
     {
@@ -116,9 +123,9 @@ class Editor extends React.Component {
   ) {
     // if safari, get image from api
     const isPNG = format !== 'svg'
-    if (this.props.api.image && this.isSafari && isPNG) {
+    if (this.context.image && this.isSafari && isPNG) {
       const encodedState = serializeState(this.state)
-      return this.props.api.image(encodedState)
+      return this.context.image(encodedState)
     }
 
     const node = this.carbonNode.current
@@ -159,6 +166,8 @@ class Editor extends React.Component {
       height
     }
 
+    // current font-family used
+    const fontFamily = this.state.fontFamily
     try {
       if (type === 'blob') {
         if (format === 'svg') {
@@ -171,6 +180,11 @@ class Editor extends React.Component {
                   // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
                   .replace(/%23/g, '#')
                   .replace(/%0A/g, '\n')
+                  // remove other fonts which are not used
+                  .replace(
+                    new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+                    ''
+                  )
               )
               // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
               .then(dataUrl => dataUrl.replace(/&(?!#?[a-z0-9]+;)/g, '&amp;'))
@@ -220,7 +234,7 @@ class Editor extends React.Component {
 
   upload() {
     this.getCarbonImage({ format: 'png' }).then(
-      this.props.api.tweet.bind(null, this.state.code || DEFAULT_CODE)
+      this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
     )
   }
 
@@ -278,78 +292,73 @@ class Editor extends React.Component {
       backgroundImage,
       backgroundMode,
       aspectRatio,
-      titleBar,
       code,
       exportSize
     } = this.state
 
-    const config = omit(this.state, ['code', 'aspectRatio', 'titleBar'])
+    const config = omit(this.state, ['code', 'aspectRatio'])
 
     return (
-      <>
-        <div className="editor">
-          <Toolbar>
-            <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
-            <Dropdown
-              icon={languageIcon}
-              selected={
-                LANGUAGE_NAME_HASH[language] ||
-                LANGUAGE_MIME_HASH[language] ||
-                LANGUAGE_MODE_HASH[language] ||
-                LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
-              }
-              list={LANGUAGES}
-              onChange={this.updateLanguage}
-            />
-            <BackgroundSelect
-              onChange={this.updateBackground}
-              mode={backgroundMode}
-              color={backgroundColor}
-              image={backgroundImage}
-              aspectRatio={aspectRatio}
-            />
-            <Settings
-              {...config}
+      <div className="editor">
+        <Toolbar>
+          <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
+          <Dropdown
+            icon={languageIcon}
+            selected={
+              LANGUAGE_NAME_HASH[language] ||
+              LANGUAGE_MIME_HASH[language] ||
+              LANGUAGE_MODE_HASH[language] ||
+              LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
+            }
+            list={LANGUAGES}
+            onChange={this.updateLanguage}
+          />
+          <BackgroundSelect
+            onChange={this.updateBackground}
+            mode={backgroundMode}
+            color={backgroundColor}
+            image={backgroundImage}
+            aspectRatio={aspectRatio}
+          />
+          <Settings
+            {...config}
+            onChange={this.updateSetting}
+            resetDefaultSettings={this.resetDefaultSettings}
+            format={this.format}
+            applyPreset={this.applyPreset}
+            getCarbonImage={this.getCarbonImage}
+          />
+          <div className="buttons">
+            <TweetButton onClick={this.upload} />
+            <ExportMenu
               onChange={this.updateSetting}
-              resetDefaultSettings={this.resetDefaultSettings}
-              format={this.format}
-              applyPreset={this.applyPreset}
-              getCarbonImage={this.getCarbonImage}
+              export={this.export}
+              exportSize={exportSize}
+              disablePNG={this.disablePNG}
             />
-            <div className="buttons">
-              {this.props.api.tweet && <TweetButton onClick={this.upload} />}
-              <ExportMenu
-                onChange={this.updateSetting}
-                export={this.export}
-                exportSize={exportSize}
-                disablePNG={this.disablePNG}
-              />
-            </div>
-          </Toolbar>
+          </div>
+        </Toolbar>
 
-          <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
-            {({ canDrop }) => (
-              <Overlay
-                isOver={canDrop}
-                title={`Drop your file here to import ${canDrop ? '✋' : '✊'}`}
+        <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
+          {({ canDrop }) => (
+            <Overlay
+              isOver={canDrop}
+              title={`Drop your file here to import ${canDrop ? '✋' : '✊'}`}
+            >
+              {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
+              <Carbon
+                key={language}
+                ref={this.carbonNode}
+                config={this.state}
+                onChange={this.updateCode}
+                onAspectRatioChange={this.updateAspectRatio}
+                loading={this.state.loading}
               >
-                {/*key ensures Carbon's internal language state is updated when it's changed by Dropdown*/}
-                <Carbon
-                  key={language}
-                  ref={this.carbonNode}
-                  config={this.state}
-                  onChange={this.updateCode}
-                  onAspectRatioChange={this.updateAspectRatio}
-                  titleBar={titleBar}
-                  updateTitleBar={this.updateTitleBar}
-                  loading={this.state.loading}
-                >
-                  {code != null ? code : DEFAULT_CODE}
-                </Carbon>
-              </Overlay>
-            )}
-          </Dropzone>
-        </div>
+                {code != null ? code : DEFAULT_CODE}
+              </Carbon>
+            </Overlay>
+          )}
+        </Dropzone>
         <style jsx>
           {`
             .editor {
@@ -365,7 +374,7 @@ class Editor extends React.Component {
             }
           `}
         </style>
-      </>
+      </div>
     )
   }
 }
@@ -382,7 +391,6 @@ function isImage(file) {
 }
 
 Editor.defaultProps = {
-  api: {},
   onUpdate: () => {},
   onReset: () => {}
 }

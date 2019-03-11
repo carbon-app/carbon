@@ -67,7 +67,7 @@ export const MetaLinks = React.memo(() => {
       {CDN_STYLESHEETS.map(themeDef => {
         const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/${themeDef &&
           (themeDef.link || themeDef.id)}.min.css`
-        return <Link key={href} href={href} />
+        return <Link key={themeDef.id} href={href} />
       })}
     </React.Fragment>
   )

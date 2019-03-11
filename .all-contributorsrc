@@ -463,6 +463,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Joel-hanson",
+      "name": "Joel Hanson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17215044?s=460&v=4",
+      "profile": "https://github.com/Joel-hanson",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"

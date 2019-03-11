@@ -5,6 +5,7 @@ default:
 
 labels:
   "merge when passing": merge
+  greenkeeper: merge
   wontfix: close
   invalid: close
   stale: close
