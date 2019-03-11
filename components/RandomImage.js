@@ -6,12 +6,12 @@ import ApiContext from './ApiContext'
 import PhotoCredit from './PhotoCredit'
 
 function RandomImage(props) {
-  const { current: cache } = React.useRef([])
+  const cacheRef = React.useRef([])
   const [cacheIndex, updateIndex] = React.useState(0)
   const api = React.useContext(ApiContext)
 
   const [selectImage, { loading: selecting }] = useAsyncCallback(() => {
-    const image = cache[cacheIndex]
+    const image = cacheRef.current[cacheIndex]
 
     return api.unsplash.download(image.id).then(blob => props.onChange(blob, image))
   })
@@ -20,20 +20,23 @@ function RandomImage(props) {
     api.unsplash.random
   )
 
+  const needsFetch = !error && !updating && (!imgs || cacheIndex > cache.length - 2)
+
   React.useEffect(() => {
-    if (!error && !updating && (!imgs || cacheIndex > cache.length - 2)) {
+    if (needsFetch) {
       updateCache()
     }
-  }, [error, updating, imgs, cacheIndex, cache.length, updateCache])
+  }, [needsFetch, updateCache])
 
   React.useEffect(() => {
     if (imgs) {
-      cache.push(...imgs)
+      cacheRef.current.push(...imgs)
     }
-  }, [cache, imgs])
+  }, [imgs])
 
   const loading = updating || selecting
 
+  const cache = cacheRef.current
   const photographer = cache[cacheIndex] && cache[cacheIndex].photographer
   const bgImage = cache[cacheIndex] && cache[cacheIndex].dataURL
   return (
