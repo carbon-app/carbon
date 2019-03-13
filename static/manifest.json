@@ -6,13 +6,16 @@
   "description": "Carbon is the easiest way to create and share beautiful images of your source code.",
   "display": "standalone",
   "start_url": "/",
-  "icons": [{
-    "src": "/static/brand/icon.png",
-    "type": "image/png",
-    "sizes": "448x448"
-  }, {
-    "src": "/static/brand/logo-square.png",
-    "type": "image/png",
-    "sizes": "1024x1024"
-  }]
+  "icons": [
+    {
+      "src": "/static/brand/icon.png",
+      "type": "image/png",
+      "sizes": "448x448"
+    },
+    {
+      "src": "/static/brand/desktop.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }
