@@ -14,7 +14,7 @@ function useWindowListener(key, fn) {
   }, [key])
 }
 
-function useOnlineListener() {
+export function useOnlineListener() {
   const [online, setOnline] = React.useState(true)
 
   React.useEffect(() => {

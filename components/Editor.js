@@ -260,10 +260,6 @@ class Editor extends React.Component {
   }
 
   updateBackground({ photographer, ...changes } = {}) {
-    if (this.isSafari) {
-      this.disablePNG = !verifyPayloadSize(changes.backgroundImage)
-    }
-
     if (photographer) {
       this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
@@ -334,7 +330,7 @@ class Editor extends React.Component {
               onChange={this.updateSetting}
               export={this.export}
               exportSize={exportSize}
-              disablePNG={this.disablePNG}
+              backgroundImage={backgroundImage}
             />
           </div>
         </Toolbar>
@@ -377,13 +373,6 @@ class Editor extends React.Component {
       </div>
     )
   }
-}
-
-const MAX_PAYLOAD_SIZE = 5e6 // bytes
-function verifyPayloadSize(str) {
-  if (typeof str !== 'string') return true
-
-  return new Blob([str]).size < MAX_PAYLOAD_SIZE
 }
 
 function isImage(file) {
