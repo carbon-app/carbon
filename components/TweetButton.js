@@ -5,12 +5,13 @@ import ApiContext from './ApiContext'
 import Button from './Button'
 
 function useWindowListener(key, fn) {
-  const { current: callback } = React.useRef(fn)
+  const callbackRef = React.useRef(fn)
 
   React.useEffect(() => {
-    window.addEventListener(key, callback)
-    return () => window.removeEventListener(key, callback)
-  }, [key, callback])
+    const cb = callbackRef.current
+    window.addEventListener(key, cb)
+    return () => window.removeEventListener(key, cb)
+  }, [key])
 }
 
 function useOnlineListener() {
@@ -22,7 +23,7 @@ function useOnlineListener() {
         ? navigator.onLine
         : true
     )
-  }, [setOnline])
+  }, [])
 
   useWindowListener('offline', () => setOnline(false))
   useWindowListener('online', () => setOnline(true))

@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.6",
+  "version": "3.9.7",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,7 @@
     "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
-    "@dawnlabs/tacklebox": "^0.0.4",
+    "@dawnlabs/tacklebox": "^0.0.5",
     "axios": "^0.18.0",
     "chrome-aws-lambda": "^1.12.0",
     "codemirror": "^5.42.2",
@@ -41,7 +41,7 @@
     "morphmorph": "^0.1.2",
     "ms": "^2.0.0",
     "next": "^8.0.3",
-    "next-offline": "^3.3.1",
+    "next-offline": "^3.3.6",
     "prettier": "^1.16.4",
     "puppeteer-core": "^1.12.1",
     "react": "^16.8.3",
