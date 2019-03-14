@@ -40,6 +40,22 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
   loading: () => null
 })
 
+function TrackInstalls() {
+  React.useEffect(() => {
+    function onInstall() {
+      ReactGA.event({
+        category: 'App',
+        action: 'Install'
+      })
+    }
+    window.addEventListener('appinstalled', onInstall)
+
+    return () => window.removeEventListener('appinstalled', onInstall)
+  }, [])
+
+  return null
+}
+
 class Editor extends React.Component {
   static contextType = ApiContext
   constructor(props) {
@@ -311,6 +327,7 @@ class Editor extends React.Component {
 
     return (
       <div className="editor">
+        <TrackInstalls />
         <Toolbar>
           <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
           <Dropdown
