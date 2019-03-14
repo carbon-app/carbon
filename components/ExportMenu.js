@@ -1,13 +1,11 @@
 import React from 'react'
 import { withRouter } from 'next/router'
-import { useCopyTextHandler } from '@dawnlabs/tacklebox'
+import { useCopyTextHandler, useOnline } from '@dawnlabs/tacklebox'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
 import Input from './Input'
 import Popout, { managePopout } from './Popout'
-
-import { useOnlineListener } from './TweetButton'
 
 const toIFrame = url =>
   `<iframe
@@ -186,7 +184,7 @@ class ExportMenu extends React.PureComponent {
 
 export default managePopout(function({ backgroundImage, ...props }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
-  const online = useOnlineListener()
+  const online = useOnline()
 
   const [isSafari, setSafari] = React.useState(false)
   React.useEffect(() => {
