@@ -1,2 +1,3 @@
-// const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
-// const withOffline = require('next-offline')
+const withOffline = require('next-offline')
+
+module.exports = withOffline()
