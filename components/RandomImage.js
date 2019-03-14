@@ -20,7 +20,7 @@ function RandomImage(props) {
     api.unsplash.random
   )
 
-  const needsFetch = !error && !updating && (!imgs || cacheIndex > cache.length - 2)
+  const needsFetch = !error && !updating && (!imgs || cacheIndex > cacheRef.current.length - 2)
 
   React.useEffect(() => {
     if (needsFetch) {
