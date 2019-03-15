@@ -775,10 +775,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@dawnlabs/tacklebox@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.5.tgz#e33b1983c576bb617c01d516b1f7419a6c5d299a"
-  integrity sha512-DFyQ7FbEVwzOkg/sNSey7J98s/XXBbT0U9AGrCVuQpbC8VrrLCzgKlbeexJfVFvTm5B1tFTmzne3vpAmBezY0A==
+"@dawnlabs/tacklebox@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.6.tgz#3286922209113e36655f103bb8e738f75b66b5b3"
+  integrity sha512-tV7N/Qs2aBS2Z17L7g17/KukVcqe2UYS+zCF5KG7k2oZQdmy9wyCj4hHB8gtRHyzWd/1UpGFAs3TzXqx89z38w==
   dependencies:
     copy-to-clipboard "^3.0.8"
     react-click-outside "^3.0.1"

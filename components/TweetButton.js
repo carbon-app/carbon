@@ -1,35 +1,8 @@
 import React from 'react'
-import { useAsyncCallback } from '@dawnlabs/tacklebox'
+import { useAsyncCallback, useOnline as useOnlineListener } from '@dawnlabs/tacklebox'
 
 import ApiContext from './ApiContext'
 import Button from './Button'
-
-function useWindowListener(key, fn) {
-  const callbackRef = React.useRef(fn)
-
-  React.useEffect(() => {
-    const cb = callbackRef.current
-    window.addEventListener(key, cb)
-    return () => window.removeEventListener(key, cb)
-  }, [key])
-}
-
-function useOnlineListener() {
-  const [online, setOnline] = React.useState(true)
-
-  React.useEffect(() => {
-    setOnline(
-      typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean'
-        ? navigator.onLine
-        : true
-    )
-  }, [])
-
-  useWindowListener('offline', () => setOnline(false))
-  useWindowListener('online', () => setOnline(true))
-
-  return online
-}
 
 function TweetButton(props) {
   const api = React.useContext(ApiContext)

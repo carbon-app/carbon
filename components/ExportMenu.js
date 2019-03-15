@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router'
-import { useCopyTextHandler } from '@dawnlabs/tacklebox'
+import { useCopyTextHandler, useOnline } from '@dawnlabs/tacklebox'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
@@ -14,6 +14,13 @@ const toIFrame = url =>
   sandbox="allow-scripts allow-same-origin">
 </iframe>
 `
+
+const MAX_PAYLOAD_SIZE = 5e6 // bytes
+function verifyPayloadSize(str) {
+  if (typeof str !== 'string') return true
+
+  return new Blob([str]).size < MAX_PAYLOAD_SIZE
+}
 
 const CopyEmbed = withRouter(
   React.memo(
@@ -175,4 +182,20 @@ class ExportMenu extends React.PureComponent {
   }
 }
 
-export default managePopout(ExportMenu)
+export default managePopout(function({ backgroundImage, ...props }) {
+  const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
+  const online = useOnline()
+
+  const [isSafari, setSafari] = React.useState(false)
+  React.useEffect(() => {
+    setSafari(
+      window.navigator &&
+        window.navigator.userAgent.indexOf('Safari') !== -1 &&
+        window.navigator.userAgent.indexOf('Chrome') === -1
+    )
+  }, [])
+
+  const disablePNG = isSafari && (tooLarge || !online)
+
+  return <ExportMenu {...props} disablePNG={disablePNG} />
+})
