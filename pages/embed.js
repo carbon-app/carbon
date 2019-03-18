@@ -8,7 +8,7 @@ import morph from 'morphmorph'
 // Ours
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
-import GistParser from '../components/GistParser'
+import GistContainer from '../components/GistContainer'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
 
@@ -53,7 +53,7 @@ class Embed extends React.Component {
     readOnly: true
   }
 
-  componentDidMount() {
+  init(gistState) {
     const { asPath = '' } = this.props.router
     const { query } = url.parse(asPath, true)
     const queryParams = getQueryStringState(query)
@@ -62,6 +62,7 @@ class Embed extends React.Component {
     this.setState(
       {
         ...initialState,
+        ...gistState,
         id: query.id,
         copyable: queryParams.copy !== false,
         readOnly: queryParams.readonly !== false,
@@ -100,19 +101,17 @@ class Embed extends React.Component {
   render() {
     return (
       <Page theme={this.state.theme}>
+        <GistContainer onChange={stateFromGist => this.init(stateFromGist)} />
         {this.state.mounted && (
-          <>
-            <Carbon
-              ref={this.ref}
-              config={this.state}
-              readOnly={this.state.readOnly}
-              copyable={this.state.copyable}
-              onChange={this.updateCode}
-            >
-              {this.state.code}
-            </Carbon>
-            <GistParser onChange={stateFromGist => this.setState(stateFromGist)} />
-          </>
+          <Carbon
+            ref={this.ref}
+            config={this.state}
+            readOnly={this.state.readOnly}
+            copyable={this.state.copyable}
+            onChange={this.updateCode}
+          >
+            {this.state.code}
+          </Carbon>
         )}
       </Page>
     )

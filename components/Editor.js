@@ -15,7 +15,7 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
-import GistParser from './GistParser'
+import GistContainer from './GistContainer'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -336,7 +336,8 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-        <GistParser onChange={stateFromGist => this.setState(stateFromGist)} />
+
+        <GistContainer onChange={stateFromGist => this.setState(stateFromGist)} />
         <style jsx>
           {`
             .editor {
