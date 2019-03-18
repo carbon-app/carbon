@@ -53,7 +53,7 @@ class Embed extends React.Component {
     readOnly: true
   }
 
-  init(gistState) {
+  handleUpdate = updates => {
     const { asPath = '' } = this.props.router
     const { query } = url.parse(asPath, true)
     const queryParams = getQueryStringState(query)
@@ -62,7 +62,7 @@ class Embed extends React.Component {
     this.setState(
       {
         ...initialState,
-        ...gistState,
+        ...updates,
         id: query.id,
         copyable: queryParams.copy !== false,
         readOnly: queryParams.readonly !== false,
@@ -101,7 +101,7 @@ class Embed extends React.Component {
   render() {
     return (
       <Page theme={this.state.theme}>
-        <GistContainer onChange={stateFromGist => this.init(stateFromGist)} />
+        <GistContainer onChange={this.handleUpdate} />
         {this.state.mounted && (
           <Carbon
             ref={this.ref}
