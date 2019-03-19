@@ -24,20 +24,16 @@ function verifyPayloadSize(str) {
   return new Blob([str]).size < MAX_PAYLOAD_SIZE
 }
 
-const CopyEmbed = withRouter(
-  React.memo(
-    ({ router: { asPath } }) => {
-      const { onClick, copied } = useCopyTextHandler(toIFrame(decode(asPath)))
+const CopyEmbed = withRouter(({ router: { asPath } }) => {
+  const text = React.useMemo(() => toIFrame(decode(asPath)), [asPath])
+  const { onClick, copied } = useCopyTextHandler(text)
 
-      return (
-        <Button onClick={onClick} center color={COLORS.PURPLE} padding="12px 16px" flex="1 0 68px">
-          {copied ? 'Copied!' : 'Copy Embed'}
-        </Button>
-      )
-    },
-    (prevProps, nextProps) => prevProps.router.asPath === nextProps.router.asPath
+  return (
+    <Button onClick={onClick} center color={COLORS.PURPLE} padding="12px 16px" flex="1 0 68px">
+      {copied ? 'Copied!' : 'Copy Embed'}
+    </Button>
   )
-)
+})
 
 const popoutStyle = { width: '280px', right: 0 }
 
