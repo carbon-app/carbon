@@ -63,8 +63,7 @@ class Editor extends React.Component {
   async componentDidMount() {
     const { asPath = '' } = this.props.router
     const { query } = url.parse(decode(asPath), true)
-    const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    const initialState = getQueryStringState(query)
 
     const newState = {
       // Load from localStorage

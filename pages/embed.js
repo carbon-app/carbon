@@ -57,16 +57,15 @@ class Embed extends React.Component {
   handleUpdate = updates => {
     const { asPath = '' } = this.props.router
     const { query } = url.parse(decode(asPath), true)
-    const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    const initialState = getQueryStringState(query)
 
     this.setState(
       {
         ...initialState,
         ...updates,
         id: query.id,
-        copyable: queryParams.copy !== false,
-        readOnly: queryParams.readonly !== false,
+        copyable: initialState.copy !== false,
+        readOnly: initialState.readonly !== false,
         mounted: true
       },
       this.postMessage
