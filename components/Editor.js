@@ -30,7 +30,7 @@ import {
   DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit, decode } from '../lib/util'
+import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
@@ -62,7 +62,7 @@ class Editor extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props.router
-    const { query } = url.parse(decode(asPath), true)
+    const { query } = url.parse(asPath, true)
     const initialState = getQueryStringState(query)
 
     const newState = {

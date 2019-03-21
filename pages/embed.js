@@ -11,7 +11,6 @@ import Carbon from '../components/Carbon'
 import GistContainer from '../components/GistContainer'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
-import { decode } from '../lib/util'
 
 const isInIFrame = morph.get('parent.window.parent')
 const getParent = win => {
@@ -56,7 +55,7 @@ class Embed extends React.Component {
 
   handleUpdate = updates => {
     const { asPath = '' } = this.props.router
-    const { query } = url.parse(decode(asPath), true)
+    const { query } = url.parse(asPath, true)
     const initialState = getQueryStringState(query)
 
     this.setState(

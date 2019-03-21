@@ -7,8 +7,6 @@ import Button from './Button'
 import Input from './Input'
 import Popout, { managePopout } from './Popout'
 
-import { decode } from '../lib/util'
-
 const toIFrame = url =>
   `<iframe
   src="https://carbon.now.sh/embed${url}"
@@ -25,7 +23,7 @@ function verifyPayloadSize(str) {
 }
 
 const CopyEmbed = withRouter(({ router: { asPath } }) => {
-  const text = React.useMemo(() => toIFrame(decode(asPath)), [asPath])
+  const text = React.useMemo(() => toIFrame(asPath), [asPath])
   const { onClick, copied } = useCopyTextHandler(text)
 
   return (
