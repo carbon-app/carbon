@@ -25,7 +25,9 @@ module.exports = (req, res) => {
   }
 
   try {
-    const { query: queryString } = url.parse(embedUrl)
+    const { query: queryString, pathname } = url.parse(embedUrl)
+
+    const gistID = pathname.split('/').pop()
 
     const width = Math.min(Number(parsed.query.maxwidth) || Infinity, 1024)
     const height = Math.min(Number(parsed.query.maxheight) || Infinity, 473)
@@ -36,7 +38,11 @@ module.exports = (req, res) => {
       provider_name: 'Carbon',
       width,
       height,
-      html: toIFrame(`?${queryString}`, width, height)
+      html: toIFrame(
+        `${gistID ? `/${gistID}` : ''}?${queryString ? queryString : ''}`,
+        width,
+        height
+      )
     }
 
     return send(res, 200, obj)
