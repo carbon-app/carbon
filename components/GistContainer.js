@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router'
+import url from 'url'
 
 import { escapeHtml } from '../lib/util'
 import ApiContext from './ApiContext'
@@ -8,7 +9,8 @@ class GistContainer extends React.Component {
   static contextType = ApiContext
 
   async componentDidMount() {
-    const { pathname } = this.props.router
+    const { asPath = '' } = this.props.router
+    const { pathname } = url.parse(asPath, true)
     const path = escapeHtml(pathname.split('/').pop())
     let newState = {}
 
