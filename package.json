@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.7",
+  "version": "3.9.8",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,7 @@
     "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
-    "@dawnlabs/tacklebox": "^0.0.5",
+    "@dawnlabs/tacklebox": "^0.0.6",
     "axios": "^0.18.0",
     "chrome-aws-lambda": "^1.12.0",
     "codemirror": "^5.42.2",

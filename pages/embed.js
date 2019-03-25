@@ -9,6 +9,7 @@ import morph from 'morphmorph'
 // Ours
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
+import GistContainer from '../components/GistContainer'
 import { DEFAULT_CODE, DEFAULT_SETTINGS, GA_TRACKING_ID } from '../lib/constants'
 import { getQueryStringState } from '../lib/routing'
 
@@ -53,18 +54,18 @@ class Embed extends React.Component {
     readOnly: true
   }
 
-  componentDidMount() {
+  handleUpdate = updates => {
     const { asPath = '' } = this.props.router
     const { query } = url.parse(asPath, true)
-    const queryParams = getQueryStringState(query)
-    const initialState = Object.keys(queryParams).length ? queryParams : {}
+    const initialState = getQueryStringState(query)
 
     this.setState(
       {
         ...initialState,
+        ...updates,
         id: query.id,
-        copyable: queryParams.copy !== false,
-        readOnly: queryParams.readonly !== false,
+        copyable: initialState.copy !== false,
+        readOnly: initialState.readonly !== false,
         mounted: true
       },
       this.postMessage
@@ -108,6 +109,7 @@ class Embed extends React.Component {
   render() {
     return (
       <Page theme={this.state.theme}>
+        <GistContainer onChange={this.handleUpdate} />
         {this.state.mounted && (
           <Carbon
             ref={this.ref}

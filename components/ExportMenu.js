@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router'
-import { useCopyTextHandler } from '@dawnlabs/tacklebox'
+import { useCopyTextHandler, useOnline } from '@dawnlabs/tacklebox'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
@@ -15,20 +15,32 @@ const toIFrame = url =>
 </iframe>
 `
 
-const CopyEmbed = withRouter(
-  React.memo(
-    ({ router: { asPath } }) => {
-      const { onClick, copied } = useCopyTextHandler(toIFrame(asPath))
+const toURL = url => encodeURI(`https://carbon.now.sh/embed${url}`)
 
-      return (
-        <Button onClick={onClick} center color={COLORS.PURPLE} padding="12px 16px" flex="1 0 68px">
-          {copied ? 'Copied!' : 'Copy Embed'}
-        </Button>
-      )
-    },
-    (prevProps, nextProps) => prevProps.router.asPath === nextProps.router.asPath
+const MAX_PAYLOAD_SIZE = 5e6 // bytes
+function verifyPayloadSize(str) {
+  if (typeof str !== 'string') return true
+
+  return new Blob([str]).size < MAX_PAYLOAD_SIZE
+}
+
+const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => {
+  const text = React.useMemo(() => mapper(asPath), [mapper, asPath])
+  const { onClick, copied } = useCopyTextHandler(text)
+
+  return (
+    <Button
+      onClick={onClick}
+      center
+      hoverColor={COLORS.PURPLE}
+      color={COLORS.DARK_PURPLE}
+      margin={margin}
+      style={{ minWidth: 48 }}
+    >
+      {copied ? 'Copied!' : title}
+    </Button>
   )
-)
+})
 
 const popoutStyle = { width: '280px', right: 0 }
 
@@ -95,7 +107,13 @@ class ExportMenu extends React.PureComponent {
             <Button center color={COLORS.PURPLE} onClick={this.handleExport('open')}>
               Open
             </Button>
-            <CopyEmbed />
+            <div className="save-container">
+              <span>Copy embed</span>
+              <div>
+                <CopyEmbed title="URL" mapper={toURL} margin="0 4px 0 0" />
+                <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 0 0 4px" />
+              </div>
+            </div>
             <div className="save-container">
               <span>Save as</span>
               <div>
@@ -168,6 +186,11 @@ class ExportMenu extends React.PureComponent {
               display: flex;
               flex: 1;
             }
+
+            .save-container:first-of-type {
+              padding: 12px 12px;
+              border-right: 1px solid ${COLORS.PURPLE};
+            }
           `}
         </style>
       </div>
@@ -175,4 +198,20 @@ class ExportMenu extends React.PureComponent {
   }
 }
 
-export default managePopout(ExportMenu)
+export default managePopout(function({ backgroundImage, ...props }) {
+  const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
+  const online = useOnline()
+
+  const [isSafari, setSafari] = React.useState(false)
+  React.useEffect(() => {
+    setSafari(
+      window.navigator &&
+        window.navigator.userAgent.indexOf('Safari') !== -1 &&
+        window.navigator.userAgent.indexOf('Chrome') === -1
+    )
+  }, [])
+
+  const disablePNG = isSafari && (tooLarge || !online)
+
+  return <ExportMenu {...props} disablePNG={disablePNG} />
+})

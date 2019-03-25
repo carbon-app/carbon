@@ -16,6 +16,7 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
+import GistContainer from './GistContainer'
 import {
   GA_TRACKING_ID,
   LANGUAGES,
@@ -31,7 +32,7 @@ import {
   DEFAULT_PRESET_ID
 } from '../lib/constants'
 import { serializeState, getQueryStringState } from '../lib/routing'
-import { getSettings, escapeHtml, unescapeHtml, formatCode, omit } from '../lib/util'
+import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
@@ -81,29 +82,8 @@ class Editor extends React.Component {
     ReactGA.initialize(GA_TRACKING_ID)
 
     const { asPath = '' } = this.props.router
-    const { query, pathname } = url.parse(asPath, true)
-    const path = escapeHtml(pathname.split('/').pop())
-    const queryParams = getQueryStringState(query)
-    let initialState = Object.keys(queryParams).length ? queryParams : {}
-    try {
-      // TODO fix this hack
-      if (path.length >= 19 && path.indexOf('.') === -1 && this.context.gist) {
-        const { code, language, config } = await this.context.gist.get(path)
-
-        if (typeof config === 'object') {
-          initialState = config
-        }
-
-        if (language) {
-          initialState.language = language.toLowerCase()
-        }
-
-        initialState.code = code
-      }
-    } catch (e) {
-      // eslint-disable-next-line
-      console.log(e)
-    }
+    const { query } = url.parse(asPath, true)
+    const initialState = getQueryStringState(query)
 
     const newState = {
       // Load from localStorage
@@ -287,10 +267,6 @@ class Editor extends React.Component {
   }
 
   updateBackground({ photographer, ...changes } = {}) {
-    if (this.isSafari) {
-      this.disablePNG = !verifyPayloadSize(changes.backgroundImage)
-    }
-
     if (photographer) {
       this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
@@ -362,7 +338,7 @@ class Editor extends React.Component {
               onChange={this.updateSetting}
               export={this.export}
               exportSize={exportSize}
-              disablePNG={this.disablePNG}
+              backgroundImage={backgroundImage}
             />
           </div>
         </Toolbar>
@@ -387,6 +363,8 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
+
+        <GistContainer onChange={stateFromGist => this.setState(stateFromGist)} />
         <style jsx>
           {`
             .editor {
@@ -405,13 +383,6 @@ class Editor extends React.Component {
       </div>
     )
   }
-}
-
-const MAX_PAYLOAD_SIZE = 5e6 // bytes
-function verifyPayloadSize(str) {
-  if (typeof str !== 'string') return true
-
-  return new Blob([str]).size < MAX_PAYLOAD_SIZE
 }
 
 function isImage(file) {
