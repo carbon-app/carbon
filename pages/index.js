@@ -1,6 +1,7 @@
 // Theirs
 import React from 'react'
 import { withRouter } from 'next/router'
+import { register, unregister } from 'next-offline/runtime'
 import debounce from 'lodash.debounce'
 
 // Ours
@@ -11,6 +12,13 @@ import { updateQueryString } from '../lib/routing'
 import { saveSettings, clearSettings, omit } from '../lib/util'
 
 class Index extends React.Component {
+  componentDidMount() {
+    register()
+  }
+  componentWillUnmount() {
+    unregister()
+  }
+
   shouldComponentUpdate = () => false
 
   onEditorUpdate = debounce(
