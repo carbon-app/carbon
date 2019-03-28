@@ -9,6 +9,7 @@ import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
 import {
   COLORS,
+  LANGUAGES,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
   THEMES_HASH,
@@ -51,7 +52,11 @@ class Carbon extends React.PureComponent {
         }
       }
 
-      return language
+      const _language = LANGUAGES.find(({ name, mode, mime }) =>
+        [name, mode, mime].map(meta => meta && meta.toLowerCase()).includes(language.toLowerCase())
+      )
+
+      return (_language && _language.mime) || language
     },
     ms('300ms'),
     {
