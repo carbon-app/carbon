@@ -59,7 +59,7 @@ class Carbon extends React.PureComponent {
         }
       }
 
-      const languageMode = searchLanguage(language.toLowerCase())
+      const languageMode = searchLanguage(language)
 
       if (languageMode) {
         return languageMode
@@ -83,7 +83,10 @@ class Carbon extends React.PureComponent {
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
-    const languageMode = this.handleLanguageChange(this.props.children, config.language)
+    const languageMode = this.handleLanguageChange(
+      this.props.children,
+      config.language && config.language.toLowerCase()
+    )
 
     const options = {
       lineNumbers: config.lineNumbers,
