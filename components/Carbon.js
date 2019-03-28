@@ -11,6 +11,7 @@ import {
   COLORS,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
+  LANGUAGE_MIME_HASH,
   THEMES_HASH,
   DEFAULT_SETTINGS
 } from '../lib/constants'
@@ -18,6 +19,14 @@ import {
 const Watermark = dynamic(() => import('./svg/Watermark'), {
   loading: () => null
 })
+
+function searchLanguage(l) {
+  const config = LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
+
+  if (config) {
+    return config.mime || config.mode
+  }
+}
 
 class Carbon extends React.PureComponent {
   static defaultProps = {
@@ -43,12 +52,17 @@ class Carbon extends React.PureComponent {
       if (language === 'auto') {
         // try to set the language
         const detectedLanguage = hljs.highlightAuto(newCode).language
-        const languageMode =
-          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+        const languageMode = searchLanguage(detectedLanguage)
 
         if (languageMode) {
-          return languageMode.mime || languageMode.mode
+          return languageMode
         }
+      }
+
+      const languageMode = searchLanguage(language)
+
+      if (languageMode) {
+        return languageMode
       }
 
       return language
@@ -69,7 +83,10 @@ class Carbon extends React.PureComponent {
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
-    const languageMode = this.handleLanguageChange(this.props.children, config.language)
+    const languageMode = this.handleLanguageChange(
+      this.props.children,
+      config.language && config.language.toLowerCase()
+    )
 
     const options = {
       lineNumbers: config.lineNumbers,
