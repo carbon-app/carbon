@@ -9,9 +9,9 @@ import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
 import {
   COLORS,
-  LANGUAGES,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
+  LANGUAGE_MIME_HASH,
   THEMES_HASH,
   DEFAULT_SETTINGS
 } from '../lib/constants'
@@ -19,6 +19,14 @@ import {
 const Watermark = dynamic(() => import('./svg/Watermark'), {
   loading: () => null
 })
+
+function searchLanguage(l) {
+  const config = LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
+
+  if (config) {
+    return config.mime || config.mode
+  }
+}
 
 class Carbon extends React.PureComponent {
   static defaultProps = {
@@ -44,19 +52,20 @@ class Carbon extends React.PureComponent {
       if (language === 'auto') {
         // try to set the language
         const detectedLanguage = hljs.highlightAuto(newCode).language
-        const languageMode =
-          LANGUAGE_MODE_HASH[detectedLanguage] || LANGUAGE_NAME_HASH[detectedLanguage]
+        const languageMode = searchLanguage(detectedLanguage)
 
         if (languageMode) {
-          return languageMode.mime || languageMode.mode
+          return languageMode
         }
       }
 
-      const _language = LANGUAGES.find(({ name, mode, mime }) =>
-        [name, mode, mime].map(meta => meta && meta.toLowerCase()).includes(language.toLowerCase())
-      )
+      const languageMode = searchLanguage(language.toLowerCase())
 
-      return (_language && _language.mime) || language
+      if (languageMode) {
+        return languageMode
+      }
+
+      return language
     },
     ms('300ms'),
     {
