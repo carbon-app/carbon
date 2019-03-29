@@ -60,8 +60,7 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    const { asPath = '' } = this.props.router
-    const { queryState, parameter } = getRouteState(asPath)
+    const { queryState, parameter } = getRouteState(this.props.router)
 
     // TODO we could create an interface for loading this config, so that it looks identical
     // whether config is loaded from localStorage, gist, or even something like IndexDB

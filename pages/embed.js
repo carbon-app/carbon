@@ -55,8 +55,7 @@ class Embed extends React.Component {
   }
 
   async componentDidMount() {
-    const { asPath = '' } = this.props.router
-    const { queryState, parameter } = getRouteState(asPath)
+    const { queryState, parameter } = getRouteState(this.props.router)
 
     let gistState
     if (this.context.gist && parameter) {
