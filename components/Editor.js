@@ -64,21 +64,14 @@ class Editor extends React.Component {
 
     // TODO we could create an interface for loading this config, so that it looks identical
     // whether config is loaded from localStorage, gist, or even something like IndexDB
-
-    // TODO consider moving this try/catch into getGist to make it function like localStorage
     let gistState
-    try {
-      if (this.context.gist && parameter) {
-        const { config, ...gist } = await this.context.gist.get(parameter)
+    if (this.context.gist && parameter) {
+      const res = await this.context.gist.get(parameter)
+      if (res && typeof res.config === 'object') {
+        const { config, ...gist } = res
         this.gist = gist
-
-        if (typeof config === 'object') {
-          gistState = config
-        }
+        gistState = config
       }
-    } catch (e) {
-      // eslint-disable-next-line
-      console.log(e)
     }
 
     const newState = {

@@ -59,13 +59,8 @@ class Embed extends React.Component {
 
     let gistState
     if (this.context.gist && parameter) {
-      try {
-        const { config } = await this.context.gist.get(parameter)
-        gistState = config
-      } catch (e) {
-        // eslint-disable-next-line
-        console.log(e)
-      }
+      const gist = await this.context.gist.get(parameter)
+      gistState = gist && gist.config
     }
 
     this.setState(
