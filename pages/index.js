@@ -26,7 +26,7 @@ class Index extends React.Component {
       updateQueryString(this.props.router, state)
       saveSettings(
         localStorage,
-        omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'filename'])
+        omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'filename', 'gist'])
       )
     },
     750,

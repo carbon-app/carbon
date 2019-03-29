@@ -2,15 +2,14 @@
 import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
-import url from 'url'
 import morph from 'morphmorph'
 
 // Ours
+import ApiContext from '../components/ApiContext'
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
-import GistContainer from '../components/GistContainer'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
-import { getQueryStringState } from '../lib/routing'
+import { getRouteState } from '../lib/routing'
 
 const isInIFrame = morph.get('parent.window.parent')
 const getParent = win => {
@@ -46,6 +45,8 @@ const Page = props => (
 )
 
 class Embed extends React.Component {
+  static contextType = ApiContext
+
   state = {
     ...DEFAULT_SETTINGS,
     code: DEFAULT_CODE,
@@ -53,16 +54,28 @@ class Embed extends React.Component {
     readOnly: true
   }
 
-  handleUpdate = updates => {
+  async componentDidMount() {
     const { asPath = '' } = this.props.router
-    const { query } = url.parse(asPath, true)
-    const initialState = getQueryStringState(query)
+    let { state: initialState, gistUri, id } = getRouteState(asPath)
+
+    if (this.context.gist && gistUri) {
+      try {
+        const gistState = await this.context.gist.get(gistUri)
+
+        initialState = {
+          ...initialState,
+          ...gistState
+        }
+      } catch (e) {
+        // eslint-disable-next-line
+        console.log(e)
+      }
+    }
 
     this.setState(
       {
         ...initialState,
-        ...updates,
-        id: query.id,
+        id,
         copyable: initialState.copy !== false,
         readOnly: initialState.readonly !== false,
         mounted: true
@@ -100,7 +113,6 @@ class Embed extends React.Component {
   render() {
     return (
       <Page theme={this.state.theme}>
-        <GistContainer onChange={this.handleUpdate} />
         {this.state.mounted && (
           <Carbon
             ref={this.ref}

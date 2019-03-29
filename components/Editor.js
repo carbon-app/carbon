@@ -1,5 +1,4 @@
 // Theirs
-import url from 'url'
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import dynamic from 'next/dynamic'
@@ -15,7 +14,6 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
-import GistContainer from './GistContainer'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -29,7 +27,7 @@ import {
   DEFAULT_LANGUAGE,
   DEFAULT_PRESET_ID
 } from '../lib/constants'
-import { serializeState, getQueryStringState } from '../lib/routing'
+import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
@@ -62,8 +60,21 @@ class Editor extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props.router
-    const { query } = url.parse(asPath, true)
-    const initialState = getQueryStringState(query)
+    let { state: initialState, gistUri } = getRouteState(asPath)
+
+    if (this.context.gist && gistUri) {
+      try {
+        const gistState = await this.context.gist.get(gistUri)
+
+        initialState = {
+          ...initialState,
+          ...gistState
+        }
+      } catch (e) {
+        // eslint-disable-next-line
+        console.log(e)
+      }
+    }
 
     const newState = {
       // Load from localStorage
@@ -335,8 +346,6 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-
-        <GistContainer onChange={stateFromGist => this.setState(stateFromGist)} />
         <style jsx>
           {`
             .editor {
