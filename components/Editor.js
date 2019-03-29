@@ -66,9 +66,8 @@ class Editor extends React.Component {
     // whether config is loaded from localStorage, gist, or even something like IndexDB
     let gistState
     if (this.context.gist && parameter) {
-      const res = await this.context.gist.get(parameter)
-      if (res && typeof res.config === 'object') {
-        const { config, ...gist } = res
+      const { config, ...gist } = (await this.context.gist.get(parameter)) || {}
+      if (typeof config === 'object') {
         this.gist = gist
         gistState = config
       }
