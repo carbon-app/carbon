@@ -61,36 +61,41 @@ class Editor extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props.router
-    const { queryState, gistPath } = getRouteState(asPath)
-    let initialState = { loading: false }
+    const { queryState, parameter } = getRouteState(asPath)
 
-    if (this.context.gist && gistPath) {
-      try {
-        const { gistState } = await this.context.gist.get(gistPath)
-        this.gist = true
-        initialState = { ...initialState, ...gistState }
-      } catch (e) {
-        // eslint-disable-next-line
-        console.log(e)
+    // TODO we could create an interface for loading this config, so that it looks identical
+    // whether config is loaded from localStorage, gist, or even something like IndexDB
+
+    // TODO consider moving this try/catch into getGist to make it function like localStorage
+    let gistState
+    try {
+      if (this.context.gist && parameter) {
+        const { config, ...gist } = await this.context.gist.get(parameter)
+        this.gist = gist
+
+        if (typeof config === 'object') {
+          gistState = config
+        }
       }
+    } catch (e) {
+      // eslint-disable-next-line
+      console.log(e)
     }
 
-    if (!this.gist) {
-      initialState = {
-        ...initialState,
-        // Load from localStorage
-        ...getSettings(localStorage),
-        // and then URL params
-        ...queryState
-      }
+    const newState = {
+      // Load options from gist or localStorage
+      ...(gistState ? gistState : getSettings(localStorage)),
+      // and then URL params
+      ...queryState,
+      loading: false
     }
 
     // Makes sure the slash in 'application/X' is decoded
-    if (initialState.language) {
-      initialState.language = unescapeHtml(initialState.language)
+    if (newState.language) {
+      newState.language = unescapeHtml(newState.language)
     }
 
-    this.updateState(initialState)
+    this.updateState(newState)
 
     this.isSafari =
       window.navigator &&

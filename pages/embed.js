@@ -56,13 +56,13 @@ class Embed extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props.router
-    const { queryState, gistPath, id } = getRouteState(asPath)
-    let initialState = queryState
+    const { queryState, parameter } = getRouteState(asPath)
 
-    if (this.context.gist && gistPath) {
+    let gistState
+    if (this.context.gist && parameter) {
       try {
-        const { gistState } = await this.context.gist.get(gistPath)
-        initialState = gistState
+        const { config } = await this.context.gist.get(parameter)
+        gistState = config
       } catch (e) {
         // eslint-disable-next-line
         console.log(e)
@@ -71,10 +71,10 @@ class Embed extends React.Component {
 
     this.setState(
       {
-        ...initialState,
-        id,
-        copyable: initialState.copy !== false,
-        readOnly: initialState.readonly !== false,
+        ...gistState,
+        ...queryState,
+        copyable: queryState.copy !== false,
+        readOnly: queryState.readonly !== false,
         mounted: true
       },
       this.postMessage
