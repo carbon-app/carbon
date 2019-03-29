@@ -56,16 +56,13 @@ class Embed extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props.router
-    let { state: initialState, gistUri, id } = getRouteState(asPath)
+    const { queryState, gistPath, id } = getRouteState(asPath)
+    let initialState = queryState
 
-    if (this.context.gist && gistUri) {
+    if (this.context.gist && gistPath) {
       try {
-        const gistState = await this.context.gist.get(gistUri)
-
-        initialState = {
-          ...initialState,
-          ...gistState
-        }
+        const { gistState } = await this.context.gist.get(gistPath)
+        initialState = gistState
       } catch (e) {
         // eslint-disable-next-line
         console.log(e)

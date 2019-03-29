@@ -39,6 +39,7 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
 
 class Editor extends React.Component {
   static contextType = ApiContext
+
   constructor(props) {
     super(props)
     this.state = {
@@ -60,36 +61,36 @@ class Editor extends React.Component {
 
   async componentDidMount() {
     const { asPath = '' } = this.props.router
-    let { state: initialState, gistUri } = getRouteState(asPath)
+    const { queryState, gistPath } = getRouteState(asPath)
+    let initialState = { loading: false }
 
-    if (this.context.gist && gistUri) {
+    if (this.context.gist && gistPath) {
       try {
-        const gistState = await this.context.gist.get(gistUri)
-
-        initialState = {
-          ...initialState,
-          ...gistState
-        }
+        const { gistState } = await this.context.gist.get(gistPath)
+        this.gist = true
+        initialState = { ...initialState, ...gistState }
       } catch (e) {
         // eslint-disable-next-line
         console.log(e)
       }
     }
 
-    const newState = {
-      // Load from localStorage
-      ...getSettings(localStorage),
-      // and then URL params
-      ...initialState,
-      loading: false
+    if (!this.gist) {
+      initialState = {
+        ...initialState,
+        // Load from localStorage
+        ...getSettings(localStorage),
+        // and then URL params
+        ...queryState
+      }
     }
 
     // Makes sure the slash in 'application/X' is decoded
-    if (newState.language) {
-      newState.language = unescapeHtml(newState.language)
+    if (initialState.language) {
+      initialState.language = unescapeHtml(initialState.language)
     }
 
-    this.updateState(newState)
+    this.updateState(initialState)
 
     this.isSafari =
       window.navigator &&
@@ -99,9 +100,11 @@ class Editor extends React.Component {
 
   carbonNode = React.createRef()
 
-  updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
+  updateState = updates =>
+    this.setState(updates, () => !this.gist && this.props.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
+
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
 
   async getCarbonImage(
