@@ -8,7 +8,7 @@ import debounce from 'lodash.debounce'
 import Editor from '../components/Editor'
 import Page from '../components/Page'
 import { MetaLinks } from '../components/Meta'
-import { updateQueryString } from '../lib/routing'
+import { updateRouteState } from '../lib/routing'
 import { saveSettings, clearSettings, omit } from '../lib/util'
 
 class Index extends React.Component {
@@ -23,7 +23,7 @@ class Index extends React.Component {
 
   onEditorUpdate = debounce(
     state => {
-      updateQueryString(this.props.router, state)
+      updateRouteState(this.props.router, state)
       saveSettings(
         localStorage,
         omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'filename'])
