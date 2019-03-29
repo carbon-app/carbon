@@ -78,7 +78,7 @@ class Editor extends React.Component {
       newState.language = unescapeHtml(newState.language)
     }
 
-    this.updateState(newState)
+    this.setState(newState)
 
     this.isSafari =
       window.navigator &&
@@ -88,7 +88,12 @@ class Editor extends React.Component {
 
   carbonNode = React.createRef()
 
-  updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
+  updateState = updates =>
+    this.setState(updates, () => {
+      if (!this.state.gist_id) {
+        this.props.onUpdate(this.state)
+      }
+    })
 
   updateCode = code => this.updateState({ code })
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })

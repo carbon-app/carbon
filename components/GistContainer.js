@@ -16,7 +16,7 @@ class GistContainer extends React.Component {
 
     if (this.context.gist && path.length >= 19 && path.indexOf('.') === -1) {
       try {
-        const { code, language, config } = await this.context.gist.get(path)
+        const { gist_id, code, language, config } = await this.context.gist.get(path)
         if (typeof config === 'object') {
           newState = config
         }
@@ -24,6 +24,7 @@ class GistContainer extends React.Component {
           newState.language = language.toLowerCase()
         }
         newState.code = code
+        newState.gist_id = gist_id
       } catch (e) {
         // eslint-disable-next-line
         console.log(e)
