@@ -3,15 +3,14 @@ import ReactGA from 'react-ga'
 import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
-import url from 'url'
 import morph from 'morphmorph'
 
 // Ours
+import ApiContext from '../components/ApiContext'
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
-import GistContainer from '../components/GistContainer'
 import { DEFAULT_CODE, DEFAULT_SETTINGS, GA_TRACKING_ID } from '../lib/constants'
-import { getQueryStringState } from '../lib/routing'
+import { getRouteState } from '../lib/routing'
 
 const isInIFrame = morph.get('parent.window.parent')
 const getParent = win => {
@@ -47,6 +46,8 @@ const Page = props => (
 )
 
 class Embed extends React.Component {
+  static contextType = ApiContext
+
   state = {
     ...DEFAULT_SETTINGS,
     code: DEFAULT_CODE,
@@ -54,18 +55,21 @@ class Embed extends React.Component {
     readOnly: true
   }
 
-  handleUpdate = updates => {
-    const { asPath = '' } = this.props.router
-    const { query } = url.parse(asPath, true)
-    const initialState = getQueryStringState(query)
+  async componentDidMount() {
+    const { queryState, parameter } = getRouteState(this.props.router)
+
+    let gistState
+    if (this.context.gist && parameter) {
+      const gist = await this.context.gist.get(parameter)
+      gistState = gist && gist.config
+    }
 
     this.setState(
       {
-        ...initialState,
-        ...updates,
-        id: query.id,
-        copyable: initialState.copy !== false,
-        readOnly: initialState.readonly !== false,
+        ...gistState,
+        ...queryState,
+        copyable: queryState.copy !== false,
+        readOnly: queryState.readonly !== false,
         mounted: true
       },
       this.postMessage
@@ -109,7 +113,6 @@ class Embed extends React.Component {
   render() {
     return (
       <Page theme={this.state.theme}>
-        <GistContainer onChange={this.handleUpdate} />
         {this.state.mounted && (
           <Carbon
             ref={this.ref}
