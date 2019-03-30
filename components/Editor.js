@@ -1,5 +1,4 @@
 // Theirs
-import url from 'url'
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import dynamic from 'next/dynamic'
@@ -15,7 +14,6 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
-import GistContainer from './GistContainer'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -29,7 +27,7 @@ import {
   DEFAULT_LANGUAGE,
   DEFAULT_PRESET_ID
 } from '../lib/constants'
-import { serializeState, getQueryStringState } from '../lib/routing'
+import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
@@ -41,6 +39,7 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
 
 class Editor extends React.Component {
   static contextType = ApiContext
+
   constructor(props) {
     super(props)
     this.state = {
@@ -61,15 +60,24 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    const { asPath = '' } = this.props.router
-    const { query } = url.parse(asPath, true)
-    const initialState = getQueryStringState(query)
+    const { queryState, parameter } = getRouteState(this.props.router)
+
+    // TODO we could create an interface for loading this config, so that it looks identical
+    // whether config is loaded from localStorage, gist, or even something like IndexDB
+    let gistState
+    if (this.context.gist && parameter) {
+      const { config, ...gist } = (await this.context.gist.get(parameter)) || {}
+      if (typeof config === 'object') {
+        this.gist = gist
+        gistState = config
+      }
+    }
 
     const newState = {
-      // Load from localStorage
-      ...getSettings(localStorage),
+      // Load options from gist or localStorage
+      ...(gistState ? gistState : getSettings(localStorage)),
       // and then URL params
-      ...initialState,
+      ...queryState,
       loading: false
     }
 
@@ -88,9 +96,11 @@ class Editor extends React.Component {
 
   carbonNode = React.createRef()
 
-  updateState = updates => this.setState(updates, () => this.props.onUpdate(this.state))
+  updateState = updates =>
+    this.setState(updates, () => !this.gist && this.props.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
+
   updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
 
   async getCarbonImage(
@@ -335,8 +345,6 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-
-        <GistContainer onChange={stateFromGist => this.setState(stateFromGist)} />
         <style jsx>
           {`
             .editor {
