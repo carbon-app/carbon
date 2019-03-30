@@ -1,8 +1,6 @@
 /* global cy Cypress */
 import { editorVisible } from '../support'
 
-// 82d742f4efad9757cc826d20f2a5e5af
-// 82d742f4efad9757cc826d20f2a5e5af
 describe('Gist', () => {
   const test = Cypress.env('CI') ? it.skip : it
 
