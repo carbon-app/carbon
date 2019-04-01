@@ -216,7 +216,8 @@ class Carbon extends React.PureComponent {
               user-select: none;
             }
 
-            .container :global(.CodeMirror-scroll) {
+            .container :global(.CodeMirror-scroll),
+            .container :global(.CodeMirror-hscrollbar) {
               overflow: hidden !important;
             }
 
