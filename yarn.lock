@@ -775,10 +775,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@dawnlabs/tacklebox@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.6.tgz#3286922209113e36655f103bb8e738f75b66b5b3"
-  integrity sha512-tV7N/Qs2aBS2Z17L7g17/KukVcqe2UYS+zCF5KG7k2oZQdmy9wyCj4hHB8gtRHyzWd/1UpGFAs3TzXqx89z38w==
+"@dawnlabs/tacklebox@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.10.tgz#dce965e4f2ea77eee2815f7cf75c4a4ede6dcd55"
+  integrity sha512-86oZ7pal80nzVVBi+YUzfAbzIACROu2/U0fW9E1noFMPKnY6Tn3X4argyWyJYVUbSRj+csjYLIu3GwhImzqlrg==
   dependencies:
     copy-to-clipboard "^3.0.8"
     react-click-outside "^3.0.1"
@@ -5013,10 +5013,10 @@ normalize-path@^2.1.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-now@^14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/now/-/now-14.0.0.tgz#7fb7aff0c7c1465e534d84198c9e19d284f9cd59"
-  integrity sha512-zOdmN6+6dLTiHCDujp683KRWG4BE6OwIGU++aZXmss8C4GXuKuZU/Bp7czhwnzab/2qs8OtlaTW6eibcNNV0xA==
+now@^15.0.0:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/now/-/now-15.0.1.tgz#a0694e2777a93e1c5e814663fe066cc036a0d564"
+  integrity sha512-iAxrNlQKprwTauZFNI8eWgloWn45792qumF/ItEh8Pjv8+xfs8qAWHtRsyK8q5tCmToY3d70uu0ASvVGTmVrwQ==
 
 npm-bundled@^1.0.1:
   version "1.0.5"
