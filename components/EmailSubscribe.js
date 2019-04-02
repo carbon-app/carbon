@@ -95,15 +95,14 @@ const EmailSubscribe = () => {
 
   return (
     <div className="container link">
-      <a
-        href="#"
+      <button
         onClick={e => {
           e.preventDefault()
           setActive(true)
         }}
       >
         mailing list
-      </a>
+      </button>
       {active && (
         <MailchimpSubscribe
           url={MAILCHIMP_URL}
@@ -125,8 +124,17 @@ const EmailSubscribe = () => {
       )}
       <style jsx>
         {`
-          a {
+          button {
+            padding: 0;
+            border: none;
+            color: white;
+            background: none;
+            font-size: 100%;
+            cursor: pointer;
             visibility: ${active ? 'hidden' : 'visible'};
+          }
+          button:hover {
+            color: ${COLORS.PRIMARY};
           }
           span {
             font-size: 14px;
