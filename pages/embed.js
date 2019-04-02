@@ -48,8 +48,8 @@ class Embed extends React.Component {
 
     let gistState
     if (this.context.gist && parameter) {
-      const gist = await this.context.gist.get(parameter)
-      gistState = gist && gist.config
+      const { gist, config } = await this.context.gist.get(parameter)
+      gistState = gist && config
     }
 
     this.setState(
