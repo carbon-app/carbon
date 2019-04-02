@@ -31,7 +31,7 @@ function LoginButton() {
     >
       <Button center border large padding="0 16px" margin="0 8px 0 0" color="white">
         <img
-          height={30}
+          height={20}
           src={user ? user.avatar_url : '/static/github.svg'}
           alt={user ? user.name : 'GitHub'}
         />
