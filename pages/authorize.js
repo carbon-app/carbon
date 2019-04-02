@@ -14,7 +14,7 @@ export default withRouter(function(props) {
           code: query.code
         })
         .then(res => localStorage.setItem('t', res.data.access_token))
-        .catch(console.log)
+        .catch(console.error)
         .then(() => props.router.push('/'))
     }
   })

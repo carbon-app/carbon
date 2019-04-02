@@ -1,12 +1,19 @@
 import React from 'react'
+import { useAsyncCallback, useOnline } from '@dawnlabs/tacklebox'
 import Button from './Button'
 
 import { Context as AuthContext } from './AuthContext'
 
-function LoginButton(props) {
+function SaveButton(props) {
   const user = React.useContext(AuthContext)
+  const online = useOnline()
+  const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
   if (!user) {
+    return null
+  }
+
+  if (!online) {
     return null
   }
 
@@ -18,11 +25,11 @@ function LoginButton(props) {
       padding="0 16px"
       margin="0 8px 0 8px"
       color="#37b589"
-      onClick={props.onClick}
+      onClick={onClick}
     >
-      Save
+      {loading ? 'Saving...' : 'Save'}
     </Button>
   )
 }
 
-export default LoginButton
+export default React.memo(SaveButton)
