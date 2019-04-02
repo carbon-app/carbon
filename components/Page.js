@@ -1,9 +1,9 @@
 import React from 'react'
+import AuthContext from './AuthContext'
 import Meta from './Meta'
 import Header from './Header'
 import Footer from './Footer'
 import Toast from './Toast'
-import LoginButton from './LoginButton'
 
 import { GA_TRACKING_ID } from '../lib/constants'
 
@@ -15,7 +15,9 @@ class Page extends React.Component {
         <Meta />
         <Toast />
         <Header enableHeroText={enableHeroText} />
-        <div className="page">{children}</div>
+        <AuthContext>
+          <div className="page">{children}</div>
+        </AuthContext>
 
         <Footer />
 
