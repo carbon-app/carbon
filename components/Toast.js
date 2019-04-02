@@ -29,9 +29,9 @@ class Toast extends React.Component {
         <div className="toast-content">
           <p>Working on a product or new idea? The team behind Carbon is here to help.</p>
           <a href="https://dawnlabs.io">Let&#39;s talk!</a>
-          <a className="close-toast" href="#" onClick={this.close}>
+          <button className="close-toast" onClick={this.close}>
             &times;
-          </a>
+          </button>
         </div>
         <style jsx>
           {`
@@ -53,8 +53,15 @@ class Toast extends React.Component {
             }
 
             .close-toast {
+              padding-left: 0;
+              padding-right: 0;
+              background: transparent;
+              color: white;
+              border: none;
+              font-size: 100%;
               margin-left: 32px;
               text-decoration: none;
+              cursor: pointer;
             }
 
             p {
