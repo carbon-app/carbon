@@ -15,6 +15,7 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
+import LoginButton from './LoginButton'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -66,7 +67,8 @@ class Editor extends React.Component {
     // whether config is loaded from localStorage, gist, or even something like IndexDB
     let gistState
     if (this.context.gist && parameter) {
-      const { config, ...gist } = (await this.context.gist.get(parameter)) || {}
+      const { gist, config } = (await this.context.gist.get(parameter)) || {}
+      console.log(gist)
       if (typeof config === 'object') {
         this.gist = gist
         gistState = config
@@ -341,6 +343,7 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
+          <LoginButton />
           <Themes
             theme={theme}
             highlights={highlights}

@@ -3,6 +3,7 @@ import Meta from './Meta'
 import Header from './Header'
 import Footer from './Footer'
 import Toast from './Toast'
+import LoginButton from './LoginButton'
 
 import { GA_TRACKING_ID } from '../lib/constants'
 
