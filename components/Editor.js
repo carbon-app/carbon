@@ -69,7 +69,6 @@ class Editor extends React.Component {
     let gistState
     if (this.context.gist && parameter) {
       const { gist, config } = (await this.context.gist.get(parameter)) || {}
-      console.log(gist)
       if (typeof config === 'object') {
         this.gist = gist
         gistState = config
@@ -389,15 +388,17 @@ class Editor extends React.Component {
               exportSize={exportSize}
               backgroundImage={backgroundImage}
             />
-            <SaveButton
-              onClick={() =>
-                this.context.gist.update(this.gist && this.gist.id, {
-                  filename: this.gist && this.gist.filename,
-                  code: this.state.code,
-                  config
-                })
-              }
-            />
+            {this.gist && (
+              <SaveButton
+                onClick={() =>
+                  this.context.gist.update(this.gist.id, {
+                    filename: this.gist && this.gist.filename,
+                    code: this.state.code,
+                    config
+                  })
+                }
+              />
+            )}
           </div>
         </Toolbar>
 
