@@ -1,50 +1,7 @@
 import React from 'react'
+import { useLocalStorage } from '@dawnlabs/tacklebox'
 import Button from './Button'
 import { githubClient } from '../lib/api'
-
-function useLocalStorage(key) {
-  const [state, setState] = React.useState(null)
-
-  React.useEffect(() => {
-    if (localStorage.hasOwnProperty(key)) {
-      // get the key's value from localStorage
-      let value = localStorage.getItem(key)
-
-      // parse the localStorage string and setState
-      try {
-        value = JSON.parse(value)
-      } catch (e) {
-        // pass
-      } finally {
-        setState(value)
-      }
-    }
-  }, [key])
-
-  React.useEffect(() => {
-    function handleStorageChange(e) {
-      const { isTrusted, newValue: value } = e
-
-      if (isTrusted) {
-        setState(value)
-      }
-    }
-
-    window.addEventListener('storage', handleStorageChange)
-
-    return () => window.removeEventListener('storage', handleStorageChange)
-  }, [])
-
-  React.useEffect(() => {
-    if (state == undefined) {
-      localStorage.removeItem(key)
-    } else {
-      localStorage.setItem(key, typeof state === 'string' ? state : JSON.stringify(state))
-    }
-  }, [key, state])
-
-  return [state, setState]
-}
 
 function LoginButton() {
   const [token] = useLocalStorage('t')
