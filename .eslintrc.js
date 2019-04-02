@@ -24,7 +24,8 @@ module.exports = {
     'react/jsx-uses-vars': 'error',
     'jsx-a11y/click-events-have-key-events': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error'
+    'react-hooks/exhaustive-deps': 'error',
+    'no-console': ['error', { allow: ['error'] }]
   },
   settings: {
     react: {
