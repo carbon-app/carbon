@@ -16,6 +16,7 @@ import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
 import LoginButton from './LoginButton'
+import Button from './Button'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -388,6 +389,23 @@ class Editor extends React.Component {
               exportSize={exportSize}
               backgroundImage={backgroundImage}
             />
+            <Button
+              center
+              border
+              large
+              padding="0 16px"
+              margin="0 8px 0 8px"
+              color="#37b589"
+              onClick={() =>
+                this.context.gist.update(this.gist && this.gist.id, {
+                  filename: this.gist && this.gist.filename,
+                  code: this.state.code,
+                  config
+                })
+              }
+            >
+              Save
+            </Button>
           </div>
         </Toolbar>
 

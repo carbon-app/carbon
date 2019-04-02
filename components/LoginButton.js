@@ -17,7 +17,7 @@ function LoginButton() {
         .get('/user')
         .then(res => res.data)
         .then(setState)
-        .catch(() => setState(false))
+        .catch(console.error)
     }
   }, [token, user])
 
