@@ -101,8 +101,6 @@ class Editor extends React.Component {
 
   updateCode = code => this.updateState({ code })
 
-  updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
-
   async getCarbonImage(
     {
       format,
@@ -277,12 +275,11 @@ class Editor extends React.Component {
       backgroundColor,
       backgroundImage,
       backgroundMode,
-      aspectRatio,
       code,
       exportSize
     } = this.state
 
-    const config = omit(this.state, ['code', 'aspectRatio'])
+    const config = omit(this.state, ['code'])
 
     return (
       <div className="editor">
@@ -304,7 +301,7 @@ class Editor extends React.Component {
             mode={backgroundMode}
             color={backgroundColor}
             image={backgroundImage}
-            aspectRatio={aspectRatio}
+            carbonRef={this.carbonNode.current}
           />
           <Settings
             {...config}
@@ -337,7 +334,6 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
-                onAspectRatioChange={this.updateAspectRatio}
                 loading={this.state.loading}
               >
                 {code != null ? code : DEFAULT_CODE}
