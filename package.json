@@ -21,7 +21,7 @@
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.10",
     "axios": "^0.18.0",
-    "chrome-aws-lambda": "^1.12.0",
+    "chrome-aws-lambda": "^1.14.0",
     "codemirror": "^5.42.2",
     "codemirror-graphql": "^0.8.3",
     "codemirror-mode-elixir": "^1.1.2",
@@ -43,7 +43,7 @@
     "next": "^8.0.3",
     "next-offline": "^3.3.6",
     "prettier": "^1.16.4",
-    "puppeteer-core": "^1.12.1",
+    "puppeteer-core": "^1.14.0",
     "react": "^16.8.3",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^5.1.0",
