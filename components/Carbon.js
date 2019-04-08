@@ -30,21 +30,7 @@ function searchLanguage(l) {
 
 class Carbon extends React.PureComponent {
   static defaultProps = {
-    onAspectRatioChange: () => {},
     onChange: () => {}
-  }
-
-  componentDidMount() {
-    const node = this.props.innerRef.current
-    this.mo = new MutationObserver(() => {
-      const ratio = node.clientWidth / node.clientHeight
-      this.props.onAspectRatioChange(ratio)
-    })
-    this.mo.observe(node, { attributes: true, childList: true, subtree: true })
-  }
-
-  componentWillUnmount() {
-    this.mo.disconnect()
   }
 
   handleLanguageChange = debounce(
