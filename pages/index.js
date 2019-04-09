@@ -46,13 +46,7 @@ class Index extends React.Component {
 function onReset() {
   clearSettings()
 
-  if (window.navigator && navigator.serviceWorker) {
-    navigator.serviceWorker.getRegistrations().then(registrations => {
-      for (let registration of registrations) {
-        registration.unregister()
-      }
-    })
-  }
+  unregister()
 }
 
 export default withRouter(Index)
