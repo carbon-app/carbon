@@ -54,7 +54,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.0.0",
     "babel-eslint": "^10.0.1",
-    "clipboardy": "^1.2.3",
+    "clipboardy": "^2.0.0",
     "cypress": "^3.1.5",
     "eslint": "^5.13.0",
     "eslint-plugin-import": "^2.16.0",
