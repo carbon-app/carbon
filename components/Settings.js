@@ -109,7 +109,7 @@ const TypeSettings = React.memo(
   ({ onChange, font, size, lineHeight, onWidthChanging, onWidthChanged }) => {
     return (
       <div className="settings-content">
-        <FontSelect selected={font} onChange={onChange.bind(null, 'fontFamily')} />
+        <FontSelect selected={font} onChange={onChange} />
         <Slider
           label="Size"
           value={size}
