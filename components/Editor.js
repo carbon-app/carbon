@@ -45,13 +45,13 @@ class Editor extends React.Component {
     this.state = {
       ...DEFAULT_SETTINGS,
       preset: DEFAULT_PRESET_ID,
+      highlights: {},
       loading: true
     }
 
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
-    this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
@@ -86,7 +86,7 @@ class Editor extends React.Component {
       newState.language = unescapeHtml(newState.language)
     }
 
-    this.updateState(newState)
+    this.setState(newState)
 
     this.isSafari =
       window.navigator &&
@@ -112,7 +112,8 @@ class Editor extends React.Component {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (this.context.image && this.isSafari && isPNG) {
-      const encodedState = serializeState(this.state)
+      const { highlights, ...state } = this.state
+      const encodedState = serializeState({ ...state, ...highlights })
       return this.context.image(encodedState)
     }
 
@@ -239,10 +240,6 @@ class Editor extends React.Component {
     }
   }
 
-  updateTheme(theme) {
-    this.updateSetting('theme', theme)
-  }
-
   updateLanguage(language) {
     this.updateSetting('language', language.mime || language.mode)
   }
@@ -271,6 +268,7 @@ class Editor extends React.Component {
   render() {
     const {
       theme,
+      highlights,
       language,
       backgroundColor,
       backgroundImage,
@@ -284,7 +282,13 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
-          <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
+          <Themes
+            ref={this.themes}
+            key={theme}
+            onChange={this.updateSetting}
+            theme={theme}
+            highlights={highlights}
+          />
           <Dropdown
             icon={languageIcon}
             selected={

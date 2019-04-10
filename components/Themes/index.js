@@ -1,12 +1,14 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+import { withRouter } from 'next/router'
 
 import Dropdown from '../Dropdown'
 import { managePopout } from '../Popout'
 import ThemeIcon from '../svg/Theme'
 import RemoveIcon from '../svg/Remove'
-import { THEMES, COLORS, DEFAULT_THEME } from '../../lib/constants'
+import { THEMES, COLORS, DEFAULT_THEME, HIGHLIGHT_KEYS } from '../../lib/constants'
 import { getThemes, saveThemes, stringifyRGBA, generateId } from '../../lib/util'
+import { getRouteState } from '../../lib/routing'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
   loading: () => null
@@ -40,13 +42,15 @@ const ThemeItem = ({ children, item, isSelected, onClick }) => (
 
 const themeIcon = <ThemeIcon />
 
+const getCustomName = themes =>
+  `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length + 1}`
+
 class Themes extends React.PureComponent {
   selectedTheme = DEFAULT_THEME
 
   state = {
     themes: THEMES,
     preset: this.props.theme,
-    highlights: {},
     name: 'Custom Theme',
     selected: null
   }
@@ -54,36 +58,67 @@ class Themes extends React.PureComponent {
   dropdown = React.createRef()
 
   componentDidMount() {
+    const { queryState } = getRouteState(this.props.router)
+
+    const queryHighlights = queryState
+      ? Object.keys(queryState)
+          .filter(key => HIGHLIGHT_KEYS.includes(key))
+          .reduce((obj, key) => ({ ...obj, [key]: queryState[key] }), {})
+      : {}
+
     const storedThemes = getThemes(localStorage) || []
 
     this.setState(({ themes }) => {
       const newThemes = [...storedThemes, ...themes]
 
-      const name = `Custom Theme ${newThemes.filter(({ name }) => name.startsWith('Custom Theme'))
-        .length + 1}`
+      const name = getCustomName(newThemes)
 
       this.selectedTheme = newThemes.find(({ id }) => id === this.props.theme) || DEFAULT_THEME
 
+      const highlights = {
+        ...this.selectedTheme.highlights,
+        ...queryHighlights
+      }
+
+      this.props.onChange('highlights', highlights)
+
       return {
         themes: newThemes,
-        highlights: this.selectedTheme.highlights,
+        highlights,
         name
       }
     })
   }
 
-  applyPreset = preset =>
-    this.setState(({ themes }) => ({
-      preset,
-      highlights: themes.find(({ id }) => id === preset).highlights
-    }))
+  componentDidUpdate(prevProps) {
+    const { isVisible, theme, onChange } = this.props
+    const { themes } = this.state
+
+    if (prevProps.isVisible && !isVisible) {
+      this.setState({ name: getCustomName(themes) })
+      onChange('highlights', themes.find(({ id }) => id === theme).highlights)
+    }
+  }
+
+  applyPreset = preset => {
+    this.setState(({ themes }) => {
+      this.props.onChange('highlights', themes.find(({ id }) => id === preset).highlights)
+      return {
+        preset
+      }
+    })
+  }
 
   handleChange = ({ id }) => {
+    const { theme, toggleVisibility, onChange } = this.props
+    const { themes } = this.state
+
     if (id === 'create') {
-      this.props.toggleVisibility()
+      toggleVisibility()
       this.dropdown.current.closeMenu()
     } else {
-      this.props.updateTheme(id)
+      onChange('theme', id)
+      onChange('highlights', themes.find(({ id }) => id === theme).highlights)
     }
   }
 
@@ -95,11 +130,9 @@ class Themes extends React.PureComponent {
     }))
 
   updateHighlight = ({ rgb }) =>
-    this.setState({
-      highlights: {
-        ...this.state.highlights,
-        [this.state.selected]: stringifyRGBA(rgb)
-      }
+    this.props.onChange('highlights', {
+      ...this.props.highlights,
+      [this.state.selected]: stringifyRGBA(rgb)
     })
 
   removeTheme = id => event => {
@@ -112,14 +145,16 @@ class Themes extends React.PureComponent {
     saveThemes(localStorage, newThemes.filter(({ custom }) => custom))
 
     if (this.props.theme === id) {
-      this.props.updateTheme(DEFAULT_THEME.id)
+      this.props.onChange('theme', DEFAULT_THEME.id)
+      this.props.onChange('highlights', DEFAULT_THEME.highlights)
     } else {
       this.setState({ themes: newThemes })
     }
   }
 
   createTheme = () => {
-    const { themes, name, highlights } = this.state
+    const { highlights } = this.props
+    const { themes, name } = this.state
 
     const id = `theme:${generateId()}`
 
@@ -134,14 +169,14 @@ class Themes extends React.PureComponent {
 
     saveThemes(localStorage, customThemes)
 
-    this.props.updateTheme(id)
+    this.props.onChange('theme', id)
   }
 
   itemWrapper = props => <ThemeItem {...props} onClick={this.removeTheme} />
 
   render() {
-    const { theme, isVisible, toggleVisibility } = this.props
-    const { name, themes, highlights, selected, preset } = this.state
+    const { theme, isVisible, toggleVisibility, highlights } = this.props
+    const { name, themes, selected, preset } = this.state
 
     const dropdownValue = isVisible ? { name } : { id: theme, name: this.selectedTheme.name }
 
@@ -255,4 +290,4 @@ class Themes extends React.PureComponent {
   }
 }
 
-export default managePopout(Themes)
+export default managePopout(withRouter(Themes))
