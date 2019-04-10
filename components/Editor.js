@@ -282,13 +282,7 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
-          <Themes
-            ref={this.themes}
-            key={theme}
-            onChange={this.updateSetting}
-            theme={theme}
-            highlights={highlights}
-          />
+          <Themes key={theme} onChange={this.updateSetting} theme={theme} highlights={highlights} />
           <Dropdown
             icon={languageIcon}
             selected={
