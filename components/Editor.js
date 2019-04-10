@@ -96,10 +96,19 @@ class Editor extends React.Component {
 
   carbonNode = React.createRef()
 
-  updateState = updates =>
-    this.setState(updates, () => !this.gist && this.props.onUpdate(this.state))
+  updateState = updates => {
+    this.setState(updates, () => {
+      // eslint-disable-next-line no-unused-vars
+      const { highlights, ...state } = this.state
+      !this.gist && this.props.onUpdate(state)
+    })
+  }
 
   updateCode = code => this.updateState({ code })
+
+  updateTheme = theme => this.updateState({ theme })
+
+  updateHighlights = highlights => this.updateState({ highlights })
 
   async getCarbonImage(
     {
@@ -112,8 +121,7 @@ class Editor extends React.Component {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (this.context.image && this.isSafari && isPNG) {
-      const { highlights, ...state } = this.state
-      const encodedState = serializeState({ ...state, ...highlights })
+      const encodedState = serializeState(this.state)
       return this.context.image(encodedState)
     }
 
@@ -282,7 +290,13 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
-          <Themes key={theme} onChange={this.updateSetting} theme={theme} highlights={highlights} />
+          <Themes
+            key={theme}
+            updateTheme={this.updateTheme}
+            updateHighlights={this.updateHighlights}
+            theme={theme}
+            highlights={highlights}
+          />
           <Dropdown
             icon={languageIcon}
             selected={
