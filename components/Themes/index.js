@@ -49,7 +49,7 @@ class Themes extends React.PureComponent {
   state = {
     themes: THEMES,
     preset: this.props.theme,
-    name: 'Custom Theme',
+    input: 'Custom Theme',
     selected: null
   }
 
@@ -62,8 +62,6 @@ class Themes extends React.PureComponent {
     this.setState(({ themes }) => {
       const newThemes = [...storedThemes, ...themes]
 
-      const name = getCustomName(newThemes)
-
       this.selectedTheme = newThemes.find(({ id }) => id === theme) || DEFAULT_THEME
 
       if (Object.keys(highlights).length === 0) {
@@ -72,7 +70,7 @@ class Themes extends React.PureComponent {
 
       return {
         themes: newThemes,
-        name
+        input: getCustomName(newThemes)
       }
     })
   }
@@ -82,7 +80,7 @@ class Themes extends React.PureComponent {
     const { themes } = this.state
 
     if (prevProps.isVisible && !isVisible) {
-      this.setState({ name: getCustomName(themes) })
+      this.setState({ input: getCustomName(themes) })
       update({ highlights: themes.find(({ id }) => id === theme).highlights })
     }
   }
@@ -108,7 +106,7 @@ class Themes extends React.PureComponent {
     }
   }
 
-  updateName = ({ target: { value: name } }) => this.setState({ name })
+  updateInput = ({ target: { value: input } }) => this.setState({ input })
 
   selectHighlight = highlight => () =>
     this.setState(({ selected }) => ({
@@ -142,7 +140,7 @@ class Themes extends React.PureComponent {
 
   createTheme = () => {
     const { highlights, update } = this.props
-    const { themes, name } = this.state
+    const { themes, input: name } = this.state
 
     const id = `theme:${generateId()}`
 
@@ -164,9 +162,9 @@ class Themes extends React.PureComponent {
 
   render() {
     const { theme, isVisible, toggleVisibility, highlights } = this.props
-    const { name, themes, selected, preset } = this.state
+    const { input, themes, selected, preset } = this.state
 
-    const dropdownValue = isVisible ? { name } : { id: theme, name: this.selectedTheme.name }
+    const dropdownValue = isVisible ? { name: input } : { id: theme, name: this.selectedTheme.name }
 
     const dropdownList = [
       {
@@ -193,14 +191,14 @@ class Themes extends React.PureComponent {
           <ThemeCreate
             key={theme}
             preset={preset}
-            name={name}
+            name={input}
             theme={theme}
             themes={themes}
             highlights={highlights}
             selected={selected}
             applyPreset={this.applyPreset}
             createTheme={this.createTheme}
-            updateName={this.updateName}
+            updateName={this.updateInput}
             selectHighlight={this.selectHighlight}
             updateHighlight={this.updateHighlight}
           />
