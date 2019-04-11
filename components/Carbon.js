@@ -12,7 +12,6 @@ import {
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
-  THEMES_HASH,
   DEFAULT_SETTINGS
 } from '../lib/constants'
 
@@ -77,7 +76,7 @@ class Carbon extends React.PureComponent {
     const options = {
       lineNumbers: config.lineNumbers,
       mode: languageMode || 'plaintext',
-      theme: config.theme,
+      theme: config.theme.id,
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
@@ -108,7 +107,7 @@ class Carbon extends React.PureComponent {
           value={this.props.children}
           options={options}
         />
-        {config.watermark && <Watermark light={THEMES_HASH[config.theme].light} />}
+        {config.watermark && <Watermark light={config.theme.light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />

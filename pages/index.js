@@ -23,16 +23,10 @@ class Index extends React.Component {
 
   onEditorUpdate = debounce(
     state => {
-      updateRouteState(this.props.router, omit(state, ['highlights']))
+      updateRouteState(this.props.router, omit(state, 'themes'))
       saveSettings(
         localStorage,
-        omit(state, [
-          'code',
-          'backgroundImage',
-          'backgroundImageSelection',
-          'filename',
-          'highlights'
-        ])
+        omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'filename', 'themes'])
       )
     },
     750,

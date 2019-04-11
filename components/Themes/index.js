@@ -5,18 +5,25 @@ import Dropdown from '../Dropdown'
 import { managePopout } from '../Popout'
 import ThemeIcon from '../svg/Theme'
 import RemoveIcon from '../svg/Remove'
-import { THEMES, COLORS, DEFAULT_THEME } from '../../lib/constants'
-import { getThemes, saveThemes, stringifyRGBA, generateId } from '../../lib/util'
+import { COLORS } from '../../lib/constants'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
   loading: () => null
 })
 
-const ThemeItem = ({ children, item, isSelected, onClick }) => (
+const ThemeItem = ({ children, item, isSelected, remove }) => (
   <div className="theme-item">
     {children}
     {item.custom && !isSelected && (
-      <div role="button" tabIndex={0} className="icon" onClick={onClick(item.id)}>
+      <div
+        role="button"
+        tabIndex={0}
+        className="icon"
+        onClick={e => {
+          e.stopPropagation()
+          remove(item.id)
+        }}
+      >
         <RemoveIcon color={COLORS.SECONDARY} />
       </div>
     )}
@@ -40,131 +47,58 @@ const ThemeItem = ({ children, item, isSelected, onClick }) => (
 
 const themeIcon = <ThemeIcon />
 
-const getCustomName = themes =>
-  `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length + 1}`
-
 class Themes extends React.PureComponent {
-  selectedTheme = DEFAULT_THEME
-
   state = {
-    themes: THEMES,
-    preset: this.props.theme,
-    input: 'Custom Theme',
-    selected: null
+    highlights: {}
   }
 
   dropdown = React.createRef()
 
-  componentDidMount() {
-    const { update, theme, highlights } = this.props
-    const storedThemes = getThemes(localStorage) || []
-
-    this.setState(({ themes }) => {
-      const newThemes = [...storedThemes, ...themes]
-
-      this.selectedTheme = newThemes.find(({ id }) => id === theme) || DEFAULT_THEME
-
-      if (Object.keys(highlights).length === 0) {
-        update({ highlights: this.selectedTheme.highlights })
-      }
-
-      return {
-        themes: newThemes,
-        input: getCustomName(newThemes)
-      }
-    })
-  }
-
   componentDidUpdate(prevProps) {
-    const { isVisible, theme, update } = this.props
-    const { themes } = this.state
-
-    if (prevProps.isVisible && !isVisible) {
-      this.setState({ input: getCustomName(themes) })
-      update({ highlights: themes.find(({ id }) => id === theme).highlights })
+    if (prevProps.isVisible && !this.props.isVisible) {
+      this.setState({
+        highlights: {}
+      })
     }
   }
 
-  applyPreset = preset => {
-    this.setState(({ themes }) => {
-      this.props.update({ highlights: themes.find(({ id }) => id === preset).highlights })
-      return {
-        preset
-      }
-    })
-  }
-
-  handleChange = ({ id }) => {
+  handleThemeSelected = theme => {
     const { toggleVisibility, update } = this.props
-    const { themes } = this.state
-
-    if (id === 'create') {
+    if (theme.id === 'create') {
       toggleVisibility()
       this.dropdown.current.closeMenu()
     } else {
-      update({ theme: id, highlights: themes.find(theme => theme.id === id).highlights })
+      update(theme)
     }
   }
 
-  updateInput = ({ target: { value: input } }) => this.setState({ input })
-
-  selectHighlight = highlight => () =>
-    this.setState(({ selected }) => ({
-      selected: selected === highlight ? null : highlight
+  selectHighlight = key => () =>
+    this.setState(({ selectedHighlight }) => ({
+      selectedHighlight: selectedHighlight === key ? null : key
     }))
 
-  updateHighlight = ({ rgb }) =>
-    this.props.update({
+  updateHighlights = updates =>
+    this.setState(({ highlights }) => ({
       highlights: {
-        ...this.props.highlights,
-        [this.state.selected]: stringifyRGBA(rgb)
+        ...highlights,
+        ...updates
       }
-    })
+    }))
 
-  removeTheme = id => event => {
-    const { themes } = this.state
-    const { theme, update } = this.props
-
-    event.stopPropagation()
-
-    const newThemes = themes.filter(t => t.id !== id)
-
-    saveThemes(localStorage, newThemes.filter(({ custom }) => custom))
-
-    if (theme === id) {
-      update({ theme: DEFAULT_THEME.id, highlights: DEFAULT_THEME.highlights })
-    } else {
-      this.setState({ themes: newThemes })
-    }
+  create = theme => {
+    this.props.toggleVisibility()
+    this.props.create(theme)
   }
 
-  createTheme = () => {
-    const { highlights, update } = this.props
-    const { themes, input: name } = this.state
-
-    const id = `theme:${generateId()}`
-
-    const newTheme = {
-      id,
-      name,
-      highlights,
-      custom: true
-    }
-
-    const customThemes = [newTheme, ...themes.filter(({ custom }) => custom)]
-
-    saveThemes(localStorage, customThemes)
-
-    update({ theme: id })
-  }
-
-  itemWrapper = props => <ThemeItem {...props} onClick={this.removeTheme} />
+  itemWrapper = props => <ThemeItem {...props} remove={this.props.remove} />
 
   render() {
-    const { theme, isVisible, toggleVisibility, highlights } = this.props
-    const { input, themes, selected, preset } = this.state
+    const { themes, theme, isVisible, toggleVisibility } = this.props
+    const { input } = this.state
 
-    const dropdownValue = isVisible ? { name: input } : { id: theme, name: this.selectedTheme.name }
+    const highlights = { ...theme.highlights, ...this.state.highlights }
+
+    const dropdownValue = isVisible ? { name: input } : { id: theme.id, name: theme.name }
 
     const dropdownList = [
       {
@@ -184,23 +118,16 @@ class Themes extends React.PureComponent {
           selected={dropdownValue}
           list={dropdownList}
           itemWrapper={this.itemWrapper}
-          onChange={this.handleChange}
+          onChange={this.handleThemeSelected}
           onOpen={isVisible && toggleVisibility}
         />
         {isVisible && (
           <ThemeCreate
-            key={theme}
-            preset={preset}
-            name={input}
             theme={theme}
             themes={themes}
             highlights={highlights}
-            selected={selected}
-            applyPreset={this.applyPreset}
-            createTheme={this.createTheme}
-            updateName={this.updateInput}
-            selectHighlight={this.selectHighlight}
-            updateHighlight={this.updateHighlight}
+            create={this.create}
+            updateHighlights={this.updateHighlights}
           />
         )}
         <style jsx>
