@@ -98,7 +98,9 @@ class Editor extends React.Component {
 
   updateState = updates => {
     this.setState(updates, () => {
-      !this.gist && this.props.onUpdate(this.state)
+      if (!this.gist) {
+        this.props.onUpdate(this.state)
+      }
     })
   }
 
