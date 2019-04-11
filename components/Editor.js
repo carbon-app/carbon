@@ -98,17 +98,11 @@ class Editor extends React.Component {
 
   updateState = updates => {
     this.setState(updates, () => {
-      // eslint-disable-next-line no-unused-vars
-      const { highlights, ...state } = this.state
-      !this.gist && this.props.onUpdate(state)
+      !this.gist && this.props.onUpdate(this.state)
     })
   }
 
   updateCode = code => this.updateState({ code })
-
-  updateTheme = theme => this.updateState({ theme })
-
-  updateHighlights = highlights => this.updateState({ highlights })
 
   async getCarbonImage(
     {
@@ -290,13 +284,7 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
-          <Themes
-            key={theme}
-            updateTheme={this.updateTheme}
-            updateHighlights={this.updateHighlights}
-            theme={theme}
-            highlights={highlights}
-          />
+          <Themes key={theme} update={this.updateState} theme={theme} highlights={highlights} />
           <Dropdown
             icon={languageIcon}
             selected={
