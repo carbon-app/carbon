@@ -56,6 +56,7 @@ class Themes extends React.PureComponent {
   dropdown = React.createRef()
 
   componentDidMount() {
+    const { update, theme, highlights } = this.props
     const storedThemes = getThemes(localStorage) || []
 
     this.setState(({ themes }) => {
@@ -63,10 +64,10 @@ class Themes extends React.PureComponent {
 
       const name = getCustomName(newThemes)
 
-      this.selectedTheme = newThemes.find(({ id }) => id === this.props.theme) || DEFAULT_THEME
+      this.selectedTheme = newThemes.find(({ id }) => id === theme) || DEFAULT_THEME
 
-      if (Object.keys(this.props.highlights).length === 0) {
-        this.props.updateHighlights(this.selectedTheme.highlights)
+      if (Object.keys(highlights).length === 0) {
+        update({ highlights: this.selectedTheme.highlights })
       }
 
       return {
@@ -77,18 +78,18 @@ class Themes extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { isVisible, theme, updateHighlights } = this.props
+    const { isVisible, theme, update } = this.props
     const { themes } = this.state
 
     if (prevProps.isVisible && !isVisible) {
       this.setState({ name: getCustomName(themes) })
-      updateHighlights(themes.find(({ id }) => id === theme).highlights)
+      update({ highlights: themes.find(({ id }) => id === theme).highlights })
     }
   }
 
   applyPreset = preset => {
     this.setState(({ themes }) => {
-      this.props.updateHighlights(themes.find(({ id }) => id === preset).highlights)
+      this.props.update({ highlights: themes.find(({ id }) => id === preset).highlights })
       return {
         preset
       }
@@ -96,15 +97,14 @@ class Themes extends React.PureComponent {
   }
 
   handleChange = ({ id }) => {
-    const { toggleVisibility, updateTheme, updateHighlights } = this.props
+    const { toggleVisibility, update } = this.props
     const { themes } = this.state
 
     if (id === 'create') {
       toggleVisibility()
       this.dropdown.current.closeMenu()
     } else {
-      updateTheme(id)
-      updateHighlights(themes.find(theme => theme.id === id).highlights)
+      update({ theme: id, highlights: themes.find(theme => theme.id === id).highlights })
     }
   }
 
@@ -116,14 +116,16 @@ class Themes extends React.PureComponent {
     }))
 
   updateHighlight = ({ rgb }) =>
-    this.props.updateHighlights({
-      ...this.props.highlights,
-      [this.state.selected]: stringifyRGBA(rgb)
+    this.props.update({
+      highlights: {
+        ...this.props.highlights,
+        [this.state.selected]: stringifyRGBA(rgb)
+      }
     })
 
   removeTheme = id => event => {
     const { themes } = this.state
-    const { theme, updateHighlights, updateTheme } = this.props
+    const { theme, update } = this.props
 
     event.stopPropagation()
 
@@ -132,15 +134,14 @@ class Themes extends React.PureComponent {
     saveThemes(localStorage, newThemes.filter(({ custom }) => custom))
 
     if (theme === id) {
-      updateTheme(DEFAULT_THEME.id)
-      updateHighlights(DEFAULT_THEME.highlights)
+      update({ theme: DEFAULT_THEME.id, highlights: DEFAULT_THEME.highlights })
     } else {
       this.setState({ themes: newThemes })
     }
   }
 
   createTheme = () => {
-    const { highlights, updateTheme } = this.props
+    const { highlights, update } = this.props
     const { themes, name } = this.state
 
     const id = `theme:${generateId()}`
@@ -156,7 +157,7 @@ class Themes extends React.PureComponent {
 
     saveThemes(localStorage, customThemes)
 
-    updateTheme(id)
+    update({ theme: id })
   }
 
   itemWrapper = props => <ThemeItem {...props} onClick={this.removeTheme} />
