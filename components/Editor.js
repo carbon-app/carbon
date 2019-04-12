@@ -83,7 +83,7 @@ class Editor extends React.Component {
       loading: false
     }
 
-    const storedThemes = getThemes(localStorage)
+    const storedThemes = getThemes(localStorage) || []
 
     newState.themes = [...storedThemes, ...this.state.themes]
 
