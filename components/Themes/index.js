@@ -60,6 +60,7 @@ class Themes extends React.PureComponent {
         highlights: {}
       }
     }
+    return null
   }
 
   handleThemeSelected = theme => {
