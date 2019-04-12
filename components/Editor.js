@@ -85,9 +85,7 @@ class Editor extends React.Component {
 
     const storedThemes = getThemes(localStorage)
 
-    newState.themes = storedThemes
-      ? [...storedThemes, ...this.state.themes]
-      : [...this.state.themes]
+    newState.themes = [...storedThemes, ...this.state.themes]
 
     if (newState.theme) {
       newState.theme = newState.themes.find(t => t.id === newState.theme) || DEFAULT_THEME
@@ -107,7 +105,7 @@ class Editor extends React.Component {
       newState.language = unescapeHtml(newState.language)
     }
 
-    this.setState(newState)
+    this.updateState(newState)
 
     this.isSafari =
       window.navigator &&

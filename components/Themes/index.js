@@ -72,11 +72,6 @@ class Themes extends React.PureComponent {
     }
   }
 
-  selectHighlight = key => () =>
-    this.setState(({ selectedHighlight }) => ({
-      selectedHighlight: selectedHighlight === key ? null : key
-    }))
-
   updateHighlights = updates =>
     this.setState(({ highlights }) => ({
       highlights: {
@@ -94,11 +89,10 @@ class Themes extends React.PureComponent {
 
   render() {
     const { themes, theme, isVisible, toggleVisibility } = this.props
-    const { input } = this.state
 
     const highlights = { ...theme.highlights, ...this.state.highlights }
 
-    const dropdownValue = isVisible ? { name: input } : { id: theme.id, name: theme.name }
+    const dropdownValue = isVisible ? { name: '' } : { id: theme.id, name: theme.name }
 
     const dropdownList = [
       {
