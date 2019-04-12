@@ -54,11 +54,11 @@ class Themes extends React.PureComponent {
 
   dropdown = React.createRef()
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.isVisible && !this.props.isVisible) {
-      this.setState({
+  static getDerivedStateFromProps(props) {
+    if (!props.isVisible) {
+      return {
         highlights: {}
-      })
+      }
     }
   }
 
