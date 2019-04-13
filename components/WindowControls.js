@@ -71,7 +71,6 @@ export default ({ theme, copyable, code }) => (
           background: none;
           outline: none;
           border: none;
-          color: white;
           text-align: center;
           font-size: 14px;
         }
