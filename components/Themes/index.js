@@ -150,6 +150,10 @@ class Themes extends React.PureComponent {
               background-color: ${highlights.background} !important;
             }
 
+            :global(.window-title-container input) {
+              color: ${isColorLight(highlights.background || "#000000") ? "black" : "white"};
+            }
+
             :global(.cm-string),
             :global(.cm-string-2) {
               color: ${highlights.string} !important;
