@@ -76,7 +76,7 @@ class Carbon extends React.PureComponent {
     const options = {
       lineNumbers: config.lineNumbers,
       mode: languageMode || 'plaintext',
-      theme: config.theme.id,
+      theme: config.theme,
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,

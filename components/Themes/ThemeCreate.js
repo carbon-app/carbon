@@ -53,6 +53,8 @@ const getCustomName = themes =>
 const ThemeCreate = ({ theme, themes, highlights, create, updateHighlights }) => {
   const [preset, updatePreset] = React.useState(theme.id)
   const [highlight, selectHighlight] = React.useState()
+
+  // TODO consider using an uncontrolled input
   const [name, updateName] = React.useState(getCustomName(themes))
 
   return (
