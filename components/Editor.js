@@ -96,8 +96,6 @@ class Editor extends React.Component {
         ...newState.theme,
         highlights: newState.highlights
       }
-
-      delete newState.highlights
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -105,7 +103,7 @@ class Editor extends React.Component {
       newState.language = unescapeHtml(newState.language)
     }
 
-    this.updateState(newState)
+    this.updateState(omit(newState, ['highlights']))
 
     this.isSafari =
       window.navigator &&
@@ -145,9 +143,7 @@ class Editor extends React.Component {
         highlights: this.state.theme.highlights
       }
 
-      delete state.themes
-
-      const encodedState = serializeState(state)
+      const encodedState = serializeState(omit(state, ['themes']))
 
       return this.context.image(encodedState)
     }
