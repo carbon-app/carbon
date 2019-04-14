@@ -26,11 +26,10 @@ import {
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
   DEFAULT_PRESET_ID,
-  DEFAULT_THEME,
-  THEMES
+  DEFAULT_THEME
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
-import { getThemes, saveThemes, getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
+import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
@@ -391,21 +390,4 @@ Editor.defaultProps = {
   onReset: () => {}
 }
 
-function EditorContainer(props) {
-  const [themes, updateThemes] = React.useState(THEMES)
-
-  React.useEffect(() => {
-    const storedThemes = getThemes(localStorage) || []
-    if (storedThemes) {
-      updateThemes(currentThemes => [...storedThemes, ...currentThemes])
-    }
-  }, [])
-
-  React.useEffect(() => {
-    saveThemes(localStorage, themes.filter(({ custom }) => custom))
-  }, [themes])
-
-  return <Editor {...props} themes={themes} updateThemes={updateThemes} />
-}
-
-export default EditorContainer
+export default Editor

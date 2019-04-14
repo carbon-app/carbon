@@ -5,7 +5,7 @@ import { register, unregister } from 'next-offline/runtime'
 import debounce from 'lodash.debounce'
 
 // Ours
-import Editor from '../components/Editor'
+import EditorContainer from '../components/EditorContainer'
 import Page from '../components/Page'
 import { MetaLinks } from '../components/Meta'
 import { updateRouteState } from '../lib/routing'
@@ -37,7 +37,11 @@ class Index extends React.Component {
     return (
       <Page enableHeroText={true}>
         <MetaLinks />
-        <Editor router={this.props.router} onUpdate={this.onEditorUpdate} onReset={onReset} />
+        <EditorContainer
+          router={this.props.router}
+          onUpdate={this.onEditorUpdate}
+          onReset={onReset}
+        />
       </Page>
     )
   }
