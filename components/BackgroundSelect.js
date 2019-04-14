@@ -18,13 +18,15 @@ class BackgroundSelect extends React.PureComponent {
   handlePickColor = ({ rgb }) => this.props.onChange({ backgroundColor: stringifyRGBA(rgb) })
 
   render() {
-    const { color, mode, image, onChange, aspectRatio, isVisible, toggleVisibility } = this.props
+    const { color, mode, image, onChange, isVisible, toggleVisibility, carbonRef } = this.props
 
     let background = typeof color === 'string' ? escape(color).replace(/\//g, '&#x2F;') : color
 
     if (!validateColor(background)) {
       background = DEFAULT_BG_COLOR
     }
+
+    const aspectRatio = carbonRef ? carbonRef.clientWidth / carbonRef.clientHeight : 1
 
     return (
       <div className="bg-select-container">

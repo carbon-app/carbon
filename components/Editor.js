@@ -27,10 +27,12 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
-  DEFAULT_PRESET_ID
+  DEFAULT_PRESET_ID,
+  DEFAULT_THEME,
+  THEMES
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
+import { getThemes, saveThemes, getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
@@ -62,6 +64,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
+      themes: THEMES,
       preset: DEFAULT_PRESET_ID,
       loading: true
     }
@@ -69,7 +72,6 @@ class Editor extends React.Component {
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
-    this.updateTheme = this.updateTheme.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
@@ -100,6 +102,23 @@ class Editor extends React.Component {
       loading: false
     }
 
+    const storedThemes = getThemes(localStorage) || []
+
+    newState.themes = [...storedThemes, ...this.state.themes]
+
+    if (newState.theme) {
+      newState.theme = newState.themes.find(t => t.id === newState.theme) || DEFAULT_THEME
+    }
+
+    if (newState.highlights) {
+      newState.theme = {
+        ...newState.theme,
+        highlights: newState.highlights
+      }
+
+      delete newState.highlights
+    }
+
     // Makes sure the slash in 'application/X' is decoded
     if (newState.language) {
       newState.language = unescapeHtml(newState.language)
@@ -115,12 +134,18 @@ class Editor extends React.Component {
 
   carbonNode = React.createRef()
 
-  updateState = updates =>
-    this.setState(updates, () => !this.gist && this.props.onUpdate(this.state))
+  updateState = updates => {
+    this.setState(updates, () => {
+      if (!this.gist) {
+        this.props.onUpdate({
+          ...this.state,
+          theme: this.state.theme.id
+        })
+      }
+    })
+  }
 
   updateCode = code => this.updateState({ code })
-
-  updateAspectRatio = aspectRatio => this.updateState({ aspectRatio })
 
   async getCarbonImage(
     {
@@ -133,7 +158,16 @@ class Editor extends React.Component {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (this.context.image && this.isSafari && isPNG) {
-      const encodedState = serializeState(this.state)
+      const state = {
+        ...this.state,
+        theme: this.state.theme.id,
+        highlights: this.state.theme.highlights
+      }
+
+      delete state.themes
+
+      const encodedState = serializeState(state)
+
       return this.context.image(encodedState)
     }
 
@@ -267,10 +301,6 @@ class Editor extends React.Component {
     }
   }
 
-  updateTheme(theme) {
-    this.updateSetting('theme', theme)
-  }
-
   updateLanguage(language) {
     this.updateSetting('language', language.mime || language.mode)
   }
@@ -287,6 +317,35 @@ class Editor extends React.Component {
     }
   }
 
+  updateTheme = theme => this.updateState({ theme })
+
+  createTheme = theme =>
+    this.setState(({ themes }) => {
+      const newThemes = [theme, ...themes]
+
+      saveThemes(localStorage, newThemes.filter(({ custom }) => custom))
+
+      return {
+        theme,
+        themes: newThemes
+      }
+    })
+
+  removeTheme = id =>
+    this.setState(({ themes, theme }) => {
+      const newState = {
+        themes: themes.filter(t => t.id !== id)
+      }
+
+      saveThemes(localStorage, newState.themes.filter(({ custom }) => custom))
+
+      if (theme.id === id) {
+        newState.theme = DEFAULT_THEME
+      }
+
+      return newState
+    })
+
   format = () =>
     formatCode(this.state.code)
       .then(this.updateCode)
@@ -294,27 +353,31 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
-  applyPreset = ({ id: preset, ...settings }) => this.updateState({ preset, ...settings })
-
   render() {
     const {
       theme,
+      themes,
       language,
       backgroundColor,
       backgroundImage,
       backgroundMode,
-      aspectRatio,
       code,
       exportSize
     } = this.state
 
-    const config = omit(this.state, ['code', 'aspectRatio'])
+    const config = omit(this.state, ['code'])
 
     return (
       <div className="editor">
         <TrackInstalls />
         <Toolbar>
-          <Themes key={theme} updateTheme={this.updateTheme} theme={theme} />
+          <Themes
+            update={this.updateTheme}
+            remove={this.removeTheme}
+            create={this.createTheme}
+            theme={theme}
+            themes={themes}
+          />
           <Dropdown
             icon={languageIcon}
             selected={
@@ -331,7 +394,7 @@ class Editor extends React.Component {
             mode={backgroundMode}
             color={backgroundColor}
             image={backgroundImage}
-            aspectRatio={aspectRatio}
+            carbonRef={this.carbonNode.current}
           />
           <Settings
             {...config}
@@ -364,7 +427,6 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
-                onAspectRatioChange={this.updateAspectRatio}
                 loading={this.state.loading}
               >
                 {code != null ? code : DEFAULT_CODE}

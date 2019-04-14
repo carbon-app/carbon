@@ -472,6 +472,24 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "muhammadmuzzammil1998",
+      "name": "Muhammad Muzzammil",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12321712?v=4",
+      "profile": "https://muzzammil.xyz/?ref=github",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "souppower",
+      "name": "souppower",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19849611?v=4",
+      "profile": "https://github.com/souppower",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "repoType": "github"

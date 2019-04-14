@@ -12,7 +12,6 @@ import {
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
-  THEMES_HASH,
   DEFAULT_SETTINGS
 } from '../lib/constants'
 
@@ -30,21 +29,7 @@ function searchLanguage(l) {
 
 class Carbon extends React.PureComponent {
   static defaultProps = {
-    onAspectRatioChange: () => {},
     onChange: () => {}
-  }
-
-  componentDidMount() {
-    const node = this.props.innerRef.current
-    this.mo = new MutationObserver(() => {
-      const ratio = node.clientWidth / node.clientHeight
-      this.props.onAspectRatioChange(ratio)
-    })
-    this.mo.observe(node, { attributes: true, childList: true, subtree: true })
-  }
-
-  componentWillUnmount() {
-    this.mo.disconnect()
   }
 
   handleLanguageChange = debounce(
@@ -91,7 +76,7 @@ class Carbon extends React.PureComponent {
     const options = {
       lineNumbers: config.lineNumbers,
       mode: languageMode || 'plaintext',
-      theme: config.theme,
+      theme: config.theme.id,
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
@@ -114,6 +99,7 @@ class Carbon extends React.PureComponent {
             theme={config.windowTheme}
             code={this.props.children}
             copyable={this.props.copyable}
+            light={config.theme.light}
           />
         ) : null}
         <CodeMirror
@@ -122,7 +108,7 @@ class Carbon extends React.PureComponent {
           value={this.props.children}
           options={options}
         />
-        {config.watermark && <Watermark light={THEMES_HASH[config.theme].light} />}
+        {config.watermark && <Watermark light={config.theme.light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />

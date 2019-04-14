@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.12",
+  "version": "3.9.14",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "test": "npm run cy:run --",
+    "test": "jest",
+    "test:e2e": "npm run cy:run --",
     "deploy": "now",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages,packages}/**/*.js",
     "lint": "eslint .",
@@ -63,7 +64,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.0.0",
     "babel-eslint": "^10.0.1",
-    "clipboardy": "^1.2.3",
+    "clipboardy": "^2.0.0",
     "cypress": "^3.1.5",
     "eslint": "^5.13.0",
     "eslint-plugin-import": "^2.16.0",
@@ -71,6 +72,7 @@
     "eslint-plugin-react": "^7.12.3",
     "eslint-plugin-react-hooks": "^1.4.0",
     "husky": "^1.3.1",
+    "jest": "^24.7.1",
     "lint-staged": "^8.1.3",
     "now": "^15.0.0",
     "wait-on": "^3.2.0"
