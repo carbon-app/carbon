@@ -481,6 +481,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "souppower",
+      "name": "souppower",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19849611?v=4",
+      "profile": "https://github.com/souppower",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "repoType": "github"
