@@ -391,7 +391,7 @@ Editor.defaultProps = {
   onReset: () => {}
 }
 
-function ThemesContainer(props) {
+function EditorContainer(props) {
   const [themes, updateThemes] = React.useState(THEMES)
 
   React.useEffect(() => {
@@ -408,4 +408,4 @@ function ThemesContainer(props) {
   return <Editor {...props} themes={themes} updateThemes={updateThemes} />
 }
 
-export default ThemesContainer
+export default EditorContainer
