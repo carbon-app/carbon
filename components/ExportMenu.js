@@ -45,14 +45,19 @@ const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => 
 const popoutStyle = { width: '280px', right: 0 }
 
 class ExportMenu extends React.PureComponent {
+  input = React.createRef()
+
   handleInputChange = ({ target: { name, value } }) => this.props.onChange(name, value)
 
   handleExportSizeChange = selectedSize => () => this.props.onChange('exportSize', selectedSize)
 
-  handleExport = format => () => this.props.export(format)
+  handleExport = format => () =>
+    this.props.export(format, {
+      filename: this.input.current.value
+    })
 
   render() {
-    const { exportSize, filename, isVisible, toggleVisibility, disablePNG } = this.props
+    const { exportSize, isVisible, toggleVisibility, disablePNG } = this.props
 
     return (
       <div className="export-menu-container" id="export-menu">
@@ -77,14 +82,7 @@ class ExportMenu extends React.PureComponent {
         >
           <div className="export-row">
             <span className="filename">File name</span>
-            <Input
-              title="filename"
-              placeholder="carbon"
-              value={filename}
-              name="filename"
-              onChange={this.handleInputChange}
-              color={COLORS.PURPLE}
-            />
+            <Input ref={this.input} title="filename" placeholder="carbon" color={COLORS.PURPLE} />
           </div>
           <div className="export-row">
             <span>Size</span>
