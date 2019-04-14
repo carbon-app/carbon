@@ -107,7 +107,10 @@ class Editor extends React.Component {
 
     this.updateState(newState)
 
-    this.isSafari = window.navigator ? isSafari(window.navigator.userAgent) : false
+    this.isSafari =
+      window.navigator &&
+      window.navigator.userAgent.indexOf('Safari') !== -1 &&
+      window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
   carbonNode = React.createRef()
@@ -422,10 +425,6 @@ class Editor extends React.Component {
       </div>
     )
   }
-}
-
-export function isSafari(ua) {
-  return ua.indexOf('Safari') !== -1 && ua.indexOf('Chrome') === -1
 }
 
 function isImage(file) {
