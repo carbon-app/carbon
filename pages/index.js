@@ -26,7 +26,7 @@ class Index extends React.Component {
       updateRouteState(this.props.router, state)
       saveSettings(
         localStorage,
-        omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'themes'])
+        omit(state, ['code', 'backgroundImage', 'backgroundImageSelection', 'themes', 'highlights'])
       )
     },
     750,

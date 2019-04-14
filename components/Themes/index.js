@@ -5,7 +5,8 @@ import Dropdown from '../Dropdown'
 import { managePopout } from '../Popout'
 import ThemeIcon from '../svg/Theme'
 import RemoveIcon from '../svg/Remove'
-import { COLORS } from '../../lib/constants'
+import { COLORS, DEFAULT_THEME } from '../../lib/constants'
+import { getRouteState } from '../../lib/routing'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
   loading: () => null
@@ -52,12 +53,24 @@ class Themes extends React.PureComponent {
     highlights: {}
   }
 
+  componentDidMount() {
+    // TODO consider just using withRouter directly
+    const { queryState } = getRouteState(this.props.router)
+
+    if (queryState.highlights) {
+      this.updateHighlights(queryState.highlights)
+    }
+  }
+
   dropdown = React.createRef()
 
   static getDerivedStateFromProps(props) {
     if (!props.isVisible) {
+      // TODO use shared function for this next line
+      const themeConfig =
+        (props.themes && props.themes.find(t => t.id === props.theme)) || DEFAULT_THEME
       return {
-        highlights: {}
+        highlights: themeConfig.highlights
       }
     }
     return null
@@ -69,7 +82,7 @@ class Themes extends React.PureComponent {
       toggleVisibility()
       this.dropdown.current.closeMenu()
     } else {
-      update(theme)
+      update(theme.id)
     }
   }
 
@@ -90,10 +103,11 @@ class Themes extends React.PureComponent {
 
   render() {
     const { themes, theme, isVisible, toggleVisibility } = this.props
+    const { highlights } = this.state
 
-    const highlights = { ...theme.highlights, ...this.state.highlights }
+    const themeConfig = themes.find(t => t.id === theme) || DEFAULT_THEME
 
-    const dropdownValue = isVisible ? { name: '' } : { id: theme.id, name: theme.name }
+    const dropdownValue = isVisible ? { name: '' } : { id: themeConfig.id, name: themeConfig.name }
 
     const dropdownList = [
       {
@@ -118,7 +132,7 @@ class Themes extends React.PureComponent {
         />
         {isVisible && (
           <ThemeCreate
-            theme={theme}
+            theme={themeConfig}
             themes={themes}
             highlights={highlights}
             create={this.create}
