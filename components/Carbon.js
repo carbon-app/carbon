@@ -99,6 +99,7 @@ class Carbon extends React.PureComponent {
             theme={config.windowTheme}
             code={this.props.children}
             copyable={this.props.copyable}
+            light={config.theme.light}
           />
         ) : null}
         <CodeMirror
