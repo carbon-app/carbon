@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "test": "npm run cy:run --",
+    "test": "jest",
+    "test:e2e": "npm run cy:run --",
     "deploy": "now",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages,packages}/**/*.js",
     "lint": "eslint .",
@@ -62,6 +63,7 @@
     "eslint-plugin-react": "^7.12.3",
     "eslint-plugin-react-hooks": "^1.4.0",
     "husky": "^1.3.1",
+    "jest": "^24.7.1",
     "lint-staged": "^8.1.3",
     "now": "^15.0.0",
     "wait-on": "^3.2.0"
