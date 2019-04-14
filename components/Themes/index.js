@@ -48,13 +48,16 @@ const ThemeItem = ({ children, item, isSelected, remove }) => (
 
 const themeIcon = <ThemeIcon />
 
+const getCustomName = themes =>
+  `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length + 1}`
+
 class Themes extends React.PureComponent {
   state = {
-    highlights: {}
+    highlights: {},
+    name: ''
   }
 
   componentDidMount() {
-    // TODO consider just using withRouter directly
     const { queryState } = getRouteState(this.props.router)
 
     if (queryState.highlights) {
@@ -66,11 +69,11 @@ class Themes extends React.PureComponent {
 
   static getDerivedStateFromProps(props) {
     if (!props.isVisible) {
-      // TODO use shared function for this next line
       const themeConfig =
         (props.themes && props.themes.find(t => t.id === props.theme)) || DEFAULT_THEME
       return {
-        highlights: themeConfig.highlights
+        highlights: themeConfig.highlights,
+        name: getCustomName(props.themes)
       }
     }
     return null
@@ -107,7 +110,7 @@ class Themes extends React.PureComponent {
 
     const themeConfig = themes.find(t => t.id === theme) || DEFAULT_THEME
 
-    const dropdownValue = isVisible ? { name: '' } : { id: themeConfig.id, name: themeConfig.name }
+    const dropdownValue = isVisible ? { name: this.state.name } : themeConfig
 
     const dropdownList = [
       {
@@ -123,7 +126,6 @@ class Themes extends React.PureComponent {
           innerRef={this.dropdown}
           icon={themeIcon}
           disableInput={isVisible}
-          inputValue={dropdownValue}
           selected={dropdownValue}
           list={dropdownList}
           itemWrapper={this.itemWrapper}
@@ -137,6 +139,8 @@ class Themes extends React.PureComponent {
             highlights={highlights}
             create={this.create}
             updateHighlights={this.updateHighlights}
+            name={this.state.name}
+            onInputChange={e => this.setState({ name: e.target.value })}
           />
         )}
         <style jsx>
