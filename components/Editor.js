@@ -231,10 +231,10 @@ class Editor extends React.Component {
     }
   }
 
-  export(format = 'png') {
+  export(format = 'png', options = {}) {
     const link = document.createElement('a')
 
-    const prefix = this.state.filename || 'carbon'
+    const prefix = options.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
       if (format !== 'open') {
