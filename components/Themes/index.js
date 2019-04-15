@@ -5,7 +5,7 @@ import Dropdown from '../Dropdown'
 import { managePopout } from '../Popout'
 import ThemeIcon from '../svg/Theme'
 import RemoveIcon from '../svg/Remove'
-import { COLORS, DEFAULT_THEME } from '../../lib/constants'
+import { COLORS } from '../../lib/constants'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
   loading: () => null
@@ -86,11 +86,9 @@ class Themes extends React.PureComponent {
   render() {
     const { themes, theme, isVisible, toggleVisibility } = this.props
 
-    const themeConfig = themes.find(t => t.id === theme) || DEFAULT_THEME
+    const highlights = { ...theme.highlights, ...this.props.highlights }
 
-    const highlights = { ...themeConfig.highlights, ...this.props.highlights }
-
-    const dropdownValue = isVisible ? { name: this.state.name } : themeConfig
+    const dropdownValue = isVisible ? { name: this.state.name } : theme
 
     const dropdownList = [
       {
@@ -114,7 +112,7 @@ class Themes extends React.PureComponent {
         />
         {isVisible && (
           <ThemeCreate
-            theme={themeConfig}
+            theme={theme}
             themes={themes}
             highlights={highlights}
             create={this.create}
