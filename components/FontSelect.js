@@ -33,11 +33,10 @@ function FontSelect(props) {
 
     updateFonts(fonts => [{ id: name, name, url }, ...fonts])
     props.onChange('fontFamily', name)
-    props.onChange('fontUrl', url)
   }
 
   return (
-    <>
+    <div>
       <ListSetting
         title="Font"
         items={[{ id: 'upload', name: 'Upload +' }, ...fonts]}
@@ -46,15 +45,30 @@ function FontSelect(props) {
       >
         {Font}
       </ListSetting>
-      <input ref={inputEl} type="file" multiple accept={EXTENSIONS.join(',')} onChange={onFiles} />
-      <style jsx>
-        {`
-          input {
-            display: none;
-          }
-        `}
-      </style>
-    </>
+      <input
+        hidden
+        ref={inputEl}
+        type="file"
+        multiple
+        accept={EXTENSIONS.join(',')}
+        onChange={onFiles}
+      />
+      {fonts
+        .filter(font => font.url)
+        .map(font => (
+          <style jsx global key={font.id}>
+            {`
+              @font-face {
+                font-family: '${font.name}';
+                src: url(${font.url}) format('woff');
+                font-display: swap;
+                font-style: normal;
+                font-weight: 400;
+              }
+            `}
+          </style>
+        ))}
+    </div>
   )
 }
 

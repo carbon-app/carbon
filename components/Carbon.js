@@ -117,14 +117,6 @@ class Carbon extends React.PureComponent {
           <div className="alpha eliminateOnRender" />
           <div className="bg" />
         </div>
-        <style jsx global>
-          {`
-            @font-face {
-              font-family: ${config.fontUrl ? config.fontFamily : ''};
-              src: url(${config.fontUrl || ''}) format('woff');
-            }
-          `}
-        </style>
         <style jsx>
           {`
             .container {
