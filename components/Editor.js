@@ -96,6 +96,8 @@ class Editor extends React.Component {
 
   carbonNode = React.createRef()
 
+  getTheme = () => this.props.themes.find(t => t.id === this.state.theme) || DEFAULT_THEME
+
   updateState = updates => {
     this.setState(updates, () => {
       if (!this.gist) {
@@ -117,7 +119,10 @@ class Editor extends React.Component {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (this.context.image && this.isSafari && isPNG) {
-      const encodedState = serializeState(this.state)
+      const themeConfig = this.getTheme()
+      const highlights = { ...themeConfig.highlights, ...this.state.highlights }
+      // TODO: pull from state highlights, or custom theme highlights, or
+      const encodedState = serializeState({ ...this.state, highlights })
       return this.context.image(encodedState)
     }
 
@@ -261,6 +266,13 @@ class Editor extends React.Component {
   }
 
   updateTheme = theme => this.updateState({ theme })
+  updateHighlights = updates =>
+    this.setState(({ highlights = {} }) => ({
+      highlights: {
+        ...highlights,
+        ...updates
+      }
+    }))
 
   createTheme = theme => {
     this.props.updateThemes(themes => [theme, ...themes])
@@ -284,6 +296,7 @@ class Editor extends React.Component {
   render() {
     const {
       theme,
+      highlights,
       language,
       backgroundColor,
       backgroundImage,
@@ -294,16 +307,19 @@ class Editor extends React.Component {
 
     const config = omit(this.state, ['code'])
 
+    const themeConfig = this.getTheme()
+
     return (
       <div className="editor">
         <Toolbar>
           <Themes
+            theme={theme}
+            highlights={highlights}
             update={this.updateTheme}
+            updateHighlights={this.updateHighlights}
             remove={this.removeTheme}
             create={this.createTheme}
-            theme={theme}
             themes={this.props.themes}
-            router={this.props.router}
           />
           <Dropdown
             icon={languageIcon}
@@ -353,6 +369,7 @@ class Editor extends React.Component {
                 key={language}
                 ref={this.carbonNode}
                 config={this.state}
+                theme={themeConfig}
                 onChange={this.updateCode}
                 loading={this.state.loading}
               >
