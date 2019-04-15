@@ -76,7 +76,7 @@ class Carbon extends React.PureComponent {
     const options = {
       lineNumbers: config.lineNumbers,
       mode: languageMode || 'plaintext',
-      theme: config.theme.id,
+      theme: config.theme,
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
@@ -99,7 +99,7 @@ class Carbon extends React.PureComponent {
             theme={config.windowTheme}
             code={this.props.children}
             copyable={this.props.copyable}
-            light={config.theme.light}
+            light={this.props.theme.light}
           />
         ) : null}
         <CodeMirror
@@ -108,7 +108,7 @@ class Carbon extends React.PureComponent {
           value={this.props.children}
           options={options}
         />
-        {config.watermark && <Watermark light={config.theme.light} />}
+        {config.watermark && <Watermark light={this.props.theme.light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />

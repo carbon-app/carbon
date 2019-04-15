@@ -47,9 +47,12 @@ const ThemeItem = ({ children, item, isSelected, remove }) => (
 
 const themeIcon = <ThemeIcon />
 
+const getCustomName = themes =>
+  `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length + 1}`
+
 class Themes extends React.PureComponent {
   state = {
-    highlights: {}
+    name: ''
   }
 
   dropdown = React.createRef()
@@ -57,7 +60,7 @@ class Themes extends React.PureComponent {
   static getDerivedStateFromProps(props) {
     if (!props.isVisible) {
       return {
-        highlights: {}
+        name: getCustomName(props.themes)
       }
     }
     return null
@@ -69,17 +72,9 @@ class Themes extends React.PureComponent {
       toggleVisibility()
       this.dropdown.current.closeMenu()
     } else {
-      update(theme)
+      update(theme.id)
     }
   }
-
-  updateHighlights = updates =>
-    this.setState(({ highlights }) => ({
-      highlights: {
-        ...highlights,
-        ...updates
-      }
-    }))
 
   create = theme => {
     this.props.toggleVisibility()
@@ -91,9 +86,9 @@ class Themes extends React.PureComponent {
   render() {
     const { themes, theme, isVisible, toggleVisibility } = this.props
 
-    const highlights = { ...theme.highlights, ...this.state.highlights }
+    const highlights = { ...theme.highlights, ...this.props.highlights }
 
-    const dropdownValue = isVisible ? { name: '' } : { id: theme.id, name: theme.name }
+    const dropdownValue = isVisible ? { name: this.state.name } : theme
 
     const dropdownList = [
       {
@@ -109,7 +104,6 @@ class Themes extends React.PureComponent {
           innerRef={this.dropdown}
           icon={themeIcon}
           disableInput={isVisible}
-          inputValue={dropdownValue}
           selected={dropdownValue}
           list={dropdownList}
           itemWrapper={this.itemWrapper}
@@ -122,7 +116,9 @@ class Themes extends React.PureComponent {
             themes={themes}
             highlights={highlights}
             create={this.create}
-            updateHighlights={this.updateHighlights}
+            updateHighlights={this.props.updateHighlights}
+            name={this.state.name}
+            onInputChange={e => this.setState({ name: e.target.value })}
           />
         )}
         <style jsx>

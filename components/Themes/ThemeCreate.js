@@ -47,13 +47,17 @@ const HighlightPicker = ({ title, onChange, color }) => (
   </div>
 )
 
-const getCustomName = themes =>
-  `Custom Theme ${themes.filter(({ name }) => name.startsWith('Custom Theme')).length + 1}`
-
-const ThemeCreate = ({ theme, themes, highlights, create, updateHighlights }) => {
+const ThemeCreate = ({
+  theme,
+  themes,
+  highlights,
+  create,
+  updateHighlights,
+  name,
+  onInputChange
+}) => {
   const [preset, updatePreset] = React.useState(theme.id)
   const [highlight, selectHighlight] = React.useState()
-  const [name, updateName] = React.useState(getCustomName(themes))
 
   return (
     <Popout pointerLeft="15px" style={{ display: 'flex' }}>
@@ -65,7 +69,7 @@ const ThemeCreate = ({ theme, themes, highlights, create, updateHighlights }) =>
             name="name"
             placeholder="Custom Theme"
             value={name}
-            onChange={({ target: { value } }) => updateName(value)}
+            onChange={onInputChange}
             maxLength="32"
           />
         </div>
