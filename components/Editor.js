@@ -378,6 +378,15 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
+        <style jsx global>
+          {`
+            @font-face {
+              font-family: ${config.fontUrl ? config.fontFamily : ''};
+              src: url(${config.fontUrl || ''}) format('woff');
+              font-display: swap;
+            }
+          `}
+        </style>
         <style jsx>
           {`
             .editor {

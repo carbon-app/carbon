@@ -33,6 +33,7 @@ function FontSelect(props) {
 
     updateFonts(fonts => [{ id: name, name, url }, ...fonts])
     props.onChange('fontFamily', name)
+    props.onChange('fontUrl', url)
   }
 
   return (
@@ -53,21 +54,6 @@ function FontSelect(props) {
         accept={EXTENSIONS.join(',')}
         onChange={onFiles}
       />
-      {fonts
-        .filter(font => font.url)
-        .map(font => (
-          <style jsx global key={font.id}>
-            {`
-              @font-face {
-                font-family: '${font.name}';
-                src: url(${font.url}) format('woff');
-                font-display: swap;
-                font-style: normal;
-                font-weight: 400;
-              }
-            `}
-          </style>
-        ))}
     </div>
   )
 }
