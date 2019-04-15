@@ -370,7 +370,6 @@ class Editor extends React.Component {
                 key={language}
                 ref={this.carbonNode}
                 config={this.state}
-                theme={theme}
                 onChange={this.updateCode}
                 loading={this.state.loading}
               >

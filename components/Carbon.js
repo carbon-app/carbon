@@ -12,7 +12,8 @@ import {
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
-  DEFAULT_SETTINGS
+  DEFAULT_SETTINGS,
+  THEMES_HASH
 } from '../lib/constants'
 
 const Watermark = dynamic(() => import('./svg/Watermark'), {
@@ -92,6 +93,8 @@ class Carbon extends React.PureComponent {
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
       this.props.config.backgroundImage
 
+    const themeConfig = THEMES_HASH[config.theme]
+
     const content = (
       <div className="container">
         {config.windowControls ? (
@@ -99,7 +102,7 @@ class Carbon extends React.PureComponent {
             theme={config.windowTheme}
             code={this.props.children}
             copyable={this.props.copyable}
-            light={this.props.theme.light}
+            light={themeConfig.light}
           />
         ) : null}
         <CodeMirror
@@ -108,7 +111,7 @@ class Carbon extends React.PureComponent {
           value={this.props.children}
           options={options}
         />
-        {config.watermark && <Watermark light={this.props.theme.light} />}
+        {config.watermark && <Watermark light={themeConfig.light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />
