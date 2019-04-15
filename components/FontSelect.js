@@ -1,16 +1,9 @@
 import React from 'react'
 import ListSetting from './ListSetting'
 import { FONTS } from '../lib/constants'
+import { fileToDataURL as blobToUrl } from '../lib/util'
 
 const EXTENSIONS = ['.otf', '.ttf', '.woff']
-
-const blobToUrl = blob =>
-  new Promise(resolve => {
-    const reader = new FileReader()
-
-    reader.onload = event => resolve(event.target.result)
-    reader.readAsDataURL(blob)
-  })
 
 const Font = ({ id, name }) => (
   <span style={id === 'upload' ? { textAlign: 'center', width: '100%' } : { fontFamily: id }}>
@@ -32,8 +25,8 @@ function FontSelect(props) {
     }
   }
 
-  async function onFiles() {
-    const { files } = inputEl.current
+  async function onFiles(e) {
+    const { files } = e.target
 
     const name = files[0].name.split('.')[0]
     const url = await blobToUrl(files[0])
@@ -53,14 +46,7 @@ function FontSelect(props) {
       >
         {Font}
       </ListSetting>
-      <input
-        ref={inputEl}
-        type="file"
-        id="fileElem"
-        multiple
-        accept={EXTENSIONS.join(',')}
-        onChange={onFiles}
-      />
+      <input ref={inputEl} type="file" multiple accept={EXTENSIONS.join(',')} onChange={onFiles} />
       <style jsx>
         {`
           input {
