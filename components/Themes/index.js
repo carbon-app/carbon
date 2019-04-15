@@ -6,7 +6,6 @@ import { managePopout } from '../Popout'
 import ThemeIcon from '../svg/Theme'
 import RemoveIcon from '../svg/Remove'
 import { COLORS, DEFAULT_THEME } from '../../lib/constants'
-import { getRouteState } from '../../lib/routing'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
   loading: () => null
@@ -53,26 +52,14 @@ const getCustomName = themes =>
 
 class Themes extends React.PureComponent {
   state = {
-    highlights: {},
     name: ''
-  }
-
-  componentDidMount() {
-    const { queryState } = getRouteState(this.props.router)
-
-    if (queryState.highlights) {
-      this.updateHighlights(queryState.highlights)
-    }
   }
 
   dropdown = React.createRef()
 
   static getDerivedStateFromProps(props) {
     if (!props.isVisible) {
-      const themeConfig =
-        (props.themes && props.themes.find(t => t.id === props.theme)) || DEFAULT_THEME
       return {
-        highlights: themeConfig.highlights,
         name: getCustomName(props.themes)
       }
     }
@@ -89,14 +76,6 @@ class Themes extends React.PureComponent {
     }
   }
 
-  updateHighlights = updates =>
-    this.setState(({ highlights }) => ({
-      highlights: {
-        ...highlights,
-        ...updates
-      }
-    }))
-
   create = theme => {
     this.props.toggleVisibility()
     this.props.create(theme)
@@ -106,9 +85,10 @@ class Themes extends React.PureComponent {
 
   render() {
     const { themes, theme, isVisible, toggleVisibility } = this.props
-    const { highlights } = this.state
 
     const themeConfig = themes.find(t => t.id === theme) || DEFAULT_THEME
+
+    const highlights = { ...themeConfig.highlights, ...this.props.highlights }
 
     const dropdownValue = isVisible ? { name: this.state.name } : themeConfig
 
@@ -138,7 +118,7 @@ class Themes extends React.PureComponent {
             themes={themes}
             highlights={highlights}
             create={this.create}
-            updateHighlights={this.updateHighlights}
+            updateHighlights={this.props.updateHighlights}
             name={this.state.name}
             onInputChange={e => this.setState({ name: e.target.value })}
           />
