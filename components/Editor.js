@@ -120,9 +120,11 @@ class Editor extends React.Component {
     const isPNG = format !== 'svg'
     if (this.context.image && this.isSafari && isPNG) {
       const themeConfig = this.getTheme()
-      const highlights = { ...themeConfig.highlights, ...this.state.highlights }
-      // TODO: pull from state highlights, or custom theme highlights, or
-      const encodedState = serializeState({ ...this.state, highlights })
+      // pull from custom theme highlights, or state highlights
+      const encodedState = serializeState({
+        ...this.state,
+        highlights: { ...themeConfig.highlights, ...this.state.highlights }
+      })
       return this.context.image(encodedState)
     }
 
@@ -295,7 +297,6 @@ class Editor extends React.Component {
 
   render() {
     const {
-      theme,
       highlights,
       language,
       backgroundColor,
@@ -307,7 +308,7 @@ class Editor extends React.Component {
 
     const config = omit(this.state, ['code'])
 
-    const themeConfig = this.getTheme()
+    const theme = this.getTheme()
 
     return (
       <div className="editor">
@@ -369,7 +370,7 @@ class Editor extends React.Component {
                 key={language}
                 ref={this.carbonNode}
                 config={this.state}
-                theme={themeConfig}
+                theme={theme}
                 onChange={this.updateCode}
                 loading={this.state.loading}
               >
