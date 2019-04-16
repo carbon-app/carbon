@@ -13,15 +13,12 @@ const Font = ({ id, name }) => (
 
 function FontSelect(props) {
   const inputEl = React.useRef(null)
-  const [fonts, updateFonts] = React.useState(FONTS)
 
   function onChange(id) {
     if (id === 'upload') {
       inputEl.current.click()
     } else {
-      props.onChange('fontFamily', id)
-      const font = fonts.find(f => f.id === id)
-      props.onChange('fontUrl', font.url || null)
+      props.onChange(id)
     }
   }
 
@@ -31,16 +28,14 @@ function FontSelect(props) {
     const name = files[0].name.split('.')[0]
     const url = await blobToUrl(files[0])
 
-    updateFonts(fonts => [{ id: name, name, url }, ...fonts])
-    props.onChange('fontFamily', name)
-    props.onChange('fontUrl', url)
+    props.onUpload(name, url)
   }
 
   return (
     <div>
       <ListSetting
         title="Font"
-        items={[{ id: 'upload', name: 'Upload +' }, ...fonts]}
+        items={[{ id: 'upload', name: 'Upload +' }, ...FONTS]}
         {...props}
         onChange={onChange}
       >

@@ -26,7 +26,8 @@ import {
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
   DEFAULT_PRESET_ID,
-  DEFAULT_THEME
+  DEFAULT_THEME,
+  FONTS
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
@@ -84,6 +85,10 @@ class Editor extends React.Component {
     // Makes sure the slash in 'application/X' is decoded
     if (newState.language) {
       newState.language = unescapeHtml(newState.language)
+    }
+
+    if (newState.fontFamily && !FONTS.find(({ id }) => id === newState.fontFamily)) {
+      newState.fontFamily = DEFAULT_SETTINGS.fontFamily
     }
 
     this.updateState(newState)
