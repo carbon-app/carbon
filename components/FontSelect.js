@@ -1,7 +1,7 @@
 import React from 'react'
 import ListSetting from './ListSetting'
 import { COLORS, FONTS } from '../lib/constants'
-import { blobToUrl } from '../lib/util'
+import { fileToDataURL } from '../lib/util'
 
 const EXTENSIONS = ['.otf', '.ttf', '.woff']
 
@@ -48,7 +48,7 @@ function FontSelect(props) {
     const { files } = e.target
 
     const name = files[0].name.split('.')[0]
-    const url = await blobToUrl(files[0])
+    const url = await fileToDataURL(files[0])
 
     props.onUpload(name, url)
   }
