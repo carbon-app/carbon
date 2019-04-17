@@ -106,10 +106,14 @@ const WindowSettings = React.memo(
 )
 
 const TypeSettings = React.memo(
-  ({ onChange, font, size, lineHeight, onWidthChanging, onWidthChanged }) => {
+  ({ onChange, onUpload, font, size, lineHeight, onWidthChanging, onWidthChanged }) => {
     return (
       <div className="settings-content">
-        <FontSelect selected={font} onChange={onChange.bind(null, 'fontFamily')} />
+        <FontSelect
+          selected={font}
+          onUpload={onUpload}
+          onChange={onChange.bind(null, 'fontFamily')}
+        />
         <Slider
           label="Size"
           value={size}
@@ -241,6 +245,12 @@ class Settings extends React.PureComponent {
     this.setState({ previousSettings: null })
   }
 
+  handleFontUpload = (id, url) => {
+    this.props.onChange('fontFamily', id)
+    this.props.onChange('fontUrl', url)
+    this.props.toggleVisibility()
+  }
+
   getSettingsFromProps = () =>
     omitBy(this.props, (v, k) => typeof v === 'function' || k === 'preset')
 
@@ -321,6 +331,7 @@ class Settings extends React.PureComponent {
         return (
           <TypeSettings
             onChange={this.handleChange}
+            onUpload={this.handleFontUpload}
             onWidthChanging={this.handleWidthChanging}
             onWidthChanged={this.handleWidthChanged}
             font={this.props.fontFamily}
