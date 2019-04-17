@@ -293,6 +293,8 @@ class Editor extends React.Component {
     }
   }
 
+  applyPreset = ({ id: preset, ...settings }) => this.updateState({ preset, ...settings })
+
   format = () =>
     formatCode(this.state.code)
       .then(this.updateCode)
