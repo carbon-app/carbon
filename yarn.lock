@@ -2711,9 +2711,10 @@ es-to-primitive@^1.2.0:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-escape-goat@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/escape-goat/-/escape-goat-1.3.0.tgz#bf3ee8ad1e488fbba404b084b2e4a55e09231c64"
+escape-goat@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/escape-goat/-/escape-goat-2.0.0.tgz#be9120096b3002eae301ea9db824247d688121b9"
+  integrity sha512-XNBgZcQeOGSzOPRqqOrMkFjBA0MCWRb2CqfMjZatMNkAki2YrKj2PwoZhIZwk/AikpbMwGOCPUVjpe+MOeR5tw==
 
 escape-html@~1.0.3:
   version "1.0.3"
