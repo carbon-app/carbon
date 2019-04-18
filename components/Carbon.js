@@ -127,7 +127,7 @@ class Carbon extends React.PureComponent {
             }
 
             .container :global(.watermark) {
-              fill-opacity: 0.3;
+              fill-opacity: 0.75;
               position: absolute;
               z-index: 2;
               bottom: calc(${config.paddingVertical} + 16px);

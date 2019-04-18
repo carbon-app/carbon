@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.14",
+  "version": "3.9.16",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -37,11 +37,11 @@
     "isomorphic-fetch": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
-    "match-sorter": "^2.3.0",
+    "match-sorter": "^3.0.0",
     "micro": "^9.3.3",
     "morphmorph": "^0.1.2",
     "ms": "^2.0.0",
-    "next": "^8.0.3",
+    "next": "8.0.4",
     "next-offline": "^3.3.6",
     "prettier": "^1.16.4",
     "puppeteer-core": "^1.14.0",
