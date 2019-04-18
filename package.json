@@ -82,6 +82,10 @@
       "npm run lint",
       "prettier --config .prettierrc --write",
       "git add"
+    ],
+    ".all-contributorsrc": [
+      "npm run contrib:build",
+      "git add"
     ]
   },
   "greenkeeper": {
@@ -114,7 +118,7 @@
   "homepage": "https://dawnlabs.io/carbon",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run contrib:build && git add README.md && lint-staged"
+      "pre-commit": "lint-staged"
     }
   }
 }
