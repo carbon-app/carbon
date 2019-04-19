@@ -490,6 +490,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "uraway",
+      "name": "Masato Urai (@uraway_)",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15242484?v=4",
+      "profile": "http://uraway.hatenablog.com/",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github"
