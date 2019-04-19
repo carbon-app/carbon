@@ -23,6 +23,7 @@
 - [한국어](/docs/README.kr.md)
 - [தமிழ்](/docs/README.ta.md)
 - [Français](/docs/README.fr.md)
+- [日本語](/docs/README.ja.md)
 
 ## Introduction
 
