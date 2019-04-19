@@ -11,28 +11,15 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### Translations
-
-- [Español](/docs/README.es.md)
-- [हिंदी](/docs/README.hi.md)
-- [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.cn.zh.md)
-- [Português](/docs/README.br.pt.md)
-- [മലയാളം](/docs/README.ml.md)
-- [Türkçe](/docs/README.tr.md)
-- [한국어](/docs/README.kr.md)
-- [தமிழ்](/docs/README.ta.md)
-- [Français](/docs/README.fr.md)
-
 ## Introduction
 
-Twitterで[いつも](https://twitter.com/dan_abramov/status/890191815567175680)[見るような](https://twitter.com/reactjs/status/890511993261654017)[こうしたコード](https://twitter.com/notquiteleo/status/873483329345028096)の[スクリーンショット](https://twitter.com/zeithq/status/805779711154647040)をご存知ですか？こうしたコードはたいていは印象的ですが、美しさの点では改善の余地があります。Carbonを使えば、ソースコードの美しいスクリーンショットを簡単に作成し、共有することができます。今すぐ、この新しいデザインの力を使ってフォロワーを感動させましょう。
+Twitter で[いつも](https://twitter.com/dan_abramov/status/890191815567175680)[見るような](https://twitter.com/reactjs/status/890511993261654017)[こうしたコード](https://twitter.com/notquiteleo/status/873483329345028096)の[スクリーンショット](https://twitter.com/zeithq/status/805779711154647040)をご存知ですか？こうしたコードはたいていは印象的ですが、美しさの点では改善の余地があります。Carbon を使えば、ソースコードの美しいスクリーンショットを簡単に作成し、共有することができます。今すぐ、この新しいデザインの力を使ってフォロワーを感動させましょう。
 
 プロジェクトの詳細は[carbon.now.sh](https://carbon.now.sh)や[投稿](https://dawnlabs.io/case-studies/carbon/)にあります。
 
 ## Features
 
-- **GitHub gistからのインポート**. URLにGitHub gist idを付け加える
+- **GitHub gist からのインポート**. URL に GitHub gist id を付け加える
 - **カスタマイズ**. シンタックステーマやウィンドウスタイルなどをカスタマイズ
 - **すばやくシェア**. ワンクリックで画像を保存したり、リンクをツイート
 
@@ -44,23 +31,23 @@ Twitterで[いつも](https://twitter.com/dan_abramov/status/890191815567175680)
 
 #### Import
 
-Carbonにインポートするには何通りかの方法があります:
+Carbon にインポートするには何通りかの方法があります:
 
 - エディターにファイルをドロップする
-- URLにGitHub gist idを付け加える (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- URL に GitHub gist id を付け加える (e.g. `carbon.now.sh/GIST_ID_HERE`)
 - コードを直接ペーストする
 
 #### Customization
 
-コードをCarbonにインポートできたらシンタックステーマや背景色、ウィンドウスタイル、パディングなどで、画像をカスタマイズすることができます。
+コードを Carbon にインポートできたらシンタックステーマや背景色、ウィンドウスタイル、パディングなどで、画像をカスタマイズすることができます。
 
 #### Export/Sharing
 
 画像のカスタマイズが終わったら、画像リンクをツイートしたり直接ダウンロードできます。
 
-&apos;Tweet&apos;ボタンを使えば、Carbonは自動的に画像を利用できるようにします。もしCarbonの画像を手動でツイートしたい場合は、[画像のアクセシビリティを向上させる方法](https://help.twitter.com/en/using-twitter/picture-descriptions)を確認してください。
+&apos;Tweet&apos;ボタンを使えば、Carbon は自動的に画像を利用できるようにします。もし Carbon の画像を手動でツイートしたい場合は、[画像のアクセシビリティを向上させる方法](https://help.twitter.com/en/using-twitter/picture-descriptions)を確認してください。
 
-投稿の中でCarbon画像を使うと、ソースコードはassistive technologyからは見えなくなり、拡大やコピーなどはできなくなります。画像の下に[HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)のように、テキストとしてソースコードを持つ別の要素を追加することを検討してください。
+投稿の中で Carbon 画像を使うと、ソースコードは assistive technology からは見えなくなり、拡大やコピーなどはできなくなります。画像の下に[HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)のように、テキストとしてソースコードを持つ別の要素を追加することを検討してください。
 
 ## Community
 
@@ -68,39 +55,39 @@ Carbonにインポートするには何通りかの方法があります:
 
 ##### Editor Plugins
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 現在の IntelliJ IDEAファイルの選択したコードをコンテキストメニューからCarbonで開く
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A`コマンドを使い、現在のAtomファイルをCarbonで開く
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - `carbon`コマンドを使い、VS CodeファイルをCarbonで開く
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - カスタムコマンドを使い、現在のSublime Text 3ファイルの選択したコードをCarbonで開く
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - `CarbonNowSh()`関数を使い、現在のVim/NeovimをCarbonで開く
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - `carbon-now-sh`インタラクティブ関数を使い、現在のEmacsをCarbonで開く
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - `carbon.now.sh`を使い、選択したコードをCarbonで開く
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 現在の IntelliJ IDEA ファイルの選択したコードをコンテキストメニューから Carbon で開く
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - `shift-cmd-A`コマンドを使い、現在の Atom ファイルを Carbon で開く
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - `carbon`コマンドを使い、VS Code ファイルを Carbon で開く
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - カスタムコマンドを使い、現在の Sublime Text 3 ファイルの選択したコードを Carbon で開く
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - `CarbonNowSh()`関数を使い、現在の Vim/Neovim を Carbon で開く
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - `carbon-now-sh`インタラクティブ関数を使い、現在の Emacs を Carbon で開く
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - `carbon.now.sh`を使い、選択したコードを Carbon で開く
 
 ##### Tools
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - `carbon-now`を使い、Carbonでファイルを開いたり、直接ダウンロードする。インタラクティブモードや、シンタックスハイライト機能など
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 拡張ネイティブ機能を備えたmacOSラッパー
-- [CodeExpander](https://codeexpander.com) - TextExpander機能を備えたスマートなGitHub Gistクライアント
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - `carbon-now`を使い、Carbon でファイルを開いたり、直接ダウンロードする。インタラクティブモードや、シンタックスハイライト機能など
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 拡張ネイティブ機能を備えた macOS ラッパー
+- [CodeExpander](https://codeexpander.com) - TextExpander 機能を備えたスマートな GitHub Gist クライアント
 
 ##### Libraries
 
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R`でインタラクティブに画像のスタイルを操作し、コードをCarbonで開くか直接ダウンロードする
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - `R`でインタラクティブに画像のスタイルを操作し、コードを Carbon で開くか直接ダウンロードする
 
 ##### Textbooks
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Royによるコンピューターサイエンスのテキストブック
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy によるコンピューターサイエンスのテキストブック
 
 ## Contribute
 
-PRを歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md)をご覧ください。
+PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md)をご覧ください。
 
 ## Thanks To
 
-[ ▲ ZEIT ](https://zeit.co/)はCarbonのホスティングを支援してくれています。
+[ ▲ ZEIT ](https://zeit.co/)は Carbon のホスティングを支援してくれています。
 
 ## Authors
 
-Carbonは<a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>によるプロジェクトです
+Carbon は<a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>によるプロジェクトです
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))

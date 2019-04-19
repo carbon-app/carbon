@@ -11,17 +11,6 @@
 <br></br>
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
-##### Translations
-
-- [Español](/docs/README.es.md)
-- [हिंदी](/docs/README.hi.md)
-- [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.cn.zh.md)
-- [Português](/docs/README.br.pt.md)
-- [മലയാളം](/docs/README.ml.md)
-- [Türkçe](/docs/README.tr.md)
-- [한국어](/docs/README.kr.md)
-
 ## Introduction
 
 트위터에서 공유되고 있는 [그](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 합니다. 무엇을 망설이나요? 당신의 디자인 감각으로 follower들을 감동시키세요!
