@@ -12,7 +12,8 @@
     "docs/README.tr.md",
     "docs/README.kr.md",
     "docs/README.ta.md",
-    "docs/README.fr.md"
+    "docs/README.fr.md",
+    "docs/README.ja.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -489,6 +490,15 @@
       "profile": "https://github.com/souppower",
       "contributions": [
         "infra"
+      ]
+    },
+    {
+      "login": "uraway",
+      "name": "Masato Urai (@uraway_)",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15242484?v=4",
+      "profile": "http://uraway.hatenablog.com/",
+      "contributions": [
+        "translation"
       ]
     }
   ],
