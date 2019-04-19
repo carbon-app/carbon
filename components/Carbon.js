@@ -93,7 +93,7 @@ class Carbon extends React.PureComponent {
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
       this.props.config.backgroundImage
 
-    const themeConfig = THEMES_HASH[config.theme]
+    const themeConfig = this.props.theme || THEMES_HASH[config.theme]
 
     const content = (
       <div className="container">
