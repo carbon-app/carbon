@@ -406,6 +406,7 @@ class Editor extends React.Component {
                 config={this.state}
                 onChange={this.updateCode}
                 loading={this.state.loading}
+                theme={theme}
               >
                 {code != null ? code : DEFAULT_CODE}
               </Carbon>
