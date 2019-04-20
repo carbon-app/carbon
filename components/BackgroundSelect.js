@@ -1,5 +1,4 @@
 import React from 'react'
-import { escape } from 'escape-goat'
 
 import ImagePicker from './ImagePicker'
 import ColorPicker from './ColorPicker'
@@ -20,11 +19,7 @@ class BackgroundSelect extends React.PureComponent {
   render() {
     const { color, mode, image, onChange, isVisible, toggleVisibility, carbonRef } = this.props
 
-    let background = typeof color === 'string' ? escape(color).replace(/\//g, '&#x2F;') : color
-
-    if (!validateColor(background)) {
-      background = DEFAULT_BG_COLOR
-    }
+    const background = validateColor(color) ? color : DEFAULT_BG_COLOR
 
     const aspectRatio = carbonRef ? carbonRef.clientWidth / carbonRef.clientHeight : 1
 
