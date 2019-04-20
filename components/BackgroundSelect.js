@@ -1,11 +1,17 @@
 import React from 'react'
+import colornames from 'colornames'
 
 import ImagePicker from './ImagePicker'
 import ColorPicker from './ColorPicker'
 import Popout, { managePopout } from './Popout'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
-import { validateColor } from '../lib/colors'
 import { capitalize, stringifyRGBA } from '../lib/util'
+
+function validateColor(str) {
+  if (/#\d{3,6}|rgba{0,1}\(.*?\)/gi.test(str) || colornames(str)) {
+    return str
+  }
+}
 
 class BackgroundSelect extends React.PureComponent {
   selectTab = name => {
