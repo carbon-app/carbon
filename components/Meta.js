@@ -5,7 +5,14 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
-const LOCAL_STYLESHEETS = ['one-light', 'one-dark', 'verminal', 'night-owl', 'nord']
+const LOCAL_STYLESHEETS = [
+  'one-light',
+  'one-dark',
+  'verminal',
+  'night-owl',
+  'nord',
+  'shades-of-purple'
+]
 const CDN_STYLESHEETS = THEMES.filter(t => LOCAL_STYLESHEETS.indexOf(t.id) < 0)
 
 export function Link({ href }) {
