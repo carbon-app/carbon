@@ -43,7 +43,7 @@
     "prettier": "^1.16.4",
     "react": "^16.8.3",
     "react-click-outside": "^3.0.0",
-    "react-codemirror2": "^5.1.0",
+    "react-codemirror2": "^6.0.0",
     "react-color": "^2.17.0",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.8.3",
