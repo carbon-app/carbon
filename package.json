@@ -22,7 +22,7 @@
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.10",
     "axios": "^0.18.0",
-    "codemirror": "^5.42.2",
+    "codemirror": "^5.46.0",
     "codemirror-graphql": "^0.8.3",
     "codemirror-mode-elixir": "^1.1.2",
     "colornames": "^1.1.1",

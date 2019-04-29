@@ -30,7 +30,7 @@ export const StylesheetLink = ({ theme }) => {
     href = `/static/themes/${theme}.css`
   } else {
     const themeDef = THEMES_HASH[theme]
-    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/${themeDef &&
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.46.0/theme/${themeDef &&
       (themeDef.link || themeDef.id)}.min.css`
   }
 
@@ -38,7 +38,7 @@ export const StylesheetLink = ({ theme }) => {
 }
 
 export const CodeMirrorLink = () => (
-  <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/codemirror.min.css" />
+  <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.46.0/codemirror.min.css" />
 )
 
 const title = 'Carbon'
@@ -66,13 +66,13 @@ export const MetaTags = React.memo(() => (
 export const MetaLinks = React.memo(() => {
   return (
     <React.Fragment>
-      <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/seti.min.css" />
+      <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.46.0/theme/seti.min.css" />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (
         <Link key={id} href={`/static/themes/${id}.css`} />
       ))}
       {CDN_STYLESHEETS.map(themeDef => {
-        const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.42.2/theme/${themeDef &&
+        const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.46.0/theme/${themeDef &&
           (themeDef.link || themeDef.id)}.min.css`
         return <Link key={themeDef.id} href={href} />
       })}
