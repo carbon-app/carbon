@@ -9,13 +9,13 @@ import Popout, { managePopout } from './Popout'
 
 const toIFrame = url =>
   `<iframe
-  src="https://carbon.now.sh/embed${url}"
+  src="${location.origin}/embed${url}"
   style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
   sandbox="allow-scripts allow-same-origin">
 </iframe>
 `
 
-const toURL = url => encodeURI(`https://carbon.now.sh/embed${url}`)
+const toURL = url => encodeURI(`${location.origin}/embed${url}`)
 
 const MAX_PAYLOAD_SIZE = 5e6 // bytes
 function verifyPayloadSize(str) {
