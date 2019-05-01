@@ -3,6 +3,7 @@ import colornames from 'colornames'
 
 import ImagePicker from './ImagePicker'
 import ColorPicker from './ColorPicker'
+import Button from './Button'
 import Popout, { managePopout } from './Popout'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { capitalize, stringifyRGBA } from '../lib/util'
@@ -31,12 +32,17 @@ class BackgroundSelect extends React.PureComponent {
 
     return (
       <div className="bg-select-container">
-        <div className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}>
-          <div role="button" tabIndex={0} className="bg-color-container" onClick={toggleVisibility}>
-            <div className="bg-color-alpha" />
-            <div className="bg-color" />
-          </div>
-        </div>
+        <Button
+          border
+          center
+          selected={isVisible}
+          className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}
+          onClick={toggleVisibility}
+        >
+          <div className="bg-color-alpha" />
+          <div className="bg-color" />
+        </Button>
+
         <Popout
           id="bg-select-pickers"
           pointerLeft="15px"
@@ -71,24 +77,17 @@ class BackgroundSelect extends React.PureComponent {
               height: 100%;
             }
 
-            .bg-select-display {
-              display: flex;
+            .bg-select-container :global(.bg-select-display) {
+              position: relative;
               overflow: hidden;
               height: 100%;
               width: 40px;
               border: 1px solid ${COLORS.SECONDARY};
-              border-radius: 3px;
             }
 
-            .bg-select-display.is-visible {
+            .bg-select-container :global(.bg-select-display.is-visible),
+            .bg-select-container :global(.bg-select-display:focus) {
               border-width: 2px;
-            }
-
-            .bg-color-container {
-              position: relative;
-              width: 100%;
-              background: #fff;
-              cursor: pointer;
             }
 
             .bg-color {
