@@ -257,7 +257,9 @@ class Editor extends React.Component {
   }
 
   updateLanguage(language) {
-    this.updateSetting('language', language.mime || language.mode)
+    if (language) {
+      this.updateSetting('language', language.mime || language.mode)
+    }
   }
 
   updateBackground({ photographer, ...changes } = {}) {
