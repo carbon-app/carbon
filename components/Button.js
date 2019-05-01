@@ -52,7 +52,8 @@ const Button = ({
           font-size: ${large ? '14px' : '12px'};
         }
 
-        button:hover {
+        button:hover,
+        button:focus {
           background-color: ${hoverBackground} !important;
           color: ${hoverColor || color};
         }
