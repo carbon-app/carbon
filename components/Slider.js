@@ -5,11 +5,12 @@ import { COLORS } from '../lib/constants'
 class Slider extends React.Component {
   static defaultProps = {
     onMouseDown: () => {},
-    onMouseUp: () => {}
+    onMouseUp: () => {},
+    unit: 'px'
   }
 
   handleChange = e => {
-    this.props.onChange(`${e.target.value}${this.props.usePercentage ? '%' : 'px'}`)
+    this.props.onChange(`${e.target.value}${this.props.unit}`)
   }
 
   render() {
@@ -27,7 +28,7 @@ class Slider extends React.Component {
               100}%, 0px, 0px)`
           }}
         />
-        <span className="label">{this.props.label}</span>
+        <label>{this.props.label}</label>
         <input
           type="range"
           defaultValue={this.props.value}
@@ -47,23 +48,28 @@ class Slider extends React.Component {
               user-select: none;
             }
 
+            .slider:focus-within {
+              outline: -webkit-focus-ring-color auto 5px;
+            }
+
             .slider:last-of-type {
               border-bottom: 0;
             }
 
-            .label {
+            label {
               position: absolute;
               left: 8px;
               height: 33px;
               line-height: 33px;
             }
 
-            .slider input {
+            input {
               opacity: 0;
               cursor: ew-resize;
               position: relative;
               height: 100%;
               width: 100%;
+              margin: 0;
             }
 
             .slider-bg {
