@@ -5,7 +5,6 @@ import { COLORS } from '../lib/constants'
 const Button = ({
   id,
   onClick = () => {},
-  onBlur,
   className = '',
   background = COLORS.BLACK,
   color = COLORS.SECONDARY,
@@ -22,14 +21,7 @@ const Button = ({
   padding = 0,
   margin = 0
 }) => (
-  <button
-    id={id}
-    onClick={onClick}
-    onBlur={onBlur}
-    className={className}
-    disabled={disabled}
-    style={style}
-  >
+  <button id={id} onClick={onClick} className={className} disabled={disabled} style={style}>
     {children}
     <style jsx>
       {`
