@@ -15,29 +15,33 @@ class ThemeSelect extends React.Component {
   renderThemes() {
     return WINDOW_THEMES.map(theme => {
       const Img = WINDOW_THEMES_MAP[theme]
+      const checked = this.props.selected === theme
       return (
         <div
-          role="button"
-          tabIndex={0}
-          className={`theme ${this.props.selected === theme ? 'selected' : ''}`}
           key={theme}
+          role="radio"
+          checked={checked}
+          aria-checked={checked}
+          tabIndex={checked ? 0 : -1}
           onClick={this.select.bind(null, theme)}
+          value={theme}
         >
           <Img />
           <style jsx>
             {`
-              .theme {
+              [role='radio'] {
                 cursor: pointer;
                 margin-right: 8px;
+                outline: none;
               }
 
-              .theme:last-of-type {
-                margin-right: 0px;
-              }
-
-              .selected :global(svg) {
+              [aria-checked='true'] :global(svg) {
                 border-radius: 3px;
                 border: solid 2px ${COLORS.SECONDARY};
+              }
+
+              [role='radio']:last-of-type {
+                margin-right: 0px;
               }
             `}
           </style>
@@ -49,8 +53,12 @@ class ThemeSelect extends React.Component {
   render() {
     return (
       <div className="window-theme">
-        <span className="label">Theme</span>
-        <div className="themes">{this.renderThemes()}</div>
+        <span className="label" id="window-theme-label">
+          Theme
+        </span>
+        <div className="themes" role="radiogroup" aria-labelledby="window-theme-label">
+          {this.renderThemes()}
+        </div>
         <style jsx>
           {`
             .window-theme {
