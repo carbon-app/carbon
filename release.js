@@ -2,7 +2,12 @@ const url = require('url')
 const clipboardy = require('clipboardy')
 
 module.exports = async markdown => {
-  const URL = process.env.URL || process.env.NOW_URL || clipboardy.readSync()
+  let URL = process.env.URL || process.env.NOW_URL || clipboardy.readSync()
+
+  if (!URL.startsWith('http')) {
+    URL = 'https://' + URL
+  }
+
   const { host } = url.parse(URL)
 
   if (host) {

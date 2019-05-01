@@ -212,7 +212,8 @@ const SelectedItem = ({
             border-radius: ${hasIcon ? '0 3px 3px 0' : '3px'};
             outline: none;
           }
-          .dropdown-display:hover {
+          .dropdown-display:hover,
+          .dropdown-display:focus {
             background: ${COLORS.HOVER};
           }
 

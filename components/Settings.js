@@ -95,7 +95,8 @@ const WindowSettings = React.memo(
               border-right: 1px solid ${COLORS.SECONDARY};
             }
 
-            .drop-shadow-options {
+            .drop-shadow-options :global(.slider-bg),
+            .drop-shadow-options :global(label) {
               opacity: 0.5;
             }
           `}
@@ -129,7 +130,7 @@ const TypeSettings = React.memo(
           value={lineHeight}
           minValue={90}
           maxValue={250}
-          usePercentage={true}
+          unit="%"
           onChange={onChange.bind(null, 'lineHeight')}
         />
       </div>

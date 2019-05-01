@@ -67,12 +67,14 @@ class Themes extends React.PureComponent {
   }
 
   handleThemeSelected = theme => {
-    const { toggleVisibility, update } = this.props
-    if (theme.id === 'create') {
-      toggleVisibility()
-      this.dropdown.current.closeMenu()
-    } else {
-      update(theme.id)
+    if (theme) {
+      const { toggleVisibility, update } = this.props
+      if (theme.id === 'create') {
+        toggleVisibility()
+        this.dropdown.current.closeMenu()
+      } else {
+        update(theme.id)
+      }
     }
   }
 
