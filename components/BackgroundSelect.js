@@ -38,6 +38,8 @@ class BackgroundSelect extends React.PureComponent {
           selected={isVisible}
           className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}
           onClick={toggleVisibility}
+          background="white"
+          hoverBackground="white"
         >
           <div className="bg-color-alpha" />
           <div className="bg-color" />
