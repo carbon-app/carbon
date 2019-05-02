@@ -73,6 +73,11 @@ function RandomImage(props) {
             cursor: ${loading ? 'not-allowed' : 'pointer'};
             user-select: none;
           }
+
+          [role='button']:focus {
+            outline: none;
+            text-decoration: underline;
+          }
         `}
       </style>
     </div>

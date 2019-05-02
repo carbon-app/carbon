@@ -38,6 +38,8 @@ class BackgroundSelect extends React.PureComponent {
           selected={isVisible}
           className={`bg-select-display ${isVisible ? 'is-visible' : ''}`}
           onClick={toggleVisibility}
+          background="white"
+          hoverBackground="white"
         >
           <div className="bg-color-alpha" />
           <div className="bg-color" />
@@ -63,10 +65,10 @@ class BackgroundSelect extends React.PureComponent {
             ))}
           </div>
           <div className="picker-tabs-contents">
-            <div style={mode === 'color' ? {} : { display: 'none' }}>
+            <div hidden={mode !== 'color'}>
               <ColorPicker color={color} onChange={this.handlePickColor} />
             </div>
-            <div style={mode === 'image' ? {} : { display: 'none' }}>
+            <div hidden={mode !== 'image'}>
               <ImagePicker onChange={onChange} imageDataURL={image} aspectRatio={aspectRatio} />
             </div>
           </div>

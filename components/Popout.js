@@ -15,6 +15,20 @@ export const managePopout = WrappedComponent => {
 
     handleClickOutside = () => this.setState({ isVisible: false })
 
+    handleKeyDown = e => {
+      if (e.key === 'Escape') {
+        this.handleClickOutside()
+      }
+    }
+
+    componentDidMount() {
+      document.addEventListener('keydown', this.handleKeyDown)
+    }
+
+    componentWillUnmount() {
+      document.removeEventListener('keydown', this.handleKeyDown)
+    }
+
     render() {
       return (
         <WrappedComponent
