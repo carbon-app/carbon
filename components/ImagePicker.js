@@ -214,6 +214,10 @@ export default class ImagePicker extends React.Component {
               opacity: 0.4;
             }
 
+            .choose-image > button:focus {
+              text-decoration: underline;
+            }
+
             form {
               display: flex;
               justify-content: space-between;
