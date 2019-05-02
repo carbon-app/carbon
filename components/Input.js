@@ -27,7 +27,10 @@ const Input = React.forwardRef(({ color = COLORS.SECONDARY, align = 'right', ...
 
         input[type='file'] {
           cursor: pointer;
-          outline: none;
+        }
+
+        input[type='file']:focus {
+          outline: initial;
         }
       `}
     </style>
