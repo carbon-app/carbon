@@ -50,8 +50,17 @@
       "methods": ["POST"]
     },
     { "src": "/api/.*", "status": 404 },
-    { "src": "/", "dest": "/index.html" },
-    { "src": "^/(.*)", "dest": "/index.html" }
+    {
+      "src": "^/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "no-referrer-when-downgrade",
+        "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
+      }
+    }
   ],
   "build": {
     "env": {
