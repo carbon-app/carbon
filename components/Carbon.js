@@ -95,6 +95,8 @@ class Carbon extends React.PureComponent {
 
     const themeConfig = this.props.theme || THEMES_HASH[config.theme]
 
+    const light = themeConfig && themeConfig.light
+
     const content = (
       <div className="container">
         {config.windowControls ? (
@@ -102,7 +104,7 @@ class Carbon extends React.PureComponent {
             theme={config.windowTheme}
             code={this.props.children}
             copyable={this.props.copyable}
-            light={themeConfig.light}
+            light={light}
           />
         ) : null}
         <CodeMirror
@@ -111,7 +113,7 @@ class Carbon extends React.PureComponent {
           value={this.props.children}
           options={options}
         />
-        {config.watermark && <Watermark light={themeConfig.light} />}
+        {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />
