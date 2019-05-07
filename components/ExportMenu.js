@@ -15,7 +15,7 @@ const toIFrame = url =>
 </iframe>
 `
 
-const toURL = url => encodeURI(`${location.origin}/embed${url}`)
+const toURL = url => encodeURI(`${location.origin}${url}`)
 
 const MAX_PAYLOAD_SIZE = 5e6 // bytes
 function verifyPayloadSize(str) {

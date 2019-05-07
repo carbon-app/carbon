@@ -156,14 +156,14 @@ class Editor extends React.Component {
 
     const map = new Map()
     const undoMap = value => {
-      map.forEach((value, node) => (node.innerText = value))
+      map.forEach((value, node) => (node.innerHTML = value))
       return value
     }
 
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
         if (node.innerText && node.innerText.match(/%[A-Za-z0-9]{2}/)) {
-          map.set(node, node.innerText)
+          map.set(node, node.innerHTML)
           node.innerText.match(/%[A-Za-z0-9]{2}/g).forEach(t => {
             node.innerText = node.innerText.replace(t, encodeURIComponent(t))
           })
