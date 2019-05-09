@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.10",
+    "@reach/visually-hidden": "^0.1.4",
     "axios": "^0.18.0",
     "codemirror": "^5.42.2",
     "codemirror-graphql": "^0.8.3",

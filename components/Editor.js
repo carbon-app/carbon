@@ -332,6 +332,7 @@ class Editor extends React.Component {
             themes={this.props.themes}
           />
           <Dropdown
+            title="Language"
             icon={languageIcon}
             selected={
               LANGUAGE_NAME_HASH[language] ||

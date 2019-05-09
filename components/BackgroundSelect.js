@@ -33,6 +33,7 @@ class BackgroundSelect extends React.PureComponent {
     return (
       <div className="bg-select-container">
         <Button
+          title="Background Menu"
           border
           center
           selected={isVisible}

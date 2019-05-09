@@ -1,6 +1,7 @@
 import React from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
+import VisuallyHidden from '@reach/visually-hidden'
 import { Down as ArrowDown } from './svg/Arrows'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
@@ -56,11 +57,63 @@ class Dropdown extends React.PureComponent {
 
   userInputtedValue = ''
 
-  render() {
-    const { innerRef, color, selected, onChange, itemWrapper, icon, disableInput } = this.props
-    const { itemsToShow, inputValue } = this.state
+  renderDropdown = ({
+    isOpen,
+    highlightedIndex,
+    selectedItem,
+    getRootProps,
+    getToggleButtonProps,
+    getInputProps,
+    getItemProps
+  }) => {
+    const { list, color, itemWrapper, icon, disableInput, title } = this.props
+    const { itemsToShow } = this.state
 
     const minWidth = calcMinWidth(itemsToShow)
+    const labelId = title ? `${title.toLowerCase()}-dropdown` : undefined
+
+    return (
+      <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
+        {title && <VisuallyHidden id={labelId}>{title}</VisuallyHidden>}
+        <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
+        <SelectedItem
+          getToggleButtonProps={getToggleButtonProps}
+          getInputProps={getInputProps}
+          isOpen={isOpen}
+          color={color}
+          hasIcon={!!icon}
+          disabled={disableInput}
+        >
+          {selectedItem.name}
+        </SelectedItem>
+        {isOpen ? (
+          <List color={color}>
+            {list.map((item, index) => (
+              <ListItem
+                key={index}
+                color={color}
+                item={item}
+                itemWrapper={itemWrapper}
+                {...getItemProps({
+                  item,
+                  isSelected: selectedItem.name === item.name,
+                  isHighlighted: highlightedIndex === index
+                })}
+              >
+                {item.name}
+              </ListItem>
+            ))}
+          </List>
+        ) : null}
+      </DropdownContainer>
+    )
+  }
+
+  render() {
+    const { innerRef, selected, onChange, title } = this.props
+    const { itemsToShow, inputValue } = this.state
+
+    const labelId = title ? `${title.toLowerCase()}-dropdown` : undefined
 
     return (
       <Downshift
@@ -71,64 +124,12 @@ class Dropdown extends React.PureComponent {
         itemToString={item => item.name}
         onChange={onChange}
         onUserAction={this.onUserAction}
+        labelId={labelId}
       >
-        {renderDropdown({
-          color,
-          list: itemsToShow,
-          selected,
-          minWidth,
-          itemWrapper,
-          icon,
-          disableInput
-        })}
+        {this.renderDropdown}
       </Downshift>
     )
   }
-}
-
-const renderDropdown = ({ color, list, minWidth, itemWrapper, icon, disableInput }) => ({
-  isOpen,
-  highlightedIndex,
-  selectedItem,
-  getRootProps,
-  getToggleButtonProps,
-  getInputProps,
-  getItemProps
-}) => {
-  return (
-    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
-      <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
-      <SelectedItem
-        getToggleButtonProps={getToggleButtonProps}
-        getInputProps={getInputProps}
-        isOpen={isOpen}
-        color={color}
-        hasIcon={!!icon}
-        disabled={disableInput}
-      >
-        {selectedItem.name}
-      </SelectedItem>
-      {isOpen ? (
-        <ListItems color={color}>
-          {list.map((item, index) => (
-            <ListItem
-              key={index}
-              color={color}
-              item={item}
-              itemWrapper={itemWrapper}
-              {...getItemProps({
-                item,
-                isSelected: selectedItem.name === item.name,
-                isHighlighted: highlightedIndex === index
-              })}
-            >
-              {item.name}
-            </ListItem>
-          ))}
-        </ListItems>
-      ) : null}
-    </DropdownContainer>
-  )
 }
 
 const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
@@ -173,9 +174,9 @@ const DropdownIcon = ({ children, isOpen }) => {
         </style>
       </div>
     )
-  } else {
-    return null
   }
+
+  return null
 }
 
 const SelectedItem = ({
@@ -245,7 +246,7 @@ const SelectedItem = ({
   )
 }
 
-const ListItems = ({ children, color }) => {
+const List = ({ children, color }) => {
   return (
     <ul role="listbox" className="dropdown-list">
       {children}
