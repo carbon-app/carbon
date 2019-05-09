@@ -1,6 +1,7 @@
 import React from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
+import VisuallyHidden from '@reach/visually-hidden'
 import { Down as ArrowDown } from './svg/Arrows'
 import CheckMark from './svg/Checkmark'
 import { COLORS } from '../lib/constants'
@@ -57,10 +58,21 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const { innerRef, color, selected, onChange, itemWrapper, icon, disableInput } = this.props
+    const {
+      innerRef,
+      color,
+      selected,
+      onChange,
+      itemWrapper,
+      icon,
+      disableInput,
+      title
+    } = this.props
     const { itemsToShow, inputValue } = this.state
 
     const minWidth = calcMinWidth(itemsToShow)
+
+    const labelId = title ? `${title.toLowerCase()}-dropdown` : undefined
 
     return (
       <Downshift
@@ -71,6 +83,7 @@ class Dropdown extends React.PureComponent {
         itemToString={item => item.name}
         onChange={onChange}
         onUserAction={this.onUserAction}
+        labelId={labelId}
       >
         {renderDropdown({
           color,
@@ -79,14 +92,25 @@ class Dropdown extends React.PureComponent {
           minWidth,
           itemWrapper,
           icon,
-          disableInput
+          disableInput,
+          title,
+          labelId
         })}
       </Downshift>
     )
   }
 }
 
-const renderDropdown = ({ color, list, minWidth, itemWrapper, icon, disableInput }) => ({
+const renderDropdown = ({
+  color,
+  list,
+  minWidth,
+  itemWrapper,
+  icon,
+  disableInput,
+  title,
+  labelId
+}) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -97,6 +121,7 @@ const renderDropdown = ({ color, list, minWidth, itemWrapper, icon, disableInput
 }) => {
   return (
     <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
+      {title && <VisuallyHidden id={labelId}>{title}</VisuallyHidden>}
       <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
       <SelectedItem
         getToggleButtonProps={getToggleButtonProps}
