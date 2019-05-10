@@ -7,6 +7,7 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 import SpinnerWrapper from './SpinnerWrapper'
 
 import WindowControls from './WindowControls'
+import LineNumbersContainer from './LineNumbersContainer'
 import {
   COLORS,
   LANGUAGE_MODE_HASH,
@@ -223,6 +224,10 @@ class Carbon extends React.PureComponent {
             .container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 48px;
             }
+
+            .container :global(.CodeMirror-linenumber) {
+              cursor: pointer;
+            }
           `}
         </style>
       </div>
@@ -259,4 +264,8 @@ class Carbon extends React.PureComponent {
   }
 }
 
-export default React.forwardRef((props, ref) => <Carbon {...props} innerRef={ref} />)
+export default React.forwardRef((props, ref) => (
+  <LineNumbersContainer on={props.config.lineNumbers}>
+    <Carbon {...props} innerRef={ref} />
+  </LineNumbersContainer>
+))
