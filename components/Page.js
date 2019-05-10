@@ -4,6 +4,8 @@ import Header from './Header'
 import Footer from './Footer'
 import Toast from './Toast'
 
+import { GA_TRACKING_ID } from '../lib/constants'
+
 class Page extends React.Component {
   render() {
     const { children, enableHeroText } = this.props
@@ -15,6 +17,17 @@ class Page extends React.Component {
         <div className="page">{children}</div>
 
         <Footer />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}');
+          `
+          }}
+        />
 
         <style jsx>
           {`
