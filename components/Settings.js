@@ -354,6 +354,7 @@ class Settings extends React.PureComponent {
     return (
       <div className="settings-container" ref={this.settingsRef}>
         <Button
+          title="Settings Menu"
           border
           center
           selected={isVisible}

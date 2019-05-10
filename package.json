@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.20",
+  "version": "3.9.21",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.10",
+    "@reach/visually-hidden": "^0.1.4",
     "axios": "^0.18.0",
     "chrome-aws-lambda": "^1.14.0",
     "codemirror": "^5.42.2",

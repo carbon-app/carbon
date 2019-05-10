@@ -1,4 +1,5 @@
 import React from 'react'
+import VisuallyHidden from '@reach/visually-hidden'
 
 import { COLORS } from '../lib/constants'
 
@@ -19,9 +20,11 @@ const Button = ({
   style = {},
   flex = 1,
   padding = 0,
-  margin = 0
+  margin = 0,
+  title
 }) => (
   <button id={id} onClick={onClick} className={className} disabled={disabled} style={style}>
+    {title && <VisuallyHidden>{title}</VisuallyHidden>}
     {children}
     <style jsx>
       {`

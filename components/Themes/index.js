@@ -103,6 +103,7 @@ class Themes extends React.PureComponent {
     return (
       <div className="themes">
         <Dropdown
+          title="Theme"
           innerRef={this.dropdown}
           icon={themeIcon}
           disableInput={isVisible}
