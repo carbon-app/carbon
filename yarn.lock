@@ -5123,9 +5123,10 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
 
-next-offline@^3.3.6:
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-3.3.6.tgz#3e35ad59d489c641a4d5745f5b06ce45faa53a42"
+next-offline@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/next-offline/-/next-offline-3.4.0.tgz#ac10aaa2f8b2d919648c8a61b5ced7a96e251baa"
+  integrity sha512-Mu9W6Of97YEgH0pfZEyNNvXqkyttc0NEez5NdovLociDfv8v6boRXchRe0uMQ4AA2wuYivx3wFCvcFSCeIW5Tw==
   dependencies:
     clean-webpack-plugin "^0.1.19"
     copy-webpack-plugin "~4.5.2"
@@ -5930,9 +5931,10 @@ react-click-outside@^3.0.0, react-click-outside@^3.0.1:
   dependencies:
     hoist-non-react-statics "^2.1.1"
 
-react-codemirror2@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-5.1.0.tgz#62de4460178adea40eb52eabf7491669bf3794b8"
+react-codemirror2@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-6.0.0.tgz#180065df57a64026026cde569a9708fdf7656525"
+  integrity sha512-D7y9qZ05FbUh9blqECaJMdDwKluQiO3A9xB+fssd5jKM7YAXucRuEOlX32mJQumUvHUkHRHqXIPBjm6g0FW0Ag==
 
 react-color@^2.17.3:
   version "2.17.3"
