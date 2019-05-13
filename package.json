@@ -49,6 +49,7 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.8.6",
     "react-image-crop": "^6.0.16",
+    "react-is": "^16.8.6",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
     "tohash": "^1.0.2",
