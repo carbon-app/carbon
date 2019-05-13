@@ -108,12 +108,14 @@ class Carbon extends React.PureComponent {
             light={light}
           />
         ) : null}
-        <CodeMirror
-          className={`CodeMirror__container window-theme__${config.windowTheme}`}
-          onBeforeChange={this.onBeforeChange}
-          value={this.props.children}
-          options={options}
-        />
+        <LineNumbersContainer on={config.lineNumbers}>
+          <CodeMirror
+            className={`CodeMirror__container window-theme__${config.windowTheme}`}
+            onBeforeChange={this.onBeforeChange}
+            value={this.props.children}
+            options={options}
+          />
+        </LineNumbersContainer>
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
@@ -157,11 +159,11 @@ class Carbon extends React.PureComponent {
             .container .bg {
               ${this.props.config.backgroundMode === 'image'
                 ? `background: url(${backgroundImage});
-                     background-size: cover;
-                     background-repeat: no-repeat;`
+                       background-size: cover;
+                       background-repeat: no-repeat;`
                 : `background: ${this.props.config.backgroundColor || config.backgroundColor};
-                     background-size: auto;
-                     background-repeat: repeat;`} position: absolute;
+                       background-size: auto;
+                       background-repeat: repeat;`} position: absolute;
               top: 0px;
               right: 0px;
               bottom: 0px;
@@ -264,8 +266,4 @@ class Carbon extends React.PureComponent {
   }
 }
 
-export default React.forwardRef((props, ref) => (
-  <LineNumbersContainer on={props.config.lineNumbers}>
-    <Carbon {...props} innerRef={ref} />
-  </LineNumbersContainer>
-))
+export default React.forwardRef((props, ref) => <Carbon {...props} innerRef={ref} />)

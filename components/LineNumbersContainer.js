@@ -15,6 +15,7 @@ function LineNumbersContainer(props) {
           lines.forEach((line, j, arr) => {
             if (i != j) {
               if (prev == null) {
+                // TODO props.doc.current.editor.doc.addLineClass(j, 'text', 'blurred')
                 line.style.opacity = 0.5
               }
             } else {
