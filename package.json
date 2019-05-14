@@ -40,7 +40,7 @@
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
     "next": "^8.0.3",
-    "next-offline": "^3.4.0",
+    "next-offline": "^4.0.0",
     "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-click-outside": "^3.0.0",
