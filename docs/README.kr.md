@@ -13,14 +13,14 @@
 
 ## Introduction
 
-트위터에서 공유되고 있는 [그](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 합니다. 무엇을 망설이나요? 당신의 디자인 감각으로 follower들을 감동시키세요!
+트위터에서 공유되고 있는 [수](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 도와줍니다. 무엇을 망설이시나요? 당신의 디자인 감각으로 팔로워들을 감동시켜보세요
 
-이 프로젝트를 더 알고싶다면 [carbon.now.sh](https://carbon.now.sh)에 방문하시거나 [우리의 post](https://dawnlabs.io/case-studies/carbon/)를 읽어주세요.
+이 프로젝트에 대해서 자세히 알고싶다면 [carbon.now.sh](https://carbon.now.sh)에 방문하시거나 [우리의 post](https://dawnlabs.io/case-studies/carbon/)를 읽어보시기 바랍니다. 
 
 ## Features
 
-- **GitHub gist에서 가져오기**. 그저 url에 github gist id를 입력하세요.
-- **커스터마이징**. 코드 스크린샷의 syntax theme, window style 등 많은 것들을 커스터마이징하세요.
+- **GitHub gist에서 가져오기**. 간단하게 github gist id를  url 에 입력하면 됩니다. 
+- **커스터마이징**. syntax theme, window style 등 많은 것들을 커스터마이징할 수 있습니다.
 - **빠르게 공유하기**. 클릭 한 번으로 이미지를 저장하거나 Tweet에 공유하세요.
 
 ## Example
