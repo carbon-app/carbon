@@ -70,6 +70,7 @@ class ExportMenu extends React.PureComponent {
             padding="0 16px"
             selected={isVisible}
             onClick={toggleVisibility}
+            cypressElementId="export-button"
           >
             Export
           </Button>

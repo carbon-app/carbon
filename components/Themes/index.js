@@ -101,7 +101,7 @@ class Themes extends React.PureComponent {
     ]
 
     return (
-      <div className="themes">
+      <div className="themes" data-cy="themes-container">
         <Dropdown
           title="Theme"
           innerRef={this.dropdown}

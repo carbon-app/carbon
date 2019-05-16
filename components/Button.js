@@ -5,6 +5,7 @@ import { COLORS } from '../lib/constants'
 
 const Button = ({
   id,
+  cypressElementId,
   onClick = () => {},
   className = '',
   background = COLORS.BLACK,
@@ -23,7 +24,14 @@ const Button = ({
   margin = 0,
   title
 }) => (
-  <button id={id} onClick={onClick} className={className} disabled={disabled} style={style}>
+  <button
+    id={id}
+    onClick={onClick}
+    className={className}
+    disabled={disabled}
+    style={style}
+    data-cy={cypressElementId}
+  >
     {title && <VisuallyHidden>{title}</VisuallyHidden>}
     {children}
     <style jsx>
