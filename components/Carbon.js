@@ -67,6 +67,31 @@ class Carbon extends React.PureComponent {
   }
 
   prevLine = null
+  onGutterClick = (editor, lineNumber, gutter, e) => {
+    editor.display.view.forEach((line, i, arr) => {
+      if (i != lineNumber) {
+        if (this.prevLine == null) {
+          line.text.style.opacity = 0.5
+          line.gutter.style.opacity = 0.5
+        }
+      } else {
+        if (e.shiftKey && this.prevLine != null) {
+          for (
+            let index = Math.min(this.prevLine, i);
+            index < Math.max(this.prevLine, i) + 1;
+            index++
+          ) {
+            arr[index].text.style.opacity = arr[this.prevLine].text.style.opacity
+            arr[index].gutter.style.opacity = arr[this.prevLine].gutter.style.opacity
+          }
+        } else {
+          line.text.style.opacity = line.text.style.opacity == 1 ? 0.5 : 1
+          line.gutter.style.opacity = line.gutter.style.opacity == 1 ? 0.5 : 1
+        }
+      }
+    })
+    this.prevLine = lineNumber
+  }
 
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
@@ -114,32 +139,7 @@ class Carbon extends React.PureComponent {
           onBeforeChange={this.onBeforeChange}
           value={this.props.children}
           options={options}
-          onGutterClick={(editor, lineNumber, gutter, e) => {
-            editor.display.view.forEach((line, i, arr) => {
-              if (i != lineNumber) {
-                if (this.prevLine == null) {
-                  line.text.style.opacity = 0.5
-                  line.gutter.style.opacity = 0.5
-                }
-              } else {
-                if (e.shiftKey && this.prevLine != null) {
-                  for (
-                    let index = Math.min(this.prevLine, i);
-                    index < Math.max(this.prevLine, i) + 1;
-                    index++
-                  ) {
-                    arr[index].text.style.opacity = arr[this.prevLine].text.style.opacity
-                    arr[index].gutter.style.opacity = arr[this.prevLine].gutter.style.opacity
-                  }
-                } else {
-                  line.text.style.opacity = line.text.style.opacity == 1 ? 0.5 : 1
-                  line.gutter.style.opacity = line.gutter.style.opacity == 1 ? 0.5 : 1
-                }
-              }
-            })
-
-            this.prevLine = lineNumber
-          }}
+          onGutterClick={this.onGutterClick}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
