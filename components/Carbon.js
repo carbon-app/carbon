@@ -184,11 +184,11 @@ class Carbon extends React.PureComponent {
             .container .bg {
               ${this.props.config.backgroundMode === 'image'
                 ? `background: url(${backgroundImage});
-                       background-size: cover;
-                       background-repeat: no-repeat;`
+                    background-size: cover;
+                    background-repeat: no-repeat;`
                 : `background: ${this.props.config.backgroundColor || config.backgroundColor};
-                       background-size: auto;
-                       background-repeat: repeat;`} position: absolute;
+                    background-size: auto;
+                    background-repeat: repeat;`} position: absolute;
               top: 0px;
               right: 0px;
               bottom: 0px;
