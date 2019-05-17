@@ -7,7 +7,7 @@ describe('Visual Regression Testing', () => {
       testName: 'Button',
       browser: environment
     })
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
   after(() => {
     cy.eyesClose()

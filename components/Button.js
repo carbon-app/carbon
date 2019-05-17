@@ -5,7 +5,7 @@ import { COLORS } from '../lib/constants'
 
 const Button = ({
   id,
-  cypressElementId,
+  'data-cy': cypressElementId,
   onClick = () => {},
   className = '',
   background = COLORS.BLACK,

@@ -7,14 +7,13 @@ describe('Visual Regression Testing', () => {
       testName: 'Themes',
       browser: environment
     })
-    cy.visit('http://localhost:3000/')
+    cy.visit('/')
   })
   after(() => {
     cy.eyesClose()
   })
 
   it('themes test', () => {
-    //cy.get('[data-cy="themes-container"] [data-cy="theme-selector-button"]').click()
     for (let childIndex = 1; childIndex < 28; childIndex++) {
       cy.get('[data-cy="themes-container"] [data-cy="theme-selector-button"]').click()
       cy.get(
