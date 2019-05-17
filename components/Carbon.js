@@ -66,6 +66,33 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  prevLine = null
+  onGutterClick = (editor, lineNumber, gutter, e) => {
+    editor.display.view.forEach((line, i, arr) => {
+      if (i != lineNumber) {
+        if (this.prevLine == null) {
+          line.text.style.opacity = 0.5
+          line.gutter.style.opacity = 0.5
+        }
+      } else {
+        if (e.shiftKey && this.prevLine != null) {
+          for (
+            let index = Math.min(this.prevLine, i);
+            index < Math.max(this.prevLine, i) + 1;
+            index++
+          ) {
+            arr[index].text.style.opacity = arr[this.prevLine].text.style.opacity
+            arr[index].gutter.style.opacity = arr[this.prevLine].gutter.style.opacity
+          }
+        } else {
+          line.text.style.opacity = line.text.style.opacity == 1 ? 0.5 : 1
+          line.gutter.style.opacity = line.gutter.style.opacity == 1 ? 0.5 : 1
+        }
+      }
+    })
+    this.prevLine = lineNumber
+  }
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -112,6 +139,7 @@ class Carbon extends React.PureComponent {
           onBeforeChange={this.onBeforeChange}
           value={this.props.children}
           options={options}
+          onGutterClick={this.onGutterClick}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
@@ -156,11 +184,11 @@ class Carbon extends React.PureComponent {
             .container .bg {
               ${this.props.config.backgroundMode === 'image'
                 ? `background: url(${backgroundImage});
-                     background-size: cover;
-                     background-repeat: no-repeat;`
+                    background-size: cover;
+                    background-repeat: no-repeat;`
                 : `background: ${this.props.config.backgroundColor || config.backgroundColor};
-                     background-size: auto;
-                     background-repeat: repeat;`} position: absolute;
+                    background-size: auto;
+                    background-repeat: repeat;`} position: absolute;
               top: 0px;
               right: 0px;
               bottom: 0px;
@@ -222,6 +250,10 @@ class Carbon extends React.PureComponent {
 
             .container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 48px;
+            }
+
+            .container :global(.CodeMirror-linenumber) {
+              cursor: pointer;
             }
           `}
         </style>
