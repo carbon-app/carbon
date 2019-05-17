@@ -103,7 +103,7 @@ PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon
 
 Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
 
-- Mike Fix ([@mfix22](https://github.com/mfix22))
+- Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 

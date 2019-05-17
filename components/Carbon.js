@@ -33,6 +33,16 @@ class Carbon extends React.PureComponent {
     onChange: () => {}
   }
 
+  componentDidUpdate(prevProps) {
+    // TODO keep opacities in state
+    if (
+      prevProps.config.theme != this.props.config.theme ||
+      prevProps.config.language != this.props.config.language
+    ) {
+      this.prevLine = null
+    }
+  }
+
   handleLanguageChange = debounce(
     (newCode, language) => {
       if (language === 'auto') {
