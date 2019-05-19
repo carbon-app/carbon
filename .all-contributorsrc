@@ -500,7 +500,18 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "techinpark",
+      "name": "Fernando",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/45546296?v=4",
+      "profile": "http://techinpark.com",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "contributorsPerLine": 7
 }
