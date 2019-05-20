@@ -9,7 +9,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
 [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon)
 
 ##### Translations
 
@@ -75,7 +75,7 @@ Check out these projects our awesome community has created:
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in  `carbon.now.sh`
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
 
 ##### Tools
 
