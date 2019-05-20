@@ -5,15 +5,9 @@ const { json, send } = require('micro')
 const chrome = require('chrome-aws-lambda')
 const puppeteer = require('puppeteer-core')
 
-const ARBITRARY_WAIT_TIME = 250
-
 const DOM_TO_IMAGE_URL = 'https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js'
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
-
-function delay(ms) {
-  return new Promise(r => setTimeout(r, ms))
-}
 
 module.exports = async (req, res) => {
   const host = (req.headers && req.headers.host) || 'carbon.now.sh'
@@ -44,8 +38,7 @@ module.exports = async (req, res) => {
     await page.goto(`https://${host}?${queryString}`)
     await page.addScriptTag({ url: DOM_TO_IMAGE_URL })
 
-    // wait for page to detect language
-    await delay(ARBITRARY_WAIT_TIME)
+    await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
 
     const targetElement = await page.$('.export-container')
 
