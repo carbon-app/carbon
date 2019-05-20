@@ -26,12 +26,13 @@ module.exports = async (req, res) => {
   })
 
   try {
-    const page = await browser.newPage()
     const { state, ...params } =
-      req.method === 'GET' ? url.parse(req.url, true) : await json(req, { limit: '6mb' })
+      req.method === 'GET' ? url.parse(req.url, true).query : await json(req, { limit: '6mb' })
 
     // TODO uncomment this when we want to support standard query params
     if (!state) return send(res, 400, 'Invalid Request')
+
+    const page = await browser.newPage()
 
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
@@ -43,7 +44,7 @@ module.exports = async (req, res) => {
     const targetElement = await page.$('.export-container')
 
     const dataUrl = await page.evaluate((target = document) => {
-      const query = new URLSearchParams(document.location.search.slice(1))
+      const query = new URLSearchParams(document.location.search)
 
       const EXPORT_SIZES_HASH = {
         '1x': '1',
