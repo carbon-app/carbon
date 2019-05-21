@@ -41,6 +41,7 @@ class BackgroundSelect extends React.PureComponent {
           onClick={toggleVisibility}
           background="white"
           hoverBackground="white"
+          data-cy="display"
         >
           <div className="bg-color-alpha" />
           <div className="bg-color" />

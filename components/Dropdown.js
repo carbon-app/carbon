@@ -218,6 +218,7 @@ const SelectedItem = ({
     <span
       {...getToggleButtonProps({ tabIndex: 0 })}
       className={`dropdown-display ${isOpen ? 'is-open' : ''}`}
+      data-cy="theme-selector-button"
     >
       <input
         {...getInputProps({ placeholder: children, id: `downshift-input-${children}`, disabled })}
@@ -293,7 +294,7 @@ const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ite
   const itemColor = color || COLORS.SECONDARY
 
   return (
-    <li {...rest} className="dropdown-list-item">
+    <li {...rest} className="dropdown-list-item" data-cy="dropdown-item">
       {itemWrapper ? (
         itemWrapper({ children, color: itemColor, item, isSelected })
       ) : (
