@@ -509,6 +509,16 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "megsachdev",
+      "name": "Megha Sachdev",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22325351?v=4",
+      "profile": "https://github.com/megsachdev",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github",
