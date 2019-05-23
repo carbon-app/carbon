@@ -39,7 +39,7 @@
     "match-sorter": "^3.0.0",
     "morphmorph": "^0.1.0",
     "ms": "^2.0.0",
-    "next": "^8.0.3",
+    "next": "8.0.4",
     "next-offline": "^4.0.0",
     "prettier": "^1.17.0",
     "react": "^16.8.6",
