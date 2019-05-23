@@ -500,7 +500,28 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "techinpark",
+      "name": "Fernando",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/45546296?v=4",
+      "profile": "http://techinpark.com",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "megsachdev",
+      "name": "Megha Sachdev",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/22325351?v=4",
+      "profile": "https://github.com/megsachdev",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "contributorsPerLine": 7
 }

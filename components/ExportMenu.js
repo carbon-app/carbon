@@ -44,162 +44,7 @@ const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => 
 
 const popoutStyle = { width: '280px', right: 0 }
 
-class ExportMenu extends React.PureComponent {
-  input = React.createRef()
-
-  handleInputChange = ({ target: { name, value } }) => this.props.onChange(name, value)
-
-  handleExportSizeChange = selectedSize => () => this.props.onChange('exportSize', selectedSize)
-
-  handleExport = format => () =>
-    this.props.export(format, {
-      filename: this.input.current.value
-    })
-
-  render() {
-    const { exportSize, isVisible, toggleVisibility, disablePNG } = this.props
-
-    return (
-      <div className="export-menu-container" id="export-menu">
-        <div className="flex">
-          <Button
-            border
-            large
-            center
-            color={COLORS.PURPLE}
-            padding="0 16px"
-            selected={isVisible}
-            onClick={toggleVisibility}
-          >
-            Export
-          </Button>
-        </div>
-        <Popout
-          hidden={!isVisible}
-          borderColor={COLORS.PURPLE}
-          pointerRight="28px"
-          style={popoutStyle}
-        >
-          <div className="export-row">
-            <span className="filename">File name</span>
-            <Input ref={this.input} title="filename" placeholder="carbon" color={COLORS.PURPLE} />
-          </div>
-          <div className="export-row">
-            <span>Size</span>
-            <div className="flex">
-              {EXPORT_SIZES.map(({ name }, i) => (
-                <Button
-                  center
-                  key={name}
-                  hoverColor={COLORS.PURPLE}
-                  margin={i === EXPORT_SIZES.length - 1 ? 0 : '0 10px 0 0'}
-                  color={exportSize === name ? COLORS.PURPLE : COLORS.DARK_PURPLE}
-                  onClick={this.handleExportSizeChange(name)}
-                >
-                  {name}
-                </Button>
-              ))}
-            </div>
-          </div>
-          <div className="export-row">
-            <Button center color={COLORS.PURPLE} onClick={this.handleExport('open')}>
-              Open
-            </Button>
-            <div className="save-container">
-              <span>Copy embed</span>
-              <div>
-                <CopyEmbed title="URL" mapper={toURL} margin="0 4px 0 0" />
-                <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 0 0 4px" />
-              </div>
-            </div>
-            <div className="save-container">
-              <span>Save as</span>
-              <div>
-                {!disablePNG && (
-                  <Button
-                    center
-                    margin="0 8px 0 0"
-                    hoverColor={COLORS.PURPLE}
-                    color={COLORS.DARK_PURPLE}
-                    onClick={this.handleExport('png')}
-                    id="export-png"
-                  >
-                    PNG
-                  </Button>
-                )}
-                <Button
-                  center
-                  hoverColor={COLORS.PURPLE}
-                  color={COLORS.DARK_PURPLE}
-                  onClick={this.handleExport('svg')}
-                  id="export-svg"
-                >
-                  SVG
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Popout>
-        <style jsx>
-          {`
-            .export-menu-container {
-              position: relative;
-              color: ${COLORS.PURPLE};
-            }
-
-            .flex {
-              display: flex;
-              height: 100%;
-            }
-
-            .export-row {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              padding: 8px 16px;
-              border-bottom: 1px solid ${COLORS.PURPLE};
-            }
-            .export-row > :global(button) {
-              border-right: 1px solid ${COLORS.PURPLE};
-            }
-            .export-row:last-child {
-              border-bottom: none;
-              padding: 0;
-            }
-
-            .filename {
-              flex-basis: 72px;
-            }
-
-            .save-container {
-              display: flex;
-              flex: 1;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              padding: 12px 16px;
-            }
-            .save-container > div {
-              margin-top: 6px;
-              display: flex;
-              flex: 1;
-            }
-
-            .save-container:first-of-type {
-              padding: 12px 12px;
-              border-right: 1px solid ${COLORS.PURPLE};
-            }
-          `}
-        </style>
-      </div>
-    )
-  }
-}
-
-export default managePopout(function({ backgroundImage, ...props }) {
-  const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
-  const online = useOnline()
-
+function useSafari() {
   const [isSafari, setSafari] = React.useState(false)
   React.useEffect(() => {
     setSafari(
@@ -209,7 +54,167 @@ export default managePopout(function({ backgroundImage, ...props }) {
     )
   }, [])
 
+  return isSafari
+}
+
+function ExportMenu({
+  backgroundImage,
+  onChange,
+  exportSize,
+  isVisible,
+  toggleVisibility,
+  export: exportImage
+}) {
+  const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
+  const online = useOnline()
+  const isSafari = useSafari()
+
   const disablePNG = isSafari && (tooLarge || !online)
 
-  return <ExportMenu {...props} disablePNG={disablePNG} />
-})
+  const input = React.useRef()
+
+  const handleExportSizeChange = selectedSize => () => onChange('exportSize', selectedSize)
+
+  const handleExport = format => () =>
+    exportImage(format, {
+      filename: input.current.value
+    })
+
+  return (
+    <div className="export-menu-container" id="export-menu">
+      <div className="flex">
+        <Button
+          border
+          large
+          center
+          color={COLORS.PURPLE}
+          padding="0 16px"
+          selected={isVisible}
+          onClick={toggleVisibility}
+          data-cy="export-button"
+        >
+          Export
+        </Button>
+      </div>
+      <Popout
+        hidden={!isVisible}
+        borderColor={COLORS.PURPLE}
+        pointerRight="28px"
+        style={popoutStyle}
+      >
+        <div className="export-row">
+          <span className="filename">File name</span>
+          <Input ref={input} title="filename" placeholder="carbon" color={COLORS.PURPLE} />
+        </div>
+        <div className="export-row">
+          <span>Size</span>
+          <div className="flex">
+            {EXPORT_SIZES.map(({ name }, i) => (
+              <Button
+                center
+                key={name}
+                hoverColor={COLORS.PURPLE}
+                margin={i === EXPORT_SIZES.length - 1 ? 0 : '0 10px 0 0'}
+                color={exportSize === name ? COLORS.PURPLE : COLORS.DARK_PURPLE}
+                onClick={handleExportSizeChange(name)}
+              >
+                {name}
+              </Button>
+            ))}
+          </div>
+        </div>
+        <div className="export-row">
+          <Button center color={COLORS.PURPLE} onClick={handleExport('open')}>
+            Open
+          </Button>
+          <div className="save-container">
+            <span>Copy embed</span>
+            <div>
+              <CopyEmbed title="URL" mapper={toURL} margin="0 4px 0 0" />
+              <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 0 0 4px" />
+            </div>
+          </div>
+          <div className="save-container">
+            <span>Save as</span>
+            <div>
+              {!disablePNG && (
+                <Button
+                  center
+                  margin="0 8px 0 0"
+                  hoverColor={COLORS.PURPLE}
+                  color={COLORS.DARK_PURPLE}
+                  onClick={handleExport('png')}
+                  id="export-png"
+                >
+                  PNG
+                </Button>
+              )}
+              <Button
+                center
+                hoverColor={COLORS.PURPLE}
+                color={COLORS.DARK_PURPLE}
+                onClick={handleExport('svg')}
+                id="export-svg"
+              >
+                SVG
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Popout>
+      <style jsx>
+        {`
+          .export-menu-container {
+            position: relative;
+            color: ${COLORS.PURPLE};
+          }
+
+          .flex {
+            display: flex;
+            height: 100%;
+          }
+
+          .export-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            border-bottom: 1px solid ${COLORS.PURPLE};
+          }
+          .export-row > :global(button) {
+            border-right: 1px solid ${COLORS.PURPLE};
+          }
+          .export-row:last-child {
+            border-bottom: none;
+            padding: 0;
+          }
+
+          .filename {
+            flex-basis: 72px;
+          }
+
+          .save-container {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 16px;
+          }
+          .save-container > div {
+            margin-top: 6px;
+            display: flex;
+            flex: 1;
+          }
+
+          .save-container:first-of-type {
+            padding: 12px 12px;
+            border-right: 1px solid ${COLORS.PURPLE};
+          }
+        `}
+      </style>
+    </div>
+  )
+}
+
+export default managePopout(React.memo(ExportMenu))
