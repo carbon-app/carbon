@@ -158,7 +158,9 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
           accept=".json"
           onChange={async e => {
             const json = await fileToJSON(e.target.files[0])
-            applyPreset(json)
+            if (json) {
+              applyPreset(json)
+            }
           }}
         />
         <Button
