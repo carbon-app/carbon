@@ -184,13 +184,17 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
       <style jsx>
         {`
           .row,
-          a {
+          :global(a) {
             display: flex;
             flex: 1;
           }
           .settings-content {
             display: flex;
             flex-direction: column;
+          }
+
+          .settings-content :global(a) {
+            user-drag: none;
           }
         `}
       </style>
