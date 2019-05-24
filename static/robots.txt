@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /$
+Allow: /about
+Allow: /static
+Allow: /embed$
+Disallow: /*
+Disallow: /embed*
