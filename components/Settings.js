@@ -171,7 +171,7 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
         >
           Import config
         </Button>
-        <Button center Component="a" href={download} download="carbon-export.json">
+        <Button center Component="a" href={download} download="carbon-config.json">
           Export config
         </Button>
       </div>
@@ -183,8 +183,7 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
       </Button>
       <style jsx>
         {`
-          .row,
-          :global(a) {
+          .row {
             display: flex;
             flex: 1;
           }
@@ -192,8 +191,9 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
             display: flex;
             flex-direction: column;
           }
-
           .settings-content :global(a) {
+            display: flex;
+            flex: 1;
             user-drag: none;
           }
         `}
