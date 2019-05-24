@@ -169,9 +169,9 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
         >
           Import config
         </Button>
-        <a href={download} download="carbon-export.json">
-          <Button center>Export config</Button>
-        </a>
+        <Button center Component="a" href={download} download="carbon-export.json">
+          Export config
+        </Button>
       </div>
       <Button center onClick={format} style={resetButtonStyle}>
         Prettify code

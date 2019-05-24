@@ -22,21 +22,24 @@ const Button = ({
   flex = 1,
   padding = 0,
   margin = 0,
-  title
+  title,
+  Component = 'button',
+  ...props
 }) => (
-  <button
+  <Component
     id={id}
     onClick={onClick}
     className={className}
     disabled={disabled}
     style={style}
+    {...props}
     data-cy={cypressElementId}
   >
     {title && <VisuallyHidden>{title}</VisuallyHidden>}
     {children}
     <style jsx>
       {`
-        button {
+        ${Component} {
           display: flex;
           flex: ${flex};
           background-color: ${background};
@@ -55,18 +58,17 @@ const Button = ({
           font-size: ${large ? '14px' : '12px'};
         }
 
-        button:hover,
-        button:focus {
+        ${Component}:hover, ${Component}:focus {
           background-color: ${hoverBackground} !important;
           color: ${hoverColor || color};
         }
 
-        button:focus {
+        ${Component}:focus {
           box-shadow: ${border ? `inset 0px 0px 0px 2px ${color}` : 'initial'};
         }
       `}
     </style>
-  </button>
+  </Component>
 )
 
 export default Button
