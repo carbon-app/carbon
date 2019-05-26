@@ -10,6 +10,7 @@
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
     { "src": "^/_next/(.*)", "dest": "/_next/$1" },
+    { "src": "^/robots.txt", "dest": "/static/robots.txt" },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/service-worker.js",
