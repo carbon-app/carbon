@@ -2,12 +2,10 @@
   "name": "carbon",
   "version": 2,
   "public": true,
-  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
+  "builds": [{ "src": "package.json", "use": "@now/next@canary" }],
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
-    { "src": "^/_next/(.*)", "dest": "/_next/$1" },
-    { "src": "^/robots.txt", "dest": "/static/robots.txt" },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/service-worker.js",
@@ -22,13 +20,9 @@
         "cache-control": "public, max-age=43200, immutable"
       }
     },
+    { "handle": "filesystem" },
     { "src": "^/(.*)", "dest": "/index.html" }
   ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  },
   "github": {
     "autoAlias": false,
     "silent": true
