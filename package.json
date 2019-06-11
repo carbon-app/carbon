@@ -48,7 +48,7 @@
     "react-color": "^2.17.3",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.8.6",
-    "react-image-crop": "^6.0.16",
+    "react-image-crop": "^8.0.3",
     "react-is": "^16.8.6",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
