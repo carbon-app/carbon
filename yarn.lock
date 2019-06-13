@@ -2525,7 +2525,7 @@ codemirror-mode-elixir@^1.1.2:
   resolved "https://registry.yarnpkg.com/codemirror-mode-elixir/-/codemirror-mode-elixir-1.1.2.tgz#61227208d2684d928500af6934e4b9c995fb0960"
   integrity sha512-1oIuRVHyUhLv0Za9sEIsI7urAj06EohwO/yVj10bg7aHnimHQ964Wk3uuoPH0Yn8L38EkOd+SwULYpDiCQtoTA==
 
-codemirror-solidity@^0.1.3:
+codemirror-solidity@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/codemirror-solidity/-/codemirror-solidity-0.1.4.tgz#e42f0f58fb1773bc354bfad2ebf914da53da345b"
   integrity sha512-8NxjPxJtkp8ZXT6ksUCPNn84qRrmJ/oOEn+2c1QYWRuUkoV08NgUqqp/+bTNRgjD+P7LcMmKOGAYtgJSLPIp2w==
