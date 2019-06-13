@@ -1,6 +1,8 @@
 /* global cy,before,after */
 import { environment } from '../../util'
-describe('Visual Regression Testing', () => {
+
+// TODO: remove .skip - Applitools is not working right now
+describe.skip('Visual Regression Testing', () => {
   before(() => {
     cy.eyesOpen({
       appName: 'Carbon',

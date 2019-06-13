@@ -1,6 +1,6 @@
 /* global cy,before,after */
 import { environment } from '../../util'
-describe('Visual Regression Testing', () => {
+describe.skip('Visual Regression Testing', () => {
   before(() => {
     cy.eyesOpen({
       appName: 'Carbon',

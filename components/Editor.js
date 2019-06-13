@@ -116,6 +116,10 @@ class Editor extends React.Component {
       window.navigator &&
       window.navigator.userAgent.indexOf('Safari') !== -1 &&
       window.navigator.userAgent.indexOf('Chrome') === -1
+    this.isFirefox =
+      window.navigator &&
+      window.navigator.userAgent.indexOf('Firefox') !== -1 &&
+      window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
   carbonNode = React.createRef()
@@ -244,6 +248,9 @@ class Editor extends React.Component {
       .then(url => {
         if (format !== 'open') {
           link.download = `${prefix}.${format}`
+        }
+        if (this.isFirefox) {
+          link.target = '_blank'
         }
         link.href = url
         document.body.appendChild(link)

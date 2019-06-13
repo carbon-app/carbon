@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router'
-import { useCopyTextHandler, useOnline } from '@dawnlabs/tacklebox'
+import { useCopyTextHandler, useOnline, useKeyboardListener } from '@dawnlabs/tacklebox'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
@@ -68,6 +68,12 @@ function ExportMenu({
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
   const isSafari = useSafari()
+
+  useKeyboardListener('e', e => {
+    if (e.shiftKey && e.metaKey) {
+      exportImage()
+    }
+  })
 
   const disablePNG = isSafari && (tooLarge || !online)
 
