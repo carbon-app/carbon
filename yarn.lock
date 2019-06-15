@@ -6280,7 +6280,7 @@ next-server@8.1.1-canary.70:
     styled-jsx "3.2.1"
     url "0.11.0"
 
-next@^8.1.1-canary.47:
+next@^8.1.1-canary.52:
   version "8.1.1-canary.70"
   resolved "https://registry.yarnpkg.com/next/-/next-8.1.1-canary.70.tgz#811d6c89dc5a77dabceb3b1f06a65c0138220be1"
   integrity sha512-xMZSK6j7Z7ky5oJN8X4NUQksUPkpD2S54aPrmFSpSKM0L+NFuFLE3sUdjuE9DxJTUQ/JE0AdiWLv5/rlg+OLJg==
