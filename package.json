@@ -91,7 +91,7 @@
         ],
         "ignore": [
           "graphql",
-          "webpack"
+          "react-image-crop"
         ]
       },
       "integrations": {
