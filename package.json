@@ -39,7 +39,7 @@
     "match-sorter": "^3.1.1",
     "morphmorph": "^0.1.0",
     "ms": "^2.1.2",
-    "next": "^8.1.1-canary.52",
+    "next": "^8.1.1-canary.53",
     "next-offline": "^4.0.2",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
