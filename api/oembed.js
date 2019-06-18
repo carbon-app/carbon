@@ -7,8 +7,9 @@ const { send } = require('micro')
 const toIFrame = (url, width, height) =>
   `<iframe
   src="https://carbon.now.sh/embed${url}"
-  style="transform:scale(0.7); width:${width}px; height:${height}px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
+  style="transform:scale(0.7); width:${width}px; height:${height}px; border:0; overflow:auto;"
+  sandbox="allow-scripts allow-same-origin"
+  scrolling="auto">
 </iframe>
 `
 
@@ -39,7 +40,7 @@ module.exports = (req, res) => {
       width,
       height,
       html: toIFrame(
-        `${gistID ? `/${gistID}` : ''}?${queryString ? queryString : ''}`,
+        `${gistID && gistID !== 'undefined' ? `/${gistID}` : ''}?${queryString ? queryString : ''}`,
         width,
         height
       )
