@@ -118,11 +118,11 @@ class Carbon extends React.PureComponent {
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
+      smartIndent: true,
       extraKeys: {
         'Shift-Tab': 'indentLess'
       },
-      // negative values removes the cursor, undefined means default (530)
-      cursorBlinkRate: this.props.readOnly ? -1 : undefined,
+      readOnly: this.props.readOnly ? 'nocursor' : false,
       // needs to be able to refresh every 16ms to hit 60 frames / second
       pollInterval: 16
     }

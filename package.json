@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.29",
+  "version": "3.9.30",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -100,7 +100,7 @@
         ],
         "ignore": [
           "graphql",
-          "webpack"
+          "react-image-crop"
         ]
       },
       "integrations": {
