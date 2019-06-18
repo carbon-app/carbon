@@ -38,6 +38,11 @@
       "methods": ["GET"]
     },
     {
+      "src": "/api/snippet/(?<id>[^/]*)",
+      "dest": "api/snippet.js?id=$id",
+      "methods": ["GET", "POST", "PUT"]
+    },
+    {
       "src": "/api/unsplash/random",
       "dest": "api/unsplash/random.js",
       "methods": ["GET"]
