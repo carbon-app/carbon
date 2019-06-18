@@ -118,6 +118,7 @@ class Carbon extends React.PureComponent {
       scrollBarStyle: null,
       viewportMargin: Infinity,
       lineWrapping: true,
+      smartIndent: true,
       extraKeys: {
         'Shift-Tab': 'indentLess'
       },
