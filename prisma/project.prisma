@@ -1,0 +1,26 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.db"
+  default  = true
+}
+
+generator photon {
+  provider = "photonjs"
+  output   = "../node_modules/@generated/photon"
+}
+
+model User {
+  id    String  @default(cuid()) @id @unique
+  createdAt DateTime @default(now())
+  email String  @unique
+  name  String?
+  snippets Snippet[]
+}
+
+model Snippet {
+  id        String   @default(cuid()) @id @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  code     String
+  author    User
+}
