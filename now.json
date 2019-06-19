@@ -8,7 +8,7 @@
     { "src": "^/embed(.*)", "dest": "/embed" },
     {
       "src": "^/service-worker.js$",
-      "dest": "/_next/service-worker.js",
+      "dest": "/service-worker.js",
       "headers": {
         "Service-Worker-Allowed": "/"
       }
