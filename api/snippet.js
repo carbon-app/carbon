@@ -1,10 +1,19 @@
 require('isomorphic-fetch')
 
 const url = require('url')
+const axios = require('axios')
 const { json, createError, send, sendError } = require('micro')
 
 // ~ makes the file come later alphabetically, which is how gists are sorted
 const CARBON_STORAGE_KEY = '~carbon.json'
+
+const client = axios.create({
+  baseURL: 'https://api.github.com',
+  headers: {
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  }
+})
 
 function getSnippet(req) {
   const parsed = url.parse(req.url, true)
@@ -16,7 +25,8 @@ function getSnippet(req) {
 
   return fetch(`https://api.github.com/gists/${id}`, {
     headers: {
-      Authorization: req.headers.Authorization || req.headers.authorization
+      Authorization: req.headers.Authorization || req.headers.authorization,
+      Accept: 'application/vnd.github.v3+json'
     }
   })
     .then(res => res.json())
@@ -75,7 +85,8 @@ async function updateSnippet(req) {
     method: 'PATCH',
     body: JSON.stringify({ files }),
     headers: {
-      Authorization: req.headers.Authorization || req.headers.authorization
+      Authorization: req.headers.Authorization || req.headers.authorization,
+      Accept: 'application/vnd.github.v3+json'
     }
   }).then(res => res.json())
 }

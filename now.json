@@ -23,6 +23,12 @@
       }
     },
     {
+      "src": "/api/user",
+      "status": 301,
+      "_comment": "TODO",
+      "headers": { "Location": "https://api.github.com/user" }
+    },
+    {
       "src": "/api/oembed",
       "dest": "api/oembed.js",
       "headers": { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*" }

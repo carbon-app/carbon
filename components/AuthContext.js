@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocalStorage } from '@dawnlabs/tacklebox'
-import { githubClient } from '../lib/api'
+import { client } from '../lib/api'
 
 export const Context = React.createContext(null)
 
@@ -9,13 +9,13 @@ function AuthContext(props) {
   const [user, setState] = React.useState(null)
 
   React.useEffect(() => {
-    githubClient.defaults.headers['Authorization'] = token ? `token ${token}` : ''
+    client.defaults.headers['Authorization'] = token ? `token ${token}` : ''
   }, [token])
 
   React.useEffect(() => {
     if (token) {
       if (!user) {
-        githubClient
+        client
           .get('/user')
           .then(res => res.data)
           .then(setState)
