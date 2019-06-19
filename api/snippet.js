@@ -1,5 +1,3 @@
-require('isomorphic-fetch')
-
 const url = require('url')
 const axios = require('axios')
 const { json, createError, send, sendError } = require('micro')
@@ -23,13 +21,18 @@ function getSnippet(req) {
     throw createError(401, 'id is a required parameter')
   }
 
-  return fetch(`https://api.github.com/gists/${id}`, {
-    headers: {
-      Authorization: req.headers.Authorization || req.headers.authorization,
-      Accept: 'application/vnd.github.v3+json'
-    }
-  })
-    .then(res => res.json())
+  const headers = {
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  }
+  const authorization = req.headers.Authorization || req.headers.authorization
+  if (authorization) {
+    headers.Authorization = authorization
+  }
+
+  return client
+    .get(`https://api.github.com/gists/${id}`, { headers })
+    .then(res => res.data)
     .then(({ files, ...gist }) => {
       let config
       if (files[CARBON_STORAGE_KEY]) {
@@ -81,14 +84,18 @@ async function updateSnippet(req) {
     }
   }
 
-  return fetch(`https://api.github.com/gists/${id}`, {
-    method: 'PATCH',
-    body: JSON.stringify({ files }),
-    headers: {
-      Authorization: req.headers.Authorization || req.headers.authorization,
-      Accept: 'application/vnd.github.v3+json'
-    }
-  }).then(res => res.json())
+  const headers = {
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  }
+  const authorization = req.headers.Authorization || req.headers.authorization
+  if (authorization) {
+    headers.Authorization = authorization
+  }
+
+  return client
+    .patch(`https://api.github.com/gists/${id}`, { files }, { headers })
+    .then(res => res.data)
 }
 
 module.exports = async function(req, res) {
@@ -100,11 +107,11 @@ module.exports = async function(req, res) {
         return send(res, 200, await updateSnippet(req, res))
       case 'GET':
         return send(res, 200, await getSnippet(req, res))
+      default:
+        return sendError(req, res, createError(501, 'Not Implemented'))
     }
   } catch (err) {
     console.error(err)
     send(res, err.statusCode || 500, err.message || err)
   }
-
-  sendError(req, res, createError(501, 'Not Implemented'))
 }
