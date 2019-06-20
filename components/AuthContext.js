@@ -9,7 +9,7 @@ function AuthContext(props) {
   const [user, setState] = React.useState(null)
 
   React.useEffect(() => {
-    client.defaults.headers['Authorization'] = token ? `token ${token}` : ''
+    client.defaults.headers['Authorization'] = token ? `token ${token}` : undefined
   }, [token])
 
   React.useEffect(() => {

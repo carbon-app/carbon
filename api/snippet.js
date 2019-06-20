@@ -61,15 +61,59 @@ function getSnippet(req) {
     })
 }
 
+async function createSnippet(req) {
+  const { code, ...config } = await json(req, { limit: '6mb' })
+
+  if (!code) {
+    throw createError(400, 'code is a required body parameter')
+  }
+
+  const files = {
+    ['index.js']: {
+      content: code
+    }
+  }
+
+  if (config && Object.keys(config).length) {
+    files[CARBON_STORAGE_KEY] = {
+      content: JSON.stringify(config)
+    }
+  }
+
+  const headers = {
+    Accept: 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  }
+  const authorization = req.headers.Authorization || req.headers.authorization
+  if (authorization) {
+    headers.Authorization = authorization
+  }
+
+  return (
+    client
+      // TODO
+      .post(`https://api.github.com/gists`, { files, public: true }, { headers })
+      .then(res => res.data)
+  )
+}
+
 async function updateSnippet(req) {
   const parsed = url.parse(req.url, true)
   const id = parsed.query.id
 
   const { filename, code, ...config } = await json(req, { limit: '6mb' })
 
+  if (!id) {
+    throw createError(400, 'id is a required parameter')
+  }
+
   // TODO filename's are required
-  if (!id || !filename) {
-    throw createError(401, 'id and filename are required body parameters')
+  if (!filename) {
+    throw createError(400, 'filename is a required body parameter')
+  }
+
+  if (!code) {
+    throw createError(400, 'code is a required body parameter')
   }
 
   const files = {
@@ -101,8 +145,8 @@ async function updateSnippet(req) {
 module.exports = async function(req, res) {
   try {
     switch (req.method) {
-      // case 'POST':
-      //   return createSnippet(req, res)
+      case 'POST':
+        return send(res, 200, await createSnippet(req, res))
       case 'PATCH':
         return send(res, 200, await updateSnippet(req, res))
       case 'GET':
