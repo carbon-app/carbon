@@ -388,17 +388,24 @@ class Editor extends React.Component {
               exportSize={exportSize}
               backgroundImage={backgroundImage}
             />
-            {this.gist && (
-              <SaveButton
-                onClick={() =>
-                  this.context.gist.update(this.gist.id, {
+            <SaveButton
+              onClick={() =>
+                this.context.gist
+                  .update(this.gist && this.gist.id, {
                     filename: this.gist && this.gist.filename,
                     code: this.state.code,
                     config
                   })
-                }
-              />
-            )}
+                  .then(res => {
+                    if (!this.gist) {
+                      this.gist = res
+                      this.gist.filename = 'index.js'
+                    }
+                    const href = '/' + res.id
+                    this.props.router.replace(href, href, { shallow: true })
+                  })
+              }
+            />
           </div>
         </Toolbar>
 
