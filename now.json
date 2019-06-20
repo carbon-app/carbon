@@ -25,7 +25,6 @@
     {
       "src": "/api/user",
       "status": 301,
-      "_comment": "TODO",
       "headers": { "Location": "https://api.github.com/user" }
     },
     {
@@ -66,7 +65,7 @@
     { "src": "/api/.*", "status": 404 },
     { "handle": "filesystem" },
     {
-      "src": "^/(.*)",
+      "src": "^/(.*)/?",
       "dest": "/index.html",
       "headers": {
         "X-Frame-Options": "SAMEORIGIN",
