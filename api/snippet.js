@@ -1,9 +1,6 @@
 const url = require('url')
 const axios = require('axios')
-const { json, createError, send, sendError } = require('micro')
-
-// ~ makes the file come later alphabetically, which is how gists are sorted
-const CARBON_STORAGE_KEY = '~carbon.json'
+const { json, createError, send } = require('micro')
 
 const client = axios.create({
   baseURL: 'https://api.github.com',
@@ -21,39 +18,25 @@ function getSnippet(req) {
     throw createError(401, 'id is a required parameter')
   }
 
-  const headers = {
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  }
   const authorization = req.headers.Authorization || req.headers.authorization
-  if (authorization) {
-    headers.Authorization = authorization
-  }
+  const options = authorization ? { headers: { Authorization: authorization } } : undefined
 
   return client
-    .get(`https://api.github.com/gists/${id}`, { headers })
+    .get(`https://api.github.com/gists/${id}`, options)
     .then(res => res.data)
     .then(({ files, ...gist }) => {
-      let config
-      if (files[CARBON_STORAGE_KEY]) {
-        try {
-          config = JSON.parse(files[CARBON_STORAGE_KEY].content)
-        } catch (error) {
-          // pass
-        }
-      }
+      // let config
 
-      const otherFiles = Object.keys(files).filter(key => key !== CARBON_STORAGE_KEY)
+      const filename = Object.keys(files)[0]
 
-      const snippet = files[otherFiles[0]]
+      const snippet = files[filename]
 
       return {
         gist: {
           ...gist,
-          filename: otherFiles[0]
+          filename
         },
         config: {
-          ...config,
           code: snippet.content,
           language: snippet.language && snippet.language.toLowerCase()
         }
@@ -74,25 +57,13 @@ async function createSnippet(req) {
     }
   }
 
-  if (config && Object.keys(config).length) {
-    files[CARBON_STORAGE_KEY] = {
-      content: JSON.stringify(config)
-    }
-  }
-
-  const headers = {
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  }
   const authorization = req.headers.Authorization || req.headers.authorization
-  if (authorization) {
-    headers.Authorization = authorization
-  }
+  const options = authorization ? { headers: { Authorization: authorization } } : undefined
 
   return (
     client
       // TODO
-      .post(`https://api.github.com/gists`, { files, public: true }, { headers })
+      .post(`https://api.github.com/gists`, { files, public: true }, options)
       .then(res => res.data)
   )
 }
@@ -122,40 +93,34 @@ async function updateSnippet(req) {
     }
   }
 
-  if (config) {
-    files[CARBON_STORAGE_KEY] = {
-      content: JSON.stringify(config)
-    }
-  }
-
-  const headers = {
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  }
   const authorization = req.headers.Authorization || req.headers.authorization
-  if (authorization) {
-    headers.Authorization = authorization
-  }
+  const options = authorization ? { headers: { Authorization: authorization } } : undefined
 
   return client
-    .patch(`https://api.github.com/gists/${id}`, { files }, { headers })
+    .patch(`https://api.github.com/gists/${id}`, { files }, options)
     .then(res => res.data)
 }
 
-module.exports = async function(req, res) {
-  try {
-    switch (req.method) {
-      case 'POST':
-        return send(res, 200, await createSnippet(req, res))
-      case 'PATCH':
-        return send(res, 200, await updateSnippet(req, res))
-      case 'GET':
-        return send(res, 200, await getSnippet(req, res))
-      default:
-        return sendError(req, res, createError(501, 'Not Implemented'))
+function handleErrors(fn) {
+  return async function(req, res) {
+    try {
+      return send(res, 200, await fn(req, res))
+    } catch (err) {
+      console.error(err)
+      send(res, err.statusCode || 500, err.message || err)
     }
-  } catch (err) {
-    console.error(err)
-    send(res, err.statusCode || 500, err.message || err)
   }
 }
+
+module.exports = handleErrors(async function(req, res) {
+  switch (req.method) {
+    case 'POST':
+      return createSnippet(req, res)
+    case 'PATCH':
+      return updateSnippet(req, res)
+    case 'GET':
+      return getSnippet(req, res)
+    default:
+      throw createError(501, 'Not Implemented')
+  }
+})
