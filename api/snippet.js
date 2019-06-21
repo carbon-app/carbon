@@ -18,32 +18,37 @@ function getSnippet(admin, req) {
     .ref(`/snippets/${id}`)
     .once('value')
     .then(res => {
-      return {
-        ...res.val(),
-        id
+      const data = res.val()
+      // ref exists
+      if (data) {
+        return {
+          ...data,
+          id
+        }
       }
+
+      const axios = require('axios')
+      return axios
+        .get(`https://api.github.com/gists/${id}`, {
+          headers: {
+            Accept: 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.data)
+        .then(({ files }) => {
+          const filename = Object.keys(files)[0]
+          const snippet = files[filename]
+
+          return {
+            code: snippet.content,
+            language: snippet.language && snippet.language.toLowerCase()
+          }
+        })
+        .catch(e => {
+          throw createError(e.response.status, e.response.data.message)
+        })
     })
-
-  // const axios = require('axios')
-  // return axios
-  //   .get(`https://api.github.com/gists/${id}`, {
-  //     headers: {
-  //       Accept: 'application/vnd.github.v3+json',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then(res => res.data)
-  //   .then(({ files, ...gist }) => {
-  //     // let config
-
-  //     const filename = Object.keys(files)[0]
-  //     const snippet = files[filename]
-
-  //     return {
-  //       code: snippet.content,
-  //       language: snippet.language && snippet.language.toLowerCase()
-  //     }
-  //   })
 }
 
 async function createSnippet(admin, req) {
