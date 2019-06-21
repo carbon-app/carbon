@@ -1,16 +1,10 @@
 const url = require('url')
-const axios = require('axios')
 const { json, createError, send } = require('micro')
+const firebase = require('firebase-admin')
 
-const client = axios.create({
-  baseURL: 'https://api.github.com',
-  headers: {
-    Accept: 'application/vnd.github.v3+json',
-    'Content-Type': 'application/json'
-  }
-})
+const PRIVATE_KEY = JSON.parse(Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString())
 
-function getSnippet(req) {
+function getSnippet(admin, req) {
   const parsed = url.parse(req.url, true)
   const id = parsed.query.id
 
@@ -18,87 +12,88 @@ function getSnippet(req) {
     throw createError(401, 'id is a required parameter')
   }
 
-  const authorization = req.headers.Authorization || req.headers.authorization
-  const options = authorization ? { headers: { Authorization: authorization } } : undefined
+  const db = admin.database()
 
-  return client
-    .get(`https://api.github.com/gists/${id}`, options)
-    .then(res => res.data)
-    .then(({ files, ...gist }) => {
-      // let config
-
-      const filename = Object.keys(files)[0]
-
-      const snippet = files[filename]
-
+  return db
+    .ref(`/snippets/${id}`)
+    .once('value')
+    .then(res => {
       return {
-        gist: {
-          ...gist,
-          filename
-        },
-        config: {
-          code: snippet.content,
-          language: snippet.language && snippet.language.toLowerCase()
-        }
+        ...res.val(),
+        id
       }
     })
+
+  // const axios = require('axios')
+  // return axios
+  //   .get(`https://api.github.com/gists/${id}`, {
+  //     headers: {
+  //       Accept: 'application/vnd.github.v3+json',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then(res => res.data)
+  //   .then(({ files, ...gist }) => {
+  //     // let config
+
+  //     const filename = Object.keys(files)[0]
+  //     const snippet = files[filename]
+
+  //     return {
+  //       code: snippet.content,
+  //       language: snippet.language && snippet.language.toLowerCase()
+  //     }
+  //   })
 }
 
-async function createSnippet(req) {
+async function createSnippet(admin, req) {
   const { code, ...config } = await json(req, { limit: '6mb' })
 
-  if (!code) {
+  if (code == null) {
     throw createError(400, 'code is a required body parameter')
   }
 
-  const files = {
-    ['index.js']: {
-      content: code
-    }
-  }
+  // console.log(admin.auth())
 
-  const authorization = req.headers.Authorization || req.headers.authorization
-  const options = authorization ? { headers: { Authorization: authorization } } : undefined
+  const db = admin.database()
 
-  return (
-    client
-      // TODO
-      .post(`https://api.github.com/gists`, { files, public: true }, options)
-      .then(res => res.data)
-  )
+  return db
+    .ref('/snippets')
+    .push({ code, ...config })
+    .then(ref => {
+      const id = ref.key
+      return ref
+        .once('value')
+        .then(_ => _.val())
+        .then(data => ({
+          ...data,
+          id
+        }))
+    })
 }
 
-async function updateSnippet(req) {
+async function updateSnippet(admin, req) {
   const parsed = url.parse(req.url, true)
   const id = parsed.query.id
 
-  const { filename, code, ...config } = await json(req, { limit: '6mb' })
+  // TODO validate data
+  const data = await json(req, { limit: '6mb' })
 
   if (!id) {
     throw createError(400, 'id is a required parameter')
   }
 
-  // TODO filename's are required
-  if (!filename) {
-    throw createError(400, 'filename is a required body parameter')
-  }
+  const db = admin.database()
+  const ref = db.ref(`/snippets/${id}`)
 
-  if (!code) {
-    throw createError(400, 'code is a required body parameter')
-  }
-
-  const files = {
-    [filename]: {
-      content: code
-    }
-  }
-
-  const authorization = req.headers.Authorization || req.headers.authorization
-  const options = authorization ? { headers: { Authorization: authorization } } : undefined
-
-  return client
-    .patch(`https://api.github.com/gists/${id}`, { files }, options)
-    .then(res => res.data)
+  return ref
+    .update(data)
+    .then(() => ref.once('value'))
+    .then(_ => _.val())
+    .then(data => ({
+      ...data,
+      id
+    }))
 }
 
 function handleErrors(fn) {
@@ -113,13 +108,19 @@ function handleErrors(fn) {
 }
 
 module.exports = handleErrors(async function(req, res) {
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp({
+      credential: firebase.credential.cert(PRIVATE_KEY),
+      databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
+    })
+  }
   switch (req.method) {
     case 'POST':
-      return createSnippet(req, res)
+      return createSnippet(firebase, req, res)
     case 'PATCH':
-      return updateSnippet(req, res)
+      return updateSnippet(firebase, req, res)
     case 'GET':
-      return getSnippet(req, res)
+      return getSnippet(firebase, req, res)
     default:
       throw createError(501, 'Not Implemented')
   }

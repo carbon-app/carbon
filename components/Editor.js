@@ -66,18 +66,17 @@ class Editor extends React.Component {
 
     // TODO we could create an interface for loading this config, so that it looks identical
     // whether config is loaded from localStorage, gist, or even something like IndexDB
-    let gistState
     if (this.context.gist && parameter) {
-      const { gist, config } = (await this.context.gist.get(parameter)) || {}
-      if (typeof config === 'object') {
+      const gist = await this.context.gist.get(parameter)
+      console.log(gist)
+      if (gist) {
         this.gist = gist
-        gistState = config
       }
     }
 
     const newState = {
       // Load options from gist or localStorage
-      ...(gistState ? gistState : getSettings(localStorage)),
+      ...(this.gist ? this.gist : getSettings(localStorage)),
       // and then URL params
       ...queryState,
       loading: false
@@ -392,17 +391,17 @@ class Editor extends React.Component {
               onClick={() =>
                 this.context.gist
                   .update(this.gist && this.gist.id, {
-                    filename: this.gist && this.gist.filename,
-                    code: this.state.code,
-                    config
+                    ...config,
+                    code: this.state.code || ''
                   })
-                  .then(res => {
-                    if (!this.gist) {
-                      this.gist = res
-                      this.gist.filename = 'index.js'
+                  .then(snippet => {
+                    if (snippet && snippet.id) {
+                      if (!this.gist) {
+                        this.gist = snippet
+                      }
+                      const href = '/' + snippet.id
+                      this.props.router.replace(href, href, { shallow: true })
                     }
-                    const href = '/' + res.id
-                    this.props.router.replace(href, href, { shallow: true })
                   })
               }
             />
