@@ -45,7 +45,7 @@
     {
       "src": "/api/snippet/?(?<id>[^/]*)",
       "dest": "api/snippet.js?id=$id",
-      "methods": ["GET", "POST", "PUT"]
+      "methods": ["GET", "POST", "PATCH"]
     },
     {
       "src": "/api/unsplash/random",
@@ -90,7 +90,9 @@
     "LOGS_SECRET_PREFIX": "@logs_secret_prefix",
     "UNSPLASH_SECRET_KEY": "@unsplash_secret_key",
     "UNSPLASH_ACCESS_KEY": "@unsplash_access_key",
-    "UNSPLASH_CALLBACK_URL": "@unsplash_callback_url"
+    "UNSPLASH_CALLBACK_URL": "@unsplash_callback_url",
+    "FIREBASE_PROJECT_ID": "@carbon-firebase-project-id",
+    "FIREBASE_PRIVATE_KEY": "@carbon-firebase-private-key"
   },
   "github": {
     "autoAlias": false,

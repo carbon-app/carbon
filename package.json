@@ -34,6 +34,8 @@
     "email-validator": "^2.0.4",
     "eitherx": "^1.0.2",
     "escape-goat": "^2.1.0",
+    "firebase": "^6.2.0",
+    "firebase-admin": "^8.2.0",
     "graphql": "^14.3.1",
     "highlight.js": "^9.15.8",
     "isomorphic-fetch": "^2.2.1",
@@ -62,7 +64,8 @@
     "tohash": "^1.0.2",
     "twit": "^2.2.11",
     "unsplash-js": "^4.8.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.6.40",
