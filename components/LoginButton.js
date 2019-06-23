@@ -1,29 +1,50 @@
 import React from 'react'
-import Button from './Button'
+import firebase from '../lib/client'
 
+import Button from './Button'
 import { Context } from './AuthContext'
 
 function LoginButton() {
   const user = React.useContext(Context)
 
-  const href = !user
-    ? 'https://github.com/login/oauth/authorize?client_id=dd6d9289c515d34bbe15&scope=gist&allow_signup=true'
-    : null
-
   return (
-    <a href={href}>
-      <Button center border large padding="0 16px" margin="0 8px 0 0" color="white">
+    <div>
+      <Button
+        center
+        border
+        large
+        padding="0 16px"
+        margin="0 8px 0 0"
+        color="white"
+        onClick={() => {
+          if (!user) {
+            firebase
+              .auth()
+              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+              .then(() => {
+                const provider = new firebase.auth.GithubAuthProvider()
+                return firebase.auth().signInWithRedirect(provider)
+              })
+              .catch(console.error)
+          } else {
+            firebase
+              .auth()
+              .signOut()
+              .catch(console.error)
+          }
+        }}
+      >
         <img
           height={20}
-          src={user ? user.avatar_url : '/static/github.svg'}
-          alt={user ? user.name : 'GitHub'}
+          src={user ? user.photoURL : '/static/github.svg'}
+          alt={user ? user.displayName : 'GitHub'}
         />
-        {user ? user.login : 'Login'}
+        {user ? user.displayName : 'Login'}
       </Button>
       <style jsx>
         {`
-          a,
-          a :global(button) {
+          div,
+          div :global(button) {
             height: 100%;
           }
           img {
@@ -32,7 +53,7 @@ function LoginButton() {
           }
         `}
       </style>
-    </a>
+    </div>
   )
 }
 

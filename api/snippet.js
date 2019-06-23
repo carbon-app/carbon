@@ -51,20 +51,19 @@ function getSnippet(admin, req) {
     })
 }
 
-async function createSnippet(admin, req) {
+async function createSnippet(admin, user, req) {
   const { code, ...config } = await json(req, { limit: '6mb' })
 
   if (code == null) {
     throw createError(400, 'code is a required body parameter')
   }
 
-  // console.log(admin.auth())
-
   const db = admin.database()
 
+  // TODO user
   return db
     .ref('/snippets')
-    .push({ code, ...config })
+    .push({ ...config, code })
     .then(ref => {
       const id = ref.key
       return ref
@@ -77,22 +76,23 @@ async function createSnippet(admin, req) {
     })
 }
 
-async function updateSnippet(admin, req) {
+async function updateSnippet(admin, user, req) {
   const parsed = url.parse(req.url, true)
-  const id = parsed.query.id
-
-  // TODO validate data
-  const data = await json(req, { limit: '6mb' })
+  const id = parsed.query.id && parsed.query.id.replace(/\/$/, '')
 
   if (!id) {
     throw createError(400, 'id is a required parameter')
   }
 
+  // TODO validate data
+  const data = await json(req, { limit: '6mb' })
+
   const db = admin.database()
   const ref = db.ref(`/snippets/${id}`)
 
+  // TODO user
   return ref
-    .update(data)
+    .update({ ...data })
     .then(() => ref.once('value'))
     .then(_ => _.val())
     .then(data => ({
@@ -120,10 +120,20 @@ module.exports = handleErrors(async function(req, res) {
     })
   }
   switch (req.method) {
-    case 'POST':
-      return createSnippet(firebase, req, res)
-    case 'PATCH':
-      return updateSnippet(firebase, req, res)
+    case 'POST': {
+      const token = req.headers.authorization.split(/\s+/).pop()
+      if (!token) throw createError(401, 'Unauthorized')
+      const user = await firebase.auth().verifyIdToken(token)
+      if (!user) throw createError(401, 'Unauthorized')
+      return createSnippet(firebase, user, req, res)
+    }
+    case 'PATCH': {
+      const token = req.headers.authorization.split(/\s+/).pop()
+      if (!token) throw createError(401, 'Unauthorized')
+      const user = await firebase.auth().verifyIdToken(token)
+      if (!user) throw createError(401, 'Unauthorized')
+      return updateSnippet(firebase, user, req, res)
+    }
     case 'GET':
       return getSnippet(firebase, req, res)
     default:

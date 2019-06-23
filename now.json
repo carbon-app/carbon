@@ -78,7 +78,11 @@
   ],
   "build": {
     "env": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "FIREBASE_PROJECT_ID": "@carbon-firebase-project-id",
+      "FIREBASE_MESSAGING_SENDER_ID": "@carbon-firebase-messaging-sender-id",
+      "FIREBASE_FE_APP_ID": "@carbon-firebase-fe-app-id",
+      "FIREBASE_API_KEY": "@carbon-firebase-api-key"
     }
   },
   "env": {

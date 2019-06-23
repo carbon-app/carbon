@@ -1,32 +1,31 @@
 import React from 'react'
-import { useLocalStorage } from '@dawnlabs/tacklebox'
+import firebase from '../lib/client'
+// TODO just read from firebase store at request time.
 import { client } from '../lib/api'
 
 export const Context = React.createContext(null)
 
 function AuthContext(props) {
-  const [token] = useLocalStorage('t')
   const [user, setState] = React.useState(null)
 
-  React.useEffect(() => {
-    client.defaults.headers['Authorization'] = token ? `token ${token}` : undefined
-  }, [token])
+  React.useEffect(() => firebase.auth().onAuthStateChanged(newUser => setState(newUser)), [])
 
   React.useEffect(() => {
-    if (token) {
-      if (!user) {
-        client
-          .get('/user')
-          .then(res => res.data)
-          .then(setState)
-          .catch(console.error)
-      }
+    firebase
+      .auth()
+      .getRedirectResult()
+      .catch(console.error)
+  }, [])
+
+  React.useEffect(() => {
+    if (user) {
+      user.getIdToken().then(jwt => {
+        client.defaults.headers['Authorization'] = jwt ? jwt : undefined
+      })
     } else {
-      if (user) {
-        setState(null)
-      }
+      delete client.defaults.headers['Authorization']
     }
-  }, [token, user])
+  }, [user])
 
   return <Context.Provider value={user}>{props.children}</Context.Provider>
 }

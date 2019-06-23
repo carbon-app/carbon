@@ -68,7 +68,6 @@ class Editor extends React.Component {
     // whether config is loaded from localStorage, gist, or even something like IndexDB
     if (this.context.gist && parameter) {
       const gist = await this.context.gist.get(parameter)
-      console.log(gist)
       if (gist) {
         this.gist = gist
       }
@@ -392,15 +391,14 @@ class Editor extends React.Component {
                 this.context.gist
                   .update(this.gist && this.gist.id, {
                     ...config,
-                    code: this.state.code || ''
+                    code: code != null ? code : DEFAULT_CODE
                   })
                   .then(snippet => {
                     if (snippet && snippet.id) {
                       if (!this.gist) {
                         this.gist = snippet
                       }
-                      const href = '/' + snippet.id
-                      this.props.router.replace(href, href, { shallow: true })
+                      this.props.router.push('/', '/' + snippet.id, { shallow: true })
                     }
                   })
               }
