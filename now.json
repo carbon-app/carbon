@@ -23,6 +23,11 @@
     { "handle": "filesystem" },
     { "src": "^/(.*)", "dest": "/index.html" }
   ],
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
   "github": {
     "autoAlias": false,
     "silent": true
