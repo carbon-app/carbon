@@ -16,7 +16,8 @@
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "now-build": "cross-env NODE_ENV=production yarn build"
   },
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.11",
