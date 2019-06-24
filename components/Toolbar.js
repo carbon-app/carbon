@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Toolbar = props => (
-  <div className="toolbar">
+  <div className="toolbar" style={props.style}>
     {props.children}
     <style jsx>
       {`
