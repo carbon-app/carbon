@@ -341,7 +341,6 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
-          <LoginButton />
           <Themes
             theme={theme}
             highlights={highlights}
@@ -386,23 +385,6 @@ class Editor extends React.Component {
               exportSize={exportSize}
               backgroundImage={backgroundImage}
             />
-            <SaveButton
-              onClick={() =>
-                this.context.gist
-                  .update(this.gist && this.gist.id, {
-                    ...config,
-                    code: code != null ? code : DEFAULT_CODE
-                  })
-                  .then(snippet => {
-                    if (snippet && snippet.id) {
-                      if (!this.gist) {
-                        this.gist = snippet
-                      }
-                      this.props.router.push('/', '/' + snippet.id, { shallow: true })
-                    }
-                  })
-              }
-            />
           </div>
         </Toolbar>
 
@@ -426,6 +408,26 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
+        <Toolbar style={{ marginTop: 16, marginBottom: 0, justifyContent: 'space-between' }}>
+          <LoginButton />
+          <SaveButton
+            onClick={() =>
+              this.context.gist
+                .update(this.gist && this.gist.id, {
+                  ...config,
+                  code: code != null ? code : DEFAULT_CODE
+                })
+                .then(snippet => {
+                  if (snippet && snippet.id) {
+                    if (!this.gist) {
+                      this.gist = snippet
+                    }
+                    this.props.router.push('/', '/' + snippet.id, { shallow: true })
+                  }
+                })
+            }
+          />
+        </Toolbar>
         <style jsx global>
           {`
             @font-face {

@@ -23,9 +23,10 @@ function SaveButton(props) {
       border
       large
       padding="0 16px"
-      margin="0 8px 0 8px"
+      margin="0 0 0 8px"
       color="#37b589"
       onClick={onClick}
+      flex={0}
     >
       {loading ? 'Saving...' : 'Save'}
     </Button>
