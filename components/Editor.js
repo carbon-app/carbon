@@ -141,7 +141,8 @@ class Editor extends React.Component {
       format,
       type,
       squared = this.state.squaredImage,
-      exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value
+      exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
+      includeTransparentRow = false
     } = { format: 'png' }
   ) {
     // if safari, get image from api
@@ -186,7 +187,12 @@ class Editor extends React.Component {
       },
       filter: n => {
         if (n.className) {
-          return String(n.className).indexOf('eliminateOnRender') < 0
+          if (String(n.className).indexOf('eliminateOnRender') > -1) {
+            return false
+          }
+          if (String(n.className).indexOf('twitter-png-fix') > -1) {
+            return includeTransparentRow
+          }
         }
         return true
       },
@@ -271,7 +277,7 @@ class Editor extends React.Component {
   }
 
   upload() {
-    this.getCarbonImage({ format: 'png' }).then(
+    this.getCarbonImage({ format: 'png', includeTransparentRow: true }).then(
       this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
     )
   }

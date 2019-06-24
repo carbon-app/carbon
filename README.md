@@ -77,6 +77,9 @@ If you use the &apos;Tweet&apos; button, Carbon will automatically make your ima
 
 If you include a Carbon image in a post, the source code will be invisible for assistive technology, it will not be possible to enlarge it or copy it, etc. Please, think about adding another element with the source code as text, like an [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) below the image.
 
+#### Installing Carbon for Desktop
+If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by clicking your browser's settings menu and then "Install Carbon..."
+
 ## Community
 
 Check out these projects our awesome community has created:
