@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAsyncCallback, useOnline } from '@dawnlabs/tacklebox'
+import { useAsyncCallback, useOnline, useKeyboardListener } from '@dawnlabs/tacklebox'
 import Button from './Button'
 
 import { Context as AuthContext } from './AuthContext'
@@ -8,6 +8,12 @@ function SaveButton(props) {
   const user = React.useContext(AuthContext)
   const online = useOnline()
   const [onClick, { loading }] = useAsyncCallback(props.onClick)
+
+  useKeyboardListener('s', e => {
+    if (e.shiftKey && e.metaKey) {
+      onClick()
+    }
+  })
 
   if (!user) {
     return null

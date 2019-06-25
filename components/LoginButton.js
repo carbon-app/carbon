@@ -2,9 +2,40 @@ import React from 'react'
 import firebase from '../lib/client'
 
 import Button from './Button'
+import Popout, { managePopout } from './Popout'
 import { Context } from './AuthContext'
 
-function LoginButton() {
+function Drawer(props) {
+  return (
+    <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '180px', left: 0 }}>
+      <div className="flex">
+        <Button
+          large
+          center
+          padding="8px 0"
+          onClick={() =>
+            firebase
+              .auth()
+              .signOut()
+              .catch(console.error)
+          }
+        >
+          Sign out
+        </Button>
+      </div>
+      <style jsx>
+        {`
+          .flex {
+            display: flex;
+            height: 100%;
+          }
+        `}
+      </style>
+    </Popout>
+  )
+}
+
+function LoginButton({ isVisible, toggleVisibility }) {
   const user = React.useContext(Context)
 
   return (
@@ -14,8 +45,8 @@ function LoginButton() {
         border
         large
         padding="0 16px"
-        margin="0 8px 0 0"
         color="white"
+        className="profile-button"
         onClick={() => {
           if (!user) {
             firebase
@@ -27,10 +58,7 @@ function LoginButton() {
               })
               .catch(console.error)
           } else {
-            firebase
-              .auth()
-              .signOut()
-              .catch(console.error)
+            toggleVisibility()
           }
         }}
       >
@@ -39,13 +67,23 @@ function LoginButton() {
           src={user ? user.photoURL : '/static/github.svg'}
           alt={user ? user.displayName : 'GitHub'}
         />
-        {user ? user.displayName : 'Login'}
+        <span>{user ? user.displayName : 'Sign in/up'}</span>
       </Button>
+      <Drawer isVisible={user && isVisible} />
       <style jsx>
         {`
           div,
-          div :global(button) {
+          div :global(.profile-button) {
+            position: relative;
             height: 100%;
+          }
+          div :global(.profile-button) {
+            max-width: 142px;
+          }
+          span {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
           img {
             border-radius: 50%;
@@ -57,4 +95,4 @@ function LoginButton() {
   )
 }
 
-export default LoginButton
+export default managePopout(LoginButton)
