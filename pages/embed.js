@@ -43,18 +43,21 @@ class Embed extends React.Component {
     readOnly: true
   }
 
+  snippet = {}
+
   async componentDidMount() {
     const { queryState, parameter } = getRouteState(this.props.router)
 
-    let gistState
     if (this.context.gist && parameter) {
-      const { gist, config } = await this.context.gist.get(parameter)
-      gistState = gist && config
+      const snippet = await this.context.gist.get(parameter)
+      if (snippet) {
+        this.snippet = snippet
+      }
     }
 
     this.setState(
       {
-        ...gistState,
+        ...this.snippet,
         ...queryState,
         copyable: queryState.copy !== false,
         readOnly: queryState.readonly !== false,
