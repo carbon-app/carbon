@@ -62,7 +62,7 @@ async function createSnippet(admin, user, req) {
   // TODO user
   return db
     .ref('snippets')
-    .push({ ...data, code, createdBy: user.uid })
+    .push({ ...data, code, userId: user.uid })
     .then(ref => ref.once('value'))
     .then(data => ({
       ...data.val(),
@@ -86,8 +86,8 @@ async function updateSnippet(admin, user, req) {
 
   // TODO user
   return ref.once('value').then(snapshot => {
-    if (snapshot.val().createdBy === user.uid) {
-      const updates = { ...data, createdBy: user.uid }
+    if (snapshot.val().userId === user.uid) {
+      const updates = { ...data, userId: user.uid }
 
       return ref.update(updates).then(() => ({
         ...updates,
