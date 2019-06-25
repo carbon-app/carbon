@@ -70,8 +70,6 @@ class Dropdown extends React.PureComponent {
     } = this.props
     const { itemsToShow, inputValue } = this.state
 
-    const minWidth = calcMinWidth(itemsToShow)
-
     const labelId = title ? `${title.toLowerCase()}-dropdown` : undefined
 
     return (
@@ -89,7 +87,6 @@ class Dropdown extends React.PureComponent {
           color,
           list: itemsToShow,
           selected,
-          minWidth,
           itemWrapper,
           icon,
           disableInput,
@@ -101,16 +98,7 @@ class Dropdown extends React.PureComponent {
   }
 }
 
-const renderDropdown = ({
-  color,
-  list,
-  minWidth,
-  itemWrapper,
-  icon,
-  disableInput,
-  title,
-  labelId
-}) => ({
+const renderDropdown = ({ color, list, itemWrapper, icon, disableInput, title, labelId }) => ({
   isOpen,
   highlightedIndex,
   selectedItem,
@@ -120,7 +108,7 @@ const renderDropdown = ({
   getItemProps
 }) => {
   return (
-    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })} minWidth={minWidth}>
+    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })}>
       {title && <VisuallyHidden id={labelId}>{title}</VisuallyHidden>}
       <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
       <SelectedItem
@@ -156,7 +144,7 @@ const renderDropdown = ({
   )
 }
 
-const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
+const DropdownContainer = ({ children, innerRef, ...rest }) => {
   return (
     <div {...rest} ref={innerRef} className="dropdown-container">
       {children}
@@ -164,7 +152,6 @@ const DropdownContainer = ({ children, innerRef, minWidth, ...rest }) => {
         {`
           .dropdown-container {
             position: relative;
-            min-width: ${minWidth}px;
             cursor: pointer;
             user-select: none;
             margin-left: 40px;
@@ -326,13 +313,6 @@ const ListItem = ({ children, color, isHighlighted, isSelected, itemWrapper, ite
       </style>
     </li>
   )
-}
-
-function calcMinWidth(items) {
-  return items.reduce((max, { name }) => {
-    const wordSize = name.length * 10 + 32
-    return wordSize > max ? wordSize : max
-  }, 0)
 }
 
 export default Dropdown
