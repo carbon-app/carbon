@@ -90,7 +90,7 @@ class ListSetting extends React.Component {
             .list {
               display: none;
               margin-top: -1px;
-              max-height: 80px;
+              max-height: 160px;
               overflow-y: scroll;
             }
             .is-visible + .list {
