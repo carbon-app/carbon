@@ -51,7 +51,7 @@ function getSnippet(admin, req) {
 }
 
 async function createSnippet(admin, user, req) {
-  const { code, ...config } = await json(req, { limit: '6mb' })
+  const { code, ...data } = await json(req, { limit: '6mb' })
 
   if (code == null) {
     throw createError(400, 'code is a required body parameter')
@@ -62,7 +62,7 @@ async function createSnippet(admin, user, req) {
   // TODO user
   return db
     .ref('snippets')
-    .push({ ...config, code })
+    .push({ ...data, code, createdBy: user.uid })
     .then(ref => ref.once('value'))
     .then(data => ({
       ...data.val(),
@@ -85,14 +85,18 @@ async function updateSnippet(admin, user, req) {
   const ref = db.ref('snippets').child(id)
 
   // TODO user
-  // TODO make sure update happens from same user
-  return ref
-    .update({ ...data })
-    .then(() => ref.once('value'))
-    .then(data => ({
-      ...data.val(),
-      id: data.key
-    }))
+  return ref.once('value').then(snapshot => {
+    if (snapshot.val().createdBy === user.uid) {
+      const updates = { ...data, createdBy: user.uid }
+
+      return ref.update(updates).then(() => ({
+        ...updates,
+        id: snapshot.key
+      }))
+    }
+
+    throw createError(403, 'Forbidden')
+  })
 }
 
 function handleErrors(fn) {
@@ -106,6 +110,14 @@ function handleErrors(fn) {
   }
 }
 
+async function authorizeUser(req) {
+  const token = req.headers.authorization.split(/\s+/).pop()
+  if (!token) throw createError(401, 'Unauthorized')
+  const user = await firebase.auth().verifyIdToken(token)
+  if (!user) throw createError(401, 'Unauthorized')
+  return user
+}
+
 module.exports = handleErrors(async function(req, res) {
   if (firebase.apps.length === 0) {
     firebase.initializeApp({
@@ -113,19 +125,14 @@ module.exports = handleErrors(async function(req, res) {
       databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
     })
   }
+
   switch (req.method) {
     case 'POST': {
-      const token = req.headers.authorization.split(/\s+/).pop()
-      if (!token) throw createError(401, 'Unauthorized')
-      const user = await firebase.auth().verifyIdToken(token)
-      if (!user) throw createError(401, 'Unauthorized')
+      const user = await authorizeUser(req)
       return createSnippet(firebase, user, req, res)
     }
     case 'PATCH': {
-      const token = req.headers.authorization.split(/\s+/).pop()
-      if (!token) throw createError(401, 'Unauthorized')
-      const user = await firebase.auth().verifyIdToken(token)
-      if (!user) throw createError(401, 'Unauthorized')
+      const user = await authorizeUser(req)
       return updateSnippet(firebase, user, req, res)
     }
     case 'GET':
