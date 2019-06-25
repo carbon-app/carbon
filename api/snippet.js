@@ -15,14 +15,13 @@ function getSnippet(admin, req) {
   const db = admin.database()
 
   return db
-    .ref(`/snippets/${id}`)
+    .ref('snippets')
+    .child(id)
     .once('value')
-    .then(res => {
-      const data = res.val()
-      // ref exists
-      if (data) {
+    .then(data => {
+      if (data.exists) {
         return {
-          ...data,
+          ...data.val(),
           id
         }
       }
@@ -62,18 +61,13 @@ async function createSnippet(admin, user, req) {
 
   // TODO user
   return db
-    .ref('/snippets')
+    .ref('snippets')
     .push({ ...config, code })
-    .then(ref => {
-      const id = ref.key
-      return ref
-        .once('value')
-        .then(_ => _.val())
-        .then(data => ({
-          ...data,
-          id
-        }))
-    })
+    .then(ref => ref.once('value'))
+    .then(data => ({
+      ...data.val(),
+      id: data.key
+    }))
 }
 
 async function updateSnippet(admin, user, req) {
@@ -88,16 +82,16 @@ async function updateSnippet(admin, user, req) {
   const data = await json(req, { limit: '6mb' })
 
   const db = admin.database()
-  const ref = db.ref(`/snippets/${id}`)
+  const ref = db.ref('snippets').child(id)
 
   // TODO user
+  // TODO make sure update happens from same user
   return ref
     .update({ ...data })
     .then(() => ref.once('value'))
-    .then(_ => _.val())
     .then(data => ({
-      ...data,
-      id
+      ...data.val(),
+      id: data.key
     }))
 }
 
