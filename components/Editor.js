@@ -341,6 +341,7 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
+          <LoginButton />
           <Themes
             theme={theme}
             highlights={highlights}
@@ -408,8 +409,7 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-        <Toolbar style={{ marginTop: 16, marginBottom: 0, justifyContent: 'space-between' }}>
-          <LoginButton />
+        <Toolbar style={{ marginTop: 16, marginBottom: 0 }}>
           <SaveButton
             onClick={() =>
               this.context.gist

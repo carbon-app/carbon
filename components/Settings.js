@@ -164,7 +164,6 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
           }}
         />
         <Button
-          width="50%"
           center
           style={{ borderRight: `1px solid ${COLORS.SECONDARY}` }}
           onClick={() => input.current.click()}
