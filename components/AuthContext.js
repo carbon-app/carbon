@@ -20,7 +20,7 @@ function AuthContext(props) {
   React.useEffect(() => {
     if (user) {
       user.getIdToken().then(jwt => {
-        client.defaults.headers['Authorization'] = jwt ? jwt : undefined
+        client.defaults.headers['Authorization'] = jwt ? `Bearer ${jwt}` : undefined
       })
     } else {
       delete client.defaults.headers['Authorization']
