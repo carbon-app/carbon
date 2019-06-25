@@ -57,11 +57,6 @@
       "dest": "api/image.js?id=$id",
       "methods": ["POST"]
     },
-    {
-      "src": "/api/oauth/access_token",
-      "dest": "https://github.com/login/oauth/access_token?client_id=dd6d9289c515d34bbe15&client_secret=9f3546a84807d4c52384fd877d310560ee34fa89",
-      "methods": ["POST"]
-    },
     { "src": "/api/.*", "status": 404 },
     { "handle": "filesystem" },
     {
