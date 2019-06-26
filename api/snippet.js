@@ -59,7 +59,7 @@ async function createSnippet(admin, user, req) {
 
   const db = admin.database()
 
-  // TODO user
+  // XXX user
   return db
     .ref('snippets')
     .push({ ...data, code, userId: user.uid })
@@ -78,13 +78,13 @@ async function updateSnippet(admin, user, req) {
     throw createError(400, 'id is a required parameter')
   }
 
-  // TODO validate data
+  // XXX validate data
   const data = await json(req, { limit: '6mb' })
 
   const db = admin.database()
   const ref = db.ref('snippets').child(id)
 
-  // TODO user
+  // XXX user
   return ref.once('value').then(snapshot => {
     if (snapshot.val().userId === user.uid) {
       // null for DELETE

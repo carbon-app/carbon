@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from '../lib/client'
-// TODO just read from firebase store at request time.
+// XXX just read from firebase store at request time.
 import { client } from '../lib/api'
 
 export const Context = React.createContext(null)
