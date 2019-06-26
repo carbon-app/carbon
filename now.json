@@ -9,7 +9,7 @@
     { "src": "^/_next/(.*)", "dest": "/_next/$1" },
     {
       "src": "^/service-worker.js$",
-      "dest": "/_next/service-worker.js",
+      "continue": true,
       "headers": {
         "Service-Worker-Allowed": "/"
       }
