@@ -9,7 +9,7 @@ function getSnippet(admin, req) {
   const id = parsed.query.id
 
   if (!id) {
-    throw createError(401, 'id is a required parameter')
+    throw createError(400, 'id is a required parameter')
   }
 
   const db = admin.database()
@@ -87,7 +87,8 @@ async function updateSnippet(admin, user, req) {
   // TODO user
   return ref.once('value').then(snapshot => {
     if (snapshot.val().userId === user.uid) {
-      const updates = { ...data, userId: user.uid }
+      // null for DELETE
+      const updates = data ? { ...data, userId: user.uid } : null
 
       return ref.update(updates).then(() => ({
         ...updates,
@@ -131,6 +132,7 @@ module.exports = handleErrors(async function(req, res) {
       const user = await authorizeUser(req)
       return createSnippet(firebase, user, req, res)
     }
+    case 'DELETE':
     case 'PATCH': {
       const user = await authorizeUser(req)
       return updateSnippet(firebase, user, req, res)
