@@ -153,8 +153,8 @@ class Carbon extends React.PureComponent {
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
-          <div className="white eliminateOnRender" />
-          <div className="alpha eliminateOnRender" />
+          {!this.props.embed && <div className="white eliminateOnRender" />}
+          {!this.props.embed && <div className="alpha eliminateOnRender" />}
           <div className="bg" />
         </div>
         <style jsx>
@@ -225,9 +225,7 @@ class Carbon extends React.PureComponent {
               z-index: 1;
               border-radius: 5px;
               ${config.dropShadow
-                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${
-                    config.dropShadowBlurRadius
-                  } rgba(0, 0, 0, 0.55)`
+                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
                 : ''};
             }
 
@@ -274,7 +272,7 @@ class Carbon extends React.PureComponent {
       <div className="section">
         <div className="export-container" ref={this.props.innerRef} id="export-container">
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
-          <div className="twitter-png-fix" />
+          {this.props.embed && <div className="twitter-png-fix" />}
         </div>
         <style jsx>
           {`

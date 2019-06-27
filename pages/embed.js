@@ -111,6 +111,7 @@ class Embed extends React.Component {
             readOnly={this.state.readOnly}
             copyable={this.state.copyable}
             onChange={this.updateCode}
+            embed={true}
           >
             {this.state.code}
           </Carbon>
