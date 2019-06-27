@@ -153,8 +153,8 @@ class Carbon extends React.PureComponent {
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
-          {!this.props.embed && <div className="white eliminateOnRender" />}
-          {!this.props.embed && <div className="alpha eliminateOnRender" />}
+          <div className="white eliminateOnRender" />
+          <div className="alpha eliminateOnRender" />
           <div className="bg" />
         </div>
         <style jsx>
@@ -272,7 +272,7 @@ class Carbon extends React.PureComponent {
       <div className="section">
         <div className="export-container" ref={this.props.innerRef} id="export-container">
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
-          {this.props.embed && <div className="twitter-png-fix" />}
+          <div className="twitter-png-fix" />
         </div>
         <style jsx>
           {`
