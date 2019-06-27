@@ -1,6 +1,6 @@
 import React from 'react'
 // import Link from 'next/link'
-import firebase, { logout } from '../lib/client'
+import firebase, { login, logout } from '../lib/client'
 
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
@@ -45,17 +45,11 @@ function LoginButton({ isVisible, toggleVisibility }) {
         className="profile-button"
         onClick={() => {
           if (!user) {
-            firebase
-              .auth()
-              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-              .then(() => {
-                const provider = new firebase.auth.GithubAuthProvider()
-                provider.setCustomParameters({
-                  allow_signup: 'true'
-                })
-                return firebase.auth().signInWithPopup(provider)
-              })
-              .catch(console.error)
+            const provider = new firebase.auth.GithubAuthProvider()
+            provider.setCustomParameters({
+              allow_signup: 'true'
+            })
+            login(provider)
           } else {
             toggleVisibility()
           }
