@@ -1,6 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
-import firebase from '../lib/client'
+// import Link from 'next/link'
+import firebase, { logout } from '../lib/client'
 
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
@@ -10,11 +10,14 @@ function Drawer(props) {
   return (
     <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '180px', left: 0 }}>
       <div className="flex">
-        <Link href="/settings">
+        {/* <Link href="/settings">
           <Button large center padding="8px 0">
             Settings
           </Button>
-        </Link>
+        </Link> */}
+        <Button large center padding="8px 0" onClick={logout}>
+          Sign Out
+        </Button>
       </div>
       <style jsx>
         {`
@@ -47,7 +50,10 @@ function LoginButton({ isVisible, toggleVisibility }) {
               .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
               .then(() => {
                 const provider = new firebase.auth.GithubAuthProvider()
-                return firebase.auth().signInWithRedirect(provider)
+                provider.setCustomParameters({
+                  allow_signup: 'true'
+                })
+                return firebase.auth().signInWithPopup(provider)
               })
               .catch(console.error)
           } else {
