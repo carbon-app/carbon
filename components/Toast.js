@@ -21,59 +21,69 @@ class Toast extends React.Component {
   }
 
   render() {
-    return null
-    // if (!this.state.open) {
-    //   return null
-    // }
+    if (!this.state.open) {
+      return null
+    }
 
-    // return (
-    //   <div className="toast mb4">
-    //     <div className="toast-content">
-    //       <p>Working on a product or new idea? The team behind Carbon is here to help.</p>
-    //       <a href="https://dawnlabs.io">Let&#39;s talk!</a>
-    //       <button className="close-toast" onClick={this.close}>
-    //         &times;
-    //       </button>
-    //     </div>
-    //     <style jsx>
-    //       {`
-    //         .toast {
-    //           padding: 8px 16px;
-    //           color: #fff;
-    //           border: 1px solid #fff;
-    //           border-radius: 2px;
-    //           margin-top: calc(var(--x4) * -1);
-    //         }
+    return (
+      <div className="toast mb4">
+        <div className="toast-content">
+          <p>Never lose a Carbon again - save your work automatically!</p>
+          <a href="/">Try it out!</a>
+          <button className="close-toast" onClick={this.close}>
+            &times;
+          </button>
+        </div>
+        <style jsx>
+          {`
+            @keyframes slide {
+              from {
+                transform: translateY(-128px);
+              }
+              to {
+                transform: translateY(0px);
+              }
+            }
 
-    //         .toast-content {
-    //           display: flex;
-    //           align-items: center;
-    //         }
+            .toast {
+              padding: 8px 16px;
+              color: #fff;
+              border: 1px solid #fff;
+              border-radius: 2px;
+              margin-top: calc(var(--x4) * -1);
+              animation-name: slide;
+              animation-duration: 200ms;
+            }
 
-    //         a {
-    //           text-decoration: underline;
-    //         }
+            .toast-content {
+              display: flex;
+              align-items: center;
+            }
 
-    //         .close-toast {
-    //           padding-left: 0;
-    //           padding-right: 0;
-    //           background: transparent;
-    //           color: white;
-    //           border: none;
-    //           font-size: 100%;
-    //           margin-left: 32px;
-    //           text-decoration: none;
-    //           cursor: pointer;
-    //         }
+            a {
+              text-decoration: underline;
+            }
 
-    //         p {
-    //           margin: 0;
-    //           margin-right: 12px;
-    //         }
-    //       `}
-    //     </style>
-    //   </div>
-    // )
+            .close-toast {
+              padding-left: 0;
+              padding-right: 0;
+              background: transparent;
+              color: white;
+              border: none;
+              font-size: 100%;
+              margin-left: 32px;
+              text-decoration: none;
+              cursor: pointer;
+            }
+
+            p {
+              margin: 0;
+              margin-right: 12px;
+            }
+          `}
+        </style>
+      </div>
+    )
   }
 }
 

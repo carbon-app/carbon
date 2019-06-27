@@ -35,7 +35,7 @@ function Settings() {
       <div className="settings-bottom">
         <div className="settings-menu">
           <MenuButton name="Account" select={selectMenu} selected={selected} />
-          <MenuButton name="API Keys" select={selectMenu} selected={selected} />
+          {/* <MenuButton name="API Keys" select={selectMenu} selected={selected} /> */}
           <MenuButton name="Sign Out" select={logout} selected={selected} noArrows />
         </div>
         <div className="content">Test</div>
