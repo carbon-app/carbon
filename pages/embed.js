@@ -124,6 +124,14 @@ class Embed extends React.Component {
             {this.state.code}
           </Carbon>
         )}
+        <style jsx global>
+          {`
+            .eliminateOnRender,
+            .twitter-png-fix {
+              display: none;
+            }
+          `}
+        </style>
       </Page>
     )
   }

@@ -225,9 +225,7 @@ class Carbon extends React.PureComponent {
               z-index: 1;
               border-radius: 5px;
               ${config.dropShadow
-                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${
-                    config.dropShadowBlurRadius
-                  } rgba(0, 0, 0, 0.55)`
+                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
                 : ''};
             }
 
