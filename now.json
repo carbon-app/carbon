@@ -6,7 +6,6 @@
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
-    { "src": "^/_next/(.*)", "dest": "/_next/$1" },
     {
       "src": "^/service-worker.js$",
       "continue": true,
