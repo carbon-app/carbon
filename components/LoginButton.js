@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import firebase from '../lib/client'
 
 import Button from './Button'
@@ -9,19 +10,11 @@ function Drawer(props) {
   return (
     <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '180px', left: 0 }}>
       <div className="flex">
-        <Button
-          large
-          center
-          padding="8px 0"
-          onClick={() =>
-            firebase
-              .auth()
-              .signOut()
-              .catch(console.error)
-          }
-        >
-          Sign out
-        </Button>
+        <Link href="/settings">
+          <Button large center padding="8px 0">
+            Settings
+          </Button>
+        </Link>
       </div>
       <style jsx>
         {`
@@ -79,6 +72,7 @@ function LoginButton({ isVisible, toggleVisibility }) {
           }
           div :global(.profile-button) {
             max-width: 142px;
+            min-height: 40px;
           }
           span {
             overflow: hidden;
