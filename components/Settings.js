@@ -8,10 +8,10 @@ import Toggle from './Toggle'
 import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
+import MenuButton from './MenuButton'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
-import * as Arrows from './svg/Arrows'
 
 const WindowSettings = React.memo(
   ({
@@ -194,44 +194,6 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
             display: flex;
             flex: 1;
             user-drag: none;
-          }
-        `}
-      </style>
-    </div>
-  )
-})
-
-const MenuButton = React.memo(({ name, select, selected }) => {
-  return (
-    <div className="menu-button">
-      <Button
-        padding="8px"
-        onClick={select(name)}
-        background={selected === name ? COLORS.BLACK : COLORS.DARK_GRAY}
-      >
-        {name}
-        <div className="arrow-icon">
-          <Arrows.Right />
-        </div>
-      </Button>
-      <style jsx>
-        {`
-          .menu-button {
-            display: flex;
-            height: 33px;
-            border-bottom: 1px solid ${COLORS.SECONDARY};
-            position: relative;
-            align-items: center;
-          }
-
-          .menu-button:last-child {
-            ${selected === 'Window' ? '' : 'border-bottom: none;'};
-          }
-
-          .arrow-icon {
-            position: absolute;
-            right: 14px;
-            top: 11px;
           }
         `}
       </style>
