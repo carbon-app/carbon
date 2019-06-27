@@ -866,14 +866,14 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@dawnlabs/tacklebox@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.10.tgz#dce965e4f2ea77eee2815f7cf75c4a4ede6dcd55"
-  integrity sha512-86oZ7pal80nzVVBi+YUzfAbzIACROu2/U0fW9E1noFMPKnY6Tn3X4argyWyJYVUbSRj+csjYLIu3GwhImzqlrg==
+"@dawnlabs/tacklebox@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@dawnlabs/tacklebox/-/tacklebox-0.0.11.tgz#96890f4b40256e1cb912be940e86d397660bd138"
+  integrity sha512-VfxkJlHU2xGyHl0iDLd21GHHqp3Y4m3xjvUxqrZSs0zEUE7qp8U2+s65dCtjYLza9Eu5yI6a+gsJoe2P66m31A==
   dependencies:
-    copy-to-clipboard "^3.0.8"
+    copy-to-clipboard "^3.2.0"
     react-click-outside "^3.0.1"
-    react-fast-compare "2.0.2"
+    react-fast-compare "2.0.4"
 
 "@hapi/address@2.x.x":
   version "2.0.0"
@@ -2684,7 +2684,7 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-to-clipboard@^3, copy-to-clipboard@^3.0.8:
+copy-to-clipboard@^3, copy-to-clipboard@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.2.0.tgz#d2724a3ccbfed89706fac8a894872c979ac74467"
   integrity sha512-eOZERzvCmxS8HWzugj4Uxl8OJxa7T2k1Gi0X5qavwydHIfuSHq2dTD09LOg/XyGq4Zpb5IsR/2OJ5lbOegz78w==
@@ -7258,10 +7258,10 @@ react-error-overlay@5.1.4:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.4.tgz#88dfb88857c18ceb3b9f95076f850d7121776991"
   integrity sha512-fp+U98OMZcnduQ+NSEiQa4s/XMsbp+5KlydmkbESOw4P69iWZ68ZMFM5a2BuE0FgqPBKApJyRuYHR95jM8lAmg==
 
-react-fast-compare@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.2.tgz#0560ba7a61a1662d9cea8cd97a0d9db7591bab1c"
-  integrity sha512-EdPU5vXIzvNvQFNuej3oQ1PZ6YmDunTPZJ3V5EmwRqOhEmW0PNxzUdbYhXnZKZFtrrjGiu9718f6iQRdj0l2JA==
+react-fast-compare@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
+  integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
 react-image-crop@^6.0.16:
   version "6.0.18"
