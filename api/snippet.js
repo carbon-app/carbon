@@ -1,7 +1,7 @@
 const Morph = require('morphmorph')
 const url = require('url')
 const { json, createError, send } = require('micro')
-const firebase = require('firebase-admin')
+const admin = require('firebase-admin')
 
 const PRIVATE_KEY = JSON.parse(Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString())
 
@@ -45,7 +45,7 @@ function sanitizeInput(obj = {}) {
   return mapper.map(allowedKeys, obj)
 }
 
-function getSnippet(admin, req) {
+function getSnippet(req) {
   const parsed = url.parse(req.url, true)
   const id = parsed.query.id
 
@@ -91,7 +91,7 @@ function getSnippet(admin, req) {
     })
 }
 
-async function createSnippet(admin, user, req) {
+async function createSnippet(user, req) {
   const { code, ...data } = await json(req, { limit: '6mb' })
 
   if (code == null) {
@@ -110,7 +110,7 @@ async function createSnippet(admin, user, req) {
     }))
 }
 
-async function updateSnippet(admin, user, req) {
+async function updateSnippet(user, req) {
   const parsed = url.parse(req.url, true)
   const id = parsed.query.id && parsed.query.id.replace(/\/$/, '')
 
@@ -158,15 +158,15 @@ function handleErrors(fn) {
 async function authorizeUser(req) {
   const token = req.headers.authorization.split(/\s+/).pop()
   if (!token) throw createError(401, 'Unauthorized')
-  const user = await firebase.auth().verifyIdToken(token)
+  const user = await admin.auth().verifyIdToken(token)
   if (!user) throw createError(401, 'Unauthorized')
   return user
 }
 
 module.exports = handleErrors(async function(req, res) {
-  if (firebase.apps.length === 0) {
-    firebase.initializeApp({
-      credential: firebase.credential.cert(PRIVATE_KEY),
+  if (admin.apps.length === 0) {
+    admin.initializeApp({
+      credential: admin.credential.cert(PRIVATE_KEY),
       databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
     })
   }
@@ -174,15 +174,15 @@ module.exports = handleErrors(async function(req, res) {
   switch (req.method) {
     case 'POST': {
       const user = await authorizeUser(req)
-      return createSnippet(firebase, user, req, res)
+      return createSnippet(user, req, res)
     }
     case 'DELETE':
     case 'PATCH': {
       const user = await authorizeUser(req)
-      return updateSnippet(firebase, user, req, res)
+      return updateSnippet(user, req, res)
     }
     case 'GET':
-      return getSnippet(firebase, req, res)
+      return getSnippet(req, res)
     default:
       throw createError(501, 'Not Implemented')
   }
