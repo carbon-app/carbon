@@ -22,7 +22,6 @@ module.exports = withOffline({
     ]
   },
   env: {
-    // XXX do we need this?
     FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
     FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
     FIREBASE_FE_APP_ID: process.env.FIREBASE_FE_APP_ID,
