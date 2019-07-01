@@ -1,8 +1,49 @@
+const Morph = require('morphmorph')
 const url = require('url')
 const { json, createError, send } = require('micro')
 const firebase = require('firebase-admin')
 
 const PRIVATE_KEY = JSON.parse(Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString())
+
+const mapper = new Morph({
+  types: {
+    bool: v => {
+      if (v == null) return undefined
+      if (v === 'false') return false
+      return Boolean(v)
+    }
+  }
+})
+
+const allowedKeys = [
+  'backgroundColor',
+  'backgroundMode',
+  'code',
+  { field: 'dropShadow', type: 'bool' },
+  'dropShadowBlurRadius',
+  'dropShadowOffsetY',
+  'exportSize',
+  'fontFamily',
+  'fontSize',
+  'language',
+  'lineHeight',
+  { field: 'lineNumbers', type: 'bool' },
+  'marginHorizontal',
+  'marginVertical',
+  'paddingHorizontal',
+  'paddingVertical',
+  'preset',
+  { field: 'squaredImage', type: 'bool' },
+  'theme',
+  'watermark',
+  { field: 'widthAdjustment', type: 'bool' },
+  { field: 'windowControls', type: 'bool' },
+  'windowTheme'
+]
+
+function sanitizeInput(obj = {}) {
+  return mapper.map(allowedKeys, obj)
+}
 
 function getSnippet(admin, req) {
   const parsed = url.parse(req.url, true)
@@ -59,10 +100,9 @@ async function createSnippet(admin, user, req) {
 
   const db = admin.database()
 
-  // XXX user
   return db
     .ref('snippets')
-    .push({ ...data, code, userId: user.uid })
+    .push({ ...sanitizeInput(data), code, userId: user.uid })
     .then(ref => ref.once('value'))
     .then(data => ({
       ...data.val(),
@@ -78,17 +118,14 @@ async function updateSnippet(admin, user, req) {
     throw createError(400, 'id is a required parameter')
   }
 
-  // XXX validate data
-  const data = await json(req, { limit: '6mb' })
-
   const db = admin.database()
   const ref = db.ref('snippets').child(id)
 
-  // XXX user
-  return ref.once('value').then(snapshot => {
+  return ref.once('value').then(async snapshot => {
     if (snapshot.val().userId === user.uid) {
+      const data = await json(req, { limit: '6mb' })
       // null for DELETE
-      const updates = data ? { ...data, userId: user.uid } : null
+      const updates = data ? { ...sanitizeInput(data), userId: user.uid } : null
 
       return ref.update(updates).then(() => ({
         ...updates,
