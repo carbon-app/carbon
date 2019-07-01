@@ -2,13 +2,13 @@ import React from 'react'
 import Spinner from 'react-spinner'
 import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
-import ApiContext from './ApiContext'
+import { useAPI } from './ApiContext'
 import PhotoCredit from './PhotoCredit'
 
 function RandomImage(props) {
   const cacheRef = React.useRef([])
   const [cacheIndex, updateIndex] = React.useState(0)
-  const api = React.useContext(ApiContext)
+  const api = useAPI()
 
   const [selectImage, { loading: selecting }] = useAsyncCallback(() => {
     const image = cacheRef.current[cacheIndex]
