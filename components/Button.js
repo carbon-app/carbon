@@ -21,6 +21,7 @@ const Button = ({
   margin = 0,
   title,
   Component = 'button',
+  display,
   ...props
 }) => (
   <Component id={id} onClick={onClick} disabled={disabled} {...props}>
@@ -29,7 +30,7 @@ const Button = ({
     <style jsx>
       {`
         ${Component} {
-          display: flex;
+          display: ${display || 'flex'};
           flex: ${flex};
           background-color: ${background};
           color: ${color};
