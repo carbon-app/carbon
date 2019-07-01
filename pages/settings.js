@@ -4,12 +4,10 @@ import firebase from '../lib/client'
 
 // Ours
 import Page from '../components/Page'
-// import Button from '../components/Button'
 import LoginButton from '../components/LoginButton'
 import MenuButton from '../components/MenuButton'
 import { MetaLinks } from '../components/Meta'
-
-import AuthContext, { Context } from '../components/AuthContext'
+import { useAuth } from '../components/AuthContext'
 
 import { COLORS } from '../lib/constants'
 
@@ -23,7 +21,7 @@ function logout() {
 
 function Settings() {
   const [selected] = React.useState('Account')
-  const user = React.useContext(Context)
+  const user = useAuth()
 
   if (!user) {
     return <LoginButton />
@@ -93,9 +91,7 @@ function SettingsPage() {
   return (
     <Page>
       <MetaLinks />
-      <AuthContext>
-        <Settings />
-      </AuthContext>
+      <Settings />
     </Page>
   )
 }
