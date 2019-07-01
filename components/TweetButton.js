@@ -1,11 +1,11 @@
 import React from 'react'
 import { useAsyncCallback, useOnline as useOnlineListener } from '@dawnlabs/tacklebox'
 
-import ApiContext from './ApiContext'
+import { useAPI } from './ApiContext'
 import Button from './Button'
 
 function TweetButton(props) {
-  const api = React.useContext(ApiContext)
+  const api = useAPI()
   const online = useOnlineListener()
   const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
