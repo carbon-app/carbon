@@ -1,15 +1,12 @@
+extends: reporanger/superpowers
+
 default:
   close:
     comment: ⚠️ This issue has been marked as a $LABEL. It will be closed in $DELAY...
     delay: 1 days
 
 labels:
-  "merge when passing": merge
   greenkeeper: merge
-  wontfix: close
-  invalid: close
-  stale: close
-  duplicate: close
   "theme/language":
     action: close
     delay: 5 days
@@ -17,14 +14,3 @@ labels:
       This issue has been marked "$LABEL" and will be closed in $DELAY. As of Carbon `3.0.0`, the Carbon core team is no longer implementing new themes or languages (although the ability to create your own will be implemented soon!). However, PRs to add new ones will be happily accepted.
       
       Please see https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md#a-note-on-adding-themeslanguages for notes on how to do so 👌. 
-
-comments:
-  - action: label
-    pattern: /duplicate of/i
-    labels: 
-      - duplicate
-  - action: delete_comment
-    pattern: "+1"
-
-merges:
-  - action: delete_branch
