@@ -5,6 +5,10 @@ import { client } from '../lib/api'
 
 export const Context = React.createContext(null)
 
+export function useAuth() {
+  return React.useContext(Context)
+}
+
 function AuthContext(props) {
   const [user, setState] = React.useState(null)
 

@@ -4,7 +4,7 @@ import firebase, { login, logout } from '../lib/client'
 
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
-import { Context } from './AuthContext'
+import { useAuth } from './AuthContext'
 
 function Drawer(props) {
   return (
@@ -32,7 +32,7 @@ function Drawer(props) {
 }
 
 function LoginButton({ isVisible, toggleVisibility }) {
-  const user = React.useContext(Context)
+  const user = useAuth()
 
   return (
     <div>
