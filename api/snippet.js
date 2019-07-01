@@ -121,20 +121,27 @@ async function updateSnippet(admin, user, req) {
   const db = admin.database()
   const ref = db.ref('snippets').child(id)
 
-  return ref.once('value').then(async snapshot => {
-    if (snapshot.val().userId === user.uid) {
-      const data = await json(req, { limit: '6mb' })
-      // null for DELETE
-      const updates = data ? { ...sanitizeInput(data), userId: user.uid } : null
-
-      return ref.update(updates).then(() => ({
-        ...updates,
-        id: snapshot.key
-      }))
-    }
-
-    throw createError(403, 'Forbidden')
-  })
+  return ref
+    .once('value')
+    .then(data => {
+      const value = data.val()
+      if (value.userId === user.uid) {
+        return value
+      }
+      throw createError(403, 'Forbidden')
+    })
+    .then(value =>
+      json(req, { limit: '6mb' })
+        // null for DELETE
+        .then(data => (data ? sanitizeInput(data) : null))
+        .then(updates =>
+          ref.update(updates).then(() => ({
+            ...value,
+            ...updates,
+            id: ref.key
+          }))
+        )
+    )
 }
 
 function handleErrors(fn) {
