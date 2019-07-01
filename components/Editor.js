@@ -16,7 +16,7 @@ import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
 import LoginButton from './LoginButton'
-import SaveButton from './SaveButton'
+import SnippetToolbar from './SnippetToolbar'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -409,25 +409,35 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-        <Toolbar style={{ marginTop: 16, marginBottom: 0 }}>
-          <SaveButton
-            onClick={() =>
-              this.context.gist
-                .update(this.gist && this.gist.id, {
-                  ...config,
-                  code: code != null ? code : DEFAULT_CODE
-                })
-                .then(snippet => {
-                  if (snippet && snippet.id) {
-                    if (!this.gist) {
-                      this.gist = snippet
-                    }
-                    this.props.router.push('/', '/' + snippet.id, { shallow: true })
-                  }
-                })
+        <SnippetToolbar
+          snippet={this.gist}
+          onDelete={() => {
+            if (this.gist) {
+              this.context.gist.delete(this.gist.id).then(() => {
+                this.gist = null
+                // XXX useEffect
+                this.props.router.push('/', '/', { shallow: true })
+              })
             }
-          />
-        </Toolbar>
+          }}
+          onSave={() =>
+            this.context.gist
+              // TODO
+              .update(this.gist && this.gist.id, {
+                ...config,
+                code: code != null ? code : DEFAULT_CODE
+              })
+              .then(snippet => {
+                if (snippet && snippet.id) {
+                  if (!this.gist) {
+                    this.gist = snippet
+                  }
+                  // XXX make an effect that handles this
+                  this.props.router.push('/', '/' + snippet.id, { shallow: true })
+                }
+              })
+          }
+        />
         <style jsx global>
           {`
             @font-face {
