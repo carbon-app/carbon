@@ -66,16 +66,17 @@ class Editor extends React.Component {
 
     // TODO we could create an interface for loading this config, so that it looks identical
     // whether config is loaded from localStorage, gist, or even something like IndexDB
+    let snippet
     if (this.context.gist && parameter) {
-      const gist = await this.context.gist.get(parameter)
-      if (gist) {
-        this.gist = gist
+      snippet = await this.context.gist.get(parameter)
+      if (snippet) {
+        this.props.setSnippet(snippet)
       }
     }
 
     const newState = {
       // Load options from gist or localStorage
-      ...(this.gist ? this.gist : getSettings(localStorage)),
+      ...(snippet ? snippet : getSettings(localStorage)),
       // and then URL params
       ...queryState,
       loading: false
@@ -108,7 +109,7 @@ class Editor extends React.Component {
 
   updateState = updates => {
     this.setState(updates, () => {
-      if (!this.gist) {
+      if (!this.props.snippet) {
         this.props.onUpdate(this.state)
       }
     })
@@ -410,30 +411,20 @@ class Editor extends React.Component {
           )}
         </Dropzone>
         <SnippetToolbar
-          snippet={this.gist}
-          onDelete={() => {
-            if (this.gist) {
-              this.context.gist.delete(this.gist.id).then(() => {
-                this.gist = null
-                // XXX useEffect
-                this.props.router.push('/', '/', { shallow: true })
-              })
-            }
-          }}
+          snippet={this.props.snippet}
+          onDelete={() =>
+            this.context.gist.delete(this.props.snippet.id).then(() => this.props.setSnippet(null))
+          }
           onSave={() =>
             this.context.gist
               // TODO
-              .update(this.gist && this.gist.id, {
+              .update(this.props.snippet && this.props.snippet.id, {
                 ...config,
                 code: code != null ? code : DEFAULT_CODE
               })
               .then(snippet => {
-                if (snippet && snippet.id) {
-                  if (!this.gist) {
-                    this.gist = snippet
-                  }
-                  // XXX make an effect that handles this
-                  this.props.router.push('/', '/' + snippet.id, { shallow: true })
+                if (snippet && snippet.id && !this.props.snippet) {
+                  this.props.setSnippet(snippet)
                 }
               })
           }
