@@ -113,15 +113,13 @@ async function createSnippet(user, req) {
   const collection = db.ref('snippets')
   const ref = await push(collection)
 
-  const updates = {
-    ...sanitizeInput(data),
-    createdAt: admin.database.ServerValue.TIMESTAMP,
-    updatedAt: admin.database.ServerValue.TIMESTAMP,
-    userId: user.uid
-  }
-
   return ref
-    .set(updates)
+    .set({
+      ...sanitizeInput(data),
+      createdAt: admin.database.ServerValue.TIMESTAMP,
+      updatedAt: admin.database.ServerValue.TIMESTAMP,
+      userId: user.uid
+    })
     .then(() => ref.once('value'))
     .then(snapshot => snapshot.val())
     .then(val => ({
@@ -152,13 +150,11 @@ async function updateSnippet(user, req) {
     })
 
   const data = await json(req, { limit: '6mb' })
-  // TODO null for DELETE
-  const updates = data
-    ? { ...sanitizeInput(data), updatedAt: admin.database.ServerValue.TIMESTAMP }
-    : null
 
   return ref
-    .update(updates)
+    .update(
+      data ? { ...sanitizeInput(data), updatedAt: admin.database.ServerValue.TIMESTAMP } : null
+    )
     .then(() => ref.once('value'))
     .then(snapshot => snapshot.val())
     .then(val => ({
@@ -199,6 +195,7 @@ module.exports = handleErrors(async function(req, res) {
       const user = await authorizeUser(req)
       return createSnippet(user, req, res)
     }
+    // TODO make updateSnippet general to reuse
     case 'DELETE':
     case 'PATCH': {
       const user = await authorizeUser(req)
