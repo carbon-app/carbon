@@ -40,9 +40,9 @@ function EditorContainer(props) {
   // XXX use context
   const [snippet, setSnippet] = React.useState(null)
 
-  const snippetId = snippet && snippet.snippetId
+  const snippetId = snippet && snippet.id
   React.useEffect(() => {
-    props.router.push('/', '/' + snippetId || '', { shallow: true })
+    props.router.push('/', '/' + (snippetId || ''), { shallow: true })
   }, [snippetId, props.router])
 
   return (

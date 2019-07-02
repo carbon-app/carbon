@@ -1,7 +1,17 @@
+const crypto = require('crypto')
 const Morph = require('morphmorph')
 const url = require('url')
 const { json, createError, send } = require('micro')
 const admin = require('firebase-admin')
+
+function push(collection) {
+  const id = crypto.randomBytes(16).toString('hex')
+  const ref = collection.child(id)
+  return ref
+    .once('value')
+    .then(data => data.exists())
+    .then(exists => (exists ? push(collection) : ref))
+}
 
 const PRIVATE_KEY = JSON.parse(Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString())
 
@@ -60,7 +70,7 @@ function getSnippet(req) {
     .child(id)
     .once('value')
     .then(data => {
-      if (data.exists) {
+      if (data.exists()) {
         return {
           ...data.val(),
           id
@@ -92,21 +102,31 @@ function getSnippet(req) {
 }
 
 async function createSnippet(user, req) {
-  const { code, ...data } = await json(req, { limit: '6mb' })
+  const data = await json(req, { limit: '6mb' })
 
-  if (code == null) {
+  if (data.code == null) {
     throw createError(400, 'code is a required body parameter')
   }
 
   const db = admin.database()
 
-  return db
-    .ref('snippets')
-    .push({ ...sanitizeInput(data), code, userId: user.uid })
-    .then(ref => ref.once('value'))
-    .then(data => ({
-      ...data.val(),
-      id: data.key
+  const collection = db.ref('snippets')
+  const ref = await push(collection)
+
+  const updates = {
+    ...sanitizeInput(data),
+    createdAt: admin.database.ServerValue.TIMESTAMP,
+    updatedAt: admin.database.ServerValue.TIMESTAMP,
+    userId: user.uid
+  }
+
+  return ref
+    .set(updates)
+    .then(() => ref.once('value'))
+    .then(snapshot => snapshot.val())
+    .then(val => ({
+      ...val,
+      id: ref.key
     }))
 }
 
@@ -121,27 +141,30 @@ async function updateSnippet(user, req) {
   const db = admin.database()
   const ref = db.ref('snippets').child(id)
 
-  return ref
+  await ref
     .once('value')
-    .then(data => {
-      const value = data.val()
-      if (value.userId === user.uid) {
-        return value
+    .then(snapshot => snapshot.val())
+    .then(value => {
+      if (value.userId !== user.uid) {
+        throw createError(403, 'Forbidden')
       }
-      throw createError(403, 'Forbidden')
+      return value
     })
-    .then(value =>
-      json(req, { limit: '6mb' })
-        // null for DELETE
-        .then(data => (data ? sanitizeInput(data) : null))
-        .then(updates =>
-          ref.update(updates).then(() => ({
-            ...value,
-            ...updates,
-            id: ref.key
-          }))
-        )
-    )
+
+  const data = await json(req, { limit: '6mb' })
+  // TODO null for DELETE
+  const updates = data
+    ? { ...sanitizeInput(data), updatedAt: admin.database.ServerValue.TIMESTAMP }
+    : null
+
+  return ref
+    .update(updates)
+    .then(() => ref.once('value'))
+    .then(snapshot => snapshot.val())
+    .then(val => ({
+      ...val,
+      id: ref.key
+    }))
 }
 
 function handleErrors(fn) {
