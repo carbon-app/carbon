@@ -81,6 +81,13 @@ function SnippetToolbar(props) {
     return null
   }
 
+  if (props.snippet) {
+    // in the future, allow save, but create a fork instead
+    if (user.uid != props.snippet.userId) {
+      return null
+    }
+  }
+
   return (
     <Toolbar
       style={{
