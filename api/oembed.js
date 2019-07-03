@@ -29,7 +29,7 @@ module.exports = (req, res) => {
   try {
     const { query: queryString, pathname } = url.parse(embedUrl)
 
-    const gistID = pathname.split('/').pop()
+    const snippetID = pathname.split('/').pop()
 
     const width = Math.min(Number(req.query.maxwidth) || Infinity, 1024)
     const height = Math.min(Number(req.query.maxheight) || Infinity, 480)
@@ -41,7 +41,9 @@ module.exports = (req, res) => {
       width,
       height,
       html: toIFrame(
-        `${gistID && gistID !== 'undefined' ? `/${gistID}` : ''}?${queryString ? queryString : ''}`,
+        `${snippetID && snippetID !== 'undefined' ? `/${snippetID}` : ''}?${
+          queryString ? queryString : ''
+        }`,
         width,
         height
       )

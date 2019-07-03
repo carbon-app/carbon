@@ -67,8 +67,8 @@ class Editor extends React.Component {
     // TODO we could create an interface for loading this config, so that it looks identical
     // whether config is loaded from localStorage, gist, or even something like IndexDB
     let snippet
-    if (this.context.gist && parameter) {
-      snippet = await this.context.gist.get(parameter)
+    if (parameter) {
+      snippet = await this.context.snippet.get(parameter)
       if (snippet) {
         this.props.setSnippet(snippet)
       }
@@ -413,10 +413,12 @@ class Editor extends React.Component {
         <SnippetToolbar
           snippet={this.props.snippet}
           onDelete={() =>
-            this.context.gist.delete(this.props.snippet.id).then(() => this.props.setSnippet(null))
+            this.context.snippet
+              .delete(this.props.snippet.id)
+              .then(() => this.props.setSnippet(null))
           }
           onSave={() =>
-            this.context.gist
+            this.context.snippet
               // TODO
               .update(this.props.snippet && this.props.snippet.id, {
                 ...config,
