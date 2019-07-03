@@ -15,13 +15,6 @@ function AuthContext(props) {
   React.useEffect(() => firebase.auth().onAuthStateChanged(newUser => setState(newUser)), [])
 
   React.useEffect(() => {
-    firebase
-      .auth()
-      .getRedirectResult()
-      .catch(console.error)
-  }, [])
-
-  React.useEffect(() => {
     if (user) {
       user.getIdToken().then(jwt => {
         client.defaults.headers['Authorization'] = jwt ? `Bearer ${jwt}` : undefined
