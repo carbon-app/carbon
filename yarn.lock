@@ -3203,6 +3203,11 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
+eitherx@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eitherx/-/eitherx-1.0.2.tgz#f4659f3621e2b60787afa31e7d0467587ef890f2"
+  integrity sha512-A3S4t6mtsEJZMNIwjYvZiaGf5rxY0ITViHW9hULTAtcYlQyckznxq9q6wEGJu3GGFLftO89yq2Lx1qzg00VJkw==
+
 electron-to-chromium@^1.3.164:
   version "1.3.185"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.185.tgz#36368514eb719632a91435f3c9f57c98b47d81de"
