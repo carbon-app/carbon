@@ -1,6 +1,6 @@
 import React from 'react'
 
-const key = 'CARBON_CTA'
+const key = 'CARBON_CTA_1'
 
 class Toast extends React.Component {
   state = {
@@ -29,7 +29,7 @@ class Toast extends React.Component {
       <div className="toast mb4">
         <div className="toast-content">
           <p>Never lose a Carbon again - save your work automatically!</p>
-          <a href="/">Try it out!</a>
+          <a href="/">Click &quot;Sign up&quot; to try it out!</a>
           <button className="close-toast" onClick={this.close}>
             &times;
           </button>
@@ -52,7 +52,7 @@ class Toast extends React.Component {
               border-radius: 2px;
               margin-top: calc(var(--x4) * -1);
               animation-name: slide;
-              animation-duration: 200ms;
+              animation-duration: 600ms;
             }
 
             .toast-content {
