@@ -158,12 +158,18 @@ async function updateSnippet(user, req) {
     data = await json(req, { limit: '6mb' })
   } catch (e) {
     // invalid json
+    data = null
+  }
+
+  if (!data) {
+    // TODO must be DELETE
+    return ref.remove().then(() => ({
+      id: ref.key
+    }))
   }
 
   return ref
-    .update(
-      data ? { ...sanitizeInput(data), updatedAt: admin.database.ServerValue.TIMESTAMP } : null
-    )
+    .update({ ...sanitizeInput(data), updatedAt: admin.database.ServerValue.TIMESTAMP })
     .then(() => ref.once('value'))
     .then(snapshot => snapshot.val())
     .then(val => ({

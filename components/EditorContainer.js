@@ -9,6 +9,7 @@ import { getThemes, saveThemes, clearSettings, saveSettings, omit } from '../lib
 
 import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
+import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
 function onReset() {
   clearSettings()
@@ -43,6 +44,7 @@ function EditorContainer(props) {
   const [themes, updateThemes] = React.useState(THEMES)
   const api = useAPI()
   const user = useAuth()
+  const [update, { loading }] = useAsyncCallback(api.snippet.update)
 
   React.useEffect(() => {
     const storedThemes = getThemes(localStorage) || []
@@ -65,6 +67,10 @@ function EditorContainer(props) {
 
   // TODO use ref?
   function onEditorUpdate(state) {
+    if (loading) {
+      return
+    }
+
     if (!user) {
       updateRouteState(props.router, state)
       saveSettings(
@@ -84,13 +90,13 @@ function EditorContainer(props) {
         code: state.code != null ? state.code : DEFAULT_CODE
       }
       if (!snippet) {
-        api.snippet.update(snippetId, updates).then(newSnippet => {
+        update(snippetId, updates).then(newSnippet => {
           if (newSnippet && newSnippet.id) {
             setSnippet(newSnippet)
           }
         })
       } else if (snippet.userId === user.uid) {
-        api.snippet.update(snippetId, updates)
+        update(snippetId, updates)
       }
     }
   }
