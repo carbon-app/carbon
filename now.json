@@ -43,8 +43,8 @@
       "methods": ["GET"]
     },
     {
-      "src": "/api/snippet/?(?<id>[^/]*)",
-      "dest": "api/snippet.js?id=$id",
+      "src": "/api/snippets/?(?<id>[^/]*)",
+      "dest": "api/snippets.js?id=$id",
       "methods": ["GET", "POST", "PATCH"]
     },
     {
