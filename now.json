@@ -7,6 +7,21 @@
     { "src": "api/**/*.js", "use": "@now/node" }
   ],
   "routes": [
+    {
+      "src": "^/privacy/?",
+      "status": 302,
+      "headers": {
+        "Location": "https://www.notion.so/PRIVACY-POLICY-e9847a7777714eb08ba15a7a8eaee937"
+      }
+    },
+    {
+      "src": "^/terms/?",
+      "status": 302,
+      "headers": {
+        "Location": "https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583"
+      }
+    },
+    { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed.html" },
     {
       "src": "^/service-worker.js$",
