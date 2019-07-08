@@ -29,7 +29,7 @@ class Toast extends React.Component {
       <div className="toast mb4">
         <div className="toast-content">
           <p>Never lose a Carbon again - save your work automatically!</p>
-          <a href="/">Click &quot;Sign up&quot; to try it out!</a>
+          Click &quot;Sign up&quot; to try it out!
           <button className="close-toast" onClick={this.close}>
             &times;
           </button>
