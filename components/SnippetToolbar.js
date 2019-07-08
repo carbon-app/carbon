@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAsyncCallback, useOnline, useKeyboardListener } from '@dawnlabs/tacklebox'
+import { useAsyncCallback, useOnline } from '@dawnlabs/tacklebox'
 import Button from './Button'
 
 import { useAuth } from './AuthContext'
@@ -44,48 +44,50 @@ function DeleteButton(props) {
   )
 }
 
-function SaveButton(props) {
-  const [onClick, { loading }] = useAsyncCallback(props.onClick)
+// function SaveButton(props) {
+//   const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
-  useKeyboardListener('s', e => {
-    if (e.metaKey) {
-      onClick()
-    }
-  })
+//   useKeyboardListener('s', e => {
+//     if (e.metaKey) {
+//       onClick()
+//     }
+//   })
 
-  return (
-    <Button
-      display="block"
-      padding="0 16px"
-      flex="unset"
-      center
-      border
-      large
-      color="#37b589"
-      onClick={onClick}
-    >
-      {loading ? 'Saving...' : 'Save'}
-    </Button>
-  )
-}
+//   return (
+//     <Button
+//       display="block"
+//       padding="0 16px"
+//       flex="unset"
+//       center
+//       border
+//       large
+//       color="#37b589"
+//       onClick={onClick}
+//     >
+//       {loading ? 'Saving...' : 'Save'}
+//     </Button>
+//   )
+// }
 
 function SnippetToolbar(props) {
   const user = useAuth()
   const online = useOnline()
 
-  if (!user) {
-    return null
-  }
-
   if (!online) {
     return null
   }
 
-  if (props.snippet) {
-    // in the future, allow save, but create a fork instead
-    if (user.uid != props.snippet.userId) {
-      return null
-    }
+  if (!user) {
+    return null
+  }
+
+  if (!props.snippet) {
+    return null
+  }
+
+  // in the future, allow save, but create a fork instead
+  if (user.uid != props.snippet.userId) {
+    return null
   }
 
   return (
@@ -97,8 +99,7 @@ function SnippetToolbar(props) {
         justifyContent: 'space-between'
       }}
     >
-      <SaveButton onClick={props.onSave} />
-      {props.snippet && <DeleteButton onClick={props.onDelete} />}
+      <DeleteButton onClick={props.onDelete} />
     </Toolbar>
   )
 }

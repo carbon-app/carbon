@@ -153,7 +153,12 @@ async function updateSnippet(user, req) {
       return value
     })
 
-  const data = await json(req, { limit: '6mb' })
+  let data = null
+  try {
+    data = await json(req, { limit: '6mb' })
+  } catch (e) {
+    // invalid json
+  }
 
   return ref
     .update(
