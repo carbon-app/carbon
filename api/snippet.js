@@ -28,6 +28,8 @@ const mapper = new Morph({
 const allowedKeys = [
   'backgroundColor',
   'backgroundMode',
+  'backgroundImage',
+  'backgroundImageSelection',
   'code',
   { field: 'dropShadow', type: 'bool' },
   'dropShadowBlurRadius',
@@ -35,6 +37,8 @@ const allowedKeys = [
   'exportSize',
   'fontFamily',
   'fontSize',
+  'fontUrl',
+  'highlights',
   'language',
   'lineHeight',
   { field: 'lineNumbers', type: 'bool' },
