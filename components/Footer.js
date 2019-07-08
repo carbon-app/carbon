@@ -22,6 +22,12 @@ const Footer = () => (
       <a className="link" href="https://github.com/dawnlabs/carbon">
         source
       </a>
+      <a className="link" href="/terms">
+        terms
+      </a>
+      <a className="link" href="/privacy">
+        privacy
+      </a>
       <EmailSubscribe />
     </nav>
 
