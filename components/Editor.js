@@ -4,6 +4,7 @@ import React from 'react'
 import domtoimage from 'dom-to-image'
 import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
+import debounce from 'lodash.debounce'
 
 // Ours
 import ApiContext from './ApiContext'
@@ -91,7 +92,7 @@ class Editor extends React.Component {
       newState.fontFamily = DEFAULT_SETTINGS.fontFamily
     }
 
-    this.updateState(newState)
+    this.setState(newState)
 
     this.isSafari =
       window.navigator &&
@@ -107,13 +108,11 @@ class Editor extends React.Component {
 
   getTheme = () => this.props.themes.find(t => t.id === this.state.theme) || DEFAULT_THEME
 
-  updateState = updates => {
-    this.setState(updates, () => {
-      if (!this.props.snippet) {
-        this.props.onUpdate(this.state)
-      }
-    })
-  }
+  onUpdate = debounce(updates => this.props.onUpdate(updates), 750, {
+    trailing: true,
+    leading: true
+  })
+  updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
 
@@ -416,19 +415,6 @@ class Editor extends React.Component {
             this.context.snippet
               .delete(this.props.snippet.id)
               .then(() => this.props.setSnippet(null))
-          }
-          onSave={() =>
-            this.context.snippet
-              // TODO
-              .update(this.props.snippet && this.props.snippet.id, {
-                ...config,
-                code: code != null ? code : DEFAULT_CODE
-              })
-              .then(snippet => {
-                if (snippet && snippet.id && !this.props.snippet) {
-                  this.props.setSnippet(snippet)
-                }
-              })
           }
         />
         <style jsx global>
