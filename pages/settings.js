@@ -1,6 +1,6 @@
 // Theirs
 import React from 'react'
-import firebase from '../lib/client'
+import { logout } from '../lib/client'
 
 // Ours
 import Page from '../components/Page'
@@ -11,12 +11,8 @@ import { useAuth } from '../components/AuthContext'
 
 import { COLORS } from '../lib/constants'
 
-function logout() {
-  return () =>
-    firebase
-      .auth()
-      .signOut()
-      .catch(console.error)
+function logoutThunk() {
+  return logout
 }
 
 function Settings() {
@@ -34,9 +30,9 @@ function Settings() {
         <div className="settings-menu">
           <MenuButton name="Account" select={selectMenu} selected={selected} />
           {/* <MenuButton name="API Keys" select={selectMenu} selected={selected} /> */}
-          <MenuButton name="Sign Out" select={logout} selected={selected} noArrows />
+          <MenuButton name="Sign Out" select={logoutThunk} selected={selected} noArrows />
         </div>
-        <div className="content">Test</div>
+        <div className="content"></div>
       </div>
       {user && <img className="avatar" src={user.photoURL} alt={user.displayName} />}
       <style jsx>
