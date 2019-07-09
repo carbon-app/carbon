@@ -2,12 +2,7 @@ ports:
 - port: 3000
   onOpen: open-preview
 tasks:
-- init: yarn
+- init: yarn && gp sync-done yarn
   command: yarn dev
 - openMode: split-right
-  command: echo -e "If you made any changes to this project enter your Github username below and add yourself as a contributor\n" &&
-           echo -e "Enter your Github username:" &&
-           read username &&
-           echo -e "Enter your Contributions (check out CONTRIBUTING.md):" &&
-           read contributions &&
-           yarn contrib:add $username $contributions
+  command: gp sync-await yarn && yarn contrib:add
