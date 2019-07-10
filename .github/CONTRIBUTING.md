@@ -13,7 +13,7 @@ If you'd like to make some changes yourself, see the following:
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind are welcome!
 
 ### Alternatively
-You can also open this repository in Gitpod, an online IDE for Github. Just click on the button below and all of the above mentioned work is automated, so you don't have to worry about setting up your environment.
+You can also open this repository in Gitpod, an online IDE for GitHub. Just click on the button below and all of the above mentioned work is automated, so you don't have to worry about setting up your environment.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dawnlabs/carbon)
 
