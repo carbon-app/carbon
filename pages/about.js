@@ -6,14 +6,28 @@ export default () => (
     <div className="about">
       <div className="mb4">
         <h2>What does this do?</h2>
+        <p>Carbon lets you create and share beautiful images of your source code</p>
         <p>
           You know all of those code screenshots you see on Twitter? Although the code&apos;s
-          usually impressive, we saw room for improvement in the aesthetic department. Carbon is the
-          easiest way to create beautiful images of your source code. So what are you waiting for?
-          Go impress all of your followers with your newfound design prowess.{' '}
+          usually impressive, we throught there was room for improvement in the aesthetic
+          department. So what are you waiting for? Go try it out and impress all your developer and
+          designer friends.{' '}
           <span role="img" aria-label="Palette">
             🎨
           </span>
+        </p>
+      </div>
+      <div className="mb4">
+        <h2>Who uses it?</h2>
+        <p>
+          Carbon is used by thousands of developers daily, including experts at:
+          <div className="mt2">
+            <img
+              width="632px"
+              src="/static/open-source-companies.svg"
+              alt="Companies that trust Carbon: Google, Airbnb, GitHub, Coinbase, and Microsoft"
+            />
+          </div>
         </p>
       </div>
       <div className="mb4">
@@ -69,8 +83,8 @@ export default () => (
       <div>
         <h2>I want to make this better.</h2>
         <p>
-          <a className="link" href="https://github.com/dawnlabs/carbon">
-            Please do.
+          <a className="link" href="https://github.com/dawnlabs/carbon#contribute">
+            Contributors welcome!
           </a>
         </p>
       </div>

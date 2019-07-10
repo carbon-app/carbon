@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "3.9.32",
+  "version": "3.9.33",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -20,7 +20,7 @@
     "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
   },
   "dependencies": {
-    "@dawnlabs/tacklebox": "^0.0.10",
+    "@dawnlabs/tacklebox": "^0.0.11",
     "@reach/visually-hidden": "^0.1.4",
     "axios": "^0.19.0",
     "chrome-aws-lambda": "^1.14.0",
@@ -33,6 +33,7 @@
     "downshift": "^3.2.10",
     "dropperx": "^1.0.1",
     "email-validator": "^2.0.4",
+    "eitherx": "^1.0.2",
     "escape-goat": "^2.1.0",
     "graphql": "^14.3.1",
     "highlight.js": "^9.15.8",
@@ -74,9 +75,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
-    "husky": "^2.4.1",
+    "husky": "^3.0.0",
     "jest": "^24.8.0",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.0.0",
     "now": "^15.6.0",
     "now-release": "^0.0.2",
     "wait-on": "^3.2.0"

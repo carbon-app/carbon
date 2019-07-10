@@ -3,6 +3,7 @@ import React from 'react'
 import { withRouter } from 'next/router'
 import { register, unregister } from 'next-offline/runtime'
 import debounce from 'lodash.debounce'
+import Either from 'eitherx'
 
 // Ours
 import EditorContainer from '../components/EditorContainer'
@@ -44,11 +45,20 @@ class Index extends React.Component {
     return (
       <Page enableHeroText={true}>
         <MetaLinks />
-        <EditorContainer
-          router={this.props.router}
-          onUpdate={this.onEditorUpdate}
-          onReset={onReset}
-        />
+        <Either>
+          <EditorContainer
+            router={this.props.router}
+            onUpdate={this.onEditorUpdate}
+            onReset={onReset}
+          />
+          <p>
+            An unexpected error has occurred. Please{' '}
+            <u>
+              <a href="https://github.com/dawnlabs/carbon">file an issue here</a>
+            </u>
+            .
+          </p>
+        </Either>
       </Page>
     )
   }
