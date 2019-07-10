@@ -38,9 +38,15 @@ function Toast(props) {
             from {
               transform: translateX(0rem);
             }
+            97% {
+              transform: translateX(20rem);
+            }
             to {
               transform: translateX(20rem);
               display: none;
+              height: 0;
+              padding: 0;
+              margin: 0;
             }
           }
 
@@ -87,9 +93,12 @@ function Toast(props) {
 function ToastContainer(props) {
   return (
     <div className="toast">
-      {props.toasts.reverse().map(toast => (
-        <Toast key={toast.children} {...toast} />
-      ))}
+      {props.toasts
+        .slice()
+        .reverse()
+        .map(toast => (
+          <Toast key={toast.children} {...toast} />
+        ))}
       <style jsx>
         {`
           .toast {
