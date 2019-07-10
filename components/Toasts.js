@@ -28,7 +28,7 @@ function Toast(props) {
         {`
           @keyframes in {
             from {
-              transform: translateX(8rem);
+              transform: translateX(16rem);
             }
             to {
               transform: translateX(0rem);
@@ -50,14 +50,16 @@ function Toast(props) {
             border: 1px solid #fff;
             border-radius: 2px;
             background: #000;
+            font-size: 14px;
             animation-name: in;
             animation-duration: 600ms;
-            font-size: 14px;
+            animation-direction: forwards;
+            animation-fill-mode: both;
+            animation-timing-function: ease-out;
           }
 
           .toast.out {
             animation-name: out;
-            animation-fill-mode: forwards;
           }
 
           .toast-content {

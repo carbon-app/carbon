@@ -415,6 +415,7 @@ class Editor extends React.Component {
             this.context.snippet
               .delete(this.props.snippet.id)
               .then(() => this.props.setSnippet(null))
+              .then(() => this.props.setToasts([{ children: 'Snippet deleted', timeout: 3000 }]))
           }
         />
         <style jsx global>

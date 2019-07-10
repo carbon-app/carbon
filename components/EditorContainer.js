@@ -124,6 +124,7 @@ function EditorContainer(props) {
         updateThemes={updateThemes}
         snippet={snippet}
         setSnippet={setSnippet}
+        setToasts={setToasts}
         onUpdate={onEditorUpdate}
         onReset={onReset}
       />
