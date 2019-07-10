@@ -3,13 +3,23 @@ import React from 'react'
 import ReactGA from 'react-ga'
 
 import Editor from './Editor'
-import { THEMES, DEFAULT_CODE, GA_TRACKING_ID } from '../lib/constants'
+import Toasts from './Toasts'
+import { GA_TRACKING_ID, THEMES, DEFAULT_CODE } from '../lib/constants'
 import { updateRouteState } from '../lib/routing'
 import { getThemes, saveThemes, clearSettings, saveSettings, omit } from '../lib/util'
 
 import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
 import { useAsyncCallback } from '@dawnlabs/tacklebox'
+
+function pushToast(toast) {
+  return curr => {
+    if (!curr.find(t => t.children === toast.children)) {
+      return curr.concat(toast)
+    }
+    return curr
+  }
+}
 
 function onReset() {
   clearSettings()
@@ -59,6 +69,7 @@ function EditorContainer(props) {
 
   // XXX use context
   const [snippet, setSnippet] = React.useState(null)
+  const [toasts, setToasts] = React.useState([])
 
   const snippetId = snippet && snippet.id
   React.useEffect(() => {
@@ -93,24 +104,30 @@ function EditorContainer(props) {
         update(snippetId, updates).then(newSnippet => {
           if (newSnippet && newSnippet.id) {
             setSnippet(newSnippet)
+            setToasts(pushToast({ children: 'Snippet saved!', closable: true }))
           }
         })
       } else if (snippet.userId === user.uid) {
-        update(snippetId, updates)
+        update(snippetId, updates).then(() => {
+          setToasts(pushToast({ children: 'Snippet saved!', closable: true }))
+        })
       }
     }
   }
 
   return (
-    <Editor
-      {...props}
-      themes={themes}
-      updateThemes={updateThemes}
-      snippet={snippet}
-      setSnippet={setSnippet}
-      onUpdate={onEditorUpdate}
-      onReset={onReset}
-    />
+    <>
+      <Toasts toasts={toasts} />
+      <Editor
+        {...props}
+        themes={themes}
+        updateThemes={updateThemes}
+        snippet={snippet}
+        setSnippet={setSnippet}
+        onUpdate={onEditorUpdate}
+        onReset={onReset}
+      />
+    </>
   )
 }
 
