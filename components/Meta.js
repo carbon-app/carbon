@@ -12,10 +12,12 @@ const CDN_STYLESHEETS = THEMES.filter(
 )
 
 export function Link({ href, priority }) {
+  const high = priority !== 'low'
+
   return (
     <Head>
-      <link rel="preload" as="style" href={href} />
-      {priority !== 'low' && <link rel="stylesheet" href={href} />}
+      <link rel={high ? 'preload' : 'prefetch'} as="style" href={href} />
+      {high && <link rel="stylesheet" href={href} />}
     </Head>
   )
 }
