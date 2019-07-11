@@ -210,6 +210,7 @@ const SelectedItem = ({
       <input
         {...getInputProps({ placeholder: children, id: `downshift-input-${children}`, disabled })}
         className="dropdown-display-text"
+        spellCheck={false}
       />
       <div className="dropdown-arrow">
         <ArrowDown color={itemColor} />
