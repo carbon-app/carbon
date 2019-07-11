@@ -89,6 +89,7 @@ class Themes extends React.PureComponent {
     const { themes, theme, isVisible, toggleVisibility } = this.props
 
     const highlights = { ...theme.highlights, ...this.props.highlights }
+    const shadows = { ...theme.shadows, ...this.props.shadows }
 
     const dropdownValue = isVisible ? { name: this.state.name } : theme
 
@@ -138,35 +139,45 @@ class Themes extends React.PureComponent {
             :global(.cm-string),
             :global(.cm-string-2) {
               color: ${highlights.string} !important;
+              text-shadow: ${shadows.string ? shadows.string : 'none'} !important;
             }
             :global(.cm-comment) {
               color: ${highlights.comment} !important;
+              text-shadow: ${shadows.comment ? shadows.comment : 'none'} !important;
             }
             :global(.cm-variable),
             :global(.cm-variable-2),
             :global(.cm-variable-3) {
               color: ${highlights.variable} !important;
+              text-shadow: ${shadows.variable ? shadows.variable : 'none'} !important;
             }
             :global(.cm-number) {
               color: ${highlights.number} !important;
+              text-shadow: ${shadows.number ? shadows.number : 'none'} !important;
             }
             :global(.cm-keyword) {
               color: ${highlights.keyword} !important;
+              text-shadow: ${shadows.keyword ? shadows.keyword : 'none'} !important;
             }
             :global(.cm-property) {
               color: ${highlights.property} !important;
+              text-shadow: ${shadows.property ? shadows.property : 'none'} !important;
             }
             :global(.cm-def) {
               color: ${highlights.definition} !important;
+              text-shadow: ${shadows.definition ? shadows.definition : 'none'} !important;
             }
             :global(.cm-meta) {
               color: ${highlights.meta} !important;
+              text-shadow: ${shadows.meta ? shadows.meta : 'none'} !important;
             }
             :global(.cm-operator) {
               color: ${highlights.operator} !important;
+              text-shadow: ${shadows.operator ? shadows.operator : 'none'} !important;
             }
             :global(.cm-attribute) {
               color: ${highlights.attribute} !important;
+              text-shadow: ${shadows.attribute ? shadows.attribute : 'none'} !important;
             }
 
             :global(.cm-s-dracula .CodeMirror-cursor) {
