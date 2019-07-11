@@ -8,14 +8,14 @@
     { "src": "^/embed(.*)", "dest": "/embed" },
     {
       "src": "^/service-worker.js$",
-      "continue": true,
+      "dest": "/_next/static/service-worker.js",
       "headers": {
         "Service-Worker-Allowed": "/"
       }
     },
     {
       "src": "^/static/(.*)",
-      "dest": "/static/$1",
+      "continue": true,
       "headers": {
         "cache-control": "public, max-age=43200, immutable"
       }
