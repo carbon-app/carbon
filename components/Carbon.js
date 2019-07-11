@@ -4,8 +4,9 @@ import * as hljs from 'highlight.js'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
-import SpinnerWrapper from './SpinnerWrapper'
 
+import SpinnerWrapper from './SpinnerWrapper'
+import { StylesheetLink } from './Meta'
 import WindowControls from './WindowControls'
 import {
   COLORS,
@@ -32,6 +33,12 @@ class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: () => {}
   }
+
+  state = {
+    loading: true
+  }
+
+  mount = () => this.setState({ loading: false })
 
   componentDidUpdate(prevProps) {
     // TODO keep opacities in state
@@ -271,9 +278,10 @@ class Carbon extends React.PureComponent {
     return (
       <div className="section">
         <div className="export-container" ref={this.props.innerRef} id="export-container">
-          <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
+          <SpinnerWrapper loading={this.state.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
+        {themeConfig && <StylesheetLink theme={themeConfig.id} onMount={this.mount} />}
         <style jsx>
           {`
             .section,

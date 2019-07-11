@@ -11,16 +11,21 @@ const CDN_STYLESHEETS = THEMES.filter(
   t => LOCAL_STYLESHEETS.indexOf(t.id) < 0 && HIGHLIGHTS_ONLY.indexOf(t.id) < 0
 )
 
-export function Link({ href }) {
+export function Link({ href, priority }) {
   return (
     <Head>
       <link rel="preload" as="style" href={href} />
-      <link rel="stylesheet" href={href} />
+      {priority !== 'low' && <link rel="stylesheet" href={href} />}
     </Head>
   )
 }
 
-export const StylesheetLink = ({ theme }) => {
+function noop() {}
+export const StylesheetLink = ({ theme, onMount = noop }) => {
+  React.useEffect(() => {
+    onMount()
+  }, [onMount])
+
   let href
   if (LOCAL_STYLESHEETS.indexOf(theme) > -1) {
     href = `/static/themes/${theme}.min.css`
@@ -65,15 +70,14 @@ export const MetaTags = React.memo(() => (
 export const MetaLinks = React.memo(() => {
   return (
     <React.Fragment>
-      <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/theme/seti.min.css" />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (
-        <Link key={id} href={`/static/themes/${id}.min.css`} />
+        <Link key={id} href={`/static/themes/${id}.min.css`} priority="low" />
       ))}
       {CDN_STYLESHEETS.map(themeDef => {
         const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/theme/${themeDef &&
           (themeDef.link || themeDef.id)}.min.css`
-        return <Link key={themeDef.id} href={href} />
+        return <Link key={themeDef.id} href={href} priority="low" />
       })}
     </React.Fragment>
   )

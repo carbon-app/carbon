@@ -43,10 +43,7 @@ class Editor extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      ...DEFAULT_SETTINGS,
-      loading: true
-    }
+    this.state = DEFAULT_SETTINGS
 
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
@@ -76,8 +73,7 @@ class Editor extends React.Component {
       // Load options from gist or localStorage
       ...(gistState ? gistState : getSettings(localStorage)),
       // and then URL params
-      ...queryState,
-      loading: false
+      ...queryState
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -392,7 +388,6 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
-                loading={this.state.loading}
                 theme={theme}
               >
                 {code != null ? code : DEFAULT_CODE}
