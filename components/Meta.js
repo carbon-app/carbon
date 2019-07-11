@@ -69,7 +69,7 @@ export const MetaTags = React.memo(() => (
   </Head>
 ))
 
-export const MetaLinks = React.memo(() => {
+export const PreloadLinks = React.memo(() => {
   return (
     <React.Fragment>
       <CodeMirrorLink />

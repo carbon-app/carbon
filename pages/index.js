@@ -8,7 +8,7 @@ import Either from 'eitherx'
 // Ours
 import EditorContainer from '../components/EditorContainer'
 import Page from '../components/Page'
-import { MetaLinks } from '../components/Meta'
+import { PreloadLinks } from '../components/Meta'
 import { updateRouteState } from '../lib/routing'
 import { saveSettings, clearSettings, omit } from '../lib/util'
 
@@ -44,7 +44,7 @@ class Index extends React.Component {
   render() {
     return (
       <Page enableHeroText={true}>
-        <MetaLinks />
+        <PreloadLinks />
         <Either>
           <EditorContainer
             router={this.props.router}
