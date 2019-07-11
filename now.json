@@ -2,7 +2,7 @@
   "name": "carbon",
   "version": 2,
   "public": true,
-  "builds": [{ "src": "package.json", "use": "@now/next@canary" }],
+  "builds": [{ "src": "package.json", "use": "@now/next" }],
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
