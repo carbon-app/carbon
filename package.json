@@ -118,7 +118,6 @@
     "type": "git",
     "url": "git+https://github.com/dawnlabs/carbon.git"
   },
-  "author": "Dawn Labs <@dawnlabs>",
   "bugs": {
     "url": "https://github.com/dawnlabs/carbon/issues"
   },

@@ -32,7 +32,7 @@ const Footer = () => (
     </nav>
 
     <div className="mt2 mb2">
-      a project by{' '}
+      created by{' '}
       <a className="dawn-link" href="https://dawnlabs.io">
         Dawn Labs
       </a>{' '}
