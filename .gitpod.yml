@@ -2,7 +2,5 @@ ports:
 - port: 3000
   onOpen: open-preview
 tasks:
-- init: yarn && gp sync-done yarn
+- init: yarn
   command: yarn dev
-- openMode: split-right
-  command: gp sync-await yarn && yarn contrib:add
