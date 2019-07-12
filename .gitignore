@@ -8,3 +8,4 @@ cypress/screenshots
 .DS_Store
 packaged
 coverage
+public/service-worker.js

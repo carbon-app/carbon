@@ -23,7 +23,7 @@ export function Link({ href }) {
 export const StylesheetLink = ({ theme }) => {
   let href
   if (LOCAL_STYLESHEETS.indexOf(theme) > -1) {
-    href = `/static/themes/${theme}.css`
+    href = `/static/themes/${theme}.min.css`
   } else {
     const themeDef = THEMES_HASH[theme]
     href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/theme/${themeDef &&
@@ -51,7 +51,7 @@ export const MetaTags = React.memo(() => (
     <meta name="twitter:description" content={description} />
     <meta name="og:title" content={title} />
     <meta name="og:description" content={description} />
-    <meta name="og:image" content="/static/banner.png" />
+    <meta name="og:image" content="/static/brand/banner.png" />
     <meta name="theme-color" content="#121212" />
     <title>{title}</title>
     <link rel="shortcut icon" href="/static/favicon.ico" />
@@ -66,7 +66,7 @@ export const MetaLinks = React.memo(() => {
       <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/theme/seti.min.css" />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (
-        <Link key={id} href={`/static/themes/${id}.css`} />
+        <Link key={id} href={`/static/themes/${id}.min.css`} />
       ))}
       {CDN_STYLESHEETS.map(themeDef => {
         const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.47.0/theme/${themeDef &&

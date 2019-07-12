@@ -2,25 +2,23 @@
   "name": "carbon",
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@now/static-build" },
+    { "src": "package.json", "use": "@now/next" },
     { "src": "api/image.js", "use": "@now/node", "config": { "maxLambdaSize": "40mb" } },
     { "src": "api/**/*.js", "use": "@now/node" }
   ],
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
-    { "src": "^/_next/(.*)", "dest": "/_next/$1" },
-    { "src": "^/robots.txt", "dest": "/static/robots.txt" },
     {
       "src": "^/service-worker.js$",
-      "dest": "/_next/service-worker.js",
+      "dest": "/_next/static/service-worker.js",
       "headers": {
         "Service-Worker-Allowed": "/"
       }
     },
     {
       "src": "^/static/(.*)",
-      "dest": "/static/$1",
+      "continue": true,
       "headers": {
         "Cache-Control": "public, max-age=43200, immutable"
       }
@@ -51,6 +49,7 @@
       "methods": ["POST"]
     },
     { "src": "/api/.*", "status": 404 },
+    { "handle": "filesystem" },
     {
       "src": "^/(.*)",
       "dest": "/index.html",
