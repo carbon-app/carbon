@@ -16,8 +16,7 @@
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
-    "cy:open": "cypress open",
-    "now-build": "cross-env NODE_ENV=production yarn build && yarn export -o dist"
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@dawnlabs/tacklebox": "^0.0.11",
@@ -40,7 +39,7 @@
     "match-sorter": "^3.1.1",
     "morphmorph": "^0.1.0",
     "ms": "^2.1.2",
-    "next": "9.0.1",
+    "next": "^9.0.0",
     "next-offline": "^4.0.2",
     "prettier": "^1.18.2",
     "react": "^16.8.6",

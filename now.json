@@ -2,26 +2,25 @@
   "name": "carbon",
   "version": 2,
   "public": true,
-  "builds": [{ "src": "package.json", "use": "@now/static-build" }],
+  "builds": [{ "src": "package.json", "use": "@now/next" }],
   "routes": [
     { "src": "^/about(.*)", "dest": "/about" },
     { "src": "^/embed(.*)", "dest": "/embed" },
-    { "src": "^/_next/(.*)", "dest": "/_next/$1" },
-    { "src": "^/robots.txt", "dest": "/static/robots.txt" },
     {
       "src": "^/service-worker.js$",
-      "dest": "/_next/service-worker.js",
+      "dest": "/_next/static/service-worker.js",
       "headers": {
         "Service-Worker-Allowed": "/"
       }
     },
     {
       "src": "^/static/(.*)",
-      "dest": "/static/$1",
+      "continue": true,
       "headers": {
         "cache-control": "public, max-age=43200, immutable"
       }
     },
+    { "handle": "filesystem" },
     { "src": "^/(.*)", "dest": "/index.html" }
   ],
   "build": {

@@ -51,7 +51,7 @@ export const MetaTags = React.memo(() => (
     <meta name="twitter:description" content={description} />
     <meta name="og:title" content={title} />
     <meta name="og:description" content={description} />
-    <meta name="og:image" content="/static/banner.png" />
+    <meta name="og:image" content="/static/brand/banner.png" />
     <meta name="theme-color" content="#121212" />
     <title>{title}</title>
     <link rel="shortcut icon" href="/static/favicon.ico" />
