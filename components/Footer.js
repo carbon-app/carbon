@@ -33,7 +33,7 @@ const Footer = () => (
 
     <div className="mt2 mb2">
       created by{' '}
-      <a className="dawn-link" href="https://dawnlabs.io">
+      <a className="creator-link" href="https://dawnlabs.io">
         Dawn Labs
       </a>{' '}
       ¬
@@ -62,12 +62,12 @@ const Footer = () => (
           margin-right: 0;
         }
 
-        .dawn-link {
+        .creator-link {
           color: ${COLORS.PRIMARY};
           text-decoration: none;
         }
 
-        .dawn-link:hover {
+        .creator-link:hover {
           color: #fff;
         }
       `}

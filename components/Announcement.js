@@ -13,7 +13,6 @@ class Toast extends React.Component {
   }
 
   componentDidMount() {
-    window.localStorage.removeItem('CARBON_DAWN_TOAST')
     window.localStorage.removeItem('CARBON_CTA')
     if (!window.localStorage.getItem(key)) {
       this.setState({ open: true })
