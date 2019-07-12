@@ -1,11 +1,29 @@
 // Theirs
 import React from 'react'
+import ReactGA from 'react-ga'
 
 import Editor from './Editor'
-import { THEMES } from '../lib/constants'
+import { THEMES, GA_TRACKING_ID } from '../lib/constants'
 import { getThemes, saveThemes } from '../lib/util'
 
+function useAppInstallationsListener() {
+  React.useEffect(() => {
+    ReactGA.initialize(GA_TRACKING_ID)
+
+    function onInstall() {
+      ReactGA.event({
+        category: 'App',
+        action: 'Install'
+      })
+    }
+
+    window.addEventListener('appinstalled', onInstall)
+    return () => window.removeEventListener('appinstalled', onInstall)
+  }, [])
+}
+
 function EditorContainer(props) {
+  useAppInstallationsListener()
   const [themes, updateThemes] = React.useState(THEMES)
 
   React.useEffect(() => {

@@ -16,7 +16,6 @@ import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
 import {
-  GA_TRACKING_ID,
   LANGUAGES,
   LANGUAGE_MIME_HASH,
   LANGUAGE_MODE_HASH,
@@ -41,22 +40,6 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
   loading: () => null
 })
 
-function TrackInstalls() {
-  React.useEffect(() => {
-    function onInstall() {
-      ReactGA.event({
-        category: 'App',
-        action: 'Install'
-      })
-    }
-    window.addEventListener('appinstalled', onInstall)
-
-    return () => window.removeEventListener('appinstalled', onInstall)
-  }, [])
-
-  return null
-}
-
 class Editor extends React.Component {
   static contextType = ApiContext
 
@@ -79,7 +62,6 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    ReactGA.initialize(GA_TRACKING_ID)
     const { queryState, parameter } = getRouteState(this.props.router)
 
     // TODO we could create an interface for loading this config, so that it looks identical
@@ -360,7 +342,6 @@ class Editor extends React.Component {
 
     return (
       <div className="editor">
-        <TrackInstalls />
         <Toolbar>
           <Themes
             theme={theme}
