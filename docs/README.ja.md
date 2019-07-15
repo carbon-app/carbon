@@ -174,7 +174,3 @@ Carbon は<a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubu
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon?ref=badge_large)
