@@ -63,6 +63,9 @@ Carbon にインポートするには何通りかの方法があります:
 
 投稿の中で Carbon 画像を使うと、ソースコードは assistive technology からは見えなくなり、拡大やコピーなどはできなくなります。画像の下に[HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)のように、テキストとしてソースコードを持つ別の要素を追加することを検討してください。
 
+#### Installing Carbon for Desktop
+Google Chrome などの PWA をサポートしているブラウザを使用しているなら、ブラウザの設定メニューから"Install Carbon..."をクリックすることで、Carbon をオフラインで使用するためにインストールできます。
+
 ## Community
 
 私たちの素晴らしいコミュニティが作成したプロジェクトをチェックしてください:
