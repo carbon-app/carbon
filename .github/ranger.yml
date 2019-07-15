@@ -25,7 +25,7 @@ comments:
     labels:
       - duplicate
   - action: delete_comment
-    pattern: '+1'
+    pattern: '^+1$'
 
 merges:
   - action: delete_branch
