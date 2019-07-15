@@ -1,31 +1,43 @@
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png" />
+</p>
 
-<!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-54-orange.svg?style=flat-square)](#contributors)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
+<p align="center">
+  <a href="#contributors">
+    <img src="https://img.shields.io/badge/all_contributors-53-orange.svg?style=flat-square" alt="All Contributors" />
+  </a>
+  <a href="https://github.com/prettier/prettier">
+    <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier" />
+  </a>
+  <a href="https://github.com/dawnlabs/carbon/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/dawnlabs/carbon.svg" alt="MIT License" />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/dawnlabs/carbon.svg" alt="Greenkeeper badge" />
+  </a>
+  <a href="https://spectrum.chat/carbon-now">
+    <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon.svg?type=shield" alt="FOSSA Status" />     </a>
+</p>
 <br></br>
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon)
 
 ## Introduction
 
 Twitter で[いつも](https://twitter.com/dan_abramov/status/890191815567175680)[見るような](https://twitter.com/reactjs/status/890511993261654017)[こうしたコード](https://twitter.com/notquiteleo/status/873483329345028096)の[スクリーンショット](https://twitter.com/zeithq/status/805779711154647040)をご存知ですか？こうしたコードはたいていは印象的ですが、美しさの点では改善の余地があります。Carbon を使えば、ソースコードの美しいスクリーンショットを簡単に作成し、共有することができます。今すぐ、この新しいデザインの力を使ってフォロワーを感動させましょう。
 
-プロジェクトの詳細は[carbon.now.sh](https://carbon.now.sh)や[投稿](https://dawnlabs.io/case-studies/carbon/)にあります。
-
 ## Features
 
-- **GitHub gist からのインポート**. URL に GitHub gist id を付け加える
 - **カスタマイズ**. シンタックステーマやウィンドウスタイルなどをカスタマイズ
 - **すばやくシェア**. ワンクリックで画像を保存したり、リンクをツイート
+- **GitHub gist からのインポート**. URL に GitHub gist id を付け加える
 
 ## Example
 
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
+<p><img width=80% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Usage
 
@@ -49,6 +61,9 @@ Carbon にインポートするには何通りかの方法があります:
 
 投稿の中で Carbon 画像を使うと、ソースコードは assistive technology からは見えなくなり、拡大やコピーなどはできなくなります。画像の下に[HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)のように、テキストとしてソースコードを持つ別の要素を追加することを検討してください。
 
+#### Installing Carbon for Desktop
+Google Chrome などの PWA をサポートしているブラウザを使用しているなら、ブラウザの設定メニューから"Install Carbon..."をクリックすることで、Carbon をオフラインで使用するためにインストールできます。
+
 ## Community
 
 私たちの素晴らしいコミュニティが作成したプロジェクトをチェックしてください:
@@ -68,6 +83,7 @@ Carbon にインポートするには何通りかの方法があります:
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - `carbon-now`を使い、Carbon でファイルを開いたり、直接ダウンロードする。インタラクティブモードや、シンタックスハイライト機能など
 - [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 拡張ネイティブ機能を備えた macOS ラッパー
 - [CodeExpander](https://codeexpander.com) - TextExpander 機能を備えたスマートな GitHub Gist クライアント
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - `Xcode Playground`から複数の Carbon のコードスニペットをエクスポート
 
 ##### Libraries
 
@@ -87,9 +103,9 @@ PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/dawn
 
 ## Authors
 
-Carbon は<a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>によるプロジェクトです
+Carbon は次の人々によるプロジェクトです:
 
-- Mike Fix ([@mfix22](https://github.com/mfix22))
+- Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
