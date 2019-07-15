@@ -7,8 +7,7 @@
     { "src": "api/**/*.js", "use": "@now/node" }
   ],
   "routes": [
-    { "src": "^/about(.*)", "dest": "/about" },
-    { "src": "^/embed(.*)", "dest": "/embed" },
+    { "src": "^/embed(.*)", "dest": "/embed.html" },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
