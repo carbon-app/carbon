@@ -87,14 +87,18 @@ class Embed extends React.Component {
   ref = React.createRef()
 
   postMessage = () => {
-    getParent(window).postMessage(
-      JSON.stringify({
-        // Used by embed provider
-        src: window.location.toString(),
-        context: 'iframe.resize',
-        height: this.ref.current.offsetHeight
-      }),
-      '*'
+    setTimeout(
+      () =>
+        getParent(window).postMessage(
+          JSON.stringify({
+            // Used by embed provider
+            src: window.location.toString(),
+            context: 'iframe.resize',
+            height: this.ref.current.offsetHeight
+          }),
+          '*'
+        ),
+      0
     )
   }
 
