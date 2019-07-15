@@ -47,8 +47,11 @@ export const MetaTags = React.memo(() => (
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="application-name" content={title} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@carbon_app" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://carbon.now.sh/static/brand/banner.png" />
     <meta name="og:title" content={title} />
     <meta name="og:description" content={description} />
     <meta name="og:image" content="/static/brand/banner.png" />
