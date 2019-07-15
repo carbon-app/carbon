@@ -528,6 +528,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "munierujp",
+      "name": "Munieru",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/20086673?v=4",
+      "profile": "https://munieru.jp",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
