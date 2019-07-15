@@ -4,7 +4,7 @@
   "public": true,
   "builds": [{ "src": "package.json", "use": "@now/next" }],
   "routes": [
-    { "src": "^/embed(.*)", "dest": "/embed" },
+    { "src": "^/embed(.*)", "dest": "/embed.html" },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
