@@ -89,7 +89,7 @@ PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/dawn
 
 Carbon は<a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>によるプロジェクトです
 
-- Mike Fix ([@mfix22](https://github.com/mfix22))
+- Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
