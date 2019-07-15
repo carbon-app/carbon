@@ -33,13 +33,13 @@ Twitter で[いつも](https://twitter.com/dan_abramov/status/890191815567175680
 
 ## Features
 
-- **GitHub gist からのインポート**. URL に GitHub gist id を付け加える
 - **カスタマイズ**. シンタックステーマやウィンドウスタイルなどをカスタマイズ
 - **すばやくシェア**. ワンクリックで画像を保存したり、リンクをツイート
+- **GitHub gist からのインポート**. URL に GitHub gist id を付け加える
 
 ## Example
 
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
+<p><img width=80% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Usage
 
@@ -104,7 +104,7 @@ PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/dawn
 
 ## Authors
 
-Carbon は<a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>によるプロジェクトです
+Carbon は次の人々によるプロジェクトです:
 
 - Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
