@@ -2,7 +2,7 @@
   "name": "carbon",
   "version": 2,
   "builds": [
-    { "src": "package.json", "use": "@now/next" },
+    { "src": "package.json", "use": "@now/next@canary" },
     { "src": "api/image.js", "use": "@now/node", "config": { "maxLambdaSize": "40mb" } },
     { "src": "api/**/*.js", "use": "@now/node" }
   ],
@@ -72,10 +72,9 @@
       "methods": ["POST"]
     },
     { "src": "/api/.*", "status": 404 },
-    { "handle": "filesystem" },
     {
       "src": "^/(.*)/?",
-      "dest": "/index.html",
+      "continue": true,
       "headers": {
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
@@ -83,7 +82,8 @@
         "Referrer-Policy": "no-referrer-when-downgrade",
         "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
       }
-    }
+    },
+    { "handle": "filesystem" }
   ],
   "build": {
     "env": {

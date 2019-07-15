@@ -49,6 +49,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
+      ...this.props.snippet,
       loading: true
     }
 
@@ -63,21 +64,13 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    const { queryState, parameter } = getRouteState(this.props.router)
-
-    // TODO we could create an interface for loading this config, so that it looks identical
-    // whether config is loaded from localStorage, gist, or even something like IndexDB
-    let snippet
-    if (parameter) {
-      snippet = await this.context.snippet.get(parameter)
-      if (snippet) {
-        this.props.setSnippet(snippet)
-      }
-    }
+    const { queryState } = getRouteState(this.props.router)
 
     const newState = {
+      // TODO we could create an interface for loading this config, so that it looks identical
+      // whether config is loaded from localStorage, gist, or even something like IndexDB
       // Load options from gist or localStorage
-      ...(snippet ? snippet : getSettings(localStorage)),
+      ...(this.props.snippet ? null : getSettings(localStorage)),
       // and then URL params
       ...queryState,
       loading: false

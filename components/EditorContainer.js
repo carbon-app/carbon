@@ -68,7 +68,7 @@ function EditorContainer(props) {
   }, [themes])
 
   // XXX use context
-  const [snippet, setSnippet] = React.useState(null)
+  const [snippet, setSnippet] = React.useState(props.snippet || null)
   const [toasts, setToasts] = React.useState([])
 
   const snippetId = snippet && snippet.id

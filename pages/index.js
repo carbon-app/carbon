@@ -24,7 +24,7 @@ class Index extends React.Component {
       <Page enableHeroText={true}>
         <MetaLinks />
         <Either>
-          <EditorContainer router={this.props.router} />
+          <EditorContainer router={this.props.router} snippet={this.props.snippet} />
           <p>
             An unexpected error has occurred. Please{' '}
             <u>
