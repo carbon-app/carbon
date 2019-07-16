@@ -411,6 +411,14 @@ class Editor extends React.Component {
         </Dropzone>
         <SnippetToolbar
           snippet={this.props.snippet}
+          onCreate={() =>
+            this.context.snippet
+              .create(this.state)
+              .then(data => this.props.setSnippet(data))
+              .then(() =>
+                this.props.setToasts([{ children: 'Snippet duplicated!', timeout: 3000 }])
+              )
+          }
           onDelete={() =>
             this.context.snippet
               .delete(this.props.snippet.id)

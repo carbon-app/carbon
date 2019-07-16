@@ -19,6 +19,7 @@ function ConfirmButton(props) {
           setConfirmed(true)
         }
       }}
+      onBlur={() => setConfirmed(false)}
     >
       {confirmed ? 'Are you sure?' : props.children}
     </Button>
@@ -36,38 +37,35 @@ function DeleteButton(props) {
       center
       border
       large
-      color="#b5373d"
+      color="#fff"
       onClick={onClick}
+      style={{ color: '#ff5f56' }}
     >
       {loading ? 'Deleting...' : 'Delete'}
     </ConfirmButton>
   )
 }
 
-// function SaveButton(props) {
-//   const [onClick, { loading }] = useAsyncCallback(props.onClick)
+function ForkButton(props) {
+  const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
-//   useKeyboardListener('s', e => {
-//     if (e.metaKey) {
-//       onClick()
-//     }
-//   })
-
-//   return (
-//     <Button
-//       display="block"
-//       padding="0 16px"
-//       flex="unset"
-//       center
-//       border
-//       large
-//       color="#37b589"
-//       onClick={onClick}
-//     >
-//       {loading ? 'Saving...' : 'Save'}
-//     </Button>
-//   )
-// }
+  // TODO call it duplicate or fork?
+  return (
+    <Button
+      display="block"
+      padding="0 16px"
+      margin="0 0 0 1rem"
+      flex="unset"
+      center
+      border
+      large
+      color="#37b589"
+      onClick={onClick}
+    >
+      {loading ? 'Duplicating...' : 'Duplicate'}
+    </Button>
+  )
+}
 
 function SnippetToolbar(props) {
   const user = useAuth()
@@ -85,10 +83,7 @@ function SnippetToolbar(props) {
     return null
   }
 
-  // in the future, allow save, but create a fork instead
-  if (user.uid != props.snippet.userId) {
-    return null
-  }
+  const sameUser = user.uid === props.snippet.userId
 
   return (
     <Toolbar
@@ -96,10 +91,12 @@ function SnippetToolbar(props) {
         marginTop: 16,
         marginBottom: 0,
         flexDirection: 'row-reverse',
-        justifyContent: 'space-between'
+        // justifyContent: 'space-between',
+        zIndex: 1
       }}
     >
-      <DeleteButton onClick={props.onDelete} />
+      <ForkButton onClick={props.onCreate} />
+      {sameUser && <DeleteButton onClick={props.onDelete} />}
     </Toolbar>
   )
 }
