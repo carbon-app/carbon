@@ -56,10 +56,10 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.6.31",
-    "all-contributors-cli": "^6.7.0",
+    "@applitools/eyes-cypress": "^3.6.40",
+    "all-contributors-cli": "^6.8.0",
     "babel-eslint": "^10.0.2",
-    "cypress": "^3.3.1",
+    "cypress": "^3.4.0",
     "eslint": "^6.0.0",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -67,10 +67,10 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
-    "lint-staged": "^9.0.0",
-    "now": "^15.6.0",
+    "lint-staged": "^9.2.0",
+    "now": "^15.8.0",
     "now-release": "^0.0.2",
-    "wait-on": "^3.2.0"
+    "wait-on": "^3.3.0"
   },
   "lint-staged": {
     "*.js": [
