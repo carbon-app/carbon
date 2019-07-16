@@ -537,6 +537,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "etoxin",
+      "name": "Adam Lusted",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/393002?v=4",
+      "profile": "http://www.etoxin.net",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
