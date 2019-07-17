@@ -25,7 +25,6 @@ import {
   DEFAULT_CODE,
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
-  DEFAULT_PRESET_ID,
   DEFAULT_THEME,
   FONTS
 } from '../lib/constants'
@@ -46,7 +45,6 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
-      preset: DEFAULT_PRESET_ID,
       loading: true
     }
 
@@ -221,7 +219,7 @@ class Editor extends React.Component {
 
   updateSetting(key, value) {
     this.updateState({ [key]: value })
-    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
+    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key) && key !== 'preset') {
       this.updateState({ preset: null })
     }
   }
@@ -246,7 +244,7 @@ class Editor extends React.Component {
   }
 
   resetDefaultSettings() {
-    this.updateState({ ...DEFAULT_SETTINGS, preset: DEFAULT_PRESET_ID })
+    this.updateState(DEFAULT_SETTINGS)
     this.props.onReset()
   }
 
