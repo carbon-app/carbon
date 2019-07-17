@@ -13,7 +13,8 @@ import {
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
   DEFAULT_SETTINGS,
-  THEMES_HASH
+  THEMES_HASH,
+  LANGUAGES
 } from '../lib/constants'
 
 const Watermark = dynamic(() => import('./svg/Watermark'), {
@@ -28,9 +29,24 @@ function searchLanguage(l) {
   }
 }
 
+const alreadyLoaded = new Set()
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: () => {}
+  }
+
+  componentDidMount() {
+    LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
+      language => {
+        if (language.mode && !alreadyLoaded.has(language.mode)) {
+          // TODO useLayoutEffect
+          language.custom
+            ? require(`../lib/custom/modes/${language.mode}`)
+            : require(`codemirror/mode/${language.mode}/${language.mode}`)
+          alreadyLoaded.add(language.mode)
+        }
+      }
+    )
   }
 
   handleLanguageChange = debounce(
