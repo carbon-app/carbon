@@ -2,7 +2,6 @@
 import React from 'react'
 import Head from 'next/head'
 import { withRouter } from 'next/router'
-import morph from 'morphmorph'
 
 // Ours
 import ApiContext from '../components/ApiContext'
@@ -10,17 +9,6 @@ import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
 import Carbon from '../components/Carbon'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../lib/constants'
 import { getRouteState } from '../lib/routing'
-
-const isInIFrame = morph.get('parent.window.parent')
-const getParent = win => {
-  const iFrame = isInIFrame(win)
-
-  if (iFrame) {
-    return iFrame
-  }
-
-  return win.parent
-}
 
 const Page = props => (
   <React.Fragment>
@@ -80,7 +68,7 @@ class Embed extends React.Component {
   postMessage = () => {
     setTimeout(
       () =>
-        getParent(window).postMessage(
+        window.top.postMessage(
           JSON.stringify({
             // Used by embed provider
             src: window.location.toString(),
@@ -96,7 +84,7 @@ class Embed extends React.Component {
   updateCode = code => {
     this.setState({ code }, this.postMessage)
 
-    getParent(window).postMessage(
+    window.top.postMessage(
       {
         id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
         code
