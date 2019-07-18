@@ -146,9 +146,9 @@ class Editor extends React.Component {
 
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
-        if (node.innerText && node.innerText.match(/%[A-Za-z0-9]{2}/)) {
+        if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
           map.set(node, node.innerHTML)
-          node.innerText.match(/%[A-Za-z0-9]{2}/g).forEach(t => {
+          node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
             node.innerText = node.innerText.replace(t, encodeURIComponent(t))
           })
         }
