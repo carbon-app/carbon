@@ -10,6 +10,10 @@ const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
 module.exports = async (req, res) => {
+  if (!req.headers.origin && !req.headers.authorization) {
+    return send(res, 401, 'Unauthorized')
+  }
+
   const host = (req.headers && req.headers.host) || 'carbon.now.sh'
 
   try {
