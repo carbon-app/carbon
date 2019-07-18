@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-now switch dawn
+now switch carbon-app
 
 NOW_URL=$(now)
 
