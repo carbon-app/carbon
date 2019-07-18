@@ -55,8 +55,10 @@ module.exports = async (req, res) => {
       const exportSize = EXPORT_SIZES_HASH[query.get('es')] || '2'
 
       target.querySelectorAll('span[role="presentation"]').forEach(node => {
-        if (node.innerText && node.innerText.match(/%[A-Za-z0-9]{2}/)) {
-          node.innerText = encodeURIComponent(node.innerText)
+        if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
+          node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
+            node.innerText = node.innerText.replace(t, encodeURIComponent(t))
+          })
         }
       })
 
