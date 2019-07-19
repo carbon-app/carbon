@@ -22,12 +22,7 @@ export function Link({ href, priority }) {
   )
 }
 
-function noop() {}
-export const StylesheetLink = ({ theme, onMount = noop }) => {
-  React.useEffect(() => {
-    onMount()
-  }, [onMount])
-
+export const StylesheetLink = ({ theme }) => {
   let href
   if (LOCAL_STYLESHEETS.indexOf(theme) > -1) {
     href = `/static/themes/${theme}.min.css`

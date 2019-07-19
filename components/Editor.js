@@ -43,7 +43,10 @@ class Editor extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { ...DEFAULT_SETTINGS, loading: true }
+    this.state = {
+      ...DEFAULT_SETTINGS,
+      loading: true
+    }
 
     this.export = this.export.bind(this)
     this.upload = this.upload.bind(this)
