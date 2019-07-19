@@ -34,12 +34,6 @@ class Carbon extends React.PureComponent {
     onChange: () => {}
   }
 
-  state = {
-    loading: true
-  }
-
-  mount = () => this.setState({ loading: false })
-
   componentDidUpdate(prevProps) {
     // TODO keep opacities in state
     if (
@@ -278,10 +272,10 @@ class Carbon extends React.PureComponent {
     return (
       <div className="section">
         <div className="export-container" ref={this.props.innerRef} id="export-container">
-          <SpinnerWrapper loading={this.state.loading}>{content}</SpinnerWrapper>
+          <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {themeConfig && <StylesheetLink theme={themeConfig.id} onMount={this.mount} />}
+        {themeConfig && <StylesheetLink theme={themeConfig.id} />}
         <style jsx>
           {`
             .section,
