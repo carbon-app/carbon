@@ -36,7 +36,7 @@
     "highlight.js": "^9.15.8",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
-    "match-sorter": "^3.1.1",
+    "match-sorter": "^4.0.0",
     "morphmorph": "^0.1.0",
     "ms": "^2.1.2",
     "next": "^9.0.2",
