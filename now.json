@@ -59,7 +59,7 @@
     {
       "src": "/api/snippets/?(?<id>[^/]*)",
       "dest": "api/snippets.js?id=$id",
-      "methods": ["GET", "POST", "PATCH"]
+      "methods": ["GET", "POST", "PATCH", "DELETE"]
     },
     {
       "src": "/api/unsplash/random",

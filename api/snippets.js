@@ -1,6 +1,6 @@
 const crypto = require('crypto')
 const Morph = require('morphmorph')
-const { json, createError, send } = require('micro')
+const { createError, send } = require('micro')
 const admin = require('firebase-admin')
 
 function push(collection) {
@@ -104,7 +104,7 @@ function getSnippet(req) {
 }
 
 async function createSnippet(user, req) {
-  const data = await json(req, { limit: '6mb' })
+  const data = req.body
 
   if (data.code == null) {
     throw createError(400, 'code is a required body parameter')
@@ -150,19 +150,17 @@ async function updateSnippet(user, req) {
       return value
     })
 
-  let data = null
-  try {
-    data = await json(req, { limit: '6mb' })
-  } catch (e) {
-    // invalid json
-    data = null
-  }
+  const data = req.body
 
   if (!data) {
     // TODO must be DELETE
     return ref.remove().then(() => ({
       id: ref.key
     }))
+  }
+
+  if (typeof data !== 'object') {
+    throw createError(400, 'Invalid request body')
   }
 
   return ref
