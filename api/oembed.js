@@ -16,8 +16,7 @@ const toIFrame = (url, width, height) =>
 `
 
 module.exports = (req, res) => {
-  const parsed = url.parse(req.url, true)
-  let embedUrl = parsed.query.url
+  let embedUrl = req.query.url
 
   try {
     embedUrl = decodeURIComponent(embedUrl)
@@ -32,8 +31,8 @@ module.exports = (req, res) => {
 
     const gistID = pathname.split('/').pop()
 
-    const width = Math.min(Number(parsed.query.maxwidth) || Infinity, 1024)
-    const height = Math.min(Number(parsed.query.maxheight) || Infinity, 480)
+    const width = Math.min(Number(req.query.maxwidth) || Infinity, 1024)
+    const height = Math.min(Number(req.query.maxheight) || Infinity, 480)
 
     const obj = {
       version: '1.0',

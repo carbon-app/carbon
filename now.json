@@ -43,8 +43,8 @@
       "methods": ["GET"]
     },
     {
-      "src": "/api/image",
-      "dest": "api/image.js",
+      "src": "/api/image/?(?<id>[^/]*)",
+      "dest": "api/image.js?id=$id",
       "methods": ["POST"]
     },
     { "src": "/api/.*", "status": 404 },

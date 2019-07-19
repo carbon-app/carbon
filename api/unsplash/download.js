@@ -1,4 +1,3 @@
-const url = require('url')
 const { send } = require('micro')
 
 require('isomorphic-fetch')
@@ -18,8 +17,7 @@ const downloadImage = imageId =>
     .then(toJson)
 
 module.exports = (req, res) => {
-  const { query } = url.parse(req.url, true)
-  const imageId = query.id
+  const imageId = req.query.id
   return downloadImage(imageId)
     .then(url => send(res, 200, url))
     .catch(e => {

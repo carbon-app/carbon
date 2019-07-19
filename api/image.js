@@ -1,6 +1,5 @@
 /* global domtoimage */
 const qs = require('querystring')
-const url = require('url')
 const { json, send } = require('micro')
 const chrome = require('chrome-aws-lambda')
 const puppeteer = require('puppeteer-core')
@@ -31,7 +30,7 @@ module.exports = async (req, res) => {
 
   try {
     const { state, ...params } =
-      req.method === 'GET' ? url.parse(req.url, true).query : await json(req, { limit: '6mb' })
+      req.method === 'GET' ? req.query : await json(req, { limit: '6mb' })
 
     // TODO uncomment this when we want to support standard query params
     if (!state) return send(res, 400, 'Invalid Request')
@@ -40,7 +39,10 @@ module.exports = async (req, res) => {
 
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
-    await page.goto(`https://${host}?${queryString}`)
+    const snippetId = req.query && req.query.id
+    await page.goto(
+      `https://${host}${snippetId && snippetId.length ? `/${snippetId}` : ''}?${queryString}`
+    )
     await page.addScriptTag({ url: DOM_TO_IMAGE_URL })
 
     await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
