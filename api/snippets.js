@@ -1,6 +1,5 @@
 const crypto = require('crypto')
 const Morph = require('morphmorph')
-const url = require('url')
 const { json, createError, send } = require('micro')
 const admin = require('firebase-admin')
 
@@ -60,8 +59,7 @@ function sanitizeInput(obj = {}) {
 }
 
 function getSnippet(req) {
-  const parsed = url.parse(req.url, true)
-  const id = parsed.query.id
+  const id = req.query.id
 
   if (!id) {
     throw createError(400, 'id is a required parameter')
@@ -133,8 +131,7 @@ async function createSnippet(user, req) {
 }
 
 async function updateSnippet(user, req) {
-  const parsed = url.parse(req.url, true)
-  const id = parsed.query.id && parsed.query.id.replace(/\/$/, '')
+  const id = req.query.id && req.query.id.trim()
 
   if (!id) {
     throw createError(400, 'id is a required parameter')
