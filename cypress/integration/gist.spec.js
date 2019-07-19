@@ -20,11 +20,5 @@ describe('Gist', () => {
 
       cy.url().should('not.contain', '?')
     })
-
-    test(`${page} should have a green editor background`, () => {
-      cy.visit(`${page}82d742f4efad9757cc826d20f2a5e5af`)
-
-      cy.get('.container-bg .bg').should('have.css', 'background-color', 'rgb(0, 128, 0)')
-    })
   })
 })
