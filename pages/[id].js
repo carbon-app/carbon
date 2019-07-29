@@ -8,26 +8,27 @@ import api from '../lib/api'
 
 class IdPage extends React.PureComponent {
   static contextType = ApiContext
-  static async getInitialProps({ res, query }) {
-    console.log('***', query)
+  static async getInitialProps({ req, res, query }) {
     const path = query.id
     const parameter = path && path.length >= 19 && path.indexOf('.') < 0 && path
 
     let snippet
     if (parameter) {
-      snippet = await api.snippet.get(parameter)
+      const host = req ? req.headers.host : undefined
+      snippet = await api.snippet.get(parameter, { host })
       if (snippet) {
         return { snippet }
       }
-    }
 
-    if (res) {
-      res.writeHead(302, {
-        Location: '/'
-      })
-      res.end()
-    } else {
-      Router.push('/')
+      // 404 Not found
+      if (res) {
+        res.writeHead(302, {
+          Location: '/'
+        })
+        res.end()
+      } else {
+        Router.push('/')
+      }
     }
 
     return {}

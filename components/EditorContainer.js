@@ -73,7 +73,9 @@ function EditorContainer(props) {
 
   const snippetId = snippet && snippet.id
   React.useEffect(() => {
-    props.router.push('/', '/' + (snippetId || ''), { shallow: true })
+    if (props.router.asPath.indexOf(snippetId) < 0) {
+      props.router.replace('/', '/' + (snippetId || ''), { shallow: true })
+    }
   }, [snippetId, props.router])
 
   // TODO use ref?
