@@ -300,7 +300,7 @@ export default React.forwardRef((props, ref) => {
     prevLine.current = lineNumber
   }
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (editorRef.current) {
       editorRef.current.editor.display.view.forEach((line, i) => {
         if (line.text && line.gutter) {
