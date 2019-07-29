@@ -270,21 +270,21 @@ export default React.forwardRef((props, ref) => {
 
   function onGutterClick(editor, lineNumber, gutter, e) {
     setSelected(currState => {
+      const newState = {}
+
       if (e.shiftKey && prevLine.current != null) {
-        const newState = {}
         for (
-          let index = Math.min(prevLine.current, lineNumber);
-          index < Math.max(prevLine.current, lineNumber) + 1;
-          index++
+          let i = Math.min(prevLine.current, lineNumber);
+          i < Math.max(prevLine.current, lineNumber) + 1;
+          i++
         ) {
-          newState[index] = currState[prevLine.current]
+          newState[i] = currState[prevLine.current]
         }
 
         return { ...currState, ...newState }
       }
 
-      const newState = {}
-      editor.display.view.forEach((line, i) => {
+      for (let i = 0; i < editor.display.view.length; i++) {
         if (i != lineNumber) {
           if (prevLine.current == null) {
             newState[i] = false
@@ -292,10 +292,11 @@ export default React.forwardRef((props, ref) => {
         } else {
           newState[lineNumber] = currState[lineNumber] === true ? false : true
         }
-      })
+      }
 
       return { ...currState, ...newState }
     })
+
     prevLine.current = lineNumber
   }
 
