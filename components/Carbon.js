@@ -265,35 +265,33 @@ class Carbon extends React.PureComponent {
 
 export default React.forwardRef((props, ref) => {
   const [selectedLines, setSelected] = React.useState({})
-  const selected = React.useRef({})
   const editorRef = React.useRef(null)
   const prevLine = React.useRef(null)
 
   function onGutterClick(editor, lineNumber, gutter, e) {
-    const newState = {}
-    editor.display.view.forEach((line, i) => {
-      if (i != lineNumber) {
-        if (prevLine.current == null) {
-          newState[i] = false
-        }
-      } else {
-        if (e.shiftKey && prevLine.current != null) {
-          for (
-            let index = Math.min(prevLine.current, i);
-            index < Math.max(prevLine.current, i) + 1;
-            index++
-          ) {
-            newState[index] = selected.current[prevLine.current]
+    setSelected(currState => {
+      const newState = {}
+
+      editor.display.view.forEach((line, i) => {
+        if (i != lineNumber) {
+          if (prevLine.current == null) {
+            newState[i] = false
           }
         } else {
-          newState[lineNumber] = selected.current[lineNumber] === true ? false : true
+          if (e.shiftKey && prevLine.current != null) {
+            for (
+              let index = Math.min(prevLine.current, i);
+              index < Math.max(prevLine.current, i) + 1;
+              index++
+            ) {
+              newState[index] = currState[prevLine.current]
+            }
+          } else {
+            newState[lineNumber] = currState[lineNumber] === true ? false : true
+          }
         }
-      }
-    })
-
-    setSelected(s => {
-      selected.current = { ...s, ...newState }
-      return selected.current
+      })
+      return { ...currState, ...newState }
     })
     prevLine.current = lineNumber
   }
@@ -301,18 +299,13 @@ export default React.forwardRef((props, ref) => {
   React.useLayoutEffect(() => {
     if (editorRef.current) {
       editorRef.current.editor.display.view.forEach((line, i) => {
-        if (line.text) {
-          if (selected.current[i] === false) {
-            line.text.style.opacity = 0.5
-            line.gutter.style.opacity = 0.5
-          } else {
-            line.text.style.opacity = 1
-            line.gutter.style.opacity = 1
-          }
+        if (line.text && line.gutter) {
+          line.text.style.opacity = selectedLines[i] === false ? 0.5 : 1
+          line.gutter.style.opacity = selectedLines[i] === false ? 0.5 : 1
         }
       })
     }
   }, [selectedLines, props.children, props.config])
 
-  return <Carbon {...props} onGutterClick={onGutterClick} editorRef={editorRef} innerRef={ref} />
+  return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 })
