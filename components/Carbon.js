@@ -263,7 +263,7 @@ class Carbon extends React.PureComponent {
   }
 }
 
-export default React.forwardRef((props, ref) => {
+function LineNumbersCarbon(props, ref) {
   const [selectedLines, setSelected] = React.useState({})
   const editorRef = React.useRef(null)
   const prevLine = React.useRef(null)
@@ -312,4 +312,6 @@ export default React.forwardRef((props, ref) => {
   }, [selectedLines, props.children, props.config])
 
   return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
-})
+}
+
+export default React.forwardRef(LineNumbersCarbon)
