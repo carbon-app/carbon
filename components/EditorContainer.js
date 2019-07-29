@@ -68,12 +68,20 @@ function EditorContainer(props) {
   }, [themes])
 
   // XXX use context
-  const [snippet, setSnippet] = React.useState(null)
+  const [snippet, setSnippet] = React.useState(props.snippet || null)
   const [toasts, setToasts] = React.useState([])
 
   const snippetId = snippet && snippet.id
   React.useEffect(() => {
-    props.router.push('/', '/' + (snippetId || ''), { shallow: true })
+    // Don't replace URL if on that path already
+    // TODO: '/' + (snippetId || '') === router.asPath?
+    if (!snippetId && props.router.asPath === '/') {
+      return
+    }
+    if (props.router.asPath.indexOf(snippetId) > 0) {
+      return
+    }
+    props.router.replace('/', '/' + (snippetId || ''), { shallow: true })
   }, [snippetId, props.router])
 
   function onEditorUpdate(state) {
