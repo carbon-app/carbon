@@ -33,16 +33,6 @@ class Carbon extends React.PureComponent {
     onChange: () => {}
   }
 
-  componentDidUpdate(prevProps) {
-    // TODO keep opacities in state
-    if (
-      prevProps.config.theme != this.props.config.theme ||
-      prevProps.config.language != this.props.config.language
-    ) {
-      this.prevLine = null
-    }
-  }
-
   handleLanguageChange = debounce(
     (newCode, language) => {
       if (language === 'auto') {
@@ -74,33 +64,6 @@ class Carbon extends React.PureComponent {
     if (!this.props.readOnly) {
       this.props.onChange(code)
     }
-  }
-
-  prevLine = null
-  onGutterClick = (editor, lineNumber, gutter, e) => {
-    editor.display.view.forEach((line, i, arr) => {
-      if (i != lineNumber) {
-        if (this.prevLine == null) {
-          line.text.style.opacity = 0.5
-          line.gutter.style.opacity = 0.5
-        }
-      } else {
-        if (e.shiftKey && this.prevLine != null) {
-          for (
-            let index = Math.min(this.prevLine, i);
-            index < Math.max(this.prevLine, i) + 1;
-            index++
-          ) {
-            arr[index].text.style.opacity = arr[this.prevLine].text.style.opacity
-            arr[index].gutter.style.opacity = arr[this.prevLine].gutter.style.opacity
-          }
-        } else {
-          line.text.style.opacity = line.text.style.opacity == 1 ? 0.5 : 1
-          line.gutter.style.opacity = line.gutter.style.opacity == 1 ? 0.5 : 1
-        }
-      }
-    })
-    this.prevLine = lineNumber
   }
 
   render() {
@@ -145,11 +108,12 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
+          ref={this.props.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
           onBeforeChange={this.onBeforeChange}
           value={this.props.children}
           options={options}
-          onGutterClick={this.onGutterClick}
+          onGutterClick={this.props.onGutterClick}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
@@ -299,4 +263,56 @@ class Carbon extends React.PureComponent {
   }
 }
 
-export default React.forwardRef((props, ref) => <Carbon {...props} innerRef={ref} />)
+export default React.forwardRef((props, ref) => {
+  const [selectedLines, setSelected] = React.useState({})
+  const selected = React.useRef({})
+  const editorRef = React.useRef(null)
+  const prevLine = React.useRef(null)
+
+  function onGutterClick(editor, lineNumber, gutter, e) {
+    const newState = {}
+    editor.display.view.forEach((line, i) => {
+      if (i != lineNumber) {
+        if (prevLine.current == null) {
+          newState[i] = false
+        }
+      } else {
+        if (e.shiftKey && prevLine.current != null) {
+          for (
+            let index = Math.min(prevLine.current, i);
+            index < Math.max(prevLine.current, i) + 1;
+            index++
+          ) {
+            newState[index] = selected.current[prevLine.current]
+          }
+        } else {
+          newState[lineNumber] = selected.current[lineNumber] === true ? false : true
+        }
+      }
+    })
+
+    setSelected(s => {
+      selected.current = { ...s, ...newState }
+      return selected.current
+    })
+    prevLine.current = lineNumber
+  }
+
+  React.useLayoutEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.editor.display.view.forEach((line, i) => {
+        if (line.text) {
+          if (selected.current[i] === false) {
+            line.text.style.opacity = 0.5
+            line.gutter.style.opacity = 0.5
+          } else {
+            line.text.style.opacity = 1
+            line.gutter.style.opacity = 1
+          }
+        }
+      })
+    }
+  }, [selectedLines, props.children, props.config])
+
+  return <Carbon {...props} onGutterClick={onGutterClick} editorRef={editorRef} innerRef={ref} />
+})
