@@ -76,7 +76,6 @@ function EditorContainer(props) {
     props.router.push('/', '/' + (snippetId || ''), { shallow: true })
   }, [snippetId, props.router])
 
-  // TODO use ref?
   function onEditorUpdate(state) {
     if (loading) {
       return
