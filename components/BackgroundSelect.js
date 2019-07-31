@@ -15,16 +15,20 @@ function validateColor(str) {
 }
 
 class BackgroundSelect extends React.PureComponent {
+  state = {
+    mode: 'color'
+  }
   selectTab = name => {
-    if (this.props.mode !== name) {
-      this.props.onChange({ backgroundMode: name })
+    if (this.state.mode !== name) {
+      this.setState({ mode: name })
     }
   }
 
   handlePickColor = ({ rgb }) => this.props.onChange({ backgroundColor: stringifyRGBA(rgb) })
 
   render() {
-    const { color, mode, image, onChange, isVisible, toggleVisibility, carbonRef } = this.props
+    const { color, image, onChange, isVisible, toggleVisibility, carbonRef } = this.props
+    const { mode } = this.state
 
     const background = validateColor(color) ? color : DEFAULT_BG_COLOR
 

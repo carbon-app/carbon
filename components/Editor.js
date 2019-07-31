@@ -259,7 +259,6 @@ class Editor extends React.Component {
       this.updateState({
         backgroundImage: file.content,
         backgroundImageSelection: null,
-        backgroundMode: 'image',
         preset: null
       })
     } else {
@@ -316,15 +315,7 @@ class Editor extends React.Component {
       })
 
   render() {
-    const {
-      highlights,
-      language,
-      backgroundColor,
-      backgroundImage,
-      backgroundMode,
-      code,
-      exportSize
-    } = this.state
+    const { highlights, language, backgroundColor, backgroundImage, code, exportSize } = this.state
 
     const config = omit(this.state, ['code'])
 
@@ -356,7 +347,6 @@ class Editor extends React.Component {
           />
           <BackgroundSelect
             onChange={this.updateBackground}
-            mode={backgroundMode}
             color={backgroundColor}
             image={backgroundImage}
             carbonRef={this.carbonNode.current}
