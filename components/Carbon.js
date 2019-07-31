@@ -29,8 +29,8 @@ function searchLanguage(l) {
   }
 }
 
-const alreadyLoaded = new Set()
 class Carbon extends React.PureComponent {
+  static modesLoaded = new Set()
   static defaultProps = {
     onChange: () => {}
   }
@@ -38,12 +38,12 @@ class Carbon extends React.PureComponent {
   componentDidMount() {
     LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
       language => {
-        if (language.mode && !alreadyLoaded.has(language.mode)) {
+        if (language.mode && !Carbon.modesLoaded.has(language.mode)) {
           // TODO useLayoutEffect
           language.custom
             ? require(`../lib/custom/modes/${language.mode}`)
             : require(`codemirror/mode/${language.mode}/${language.mode}`)
-          alreadyLoaded.add(language.mode)
+          Carbon.modesLoaded.add(language.mode)
         }
       }
     )
