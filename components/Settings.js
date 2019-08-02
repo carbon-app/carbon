@@ -9,7 +9,7 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
-import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
+import { toggle, getPresets, savePresets, generateId, fileToJSON, omit } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 import * as Arrows from './svg/Arrows'
 
@@ -347,7 +347,11 @@ class Settings extends React.PureComponent {
     )
   }
 
-  savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
+  savePresets = () =>
+    savePresets(
+      localStorage,
+      this.state.presets.filter(p => p.custom).map(obj => omit(obj, ['backgroundImageSelection']))
+    )
 
   renderContent = () => {
     switch (this.state.selectedMenu) {

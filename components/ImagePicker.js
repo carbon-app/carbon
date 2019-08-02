@@ -40,7 +40,8 @@ const INITIAL_STATE = {
   crop: null,
   imageAspectRatio: null,
   pixelCrop: null,
-  photographer: null
+  photographer: null,
+  dataURL: null
 }
 
 export default class ImagePicker extends React.Component {
@@ -75,7 +76,7 @@ export default class ImagePicker extends React.Component {
 
   async onDragEnd() {
     if (this.state.pixelCrop) {
-      const croppedImg = await getCroppedImg(this.props.imageDataURL, this.state.pixelCrop)
+      const croppedImg = await getCroppedImg(this.state.dataURL, this.state.pixelCrop)
       this.props.onChange({ backgroundImageSelection: croppedImg })
     }
   }
@@ -107,13 +108,14 @@ export default class ImagePicker extends React.Component {
     const url = e.target[0].value
     return this.context
       .downloadThumbnailImage({ url })
-      .then(({ dataURL }) =>
+      .then(({ dataURL }) => {
+        this.setState({ dataURL })
         this.props.onChange({
           backgroundImage: dataURL,
           backgroundImageSelection: null,
           photographer: null
         })
-      )
+      })
       .catch(err => {
         if (err.message.indexOf('Network Error') > -1) {
           this.setState({
@@ -128,18 +130,19 @@ export default class ImagePicker extends React.Component {
     this.setState({ mode })
   }
 
-  selectImage(e, { photographer } = {}) {
-    const file = e.target ? e.target.files[0] : e
+  async selectImage(e, { photographer } = {}) {
+    // TODO separate this into two fns: 1 for files and 1 for Unsplash
+    const dataURL = e.target
+      ? await fileToDataURL(e.target.files[0])
+      : (await this.context.downloadThumbnailImage(e)).dataURL
 
-    return fileToDataURL(file).then(dataURL =>
-      this.setState({ photographer }, () => {
-        this.props.onChange({
-          backgroundImage: dataURL,
-          backgroundImageSelection: null,
-          photographer
-        })
+    this.setState({ dataURL, photographer }, () => {
+      this.props.onChange({
+        backgroundImage: e.target ? dataURL : e,
+        backgroundImageSelection: null,
+        photographer
       })
-    )
+    })
   }
 
   removeImage() {
@@ -251,7 +254,7 @@ export default class ImagePicker extends React.Component {
       </div>
     )
 
-    if (this.props.imageDataURL) {
+    if (this.state.dataURL) {
       content = (
         <div className="settings-container">
           <div className="image-container">
@@ -260,7 +263,7 @@ export default class ImagePicker extends React.Component {
               <button onClick={this.removeImage}>&times;</button>
             </div>
             <ReactCrop
-              src={this.props.imageDataURL}
+              src={this.state.dataURL}
               onImageLoaded={this.onImageLoaded}
               crop={this.state.crop}
               onChange={this.onCropChange}
