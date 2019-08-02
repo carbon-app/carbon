@@ -199,19 +199,31 @@ class Carbon extends React.PureComponent {
             //     css: 'font-weight: bold'
             //   }
             // )
-            const modifierOpenAt = this.props.editorRef.current.editor.charCoords(
+            const startPos = this.props.editorRef.current.editor.charCoords(
               this.currentSelection.from,
               'local'
             )
-            const modifierOpenAtEnd = this.props.editorRef.current.editor.charCoords(
+            const endPos = this.props.editorRef.current.editor.charCoords(
               this.currentSelection.to,
               'local'
             )
-            // TODO find a better more consistent way to measure
-            const top = modifierOpenAt.bottom + parseInt(config.paddingVertical) + 45
-            const left = (modifierOpenAt.left + modifierOpenAtEnd.right) / 2
 
-            this.setState({ modifierOpenAt: { ...modifierOpenAt, top, left } })
+            const startWindowPos = this.props.editorRef.current.editor.charCoords(
+              this.currentSelection.from,
+              'window'
+            )
+            const endWindowPos = this.props.editorRef.current.editor.charCoords(
+              this.currentSelection.to,
+              'window'
+            )
+
+            const top =
+              Math.max(startWindowPos.bottom, endWindowPos.bottom) -
+              this.props.innerRef.current.getBoundingClientRect().top -
+              3
+            const left = (startPos.left + endPos.right) / 2
+
+            this.setState({ modifierOpenAt: { top, left } })
             this.currentSelection = null
           } else {
             this.setState({ modifierOpenAt: null })
@@ -239,7 +251,7 @@ class Carbon extends React.PureComponent {
               selection.head.line === selection.anchor.line &&
               selection.head.ch === selection.anchor.ch
             ) {
-              return
+              return (this.currentSelection = null)
             }
 
             if (
