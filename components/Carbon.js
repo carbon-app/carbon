@@ -7,6 +7,10 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 
 import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
+import Popout from './Popout'
+import Button from './Button'
+import ColorPicker from './ColorPicker'
+
 import {
   COLORS,
   LANGUAGES,
@@ -16,6 +20,93 @@ import {
   DEFAULT_SETTINGS,
   THEMES_HASH
 } from '../lib/constants'
+
+function ModifierButton(props) {
+  const [selected, setOpen] = React.useState(props.selected)
+
+  return (
+    <Button
+      flex={0}
+      padding="0"
+      center
+      margin="0 8px 0 0"
+      style={{ borderBottom: `1px solid ${selected ? 'white' : 'transparent'}` }}
+      onClick={() => setOpen(s => !s)}
+    >
+      {props.children}
+    </Button>
+  )
+}
+
+function SeletionEditor(props) {
+  const [open, setOpen] = React.useState(false)
+  const [color, setColor] = React.useState(COLORS.PRIMARY)
+
+  return (
+    <Popout
+      hidden={false}
+      pointerLeft="62px"
+      style={{
+        zIndex: 100,
+        top: props.pos.top,
+        left: props.pos.left
+      }}
+    >
+      <div className="colorizer">
+        <div className="modifier">
+          <ModifierButton flex={0}>
+            <b>B</b>
+          </ModifierButton>
+          <ModifierButton flex={0}>
+            <i>I</i>
+          </ModifierButton>
+          <ModifierButton flex={0}>
+            <u>U</u>
+          </ModifierButton>
+          <button className="color-square" onClick={() => setOpen(o => !o)} />
+        </div>
+        {open && (
+          <div className="color-picker-container">
+            <ColorPicker color={color} disableAlpha={true} onChange={d => setColor(d.hex)} />
+          </div>
+        )}
+      </div>
+      <style jsx>
+        {`
+          .modifier {
+            padding: 0px 8px;
+            display: flex;
+          }
+          .colorizer b {
+            font-weight: bold;
+          }
+          .colorizer i {
+            font-style: italic;
+          }
+          .colorizer :global(button) {
+            border-bottom: 1px solid white;
+            min-width: 24px;
+          }
+          .color-square {
+            cursor: pointer;
+            appearance: none;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            padding: 12px;
+            margin: 4px 0 4px auto;
+            background: ${color};
+            box-shadow: ${`inset 0px 0px 0px ${open ? 2 : 1}px ${COLORS.SECONDARY}`};
+          }
+          .color-picker-container {
+            width: 218px;
+            border-top: 2px solid ${COLORS.SECONDARY};
+          }
+        `}
+      </style>
+    </Popout>
+  )
+}
 
 const Watermark = dynamic(() => import('./svg/Watermark'), {
   loading: () => null
@@ -29,6 +120,7 @@ class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: () => {}
   }
+  state = {}
 
   handleLanguageChange = debounce(
     (newCode, language) => {
@@ -94,8 +186,38 @@ class Carbon extends React.PureComponent {
 
     const light = themeConfig && themeConfig.light
 
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
     const content = (
-      <div className="container">
+      <div
+        className="container"
+        onMouseUp={() => {
+          if (this.currentSelection) {
+            // let x = this.props.editorRef.current.editor.doc.markText(
+            //   this.currentSelection.from,
+            //   this.currentSelection.to,
+            //   {
+            //     css: 'font-weight: bold'
+            //   }
+            // )
+            const modifierOpenAt = this.props.editorRef.current.editor.charCoords(
+              this.currentSelection.from,
+              'local'
+            )
+            const modifierOpenAtEnd = this.props.editorRef.current.editor.charCoords(
+              this.currentSelection.to,
+              'local'
+            )
+            // TODO find a better more consistent way to measure
+            const top = modifierOpenAt.bottom + parseInt(config.paddingVertical) + 45
+            const left = (modifierOpenAt.left + modifierOpenAtEnd.right) / 2
+
+            this.setState({ modifierOpenAt: { ...modifierOpenAt, top, left } })
+            this.currentSelection = null
+          } else {
+            this.setState({ modifierOpenAt: null })
+          }
+        }}
+      >
         {config.windowControls ? (
           <WindowControls
             theme={config.windowTheme}
@@ -110,6 +232,31 @@ class Carbon extends React.PureComponent {
           options={options}
           onBeforeChange={this.onBeforeChange}
           onGutterClick={this.props.onGutterClick}
+          onSelection={(ed, data) => {
+            const selection = data.ranges[0]
+
+            if (
+              selection.head.line === selection.anchor.line &&
+              selection.head.ch === selection.anchor.ch
+            ) {
+              return
+            }
+
+            if (
+              selection.head.line + selection.head.ch >
+              selection.anchor.line + selection.anchor.ch
+            ) {
+              this.currentSelection = {
+                from: selection.anchor,
+                to: selection.head
+              }
+            } else {
+              this.currentSelection = {
+                from: selection.head,
+                to: selection.anchor
+              }
+            }
+          }}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
@@ -234,6 +381,7 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
+        {this.state.modifierOpenAt && <SeletionEditor pos={this.state.modifierOpenAt} />}
         <style jsx>
           {`
             .section,

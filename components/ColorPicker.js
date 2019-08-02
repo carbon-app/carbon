@@ -9,13 +9,14 @@ const pickerStyle = {
   margin: '0 auto 1px'
 }
 
-const ColorPicker = ({ onChange = () => {}, color, presets, style }) => (
+const ColorPicker = ({ onChange = () => {}, color, presets, style, disableAlpha }) => (
   <React.Fragment>
     <SketchPicker
       styles={{ picker: style || pickerStyle }}
       color={color}
       onChangeComplete={onChange}
       presetColors={presets}
+      disableAlpha={disableAlpha}
     />
     <style jsx>
       {`
