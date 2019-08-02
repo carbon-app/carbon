@@ -74,6 +74,10 @@ export default class ImagePicker extends React.Component {
     return null
   }
 
+  selectMode(mode) {
+    this.setState({ mode })
+  }
+
   async onDragEnd() {
     if (this.state.pixelCrop) {
       const croppedImg = await getCroppedImg(this.state.dataURL, this.state.pixelCrop)
@@ -103,20 +107,23 @@ export default class ImagePicker extends React.Component {
     })
   }
 
+  handleImageChange = (url, dataURL, photographer) => {
+    this.setState({ dataURL, photographer }, () => {
+      this.props.onChange({
+        backgroundImage: url,
+        backgroundImageSelection: null,
+        photographer
+      })
+    })
+  }
+
   handleURLInput(e) {
     e.preventDefault()
     const url = e.target[0].value
     return this.context
       .downloadThumbnailImage({ url })
       .then(res => res.dataURL)
-      .then(dataURL => {
-        this.setState({ dataURL, photographer: null })
-        this.props.onChange({
-          backgroundImage: url,
-          backgroundImageSelection: null,
-          photographer: null
-        })
-      })
+      .then(dataURL => this.handleImageChange(url, dataURL))
       .catch(err => {
         if (err.message.indexOf('Network Error') > -1) {
           this.setState({
@@ -127,23 +134,18 @@ export default class ImagePicker extends React.Component {
       })
   }
 
-  selectMode(mode) {
-    this.setState({ mode })
-  }
-
   async selectImage(e, { photographer } = {}) {
     // TODO separate this into two fns: 1 for files and 1 for Unsplash
-    const dataURL = e.target
-      ? await fileToDataURL(e.target.files[0])
-      : (await this.context.downloadThumbnailImage(e)).dataURL
+    if (e.target) {
+      const dataURL = await fileToDataURL(e.target.files[0])
 
-    this.setState({ dataURL, photographer }, () => {
-      this.props.onChange({
-        backgroundImage: e.target ? dataURL : e,
-        backgroundImageSelection: null,
-        photographer
-      })
-    })
+      return this.handleImageChange(dataURL, dataURL)
+    }
+
+    const { dataURL } = await this.context.downloadThumbnailImage(e)
+    const url = e
+
+    return this.handleImageChange(url, dataURL, photographer)
   }
 
   removeImage() {
