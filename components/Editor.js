@@ -38,6 +38,8 @@ const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
   loading: () => null
 })
 
+const getConfig = omit(['code'])
+
 class Editor extends React.Component {
   static contextType = ApiContext
 
@@ -326,7 +328,7 @@ class Editor extends React.Component {
       exportSize
     } = this.state
 
-    const config = omit(['code'])(this.state)
+    const config = getConfig(this.state)
 
     const theme = this.getTheme()
 

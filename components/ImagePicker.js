@@ -49,13 +49,14 @@ export default class ImagePicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
+    this.selectMode = this.selectMode.bind(this)
     this.handleURLInput = this.handleURLInput.bind(this)
+    this.uploadImage = this.uploadImage.bind(this)
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
     this.onImageLoaded = this.onImageLoaded.bind(this)
     this.onCropChange = this.onCropChange.bind(this)
     this.onDragEnd = this.onDragEnd.bind(this)
-    this.selectMode = this.selectMode.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -134,17 +135,13 @@ export default class ImagePicker extends React.Component {
       })
   }
 
-  async selectImage(e, { photographer } = {}) {
-    // TODO separate this into two fns: 1 for files and 1 for Unsplash
-    if (e.target) {
-      const dataURL = await fileToDataURL(e.target.files[0])
+  async uploadImage(e) {
+    const dataURL = await fileToDataURL(e.target.files[0])
+    return this.handleImageChange(dataURL, dataURL)
+  }
 
-      return this.handleImageChange(dataURL, dataURL)
-    }
-
-    const { dataURL } = await this.context.downloadThumbnailImage(e)
-    const url = e
-
+  async selectImage(url, { photographer } = {}) {
+    const { dataURL } = await this.context.downloadThumbnailImage({ url })
     return this.handleImageChange(url, dataURL, photographer)
   }
 
@@ -178,7 +175,7 @@ export default class ImagePicker extends React.Component {
             <Input
               type="file"
               accept="image/png,image/x-png,image/jpeg,image/jpg"
-              onChange={this.selectImage}
+              onChange={this.uploadImage}
             />
           ) : (
             <form onSubmit={this.handleURLInput}>
