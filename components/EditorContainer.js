@@ -16,7 +16,7 @@ function EditorContainer(props) {
   }, [])
 
   React.useEffect(() => {
-    saveThemes(localStorage, themes.filter(({ custom }) => custom))
+    saveThemes(themes.filter(({ custom }) => custom))
   }, [themes])
 
   return <Editor {...props} themes={themes} updateThemes={updateThemes} />
