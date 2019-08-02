@@ -108,10 +108,11 @@ export default class ImagePicker extends React.Component {
     const url = e.target[0].value
     return this.context
       .downloadThumbnailImage({ url })
-      .then(({ dataURL }) => {
-        this.setState({ dataURL })
+      .then(res => res.dataURL)
+      .then(dataURL => {
+        this.setState({ dataURL, photographer: null })
         this.props.onChange({
-          backgroundImage: dataURL,
+          backgroundImage: url,
           backgroundImageSelection: null,
           photographer: null
         })
