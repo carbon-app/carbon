@@ -10,7 +10,7 @@ import EditorContainer from '../components/EditorContainer'
 import Page from '../components/Page'
 import { MetaLinks } from '../components/Meta'
 import { updateRouteState } from '../lib/routing'
-import { saveSettings, clearSettings, omit } from '../lib/util'
+import { saveSettings, clearSettings } from '../lib/util'
 
 class Index extends React.Component {
   componentDidMount() {
@@ -25,16 +25,7 @@ class Index extends React.Component {
   onEditorUpdate = debounce(
     state => {
       updateRouteState(this.props.router, state)
-      saveSettings(
-        omit(state, [
-          'code',
-          'backgroundImage',
-          'backgroundImageSelection',
-          'themes',
-          'highlights',
-          'fontUrl'
-        ])
-      )
+      saveSettings(state)
     },
     750,
     { trailing: true, leading: true }

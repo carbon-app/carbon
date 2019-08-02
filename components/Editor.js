@@ -326,7 +326,7 @@ class Editor extends React.Component {
       exportSize
     } = this.state
 
-    const config = omit(this.state, ['code'])
+    const config = omit(['code'])(this.state)
 
     const theme = this.getTheme()
 
