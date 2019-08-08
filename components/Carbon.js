@@ -22,25 +22,37 @@ import {
 } from '../lib/constants'
 
 function ModifierButton(props) {
-  const [selected, setOpen] = React.useState(props.selected)
-
   return (
     <Button
       flex={0}
       padding="0"
       center
       margin="0 8px 0 0"
-      style={{ borderBottom: `1px solid ${selected ? 'white' : 'transparent'}` }}
-      onClick={() => setOpen(s => !s)}
+      style={{ borderBottom: `1px solid ${props.selected ? 'white' : 'transparent'}` }}
+      onClick={() => props.onChange(s => !s)}
     >
       {props.children}
     </Button>
   )
 }
 
-function SeletionEditor(props) {
+function SeletionEditor({ pos, onChange }) {
   const [open, setOpen] = React.useState(false)
-  const [color, setColor] = React.useState(COLORS.PRIMARY)
+
+  const [bold, setBold] = React.useState(false)
+  const [italics, setItalics] = React.useState(false)
+  const [underline, setUnderline] = React.useState(false)
+
+  const [color, setColor] = React.useState(null)
+
+  React.useEffect(() => {
+    onChange({
+      bold,
+      italics,
+      underline,
+      color
+    })
+  }, [onChange, bold, color, italics, underline])
 
   return (
     <Popout
@@ -48,26 +60,30 @@ function SeletionEditor(props) {
       pointerLeft="62px"
       style={{
         zIndex: 100,
-        top: props.pos.top,
-        left: props.pos.left
+        top: pos.top,
+        left: pos.left
       }}
     >
       <div className="colorizer">
         <div className="modifier">
-          <ModifierButton flex={0}>
+          <ModifierButton selected={bold} onChange={setBold}>
             <b>B</b>
           </ModifierButton>
-          <ModifierButton flex={0}>
+          <ModifierButton selected={italics} onChange={setItalics}>
             <i>I</i>
           </ModifierButton>
-          <ModifierButton flex={0}>
+          <ModifierButton selected={underline} onChange={setUnderline}>
             <u>U</u>
           </ModifierButton>
           <button className="color-square" onClick={() => setOpen(o => !o)} />
         </div>
         {open && (
           <div className="color-picker-container">
-            <ColorPicker color={color} disableAlpha={true} onChange={d => setColor(d.hex)} />
+            <ColorPicker
+              color={color || COLORS.PRIMARY}
+              disableAlpha={true}
+              onChange={d => setColor(d.hex)}
+            />
           </div>
         )}
       </div>
@@ -84,7 +100,6 @@ function SeletionEditor(props) {
             font-style: italic;
           }
           .colorizer :global(button) {
-            border-bottom: 1px solid white;
             min-width: 24px;
           }
           .color-square {
@@ -95,7 +110,7 @@ function SeletionEditor(props) {
             border-radius: 3px;
             padding: 12px;
             margin: 4px 0 4px auto;
-            background: ${color};
+            background: ${color || COLORS.PRIMARY};
             box-shadow: ${`inset 0px 0px 0px ${open ? 2 : 1}px ${COLORS.SECONDARY}`};
           }
           .color-picker-container {
@@ -192,13 +207,6 @@ class Carbon extends React.PureComponent {
         className="container"
         onMouseUp={() => {
           if (this.currentSelection) {
-            // let x = this.props.editorRef.current.editor.doc.markText(
-            //   this.currentSelection.from,
-            //   this.currentSelection.to,
-            //   {
-            //     css: 'font-weight: bold'
-            //   }
-            // )
             const startPos = this.props.editorRef.current.editor.charCoords(
               this.currentSelection.from,
               'local'
@@ -224,7 +232,7 @@ class Carbon extends React.PureComponent {
             const left = (startPos.left + endPos.right) / 2
 
             this.setState({ modifierOpenAt: { top, left } })
-            this.currentSelection = null
+            // this.currentSelection = null
           } else {
             this.setState({ modifierOpenAt: null })
           }
@@ -393,7 +401,30 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {this.state.modifierOpenAt && <SeletionEditor pos={this.state.modifierOpenAt} />}
+        {this.state.modifierOpenAt && (
+          <SeletionEditor
+            pos={this.state.modifierOpenAt}
+            onChange={changes => {
+              if (this.currentSelection) {
+                const css = [
+                  `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
+                  `font-style: ${changes.italics ? 'italic' : 'initial'}`,
+                  `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
+                  changes.color && `color: ${changes.color} !important`,
+                  ''
+                ]
+                  .filter(Boolean)
+                  .join('; ')
+
+                this.props.editorRef.current.editor.doc.markText(
+                  this.currentSelection.from,
+                  this.currentSelection.to,
+                  { css }
+                )
+              }
+            }}
+          />
+        )}
         <style jsx>
           {`
             .section,
