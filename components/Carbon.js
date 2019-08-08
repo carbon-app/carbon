@@ -140,10 +140,10 @@ class Carbon extends React.PureComponent {
               3
             const left = (startPos.left + endPos.right) / 2
 
-            this.setState({ modifierOpenAt: { top, left } })
+            this.setState({ selectionAt: { top, left } })
             // this.currentSelection = null
           } else {
-            this.setState({ modifierOpenAt: null })
+            this.setState({ selectionAt: null })
           }
         }}
       >
@@ -286,9 +286,9 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {this.state.modifierOpenAt && (
+        {this.state.selectionAt && (
           <SelectionEditor
-            position={this.state.modifierOpenAt}
+            position={this.state.selectionAt}
             onChange={changes => {
               if (this.currentSelection) {
                 const css = [
