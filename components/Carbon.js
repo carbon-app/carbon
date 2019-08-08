@@ -68,6 +68,27 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  onSelection = (ed, data) => {
+    const selection = data.ranges[0]
+    if (
+      selection.head.line === selection.anchor.line &&
+      selection.head.ch === selection.anchor.ch
+    ) {
+      return (this.currentSelection = null)
+    }
+    if (selection.head.line + selection.head.ch > selection.anchor.line + selection.anchor.ch) {
+      this.currentSelection = {
+        from: selection.anchor,
+        to: selection.head
+      }
+    } else {
+      this.currentSelection = {
+        from: selection.head,
+        to: selection.anchor
+      }
+    }
+  }
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -140,31 +161,7 @@ class Carbon extends React.PureComponent {
           options={options}
           onBeforeChange={this.onBeforeChange}
           onGutterClick={this.props.onGutterClick}
-          onSelection={(ed, data) => {
-            const selection = data.ranges[0]
-
-            if (
-              selection.head.line === selection.anchor.line &&
-              selection.head.ch === selection.anchor.ch
-            ) {
-              return (this.currentSelection = null)
-            }
-
-            if (
-              selection.head.line + selection.head.ch >
-              selection.anchor.line + selection.anchor.ch
-            ) {
-              this.currentSelection = {
-                from: selection.anchor,
-                to: selection.head
-              }
-            } else {
-              this.currentSelection = {
-                from: selection.head,
-                to: selection.anchor
-              }
-            }
-          }}
+          onSelection={this.onSelection}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
