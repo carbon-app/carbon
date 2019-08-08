@@ -89,6 +89,25 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  onMouseUp = () => {
+    if (this.currentSelection) {
+      const { editor } = this.props.editorRef.current
+      const startPos = editor.charCoords(this.currentSelection.from, 'local')
+      const endPos = editor.charCoords(this.currentSelection.to, 'local')
+      const startWindowPos = editor.charCoords(this.currentSelection.from, 'window')
+      const endWindowPos = editor.charCoords(this.currentSelection.to, 'window')
+      const top =
+        Math.max(startWindowPos.bottom, endWindowPos.bottom) -
+        this.props.innerRef.current.getBoundingClientRect().top -
+        3
+      const left = (startPos.left + endPos.right) / 2
+      this.setState({ selectionAt: { top, left } })
+      // this.currentSelection = null
+    } else {
+      this.setState({ selectionAt: null })
+    }
+  }
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -122,31 +141,7 @@ class Carbon extends React.PureComponent {
 
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     const content = (
-      <div
-        className="container"
-        onMouseUp={() => {
-          if (this.currentSelection) {
-            const { editor } = this.props.editorRef.current
-
-            const startPos = editor.charCoords(this.currentSelection.from, 'local')
-            const endPos = editor.charCoords(this.currentSelection.to, 'local')
-
-            const startWindowPos = editor.charCoords(this.currentSelection.from, 'window')
-            const endWindowPos = editor.charCoords(this.currentSelection.to, 'window')
-
-            const top =
-              Math.max(startWindowPos.bottom, endWindowPos.bottom) -
-              this.props.innerRef.current.getBoundingClientRect().top -
-              3
-            const left = (startPos.left + endPos.right) / 2
-
-            this.setState({ selectionAt: { top, left } })
-            // this.currentSelection = null
-          } else {
-            this.setState({ selectionAt: null })
-          }
-        }}
-      >
+      <div className="container" onMouseUp={this.onMouseUp}>
         {config.windowControls ? (
           <WindowControls
             theme={config.windowTheme}
