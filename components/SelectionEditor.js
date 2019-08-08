@@ -19,7 +19,7 @@ function ModifierButton(props) {
   )
 }
 
-function SelectionEditor({ pos, onChange }) {
+function SelectionEditor({ position, onChange }) {
   const [open, setOpen] = React.useState(false)
   const [bold, setBold] = React.useState(false)
   const [italics, setItalics] = React.useState(false)
@@ -39,8 +39,8 @@ function SelectionEditor({ pos, onChange }) {
       pointerLeft="62px"
       style={{
         zIndex: 100,
-        top: pos.top,
-        left: pos.left
+        top: position.top,
+        left: position.left
       }}
     >
       <div className="colorizer">

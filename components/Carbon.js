@@ -291,7 +291,7 @@ class Carbon extends React.PureComponent {
         </div>
         {this.state.modifierOpenAt && (
           <SelectionEditor
-            pos={this.state.modifierOpenAt}
+            position={this.state.modifierOpenAt}
             onChange={changes => {
               if (this.currentSelection) {
                 const css = [
