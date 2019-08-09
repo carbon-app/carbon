@@ -4,8 +4,8 @@ import * as hljs from 'highlight.js'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
-import SpinnerWrapper from './SpinnerWrapper'
 
+import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
 import {
   COLORS,
@@ -13,7 +13,8 @@ import {
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
   DEFAULT_SETTINGS,
-  THEMES_HASH
+  THEMES_HASH,
+  LANGUAGES
 } from '../lib/constants'
 
 const Watermark = dynamic(() => import('./svg/Watermark'), {
@@ -29,18 +30,23 @@ function searchLanguage(l) {
 }
 
 class Carbon extends React.PureComponent {
+  static modesLoaded = new Set()
   static defaultProps = {
     onChange: () => {}
   }
 
-  componentDidUpdate(prevProps) {
-    // TODO keep opacities in state
-    if (
-      prevProps.config.theme != this.props.config.theme ||
-      prevProps.config.language != this.props.config.language
-    ) {
-      this.prevLine = null
-    }
+  componentDidMount() {
+    LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
+      language => {
+        if (language.mode && !Carbon.modesLoaded.has(language.mode)) {
+          // TODO useLayoutEffect
+          language.custom
+            ? require(`../lib/custom/modes/${language.mode}`)
+            : require(`codemirror/mode/${language.mode}/${language.mode}`)
+          Carbon.modesLoaded.add(language.mode)
+        }
+      }
+    )
   }
 
   handleLanguageChange = debounce(
@@ -74,33 +80,6 @@ class Carbon extends React.PureComponent {
     if (!this.props.readOnly) {
       this.props.onChange(code)
     }
-  }
-
-  prevLine = null
-  onGutterClick = (editor, lineNumber, gutter, e) => {
-    editor.display.view.forEach((line, i, arr) => {
-      if (i != lineNumber) {
-        if (this.prevLine == null) {
-          line.text.style.opacity = 0.5
-          line.gutter.style.opacity = 0.5
-        }
-      } else {
-        if (e.shiftKey && this.prevLine != null) {
-          for (
-            let index = Math.min(this.prevLine, i);
-            index < Math.max(this.prevLine, i) + 1;
-            index++
-          ) {
-            arr[index].text.style.opacity = arr[this.prevLine].text.style.opacity
-            arr[index].gutter.style.opacity = arr[this.prevLine].gutter.style.opacity
-          }
-        } else {
-          line.text.style.opacity = line.text.style.opacity == 1 ? 0.5 : 1
-          line.gutter.style.opacity = line.gutter.style.opacity == 1 ? 0.5 : 1
-        }
-      }
-    })
-    this.prevLine = lineNumber
   }
 
   render() {
@@ -145,11 +124,12 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
+          ref={this.props.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
           onBeforeChange={this.onBeforeChange}
           value={this.props.children}
           options={options}
-          onGutterClick={this.onGutterClick}
+          onGutterClick={this.props.onGutterClick}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
@@ -299,4 +279,55 @@ class Carbon extends React.PureComponent {
   }
 }
 
-export default React.forwardRef((props, ref) => <Carbon {...props} innerRef={ref} />)
+function LineNumbersCarbon(props, ref) {
+  const [selectedLines, setSelected] = React.useState({})
+  const editorRef = React.useRef(null)
+  const prevLine = React.useRef(null)
+
+  function onGutterClick(editor, lineNumber, gutter, e) {
+    setSelected(currState => {
+      const newState = {}
+
+      if (e.shiftKey && prevLine.current != null) {
+        for (
+          let i = Math.min(prevLine.current, lineNumber);
+          i < Math.max(prevLine.current, lineNumber) + 1;
+          i++
+        ) {
+          newState[i] = currState[prevLine.current]
+        }
+
+        return { ...currState, ...newState }
+      }
+
+      for (let i = 0; i < editor.display.view.length; i++) {
+        if (i != lineNumber) {
+          if (prevLine.current == null) {
+            newState[i] = false
+          }
+        } else {
+          newState[lineNumber] = currState[lineNumber] === true ? false : true
+        }
+      }
+
+      return { ...currState, ...newState }
+    })
+
+    prevLine.current = lineNumber
+  }
+
+  React.useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.editor.display.view.forEach((line, i) => {
+        if (line.text && line.gutter) {
+          line.text.style.opacity = selectedLines[i] === false ? 0.5 : 1
+          line.gutter.style.opacity = selectedLines[i] === false ? 0.5 : 1
+        }
+      })
+    }
+  }, [selectedLines, props.children, props.config])
+
+  return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
+}
+
+export default React.forwardRef(LineNumbersCarbon)
