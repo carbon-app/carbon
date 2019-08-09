@@ -1,8 +1,8 @@
-/* global cy,before,after */
+/* global cy, before ,after */
 import { environment } from '../../util'
+import { THEMES } from '../../../lib/constants'
 
-// TODO: remove .skip - Applitools is not working right now
-describe.skip('Visual Regression Testing', () => {
+describe('Visual Regression Testing', () => {
   before(() => {
     cy.eyesOpen({
       appName: 'Carbon',
@@ -11,20 +11,19 @@ describe.skip('Visual Regression Testing', () => {
     })
     cy.visit('/')
   })
+
   after(() => {
     cy.eyesClose()
   })
 
-  it('themes test', () => {
-    for (let childIndex = 1; childIndex < 28; childIndex++) {
+  THEMES.forEach(t => {
+    it(`Test theme: "${t.name}"`, () => {
       cy.get('[data-cy="themes-container"] [data-cy="theme-selector-button"]').click()
-      cy.get(
-        `[data-cy="themes-container"] [data-cy="dropdown-item"]:nth-child(${childIndex + 1})`
-      ).click({ force: true })
+      cy.contains(t.name).click({ force: true })
       cy.eyesCheckWindow({
-        sizeMode: 'selector', //mode
+        target: 'region',
         selector: '.page'
       })
-    }
+    })
   })
 })

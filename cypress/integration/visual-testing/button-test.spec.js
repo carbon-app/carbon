@@ -1,6 +1,7 @@
-/* global cy,before,after */
+/* global cy, before, after */
 import { environment } from '../../util'
-describe.skip('Visual Regression Testing', () => {
+
+describe('Visual Regression Testing', () => {
   before(() => {
     cy.eyesOpen({
       appName: 'Carbon',
@@ -9,18 +10,20 @@ describe.skip('Visual Regression Testing', () => {
     })
     cy.visit('/')
   })
-  after(() => {
-    cy.eyesClose()
-  })
+
   beforeEach(() => {
     cy.reload()
+  })
+
+  after(() => {
+    cy.eyesClose()
   })
 
   it('test export button', () => {
     cy.get('[data-cy=export-button]').click()
     cy.eyesCheckWindow({
       tag: 'export button',
-      sizeMode: 'selector', //mode
+      target: 'region',
       selector: '.page'
     })
   })
@@ -29,7 +32,7 @@ describe.skip('Visual Regression Testing', () => {
     cy.get('[data-cy=display]').click()
     cy.eyesCheckWindow({
       tag: 'display button',
-      sizeMode: 'selector', //mode
+      target: 'region',
       selector: '.page'
     })
   })
@@ -41,7 +44,7 @@ describe.skip('Visual Regression Testing', () => {
     cy.wait(500)
     cy.eyesCheckWindow({
       tag: 'color button',
-      sizeMode: 'selector', //mode
+      target: 'region',
       selector: '.page'
     })
   })
