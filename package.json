@@ -7,7 +7,6 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
     "test": "jest",
     "test:e2e": "npm run cy:run --",
     "deploy": "now",
