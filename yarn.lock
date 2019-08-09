@@ -2414,10 +2414,10 @@ chownr@^1.0.1, chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.2.tgz#a18f1e0b269c8a6a5d3c86eb298beb14c3dd7bf6"
   integrity sha512-GkfeAQh+QNy3wquu9oIZr6SS5x7wGdSgNQvD10X3r+AZr1Oys22HW8kAmDMvNg2+Dm0TeGaEuO8gFwdBXxwO8A==
 
-chrome-aws-lambda@^1.14.0:
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-1.18.1.tgz#c622fe37b2ffe0cf77e50fdacd47361ddd8a2d18"
-  integrity sha512-bq17kJcklPE35qq954bOlHg8RcZvDnfRIjGNerkRXLL0FEqMXqIKYW6SY9/05cUZoYyv0BwQ3JkwtQEjawYWDg==
+chrome-aws-lambda@^1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-1.19.0.tgz#1078e9fe1a30584a26eb5ef5270df41d6223099d"
+  integrity sha512-GTrnlZLjFni+qlGTWFcjiJPhmaV+cR/QVDTcDdNRxZm8NQKfopaVv03PLSLP6StzpC0BHquUg6tqz5QH0w1lIw==
 
 chrome-trace-event@^1.0.0:
   version "1.0.2"
@@ -7552,10 +7552,10 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@^1.17.0:
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-1.18.1.tgz#37549e975273b7fa450e0f8a8023db6175ed049a"
-  integrity sha512-E/p4oIYnPZsCATQD5S6IKOBUnGG87h14OAXAmHjm+9SFIYLBUtY2AWg38Jfus9IjcAucnrYBv6A5372bte/S2g==
+puppeteer-core@^1.19.0:
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-1.19.0.tgz#3c3f98edb5862583e3a9c19cbc0da57ccc63ba5c"
+  integrity sha512-ZPbbjUymorIJomHBvdZX5+2gciUmQtAdepCrkweHH6rMJr96xd/dXzHgmYEOBMatH44SmJrcMtWkgsLHJqT89g==
   dependencies:
     debug "^4.1.0"
     extract-zip "^1.6.6"
