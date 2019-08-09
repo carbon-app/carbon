@@ -12,7 +12,7 @@ function ModifierButton(props) {
       center
       margin="0 8px 0 0"
       style={{ borderBottom: `1px solid ${props.selected ? 'white' : 'transparent'}` }}
-      onClick={() => props.onChange(s => !s)}
+      onClick={props.onClick}
     >
       {props.children}
     </Button>
@@ -21,10 +21,13 @@ function ModifierButton(props) {
 
 function SelectionEditor({ position, onChange }) {
   const [open, setOpen] = React.useState(false)
+
   const [bold, setBold] = React.useState(false)
   const [italics, setItalics] = React.useState(false)
   const [underline, setUnderline] = React.useState(false)
+
   const [color, setColor] = React.useState(null)
+
   React.useEffect(() => {
     onChange({
       bold,
@@ -33,6 +36,7 @@ function SelectionEditor({ position, onChange }) {
       color
     })
   }, [onChange, bold, color, italics, underline])
+
   return (
     <Popout
       hidden={false}
@@ -45,13 +49,13 @@ function SelectionEditor({ position, onChange }) {
     >
       <div className="colorizer">
         <div className="modifier">
-          <ModifierButton selected={bold} onChange={setBold}>
+          <ModifierButton selected={bold} onClick={() => setBold(v => !v)}>
             <b>B</b>
           </ModifierButton>
-          <ModifierButton selected={italics} onChange={setItalics}>
+          <ModifierButton selected={italics} onClick={() => setItalics(v => !v)}>
             <i>I</i>
           </ModifierButton>
-          <ModifierButton selected={underline} onChange={setUnderline}>
+          <ModifierButton selected={underline} onClick={() => setUnderline(v => !v)}>
             <u>U</u>
           </ModifierButton>
           <button className="color-square" onClick={() => setOpen(o => !o)} />
