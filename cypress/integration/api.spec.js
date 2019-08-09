@@ -29,7 +29,7 @@ describe('/api', () => {
       cy.request('/api/unsplash/download/RCAhiGJsUUE').then(res => {
         expect(res.body).to.have.property(
           'url',
-          'https://images.unsplash.com/photo-1546440532-e354ef66b664?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb'
+          'https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb'
         )
       })
     })
