@@ -26,7 +26,7 @@ describe('/api', () => {
   })
   describe('/unsplash/download', () => {
     it('Should return the correct URL', () => {
-      cy.request('/api/unsplash/download/gnsB8bfxutU').then(res => {
+      cy.request('/api/unsplash/download/RCAhiGJsUUE').then(res => {
         expect(res.body).to.have.property(
           'url',
           'https://images.unsplash.com/photo-1546440532-e354ef66b664?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb'
