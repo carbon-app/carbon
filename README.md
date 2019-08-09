@@ -9,21 +9,21 @@
   <a href="https://github.com/prettier/prettier">
     <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier" />
   </a>
-  <a href="https://github.com/dawnlabs/carbon/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/dawnlabs/carbon.svg" alt="MIT License" />
+  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
   <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/dawnlabs/carbon.svg" alt="Greenkeeper badge" />
+    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
   </a>
   <a href="https://spectrum.chat/carbon-now">
     <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
   </a>
-  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon?ref=badge_shield">
-    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon.svg?type=shield" alt="FOSSA Status" />     </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />     </a>
 </p>
 <br></br>
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon)
 
 ##### Translations
 
@@ -76,6 +76,7 @@ If you use the &apos;Tweet&apos; button, Carbon will automatically make your ima
 If you include a Carbon image in a post, the source code will be invisible for assistive technology, it will not be possible to enlarge it or copy it, etc. Please, think about adding another element with the source code as text, like an [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) below the image.
 
 #### Installing Carbon for Desktop
+
 If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by clicking your browser's settings menu and then "Install Carbon..."
 
 ## Community
@@ -109,7 +110,7 @@ Check out these projects our awesome community has created:
 
 ## Contribute
 
-PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
+PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
 
 ## Thanks To
 

@@ -10,10 +10,10 @@ const Footer = () => (
           about
         </a>
       </Link>
-      <a className="link" href="https://github.com/dawnlabs/carbon/issues/new">
+      <a className="link" href="https://github.com/carbon-app/carbon/issues/new">
         send feedback
       </a>
-      <a className="link" href="https://github.com/dawnlabs/carbon">
+      <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>
     </nav>
