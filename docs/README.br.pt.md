@@ -168,5 +168,4 @@ Agradecemos imensamente a todas essas pessoas maravilhosas pela grande ajuda ([e
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
