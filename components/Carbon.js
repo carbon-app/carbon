@@ -108,6 +108,25 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  onSelectionChange = changes => {
+    if (this.currentSelection) {
+      const css = [
+        `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
+        `font-style: ${changes.italics ? 'italic' : 'initial'}`,
+        `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
+        changes.color && `color: ${changes.color} !important`,
+        ''
+      ]
+        .filter(Boolean)
+        .join('; ')
+      this.props.editorRef.current.editor.doc.markText(
+        this.currentSelection.from,
+        this.currentSelection.to,
+        { css }
+      )
+    }
+  }
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -282,28 +301,7 @@ class Carbon extends React.PureComponent {
           <div className="twitter-png-fix" />
         </div>
         {this.state.selectionAt && (
-          <SelectionEditor
-            position={this.state.selectionAt}
-            onChange={changes => {
-              if (this.currentSelection) {
-                const css = [
-                  `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
-                  `font-style: ${changes.italics ? 'italic' : 'initial'}`,
-                  `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
-                  changes.color && `color: ${changes.color} !important`,
-                  ''
-                ]
-                  .filter(Boolean)
-                  .join('; ')
-
-                this.props.editorRef.current.editor.doc.markText(
-                  this.currentSelection.from,
-                  this.currentSelection.to,
-                  { css }
-                )
-              }
-            }}
-          />
+          <SelectionEditor position={this.state.selectionAt} onChange={this.onSelectionChange} />
         )}
         <style jsx>
           {`
