@@ -1,6 +1,6 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-<!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+<!--[![Dependencies](https://img.shields.io/david/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/readme-badges/package.json)-->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-56-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -72,7 +72,7 @@ Confira os projetos top da nossa comunidade:
 
 ## Contribua
 
-PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) para mais detalhes.
+PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) para mais detalhes.
 
 ## Agradecimentos
 
@@ -80,7 +80,7 @@ PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](https://github.com/d
 
 ## Autores
 
-Carbon é um projeto feito pela <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+Carbon é um projeto feito pela
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
@@ -170,4 +170,5 @@ Agradecemos imensamente a todas essas pessoas maravilhosas pela grande ajuda ([e
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

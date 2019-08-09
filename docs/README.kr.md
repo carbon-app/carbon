@@ -1,25 +1,25 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-<!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+<!--[![Dependencies](https://img.shields.io/david/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/readme-badges/package.json)-->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-56-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![Greenkeeper badge](https://badges.greenkeeper.io/carbon-app/carbon.svg)](https://greenkeeper.io/)
 [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ## Introduction
 
 트위터에서 공유되고 있는 [수](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 도와줍니다. 무엇을 망설이시나요? 당신의 디자인 감각으로 팔로워들을 감동시켜보세요
 
-이 프로젝트에 대해서 자세히 알고싶다면 [carbon.now.sh](https://carbon.now.sh)에 방문하시거나 [우리의 post](https://dawnlabs.io/case-studies/carbon/)를 읽어보시기 바랍니다. 
+이 프로젝트에 대해서 자세히 알고싶다면 [carbon.now.sh](https://carbon.now.sh)에 방문하시거나 [우리의 post](https://dawnlabs.io/case-studies/carbon/)를 읽어보시기 바랍니다.
 
 ## Features
 
-- **GitHub gist에서 가져오기**. 간단하게 github gist id를  url 에 입력하면 됩니다. 
+- **GitHub gist에서 가져오기**. 간단하게 github gist id를 url 에 입력하면 됩니다.
 - **커스터마이징**. syntax theme, window style 등 많은 것들을 커스터마이징할 수 있습니다.
 - **빠르게 공유하기**. 클릭 한 번으로 이미지를 저장하거나 Tweet에 공유할 수 있습니다.
 
@@ -74,7 +74,7 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, paddin
 
 ## Contribute
 
-풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md)를 참조해주세요.
+풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md)를 참조해주세요.
 
 ## Thanks To
 
@@ -82,7 +82,7 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, paddin
 
 ## Authors
 
-Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+Carbon is a project by
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
@@ -172,4 +172,5 @@ Carbon is a project by <a href="http://dawnlabs.io/"><img width=8% src="https://
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

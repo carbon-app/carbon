@@ -1,15 +1,15 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-<!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+<!--[![Dependencies](https://img.shields.io/david/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/readme-badges/package.json)-->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-56-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![Greenkeeper badge](https://badges.greenkeeper.io/carbon-app/carbon.svg)](https://greenkeeper.io/)
 [![Siguenos en Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ## Introducción
 
@@ -72,7 +72,7 @@ Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 
 ## Contribuir
 
-¡Bienvenido! Consulte nuestro [CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) para obtener más detalles.
+¡Bienvenido! Consulte nuestro [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) para obtener más detalles.
 
 ## Gracias a
 
@@ -80,7 +80,7 @@ Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 
 ## Autores
 
-Carbon es un proyecto de <a href="http://dawnlabs.io/"><img width="8%" src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+Carbon es un proyecto de
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
@@ -170,4 +170,5 @@ Gracias a todas estas personas maravillosas ([emoji key](https://github.com/kent
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

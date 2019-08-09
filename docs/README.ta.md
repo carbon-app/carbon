@@ -1,15 +1,15 @@
 <p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
 
-<!--[![Dependencies](https://img.shields.io/david/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/readme-badges/package.json)-->
+<!--[![Dependencies](https://img.shields.io/david/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/readme-badges/package.json)-->
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-56-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/dawnlabs/carbon.svg)](https://github.com/dawnlabs/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dawnlabs/carbon.svg)](https://greenkeeper.io/)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![Greenkeeper badge](https://badges.greenkeeper.io/carbon-app/carbon.svg)](https://greenkeeper.io/)
 [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
 <br></br>
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon&env=TWITTER_CONSUMER_KEY&env=TWITTER_CONSUMER_SECRET&env=TWITTER_ACCESS_TOKEN_KEY&env=TWITTER_ACCESS_TOKEN_SECRET&env=LOGS_SECRET_PREFIX)
 
 ##### மொழிபெயர்ப்பு
 
@@ -27,7 +27,7 @@
 
 ட்விட்டர் மற்றும் நீங்கள் [பார்க்க](https://twitter.com/dan_abramov/status/890191815567175680) [குறியீடுகள்](https://twitter.com/reactjs/status/890511993261654017) [அனைத்து திரைக்காட்சிகளும்](https://twitter.com/notquiteleo/status/873483329345028096) [நீங்கள் தெரிந்து](https://twitter.com/zeithq/status/805779711154647040)? கோட் பொதுவாக கவர்ச்சிகரமானது, ஆனால் அழகியல் துறை முன்னேற்றத்திற்கான அறை உள்ளது. கார்பன் உங்கள் மூல குறியீட்டின் அழகிய படங்களை உருவாக்க மற்றும் பகிர்ந்து கொள்ள எளிதாக்குகிறது. நீ ஏன் காத்திருக்கிறாய்? புதிதாக வடிவமைக்கப்பட்ட வடிவமைப்புகளுடன் உங்களைப் பின்தொடர்பவர்கள் அனைவரையும் கவர்ந்திழுக்கலாம்.
 
-[கார்பன்](https://carbon.now.sh) திட்டத்தைப் பற்றி மேலும் அறியவும் அல்லது மேலும் அறியவும் [வெளியிட்டது](https://dawnlabs.io/case-studies/carbon/) படிக்க.
+[கார்பன்](https://carbon.now.sh) திட்டத்தைப் பற்றி மேலும் அறியவும் அல்லது மேலும் அறியவும் [வெளியிட்டது](https://.io/case-studies/carbon/) படிக்க.
 
 ## அம்சங்கள்
 
@@ -86,7 +86,7 @@
 
 ## பங்களிக்க
 
-PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md) பார்க்கவும்.
+PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) பார்க்கவும்.
 
 ## நன்றி
 
@@ -94,7 +94,7 @@ PR வரவேற்கிறோம்! மேலும் தகவலுக�
 
 ## ஆசிரியர்கள்
 
-கார்பன் ஒரு திட்டம் <a href="http://dawnlabs.io/"><img width=8% src="https://cloud.githubusercontent.com/assets/10369094/25406306/dacebd4c-29cb-11e7-8e1c-468687cde495.png"></a>
+கார்பன் ஒரு திட்டம்
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 
@@ -186,4 +186,5 @@ PR வரவேற்கிறோம்! மேலும் தகவலுக�
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

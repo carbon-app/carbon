@@ -9,21 +9,21 @@
   <a href="https://github.com/prettier/prettier">
     <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier" />
   </a>
-  <a href="https://github.com/dawnlabs/carbon/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/dawnlabs/carbon.svg" alt="MIT License" />
+  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
   <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/dawnlabs/carbon.svg" alt="Greenkeeper badge" />
+    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
   </a>
   <a href="https://spectrum.chat/carbon-now">
     <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
   </a>
-  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon?ref=badge_shield">
-    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdawnlabs%2Fcarbon.svg?type=shield" alt="FOSSA Status" />     </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />     </a>
 </p>
 <br></br>
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/dawnlabs/carbon)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon)
 
 ## Introduction
 
@@ -62,6 +62,7 @@ Carbon にインポートするには何通りかの方法があります:
 投稿の中で Carbon 画像を使うと、ソースコードは assistive technology からは見えなくなり、拡大やコピーなどはできなくなります。画像の下に[HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)のように、テキストとしてソースコードを持つ別の要素を追加することを検討してください。
 
 #### Installing Carbon for Desktop
+
 Google Chrome などの PWA をサポートしているブラウザを使用しているなら、ブラウザの設定メニューから"Install Carbon..."をクリックすることで、Carbon をオフラインで使用するためにインストールできます。
 
 ## Community
@@ -95,7 +96,7 @@ Google Chrome などの PWA をサポートしているブラウザを使用し�
 
 ## Contribute
 
-PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md)をご覧ください。
+PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md)をご覧ください。
 
 ## Thanks To
 
@@ -193,4 +194,5 @@ Carbon は次の人々によるプロジェクトです:
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
