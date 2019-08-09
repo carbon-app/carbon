@@ -25,8 +25,6 @@
 
 [Twitter'da](https://twitter.com/dan_abramov/status/890191815567175680) [karşımıza](https://twitter.com/reactjs/status/890511993261654017) [çıkan](https://twitter.com/notquiteleo/status/873483329345028096) [bu kodları](https://twitter.com/zeithq/status/805779711154647040) biliyorsunuz değil mi? Kod genelde ne kadar etkileyici olsa da, estetik olarak geliştirilebileceğini düşündük. Carbon kaynak kodunuzdan etkileyici görüntüler yaratmayı ve bunları paylaşmayı kolaylaştırır. Hala neyi bekliyorsunuz? Yeni tasarımlarınız ile takipçilerinizi etkilemeye başlayın.
 
-[carbon.now.sh](https://carbon.now.sh)'ı ziyaret ederek veya [sitemizi](https://dawnlabs.io/case-studies/carbon/) ziyaret ederek proje hakkında daha fazla bilgiye sahip olabilirsiniz.
-
 ## Özellikler
 
 - **GitHub gist'ten import edebilme**. Basitce Github Gist id'sini url'e ekleyin
