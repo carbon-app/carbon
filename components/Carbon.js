@@ -29,9 +29,11 @@ function searchLanguage(l) {
   return LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
 }
 
+function noop() {}
 class Carbon extends React.PureComponent {
   static defaultProps = {
-    onChange: () => {}
+    onChange: noop,
+    onGutterClick: noop
   }
   state = {}
 
