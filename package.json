@@ -22,7 +22,7 @@
     "@dawnlabs/tacklebox": "^0.0.11",
     "@reach/visually-hidden": "^0.1.4",
     "axios": "^0.19.0",
-    "codemirror": "^5.47.0",
+    "codemirror": "^5.48.2",
     "codemirror-graphql": "^0.8.3",
     "codemirror-mode-elixir": "^1.1.2",
     "colornames": "^1.1.1",
