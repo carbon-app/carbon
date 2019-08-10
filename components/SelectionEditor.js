@@ -19,23 +19,49 @@ function ModifierButton(props) {
   )
 }
 
+function reducer(state, action) {
+  switch (action.type) {
+    case 'BOLD': {
+      return {
+        ...state,
+        bold: !state.bold
+      }
+    }
+    case 'ITALICS': {
+      return {
+        ...state,
+        italics: !state.italics
+      }
+    }
+    case 'UNDERLINE': {
+      return {
+        ...state,
+        underline: !state.underline
+      }
+    }
+    case 'COLOR': {
+      return {
+        ...state,
+        color: action.color
+      }
+    }
+  }
+  throw new Error('Invalid action')
+}
+
 function SelectionEditor({ position, onChange }) {
   const [open, setOpen] = React.useState(false)
 
-  const [bold, setBold] = React.useState(false)
-  const [italics, setItalics] = React.useState(false)
-  const [underline, setUnderline] = React.useState(false)
-
-  const [color, setColor] = React.useState(null)
+  const [state, dispatch] = React.useReducer(reducer, {
+    bold: false,
+    italics: false,
+    underline: false,
+    color: null
+  })
 
   React.useEffect(() => {
-    onChange({
-      bold,
-      italics,
-      underline,
-      color
-    })
-  }, [onChange, bold, color, italics, underline])
+    onChange(state)
+  }, [onChange, state])
 
   return (
     <Popout
@@ -49,13 +75,16 @@ function SelectionEditor({ position, onChange }) {
     >
       <div className="colorizer">
         <div className="modifier">
-          <ModifierButton selected={bold} onClick={() => setBold(v => !v)}>
+          <ModifierButton selected={state.bold} onClick={() => dispatch({ type: 'BOLD' })}>
             <b>B</b>
           </ModifierButton>
-          <ModifierButton selected={italics} onClick={() => setItalics(v => !v)}>
+          <ModifierButton selected={state.italics} onClick={() => dispatch({ type: 'ITALICS' })}>
             <i>I</i>
           </ModifierButton>
-          <ModifierButton selected={underline} onClick={() => setUnderline(v => !v)}>
+          <ModifierButton
+            selected={state.underline}
+            onClick={() => dispatch({ type: 'UNDERLINE' })}
+          >
             <u>U</u>
           </ModifierButton>
           <button className="color-square" onClick={() => setOpen(o => !o)} />
@@ -63,9 +92,9 @@ function SelectionEditor({ position, onChange }) {
         {open && (
           <div className="color-picker-container">
             <ColorPicker
-              color={color || COLORS.PRIMARY}
+              color={state.color || COLORS.PRIMARY}
               disableAlpha={true}
-              onChange={d => setColor(d.hex)}
+              onChange={d => dispatch({ type: 'COLOR', color: d.hex })}
             />
           </div>
         )}
@@ -93,7 +122,7 @@ function SelectionEditor({ position, onChange }) {
             border-radius: 3px;
             padding: 12px;
             margin: 4px 0 4px auto;
-            background: ${color || COLORS.PRIMARY};
+            background: ${state.color || COLORS.PRIMARY};
             box-shadow: ${`inset 0px 0px 0px ${open ? 2 : 1}px ${COLORS.SECONDARY}`};
           }
           .color-picker-container {
