@@ -30,23 +30,8 @@ function searchLanguage(l) {
 }
 
 class Carbon extends React.PureComponent {
-  static modesLoaded = new Set()
   static defaultProps = {
     onChange: () => {}
-  }
-
-  componentDidMount() {
-    LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
-      language => {
-        if (language.mode && !Carbon.modesLoaded.has(language.mode)) {
-          // TODO useLayoutEffect
-          language.custom
-            ? require(`../lib/custom/modes/${language.mode}`)
-            : require(`codemirror/mode/${language.mode}/${language.mode}`)
-          Carbon.modesLoaded.add(language.mode)
-        }
-      }
-    )
   }
 
   handleLanguageChange = debounce(
@@ -279,10 +264,24 @@ class Carbon extends React.PureComponent {
   }
 }
 
-function LineNumbersCarbon(props, ref) {
+const modesLoaded = new Set()
+function CarbonContainer(props, ref) {
   const [selectedLines, setSelected] = React.useState({})
   const editorRef = React.useRef(null)
   const prevLine = React.useRef(null)
+
+  React.useEffect(() => {
+    LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
+      language => {
+        if (language.mode && !modesLoaded.has(language.mode)) {
+          language.custom
+            ? require(`../lib/custom/modes/${language.mode}`)
+            : require(`codemirror/mode/${language.mode}/${language.mode}`)
+          modesLoaded.add(language.mode)
+        }
+      }
+    )
+  }, [])
 
   function onGutterClick(editor, lineNumber, gutter, e) {
     setSelected(currState => {
@@ -330,4 +329,4 @@ function LineNumbersCarbon(props, ref) {
   return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
 
-export default React.forwardRef(LineNumbersCarbon)
+export default React.forwardRef(CarbonContainer)
