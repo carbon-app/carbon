@@ -265,11 +265,7 @@ class Carbon extends React.PureComponent {
 }
 
 const modesLoaded = new Set()
-function CarbonContainer(props, ref) {
-  const [selectedLines, setSelected] = React.useState({})
-  const editorRef = React.useRef(null)
-  const prevLine = React.useRef(null)
-
+function useModeLoader() {
   React.useEffect(() => {
     LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
       language => {
@@ -282,49 +278,61 @@ function CarbonContainer(props, ref) {
       }
     )
   }, [])
+}
 
-  function onGutterClick(editor, lineNumber, gutter, e) {
-    setSelected(currState => {
-      const newState = {}
+function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLines }) {
+  const newState = {}
 
-      if (e.shiftKey && prevLine.current != null) {
-        for (
-          let i = Math.min(prevLine.current, lineNumber);
-          i < Math.max(prevLine.current, lineNumber) + 1;
-          i++
-        ) {
-          newState[i] = currState[prevLine.current]
+  if (type === 'GROUP' && prevLine) {
+    for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
+      newState[i] = selected[prevLine]
+    }
+  } else {
+    for (let i = 0; i < numLines; i++) {
+      if (i != lineNumber) {
+        if (prevLine == null) {
+          newState[i] = false
         }
-
-        return { ...currState, ...newState }
+      } else {
+        newState[lineNumber] = selected[lineNumber] === true ? false : true
       }
-
-      for (let i = 0; i < editor.display.view.length; i++) {
-        if (i != lineNumber) {
-          if (prevLine.current == null) {
-            newState[i] = false
-          }
-        } else {
-          newState[lineNumber] = currState[lineNumber] === true ? false : true
-        }
-      }
-
-      return { ...currState, ...newState }
-    })
-
-    prevLine.current = lineNumber
+    }
   }
 
+  return {
+    selected: { ...selected, ...newState },
+    prevLine: lineNumber
+  }
+}
+
+function CarbonContainer(props, ref) {
+  useModeLoader()
+
+  const [state, dispatch] = React.useReducer(selectedLinesReducer, {
+    prevLine: null,
+    selected: {}
+  })
+
+  function onGutterClick(editor, lineNumber, gutter, e) {
+    const numLines = editor.display.view.length
+    if (e.shiftKey) {
+      dispatch({ type: 'GROUP', lineNumber, numLines })
+    } else {
+      dispatch({ type: 'LINE', lineNumber, numLines })
+    }
+  }
+
+  const editorRef = React.useRef(null)
   React.useEffect(() => {
     if (editorRef.current) {
       editorRef.current.editor.display.view.forEach((line, i) => {
         if (line.text && line.gutter) {
-          line.text.style.opacity = selectedLines[i] === false ? 0.5 : 1
-          line.gutter.style.opacity = selectedLines[i] === false ? 0.5 : 1
+          line.text.style.opacity = state.selected[i] === false ? 0.5 : 1
+          line.gutter.style.opacity = state.selected[i] === false ? 0.5 : 1
         }
       })
     }
-  }, [selectedLines, props.children, props.config])
+  }, [state.selected, props.children, props.config])
 
   return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
