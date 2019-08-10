@@ -109,11 +109,10 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
-          ref={this.props.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
-          onBeforeChange={this.onBeforeChange}
           value={this.props.children}
           options={options}
+          onBeforeChange={this.onBeforeChange}
           onGutterClick={this.props.onGutterClick}
         />
         {config.watermark && <Watermark light={light} />}
@@ -305,27 +304,16 @@ function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLin
   }
 }
 
-function CarbonContainer(props, ref) {
-  useModeLoader()
-
+function useGutterClickHandler(props) {
+  const editorRef = React.useRef(null)
   const [state, dispatch] = React.useReducer(selectedLinesReducer, {
     prevLine: null,
     selected: {}
   })
 
-  function onGutterClick(editor, lineNumber, gutter, e) {
-    const numLines = editor.display.view.length
-    if (e.shiftKey) {
-      dispatch({ type: 'GROUP', lineNumber, numLines })
-    } else {
-      dispatch({ type: 'LINE', lineNumber, numLines })
-    }
-  }
-
-  const editorRef = React.useRef(null)
   React.useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.editor.display.view.forEach((line, i) => {
+      editorRef.current.display.view.forEach((line, i) => {
         if (line.text && line.gutter) {
           line.text.style.opacity = state.selected[i] === false ? 0.5 : 1
           line.gutter.style.opacity = state.selected[i] === false ? 0.5 : 1
@@ -334,7 +322,23 @@ function CarbonContainer(props, ref) {
     }
   }, [state.selected, props.children, props.config])
 
-  return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
+  return function onGutterClick(editor, lineNumber, gutter, e) {
+    editorRef.current = editor
+
+    const numLines = editor.display.view.length
+    if (e.shiftKey) {
+      dispatch({ type: 'GROUP', lineNumber, numLines })
+    } else {
+      dispatch({ type: 'LINE', lineNumber, numLines })
+    }
+  }
+}
+
+function CarbonContainer(props, ref) {
+  useModeLoader()
+  const onGutterClick = useGutterClickHandler(props)
+
+  return <Carbon {...props} innerRef={ref} onGutterClick={onGutterClick} />
 }
 
 export default React.forwardRef(CarbonContainer)
