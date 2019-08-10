@@ -322,7 +322,7 @@ function useGutterClickHandler(props) {
     }
   }, [state.selected, props.children, props.config])
 
-  return function onGutterClick(editor, lineNumber, gutter, e) {
+  return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
     editorRef.current = editor
 
     const numLines = editor.display.view.length
@@ -331,7 +331,7 @@ function useGutterClickHandler(props) {
     } else {
       dispatch({ type: 'LINE', lineNumber, numLines })
     }
-  }
+  }, [])
 }
 
 function CarbonContainer(props, ref) {
