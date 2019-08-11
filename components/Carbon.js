@@ -9,12 +9,12 @@ import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
 import {
   COLORS,
+  LANGUAGES,
   LANGUAGE_MODE_HASH,
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
   DEFAULT_SETTINGS,
-  THEMES_HASH,
-  LANGUAGES
+  THEMES_HASH
 } from '../lib/constants'
 
 const Watermark = dynamic(() => import('./svg/Watermark'), {
@@ -22,11 +22,7 @@ const Watermark = dynamic(() => import('./svg/Watermark'), {
 })
 
 function searchLanguage(l) {
-  const config = LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
-
-  if (config) {
-    return config.mime || config.mode
-  }
+  return LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
 }
 
 class Carbon extends React.PureComponent {
@@ -42,14 +38,14 @@ class Carbon extends React.PureComponent {
         const languageMode = searchLanguage(detectedLanguage)
 
         if (languageMode) {
-          return languageMode
+          return languageMode.mime || languageMode.mode
         }
       }
 
       const languageMode = searchLanguage(language)
 
       if (languageMode) {
-        return languageMode
+        return languageMode.mime || languageMode.mode
       }
 
       return language
