@@ -83,14 +83,7 @@ function EditorContainer(props) {
 
   const snippetId = snippet && snippet.id
   React.useEffect(() => {
-    // Don't replace URL if on that path already
-    // TODO: '/' + (snippetId || '') === router.asPath?
-    if (!snippetId && props.router.asPath === '/') {
-      return
-    }
-    if (props.router.asPath.indexOf(snippetId) > 0) {
-      return
-    }
+    // TODO Don't call replace if URL is on that path already
     props.router.replace('/', '/' + (snippetId || ''), { shallow: true })
   }, [snippetId, props.router])
 
