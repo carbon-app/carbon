@@ -18,6 +18,8 @@ import Themes from './Themes'
 import TweetButton from './TweetButton'
 import LoginButton from './LoginButton'
 import SnippetToolbar from './SnippetToolbar'
+import FontFace from './FontFace'
+import LanguageIcon from './svg/Language'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -34,7 +36,6 @@ import {
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
-import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
 
@@ -438,20 +439,6 @@ class Editor extends React.Component {
       </div>
     )
   }
-}
-
-function FontFace(config) {
-  return (
-    <style jsx global>
-      {`
-        @font-face {
-          font-family: ${config.fontUrl ? config.fontFamily : ''};
-          src: url(${config.fontUrl || ''}) format('woff');
-          font-display: swap;
-        }
-      `}
-    </style>
-  )
 }
 
 function isImage(file) {
