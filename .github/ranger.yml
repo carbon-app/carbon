@@ -1,16 +1,8 @@
-default:
-  close:
-    comment: ⚠️ This issue has been marked as a $LABEL. It will be closed in $DELAY...
-    delay: 1 days
+extends: reporanger/superpowers
 
 labels:
-  'merge when passing': merge
   greenkeeper: merge
   dependencies: merge
-  wontfix: close
-  invalid: close
-  stale: close
-  duplicate: close
   'theme/language':
     action: close
     delay: 5 days
@@ -20,12 +12,6 @@ labels:
       Please see https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 👌. 
 
 comments:
-  - action: label
-    pattern: /duplicate of/i
-    labels:
-      - duplicate
   - action: delete_comment
     pattern: '^+1$'
 
-merges:
-  - action: delete_branch

@@ -421,16 +421,13 @@ class Settings extends React.PureComponent {
               flex: 0 0 96px;
               background-color: ${COLORS.DARK_GRAY};
             }
-          `}
-        </style>
-        <style jsx global>
-          {`
-            .settings-content {
+
+            .settings-bottom :global(.settings-content) {
               width: 100%;
               border-left: 2px solid ${COLORS.SECONDARY};
             }
 
-            .settings-content > div:not(:first-child) {
+            .settings-bottom :global(.settings-content > div:not(:first-child)) {
               border-top: solid 1px ${COLORS.SECONDARY};
             }
           `}

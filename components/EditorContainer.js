@@ -37,10 +37,20 @@ function useAppInstallationsListener() {
   React.useEffect(() => {
     ReactGA.initialize(GA_TRACKING_ID)
 
+    if (window.clearbit && window.clearbit.company) {
+      ReactGA.event({
+        category: 'Analytics',
+        action: 'Company found',
+        label: window.clearbit.company.name,
+        nonInteraction: true
+      })
+    }
+
     function onInstall() {
       ReactGA.event({
-        category: 'App',
-        action: 'Install'
+        category: 'Analytics',
+        action: 'App Install',
+        nonInteraction: true
       })
     }
 

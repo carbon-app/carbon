@@ -419,15 +419,7 @@ class Editor extends React.Component {
               .then(() => this.props.setToasts([{ children: 'Snippet deleted', timeout: 3000 }]))
           }
         />
-        <style jsx global>
-          {`
-            @font-face {
-              font-family: ${config.fontUrl ? config.fontFamily : ''};
-              src: url(${config.fontUrl || ''}) format('woff');
-              font-display: swap;
-            }
-          `}
-        </style>
+        <FontFace {...config} />
         <style jsx>
           {`
             .editor {
@@ -446,6 +438,20 @@ class Editor extends React.Component {
       </div>
     )
   }
+}
+
+function FontFace(config) {
+  return (
+    <style jsx global>
+      {`
+        @font-face {
+          font-family: ${config.fontUrl ? config.fontFamily : ''};
+          src: url(${config.fontUrl || ''}) format('woff');
+          font-display: swap;
+        }
+      `}
+    </style>
+  )
 }
 
 function isImage(file) {

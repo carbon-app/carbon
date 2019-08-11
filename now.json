@@ -52,7 +52,7 @@
       "methods": ["POST"]
     },
     {
-      "src": "/api/unsplash/download/(?<id>[^/]*)",
+      "src": "/api/unsplash/download/(?<id>[^/]+)",
       "dest": "api/unsplash/download.js?id=$id",
       "methods": ["GET"]
     },
