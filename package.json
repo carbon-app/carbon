@@ -113,13 +113,13 @@
   "description": "Create and share beautiful images of your source code",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dawnlabs/carbon.git"
+    "url": "git+https://github.com/carbon-app/carbon.git"
   },
-  "author": "Dawn Labs <@dawnlabs>",
+  "author": "Carbon <@carbon-app>",
   "bugs": {
-    "url": "https://github.com/dawnlabs/carbon/issues"
+    "url": "https://github.com/carbon-app/carbon/issues"
   },
-  "homepage": "https://dawnlabs.io/carbon",
+  "homepage": "https://carbon.now.sh",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

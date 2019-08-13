@@ -9,9 +9,8 @@ labels:
     comment: |
       This issue has been marked "$LABEL" and will be closed in $DELAY. As of Carbon `3.0.0`, the Carbon core team is no longer implementing new themes or languages (although the ability to create your own will be implemented soon!). However, PRs to add new ones will be happily accepted.
 
-      Please see https://github.com/dawnlabs/carbon/blob/master/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 👌. 
+      Please see https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 👌. 
 
 comments:
   - action: delete_comment
     pattern: '^+1$'
-
