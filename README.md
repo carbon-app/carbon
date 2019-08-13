@@ -12,14 +12,15 @@
   <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
-  </a>
   <a href="https://spectrum.chat/carbon-now">
     <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
   </a>
+  <!-- <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
+  </a>
   <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
-    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />     </a>
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a> -->
 </p>
 
 <p align="center">
