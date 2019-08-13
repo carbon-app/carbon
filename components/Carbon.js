@@ -7,6 +7,7 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 
 import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
+
 import {
   COLORS,
   LANGUAGES,
@@ -17,6 +18,9 @@ import {
   THEMES_HASH
 } from '../lib/constants'
 
+const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
+  loading: () => null
+})
 const Watermark = dynamic(() => import('./svg/Watermark'), {
   loading: () => null
 })
@@ -25,10 +29,14 @@ function searchLanguage(l) {
   return LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
 }
 
+function noop() {}
 class Carbon extends React.PureComponent {
   static defaultProps = {
-    onChange: () => {}
+    onChange: noop,
+    onGutterClick: noop
   }
+  state = {}
+  editorRef = React.createRef()
 
   handleLanguageChange = debounce(
     (newCode, language) => {
@@ -63,6 +71,65 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  onSelection = (ed, data) => {
+    const selection = data.ranges[0]
+    if (
+      selection.head.line === selection.anchor.line &&
+      selection.head.ch === selection.anchor.ch
+    ) {
+      return (this.currentSelection = null)
+    }
+    if (selection.head.line + selection.head.ch > selection.anchor.line + selection.anchor.ch) {
+      this.currentSelection = {
+        from: selection.anchor,
+        to: selection.head
+      }
+    } else {
+      this.currentSelection = {
+        from: selection.head,
+        to: selection.anchor
+      }
+    }
+  }
+
+  onMouseUp = () => {
+    if (this.currentSelection) {
+      const { editor } = this.editorRef.current
+      const startPos = editor.charCoords(this.currentSelection.from, 'window')
+      const endPos = editor.charCoords(this.currentSelection.to, 'window')
+
+      const container = this.props.innerRef.current.getBoundingClientRect()
+
+      const top = Math.max(startPos.bottom, endPos.bottom) - container.top - 3
+      const left = (startPos.left + endPos.left) / 2 - container.left - 68
+
+      this.setState({ selectionAt: { ...this.currentSelection, top, left } }, () => {
+        this.currentSelection = null
+      })
+    } else {
+      this.setState({ selectionAt: null })
+    }
+  }
+
+  onSelectionChange = changes => {
+    if (this.state.selectionAt) {
+      const css = [
+        `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
+        `font-style: ${changes.italics ? 'italic' : 'initial'}`,
+        `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
+        changes.color && `color: ${changes.color} !important`,
+        ''
+      ]
+        .filter(Boolean)
+        .join('; ')
+      this.editorRef.current.editor.doc.markText(
+        this.state.selectionAt.from,
+        this.state.selectionAt.to,
+        { css }
+      )
+    }
+  }
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -94,6 +161,7 @@ class Carbon extends React.PureComponent {
 
     const light = themeConfig && themeConfig.light
 
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
     const content = (
       <div className="container">
         {config.windowControls ? (
@@ -105,11 +173,13 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
+          ref={this.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
           value={this.props.children}
           options={options}
           onBeforeChange={this.onBeforeChange}
           onGutterClick={this.props.onGutterClick}
+          onSelection={this.onSelection}
         />
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
@@ -230,10 +300,18 @@ class Carbon extends React.PureComponent {
 
     return (
       <div className="section">
-        <div className="export-container" ref={this.props.innerRef} id="export-container">
+        <div
+          ref={this.props.innerRef}
+          id="export-container"
+          className="export-container"
+          onMouseUp={this.onMouseUp}
+        >
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
+        {this.state.selectionAt && (
+          <SelectionEditor position={this.state.selectionAt} onChange={this.onSelectionChange} />
+        )}
         <style jsx>
           {`
             .section,
