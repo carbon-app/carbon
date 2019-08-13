@@ -91,6 +91,7 @@ function getSnippet(req) {
           const snippet = files[filename]
 
           return {
+            id,
             code: snippet.content,
             language: snippet.language && snippet.language.toLowerCase()
           }
