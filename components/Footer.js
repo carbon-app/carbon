@@ -22,11 +22,17 @@ const Footer = () => (
       <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>
+      <a className="link" href="/terms">
+        terms
+      </a>
+      <a className="link" href="/privacy">
+        privacy
+      </a>
       <EmailSubscribe />
     </nav>
 
     <div className="mt2 mb2">
-      a project by{' '}
+      created by{' '}
       <a className="author-link" href="https://twitter.com/carbon_app">
         @carbon_app
       </a>{' '}

@@ -1,6 +1,7 @@
 node_modules
 .env*
 .next
+dist
 out
 cypress/videos
 cypress/screenshots
@@ -9,3 +10,4 @@ cypress/screenshots
 packaged
 coverage
 public/service-worker.js
+private-key.json
