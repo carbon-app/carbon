@@ -10,17 +10,17 @@ const Footer = () => (
           about
         </a>
       </Link>
-      <a className="link" href="https://github.com/dawnlabs/carbon/issues/new">
+      <a className="link" href="https://github.com/carbon-app/carbon/issues/new">
         send feedback
       </a>
-      <a className="link" href="https://github.com/dawnlabs/carbon">
+      <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>
     </nav>
     <div className="mt3 mb2">
       a project by{' '}
-      <a className="dawn-link" href="https://dawnlabs.io">
-        Dawn Labs
+      <a className="author-link" href="https://twitter.com/carbon_app">
+        @carbon_app
       </a>{' '}
       ¬
     </div>
@@ -43,12 +43,12 @@ const Footer = () => (
           margin-right: 0;
         }
 
-        .dawn-link {
+        .author-link {
           color: ${COLORS.PRIMARY};
           text-decoration: none;
         }
 
-        .dawn-link:hover {
+        .author-link:hover {
           color: #fff;
         }
       `}

@@ -83,7 +83,7 @@ export default () => (
       <div>
         <h2>I want to make this better.</h2>
         <p>
-          <a className="link" href="https://github.com/dawnlabs/carbon#contribute">
+          <a className="link" href="https://github.com/carbon-app/carbon#contribute">
             Contributors welcome!
           </a>
         </p>
