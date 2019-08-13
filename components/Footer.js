@@ -16,6 +16,14 @@ const Footer = () => (
           about
         </a>
       </Link>
+      <a
+        className="link"
+        href="https://opencollective.com/carbon-app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        sponsor
+      </a>
       <a className="link" href="https://github.com/carbon-app/carbon/issues/new">
         feedback
       </a>
