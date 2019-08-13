@@ -103,15 +103,16 @@ class Carbon extends React.PureComponent {
       const top = Math.max(startPos.bottom, endPos.bottom) - container.top - 3
       const left = (startPos.left + endPos.left) / 2 - container.left - 68
 
-      this.setState({ selectionAt: { top, left } })
-      // this.currentSelection = null
+      this.setState({ selectionAt: { ...this.currentSelection, top, left } }, () => {
+        this.currentSelection = null
+      })
     } else {
       this.setState({ selectionAt: null })
     }
   }
 
   onSelectionChange = changes => {
-    if (this.currentSelection) {
+    if (this.state.selectionAt) {
       const css = [
         `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
         `font-style: ${changes.italics ? 'italic' : 'initial'}`,
@@ -122,8 +123,8 @@ class Carbon extends React.PureComponent {
         .filter(Boolean)
         .join('; ')
       this.editorRef.current.editor.doc.markText(
-        this.currentSelection.from,
-        this.currentSelection.to,
+        this.state.selectionAt.from,
+        this.state.selectionAt.to,
         { css }
       )
     }
@@ -162,7 +163,7 @@ class Carbon extends React.PureComponent {
 
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     const content = (
-      <div className="container" onMouseUp={this.onMouseUp}>
+      <div className="container">
         {config.windowControls ? (
           <WindowControls
             theme={config.windowTheme}
@@ -299,7 +300,12 @@ class Carbon extends React.PureComponent {
 
     return (
       <div className="section">
-        <div className="export-container" ref={this.props.innerRef} id="export-container">
+        <div
+          ref={this.props.innerRef}
+          id="export-container"
+          className="export-container"
+          onMouseUp={this.onMouseUp}
+        >
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
