@@ -6,7 +6,7 @@ import Editor from './Editor'
 import Toasts from './Toasts'
 import { GA_TRACKING_ID, THEMES, DEFAULT_CODE } from '../lib/constants'
 import { updateRouteState } from '../lib/routing'
-import { getThemes, saveThemes, clearSettings, saveSettings, omit } from '../lib/util'
+import { getThemes, saveThemes, clearSettings, saveSettings } from '../lib/util'
 
 import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
@@ -74,7 +74,7 @@ function EditorContainer(props) {
   }, [])
 
   React.useEffect(() => {
-    saveThemes(localStorage, themes.filter(({ custom }) => custom))
+    saveThemes(themes.filter(({ custom }) => custom))
   }, [themes])
 
   // XXX use context
@@ -96,17 +96,7 @@ function EditorContainer(props) {
 
     if (!user) {
       updateRouteState(props.router, state)
-      saveSettings(
-        localStorage,
-        omit(state, [
-          'code',
-          'backgroundImage',
-          'backgroundImageSelection',
-          'themes',
-          'highlights',
-          'fontUrl'
-        ])
-      )
+      saveSettings(state)
     } else {
       const updates = {
         ...state,

@@ -40,7 +40,8 @@ const INITIAL_STATE = {
   crop: null,
   imageAspectRatio: null,
   pixelCrop: null,
-  photographer: null
+  photographer: null,
+  dataURL: null
 }
 
 export default class ImagePicker extends React.Component {
@@ -48,13 +49,14 @@ export default class ImagePicker extends React.Component {
   constructor(props) {
     super(props)
     this.state = INITIAL_STATE
+    this.selectMode = this.selectMode.bind(this)
     this.handleURLInput = this.handleURLInput.bind(this)
+    this.uploadImage = this.uploadImage.bind(this)
     this.selectImage = this.selectImage.bind(this)
     this.removeImage = this.removeImage.bind(this)
     this.onImageLoaded = this.onImageLoaded.bind(this)
     this.onCropChange = this.onCropChange.bind(this)
     this.onDragEnd = this.onDragEnd.bind(this)
-    this.selectMode = this.selectMode.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -73,9 +75,13 @@ export default class ImagePicker extends React.Component {
     return null
   }
 
+  selectMode(mode) {
+    this.setState({ mode })
+  }
+
   async onDragEnd() {
     if (this.state.pixelCrop) {
-      const croppedImg = await getCroppedImg(this.props.imageDataURL, this.state.pixelCrop)
+      const croppedImg = await getCroppedImg(this.state.dataURL, this.state.pixelCrop)
       this.props.onChange({ backgroundImageSelection: croppedImg })
     }
   }
@@ -102,18 +108,23 @@ export default class ImagePicker extends React.Component {
     })
   }
 
+  handleImageChange = (url, dataURL, photographer) => {
+    this.setState({ dataURL, photographer }, () => {
+      this.props.onChange({
+        backgroundImage: url,
+        backgroundImageSelection: null,
+        photographer
+      })
+    })
+  }
+
   handleURLInput(e) {
     e.preventDefault()
     const url = e.target[0].value
     return this.context
       .downloadThumbnailImage({ url })
-      .then(({ dataURL }) =>
-        this.props.onChange({
-          backgroundImage: dataURL,
-          backgroundImageSelection: null,
-          photographer: null
-        })
-      )
+      .then(res => res.dataURL)
+      .then(dataURL => this.handleImageChange(url, dataURL))
       .catch(err => {
         if (err.message.indexOf('Network Error') > -1) {
           this.setState({
@@ -124,22 +135,15 @@ export default class ImagePicker extends React.Component {
       })
   }
 
-  selectMode(mode) {
-    this.setState({ mode })
+  async uploadImage(e) {
+    const dataURL = await fileToDataURL(e.target.files[0])
+    return this.handleImageChange(dataURL, dataURL)
   }
 
-  selectImage(e, { photographer } = {}) {
-    const file = e.target ? e.target.files[0] : e
-
-    return fileToDataURL(file).then(dataURL =>
-      this.setState({ photographer }, () => {
-        this.props.onChange({
-          backgroundImage: dataURL,
-          backgroundImageSelection: null,
-          photographer
-        })
-      })
-    )
+  async selectImage(url, { photographer } = {}) {
+    // TODO use React suspense for loading this asset
+    const { dataURL } = await this.context.downloadThumbnailImage({ url })
+    return this.handleImageChange(url, dataURL, photographer)
   }
 
   removeImage() {
@@ -172,7 +176,7 @@ export default class ImagePicker extends React.Component {
             <Input
               type="file"
               accept="image/png,image/x-png,image/jpeg,image/jpg"
-              onChange={this.selectImage}
+              onChange={this.uploadImage}
             />
           ) : (
             <form onSubmit={this.handleURLInput}>
@@ -251,7 +255,7 @@ export default class ImagePicker extends React.Component {
       </div>
     )
 
-    if (this.props.imageDataURL) {
+    if (this.state.dataURL) {
       content = (
         <div className="settings-container">
           <div className="image-container">
@@ -260,7 +264,7 @@ export default class ImagePicker extends React.Component {
               <button onClick={this.removeImage}>&times;</button>
             </div>
             <ReactCrop
-              src={this.props.imageDataURL}
+              src={this.state.dataURL}
               onImageLoaded={this.onImageLoaded}
               crop={this.state.crop}
               onChange={this.onCropChange}
