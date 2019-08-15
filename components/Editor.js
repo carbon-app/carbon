@@ -17,7 +17,6 @@ import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
 import LoginButton from './LoginButton'
-import SnippetToolbar from './SnippetToolbar'
 import FontFace from './FontFace'
 import LanguageIcon from './svg/Language'
 import {
@@ -40,6 +39,9 @@ import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 const languageIcon = <LanguageIcon />
 
 const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
+  loading: () => null
+})
+const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
   loading: () => null
 })
 
@@ -333,6 +335,18 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
+  handleSnippetCreate = () =>
+    this.context.snippet
+      .create(this.state)
+      .then(data => this.props.setSnippet(data))
+      .then(() => this.props.setToasts([{ children: 'Snippet duplicated!', timeout: 3000 }]))
+
+  handleSnippetDelete = () =>
+    this.context.snippet
+      .delete(this.props.snippet.id)
+      .then(() => this.props.setSnippet(null))
+      .then(() => this.props.setToasts([{ children: 'Snippet deleted', timeout: 3000 }]))
+
   render() {
     const {
       highlights,
@@ -419,23 +433,13 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-        <SnippetToolbar
-          snippet={this.props.snippet}
-          onCreate={() =>
-            this.context.snippet
-              .create(this.state)
-              .then(data => this.props.setSnippet(data))
-              .then(() =>
-                this.props.setToasts([{ children: 'Snippet duplicated!', timeout: 3000 }])
-              )
-          }
-          onDelete={() =>
-            this.context.snippet
-              .delete(this.props.snippet.id)
-              .then(() => this.props.setSnippet(null))
-              .then(() => this.props.setToasts([{ children: 'Snippet deleted', timeout: 3000 }]))
-          }
-        />
+        {this.props.snippet && (
+          <SnippetToolbar
+            snippet={this.props.snippet}
+            onCreate={this.handleSnippetCreate}
+            onDelete={this.handleSnippetDelete}
+          />
+        )}
         <FontFace {...config} />
         <style jsx>
           {`
