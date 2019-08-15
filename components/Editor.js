@@ -1,7 +1,6 @@
 // Theirs
 import React from 'react'
 import domtoimage from 'dom-to-image'
-import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 
 // Ours
@@ -10,6 +9,7 @@ import Dropdown from './Dropdown'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
+import BackgroundSelect from './BackgroundSelect'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
@@ -33,10 +33,6 @@ import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
-
-const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
-  loading: () => null
-})
 
 const getConfig = omit(['code'])
 
