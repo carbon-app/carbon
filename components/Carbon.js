@@ -356,11 +356,19 @@ function useModeLoader() {
   }, [])
 }
 
+let highLightsLoaded = false
 function useHighlightLoader() {
   React.useEffect(() => {
-    import('../lib/highlight-languages').then(res => {
-      res.default.map(config => hljs.registerLanguage(config[0], config[1]))
-    })
+    if (!highLightsLoaded) {
+      import('../lib/highlight-languages')
+        .then(res => {
+          // console.log(res.default)
+          res.default.map(config => hljs.registerLanguage(config[0], config[1]))
+        })
+        .then(() => {
+          highLightsLoaded = true
+        })
+    }
   }, [])
 }
 
