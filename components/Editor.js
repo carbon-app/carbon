@@ -274,6 +274,11 @@ class Editor extends React.Component {
   updateLanguage(language) {
     if (language) {
       this.updateSetting('language', language.mime || language.mode)
+      ReactGA.event({
+        category: 'Settings',
+        action: 'Change Language',
+        label: language.mime || language.mode
+      })
     }
   }
 
@@ -289,7 +294,16 @@ class Editor extends React.Component {
     }
   }
 
-  updateTheme = theme => this.updateState({ theme })
+  updateTheme = theme => {
+    this.updateState({ theme })
+    if (theme) {
+      ReactGA.event({
+        category: 'Settings',
+        action: 'Change Theme',
+        label: theme.name || theme.id
+      })
+    }
+  }
   updateHighlights = updates =>
     this.setState(({ highlights = {} }) => ({
       highlights: {
