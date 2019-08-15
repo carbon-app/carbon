@@ -34,9 +34,6 @@
 <br></br>
 
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon)
-<a style="margin-left: 8px;" href="https://opencollective.com/carbon-app/donate" target="_blank">
-<img src="https://opencollective.com/carbon-app/donate/button@2x.png?color=blue" width="180px" />
-</a>
 
 ##### Translations
 
