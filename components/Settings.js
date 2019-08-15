@@ -347,7 +347,7 @@ class Settings extends React.PureComponent {
     )
   }
 
-  savePresets = () => savePresets(localStorage, this.state.presets.filter(p => p.custom))
+  savePresets = () => savePresets(this.state.presets.filter(p => p.custom))
 
   renderContent = () => {
     switch (this.state.selectedMenu) {
