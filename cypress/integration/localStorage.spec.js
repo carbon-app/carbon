@@ -40,9 +40,9 @@ describe('localStorage', () => {
 
     // visiting page again restores theme from localStorage
     cy.visit('/')
-    themeDropdown()
-      .click()
-      .contains('Blackboard')
-    cy.url().should('contain', 't=blackboard')
+    pickTheme('Cobalt')
+    cy.wait(1500) // URL updates are debounced
+
+    cy.url().should('contain', 't=cobalt')
   })
 })
