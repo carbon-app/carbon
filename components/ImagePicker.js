@@ -141,6 +141,7 @@ export default class ImagePicker extends React.Component {
   }
 
   async selectImage(url, { photographer } = {}) {
+    // TODO use React suspense for loading this asset
     const { dataURL } = await this.context.downloadThumbnailImage({ url })
     return this.handleImageChange(url, dataURL, photographer)
   }
