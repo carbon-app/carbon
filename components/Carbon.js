@@ -1,9 +1,12 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import * as hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/highlight'
+import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
+
+hljs.registerLanguage('javascript', javascript)
 
 import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
@@ -353,6 +356,14 @@ function useModeLoader() {
   }, [])
 }
 
+function useHighlightLoader() {
+  React.useEffect(() => {
+    import('../lib/highlight-languages').then(res => {
+      res.default.map(config => hljs.registerLanguage(config[0], config[1]))
+    })
+  }, [])
+}
+
 function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLines }) {
   const newState = {}
 
@@ -410,6 +421,7 @@ function useGutterClickHandler(props) {
 
 function CarbonContainer(props, ref) {
   useModeLoader()
+  useHighlightLoader()
   const onGutterClick = useGutterClickHandler(props)
 
   return <Carbon {...props} innerRef={ref} onGutterClick={onGutterClick} />
