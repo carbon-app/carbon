@@ -340,19 +340,19 @@ class Carbon extends React.PureComponent {
   }
 }
 
-const modesLoaded = new Set()
+let modesLoaded = false
 function useModeLoader() {
   React.useEffect(() => {
-    LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
-      language => {
-        if (language.mode && !modesLoaded.has(language.mode)) {
-          language.custom
-            ? require(`../lib/custom/modes/${language.mode}`)
-            : require(`codemirror/mode/${language.mode}/${language.mode}`)
-          modesLoaded.add(language.mode)
-        }
-      }
-    )
+    if (!modesLoaded) {
+      LANGUAGES.filter(
+        language => language.mode && language.mode !== 'auto' && language.mode !== 'text'
+      ).forEach(language => {
+        language.custom
+          ? require(`../lib/custom/modes/${language.mode}`)
+          : require(`codemirror/mode/${language.mode}/${language.mode}`)
+      })
+      modesLoaded = true
+    }
   }, [])
 }
 
