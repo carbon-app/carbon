@@ -1,5 +1,4 @@
 import React from 'react'
-import colornames from 'colornames'
 
 import ImagePicker from './ImagePicker'
 import ColorPicker from './ColorPicker'
@@ -9,7 +8,7 @@ import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
 import { capitalize, stringifyRGBA } from '../lib/util'
 
 function validateColor(str) {
-  if (/#\d{3,6}|rgba{0,1}\(.*?\)/gi.test(str) || colornames(str)) {
+  if (/#\d{3,6}|rgba{0,1}\(.*?\)/gi.test(str) || /\w+/gi.test(str)) {
     return str
   }
 }

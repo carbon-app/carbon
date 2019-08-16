@@ -2,9 +2,9 @@
 import ReactGA from 'react-ga'
 import React from 'react'
 import domtoimage from 'dom-to-image'
-import dynamic from 'next/dynamic'
 import Dropzone from 'dropperx'
 import debounce from 'lodash.debounce'
+import dynamic from 'next/dynamic'
 
 // Ours
 import ApiContext from './ApiContext'
@@ -12,6 +12,7 @@ import Dropdown from './Dropdown'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
 import Overlay from './Overlay'
+import BackgroundSelect from './BackgroundSelect'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
@@ -38,9 +39,6 @@ import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 
 const languageIcon = <LanguageIcon />
 
-const BackgroundSelect = dynamic(() => import('./BackgroundSelect'), {
-  loading: () => null
-})
 const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
   loading: () => null
 })

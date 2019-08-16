@@ -1,9 +1,12 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import * as hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/highlight'
+import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
+
+hljs.registerLanguage('javascript', javascript)
 
 import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
@@ -337,19 +340,35 @@ class Carbon extends React.PureComponent {
   }
 }
 
-const modesLoaded = new Set()
+let modesLoaded = false
 function useModeLoader() {
   React.useEffect(() => {
-    LANGUAGES.filter(language => language.mode !== 'auto' && language.mode !== 'text').forEach(
-      language => {
-        if (language.mode && !modesLoaded.has(language.mode)) {
-          language.custom
-            ? require(`../lib/custom/modes/${language.mode}`)
-            : require(`codemirror/mode/${language.mode}/${language.mode}`)
-          modesLoaded.add(language.mode)
-        }
-      }
-    )
+    if (!modesLoaded) {
+      LANGUAGES.filter(
+        language => language.mode && language.mode !== 'auto' && language.mode !== 'text'
+      ).forEach(language => {
+        language.custom
+          ? require(`../lib/custom/modes/${language.mode}`)
+          : require(`codemirror/mode/${language.mode}/${language.mode}`)
+      })
+      modesLoaded = true
+    }
+  }, [])
+}
+
+let highLightsLoaded = false
+function useHighlightLoader() {
+  React.useEffect(() => {
+    if (!highLightsLoaded) {
+      import('../lib/highlight-languages')
+        .then(res => {
+          // console.log(res.default)
+          res.default.map(config => hljs.registerLanguage(config[0], config[1]))
+        })
+        .then(() => {
+          highLightsLoaded = true
+        })
+    }
   }, [])
 }
 
@@ -410,6 +429,7 @@ function useGutterClickHandler(props) {
 
 function CarbonContainer(props, ref) {
   useModeLoader()
+  useHighlightLoader()
   const onGutterClick = useGutterClickHandler(props)
 
   return <Carbon {...props} innerRef={ref} onGutterClick={onGutterClick} />
