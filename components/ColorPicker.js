@@ -1,5 +1,5 @@
 import React from 'react'
-import { SketchPicker } from 'react-color'
+import SketchPicker from 'react-color/lib/Sketch'
 
 import { COLORS } from '../lib/constants'
 
