@@ -9,7 +9,7 @@ export default () => (
         <p>Carbon lets you create and share beautiful images of your source code</p>
         <p>
           You know all of those code screenshots you see on Twitter? Although the code&apos;s
-          usually impressive, we throught there was room for improvement in the aesthetic
+          usually impressive, we thought there was room for improvement in the aesthetic
           department. So what are you waiting for? Go try it out and impress all your developer and
           designer friends.{' '}
           <span role="img" aria-label="Palette">
