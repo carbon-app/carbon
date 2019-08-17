@@ -5,6 +5,10 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: true })
 
 const config = withOffline({
   target: 'serverless',
+  experimental: {
+    modern: true,
+    granularChunks: true
+  },
   dontAutoRegisterSw: true,
   workboxOpts: {
     // TODO get default config from `next-offline`?
