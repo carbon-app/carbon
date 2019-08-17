@@ -4,6 +4,7 @@ import omitBy from 'lodash.omitby'
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
 import Slider from './Slider'
+import Text from './Text'
 import Toggle from './Toggle'
 import Popout, { managePopout } from './Popout'
 import Button from './Button'
@@ -24,6 +25,7 @@ const WindowSettings = React.memo(
     dropShadowOffsetY,
     windowControls,
     lineNumbers,
+    firstLineNumber,
     widthAdjustment,
     watermark,
     onWidthChanging,
@@ -79,6 +81,16 @@ const WindowSettings = React.memo(
           enabled={lineNumbers}
           onChange={onChange.bind(null, 'lineNumbers')}
         />
+        {lineNumbers && (
+          <Text
+            label="First line number"
+            type="int"
+            value={firstLineNumber}
+            minValue={1}
+            maxValue={Number.MAX_SAFE_INTEGER}
+            onChange={onChange.bind(null, 'firstLineNumber')}
+          />
+        )}
         <Toggle
           label="Auto-adjust width"
           enabled={widthAdjustment}
@@ -365,6 +377,7 @@ class Settings extends React.PureComponent {
             dropShadowOffsetY={this.props.dropShadowOffsetY}
             windowControls={this.props.windowControls}
             lineNumbers={this.props.lineNumbers}
+            firstLineNumber={this.props.firstLineNumber}
             widthAdjustment={this.props.widthAdjustment}
             watermark={this.props.watermark}
           />

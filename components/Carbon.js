@@ -143,6 +143,7 @@ class Carbon extends React.PureComponent {
 
     const options = {
       lineNumbers: config.lineNumbers,
+      firstLineNumber: config.firstLineNumber,
       mode: languageMode || 'plaintext',
       theme: config.theme,
       scrollBarStyle: null,
