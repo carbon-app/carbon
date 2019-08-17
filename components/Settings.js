@@ -86,7 +86,7 @@ const WindowSettings = React.memo(
             label="First line number"
             type="int"
             value={firstLineNumber}
-            minValue={1}
+            minValue={0}
             maxValue={Number.MAX_SAFE_INTEGER}
             onChange={onChange.bind(null, 'firstLineNumber')}
           />
