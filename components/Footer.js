@@ -19,14 +19,21 @@ const Footer = () => (
         sponsor
       </a>
       <a className="link" href="https://github.com/carbon-app/carbon/issues/new">
-        send feedback
+        feedback
       </a>
       <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>
+      <a className="link" href="/terms">
+        terms
+      </a>
+      <a className="link" href="/privacy">
+        privacy
+      </a>
     </nav>
-    <div className="mt3 mb2">
-      a project by{' '}
+
+    <div className="mt2 mb2">
+      created by{' '}
       <a className="author-link" href="https://twitter.com/carbon_app">
         @carbon_app
       </a>{' '}
@@ -43,8 +50,13 @@ const Footer = () => (
           color: ${COLORS.GRAY};
         }
 
+        nav {
+          display: flex;
+          align-items: center;
+        }
+
         a {
-          margin-right: 16px;
+          margin-right: 1rem;
         }
 
         a:last-child {

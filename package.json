@@ -27,17 +27,18 @@
     "codemirror-mode-elixir": "^1.1.2",
     "codemirror-solidity": "^0.1.6",
     "cross-env": "^5.2.0",
-    "dom-to-image": "^2.5.2",
+    "dom-to-image": "^2.6.0",
     "downshift": "^3.2.12",
     "dropperx": "^1.0.1",
     "eitherx": "^1.0.2",
     "escape-goat": "^2.1.0",
+    "firebase": "^6.2.0",
     "graphql": "^14.3.1",
     "highlight.js": "^9.15.9",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
     "match-sorter": "^4.0.0",
-    "morphmorph": "^0.1.0",
+    "morphmorph": "^0.1.2",
     "ms": "^2.1.2",
     "next": "^9.0.3",
     "next-offline": "^4.0.3",
@@ -52,8 +53,7 @@
     "react-is": "^16.9.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
-    "tohash": "^1.0.2",
-    "url": "^0.11.0"
+    "tohash": "^1.0.2"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.6.48",
@@ -106,7 +106,6 @@
     "type": "git",
     "url": "git+https://github.com/carbon-app/carbon.git"
   },
-  "author": "Carbon <@carbon-app>",
   "bugs": {
     "url": "https://github.com/carbon-app/carbon/issues"
   },

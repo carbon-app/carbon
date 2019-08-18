@@ -2,6 +2,8 @@
 import React from 'react'
 import domtoimage from 'dom-to-image'
 import Dropzone from 'dropperx'
+import debounce from 'lodash.debounce'
+import dynamic from 'next/dynamic'
 
 // Ours
 import ApiContext from './ApiContext'
@@ -14,6 +16,9 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
+import LoginButton from './LoginButton'
+import FontFace from './FontFace'
+import LanguageIcon from './svg/Language'
 import {
   LANGUAGES,
   LANGUAGE_MIME_HASH,
@@ -30,9 +35,12 @@ import {
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
-import LanguageIcon from './svg/Language'
 
 const languageIcon = <LanguageIcon />
+
+const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
+  loading: () => null
+})
 
 const getConfig = omit(['code'])
 
@@ -43,6 +51,7 @@ class Editor extends React.Component {
     super(props)
     this.state = {
       ...DEFAULT_SETTINGS,
+      ...this.props.snippet,
       loading: true
     }
 
@@ -57,22 +66,13 @@ class Editor extends React.Component {
   }
 
   async componentDidMount() {
-    const { queryState, parameter } = getRouteState(this.props.router)
-
-    // TODO we could create an interface for loading this config, so that it looks identical
-    // whether config is loaded from localStorage, gist, or even something like IndexDB
-    let gistState
-    if (this.context.gist && parameter) {
-      const { config, ...gist } = (await this.context.gist.get(parameter)) || {}
-      if (typeof config === 'object') {
-        this.gist = gist
-        gistState = config
-      }
-    }
+    const { queryState } = getRouteState(this.props.router)
 
     const newState = {
+      // TODO we could create an interface for loading this config, so that it looks identical
+      // whether config is loaded from localStorage, gist, or even something like IndexDB
       // Load options from gist or localStorage
-      ...(gistState ? gistState : getSettings(localStorage)),
+      ...(this.props.snippet ? null : getSettings(localStorage)),
       // and then URL params
       ...queryState,
       loading: false
@@ -87,7 +87,7 @@ class Editor extends React.Component {
       newState.fontFamily = DEFAULT_SETTINGS.fontFamily
     }
 
-    this.updateState(newState)
+    this.setState(newState)
 
     this.isSafari =
       window.navigator &&
@@ -103,13 +103,11 @@ class Editor extends React.Component {
 
   getTheme = () => this.props.themes.find(t => t.id === this.state.theme) || DEFAULT_THEME
 
-  updateState = updates => {
-    this.setState(updates, () => {
-      if (!this.gist) {
-        this.props.onUpdate(this.state)
-      }
-    })
-  }
+  onUpdate = debounce(updates => this.props.onUpdate(updates), 750, {
+    trailing: true,
+    leading: true
+  })
+  updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
 
@@ -313,6 +311,18 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
+  handleSnippetCreate = () =>
+    this.context.snippet
+      .create(this.state)
+      .then(data => this.props.setSnippet(data))
+      .then(() => this.props.setToasts([{ children: 'Snippet duplicated!', timeout: 3000 }]))
+
+  handleSnippetDelete = () =>
+    this.context.snippet
+      .delete(this.props.snippet.id)
+      .then(() => this.props.setSnippet(null))
+      .then(() => this.props.setToasts([{ children: 'Snippet deleted', timeout: 3000 }]))
+
   render() {
     const {
       highlights,
@@ -331,6 +341,7 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
+          <LoginButton />
           <Themes
             theme={theme}
             highlights={highlights}
@@ -398,6 +409,13 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
+        {this.props.snippet && (
+          <SnippetToolbar
+            snippet={this.props.snippet}
+            onCreate={this.handleSnippetCreate}
+            onDelete={this.handleSnippetDelete}
+          />
+        )}
         <FontFace {...config} />
         <style jsx>
           {`
@@ -417,20 +435,6 @@ class Editor extends React.Component {
       </div>
     )
   }
-}
-
-function FontFace(config) {
-  return (
-    <style jsx global>
-      {`
-        @font-face {
-          font-family: ${config.fontUrl ? config.fontFamily : ''};
-          src: url(${config.fontUrl || ''}) format('woff');
-          font-display: swap;
-        }
-      `}
-    </style>
-  )
 }
 
 function isImage(file) {

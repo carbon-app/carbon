@@ -9,3 +9,4 @@ cypress/screenshots
 packaged
 coverage
 public/service-worker.js
+private-key.json

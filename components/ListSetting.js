@@ -33,7 +33,7 @@ class ListSetting extends React.Component {
         key={item.id}
         onClick={this.select.bind(null, item.id)}
       >
-        {this.props.children(item)}
+        {this.props.children(item, this.props.selected)}
         {this.props.selected === item.id ? <Checkmark /> : null}
         <style jsx>
           {`
