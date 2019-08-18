@@ -11,15 +11,6 @@ import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
 import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
-function pushToast(toast) {
-  return curr => {
-    if (!curr.find(t => t.children === toast.children)) {
-      return curr.concat(toast)
-    }
-    return curr
-  }
-}
-
 function onReset() {
   clearSettings()
 
@@ -30,6 +21,21 @@ function onReset() {
       }
     })
   }
+}
+
+function toastsReducer(curr, action) {
+  switch (action.type) {
+    case 'ADD': {
+      if (!curr.find(t => t.children === action.toast.children)) {
+        return curr.concat(action.toast)
+      }
+      return curr
+    }
+    case 'SET': {
+      return action.toasts
+    }
+  }
+  throw new Error('Unsupported action')
 }
 
 function EditorContainer(props) {
@@ -51,8 +57,7 @@ function EditorContainer(props) {
 
   // XXX use context
   const [snippet, setSnippet] = React.useState(props.snippet || null)
-  // TODO use useReducer
-  const [toasts, setToasts] = React.useState([])
+  const [toasts, setToasts] = React.useReducer(toastsReducer, [])
 
   const snippetId = snippet && snippet.id
   React.useEffect(() => {
@@ -79,12 +84,18 @@ function EditorContainer(props) {
         update(snippetId, updates).then(newSnippet => {
           if (newSnippet && newSnippet.id) {
             setSnippet(newSnippet)
-            setToasts(pushToast({ children: 'Snippet saved!', closable: true }))
+            setToasts({
+              type: 'ADD',
+              toast: { children: 'Snippet saved!', closable: true }
+            })
           }
         })
       } else if (snippet.userId === user.uid) {
         update(snippetId, updates).then(() => {
-          setToasts(pushToast({ children: 'Snippet saved!', closable: true }))
+          setToasts({
+            type: 'ADD',
+            toast: { children: 'Snippet saved!', closable: true }
+          })
         })
       }
     }
