@@ -4,7 +4,7 @@ import omitBy from 'lodash.omitby'
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
 import Slider from './Slider'
-import Text from './Text'
+import Input from './Input'
 import Toggle from './Toggle'
 import Popout, { managePopout } from './Popout'
 import Button from './Button'
@@ -82,14 +82,16 @@ const WindowSettings = React.memo(
           onChange={onChange.bind(null, 'lineNumbers')}
         />
         {lineNumbers && (
-          <Text
-            label="First line number"
-            type="int"
-            value={firstLineNumber}
-            minValue={0}
-            maxValue={Number.MAX_SAFE_INTEGER}
-            onChange={onChange.bind(null, 'firstLineNumber')}
-          />
+          <div className="row settings-row first-row">
+            <Input
+              label="First line number"
+              type="number"
+              value={firstLineNumber}
+              min={0}
+              onChange={e => onChange('firstLineNumber', Number(e.target.value))}
+              width="50%"
+            />
+          </div>
         )}
         <Toggle
           label="Auto-adjust width"
@@ -100,6 +102,7 @@ const WindowSettings = React.memo(
         <style jsx>
           {`
             .row {
+              /* TODO make this a global style */
               display: flex;
             }
 
@@ -110,6 +113,14 @@ const WindowSettings = React.memo(
             .drop-shadow-options :global(.slider-bg),
             .drop-shadow-options :global(label) {
               opacity: 0.5;
+            }
+
+            .settings-content :global(.settings-row:focus-within) {
+              outline: -webkit-focus-ring-color auto 5px;
+            }
+
+            .first-row {
+              padding: 8px 12px 8px 8px;
             }
           `}
         </style>
