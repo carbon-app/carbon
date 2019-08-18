@@ -19,7 +19,7 @@ class Slider extends React.Component {
     const step = 'step' in this.props ? this.props.step : 1
 
     return (
-      <div className="slider">
+      <div className="slider settings-row">
         <div
           className="slider-bg"
           style={{
@@ -46,10 +46,6 @@ class Slider extends React.Component {
               height: 33px;
               overflow: hidden;
               user-select: none;
-            }
-
-            .slider:focus-within {
-              outline: -webkit-focus-ring-color auto 5px;
             }
 
             .slider:last-of-type {

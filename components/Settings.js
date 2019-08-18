@@ -4,6 +4,7 @@ import omitBy from 'lodash.omitby'
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
 import Slider from './Slider'
+import Input from './Input'
 import Toggle from './Toggle'
 import Popout, { managePopout } from './Popout'
 import Button from './Button'
@@ -24,6 +25,7 @@ const WindowSettings = React.memo(
     dropShadowOffsetY,
     windowControls,
     lineNumbers,
+    firstLineNumber,
     widthAdjustment,
     watermark,
     onWidthChanging,
@@ -79,6 +81,18 @@ const WindowSettings = React.memo(
           enabled={lineNumbers}
           onChange={onChange.bind(null, 'lineNumbers')}
         />
+        {lineNumbers && (
+          <div className="row settings-row first-line-number-row">
+            <Input
+              label="First line number"
+              type="number"
+              value={firstLineNumber}
+              min={0}
+              onChange={e => onChange('firstLineNumber', Number(e.target.value))}
+              width="50%"
+            />
+          </div>
+        )}
         <Toggle
           label="Auto-adjust width"
           enabled={widthAdjustment}
@@ -87,10 +101,6 @@ const WindowSettings = React.memo(
         <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
         <style jsx>
           {`
-            .row {
-              display: flex;
-            }
-
             .row > :global(div:first-child) {
               border-right: 1px solid ${COLORS.SECONDARY};
             }
@@ -98,6 +108,14 @@ const WindowSettings = React.memo(
             .drop-shadow-options :global(.slider-bg),
             .drop-shadow-options :global(label) {
               opacity: 0.5;
+            }
+
+            .settings-content :global(.settings-row:focus-within) {
+              outline: -webkit-focus-ring-color auto 5px;
+            }
+
+            .first-line-number-row {
+              padding: 8px 12px 8px 8px;
             }
           `}
         </style>
@@ -184,7 +202,6 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
       <style jsx>
         {`
           .row {
-            display: flex;
             flex: 1;
           }
           .settings-content {
@@ -365,6 +382,7 @@ class Settings extends React.PureComponent {
             dropShadowOffsetY={this.props.dropShadowOffsetY}
             windowControls={this.props.windowControls}
             lineNumbers={this.props.lineNumbers}
+            firstLineNumber={this.props.firstLineNumber}
             widthAdjustment={this.props.widthAdjustment}
             watermark={this.props.watermark}
           />

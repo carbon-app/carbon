@@ -214,6 +214,10 @@ export default () => (
         left: -10%;
       }
 
+      .row {
+        display: flex;
+      }
+
       /* include just until we have a keyboard navigation style system */
       [role='button']:focus {
         outline: none;
