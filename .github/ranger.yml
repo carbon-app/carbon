@@ -3,6 +3,10 @@ extends: reporanger/superpowers
 labels:
   greenkeeper: merge
   dependencies: merge
+  contributor: 
+    action: comment
+    delay: 0s
+    message: "@all-contributors add @$AUTHOR for code"
   'theme/language':
     action: close
     delay: 5 days
