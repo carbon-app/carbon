@@ -101,11 +101,6 @@ const WindowSettings = React.memo(
         <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
         <style jsx>
           {`
-            .row {
-              /* TODO make this a global style */
-              display: flex;
-            }
-
             .row > :global(div:first-child) {
               border-right: 1px solid ${COLORS.SECONDARY};
             }
@@ -207,7 +202,6 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
       <style jsx>
         {`
           .row {
-            display: flex;
             flex: 1;
           }
           .settings-content {
