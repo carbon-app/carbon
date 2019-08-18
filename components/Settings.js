@@ -82,7 +82,7 @@ const WindowSettings = React.memo(
           onChange={onChange.bind(null, 'lineNumbers')}
         />
         {lineNumbers && (
-          <div className="row settings-row first-row">
+          <div className="row settings-row first-line-number-row">
             <Input
               label="First line number"
               type="number"
@@ -119,7 +119,7 @@ const WindowSettings = React.memo(
               outline: -webkit-focus-ring-color auto 5px;
             }
 
-            .first-row {
+            .first-line-number-row {
               padding: 8px 12px 8px 8px;
             }
           `}
