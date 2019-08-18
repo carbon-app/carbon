@@ -4,6 +4,20 @@
   "public": true,
   "builds": [{ "src": "package.json", "use": "@now/next" }],
   "routes": [
+    {
+      "src": "^/privacy/?",
+      "status": 307,
+      "headers": {
+        "Location": "https://www.notion.so/PRIVACY-POLICY-e9847a7777714eb08ba15a7a8eaee937"
+      }
+    },
+    {
+      "src": "^/terms/?",
+      "status": 307,
+      "headers": {
+        "Location": "https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583"
+      }
+    },
     { "src": "^/embed(.*)", "dest": "/embed.html" },
     {
       "src": "^/service-worker.js$",
@@ -19,12 +33,26 @@
         "cache-control": "public, max-age=43200, immutable"
       }
     },
-    { "handle": "filesystem" },
-    { "src": "^/(.*)", "dest": "/index.html" }
+    {
+      "src": "^/(.*)/?",
+      "continue": true,
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "no-referrer-when-downgrade",
+        "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
+      }
+    },
+    { "handle": "filesystem" }
   ],
   "build": {
     "env": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "FIREBASE_PROJECT_ID": "@carbon-firebase-project-id",
+      "FIREBASE_MESSAGING_SENDER_ID": "@carbon-firebase-messaging-sender-id",
+      "FIREBASE_FE_APP_ID": "@carbon-firebase-fe-app-id",
+      "FIREBASE_API_KEY": "@carbon-firebase-api-key"
     }
   },
   "github": {
