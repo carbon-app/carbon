@@ -337,13 +337,23 @@ class Editor extends React.Component {
     this.context.snippet
       .create(this.state)
       .then(data => this.props.setSnippet(data))
-      .then(() => this.props.setToasts([{ children: 'Snippet duplicated!', timeout: 3000 }]))
+      .then(() =>
+        this.props.setToasts({
+          type: 'SET',
+          toasts: [{ children: 'Snippet duplicated!', timeout: 3000 }]
+        })
+      )
 
   handleSnippetDelete = () =>
     this.context.snippet
       .delete(this.props.snippet.id)
       .then(() => this.props.setSnippet(null))
-      .then(() => this.props.setToasts([{ children: 'Snippet deleted', timeout: 3000 }]))
+      .then(() =>
+        this.props.setToasts({
+          type: 'SET',
+          toasts: [{ children: 'Snippet deleted', timeout: 3000 }]
+        })
+      )
 
   render() {
     const {

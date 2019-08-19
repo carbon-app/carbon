@@ -20,6 +20,10 @@ class Toast extends React.Component {
   }
 
   render() {
+    if (process.env.NODE_ENV !== 'production') {
+      return null
+    }
+
     if (!this.state.open) {
       return null
     }

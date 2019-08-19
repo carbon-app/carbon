@@ -12,7 +12,11 @@ export function useAuth() {
 function AuthContext(props) {
   const [user, setState] = React.useState(null)
 
-  React.useEffect(() => firebase.auth().onAuthStateChanged(newUser => setState(newUser)), [])
+  React.useEffect(() => {
+    if (firebase) {
+      firebase.auth().onAuthStateChanged(newUser => setState(newUser))
+    }
+  }, [])
 
   React.useEffect(() => {
     if (user) {

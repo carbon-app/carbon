@@ -34,6 +34,10 @@ function Drawer(props) {
 function LoginButton({ isVisible, toggleVisibility }) {
   const user = useAuth()
 
+  if (!firebase) {
+    return null
+  }
+
   return (
     <div>
       <Button
