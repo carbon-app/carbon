@@ -40,7 +40,8 @@ class Embed extends React.Component {
     ...DEFAULT_SETTINGS,
     code: DEFAULT_CODE,
     mounted: false,
-    readOnly: true
+    readOnly: true,
+    key: 0
   }
 
   snippet = {}
@@ -54,6 +55,11 @@ class Embed extends React.Component {
         this.snippet = snippet
       }
     }
+
+    // TODO fix state!
+    this.i = setTimeout(() => {
+      this.setState(s => ({ key: s.key + 1 }))
+    }, 10)
 
     this.setState(
       {
@@ -73,6 +79,10 @@ class Embed extends React.Component {
       label: document.referrer,
       nonInteraction: true
     })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.i)
   }
 
   ref = React.createRef()
@@ -110,6 +120,7 @@ class Embed extends React.Component {
       <Page theme={this.state.theme}>
         {this.state.mounted && (
           <Carbon
+            key={this.state.key}
             ref={this.ref}
             config={this.state}
             readOnly={this.state.readOnly}
