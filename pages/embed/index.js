@@ -5,11 +5,11 @@ import Head from 'next/head'
 import { withRouter } from 'next/router'
 
 // Ours
-import ApiContext from '../components/ApiContext'
-import { StylesheetLink, CodeMirrorLink, MetaTags } from '../components/Meta'
-import Carbon from '../components/Carbon'
-import { DEFAULT_CODE, DEFAULT_SETTINGS, GA_TRACKING_ID } from '../lib/constants'
-import { getRouteState } from '../lib/routing'
+import ApiContext from '../../components/ApiContext'
+import { StylesheetLink, CodeMirrorLink, MetaTags } from '../../components/Meta'
+import Carbon from '../../components/Carbon'
+import { DEFAULT_CODE, DEFAULT_SETTINGS, GA_TRACKING_ID } from '../../lib/constants'
+import { getRouteState } from '../../lib/routing'
 
 const Page = props => (
   <React.Fragment>
@@ -47,23 +47,11 @@ class Embed extends React.Component {
   snippet = {}
 
   async componentDidMount() {
-    const { queryState, parameter } = getRouteState(this.props.router)
-
-    if (parameter) {
-      const snippet = await this.context.snippet.get(parameter)
-      if (snippet) {
-        this.snippet = snippet
-      }
-    }
-
-    // TODO fix state!
-    this.i = setTimeout(() => {
-      this.setState(s => ({ key: s.key + 1 }))
-    }, 10)
+    const { queryState } = getRouteState(this.props.router)
 
     this.setState(
       {
-        ...this.snippet,
+        ...this.props.snippet,
         ...queryState,
         copyable: queryState.copy !== false,
         readOnly: queryState.readonly !== false,
@@ -79,10 +67,6 @@ class Embed extends React.Component {
       label: document.referrer,
       nonInteraction: true
     })
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.i)
   }
 
   ref = React.createRef()
@@ -118,9 +102,9 @@ class Embed extends React.Component {
   render() {
     return (
       <Page theme={this.state.theme}>
-        {this.state.mounted && (
+        <div hidden={!this.state.mounted}>
           <Carbon
-            key={this.state.key}
+            key={this.state.mounted}
             ref={this.ref}
             config={this.state}
             readOnly={this.state.readOnly}
@@ -129,7 +113,7 @@ class Embed extends React.Component {
           >
             {this.state.code}
           </Carbon>
-        )}
+        </div>
         <style jsx global>
           {`
             .eliminateOnRender,
