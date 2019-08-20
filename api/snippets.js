@@ -82,6 +82,7 @@ function getSnippet(req) {
 
           return {
             id,
+            gist_id: id,
             code: snippet.content,
             language: snippet.language && snippet.language.toLowerCase()
           }
