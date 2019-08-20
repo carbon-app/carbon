@@ -26,13 +26,6 @@
       }
     },
     {
-      "src": "^/static/(.*)",
-      "continue": true,
-      "headers": {
-        "cache-control": "public, max-age=43200, immutable"
-      }
-    },
-    {
       "src": "^/(.*)/?",
       "continue": true,
       "headers": {
