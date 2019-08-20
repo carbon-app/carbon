@@ -3,7 +3,7 @@ import React from 'react'
 
 import Editor from './Editor'
 import Toasts from './Toasts'
-import { THEMES, DEFAULT_CODE } from '../lib/constants'
+import { THEMES } from '../lib/constants'
 import { updateRouteState } from '../lib/routing'
 import { getThemes, saveThemes, clearSettings, saveSettings } from '../lib/util'
 
@@ -76,10 +76,7 @@ function EditorContainer(props) {
       updateRouteState(props.router, state)
       saveSettings(state)
     } else {
-      const updates = {
-        ...state,
-        code: state.code != null ? state.code : DEFAULT_CODE
-      }
+      const updates = state
       if (!snippet) {
         update(snippetId, updates).then(newSnippet => {
           if (newSnippet && newSnippet.id) {
