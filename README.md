@@ -23,14 +23,6 @@
   </a> -->
 </p>
 
-<p align="center">
-  <a href="https://opencollective.com/carbon-app#backers">
-    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
-  </a>
-  <a href="https://opencollective.com/carbon-app#sponsors">
-    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
-  </a>
-</p>
 <br></br>
 
 [![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon)
