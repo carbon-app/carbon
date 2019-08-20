@@ -2,16 +2,6 @@ const Morph = require('morphmorph')
 const { createError, send } = require('micro')
 const admin = require('firebase-admin')
 
-// const crypto = require('crypto')
-// function push(collection) {
-//   const id = crypto.randomBytes(16).toString('hex')
-//   const ref = collection.child(id)
-//   return ref
-//     .once('value')
-//     .then(data => data.exists())
-//     .then(exists => (exists ? push(collection) : ref))
-// }
-
 const PRIVATE_KEY = JSON.parse(Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString())
 
 const mapper = new Morph({
@@ -63,69 +53,43 @@ function getSnippet(req) {
     throw createError(400, 'id is a required parameter')
   }
 
-  let promise
-  if (id.length > 30) {
-    const db = admin.database()
+  const db = admin.firestore()
 
-    promise = db
-      .ref('snippets')
-      .child(id)
-      .once('value')
-      .then(data => {
-        if (data.exists()) {
-          return {
-            ...data.val(),
-            id
-          }
-        }
-        return null
-      })
-  } else {
-    const db = admin.firestore()
-
-    promise = db
-      .collection('snippets')
-      .doc(id)
-      .get()
-      .then(data => {
-        if (data.exists) {
-          return {
-            ...data.data(),
-            id
-          }
-        }
-        return null
-      })
-  }
-
-  return promise.then(data => {
-    if (data) {
-      return data
-    }
-
-    const axios = require('axios')
-    return axios
-      .get(`https://api.github.com/gists/${id}`, {
-        headers: {
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => res.data)
-      .then(({ files }) => {
-        const filename = Object.keys(files)[0]
-        const snippet = files[filename]
-
+  return db
+    .collection('snippets')
+    .doc(id)
+    .get()
+    .then(data => {
+      if (data.exists) {
         return {
-          id,
-          code: snippet.content,
-          language: snippet.language && snippet.language.toLowerCase()
+          ...data.data(),
+          id
         }
-      })
-      .catch(e => {
-        throw createError(e.response.status, e.response.data.message)
-      })
-  })
+      }
+
+      const axios = require('axios')
+      return axios
+        .get(`https://api.github.com/gists/${id}`, {
+          headers: {
+            Accept: 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.data)
+        .then(({ files }) => {
+          const filename = Object.keys(files)[0]
+          const snippet = files[filename]
+
+          return {
+            id,
+            code: snippet.content,
+            language: snippet.language && snippet.language.toLowerCase()
+          }
+        })
+        .catch(e => {
+          throw createError(e.response.status, e.response.data.message)
+        })
+    })
 }
 
 async function createSnippet(user, req) {
