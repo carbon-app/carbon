@@ -18,7 +18,6 @@
         "Location": "https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583"
       }
     },
-    { "src": "^/embed(.*)", "dest": "/embed.html" },
     {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
