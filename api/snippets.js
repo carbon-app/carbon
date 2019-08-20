@@ -1,16 +1,16 @@
-const crypto = require('crypto')
 const Morph = require('morphmorph')
 const { createError, send } = require('micro')
 const admin = require('firebase-admin')
 
-function push(collection) {
-  const id = crypto.randomBytes(16).toString('hex')
-  const ref = collection.child(id)
-  return ref
-    .once('value')
-    .then(data => data.exists())
-    .then(exists => (exists ? push(collection) : ref))
-}
+// const crypto = require('crypto')
+// function push(collection) {
+//   const id = crypto.randomBytes(16).toString('hex')
+//   const ref = collection.child(id)
+//   return ref
+//     .once('value')
+//     .then(data => data.exists())
+//     .then(exists => (exists ? push(collection) : ref))
+// }
 
 const PRIVATE_KEY = JSON.parse(Buffer.from(process.env.FIREBASE_PRIVATE_KEY, 'base64').toString())
 
@@ -63,43 +63,69 @@ function getSnippet(req) {
     throw createError(400, 'id is a required parameter')
   }
 
-  const db = admin.database()
+  let promise
+  if (id.length > 30) {
+    const db = admin.database()
 
-  return db
-    .ref('snippets')
-    .child(id)
-    .once('value')
-    .then(data => {
-      if (data.exists()) {
-        return {
-          ...data.val(),
-          id
-        }
-      }
-
-      const axios = require('axios')
-      return axios
-        .get(`https://api.github.com/gists/${id}`, {
-          headers: {
-            Accept: 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(res => res.data)
-        .then(({ files }) => {
-          const filename = Object.keys(files)[0]
-          const snippet = files[filename]
-
+    promise = db
+      .ref('snippets')
+      .child(id)
+      .once('value')
+      .then(data => {
+        if (data.exists()) {
           return {
-            id,
-            code: snippet.content,
-            language: snippet.language && snippet.language.toLowerCase()
+            ...data.val(),
+            id
           }
-        })
-        .catch(e => {
-          throw createError(e.response.status, e.response.data.message)
-        })
-    })
+        }
+        return null
+      })
+  } else {
+    const db = admin.firestore()
+
+    promise = db
+      .collection('snippets')
+      .doc(id)
+      .get()
+      .then(data => {
+        if (data.exists) {
+          return {
+            ...data.data(),
+            id
+          }
+        }
+        return null
+      })
+  }
+
+  return promise.then(data => {
+    if (data) {
+      return data
+    }
+
+    const axios = require('axios')
+    return axios
+      .get(`https://api.github.com/gists/${id}`, {
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.data)
+      .then(({ files }) => {
+        const filename = Object.keys(files)[0]
+        const snippet = files[filename]
+
+        return {
+          id,
+          code: snippet.content,
+          language: snippet.language && snippet.language.toLowerCase()
+        }
+      })
+      .catch(e => {
+        throw createError(e.response.status, e.response.data.message)
+      })
+  })
 }
 
 async function createSnippet(user, req) {
@@ -109,23 +135,23 @@ async function createSnippet(user, req) {
     throw createError(400, 'code is a required body parameter')
   }
 
-  const db = admin.database()
+  const db = admin.firestore()
 
-  const collection = db.ref('snippets')
-  const ref = await push(collection)
+  const collection = db.collection('snippets')
+  const ref = collection.doc()
 
   return ref
-    .set({
+    .create({
       ...sanitizeInput(data),
-      createdAt: admin.database.ServerValue.TIMESTAMP,
-      updatedAt: admin.database.ServerValue.TIMESTAMP,
+      createdAt: admin.firestore.Timestamp.now()._seconds,
+      updatedAt: admin.firestore.Timestamp.now()._seconds,
       userId: user.uid
     })
-    .then(() => ref.once('value'))
-    .then(snapshot => snapshot.val())
+    .then(() => ref.get())
+    .then(snapshot => snapshot.data())
     .then(val => ({
       ...val,
-      id: ref.key
+      id: ref.id
     }))
 }
 
@@ -136,12 +162,12 @@ async function updateSnippet(user, req) {
     throw createError(400, 'id is a required parameter')
   }
 
-  const db = admin.database()
-  const ref = db.ref('snippets').child(id)
+  const db = admin.firestore()
+  const ref = db.collection('snippets').doc(id)
 
   await ref
-    .once('value')
-    .then(snapshot => snapshot.val())
+    .get()
+    .then(snapshot => snapshot.data())
     .then(value => {
       if (value.userId !== user.uid) {
         throw createError(403, 'Forbidden')
@@ -153,8 +179,8 @@ async function updateSnippet(user, req) {
 
   if (!data) {
     // TODO must be DELETE
-    return ref.remove().then(() => ({
-      id: ref.key
+    return ref.delete().then(() => ({
+      id: ref.id
     }))
   }
 
@@ -163,12 +189,12 @@ async function updateSnippet(user, req) {
   }
 
   return ref
-    .update({ ...sanitizeInput(data), updatedAt: admin.database.ServerValue.TIMESTAMP })
-    .then(() => ref.once('value'))
-    .then(snapshot => snapshot.val())
+    .update({ ...sanitizeInput(data), updatedAt: admin.firestore.Timestamp.now()._seconds })
+    .then(() => ref.get())
+    .then(snapshot => snapshot.data())
     .then(val => ({
       ...val,
-      id: ref.key
+      id: ref.id
     }))
 }
 

@@ -3,6 +3,9 @@
   "version": "4.0.4",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.16.0"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
