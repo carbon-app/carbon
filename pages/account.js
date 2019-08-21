@@ -1,11 +1,11 @@
 // Theirs
 import React from 'react'
-import { logout } from '../lib/client'
+import ReactGA from 'react-ga'
+import { loginGitHub, logout } from '../lib/client'
 
 // Ours
 import Button from '../components/Button'
 import Page from '../components/Page'
-import LoginButton from '../components/LoginButton'
 import MenuButton from '../components/MenuButton'
 import { MetaLinks } from '../components/Meta'
 import Billing from '../components/Billing'
@@ -17,7 +17,29 @@ function logoutThunk() {
   return logout
 }
 
+const soon = <span title="Coming Soon">ⓘ</span>
+
 function Plan() {
+  const user = useAuth()
+
+  function handleSelectFree() {
+    if (!user) {
+      loginGitHub()
+    }
+  }
+
+  function handleSelectUpgrade() {
+    if (!user) {
+      return loginGitHub()
+    }
+
+    ReactGA.event({
+      category: 'Click',
+      action: 'Upgrade',
+      label: user.email
+    })
+  }
+
   return (
     <div className="plan">
       <table>
@@ -35,11 +57,11 @@ function Plan() {
         <tbody>
           <tr>
             <td>Saved Snippets</td>
-            <td>5 / day</td>
+            <td>100</td>
             <td>∞</td>
           </tr>
           <tr>
-            <td>Full editor</td>
+            <td>Full visual editor</td>
             <td>&#10004;</td>
             <td>&#10004;</td>
           </tr>
@@ -49,41 +71,57 @@ function Plan() {
             <td>&#10004;</td>
           </tr>
           <tr>
-            <td>API Access</td>
+            <td>Embed saved Carbon snippets</td>
             <td></td>
             <td>&#10004;</td>
           </tr>
           <tr>
-            <td>Embed saved snippets</td>
+            <td>API Access {soon}</td>
             <td></td>
             <td>&#10004;</td>
           </tr>
           <tr>
-            <td>Save Custom Themes</td>
+            <td>Saved custom themes/presets {soon}</td>
             <td></td>
             <td>&#10004;</td>
           </tr>
           <tr>
-            <td>
-              Twitter Card Unfurls <span title="Coming Soon">ⓘ</span>
-            </td>
+            <td>Twitter card unfurls {soon}</td>
             <td></td>
             <td>&#10004;</td>
           </tr>
           <tr>
             <td></td>
             <td>FREE</td>
-            <td>$9.99 / mth</td>
+            <td>$5.00 / month</td>
           </tr>
           <tr>
             <td></td>
             <td>
-              <Button large disabled margin="0 auto" center border padding="4px 8px" color="white">
-                Current
+              <Button
+                large
+                margin="0 auto"
+                center
+                border
+                padding="4px 8px"
+                color="white"
+                disabled={user && user.plan === 'free'}
+                onClick={handleSelectFree}
+              >
+                {user ? 'Current' : 'Get Started'}
               </Button>
             </td>
             <td>
-              <Button large margin="0 auto" center border padding="4px 8px" color="#57b5f9">
+              <Button
+                large
+                margin="0 auto"
+                center
+                border
+                padding="4px 8px"
+                color="#57b5f9"
+                disabled={user && user.plan === 'diamond'}
+                onClick={handleSelectUpgrade}
+              >
                 Upgrade
               </Button>
             </td>
@@ -129,12 +167,8 @@ function Plan() {
 }
 
 function Settings() {
-  const [selected, select] = React.useState('Billing')
+  const [selected, select] = React.useState('Plan')
   const user = useAuth()
-
-  if (!user) {
-    return <LoginButton />
-  }
 
   function selectMenu(name) {
     return () => select(name)
@@ -172,6 +206,7 @@ function Settings() {
           .settings-bottom {
             display: flex;
             border-radius: 8px;
+            overflow: hidden;
           }
 
           .settings-menu {
@@ -193,8 +228,8 @@ function Settings() {
             border-radius: 50%;
             background: ${COLORS.BLACK};
             border: 3px solid ${COLORS.SECONDARY};
-            top: -32px;
-            right: -32px;
+            top: -40px;
+            right: -40px;
           }
         `}
       </style>
