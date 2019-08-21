@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "alias": "https://carbon.now.sh",
+  "alias": "carbon.now.sh",
   "version": 2,
   "public": true,
   "builds": [{ "src": "package.json", "use": "@now/next" }],
