@@ -29,13 +29,6 @@
       }
     },
     {
-      "src": "^/static/(.*)",
-      "continue": true,
-      "headers": {
-        "Cache-Control": "public, max-age=43200, immutable"
-      }
-    },
-    {
       "src": "/api/user",
       "status": 301,
       "headers": { "Location": "https://api.github.com/user" }

@@ -13,9 +13,9 @@ class Page extends React.Component {
     return (
       <main className="main mt4 mb4">
         <Meta />
-        <Announcement />
-        <Header enableHeroText={enableHeroText} />
         <AuthContext>
+          <Announcement />
+          <Header enableHeroText={enableHeroText} />
           <div className="page">{children}</div>
         </AuthContext>
 
