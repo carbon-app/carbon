@@ -16,9 +16,9 @@ function onReset() {
 
   if (window.navigator && navigator.serviceWorker) {
     navigator.serviceWorker.getRegistrations().then(registrations => {
-      for (let registration of registrations) {
+      registrations.forEach(registration => {
         registration.unregister()
-      }
+      })
     })
   }
 }
