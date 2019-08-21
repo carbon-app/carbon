@@ -103,6 +103,16 @@ async function createSnippet(user, req) {
   const db = admin.firestore()
 
   const collection = db.collection('snippets')
+  // const count = await collection
+  //   .where('userId', '==', user.uid)
+  //   .limit(20)
+  //   .get()
+  //   .then(snapshot => snapshot.size)
+
+  // if (count >= 20) {
+  //   throw createError(402, 'Payment required')
+  // }
+
   const ref = collection.doc()
 
   return ref
