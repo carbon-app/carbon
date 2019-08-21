@@ -46,10 +46,9 @@ function DeleteButton(props) {
   )
 }
 
-function ForkButton(props) {
+function DuplicateButton(props) {
   const [onClick, { loading }] = useAsyncCallback(props.onClick)
 
-  // TODO call it duplicate or fork?
   return (
     <Button
       display="block"
@@ -95,7 +94,7 @@ function SnippetToolbar(props) {
         zIndex: 1
       }}
     >
-      <ForkButton onClick={props.onCreate} />
+      <DuplicateButton onClick={props.onCreate} />
       {sameUser && <DeleteButton onClick={props.onDelete} />}
     </Toolbar>
   )

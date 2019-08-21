@@ -234,8 +234,6 @@ class Settings extends React.PureComponent {
 
   settingsRef = React.createRef()
 
-  presetContentRef = React.createRef()
-
   componentDidMount() {
     const storedPresets = getPresets(localStorage) || []
     this.setState(({ presets }) => ({
@@ -279,11 +277,7 @@ class Settings extends React.PureComponent {
 
     this.props.applyPreset(preset)
 
-    // TODO: this is a hack to prevent the scrollLeft position from changing when preset is applied
-    const { scrollLeft: previousScrollLeft } = this.presetContentRef.current
-    this.setState({ previousSettings }, () => {
-      this.presetContentRef.current.scrollLeft = previousScrollLeft
-    })
+    this.setState({ previousSettings })
   }
 
   undoPreset = () => {
@@ -412,7 +406,6 @@ class Settings extends React.PureComponent {
             remove={this.removePreset}
             create={this.createPreset}
             applied={!!previousSettings}
-            contentRef={this.presetContentRef}
           />
           <div className="settings-bottom">
             <div className="settings-menu">
