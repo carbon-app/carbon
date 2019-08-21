@@ -304,7 +304,7 @@ class Editor extends React.Component {
       ReactGA.event({
         category: 'Settings',
         action: 'Change Theme',
-        label: theme.name || theme.id
+        label: theme
       })
     }
   }
