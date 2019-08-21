@@ -162,10 +162,14 @@ class Editor extends React.Component {
       },
       filter: n => {
         if (n.className) {
-          if (String(n.className).indexOf('eliminateOnRender') > -1) {
+          const className = String(n.className)
+          if (className.includes('eliminateOnRender')) {
             return false
           }
-          if (String(n.className).indexOf('twitter-png-fix') > -1) {
+          if (className.includes('CodeMirror-cursors')) {
+            return false
+          }
+          if (className.includes('twitter-png-fix')) {
             return includeTransparentRow
           }
         }
