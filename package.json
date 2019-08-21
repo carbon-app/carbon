@@ -55,6 +55,7 @@
     "react-is": "^16.9.0",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-spinner": "^0.2.7",
+    "react-stripe-elements": "^4.0.1",
     "react-syntax-highlight": "^15.3.1",
     "tohash": "^1.0.2"
   },
