@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { useAuth } from './AuthContext'
-
 const key = 'CARBON_CTA_1'
 
 function Toast() {
@@ -14,17 +12,11 @@ function Toast() {
     }
   }, [])
 
-  const user = useAuth()
-
   if (process.env.NODE_ENV !== 'production') {
     return null
   }
 
   if (!open) {
-    return null
-  }
-
-  if (user) {
     return null
   }
 
