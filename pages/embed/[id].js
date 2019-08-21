@@ -10,7 +10,7 @@ class EmbedIdPage extends React.PureComponent {
   static contextType = ApiContext
   static async getInitialProps({ req, res, query }) {
     const path = query.id
-    const parameter = path && path.length >= 19 && path.indexOf('.') < 0 && path
+    const parameter = path.length >= 19 && path.indexOf('.') < 0 ? path : null
 
     let snippet
     if (parameter) {
