@@ -23,8 +23,8 @@ export default () => (
           Carbon is used by thousands of developers daily, including experts at:
           <div className="mt2">
             <img
-              width="632px"
-              src="/static/svg/open-source-companies.svg"
+              width="508px"
+              src="/static/svg/open-source-companies-2.svg"
               alt="Companies that trust Carbon: Google, Airbnb, GitHub, Coinbase, and Microsoft"
             />
           </div>
