@@ -66,10 +66,16 @@
     },
     { "src": "/api/.*", "status": 404 },
     {
+      "src": "/",
+      "continue": true,
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN"
+      }
+    },
+    {
       "src": "^/(.*)/?",
       "continue": true,
       "headers": {
-        "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "no-referrer-when-downgrade",
