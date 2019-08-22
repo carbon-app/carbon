@@ -46,19 +46,27 @@ function sanitizeInput(obj = {}) {
   return mapper.map(allowedKeys, obj)
 }
 
-// async function getSnippets(req) {
-//   const user = await authorizeUser(req)
+async function getSnippets(user, req) {
+  const db = admin.firestore()
 
-//   const db = admin.firestore()
+  const { page = 0 } = req.query
+  const perPage = 10
 
-//   return db
-//     .collection('snippets')
-//     .where('userId', '==', user.uid)
-//     .orderBy('createdAt', 'desc')
-//     .limit(10)
-//     .get()
-//     .then(snapshot => snapshot.data())
-// }
+  return db
+    .collection('snippets')
+    .where('userId', '==', user.uid)
+    .orderBy('createdAt', 'desc')
+    .startAt(Number('9'.repeat(10)))
+    .limit(perPage)
+    .offset(page * perPage)
+    .get()
+    .then(snapshot =>
+      snapshot.docs.map(doc => ({
+        ...doc.data(),
+        id: doc.id
+      }))
+    )
+}
 
 function getSnippet(req) {
   const id = req.query.id
@@ -131,8 +139,8 @@ async function createSnippet(user, req) {
   return collection
     .add({
       ...sanitizeInput(data),
-      createdAt: admin.firestore.Timestamp.now()._seconds,
-      updatedAt: admin.firestore.Timestamp.now()._seconds,
+      createdAt: admin.firestore.Timestamp.now().seconds,
+      updatedAt: admin.firestore.Timestamp.now().seconds,
       userId: user.uid
     })
     .then(ref =>
@@ -180,7 +188,7 @@ async function updateSnippet(user, req) {
   }
 
   return ref
-    .update({ ...sanitizeInput(data), updatedAt: admin.firestore.Timestamp.now()._seconds })
+    .update({ ...sanitizeInput(data), updatedAt: admin.firestore.Timestamp.now().seconds })
     .then(() => ref.get())
     .then(snapshot => snapshot.data())
     .then(val => ({
@@ -228,8 +236,13 @@ module.exports = handleErrors(async function(req, res) {
       const user = await authorizeUser(req)
       return updateSnippet(user, req, res)
     }
-    case 'GET':
+    case 'GET': {
       return getSnippet(req, res)
+      // if (req.query.id) {
+      // }
+      // const user = await authorizeUser(req)
+      // return getSnippets(user, req, res)
+    }
     default:
       throw createError(501, 'Not Implemented')
   }
