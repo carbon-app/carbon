@@ -62,12 +62,7 @@
     {
       "src": "/api/image/?(?<id>[^/]*)",
       "dest": "api/image/index.js?id=$id",
-      "methods": ["POST", "OPTIONS"],
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Methods": "*"
-      }
+      "methods": ["POST"]
     },
     { "src": "/api/.*", "status": 404 },
     {
