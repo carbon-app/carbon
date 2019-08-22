@@ -3,9 +3,6 @@
   "version": "4.0.7",
   "main": "index.js",
   "license": "MIT",
-  "engines": {
-    "node": "10.x"
-  },
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -36,14 +33,12 @@
     "email-validator": "^2.0.4",
     "escape-goat": "^2.1.0",
     "firebase": "^6.4.0",
-    "firebase-admin": "^8.3.0",
     "graphql": "^14.3.1",
     "highlight.js": "^9.15.9",
     "isomorphic-fetch": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
     "match-sorter": "^4.0.0",
-    "micro": "^9.3.3",
     "morphmorph": "^0.1.2",
     "ms": "^2.1.2",
     "next": "^9.0.3",
@@ -61,10 +56,7 @@
     "react-mailchimp-subscribe": "^2.1.0",
     "react-spinner": "^0.2.7",
     "react-syntax-highlight": "^15.3.1",
-    "tohash": "^1.0.2",
-    "twit": "^2.2.11",
-    "unsplash-js": "^4.8.0",
-    "url": "^0.11.0"
+    "tohash": "^1.0.2"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.7.1",

@@ -1,0 +1,15 @@
+{
+  "engines": {
+    "node": "10.x"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "firebase-admin": "^8.3.0",
+    "isomorphic-fetch": "^2.2.1",
+    "micro": "^9.3.3",
+    "morphmorph": "^0.1.2",
+    "ms": "^2.1.2",
+    "twit": "^2.2.11",
+    "unsplash-js": "^4.8.0"
+  }
+}

@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "chrome-aws-lambda": "^1.19.0",
+    "dom-to-image": "^2.6.0",
     "micro": "^9.3.3",
     "puppeteer-core": "^1.19.0"
   }
