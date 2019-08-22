@@ -1,8 +1,12 @@
 import React from 'react'
 import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
+import ReactGA from 'react-ga'
+import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
 import Button from './Button'
 import Input from './Input'
+import { useAuth } from './AuthContext'
+
 import { COLORS } from '../lib/constants'
 
 const X = (
@@ -21,35 +25,36 @@ const X = (
 )
 
 function Billing(props) {
-  const [error, setError] = React.useState(null)
+  const user = useAuth()
 
-  const submit = async e => {
+  const [submit, { error, loading }] = useAsyncCallback(async e => {
     e.preventDefault()
-    setError(null)
 
-    const res = await props.stripe.createToken({ name: props.name })
+    const name = e.target.name.value.trim()
 
-    console.error(res)
+    const res = await props.stripe.createToken({ name })
+
     if (res.error) {
-      return setError(res.error.message)
+      throw res.error.message
     }
 
-    // const response = await fetch('/api/charge', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'text/plain' },
-    //   body: res.token.id
-    // })
+    ReactGA.event({
+      category: 'Click',
+      action: 'Subscribe',
+      label: user.email
+    })
 
-    // if (response.ok) {
-    //   props.onSubmit()
-    // }
-  }
+    return {}
+  })
+
   return (
     <div>
       <div className="checkout">
         <div className="column">
           <h4>
             Upgrade to <span>Diamond</span>
+            <br />
+            <span className="tag">($5.00 / month)</span>
           </h4>
           <p>Please enter a credit or debit card:</p>
           <form onSubmit={submit}>
@@ -81,7 +86,7 @@ function Billing(props) {
                 }}
               />
               <hr />
-              <Input placeholder="Cardholders's name..." required />
+              <Input placeholder="Cardholders's name..." name="name" required />
             </fieldset>
             <small>
               (By clicking subscribe, you are accepting the{' '}
@@ -96,7 +101,7 @@ function Billing(props) {
               margin="8px 0 0"
               type="submit"
             >
-              {props.loading ? 'Sending...' : 'Subscribe'}
+              {loading ? 'Sending...' : 'Subscribe'}
             </Button>
             <div className={`error ${error ? 'visible' : ''}`} role="alert">
               {X}
@@ -125,6 +130,7 @@ function Billing(props) {
         p {
           margin: 0 0 8px;
           font-size: 12px;
+          color: rgba(255, 255, 255, 0.8);
         }
 
         small {
@@ -136,6 +142,14 @@ function Billing(props) {
           margin: 0 0 2rem;
         }
 
+        .tag {
+          display: block;
+          font-weight: lighter;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 16px;
+          margin-top: 0.25rem;
+        }
+
         hr {
           border: 0;
           height: 1px;
@@ -145,7 +159,7 @@ function Billing(props) {
 
         fieldset {
           width: 100%;
-          margin: 0 0 2rem;
+          margin: 0 0 2.5rem;
           padding: 0.5rem 0.5rem 0.75rem;
           border: 1px solid white;
           border-radius: 4px;

@@ -1,7 +1,6 @@
 // Theirs
 import React from 'react'
 import ReactGA from 'react-ga'
-import { loginGitHub, logout } from '../lib/client'
 
 // Ours
 import Button from '../components/Button'
@@ -11,6 +10,7 @@ import { MetaLinks } from '../components/Meta'
 import Billing from '../components/Billing'
 import { useAuth } from '../components/AuthContext'
 
+import { loginGitHub, logout } from '../lib/client'
 import { COLORS } from '../lib/constants'
 
 function logoutThunk() {
@@ -19,7 +19,7 @@ function logoutThunk() {
 
 const soon = <span title="Coming Soon">ⓘ</span>
 
-function Plan() {
+function Plan({ selectBilling }) {
   const user = useAuth()
 
   function handleSelectFree() {
@@ -38,6 +38,8 @@ function Plan() {
       action: 'Upgrade',
       label: user.email
     })
+
+    selectBilling()
   }
 
   return (
@@ -177,7 +179,7 @@ function Plan() {
 }
 
 function Settings() {
-  const [selected, select] = React.useState('Plan')
+  const [selected, select] = React.useState('Billing')
   const user = useAuth()
 
   function selectMenu(name) {
@@ -194,7 +196,7 @@ function Settings() {
           <MenuButton name="Sign Out" select={logoutThunk} selected={selected} noArrows />
         </div>
         <div className="content">
-          {selected === 'Plan' && <Plan />}
+          {selected === 'Plan' && <Plan selectBilling={selectMenu('Billing')} />}
           {selected === 'Billing' && <Billing />}
         </div>
       </div>
