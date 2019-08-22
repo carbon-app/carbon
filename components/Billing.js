@@ -8,7 +8,7 @@ import Input from './Input'
 import { useAuth } from './AuthContext'
 import LoginButton from './LoginButton'
 
-import { COLORS } from '../lib/constants'
+import { GA_TRACKING_ID, COLORS } from '../lib/constants'
 
 const X = (
   <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
@@ -39,10 +39,11 @@ function Billing(props) {
       throw res.error.message
     }
 
+    ReactGA.initialize(GA_TRACKING_ID)
     ReactGA.event({
       category: 'Click',
       action: 'Subscribe',
-      label: user.email
+      label: user.uid
     })
 
     return {}

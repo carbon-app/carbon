@@ -1,5 +1,5 @@
 import React from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import firebase, { login, logout } from '../lib/client'
 
 import Button from './Button'
@@ -10,11 +10,11 @@ function Drawer(props) {
   return (
     <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '180px', left: 0 }}>
       <div className="flex">
-        {/* <Link href="/settings">
-          <Button large center padding="8px 0">
-            Settings
+        <Link href="/account">
+          <Button large center padding="8px 0" style={{ borderBottom: '1px solid' }}>
+            Account
           </Button>
-        </Link> */}
+        </Link>
         <Button large center padding="8px 0" onClick={logout}>
           Sign Out
         </Button>
@@ -23,6 +23,7 @@ function Drawer(props) {
         {`
           .flex {
             display: flex;
+            flex-direction: column;
             height: 100%;
           }
         `}

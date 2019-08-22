@@ -11,10 +11,10 @@ import { MetaLinks } from '../components/Meta'
 import { useAuth } from '../components/AuthContext'
 
 import { loginGitHub, logout } from '../lib/client'
-import { COLORS } from '../lib/constants'
+import { GA_TRACKING_ID, COLORS } from '../lib/constants'
 
 const Billing = dynamic(() => import('../components/Billing'), {
-  loading: () => null
+  loading: () => <div style={{ minHeight: '360px' }} />
 })
 
 function logoutThunk() {
@@ -37,10 +37,11 @@ function Plan({ selectBilling }) {
       return loginGitHub()
     }
 
+    ReactGA.initialize(GA_TRACKING_ID)
     ReactGA.event({
       category: 'Click',
       action: 'Upgrade',
-      label: user.email
+      label: user.uid
     })
 
     selectBilling()
