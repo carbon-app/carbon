@@ -52,7 +52,7 @@ function Plan({ selectBilling }) {
               <h3>Free</h3>
             </td>
             <td>
-              <h3 style={{ color: '#57b5f9' }}>Diamond</h3>
+              <h3 style={{ color: COLORS.BLUE }}>Diamond</h3>
             </td>
           </tr>
         </thead>
@@ -130,7 +130,7 @@ function Plan({ selectBilling }) {
                 center
                 border
                 padding="4px 8px"
-                color="#57b5f9"
+                color={COLORS.BLUE}
                 disabled={user && user.plan === 'diamond'}
                 onClick={handleSelectUpgrade}
               >

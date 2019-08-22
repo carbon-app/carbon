@@ -64,7 +64,7 @@ function Billing(props) {
                   iconStyle: 'solid',
                   style: {
                     base: {
-                      iconColor: '#57b5f9',
+                      iconColor: COLORS.BLUE,
                       color: '#fff',
                       fontWeight: 500,
                       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
@@ -212,12 +212,8 @@ function Billing(props) {
 const BillingWithStripe = injectStripe(Billing)
 
 export default function() {
-  const [stripe, setStripe] = React.useState(null)
-  React.useEffect(() => {
-    setStripe(window.Stripe(process.env.STRIPE_PUBLIC_KEY))
-  }, [])
   return (
-    <StripeProvider stripe={stripe}>
+    <StripeProvider apiKey={process.env.STRIPE_PUBLIC_KEY}>
       <Elements>
         <BillingWithStripe />
       </Elements>
