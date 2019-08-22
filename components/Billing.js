@@ -65,7 +65,7 @@ function Billing(props) {
                   style: {
                     base: {
                       iconColor: COLORS.BLUE,
-                      color: '#fff',
+                      color: COLORS.BLUE,
                       fontWeight: 500,
                       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
                       fontSize: '16px',
@@ -75,7 +75,7 @@ function Billing(props) {
                         color: '#fce883'
                       },
                       '::placeholder': {
-                        color: '#87BBFD'
+                        color: 'rgba(255, 255, 255, 0.7)'
                       }
                     },
                     invalid: {
@@ -100,6 +100,7 @@ function Billing(props) {
               padding="8px 16px"
               margin="8px 0 0"
               type="submit"
+              color="rgba(255, 255, 255, 0.7)"
             >
               {loading ? 'Sending...' : 'Subscribe'}
             </Button>
@@ -154,25 +155,36 @@ function Billing(props) {
           border: 0;
           height: 1px;
           margin: 0.5rem 0 1rem;
-          background: white;
+          background: ${COLORS.SECONDARY};
         }
 
         fieldset {
           width: 100%;
           margin: 0 0 2.5rem;
           padding: 0.5rem 0.5rem 0.75rem;
-          border: 1px solid white;
+          border: 1px solid ${COLORS.SECONDARY};
           border-radius: 4px;
         }
 
         fieldset :global(input) {
           text-align: left;
           font-size: 16px;
+          color: ${COLORS.BLUE};
+        }
+
+        fieldset :global(input::placeholder) {
+          opacity: 1;
+          color: rgba(255, 255, 255, 0.7);
         }
 
         fieldset :global(.StripeElement) {
           width: 100%;
           padding: 12px 16px 12px 0;
+        }
+
+        form:valid :global(button) {
+          color: ${COLORS.BLUE};
+          box-shadow: inset 0px 0px 0px 1px ${COLORS.BLUE};
         }
 
         .error {
