@@ -9,6 +9,14 @@ const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
 module.exports = async (req, res) => {
+  // if (req.method.toUpperCase() !== 'POST') {
+  //   res.setHeader('Access-Control-Allow-Origin', '*')
+  //   res.setHeader('Access-Control-Allow-Headers', '*')
+  //   res.setHeader('Access-Control-Allow-Methods', '*')
+
+  //   return send(res, 200)
+  // }
+
   if (!req.headers.origin && !req.headers.authorization) {
     return send(res, 401, 'Unauthorized')
   }

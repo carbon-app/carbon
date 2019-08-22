@@ -1,0 +1,10 @@
+{
+  "engines": {
+    "node": "8.10.x"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^1.19.0",
+    "micro": "^9.3.3",
+    "puppeteer-core": "^1.19.0"
+  }
+}
