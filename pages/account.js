@@ -56,43 +56,53 @@ function Plan() {
         </thead>
         <tbody>
           <tr>
-            <td>Saved Snippets</td>
-            <td>100</td>
-            <td>∞</td>
+            <td>PNG/SVG Exports</td>
+            <td>✔</td>
+            <td>✔</td>
           </tr>
           <tr>
             <td>Full visual editor</td>
-            <td>&#10004;</td>
-            <td>&#10004;</td>
+            <td>✔</td>
+            <td>✔</td>
           </tr>
           <tr>
-            <td>Embedded GitHub Gists</td>
-            <td>&#10004;</td>
-            <td>&#10004;</td>
+            <td>Custom backgrounds</td>
+            <td>✔</td>
+            <td>✔</td>
+          </tr>
+          <tr>
+            <td>GitHub Gist support</td>
+            <td>✔</td>
+            <td>✔</td>
+          </tr>
+          <tr>
+            <td>Saved snippets</td>
+            <td>1000</td>
+            <td>∞</td>
           </tr>
           <tr>
             <td>Embed saved Carbon snippets</td>
             <td></td>
-            <td>&#10004;</td>
+            <td>✔</td>
           </tr>
           <tr>
             <td>API Access {soon}</td>
             <td></td>
-            <td>&#10004;</td>
+            <td>✔</td>
           </tr>
           <tr>
             <td>Saved custom themes/presets {soon}</td>
             <td></td>
-            <td>&#10004;</td>
+            <td>✔</td>
           </tr>
           <tr>
             <td>Twitter card unfurls {soon}</td>
             <td></td>
-            <td>&#10004;</td>
+            <td>✔</td>
           </tr>
           <tr>
             <td></td>
-            <td>FREE</td>
+            <td>FREE FOREVER</td>
             <td>$5.00 / month</td>
           </tr>
           <tr>

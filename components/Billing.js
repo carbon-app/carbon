@@ -29,7 +29,7 @@ function Billing(props) {
 
     const res = await props.stripe.createToken({ name: props.name })
 
-    console.debug(res)
+    console.error(res)
     if (res.error) {
       return setError(res.error.message)
     }
@@ -195,7 +195,7 @@ function Billing(props) {
   )
 }
 
-Billing = injectStripe(Billing)
+const BillingWithStripe = injectStripe(Billing)
 
 export default function() {
   const [stripe, setStripe] = React.useState(null)
@@ -205,7 +205,7 @@ export default function() {
   return (
     <StripeProvider stripe={stripe}>
       <Elements>
-        <Billing />
+        <BillingWithStripe />
       </Elements>
     </StripeProvider>
   )
