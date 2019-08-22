@@ -1,9 +1,11 @@
 import React from 'react'
 import { useAsyncCallback, useOnline } from '@dawnlabs/tacklebox'
-import Button from './Button'
 
-import { useAuth } from './AuthContext'
+import Button from './Button'
 import Toolbar from './Toolbar'
+import { useAuth } from './AuthContext'
+
+import { COLORS } from '../lib/constants'
 
 function ConfirmButton(props) {
   const [confirmed, setConfirmed] = React.useState(false)
@@ -39,7 +41,7 @@ function DeleteButton(props) {
       large
       color="#fff"
       onClick={onClick}
-      style={{ color: '#ff5f56' }}
+      style={{ color: COLORS.RED }}
     >
       {loading ? 'Deleting...' : 'Delete'}
     </ConfirmButton>
