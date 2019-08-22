@@ -4,6 +4,8 @@ import { useAsyncCallback, useOnline as useOnlineListener } from '@dawnlabs/tack
 import { useAPI } from './ApiContext'
 import Button from './Button'
 
+import { COLORS } from '../lib/constants'
+
 function TweetButton(props) {
   const api = useAPI()
   const online = useOnlineListener()
@@ -25,7 +27,7 @@ function TweetButton(props) {
       padding="0 16px"
       margin="0 8px 0 0"
       onClick={onClick}
-      color="#57b5f9"
+      color={COLORS.BLUE}
     >
       {loading ? 'Loading...' : 'Tweet'}
     </Button>
