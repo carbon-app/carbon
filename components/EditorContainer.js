@@ -31,8 +31,7 @@ function useAppInstallationsListener() {
     function onInstall() {
       ReactGA.event({
         category: 'Analytics',
-        action: 'App Install',
-        nonInteraction: true
+        action: 'App Install'
       })
     }
 
