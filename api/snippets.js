@@ -46,6 +46,20 @@ function sanitizeInput(obj = {}) {
   return mapper.map(allowedKeys, obj)
 }
 
+// async function getSnippets(req) {
+//   const user = await authorizeUser(req)
+
+//   const db = admin.firestore()
+
+//   return db
+//     .collection('snippets')
+//     .where('userId', '==', user.uid)
+//     .orderBy('createdAt', 'desc')
+//     .limit(10)
+//     .get()
+//     .then(snapshot => snapshot.data())
+// }
+
 function getSnippet(req) {
   const id = req.query.id
 
@@ -103,6 +117,7 @@ async function createSnippet(user, req) {
   const db = admin.firestore()
 
   const collection = db.collection('snippets')
+
   // const count = await collection
   //   .where('userId', '==', user.uid)
   //   .limit(20)
@@ -113,21 +128,22 @@ async function createSnippet(user, req) {
   //   throw createError(402, 'Payment required')
   // }
 
-  const ref = collection.doc()
-
-  return ref
-    .create({
+  return collection
+    .add({
       ...sanitizeInput(data),
       createdAt: admin.firestore.Timestamp.now()._seconds,
       updatedAt: admin.firestore.Timestamp.now()._seconds,
       userId: user.uid
     })
-    .then(() => ref.get())
-    .then(snapshot => snapshot.data())
-    .then(val => ({
-      ...val,
-      id: ref.id
-    }))
+    .then(ref =>
+      ref
+        .get()
+        .then(snapshot => snapshot.data())
+        .then(val => ({
+          ...val,
+          id: ref.id
+        }))
+    )
 }
 
 async function updateSnippet(user, req) {
@@ -185,6 +201,7 @@ function handleErrors(fn) {
 }
 
 async function authorizeUser(req) {
+  if (!req.headers.authorization) throw createError(401, 'Unauthorized')
   const token = req.headers.authorization.split(/\s+/).pop()
   if (!token) throw createError(401, 'Unauthorized')
   const user = await admin.auth().verifyIdToken(token)
