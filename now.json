@@ -82,6 +82,10 @@
         "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
       }
     },
+    {
+      "src": "/embed/",
+      "dest": "/embed.html"
+    },
     { "handle": "filesystem" }
   ],
   "build": {
