@@ -75,6 +75,10 @@ class Carbon extends React.PureComponent {
   }
 
   onSelection = (ed, data) => {
+    if (this.props.readOnly) {
+      return
+    }
+
     const selection = data.ranges[0]
     if (
       selection.head.line === selection.anchor.line &&
@@ -313,7 +317,7 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {this.state.selectionAt && (
+        {!this.props.readOnly && this.state.selectionAt && (
           <SelectionEditor position={this.state.selectionAt} onChange={this.onSelectionChange} />
         )}
         <style jsx>
