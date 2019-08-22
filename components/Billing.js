@@ -27,7 +27,7 @@ const X = (
 function Billing(props) {
   const user = useAuth()
 
-  const [submit, { error, loading }] = useAsyncCallback(async e => {
+  const [submit, { error, loading, data: success }] = useAsyncCallback(async e => {
     e.preventDefault()
 
     const name = e.target.name.value.trim()
@@ -48,8 +48,20 @@ function Billing(props) {
   })
 
   return (
-    <div>
-      <div className="checkout">
+    <div className="checkout">
+      {success ? (
+        <div className="column">
+          <h4>Thank you for supporting Carbon!</h4>
+          <p style={{ fontSize: 16, lineHeight: '1.5' }}>
+            However, Carbon Diamond is not quite ready yet.
+            <br />
+            Your card has <u>not</u> been charged or saved today.
+            <br />
+            We greatly appreciate your support, and will contact you when these premium features
+            launch!
+          </p>
+        </div>
+      ) : (
         <div className="column">
           <h4>
             Upgrade to <span>Diamond</span>
@@ -110,7 +122,7 @@ function Billing(props) {
             </div>
           </form>
         </div>
-      </div>
+      )}
       <style jsx>{`
         .checkout {
           position: relative;
@@ -131,7 +143,7 @@ function Billing(props) {
         p {
           margin: 0 0 8px;
           font-size: 12px;
-          color: rgba(255, 255, 255, 0.8);
+          font-weight: normal;
         }
 
         small {
