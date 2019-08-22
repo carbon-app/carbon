@@ -337,6 +337,15 @@ class Editor extends React.Component {
         // create toast here in the future
       })
 
+  handleSelectSnippet = data => {
+    if (data.name === 'Load more...') {
+      //
+    } else {
+      this.setState({ ...DEFAULT_SETTINGS, ...data })
+      this.props.setSnippet(data)
+    }
+  }
+
   handleSnippetCreate = () =>
     this.context.snippet
       .create(this.state)
@@ -445,13 +454,16 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-        {this.props.snippet && (
-          <SnippetToolbar
-            snippet={this.props.snippet}
-            onCreate={this.handleSnippetCreate}
-            onDelete={this.handleSnippetDelete}
-          />
-        )}
+        {this.props.snippet ||
+          (this.props.snippets && (
+            <SnippetToolbar
+              snippet={this.props.snippet}
+              snippets={this.props.snippets}
+              onSelect={this.handleSelectSnippet}
+              onCreate={this.handleSnippetCreate}
+              onDelete={this.handleSnippetDelete}
+            />
+          ))}
         <FontFace {...config} />
         <style jsx>
           {`

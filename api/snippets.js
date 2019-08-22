@@ -52,20 +52,22 @@ async function getSnippets(user, req) {
   const { page = 0 } = req.query
   const perPage = 10
 
-  return db
-    .collection('snippets')
-    .where('userId', '==', user.uid)
-    .orderBy('updatedAt', 'desc')
-    .startAt(Number('9'.repeat(10)))
-    .limit(perPage)
-    .offset(page * perPage)
-    .get()
-    .then(snapshot =>
-      snapshot.docs.map(doc => ({
-        ...doc.data(),
-        id: doc.id
-      }))
-    )
+  return (
+    db
+      .collection('snippets')
+      .where('userId', '==', user.uid)
+      .orderBy('updatedAt', 'desc')
+      // .startAt(Number('9'.repeat(10)))
+      .limit(perPage)
+      .offset(page * perPage)
+      .get()
+      .then(snapshot =>
+        snapshot.docs.map(doc => ({
+          ...doc.data(),
+          id: doc.id
+        }))
+      )
+  )
 }
 
 function getSnippet(req) {
@@ -237,11 +239,11 @@ module.exports = handleErrors(async function(req, res) {
       return updateSnippet(user, req, res)
     }
     case 'GET': {
-      return getSnippet(req, res)
-      // if (req.query.id) {
-      // }
-      // const user = await authorizeUser(req)
-      // return getSnippets(user, req, res)
+      if (req.query.id) {
+        return getSnippet(req, res)
+      }
+      const user = await authorizeUser(req)
+      return getSnippets(user, req, res)
     }
     default:
       throw createError(501, 'Not Implemented')
