@@ -39,8 +39,8 @@ function Plan({ selectBilling }) {
 
     ReactGA.initialize(GA_TRACKING_ID)
     ReactGA.event({
-      category: 'Click',
-      action: 'Upgrade',
+      category: 'Billing',
+      action: 'upgrade',
       label: user.uid
     })
 

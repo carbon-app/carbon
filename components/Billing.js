@@ -41,8 +41,8 @@ function Billing(props) {
 
     ReactGA.initialize(GA_TRACKING_ID)
     ReactGA.event({
-      category: 'Click',
-      action: 'Subscribe',
+      category: 'Billing',
+      action: 'subscribe',
       label: user.uid
     })
 
