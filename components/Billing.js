@@ -6,6 +6,7 @@ import { useAsyncCallback } from '@dawnlabs/tacklebox'
 import Button from './Button'
 import Input from './Input'
 import { useAuth } from './AuthContext'
+import LoginButton from './LoginButton'
 
 import { COLORS } from '../lib/constants'
 
@@ -46,6 +47,27 @@ function Billing(props) {
 
     return {}
   })
+
+  if (!user) {
+    return (
+      <div className="login">
+        <div>
+          <LoginButton />
+        </div>
+        <style jsx>
+          {`
+            .login {
+              width: 100%;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          `}
+        </style>
+      </div>
+    )
+  }
 
   return (
     <div className="checkout">

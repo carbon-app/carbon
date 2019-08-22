@@ -1,17 +1,21 @@
 // Theirs
 import React from 'react'
 import ReactGA from 'react-ga'
+import dynamic from 'next/dynamic'
 
 // Ours
 import Button from '../components/Button'
 import Page from '../components/Page'
 import MenuButton from '../components/MenuButton'
 import { MetaLinks } from '../components/Meta'
-import Billing from '../components/Billing'
 import { useAuth } from '../components/AuthContext'
 
 import { loginGitHub, logout } from '../lib/client'
 import { COLORS } from '../lib/constants'
+
+const Billing = dynamic(() => import('../components/Billing'), {
+  loading: () => null
+})
 
 function logoutThunk() {
   return logout
@@ -179,7 +183,7 @@ function Plan({ selectBilling }) {
 }
 
 function Settings() {
-  const [selected, select] = React.useState('Billing')
+  const [selected, select] = React.useState('Plan')
   const user = useAuth()
 
   function selectMenu(name) {
