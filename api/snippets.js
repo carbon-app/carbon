@@ -55,7 +55,7 @@ async function getSnippets(user, req) {
   return db
     .collection('snippets')
     .where('userId', '==', user.uid)
-    .orderBy('createdAt', 'desc')
+    .orderBy('updatedAt', 'desc')
     .startAt(Number('9'.repeat(10)))
     .limit(perPage)
     .offset(page * perPage)
