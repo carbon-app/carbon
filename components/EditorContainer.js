@@ -12,6 +12,9 @@ import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
 import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
+// TODO remove
+import { client } from '../lib/api'
+
 function onReset() {
   clearSettings()
 
@@ -151,6 +154,21 @@ function EditorContainer(props) {
     props.router.replace('/', '/' + (snippetId || ''), { shallow: true })
   }, [snippetId, props.router])
 
+  const [snippets, setSnippets] = React.useState([])
+  const [snippetPage, setSnippetPage] = React.useState(0)
+
+  React.useEffect(() => {
+    if (user) {
+      // TODO
+      user.getIdToken().then(jwt => {
+        client.defaults.headers['Authorization'] = jwt ? `Bearer ${jwt}` : undefined
+        api.snippet
+          .list(snippetPage)
+          .then(newSnippets => setSnippets(curr => curr.concat(newSnippets)))
+      })
+    }
+  }, [api.snippet, snippetPage, user])
+
   function onEditorUpdate(state) {
     if (loading) {
       return
@@ -191,6 +209,8 @@ function EditorContainer(props) {
         updateThemes={updateThemes}
         snippet={snippet}
         setSnippet={setSnippet}
+        snippets={snippets}
+        onLoadMoreSnippets={() => setSnippetPage(p => p + 1)}
         setToasts={setToasts}
         onUpdate={onEditorUpdate}
         onReset={onReset}

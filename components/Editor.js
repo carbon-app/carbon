@@ -339,7 +339,7 @@ class Editor extends React.Component {
 
   handleSelectSnippet = data => {
     if (data.name === 'Load more...') {
-      //
+      this.props.onLoadMoreSnippets()
     } else {
       this.setState({ ...DEFAULT_SETTINGS, ...data })
       this.props.setSnippet(data)
@@ -455,7 +455,7 @@ class Editor extends React.Component {
           )}
         </Dropzone>
         {this.props.snippet ||
-          (this.props.snippets && (
+          (!!this.props.snippets.length && (
             <SnippetToolbar
               snippet={this.props.snippet}
               snippets={this.props.snippets}
