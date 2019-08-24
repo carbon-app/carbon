@@ -85,7 +85,7 @@ function SnippetToolbar(props) {
   //   return null
   // }
 
-  const sameUser = props.snippet && user.uid === props.snippet.userId
+  const sameUser = !!props.snippet && user.uid === props.snippet.userId
 
   return (
     <Toolbar
