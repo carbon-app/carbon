@@ -2,7 +2,6 @@ import React from 'react'
 import { useAsyncCallback, useOnline } from '@dawnlabs/tacklebox'
 
 import Button from './Button'
-import Dropdown from './Dropdown'
 import Toolbar from './Toolbar'
 import { useAuth } from './AuthContext'
 
@@ -81,42 +80,24 @@ function SnippetToolbar(props) {
     return null
   }
 
-  // if (!props.snippet) {
-  //   return null
-  // }
+  if (!props.snippet) {
+    return null
+  }
 
-  const sameUser = !!props.snippet && user.uid === props.snippet.userId
+  const sameUser = user.uid === props.snippet.userId
 
   return (
     <Toolbar
       style={{
         marginTop: 16,
         marginBottom: 0,
+        flexDirection: 'row-reverse',
+        // justifyContent: 'space-between',
         zIndex: 1
       }}
     >
-      <div className="dropdown">
-        {props.snippets && (
-          <Dropdown
-            title="Snippets"
-            selected={{ name: 'Snippets' }}
-            list={[...props.snippets.map(s => ({ ...s, name: s.id })), { name: 'Load more...' }]}
-            onChange={props.onSelect}
-          />
-        )}
-      </div>
+      <DuplicateButton onClick={props.onCreate} />
       {sameUser && <DeleteButton onClick={props.onDelete} />}
-      {props.snippet && <DuplicateButton onClick={props.onCreate} />}
-      <style jsx>
-        {`
-          .dropdown.dropdown {
-            margin-right: auto;
-          }
-          .dropdown :global(.dropdown-container) {
-            margin-left: 0px;
-          }
-        `}
-      </style>
     </Toolbar>
   )
 }
