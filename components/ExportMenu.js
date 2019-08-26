@@ -21,7 +21,11 @@ const MAX_PAYLOAD_SIZE = 5e6 // bytes
 function verifyPayloadSize(str) {
   if (typeof str !== 'string') return true
 
-  return new Blob([str]).size < MAX_PAYLOAD_SIZE
+  if (typeof window !== 'undefined') {
+    return new Blob([str]).size < MAX_PAYLOAD_SIZE
+  }
+
+  return Buffer.byteLength(str, 'utf8')
 }
 
 const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => {
