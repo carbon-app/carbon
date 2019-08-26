@@ -24,6 +24,7 @@ function Drawer(props) {
           .flex {
             display: flex;
             height: 100%;
+            flex-direction: column;
           }
         `}
       </style>
