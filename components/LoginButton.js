@@ -12,11 +12,18 @@ function Drawer(props) {
       <div className="flex">
         <Link href="/snippets">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
-            Snippets {/* FILES? */}
+            <img src="/static/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
+            {/* FILES? */}
           </Button>
         </Link>
         <Link href="/account">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
+            <img
+              src="/static/person.svg"
+              alt="Account"
+              width="16px"
+              style={{ left: '-2px', marginRight: 'calc(1rem - 3px)' }}
+            />{' '}
             Account
           </Button>
         </Link>
@@ -31,6 +38,10 @@ function Drawer(props) {
             flex-direction: column;
             height: 100%;
             flex-direction: column;
+          }
+          img {
+            position: relative;
+            margin-right: 1rem;
           }
         `}
       </style>
