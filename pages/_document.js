@@ -5,7 +5,9 @@ export default class extends Document {
   render() {
     return (
       <html lang="en">
-        <Head />
+        <Head>
+          <script src="https://js.stripe.com/v3/" />
+        </Head>
         <body>
           <Main />
           <NextScript />

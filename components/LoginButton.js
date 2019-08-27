@@ -1,5 +1,5 @@
 import React from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import firebase, { login, logout } from '../lib/client'
 
 import Button from './Button'
@@ -8,14 +8,26 @@ import { useAuth } from './AuthContext'
 
 function Drawer(props) {
   return (
-    <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '180px', left: 0 }}>
+    <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '160px', left: 0 }}>
       <div className="flex">
-        {/* <Link href="/settings">
-          <Button large center padding="8px 0">
-            Settings
+        <Link href="/snippets">
+          <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
+            <img src="/static/svg/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
+            {/* FILES? */}
           </Button>
-        </Link> */}
-        <Button large center padding="8px 0" onClick={logout}>
+        </Link>
+        <Link href="/account">
+          <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
+            <img
+              src="/static/svg/person.svg"
+              alt="Account"
+              width="16px"
+              style={{ left: '-2px', marginRight: 'calc(1rem - 3px)' }}
+            />{' '}
+            Account
+          </Button>
+        </Link>
+        <Button large center padding="0.5rem 0" onClick={logout}>
           Sign Out
         </Button>
       </div>
@@ -23,7 +35,12 @@ function Drawer(props) {
         {`
           .flex {
             display: flex;
+            flex-direction: column;
             height: 100%;
+          }
+          img {
+            position: relative;
+            margin-right: 1rem;
           }
         `}
       </style>
@@ -61,7 +78,7 @@ function LoginButton({ isVisible, toggleVisibility }) {
       >
         <img
           height={20}
-          src={user ? user.photoURL : '/static/github.svg'}
+          src={user ? user.photoURL : '/static/svg/github.svg'}
           alt={user ? user.displayName : 'GitHub'}
         />
         <span>{user ? user.displayName : 'Sign in/up'}</span>

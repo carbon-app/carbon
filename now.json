@@ -27,15 +27,25 @@
       }
     },
     {
+      "src": "/",
+      "continue": true,
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN"
+      }
+    },
+    {
       "src": "^/(.*)/?",
       "continue": true,
       "headers": {
-        "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "no-referrer-when-downgrade",
         "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
       }
+    },
+    {
+      "src": "/embed/",
+      "dest": "/embed.html"
     },
     { "handle": "filesystem" }
   ],
@@ -45,7 +55,8 @@
       "FIREBASE_PROJECT_ID": "@carbon-firebase-project-id",
       "FIREBASE_MESSAGING_SENDER_ID": "@carbon-firebase-messaging-sender-id",
       "FIREBASE_FE_APP_ID": "@carbon-firebase-fe-app-id",
-      "FIREBASE_API_KEY": "@carbon-firebase-api-key"
+      "FIREBASE_API_KEY": "@carbon-firebase-api-key",
+      "STRIPE_PUBLIC_KEY": "@carbon-stripe-public-key"
     }
   },
   "github": {

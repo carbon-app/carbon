@@ -21,7 +21,7 @@ describe('background color', () => {
     cy.visit('/')
     openPicker()
     closePicker()
-    cy.get(picker).should('not.be.visible')
+    cy.get(picker).should('not.exist')
   })
 
   it('changes background color to dark red', () => {
