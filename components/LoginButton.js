@@ -8,14 +8,19 @@ import { useAuth } from './AuthContext'
 
 function Drawer(props) {
   return (
-    <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '180px', left: 0 }}>
+    <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '160px', left: 0 }}>
       <div className="flex">
+        <Link href="/snippets">
+          <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
+            Snippets {/* FILES? */}
+          </Button>
+        </Link>
         <Link href="/account">
-          <Button large center padding="8px 0" style={{ borderBottom: '1px solid' }}>
+          <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
             Account
           </Button>
         </Link>
-        <Button large center padding="8px 0" onClick={logout}>
+        <Button large center padding="0.5rem 0" onClick={logout}>
           Sign Out
         </Button>
       </div>
@@ -25,6 +30,7 @@ function Drawer(props) {
             display: flex;
             flex-direction: column;
             height: 100%;
+            flex-direction: column;
           }
         `}
       </style>
