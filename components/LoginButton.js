@@ -12,14 +12,14 @@ function Drawer(props) {
       <div className="flex">
         <Link href="/snippets">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
-            <img src="/static/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
+            <img src="/static/svg/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
             {/* FILES? */}
           </Button>
         </Link>
         <Link href="/account">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
             <img
-              src="/static/person.svg"
+              src="/static/svg/person.svg"
               alt="Account"
               width="16px"
               style={{ left: '-2px', marginRight: 'calc(1rem - 3px)' }}
@@ -79,7 +79,7 @@ function LoginButton({ isVisible, toggleVisibility }) {
       >
         <img
           height={20}
-          src={user ? user.photoURL : '/static/github.svg'}
+          src={user ? user.photoURL : '/static/svg/github.svg'}
           alt={user ? user.displayName : 'GitHub'}
         />
         <span>{user ? user.displayName : 'Sign in/up'}</span>

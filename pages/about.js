@@ -24,7 +24,7 @@ export default () => (
           <div className="mt2">
             <img
               width="632px"
-              src="/static/open-source-companies.svg"
+              src="/static/svg/open-source-companies.svg"
               alt="Companies that trust Carbon: Google, Airbnb, GitHub, Coinbase, and Microsoft"
             />
           </div>
