@@ -48,8 +48,8 @@ function Snippet(props) {
           {`
             .snippet {
               position: relative;
-              width: 160px;
-              height: 160px;
+              width: 266px;
+              height: 266px;
               border: 1px solid ${COLORS.SECONDARY};
               border-radius: 3px;
               cursor: pointer !important;
@@ -87,7 +87,7 @@ function Snippet(props) {
               border-radius: 3px;
               background: ${COLORS.SECONDARY};
               color: ${COLORS.BLACK};
-              font-size: 8px;
+              font-size: 10px;
               padding: 0.125rem;
               max-width: 80%;
               text-overflow: ellipsis;
@@ -101,7 +101,7 @@ function Snippet(props) {
 
               overflow: hidden;
               color: ${COLORS.SECONDARY};
-              width: 160px;
+              width: 266px;
             }
             .carbon-container :global(.CodeMirror__container .CodeMirror span) {
               font-size: 2px !important;
@@ -126,10 +126,10 @@ function ActionButton(props) {
     <Button
       border
       center
-      margin="0.25rem"
-      flex="0 0 160px"
+      margin="0.5rem"
+      flex="0 0 266px"
       color={COLORS.GRAY}
-      style={{ minHeight: 160 }}
+      style={{ minHeight: 266 }}
       {...props}
     />
   )
@@ -188,8 +188,8 @@ function SnippetsPage() {
       <style jsx>
         {`
           .container {
-            max-width: 862px;
-            min-width: 192px;
+            max-width: 872px;
+            min-width: ${266 + 32 + 8}px;
             border: 3px solid ${COLORS.SECONDARY};
             border-radius: 8px;
             padding: 0.5rem;
@@ -197,7 +197,7 @@ function SnippetsPage() {
             flex-wrap: wrap;
           }
           .container :global(.snippet) {
-            margin: 0.25rem;
+            margin: 0.5rem;
           }
         `}
       </style>
