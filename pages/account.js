@@ -88,7 +88,7 @@ function Plan({ selectBilling }) {
             <td>∞</td>
           </tr>
           <tr>
-            <td>Embed saved Carbon snippets</td>
+            <td>Embed saved snippets</td>
             <td></td>
             <td>✔</td>
           </tr>

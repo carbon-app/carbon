@@ -19,7 +19,7 @@ const X = (
     />
     <path
       className="glyph"
-      fill="var(--dark)"
+      fill={COLORS.BLACK}
       d="M8.5,7.29791847 L6.12604076,4.92395924 C5.79409512,4.59201359 5.25590488,4.59201359 4.92395924,4.92395924 C4.59201359,5.25590488 4.59201359,5.79409512 4.92395924,6.12604076 L7.29791847,8.5 L4.92395924,10.8739592 C4.59201359,11.2059049 4.59201359,11.7440951 4.92395924,12.0760408 C5.25590488,12.4079864 5.79409512,12.4079864 6.12604076,12.0760408 L8.5,9.70208153 L10.8739592,12.0760408 C11.2059049,12.4079864 11.7440951,12.4079864 12.0760408,12.0760408 C12.4079864,11.7440951 12.4079864,11.2059049 12.0760408,10.8739592 L9.70208153,8.5 L12.0760408,6.12604076 C12.4079864,5.79409512 12.4079864,5.25590488 12.0760408,4.92395924 C11.7440951,4.59201359 11.2059049,4.59201359 10.8739592,4.92395924 L8.5,7.29791847 L8.5,7.29791847 Z"
     />
   </svg>
@@ -75,13 +75,19 @@ function Billing(props) {
       {success ? (
         <div className="column">
           <h4>Thank you for supporting Carbon!</h4>
-          <p style={{ fontSize: 16, lineHeight: '1.5' }}>
+          <p className="success">
             However, Carbon Diamond is not quite ready yet.
             <br />
             Your card has <u>not</u> been charged or saved today.
             <br />
             We greatly appreciate your support, and will contact you when these premium features
             launch!
+          </p>
+          <p className="success">
+            — the Carbon Team{' '}
+            <span role="img" aria-label="Black and yellow hearts">
+              💛🖤
+            </span>
           </p>
         </div>
       ) : (
@@ -250,6 +256,12 @@ function Billing(props) {
           margin-left: 8px;
           font-size: inherit;
           color: ${COLORS.RED};
+        }
+
+        .success {
+          font-size: 16px;
+          line-height: 1.5;
+          margin: 0 0 2rem;
         }
       `}</style>
     </div>
