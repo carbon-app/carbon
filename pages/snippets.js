@@ -7,6 +7,7 @@ import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
 import Button from '../components/Button'
 import LoginButton from '../components/LoginButton'
+import ConfirmButton from '../components/ConfirmButton'
 import { useAuth } from '../components/AuthContext'
 import { useAPI } from '../components/ApiContext'
 
@@ -29,95 +30,122 @@ function Snippet(props) {
   const config = { ...DEFAULT_SETTINGS, ...props, fontSize: '2px', windowControls: false }
 
   return (
-    <Link prefetch={false} href={`/${props.id}`}>
-      <a href={`/${props.id}`}>
-        <div className="snippet">
-          <div className="column">
-            <div className="carbon-container">
-              <Carbon key={config.language} readOnly={true} config={config} loading={props.loading}>
-                {props.code}
-              </Carbon>
-            </div>
-            <div className="id">{props.title || props.id}</div>
-            <div className="meta">
-              Edited {formatDistanceToNow(correctTimestamp(props.updatedAt), { addSuffix: true })}
-            </div>
-          </div>
+    <div className="snippet">
+      <div className="column">
+        <div className="carbon-container">
+          <Carbon key={config.language} readOnly={true} config={config} loading={props.loading}>
+            {props.code}
+          </Carbon>
         </div>
-        <style jsx>
-          {`
-            .snippet {
-              position: relative;
-              width: 266px;
-              height: 266px;
-              border: 1px solid ${COLORS.SECONDARY};
-              border-radius: 3px;
-              cursor: pointer !important;
-              overflow: hidden;
-            }
-            .snippet:hover {
-              background: ${COLORS.HOVER};
-            }
-            .snippet:hover:after {
-              position: absolute;
-              content: '↗';
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              background: ${COLORS.HOVER};
-              opacity: 0.8;
-              top: 0px;
-              right: 0px;
-              bottom: 0px;
-              left: 0px;
-              font-size: 48px;
-              z-index: 999;
-            }
-            .column {
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              height: 100%;
-              overflow: hidden;
-            }
-            .id {
-              position: absolute;
-              top: 0.25rem;
-              right: 0.125rem;
-              border-radius: 3px;
-              background: ${COLORS.SECONDARY};
-              color: ${COLORS.BLACK};
-              font-size: 10px;
-              padding: 0.125rem;
-              max-width: 80%;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              overflow: hidden;
-              z-index: 200;
-            }
-            .carbon-container {
-              width: 100%;
-              height: 100%;
+        <div className="id">{props.title || props.id}</div>
+        <div className="meta">
+          Edited {formatDistanceToNow(correctTimestamp(props.updatedAt), { addSuffix: true })}
+        </div>
+      </div>
+      <div className="overlay">
+        <Link prefetch={false} href={`/${props.id}`}>
+          <Button
+            large
+            border
+            center
+            flex="unset"
+            margin="0 auto 1.5rem"
+            padding="0.5rem 16px"
+            color="#fff"
+          >
+            Open ↗
+          </Button>
+        </Link>
+        <ConfirmButton
+          large
+          border
+          center
+          flex="unset"
+          margin="0 auto"
+          padding="0.5rem 20px"
+          color="#fff"
+          textColor={COLORS.RED}
+          hoverColor={COLORS.RED}
+          onClick={props.deleteSnippet}
+        >
+          Delete
+        </ConfirmButton>
+      </div>
+      <style jsx>
+        {`
+          .snippet {
+            position: relative;
+            width: 266px;
+            height: 266px;
+            border: 1px solid ${COLORS.SECONDARY};
+            border-radius: 3px;
+            cursor: pointer !important;
+            overflow: hidden;
+          }
+          .overlay {
+            display: none;
+            position: absolute;
+            content: '↗';
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: ${COLORS.HOVER};
+            opacity: 0.8;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            font-size: 48px;
+            z-index: 999;
+          }
+          .snippet:hover .overlay {
+            display: flex;
+            background: ${COLORS.HOVER};
+          }
+          .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            overflow: hidden;
+          }
+          .id {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            border-radius: 3px;
+            background: ${COLORS.SECONDARY};
+            color: ${COLORS.BLACK};
+            font-size: 10px;
+            padding: 0.125rem;
+            max-width: 80%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            z-index: 200;
+          }
+          .carbon-container {
+            width: 100%;
+            height: 100%;
 
-              overflow: hidden;
-              color: ${COLORS.SECONDARY};
-              width: 266px;
-            }
-            .carbon-container :global(.CodeMirror__container .CodeMirror span) {
-              font-size: 2px !important;
-            }
-            .meta {
-              background: ${COLORS.SECONDARY};
-              color: ${COLORS.DARK_GRAY};
-              width: 100%;
-              font-size: 10px;
-              padding: 0.24rem;
-              bottom: 0px;
-            }
-          `}
-        </style>
-      </a>
-    </Link>
+            overflow: hidden;
+            color: ${COLORS.SECONDARY};
+            width: 266px;
+          }
+          .carbon-container :global(.CodeMirror__container .CodeMirror span) {
+            font-size: 2px !important;
+          }
+          .meta {
+            background: ${COLORS.SECONDARY};
+            color: ${COLORS.DARK_GRAY};
+            width: 100%;
+            font-size: 10px;
+            padding: 0.24rem;
+            bottom: 0px;
+          }
+        `}
+      </style>
+    </div>
   )
 }
 
@@ -127,9 +155,9 @@ function ActionButton(props) {
       border
       center
       margin="0.5rem"
-      flex="0 0 266px"
+      flex="unset"
       color={COLORS.GRAY}
-      style={{ minHeight: 266 }}
+      style={{ width: 266, minHeight: 266 }}
       {...props}
     />
   )
@@ -164,6 +192,10 @@ function SnippetsPage() {
     }
   }, [loadMore, page, user])
 
+  function deleteSnippet(id) {
+    return api.snippet.delete(id).then(() => setSnippets(curr => curr.filter(s => s.id !== id)))
+  }
+
   if (!user) {
     return <LoginButton />
   }
@@ -171,7 +203,12 @@ function SnippetsPage() {
   return (
     <div className="container">
       {snippets.map(snippet => (
-        <Snippet key={snippet.id} {...snippet} loading={!mounted} />
+        <Snippet
+          key={snippet.id}
+          {...snippet}
+          loading={!mounted}
+          deleteSnippet={deleteSnippet.bind(null, snippet.id)}
+        />
       ))}
       {snippets.length && previousRes && previousRes.length < 10 ? null : (
         <ActionButton

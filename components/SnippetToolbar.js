@@ -3,30 +3,10 @@ import { useAsyncCallback, useOnline } from '@dawnlabs/tacklebox'
 
 import Button from './Button'
 import Toolbar from './Toolbar'
+import ConfirmButton from './ConfirmButton'
 import { useAuth } from './AuthContext'
 
 import { COLORS } from '../lib/constants'
-
-function ConfirmButton(props) {
-  const [confirmed, setConfirmed] = React.useState(false)
-
-  return (
-    <Button
-      {...props}
-      onClick={e => {
-        if (confirmed) {
-          props.onClick(e)
-          setConfirmed(false)
-        } else {
-          setConfirmed(true)
-        }
-      }}
-      onBlur={() => setConfirmed(false)}
-    >
-      {confirmed ? 'Are you sure?' : props.children}
-    </Button>
-  )
-}
 
 function DeleteButton(props) {
   const [onClick, { loading }] = useAsyncCallback(props.onClick)

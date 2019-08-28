@@ -8,6 +8,7 @@ const Button = ({
   onClick = () => {},
   background = COLORS.BLACK,
   color = COLORS.SECONDARY,
+  textColor,
   hoverBackground = COLORS.HOVER,
   hoverColor,
   disabled,
@@ -33,7 +34,7 @@ const Button = ({
           display: ${display || 'flex'};
           flex: ${flex};
           background-color: ${background};
-          color: ${color};
+          color: ${textColor || color};
           box-shadow: ${border ? `inset 0px 0px 0px ${selected ? 2 : 1}px ${color}` : 'initial'};
           cursor: ${disabled ? 'not-allowed' : 'pointer'};
           outline: none;
