@@ -47,6 +47,10 @@
       "src": "/embed/",
       "dest": "/embed.html"
     },
+    {
+      "src": "/about/",
+      "dest": "/about.html"
+    },
     { "handle": "filesystem" }
   ],
   "build": {
