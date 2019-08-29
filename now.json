@@ -27,6 +27,11 @@
       }
     },
     {
+      "src": "^(/*)(.+)/$",
+      "status": 301,
+      "headers": { "Location": "/$2" }
+    },
+    {
       "src": "/",
       "continue": true,
       "headers": {
@@ -42,14 +47,6 @@
         "Referrer-Policy": "no-referrer-when-downgrade",
         "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
       }
-    },
-    {
-      "src": "/embed/",
-      "dest": "/embed.html"
-    },
-    {
-      "src": "/about/",
-      "dest": "/about.html"
     },
     { "handle": "filesystem" }
   ],
