@@ -40,7 +40,7 @@
     "match-sorter": "^4.0.0",
     "morphmorph": "^0.1.2",
     "ms": "^2.1.2",
-    "next": "^9.0.5-canary.3",
+    "next": "^9.0.6-canary.0",
     "next-offline": "^4.0.5",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
