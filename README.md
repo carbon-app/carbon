@@ -157,6 +157,7 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 <a href="https://opencollective.com/carbon-app/backers/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/2/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/3/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/4/avatar"></a>
+<a href="https://opencollective.com/carbon-app/contribute" target="_blank"><img src="https://images.opencollective.com/static/images/become_backer.svg"></a>
 
 ### Thanks To
 
