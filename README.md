@@ -34,8 +34,6 @@
 
 <br></br>
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/carbon-app/carbon)
-
 ##### Translations
 
 - [Español](/docs/README.es.md)
@@ -63,7 +61,6 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](h
 - **Customization**. Customize things like your image's syntax theme, window style, and more
 - **Share quickly**. Save your image or Tweet a link with one click
 - **Import from GitHub gist**. Simply append a GitHub gist id to the url
-
 
 ## Usage
 
@@ -166,8 +163,8 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 
 ![](https://opencollective.com/carbon-app/contributors.svg?width=1024)
 
-
 #### All Contributors
+
 Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
