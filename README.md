@@ -165,6 +165,10 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 
 ### Contributors
 
+![](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+
+#### All Contributors
 Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
