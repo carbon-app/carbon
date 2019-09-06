@@ -7,6 +7,10 @@ labels:
     action: comment
     delay: 0s
     message: "@all-contributors add @$AUTHOR for code"
+  translator: 
+    action: comment
+    delay: 0s
+    message: "@all-contributors add @$AUTHOR for translation"
   'theme/language':
     action: close
     delay: 5 days
