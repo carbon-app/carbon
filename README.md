@@ -24,12 +24,15 @@
 </p>
 
 <p align="center">	
+  <a href="https://opencollective.com/carbon-app">	
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
+  </a>	
   <a href="https://opencollective.com/carbon-app#backers">	
     <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
   </a>	
   <a href="https://opencollective.com/carbon-app#sponsors">	
     <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
-  </a>	
+  </a>
 </p>
 
 <br></br>
@@ -121,10 +124,6 @@ Check out these projects our awesome community has created:
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
 
-## Contribute
-
-PRs welcome! Please see our [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
-
 ## Authors
 
 Carbon is a project by:
@@ -133,7 +132,11 @@ Carbon is a project by:
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Support
+---
+
+## Contribute & Support
+
+Pull requests are welcome! Please see our [contributing guidelines](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
 
 ### Sponsors
 
@@ -161,7 +164,7 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 
 ### Contributors
 
-![](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
 
 #### All Contributors
 
