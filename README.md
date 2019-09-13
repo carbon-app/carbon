@@ -165,6 +165,8 @@ Carbon is a project by:
 
 ---
 
+<br>
+
 ## Contribute & Support
 
 Pull requests are welcome! Please see our [contributing guidelines](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
