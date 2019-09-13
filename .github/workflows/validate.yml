@@ -1,0 +1,22 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    - name: npm install, lint, build, and test
+      run: |
+        npm install
+        npm run lint
+        npm run build
+        npm start & npx wait-on http://localhost:3000 && CYPRESS_CI=true npm run cy:run -- --config baseUrl=http://localhost:3000
+      env:
+        CI: true
+        CYPRESS_CI: true
