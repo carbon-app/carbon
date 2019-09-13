@@ -39,17 +39,48 @@
 
 ##### Translations
 
-- [Español](/docs/README.es.md)
-- [हिंदी](/docs/README.hi.md)
-- [Deutsch](/docs/README.de.md)
-- [简体中文](/docs/README.cn.zh.md)
-- [Português](/docs/README.br.pt.md)
-- [മലയാളം](/docs/README.ml.md)
-- [Türkçe](/docs/README.tr.md)
-- [한국어](/docs/README.kr.md)
-- [தமிழ்](/docs/README.ta.md)
-- [Français](/docs/README.fr.md)
-- [日本語](/docs/README.ja.md)
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="/docs/README.es.md">Español</a>
+      </td>
+      <td>
+        <a href="/docs/README.hi.md">हिंदी</a>
+      </td>
+      <td>
+        <a href="/docs/README.de.md">Deutsch</a>
+      </td>
+      <td>
+        <a href="/docs/README.cn.zh.md">简体中文</a>
+      </td>
+      <td>
+        <a href="/docs/README.br.pt.md">Português</a>
+      </td>
+      <td>
+        <a href="/docs/README.ml.md">മലയാളം</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/docs/README.tr.md">Türkçe</a>
+      </td>
+      <td>
+        <a href="/docs/README.kr.md">한국어</a>
+      </td>
+      <td>
+        <a href="/docs/README.ta.md">தமிழ்</a>
+      </td>
+      <td>
+        <a href="/docs/README.fr.md">Français</a>
+      </td>
+      <td>
+        <a href="/docs/README.ja.md">日本語</a>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Introduction
 
