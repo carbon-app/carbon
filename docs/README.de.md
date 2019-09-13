@@ -12,7 +12,7 @@
 
 ## Einführung
 
-Kennen wir nicht alle [diese](https://twitter.com/dan_abramov/status/890191815567175680) [Screenshots](https://twitter.com/reactjs/status/890511993261654017) [von](https://twitter.com/notquiteleo/status/873483329345028096) [Code](https://twitter.com/zeithq/status/805779711154647040), die wir ständig auf Twitter sehen? Obwohl der Code gewöhnlich äußert beeindruckt, haben wir im ästhetischen Bereich etwas Raum für Verbesserung gesehen. Carbon ermöglicht das Erstellen und Teilen wunderschöner Bilder deines Quellcodes. Worauf wartest du also? Beeindrucke deine Follower mit deinen neu gefundenen Design Fähigkeiten.
+Kennen wir nicht alle [diese](https://twitter.com/dan_abramov/status/890191815567175680) [Screenshots](https://twitter.com/reactjs/status/890511993261654017) [von](https://twitter.com/notquiteleo/status/873483329345028096) [Code](https://twitter.com/zeithq/status/805779711154647040), die wir ständig auf Twitter sehen? Obwohl der Code gewöhnlich beeindruckend ist, haben wir im ästhetischen Bereich etwas Raum für Verbesserung gesehen. Carbon ermöglicht das Erstellen und Teilen wunderschöner Bilder deines Quellcodes. Worauf wartest du also? Beeindrucke deine Follower mit deinen neu gefundenen Design Fähigkeiten.
 
 ## Feature
 
