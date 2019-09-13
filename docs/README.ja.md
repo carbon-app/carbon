@@ -189,6 +189,7 @@ Carbon は次の人々によるプロジェクトです:
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/JoseNoriegaa"><img src="https://avatars2.githubusercontent.com/u/28733681?v=4" width="100px;" alt="Jose Noriega"/><br /><sub><b>Jose Noriega</b></sub></a><br /><a href="#translation-JoseNoriegaa" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://discord.club"><img src="https://avatars2.githubusercontent.com/u/33966852?v=4" width="100px;" alt="Merlin Fuchs"/><br /><sub><b>Merlin Fuchs</b></sub></a><br /><a href="#translation-Merlintor" title="Translation">🌍</a></td>
   </tr>
 </table>
 

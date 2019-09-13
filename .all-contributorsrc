@@ -555,6 +555,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "Merlintor",
+      "name": "Merlin Fuchs",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/33966852?v=4",
+      "profile": "https://discord.club",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
