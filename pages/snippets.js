@@ -185,10 +185,14 @@ function SnippetsPage() {
 
   React.useEffect(() => {
     if (user) {
-      const authorization = user.ra
-      loadMore(page, { authorization }).then(newSnippets =>
-        setSnippets(curr => curr.concat(newSnippets))
-      )
+      user
+        .getIdToken()
+        // TODO move into `api.snippet.list` with axios interceptor or within wrappers
+        .then(authorization =>
+          loadMore(page, { authorization }).then(newSnippets =>
+            setSnippets(curr => curr.concat(newSnippets))
+          )
+        )
     }
   }, [loadMore, page, user])
 
