@@ -69,7 +69,7 @@ class Editor extends React.Component {
     const { queryState } = getRouteState(this.props.router)
 
     const newState = {
-      // TODO we could create an interface for loading this config, so that it looks identical
+      // IDEA: we could create an interface for loading this config, so that it looks identical
       // whether config is loaded from localStorage, gist, or even something like IndexDB
       // Load options from gist or localStorage
       ...(this.props.snippet ? null : getSettings(localStorage)),
