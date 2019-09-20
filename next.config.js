@@ -14,6 +14,7 @@ const config = withOffline({
   workboxOpts: {
     swDest: 'static/service-worker.js',
     globDirectory: '.',
+    globPatterns: ['static/**/*'],
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,
@@ -22,9 +23,6 @@ const config = withOffline({
           cacheName: 'offlineCache',
           expiration: {
             maxEntries: 200
-          },
-          cacheableResponse: {
-            statuses: [0, 200]
           }
         }
       }
