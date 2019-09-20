@@ -64,7 +64,8 @@ function EditorContainer(props) {
     if ('/' + (snippetId || '') === props.router.asPath) {
       return
     }
-    props.router.replace('/', '/' + (snippetId || ''), { shallow: true })
+    window.history.pushState(null, null, '/' + (snippetId || ''))
+    // props.router.replace(props.router.asPath, '/' + (snippetId || ''), { shallow: true })
   }, [snippetId, props.router])
 
   function onEditorUpdate(state) {
