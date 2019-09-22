@@ -1,15 +1,16 @@
 // Theirs
 import React from 'react'
+import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
 import Editor from './Editor'
 import Toasts from './Toasts'
+import LoginButton from './LoginButton'
+import { useAPI } from './ApiContext'
+import { useAuth } from './AuthContext'
+
 import { THEMES } from '../lib/constants'
 import { updateRouteState } from '../lib/routing'
 import { getThemes, saveThemes, clearSettings, saveSettings } from '../lib/util'
-
-import { useAPI } from './ApiContext'
-import { useAuth } from './AuthContext'
-import { useAsyncCallback } from '@dawnlabs/tacklebox'
 
 function onReset() {
   clearSettings()
@@ -101,6 +102,18 @@ function EditorContainer(props) {
 
   return (
     <>
+      <div className="login-button-container">
+        <LoginButton />
+        <style jsx>
+          {`
+            .login-button-container {
+              position: absolute;
+              top: 1rem;
+              right: 2rem;
+            }
+          `}
+        </style>
+      </div>
       <Toasts toasts={toasts} />
       <Editor
         {...props}
