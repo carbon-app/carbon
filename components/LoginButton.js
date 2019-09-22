@@ -13,7 +13,6 @@ function Drawer(props) {
         <Link href="/snippets">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
             <img src="/static/svg/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
-            {/* FILES? */}
           </Button>
         </Link>
         <Link href="/account">
