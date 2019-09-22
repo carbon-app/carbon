@@ -16,6 +16,7 @@ jobs:
           npm install
           npm run lint
           npm run build
+          printenv
           npm start & npx wait-on http://localhost:3000 && CYPRESS_CI=true npm run cy:run -- --config baseUrl=http://localhost:3000 --record --parallel
         env:
           CI: true
