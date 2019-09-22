@@ -10,11 +10,11 @@ const config = withOffline({
     granularChunks: true
   },
   dontAutoRegisterSw: true,
+  // https://github.com/hanford/next-offline/blob/master/packages/now2-example/next.config.js
   workboxOpts: {
-    // TODO get default config from `next-offline`?
     swDest: 'static/service-worker.js',
-    globPatterns: ['static/**/*'],
     globDirectory: '.',
+    globPatterns: ['static/**/*'],
     runtimeCaching: [
       {
         urlPattern: /^https?.*/,
