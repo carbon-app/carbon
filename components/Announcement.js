@@ -1,18 +1,26 @@
 import React from 'react'
 
-const key = 'CARBON_CTA_1'
+// Feature flag
+const ACTIVE = false
+
+const key = 'CARBON_CTA_2'
 
 function Toast() {
   const [open, setState] = React.useState(false)
 
   React.useEffect(() => {
     window.localStorage.removeItem('CARBON_CTA')
+    window.localStorage.removeItem('CARBON_CTA_1')
     if (!window.localStorage.getItem(key)) {
       setState(true)
     }
   }, [])
 
   if (process.env.NODE_ENV !== 'production') {
+    return null
+  }
+
+  if (!ACTIVE) {
     return null
   }
 
