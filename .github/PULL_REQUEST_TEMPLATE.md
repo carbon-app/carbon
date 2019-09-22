@@ -1,9 +1,12 @@
 <!---
-Provide a general summary of your changes in the Title above
-Expand on it in the description below (if applicable)
+  Provide a general summary of your changes in the Title above
+  Expand on it in the description below (if applicable)
+
+  Attach a screenshot when applicable
 -->
-<!-- Attach a screenshot where applicable -->
 
-## Description
+<!---
+- [ ] Add integration tests (when applicable)
 
-<!--- Describe your changes -->
+Closes <issue number>
+-->
