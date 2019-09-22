@@ -16,7 +16,7 @@ jobs:
           npm install
           npm run lint
           npm run build
-          npm start & npx wait-on http://localhost:3000 && CYPRESS_CI=true npm run cy:run -- --config baseUrl=http://localhost:3000
+          npm start & npx wait-on http://localhost:3000 && CYPRESS_CI=true npm run cy:run -- --config baseUrl=http://localhost:3000 --parallel
         env:
           CI: true
           CYPRESS_CI: true
