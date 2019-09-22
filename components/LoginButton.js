@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import firebase, { login, logout } from '../lib/client'
+import firebase, { logout, loginGitHub } from '../lib/client'
 
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
@@ -13,7 +13,6 @@ function Drawer(props) {
         <Link href="/snippets">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
             <img src="/static/svg/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
-            {/* FILES? */}
           </Button>
         </Link>
         <Link href="/account">
@@ -66,11 +65,7 @@ function LoginButton({ isVisible, toggleVisibility }) {
         className="profile-button"
         onClick={() => {
           if (!user) {
-            const provider = new firebase.auth.GithubAuthProvider()
-            provider.setCustomParameters({
-              allow_signup: 'true'
-            })
-            login(provider)
+            loginGitHub()
           } else {
             toggleVisibility()
           }

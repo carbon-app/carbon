@@ -16,7 +16,6 @@ import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
 import Themes from './Themes'
 import TweetButton from './TweetButton'
-import LoginButton from './LoginButton'
 import FontFace from './FontFace'
 import LanguageIcon from './svg/Language'
 import {
@@ -355,7 +354,6 @@ class Editor extends React.Component {
     return (
       <div className="editor">
         <Toolbar>
-          <LoginButton />
           <Themes
             theme={theme}
             highlights={highlights}
