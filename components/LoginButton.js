@@ -8,7 +8,7 @@ import { useAuth } from './AuthContext'
 
 function Drawer(props) {
   return (
-    <Popout hidden={!props.isVisible} pointerLeft="14px" style={{ width: '160px', left: 0 }}>
+    <Popout hidden={!props.isVisible} pointerRight="14px" style={{ width: '160px', right: 0 }}>
       <div className="flex">
         <Link href="/snippets">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
