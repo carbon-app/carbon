@@ -26,7 +26,7 @@ class Page extends React.Component {
               justify-content: center;
               flex-direction: column;
               align-items: center;
-              min-width: 1080px; // temporary fix for mobile overflow issue
+              min-width: 1080px; /* temporary fix for mobile overflow issue */
             }
           `}
         </style>
