@@ -1,5 +1,6 @@
 import React from 'react'
 import omitBy from 'lodash.omitby'
+import { useKeyboardListener } from '@dawnlabs/tacklebox'
 
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
@@ -13,6 +14,15 @@ import MenuButton from './MenuButton'
 import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
+
+function KeyboardShortcut({ handle }) {
+  useKeyboardListener('/', e => {
+    if (e.metaKey) {
+      handle()
+    }
+  })
+  return null
+}
 
 const WindowSettings = React.memo(
   ({
@@ -233,6 +243,7 @@ class Settings extends React.PureComponent {
   }
 
   settingsRef = React.createRef()
+  menuRef = React.createRef()
 
   componentDidMount() {
     const storedPresets = getPresets(localStorage) || []
@@ -376,6 +387,14 @@ class Settings extends React.PureComponent {
 
     return (
       <div className="settings-container" ref={this.settingsRef}>
+        <KeyboardShortcut
+          handle={() => {
+            toggleVisibility()
+            if (!isVisible) {
+              this.menuRef.current.focus()
+            }
+          }}
+        />
         <Button
           title="Settings Menu"
           border
@@ -408,7 +427,7 @@ class Settings extends React.PureComponent {
             applied={!!previousSettings}
           />
           <div className="settings-bottom">
-            <div className="settings-menu">
+            <div className="settings-menu" ref={this.menuRef} tabIndex={-1}>
               <MenuButton name="Window" select={this.selectMenu} selected={selectedMenu} />
               <MenuButton name="Type" select={this.selectMenu} selected={selectedMenu} />
               <MenuButton name="Misc" select={this.selectMenu} selected={selectedMenu} />
