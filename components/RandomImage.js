@@ -42,12 +42,12 @@ function RandomImage(props) {
   return (
     <div className="random-image-container">
       <div className="controls">
-        <span role="button" tabIndex={0} disabled={loading} onClick={selectImage}>
+        <button disabled={loading} onClick={selectImage}>
           Use Image
-        </span>
-        <span role="button" tabIndex={0} disabled={loading} onClick={() => updateIndex(i => i + 1)}>
+        </button>
+        <button disabled={loading} onClick={() => updateIndex(i => i + 1)}>
           Try Another
-        </span>
+        </button>
       </div>
       <div className="image">{loading && <Spinner />}</div>
       {photographer && <PhotoCredit photographer={photographer} />}
@@ -68,13 +68,19 @@ function RandomImage(props) {
             margin-bottom: 4px;
           }
 
-          span {
+          button {
             opacity: ${loading ? 0.5 : 1};
             cursor: ${loading ? 'not-allowed' : 'pointer'};
             user-select: none;
+            appearance: none;
+            border: none;
+            background: none;
+            color: inherit;
+            font-size: inherit;
+            padding: 0;
           }
 
-          [role='button']:focus {
+          button:focus {
             outline: none;
             text-decoration: underline;
           }
