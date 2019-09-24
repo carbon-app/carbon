@@ -54,6 +54,10 @@ const Preset = React.memo(({ remove, apply, selected, preset }) => {
             flex: 0 0 96px;
             margin-right: 8px;
           }
+
+          .preset-container :global(button:focus) {
+            box-shadow: inset 0px 0px 0px 1px ${COLORS.SECONDARY};
+          }
         `}
       </style>
     </div>
