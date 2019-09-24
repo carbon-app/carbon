@@ -24,151 +24,152 @@ function KeyboardShortcut({ handle }) {
   return null
 }
 
-const WindowSettings = React.memo(
-  ({
-    onChange,
-    windowTheme,
-    paddingHorizontal,
-    paddingVertical,
-    dropShadow,
-    dropShadowBlurRadius,
-    dropShadowOffsetY,
-    windowControls,
-    lineNumbers,
-    firstLineNumber,
-    widthAdjustment,
-    watermark,
-    onWidthChanging,
-    onWidthChanged
-  }) => {
-    return (
-      <div className="settings-content">
-        <ThemeSelect
-          selected={windowTheme || 'none'}
-          onChange={onChange.bind(null, 'windowTheme')}
-        />
-        <div className="row">
-          <Slider
-            label="Padding (vert)"
-            value={paddingVertical}
-            maxValue={200}
-            onChange={onChange.bind(null, 'paddingVertical')}
-          />
-          <Slider
-            label="Padding (horiz)"
-            value={paddingHorizontal}
-            onChange={onChange.bind(null, 'paddingHorizontal')}
-            onMouseDown={onWidthChanging}
-            onMouseUp={onWidthChanged}
-          />
-        </div>
-        <Toggle
-          label="Drop shadow"
-          enabled={dropShadow}
-          onChange={onChange.bind(null, 'dropShadow')}
-        />
-        {dropShadow && (
-          <div className="row drop-shadow-options">
-            <Slider
-              label="(offset-y)"
-              value={dropShadowOffsetY}
-              onChange={onChange.bind(null, 'dropShadowOffsetY')}
-            />
-            <Slider
-              label="(blur-radius)"
-              value={dropShadowBlurRadius}
-              onChange={onChange.bind(null, 'dropShadowBlurRadius')}
-            />
-          </div>
-        )}
-        <Toggle
-          label="Window controls"
-          enabled={windowControls}
-          onChange={onChange.bind(null, 'windowControls')}
-        />
-        <Toggle
-          label="Line numbers"
-          enabled={lineNumbers}
-          onChange={onChange.bind(null, 'lineNumbers')}
-        />
-        {lineNumbers && (
-          <div className="row settings-row first-line-number-row">
-            <Input
-              label="First line number"
-              type="number"
-              value={firstLineNumber}
-              min={0}
-              onChange={e => onChange('firstLineNumber', Number(e.target.value))}
-              width="50%"
-            />
-          </div>
-        )}
-        <Toggle
-          label="Auto-adjust width"
-          enabled={widthAdjustment}
-          onChange={onChange.bind(null, 'widthAdjustment')}
-        />
-        <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
-        <style jsx>
-          {`
-            .row > :global(div:first-child) {
-              border-right: 1px solid ${COLORS.SECONDARY};
-            }
-
-            .drop-shadow-options :global(.slider-bg),
-            .drop-shadow-options :global(label) {
-              opacity: 0.5;
-            }
-
-            .settings-content :global(.settings-row:focus-within) {
-              outline: -webkit-focus-ring-color auto 4px;
-            }
-
-            .first-line-number-row {
-              padding: 8px 12px 8px 8px;
-            }
-          `}
-        </style>
-      </div>
-    )
-  }
-)
-
-const TypeSettings = React.memo(
-  ({ onChange, onUpload, font, size, lineHeight, onWidthChanging, onWidthChanged }) => {
-    return (
-      <div className="settings-content">
-        <FontSelect
-          selected={font}
-          onUpload={onUpload}
-          onChange={onChange.bind(null, 'fontFamily')}
+function WindowSettings({
+  onChange,
+  windowTheme,
+  paddingHorizontal,
+  paddingVertical,
+  dropShadow,
+  dropShadowBlurRadius,
+  dropShadowOffsetY,
+  windowControls,
+  lineNumbers,
+  firstLineNumber,
+  widthAdjustment,
+  watermark,
+  onWidthChanging,
+  onWidthChanged
+}) {
+  return (
+    <div className="settings-content">
+      <ThemeSelect selected={windowTheme || 'none'} onChange={onChange.bind(null, 'windowTheme')} />
+      <div className="row">
+        <Slider
+          label="Padding (vert)"
+          value={paddingVertical}
+          maxValue={200}
+          onChange={onChange.bind(null, 'paddingVertical')}
         />
         <Slider
-          label="Size"
-          value={size}
-          minValue={10}
-          maxValue={18}
-          step={0.5}
-          onChange={onChange.bind(null, 'fontSize')}
+          label="Padding (horiz)"
+          value={paddingHorizontal}
+          onChange={onChange.bind(null, 'paddingHorizontal')}
           onMouseDown={onWidthChanging}
           onMouseUp={onWidthChanged}
         />
-        <Slider
-          label="Line height"
-          value={lineHeight}
-          minValue={90}
-          maxValue={250}
-          unit="%"
-          onChange={onChange.bind(null, 'lineHeight')}
-        />
       </div>
-    )
-  }
-)
+      <Toggle
+        label="Drop shadow"
+        enabled={dropShadow}
+        onChange={onChange.bind(null, 'dropShadow')}
+      />
+      {dropShadow && (
+        <div className="row drop-shadow-options">
+          <Slider
+            label="(offset-y)"
+            value={dropShadowOffsetY}
+            onChange={onChange.bind(null, 'dropShadowOffsetY')}
+          />
+          <Slider
+            label="(blur-radius)"
+            value={dropShadowBlurRadius}
+            onChange={onChange.bind(null, 'dropShadowBlurRadius')}
+          />
+        </div>
+      )}
+      <Toggle
+        label="Window controls"
+        enabled={windowControls}
+        onChange={onChange.bind(null, 'windowControls')}
+      />
+      <Toggle
+        label="Line numbers"
+        enabled={lineNumbers}
+        onChange={onChange.bind(null, 'lineNumbers')}
+      />
+      {lineNumbers && (
+        <div className="row settings-row first-line-number-row">
+          <Input
+            label="First line number"
+            type="number"
+            value={firstLineNumber}
+            min={0}
+            onChange={e => onChange('firstLineNumber', Number(e.target.value))}
+            width="50%"
+          />
+        </div>
+      )}
+      <Toggle
+        label="Auto-adjust width"
+        enabled={widthAdjustment}
+        onChange={onChange.bind(null, 'widthAdjustment')}
+      />
+      <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
+      <style jsx>
+        {`
+          .row > :global(div:first-child) {
+            border-right: 1px solid ${COLORS.SECONDARY};
+          }
+
+          .drop-shadow-options :global(.slider-bg),
+          .drop-shadow-options :global(label) {
+            opacity: 0.5;
+          }
+
+          .settings-content :global(.settings-row:focus-within) {
+            outline: -webkit-focus-ring-color auto 4px;
+          }
+
+          .first-line-number-row {
+            padding: 8px 12px 8px 8px;
+          }
+        `}
+      </style>
+    </div>
+  )
+}
+
+function TypeSettings({
+  onChange,
+  onUpload,
+  font,
+  size,
+  lineHeight,
+  onWidthChanging,
+  onWidthChanged
+}) {
+  return (
+    <div className="settings-content">
+      <FontSelect
+        selected={font}
+        onUpload={onUpload}
+        onChange={onChange.bind(null, 'fontFamily')}
+      />
+      <Slider
+        label="Size"
+        value={size}
+        minValue={10}
+        maxValue={18}
+        step={0.5}
+        onChange={onChange.bind(null, 'fontSize')}
+        onMouseDown={onWidthChanging}
+        onMouseUp={onWidthChanged}
+      />
+      <Slider
+        label="Line height"
+        value={lineHeight}
+        minValue={90}
+        maxValue={250}
+        unit="%"
+        onChange={onChange.bind(null, 'lineHeight')}
+      />
+    </div>
+  )
+}
 
 const resetButtonStyle = { borderTop: `1px solid ${COLORS.SECONDARY}` }
 
-const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
+function MiscSettings({ format, reset, applyPreset, settings }) {
   const input = React.useRef(null)
   let download
   try {
@@ -226,7 +227,7 @@ const MiscSettings = React.memo(({ format, reset, applyPreset, settings }) => {
       </style>
     </div>
   )
-})
+}
 
 const settingButtonStyle = {
   width: '40px',
