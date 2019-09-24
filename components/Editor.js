@@ -377,6 +377,7 @@ class Editor extends React.Component {
           />
           <BackgroundSelect
             onChange={this.updateBackground}
+            updateHighlights={this.updateHighlights}
             mode={backgroundMode}
             color={backgroundColor}
             image={backgroundImage}

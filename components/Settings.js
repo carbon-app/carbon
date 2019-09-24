@@ -111,7 +111,7 @@ const WindowSettings = React.memo(
             }
 
             .settings-content :global(.settings-row:focus-within) {
-              outline: -webkit-focus-ring-color auto 5px;
+              outline: -webkit-focus-ring-color auto 4px;
             }
 
             .first-line-number-row {

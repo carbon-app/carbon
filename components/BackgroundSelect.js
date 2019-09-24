@@ -23,7 +23,16 @@ class BackgroundSelect extends React.PureComponent {
   handlePickColor = ({ rgb }) => this.props.onChange({ backgroundColor: stringifyRGBA(rgb) })
 
   render() {
-    const { color, mode, image, onChange, isVisible, toggleVisibility, carbonRef } = this.props
+    const {
+      color,
+      mode,
+      image,
+      onChange,
+      isVisible,
+      toggleVisibility,
+      carbonRef,
+      updateHighlights
+    } = this.props
 
     const background = validateColor(color) ? color : DEFAULT_BG_COLOR
 
@@ -70,7 +79,12 @@ class BackgroundSelect extends React.PureComponent {
               <ColorPicker color={color} onChange={this.handlePickColor} />
             </div>
             <div hidden={mode !== 'image'}>
-              <ImagePicker onChange={onChange} imageDataURL={image} aspectRatio={aspectRatio} />
+              <ImagePicker
+                onChange={onChange}
+                imageDataURL={image}
+                aspectRatio={aspectRatio}
+                updateHighlights={updateHighlights}
+              />
             </div>
           </div>
         </Popout>

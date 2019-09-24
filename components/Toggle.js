@@ -10,7 +10,16 @@ class Toggle extends React.PureComponent {
 
   toggle = () => this.props.onChange(!this.props.enabled)
 
+  handleKeydown = e => {
+    if (e.key === 'Enter') this.toggle()
+    if (e.key === ' ') {
+      e.preventDefault()
+      this.toggle()
+    }
+  }
+
   render() {
+    // TODO use input[type=["checkbox"] /> instead of div
     return (
       <div
         role="checkbox"
@@ -18,8 +27,9 @@ class Toggle extends React.PureComponent {
         className={`toggle ${this.props.className}`}
         onClick={this.toggle}
         aria-checked={this.props.enabled}
+        onKeyDown={this.handleKeydown}
       >
-        <span className="label">{this.props.label}</span>
+        <label className="label">{this.props.label}</label>
         {this.props.enabled ? <Checkmark /> : <div className="checkmark-disabled" />}
         <style jsx>
           {`
@@ -29,7 +39,16 @@ class Toggle extends React.PureComponent {
               justify-content: ${this.props.center ? 'center' : 'space-between'};
               cursor: pointer;
               user-select: none;
-              padding: 8px 12px 8px 8px;
+              padding: ${this.props.padding || '8px 12px 8px 8px'};
+            }
+
+            .toggle {
+              outline: none;
+            }
+
+            .toggle:focus-within :global(svg),
+            .toggle:focus-within .checkmark-disabled {
+              outline: 4px auto -webkit-focus-ring-color;
             }
 
             .checkmark-disabled {

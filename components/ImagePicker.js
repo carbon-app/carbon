@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
+import { useLocalStorage } from '@dawnlabs/tacklebox'
 
 import RandomImage from './RandomImage'
 import PhotoCredit from './PhotoCredit'
 import Input from './Input'
+import Toggle from './Toggle'
 import { Link } from './Meta'
 import { fileToDataURL } from '../lib/util'
 import ApiContext from './ApiContext'
@@ -140,10 +142,37 @@ export default class ImagePicker extends React.Component {
     return this.handleImageChange(dataURL, dataURL)
   }
 
-  async selectImage(url, { photographer } = {}) {
+  async selectImage(image) {
     // TODO use React suspense for loading this asset
-    const { dataURL } = await this.context.downloadThumbnailImage({ url })
-    return this.handleImageChange(url, dataURL, photographer)
+    const { dataURL } = await this.context.downloadThumbnailImage(image)
+
+    this.handleImageChange(image.url, dataURL, image.photographer)
+    if (image.palette && image.palette.length && this.generateColorPalette) {
+      /*
+       * Background is first, which is either the lightest or darkest color
+       * and the rest are sorted by highest contrast w/ the background
+       */
+      const palette = image.palette.map(c => c.hex)
+      /*
+       * Contributors, please feel free to adjust this algorithm to create the most
+       * readible or aesthetically pleasing syntax highlighting.
+       */
+      this.props.updateHighlights({
+        background: palette[0],
+        text: palette[1],
+        variable: palette[2],
+        attribute: palette[3],
+        definition: palette[4],
+        keyword: palette[5],
+        property: palette[6],
+        string: palette[7],
+        number: palette[8],
+        operator: palette[9],
+        meta: palette[10],
+        tag: palette[11],
+        comment: palette[12]
+      })
+    }
   }
 
   removeImage() {
@@ -192,6 +221,7 @@ export default class ImagePicker extends React.Component {
             Or use a random <a href="https://unsplash.com/">Unsplash</a> image:
           </span>
           <RandomImage onChange={this.selectImage} />
+          <GeneratePaletteSetting onChange={value => (this.generateColorPalette = value)} />
         </div>
         <style jsx>
           {`
@@ -332,4 +362,18 @@ export default class ImagePicker extends React.Component {
       </div>
     )
   }
+}
+
+function GeneratePaletteSetting({ onChange }) {
+  const [enabled, setEnabled] = useLocalStorage('CARBON_GENERATE_COLOR_PALETTE')
+  React.useEffect(() => void onChange(enabled), [enabled, onChange])
+
+  return (
+    <Toggle
+      label="Generate color palette (beta)"
+      enabled={enabled}
+      onChange={setEnabled}
+      padding="8px 0 0"
+    />
+  )
 }
