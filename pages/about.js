@@ -21,13 +21,12 @@ export default () => (
         <h2>Who uses it?</h2>
         <p>
           Carbon is used by thousands of developers daily, including experts at:
-          <div className="mt2">
-            <img
-              width="508px"
-              src="/static/svg/open-source-companies-2.svg"
-              alt="Companies that trust Carbon: Google, Airbnb, GitHub, Coinbase, and Microsoft"
-            />
-          </div>
+          <img
+            className="mt2"
+            width="508px"
+            src="/static/svg/open-source-companies-2.svg"
+            alt="Companies that trust Carbon: Google, Airbnb, GitHub, Coinbase, and Microsoft"
+          />
         </p>
       </div>
       <div className="mb4">
@@ -79,6 +78,25 @@ export default () => (
           </a>
           ) below the image.
         </p>
+        <h4 className="mb0 mt4" id="shortcuts">
+          Keyboard Shortcuts
+        </h4>
+        <table className="mt2 mb3">
+          <tbody>
+            <tr>
+              <td>Open settings menu</td>
+              <td>
+                <kbd>⌘-/</kbd>
+              </td>
+            </tr>
+            <tr>
+              <td>Export as PNG</td>
+              <td>
+                <kbd>⌘-Shift-E</kbd>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div>
         <h2>I want to make this better.</h2>
@@ -93,18 +111,19 @@ export default () => (
       {`
         .about {
           font-size: 16px;
+          max-width: 632px;
         }
+
         h2 {
           font-weight: bold;
           font-size: 32px;
         }
+        h4 {
+          font-weight: bold;
+        }
 
         p,
         li {
-          color: #fff;
-        }
-
-        span {
           color: #fff;
         }
 
@@ -113,8 +132,16 @@ export default () => (
           list-style-type: circle;
         }
 
-        .about {
-          max-width: 632px;
+        span {
+          color: #fff;
+        }
+
+        td {
+          padding: 0.25rem 0;
+        }
+
+        kbd {
+          margin-left: var(--x3);
         }
       `}
     </style>
