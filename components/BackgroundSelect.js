@@ -5,7 +5,7 @@ import ColorPicker from './ColorPicker'
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
-import { capitalize, stringifyRGBA } from '../lib/util'
+import { stringifyRGBA } from '../lib/util'
 
 function validateColor(str) {
   if (/#\d{3,6}|rgba{0,1}\(.*?\)/gi.test(str) || /\w+/gi.test(str)) {
@@ -67,10 +67,10 @@ class BackgroundSelect extends React.PureComponent {
                 role="button"
                 tabIndex={0}
                 key={tab}
-                className={`picker-tab ${mode === tab ? 'active' : ''}`}
+                className={`picker-tab capitalize ${mode === tab ? 'active' : ''}`}
                 onClick={this.selectTab.bind(null, tab)}
               >
-                {capitalize(tab)}
+                {tab}
               </div>
             ))}
           </div>

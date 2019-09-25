@@ -6,7 +6,7 @@ import ListSetting from '../ListSetting'
 import Popout from '../Popout'
 import ColorPicker from '../ColorPicker'
 import { HIGHLIGHT_KEYS, COLORS } from '../../lib/constants'
-import { capitalize, stringifyRGBA, generateId } from '../../lib/util'
+import { stringifyRGBA, generateId } from '../../lib/util'
 
 const colorPickerStyle = {
   backgroundColor: COLORS.BLACK,
@@ -19,7 +19,7 @@ const colorPresets = []
 const HighlightPicker = ({ title, onChange, color }) => (
   <div className="color-picker-container">
     <div className="color-picker-header">
-      <span>{title}</span>
+      <span className="capitalize">{title}</span>
     </div>
     <ColorPicker
       color={color}
@@ -87,7 +87,7 @@ const ThemeCreate = ({
             {({ name }) => <span>{name}</span>}
           </ListSetting>
         </div>
-        <div className="theme-colors">
+        <div className="theme-colors capitalize">
           {HIGHLIGHT_KEYS.map(key => (
             <div className="field" key={key}>
               <Button
@@ -96,7 +96,7 @@ const ThemeCreate = ({
                 background={highlight === key ? COLORS.HOVER : COLORS.BLACK}
               >
                 <div className="row">
-                  <span>{capitalize(key)}</span>
+                  <span className="capitalize">{key}</span>
                   <span
                     className="color-square"
                     style={{
@@ -133,7 +133,7 @@ const ThemeCreate = ({
       </div>
       {highlight && (
         <HighlightPicker
-          title={capitalize(highlight)}
+          title={highlight}
           color={highlights[highlight]}
           onChange={({ rgb }) => updateHighlights({ [highlight]: stringifyRGBA(rgb) })}
         />
@@ -177,7 +177,6 @@ const ThemeCreate = ({
             display: flex;
             flex-wrap: wrap;
             border-top: 2px solid ${COLORS.SECONDARY};
-            text-transform: capitalize;
           }
 
           .theme-colors .field {

@@ -218,6 +218,10 @@ export default () => (
         display: flex;
       }
 
+      .capitalize {
+        text-transform: capitalize;
+      }
+
       /* include just until we have a keyboard navigation style system */
       [role='button']:focus {
         outline: none;
