@@ -1,6 +1,6 @@
 import React from 'react'
 import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
-import { useAsyncCallback } from '@dawnlabs/tacklebox'
+import { useAsyncCallback } from 'actionsack'
 
 import Button from './Button'
 import Input from './Input'

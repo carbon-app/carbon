@@ -1,6 +1,6 @@
 import React from 'react'
 import Spinner from 'react-spinner'
-import { useAsyncCallback } from '@dawnlabs/tacklebox'
+import { useAsyncCallback } from 'actionsack'
 
 import { useAPI } from './ApiContext'
 import PhotoCredit from './PhotoCredit'

@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import Router from 'next/router'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import { useAsyncCallback } from '@dawnlabs/tacklebox'
+import { useAsyncCallback } from 'actionsack'
 
 import Button from '../components/Button'
 import LoginButton from '../components/LoginButton'

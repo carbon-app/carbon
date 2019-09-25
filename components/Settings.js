@@ -1,6 +1,6 @@
 import React from 'react'
 import omitBy from 'lodash.omitby'
-import { useKeyboardListener } from '@dawnlabs/tacklebox'
+import { useKeyboardListener } from 'actionsack'
 
 import ThemeSelect from './ThemeSelect'
 import FontSelect from './FontSelect'
@@ -15,12 +15,8 @@ import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 
-function KeyboardShortcut({ handle }) {
-  useKeyboardListener('/', e => {
-    if (e.metaKey) {
-      handle()
-    }
-  })
+function KeyboardShortcut({ trigger, handle }) {
+  useKeyboardListener(trigger, handle)
   return null
 }
 
@@ -389,6 +385,7 @@ class Settings extends React.PureComponent {
     return (
       <div className="settings-container" ref={this.settingsRef}>
         <KeyboardShortcut
+          trigger="⌘-/"
           handle={() => {
             toggleVisibility()
             if (!isVisible) {
