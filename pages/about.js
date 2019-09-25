@@ -111,18 +111,19 @@ export default () => (
       {`
         .about {
           font-size: 16px;
+          max-width: 632px;
         }
+
         h2 {
           font-weight: bold;
           font-size: 32px;
         }
+        h4 {
+          font-weight: bold;
+        }
 
         p,
         li {
-          color: #fff;
-        }
-
-        span {
           color: #fff;
         }
 
@@ -131,17 +132,14 @@ export default () => (
           list-style-type: circle;
         }
 
-        .about {
-          max-width: 632px;
-        }
-
-        h4 {
-          font-weight: bold;
+        span {
+          color: #fff;
         }
 
         td {
           padding: 0.25rem 0;
         }
+
         kbd {
           margin-left: var(--x3);
         }
