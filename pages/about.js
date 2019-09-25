@@ -81,8 +81,8 @@ export default () => (
         <h4 className="mb0 mt4" id="shortcuts">
           Keyboard Shortcuts
         </h4>
-        <p className="mt2 mb3">
-          <table>
+        <table className="mt2 mb3">
+          <tbody>
             <tr>
               <td>Open settings menu</td>
               <td>
@@ -95,8 +95,8 @@ export default () => (
                 <kbd>⌘-Shift-E</kbd>
               </td>
             </tr>
-          </table>
-        </p>
+          </tbody>
+        </table>
       </div>
       <div>
         <h2>I want to make this better.</h2>
