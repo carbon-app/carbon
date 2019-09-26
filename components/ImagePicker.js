@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactCrop, { makeAspectCrop } from 'react-image-crop'
-import { useLocalStorage } from '@dawnlabs/tacklebox'
+import { useLocalStorage } from 'actionsack'
 
 import RandomImage from './RandomImage'
 import PhotoCredit from './PhotoCredit'

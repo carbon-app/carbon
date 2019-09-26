@@ -1,6 +1,6 @@
 // Theirs
 import React from 'react'
-import { useAsyncCallback } from '@dawnlabs/tacklebox'
+import { useAsyncCallback } from 'actionsack'
 
 import Editor from './Editor'
 import Toasts from './Toasts'

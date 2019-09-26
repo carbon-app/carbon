@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCopyTextHandler } from '@dawnlabs/tacklebox'
+import { useCopyTextHandler } from 'actionsack'
 
 import { COLORS } from '../lib/constants'
 import { Controls, ControlsBW } from './svg/Controls'

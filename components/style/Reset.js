@@ -174,6 +174,22 @@ export default () => (
         color: #121212;
       }
 
+      kbd {
+        display: inline-block;
+        padding: 3px 5px; /* padding: 2px 4px; */
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: ${COLORS.DARK_GRAY};
+        vertical-align: middle;
+        background-color: #fafbfc; /* ${COLORS.SECONDARY}; */
+        border: 1px solid #c6cbd1;
+        border-bottom-color: #959da5;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 0 #959da5;
+        white-space: nowrap;
+      }
+
       .link {
         color: #fff;
         text-decoration: none;

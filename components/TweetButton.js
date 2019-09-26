@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAsyncCallback, useOnline as useOnlineListener } from '@dawnlabs/tacklebox'
+import { useAsyncCallback, useOnline as useOnlineListener } from 'actionsack'
 
 import { useAPI } from './ApiContext'
 import Button from './Button'
