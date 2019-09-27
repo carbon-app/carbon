@@ -63,15 +63,16 @@ class BackgroundSelect extends React.PureComponent {
         >
           <div className="picker-tabs">
             {['color', 'image'].map(tab => (
-              <div
-                role="button"
-                tabIndex={0}
+              <Button
                 key={tab}
-                className={`picker-tab capitalize ${mode === tab ? 'active' : ''}`}
+                padding="8px 0"
+                center
+                className="capitalize"
                 onClick={this.selectTab.bind(null, tab)}
+                background={mode === tab ? COLORS.BLACK : COLORS.DARK_GRAY}
               >
                 {tab}
-              </div>
+              </Button>
             ))}
           </div>
           <div className="picker-tabs-contents">
@@ -134,22 +135,12 @@ class BackgroundSelect extends React.PureComponent {
               border-bottom: 2px solid ${COLORS.SECONDARY};
             }
 
-            .picker-tab {
-              user-select: none;
-              cursor: pointer;
-              background: ${COLORS.DARK_GRAY};
-              width: 50%;
-              text-align: center;
-              padding: 8px 0;
+            .picker-tabs :global(button) {
               border-right: 1px solid ${COLORS.SECONDARY};
             }
 
-            .picker-tab:last-child {
+            .picker-tabs :global(button:last-child) {
               border-right: none;
-            }
-
-            .picker-tab.active {
-              background: none;
             }
           `}
         </style>
