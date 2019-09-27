@@ -10,44 +10,45 @@ class Toggle extends React.PureComponent {
 
   toggle = () => this.props.onChange(!this.props.enabled)
 
-  handleKeydown = e => {
-    if (e.key === 'Enter') this.toggle()
-    if (e.key === ' ') {
-      e.preventDefault()
-      this.toggle()
-    }
-  }
-
   render() {
-    // TODO use input[type=["checkbox"] /> instead of div
     return (
-      <div
-        role="checkbox"
-        tabIndex={0}
-        className={`toggle ${this.props.className}`}
-        onClick={this.toggle}
-        aria-checked={this.props.enabled}
-        onKeyDown={this.handleKeydown}
-      >
+      <div className={`toggle ${this.props.className}`}>
         <label className="label">{this.props.label}</label>
+        <input
+          type="checkbox"
+          checked={this.props.enabled}
+          onClick={this.toggle}
+          aria-checked={this.props.enabled}
+        />
         {this.props.enabled ? <Checkmark /> : <div className="checkmark-disabled" />}
         <style jsx>
           {`
             .toggle {
+              position: relative;
               display: flex;
               align-items: center;
-              justify-content: ${this.props.center ? 'center' : 'space-between'};
-              cursor: pointer;
+              justify-content: space-between;
               user-select: none;
               padding: ${this.props.padding || '8px 12px 8px 8px'};
-            }
-
-            .toggle {
               outline: none;
             }
 
-            .toggle:focus-within :global(svg),
-            .toggle:focus-within .checkmark-disabled {
+            input {
+              cursor: pointer;
+              margin: 0;
+              width: 100%;
+              height: 100%;
+              box-sizing: border-box;
+              position: absolute;
+              opacity: 0;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+            }
+
+            input:focus + :global(svg),
+            input:focus + .checkmark-disabled {
               outline: 4px auto -webkit-focus-ring-color;
             }
 
