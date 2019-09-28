@@ -31,7 +31,7 @@
     "dropperx": "^1.0.1",
     "eitherx": "^1.0.2",
     "escape-goat": "^2.1.1",
-    "firebase": "^6.6.1",
+    "firebase": "^7.0.0",
     "graphql": "^14.5.8",
     "highlight.js": "^9.15.10",
     "lodash.debounce": "^4.0.8",
