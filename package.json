@@ -57,17 +57,17 @@
     "tohash": "^1.0.2"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.7.5",
-    "all-contributors-cli": "^6.9.0",
+    "@applitools/eyes-cypress": "^3.8.5",
+    "all-contributors-cli": "^6.9.1",
     "babel-eslint": "^10.0.3",
     "cypress": "^3.4.1",
     "eslint": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.0.1",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.2.5",
+    "eslint-plugin-react-hooks": "^2.1.1",
+    "husky": "^3.0.7",
+    "lint-staged": "^9.4.0",
     "now": "^16.2.0",
     "now-release": "^0.0.2",
     "wait-on": "^3.3.0"
