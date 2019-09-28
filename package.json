@@ -25,7 +25,7 @@
     "codemirror-graphql": "^0.9.0",
     "codemirror-mode-elixir": "^1.1.2",
     "codemirror-solidity": "^0.2.1",
-    "date-fns": "^2.2.1",
+    "date-fns": "^2.4.1",
     "dom-to-image": "^2.6.0",
     "downshift": "^3.3.4",
     "dropperx": "^1.0.1",
