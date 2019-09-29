@@ -104,7 +104,7 @@ function ToastContainer(props) {
           .toast {
             position: fixed;
             z-index: 9999;
-            top: 2rem;
+            top: 5rem;
             right: 1rem;
           }
         `}
