@@ -5,7 +5,7 @@ import { COLORS } from '../lib/constants'
 const Footer = () => (
   <footer role="contentinfo" className="mt3">
     <nav className="mt3">
-      <Link href="/about">
+      <Link href="/about" prefetch={false}>
         <a className="link" href="/about">
           about
         </a>
