@@ -201,7 +201,6 @@ function Settings() {
       <style jsx>
         {`
           .editor {
-            max-width: 90vw;
             position: relative;
             background: ${COLORS.BLACK};
             border: 3px solid ${COLORS.SECONDARY};
