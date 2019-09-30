@@ -121,6 +121,10 @@ export default () => (
           }
         }
 
+        img {
+          max-width: 100%;
+        }
+
         h2 {
           font-weight: bold;
           font-size: 32px;
