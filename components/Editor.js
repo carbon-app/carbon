@@ -375,30 +375,32 @@ class Editor extends React.Component {
             list={LANGUAGES}
             onChange={this.updateLanguage}
           />
-          <BackgroundSelect
-            onChange={this.updateBackground}
-            updateHighlights={this.updateHighlights}
-            mode={backgroundMode}
-            color={backgroundColor}
-            image={backgroundImage}
-            carbonRef={this.carbonNode.current}
-          />
-          <Settings
-            {...config}
-            onChange={this.updateSetting}
-            resetDefaultSettings={this.resetDefaultSettings}
-            format={this.format}
-            applyPreset={this.applyPreset}
-            getCarbonImage={this.getCarbonImage}
-          />
-          <div className="buttons">
-            <TweetButton onClick={this.upload} />
-            <ExportMenu
-              onChange={this.updateSetting}
-              export={this.export}
-              exportSize={exportSize}
-              backgroundImage={backgroundImage}
+          <div className="toolbar-second-row">
+            <BackgroundSelect
+              onChange={this.updateBackground}
+              updateHighlights={this.updateHighlights}
+              mode={backgroundMode}
+              color={backgroundColor}
+              image={backgroundImage}
+              carbonRef={this.carbonNode.current}
             />
+            <Settings
+              {...config}
+              onChange={this.updateSetting}
+              resetDefaultSettings={this.resetDefaultSettings}
+              format={this.format}
+              applyPreset={this.applyPreset}
+              getCarbonImage={this.getCarbonImage}
+            />
+            <div className="buttons">
+              <TweetButton onClick={this.upload} />
+              <ExportMenu
+                onChange={this.updateSetting}
+                export={this.export}
+                exportSize={exportSize}
+                backgroundImage={backgroundImage}
+              />
+            </div>
           </div>
         </Toolbar>
 
@@ -442,6 +444,14 @@ class Editor extends React.Component {
             .buttons {
               display: flex;
               margin-left: auto;
+            }
+            .toolbar-second-row {
+              height: 40px;
+              display: flex;
+              flex: 1;
+            }
+            .toolbar-second-row > :global(div:not(:last-of-type)) {
+              margin-right: 0.5rem;
             }
           `}
         </style>

@@ -240,7 +240,7 @@ function SnippetsPage() {
 }
 
 export default () => (
-  <Page enableHeroText={true}>
+  <Page enableHeroText={true} flex={true}>
     <MetaLinks />
     <SnippetsPage />
   </Page>

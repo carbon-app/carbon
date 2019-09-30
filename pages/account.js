@@ -248,7 +248,7 @@ function Settings() {
 
 function SettingsPage() {
   return (
-    <Page>
+    <Page flex={true}>
       <MetaLinks />
       <Settings />
     </Page>

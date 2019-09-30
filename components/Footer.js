@@ -5,7 +5,7 @@ import { COLORS } from '../lib/constants'
 const Footer = () => (
   <footer role="contentinfo" className="mt3">
     <nav className="mt3">
-      <Link href="/about">
+      <Link href="/about" prefetch={false}>
         <a className="link" href="/about">
           about
         </a>
@@ -43,6 +43,7 @@ const Footer = () => (
       {`
         footer {
           font-size: 14px;
+          text-align: center;
         }
 
         footer > div {
@@ -51,8 +52,7 @@ const Footer = () => (
         }
 
         nav {
-          display: flex;
-          align-items: center;
+          margin: 0 auto;
         }
 
         a {

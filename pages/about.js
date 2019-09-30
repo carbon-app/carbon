@@ -112,6 +112,17 @@ export default () => (
         .about {
           font-size: 16px;
           max-width: 632px;
+          margin: 0 auto var(--x4);
+        }
+
+        @media (max-width: 768px) {
+          .about {
+            max-width: 90vw;
+          }
+        }
+
+        img {
+          max-width: 100%;
         }
 
         h2 {

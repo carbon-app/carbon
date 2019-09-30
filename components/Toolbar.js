@@ -8,7 +8,7 @@ const Toolbar = props => (
         .toolbar {
           width: 100%;
           height: 40px;
-          margin-bottom: 16px;
+          margin-bottom: 1rem;
           display: flex;
           position: relative;
           z-index: 3;
@@ -21,6 +21,18 @@ const Toolbar = props => (
 
         .toolbar > :global(div):last-child {
           margin-right: 0px;
+        }
+
+        @media (max-width: 768px) {
+          .toolbar {
+            max-width: 100%;
+            height: auto;
+            flex-direction: column;
+          }
+          .toolbar > :global(div:not(:last-of-type)) {
+            margin-right: 0;
+            margin-bottom: 1rem;
+          }
         }
       `}
     </style>

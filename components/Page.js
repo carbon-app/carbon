@@ -5,9 +5,15 @@ import Header from './Header'
 import Footer from './Footer'
 import Announcement from './Announcement'
 
+const COLUMN = `
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`
 class Page extends React.Component {
   render() {
-    const { children, enableHeroText } = this.props
+    const { children, enableHeroText, flex } = this.props
     return (
       <main className="main mt4 mb4">
         <Meta />
@@ -22,11 +28,13 @@ class Page extends React.Component {
         <style jsx>
           {`
             .main {
-              display: flex;
-              justify-content: center;
-              flex-direction: column;
-              align-items: center;
-              min-width: 1080px; /* temporary fix for mobile overflow issue */
+              ${flex ? COLUMN : ''}
+            }
+            @media (min-width: 1024px) {
+              .main {
+                ${COLUMN};
+                min-width: 1080px; /* temporary fix for mobile overflow issue */
+              }
             }
           `}
         </style>

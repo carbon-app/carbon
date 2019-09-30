@@ -146,7 +146,6 @@ export default () => (
         font-style: normal;
         text-transform: initial;
         letter-spacing: initial;
-        /* min-width: 848px; */
         min-height: 704px;
       }
 
