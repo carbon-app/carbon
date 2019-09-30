@@ -54,7 +54,7 @@ class Editor extends React.Component {
       loading: true
     }
 
-    this.export = this.export.bind(this)
+    this.export = this.exportImage.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
@@ -223,7 +223,7 @@ class Editor extends React.Component {
     }
   }
 
-  export(format = 'png', options = {}) {
+  exportImage(format = 'png', options = {}) {
     const link = document.createElement('a')
 
     const prefix = options.filename || 'carbon'
@@ -396,7 +396,7 @@ class Editor extends React.Component {
               <TweetButton onClick={this.upload} />
               <ExportMenu
                 onChange={this.updateSetting}
-                export={this.export}
+                exportImage={this.exportImage}
                 exportSize={exportSize}
                 backgroundImage={backgroundImage}
               />

@@ -67,7 +67,7 @@ function ExportMenu({
   exportSize,
   isVisible,
   toggleVisibility,
-  export: exportImage
+  exportImage
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
