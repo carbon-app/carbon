@@ -173,6 +173,7 @@ function ExportMenu({
           .export-menu-container {
             position: relative;
             color: ${COLORS.PURPLE};
+            flex: 1;
           }
 
           .flex {

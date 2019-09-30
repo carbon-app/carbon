@@ -43,6 +43,7 @@ const Footer = () => (
       {`
         footer {
           font-size: 14px;
+          text-align: center;
         }
 
         footer > div {
@@ -51,8 +52,7 @@ const Footer = () => (
         }
 
         nav {
-          display: flex;
-          align-items: center;
+          margin: 0 auto;
         }
 
         a {

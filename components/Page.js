@@ -21,12 +21,14 @@ class Page extends React.Component {
 
         <style jsx>
           {`
-            .main {
-              display: flex;
-              justify-content: center;
-              flex-direction: column;
-              align-items: center;
-              min-width: 1080px; /* temporary fix for mobile overflow issue */
+            @media (min-width: 1024px) {
+              .main {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                min-width: 1080px; /* temporary fix for mobile overflow issue */
+              }
             }
           `}
         </style>
