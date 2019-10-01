@@ -54,7 +54,7 @@ class Editor extends React.Component {
       loading: true
     }
 
-    this.export = this.exportImage.bind(this)
+    this.exportImage = this.exportImage.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
