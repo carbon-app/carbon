@@ -97,8 +97,8 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](h
 ## Features
 
 - **Customization**. Customize things like your image's syntax theme, window style, and more
-- **Share quickly**. Save your image or 
-a link with one click
+- **Share quickly**. Save your image or
+  a link with one click
 - **Import from GitHub gist**. Simply append a GitHub gist id to the url
 
 ## Usage
@@ -169,9 +169,14 @@ Carbon is a project by:
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
 #### License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
+<br />
+<br />
+
 ---
+
 ## Contribute & Support
 
 Pull requests are welcome! Please see our [contributing guidelines](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
