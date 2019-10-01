@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'next/router'
-import { useCopyTextHandler, useOnline, useKeyboardListener } from 'actionsack'
+import { useCopyTextHandler, useOnline, useKeyboardListener, useAsyncCallback } from 'actionsack'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
@@ -67,12 +67,13 @@ function ExportMenu({
   exportSize,
   isVisible,
   toggleVisibility,
-  exportImage
+  exportImage: exp
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
   const isSafari = useSafari()
 
+  const [exportImage, { loading }] = useAsyncCallback(exp)
   useKeyboardListener('⌘-⇧-e', () => exportImage())
 
   const disablePNG = isSafari && (tooLarge || !online)
@@ -98,8 +99,9 @@ function ExportMenu({
           selected={isVisible}
           onClick={toggleVisibility}
           data-cy="export-button"
+          style={{ width: 92 }}
         >
-          Export
+          {loading ? 'Exporting...' : 'Export'}
         </Button>
       </div>
       <Popout
@@ -151,6 +153,7 @@ function ExportMenu({
                   color={COLORS.DARK_PURPLE}
                   onClick={handleExport('png')}
                   id="export-png"
+                  disabled={loading}
                 >
                   PNG
                 </Button>
@@ -161,6 +164,7 @@ function ExportMenu({
                 color={COLORS.DARK_PURPLE}
                 onClick={handleExport('svg')}
                 id="export-svg"
+                disabled={loading}
               >
                 SVG
               </Button>
