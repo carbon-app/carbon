@@ -168,10 +168,10 @@ Carbon is a project by:
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
+#### License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
 ---
-
-<br>
-
 ## Contribute & Support
 
 Pull requests are welcome! Please see our [contributing guidelines](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
