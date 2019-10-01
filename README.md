@@ -81,7 +81,9 @@
       <td>
         <a href="/docs/README.ja.md">日本語</a>
       </td>
-      <td></td>
+      <td align="center">
+        <a href="https://github.com/carbon-app/carbon/new/master/docs/README.<new%20language>.md">Add +</a>
+      </td>
     </tr>
   </tbody>
 </table>
