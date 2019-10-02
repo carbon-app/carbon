@@ -20,7 +20,9 @@ describe('background color', () => {
   it('opens BG color pick', () => {
     cy.visit('/')
     openPicker()
-    closePicker()
+    cy.get(bgColor).click()
+    // TODO closePicker is not working right now
+    // closePicker()
     cy.get(picker).should('not.exist')
   })
 
