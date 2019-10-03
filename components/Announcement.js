@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Feature flag
-const ACTIVE = false
+const ACTIVE = true
 
 const key = 'CARBON_CTA_2'
 
@@ -36,8 +36,14 @@ function Toast() {
   return (
     <div className="toast mb4">
       <div className="toast-content">
-        <p>Never lose a Carbon again - save your work automatically!</p>
-        Click &quot;Sign up&quot; to try it out!
+        <p>The team that created Carbon has been acquired!</p> —
+        <a
+          href="https://dawnlabs.io/fossa-acquires-dawnlabs"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Read more
+        </a>
         <button className="close-toast" onClick={close}>
           &times;
         </button>
@@ -61,6 +67,10 @@ function Toast() {
             margin-top: calc(var(--x4) * -1);
             animation-name: slide;
             animation-duration: 600ms;
+            width: 610px;
+            max-width: 100vw;
+            margin-left: auto;
+            margin-right: auto;
           }
 
           .toast-content {
@@ -70,6 +80,7 @@ function Toast() {
 
           a {
             text-decoration: underline;
+            margin-left: 12px;
           }
 
           .close-toast {
