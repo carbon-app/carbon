@@ -408,11 +408,13 @@ function useGutterClickHandler(props, editorRef) {
   })
 
   React.useEffect(() => {
-    if (editorRef.current) {
+    if (editorRef.current && Object.keys(state.selected).length > 0) {
       editorRef.current.editor.display.view.forEach((line, i) => {
-        if (line.text && line.gutter) {
-          line.text.style.opacity = state.selected[i] === false ? 0.5 : 1
-          line.gutter.style.opacity = state.selected[i] === false ? 0.5 : 1
+        if (line.text) {
+          line.text.style.opacity = state.selected[i] === true ? 1 : 0.5
+        }
+        if (line.gutter) {
+          line.gutter.style.opacity = state.selected[i] === true ? 1 : 0.5
         }
       })
     }
