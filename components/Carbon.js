@@ -409,7 +409,7 @@ function selectedLinesReducer(
   }
 }
 
-function useGutterClickHandler(props, editorRef) {
+function useSelectedLines(props, editorRef) {
   const [state, dispatch] = React.useReducer(selectedLinesReducer, {
     prevLine: null,
     selected: {}
@@ -447,7 +447,7 @@ function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
   const editorRef = React.createRef()
-  const onGutterClick = useGutterClickHandler(props, editorRef)
+  const onGutterClick = useSelectedLines(props, editorRef)
 
   return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
