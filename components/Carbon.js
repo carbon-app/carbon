@@ -376,12 +376,20 @@ function useHighlightLoader() {
   }, [])
 }
 
-function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLines }) {
+function selectedLinesReducer(
+  { prevLine, selected },
+  { type, lineNumber, numLines, selectedLines }
+) {
   const newState = {}
 
   if (type === 'GROUP' && prevLine) {
     for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
       newState[i] = selected[prevLine]
+    }
+  }
+  if (type === 'MULTILINE') {
+    for (let i = 0; i < selectedLines.length; i++) {
+      newState[selectedLines[i] - 1] = true
     }
   } else {
     for (let i = 0; i < numLines; i++) {
@@ -419,6 +427,11 @@ function useGutterClickHandler(props, editorRef) {
       })
     }
   }, [state.selected, props.children, props.config, editorRef])
+
+  React.useEffect(() => {
+    let selectedLines = props.config.selectedLines || []
+    dispatch({ type: 'MULTILINE', selectedLines })
+  }, [props.config.selectedLines])
 
   return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
     const numLines = editor.display.view.length
