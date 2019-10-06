@@ -39,7 +39,6 @@ class Carbon extends React.PureComponent {
     onGutterClick: noop
   }
   state = {}
-  editorRef = React.createRef()
 
   handleLanguageChange = debounce(
     (newCode, language) => {
@@ -101,7 +100,7 @@ class Carbon extends React.PureComponent {
 
   onMouseUp = () => {
     if (this.currentSelection) {
-      const { editor } = this.editorRef.current
+      const { editor } = this.props.editorRef.current
       const startPos = editor.charCoords(this.currentSelection.from, 'window')
       const endPos = editor.charCoords(this.currentSelection.to, 'window')
 
@@ -129,7 +128,7 @@ class Carbon extends React.PureComponent {
       ]
         .filter(Boolean)
         .join('; ')
-      this.editorRef.current.editor.doc.markText(
+      this.props.editorRef.current.editor.doc.markText(
         this.state.selectionAt.from,
         this.state.selectionAt.to,
         { css }
@@ -181,7 +180,7 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
-          ref={this.editorRef}
+          ref={this.props.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
           value={this.props.children}
           options={options}
@@ -402,8 +401,7 @@ function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLin
   }
 }
 
-function useGutterClickHandler(props) {
-  const editorRef = React.useRef(null)
+function useGutterClickHandler(props, editorRef) {
   const [state, dispatch] = React.useReducer(selectedLinesReducer, {
     prevLine: null,
     selected: {}
@@ -411,18 +409,16 @@ function useGutterClickHandler(props) {
 
   React.useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.display.view.forEach((line, i) => {
+      editorRef.current.editor.display.view.forEach((line, i) => {
         if (line.text && line.gutter) {
           line.text.style.opacity = state.selected[i] === false ? 0.5 : 1
           line.gutter.style.opacity = state.selected[i] === false ? 0.5 : 1
         }
       })
     }
-  }, [state.selected, props.children, props.config])
+  }, [state.selected, props.children, props.config, editorRef])
 
   return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
-    editorRef.current = editor
-
     const numLines = editor.display.view.length
     if (e.shiftKey) {
       dispatch({ type: 'GROUP', lineNumber, numLines })
@@ -435,9 +431,10 @@ function useGutterClickHandler(props) {
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
-  const onGutterClick = useGutterClickHandler(props)
+  const editorRef = React.createRef()
+  const onGutterClick = useGutterClickHandler(props, editorRef)
 
-  return <Carbon {...props} innerRef={ref} onGutterClick={onGutterClick} />
+  return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
 
 export default React.forwardRef(CarbonContainer)
