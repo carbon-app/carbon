@@ -47,14 +47,18 @@ class Carbon extends React.PureComponent {
         // try to set the language
         const detectedLanguage = hljs.highlightAuto(newCode).language
         const languageMode = searchLanguage(detectedLanguage)
+
         if (languageMode) {
           return languageMode.mime || languageMode.mode
         }
       }
+
       const languageMode = searchLanguage(language)
+
       if (languageMode) {
         return languageMode.mime || languageMode.mode
       }
+
       return language
     },
     ms('300ms'),
