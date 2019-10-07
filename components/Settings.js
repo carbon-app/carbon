@@ -31,6 +31,7 @@ function WindowSettings({
   windowControls,
   lineNumbers,
   firstLineNumber,
+  whiteSpace,
   widthAdjustment,
   watermark,
   onWidthChanging,
@@ -95,6 +96,11 @@ function WindowSettings({
           />
         </div>
       )}
+      <Toggle
+        label="Whitespace"
+        enabled={whiteSpace}
+        onChange={onChange.bind(null, 'whiteSpace')}
+      />
       <Toggle
         label="Auto-adjust width"
         enabled={widthAdjustment}
@@ -346,6 +352,7 @@ class Settings extends React.PureComponent {
             windowControls={this.props.windowControls}
             lineNumbers={this.props.lineNumbers}
             firstLineNumber={this.props.firstLineNumber}
+            whiteSpace={this.props.whiteSpace}
             widthAdjustment={this.props.widthAdjustment}
             watermark={this.props.watermark}
           />

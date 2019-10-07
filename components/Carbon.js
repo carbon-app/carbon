@@ -33,6 +33,7 @@ function searchLanguage(l) {
 }
 
 function noop() {}
+
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: noop,
@@ -46,18 +47,14 @@ class Carbon extends React.PureComponent {
         // try to set the language
         const detectedLanguage = hljs.highlightAuto(newCode).language
         const languageMode = searchLanguage(detectedLanguage)
-
         if (languageMode) {
           return languageMode.mime || languageMode.mode
         }
       }
-
       const languageMode = searchLanguage(language)
-
       if (languageMode) {
         return languageMode.mime || languageMode.mode
       }
-
       return language
     },
     ms('300ms'),
@@ -158,7 +155,8 @@ class Carbon extends React.PureComponent {
       },
       readOnly: this.props.readOnly ? 'nocursor' : false,
       // needs to be able to refresh every 16ms to hit 60 frames / second
-      pollInterval: 16
+      pollInterval: 16,
+      showInvisibles: config.whiteSpace
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -376,6 +374,16 @@ function useHighlightLoader() {
   }, [])
 }
 
+let showInvisibleLoaded = false
+function useShowInvisibleLoader() {
+  React.useEffect(() => {
+    if (!showInvisibleLoaded) {
+      require('cm-show-invisibles')
+      showInvisibleLoaded = true
+    }
+  }, [])
+}
+
 function selectedLinesReducer(
   { prevLine, selected },
   { type, lineNumber, numLines, selectedLines }
@@ -448,6 +456,7 @@ function CarbonContainer(props, ref) {
   useHighlightLoader()
   const editorRef = React.createRef()
   const onGutterClick = useSelectedLines(props, editorRef)
+  useShowInvisibleLoader()
 
   return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
