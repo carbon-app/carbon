@@ -11,7 +11,7 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import MenuButton from './MenuButton'
-import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
+import { COLORS, DEFAULT_PRESETS, MAX_HORIZ_PADDING, MAX_WIDTH, MIN_WIDTH } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 
@@ -32,6 +32,7 @@ function WindowSettings({
   lineNumbers,
   firstLineNumber,
   widthAdjustment,
+  windowWidth,
   watermark,
   onWidthChanging,
   onWidthChanged
@@ -52,6 +53,7 @@ function WindowSettings({
           onChange={onChange.bind(null, 'paddingHorizontal')}
           onMouseDown={onWidthChanging}
           onMouseUp={onWidthChanged}
+          maxValue={MAX_HORIZ_PADDING}
         />
       </div>
       <Toggle
@@ -100,6 +102,15 @@ function WindowSettings({
         enabled={widthAdjustment}
         onChange={onChange.bind(null, 'widthAdjustment')}
       />
+      {!widthAdjustment && (
+        <Slider
+          label="(window-width)"
+          value={windowWidth}
+          onChange={onChange.bind(null, 'windowWidth')}
+          minValue={MIN_WIDTH}
+          maxValue={MAX_WIDTH}
+        />
+      )}
       <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
       <style jsx>
         {`
@@ -347,6 +358,7 @@ class Settings extends React.PureComponent {
             lineNumbers={this.props.lineNumbers}
             firstLineNumber={this.props.firstLineNumber}
             widthAdjustment={this.props.widthAdjustment}
+            windowWidth={this.props.windowWidth}
             watermark={this.props.watermark}
           />
         )

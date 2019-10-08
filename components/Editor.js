@@ -30,7 +30,9 @@ import {
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
-  FONTS
+  FONTS,
+  MAX_WIDTH,
+  MAX_HORIZ_PADDING
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
@@ -439,6 +441,7 @@ class Editor extends React.Component {
               border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;
               padding: 16px;
+              width: ${MAX_WIDTH + 2 * MAX_HORIZ_PADDING}px;
             }
 
             .buttons {
