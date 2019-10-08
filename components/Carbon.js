@@ -18,7 +18,10 @@ import {
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
   DEFAULT_SETTINGS,
-  THEMES_HASH
+  THEMES_HASH,
+  MIN_WIDTH,
+  MAX_WIDTH,
+  MAX_HORIZ_PADDING
 } from '../lib/constants'
 
 const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
@@ -199,7 +202,10 @@ class Carbon extends React.PureComponent {
           {`
             .container {
               position: relative;
-              min-width: ${config.widthAdjustment ? '90px' : config.windowWidth};
+              min-width: ${config.widthAdjustment ? `${MIN_WIDTH}px` : config.windowWidth};
+              max-width: ${config.widthAdjustment
+                ? `${MAX_WIDTH + 2 * MAX_HORIZ_PADDING}px`
+                : config.windowWidth + 2 * config.paddingHorizontal};
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
             }
 
