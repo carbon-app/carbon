@@ -564,6 +564,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "majouji",
+      "name": "Ramy Majouji",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/23482161?v=4",
+      "profile": "https://glossier.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
