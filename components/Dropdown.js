@@ -242,8 +242,9 @@ const SelectedItem = ({
             background: transparent;
             border: none;
             outline: none;
-            font-size: inherit;
+            font-size: 16px;
             font-family: inherit;
+            padding: 0 0 2px 0;
           }
 
           .dropdown-arrow {
