@@ -39,7 +39,6 @@ class Carbon extends React.PureComponent {
     onGutterClick: noop
   }
   state = {}
-  editorRef = React.createRef()
 
   handleLanguageChange = debounce(
     (newCode, language) => {
@@ -101,7 +100,7 @@ class Carbon extends React.PureComponent {
 
   onMouseUp = () => {
     if (this.currentSelection) {
-      const { editor } = this.editorRef.current
+      const { editor } = this.props.editorRef.current
       const startPos = editor.charCoords(this.currentSelection.from, 'window')
       const endPos = editor.charCoords(this.currentSelection.to, 'window')
 
@@ -129,7 +128,7 @@ class Carbon extends React.PureComponent {
       ]
         .filter(Boolean)
         .join('; ')
-      this.editorRef.current.editor.doc.markText(
+      this.props.editorRef.current.editor.doc.markText(
         this.state.selectionAt.from,
         this.state.selectionAt.to,
         { css }
@@ -181,7 +180,7 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
-          ref={this.editorRef}
+          ref={this.props.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
           value={this.props.children}
           options={options}
@@ -377,12 +376,20 @@ function useHighlightLoader() {
   }, [])
 }
 
-function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLines }) {
+function selectedLinesReducer(
+  { prevLine, selected },
+  { type, lineNumber, numLines, selectedLines }
+) {
   const newState = {}
 
   if (type === 'GROUP' && prevLine) {
     for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
       newState[i] = selected[prevLine]
+    }
+  }
+  if (type === 'MULTILINE') {
+    for (let i = 0; i < selectedLines.length; i++) {
+      newState[selectedLines[i] - 1] = true
     }
   } else {
     for (let i = 0; i < numLines; i++) {
@@ -402,27 +409,31 @@ function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLin
   }
 }
 
-function useGutterClickHandler(props) {
-  const editorRef = React.useRef(null)
+function useSelectedLines(props, editorRef) {
   const [state, dispatch] = React.useReducer(selectedLinesReducer, {
     prevLine: null,
     selected: {}
   })
 
   React.useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.display.view.forEach((line, i) => {
-        if (line.text && line.gutter) {
-          line.text.style.opacity = state.selected[i] === false ? 0.5 : 1
-          line.gutter.style.opacity = state.selected[i] === false ? 0.5 : 1
+    if (editorRef.current && Object.keys(state.selected).length > 0) {
+      editorRef.current.editor.display.view.forEach((line, i) => {
+        if (line.text) {
+          line.text.style.opacity = state.selected[i] === true ? 1 : 0.5
+        }
+        if (line.gutter) {
+          line.gutter.style.opacity = state.selected[i] === true ? 1 : 0.5
         }
       })
     }
-  }, [state.selected, props.children, props.config])
+  }, [state.selected, props.children, props.config, editorRef])
+
+  React.useEffect(() => {
+    let selectedLines = props.config.selectedLines || []
+    dispatch({ type: 'MULTILINE', selectedLines })
+  }, [props.config.selectedLines])
 
   return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
-    editorRef.current = editor
-
     const numLines = editor.display.view.length
     if (e.shiftKey) {
       dispatch({ type: 'GROUP', lineNumber, numLines })
@@ -435,9 +446,10 @@ function useGutterClickHandler(props) {
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
-  const onGutterClick = useGutterClickHandler(props)
+  const editorRef = React.createRef()
+  const onGutterClick = useSelectedLines(props, editorRef)
 
-  return <Carbon {...props} innerRef={ref} onGutterClick={onGutterClick} />
+  return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
 
 export default React.forwardRef(CarbonContainer)
