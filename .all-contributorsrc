@@ -573,6 +573,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "nemesv",
+      "name": "Viktor Nemes",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/251330?v=4",
+      "profile": "http://stackoverflow.com/users/872395/nemesv",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
