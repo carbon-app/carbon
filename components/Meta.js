@@ -56,9 +56,9 @@ export const MetaTags = React.memo(() => (
     <meta name="og:image" content="/static/brand/banner.png" />
     <meta name="theme-color" content="#121212" />
     <title>{title}</title>
-    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon.png" />
-    <link rel="manifest" href="/static/manifest.json" />
   </Head>
 ))
 
