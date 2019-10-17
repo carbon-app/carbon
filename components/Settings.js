@@ -31,7 +31,7 @@ function WindowSettings({
   windowControls,
   lineNumbers,
   firstLineNumber,
-  whiteSpace,
+  hiddenCharacters,
   widthAdjustment,
   watermark,
   onWidthChanging,
@@ -98,8 +98,8 @@ function WindowSettings({
       )}
       <Toggle
         label="Hidden characters"
-        enabled={whiteSpace}
-        onChange={onChange.bind(null, 'whiteSpace')}
+        enabled={hiddenCharacters}
+        onChange={onChange.bind(null, 'hiddenCharacters')}
       />
       <Toggle
         label="Auto-adjust width"
@@ -352,7 +352,7 @@ class Settings extends React.PureComponent {
             windowControls={this.props.windowControls}
             lineNumbers={this.props.lineNumbers}
             firstLineNumber={this.props.firstLineNumber}
-            whiteSpace={this.props.whiteSpace}
+            hiddenCharacters={this.props.hiddenCharacters}
             widthAdjustment={this.props.widthAdjustment}
             watermark={this.props.watermark}
           />
