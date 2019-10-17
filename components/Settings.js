@@ -97,7 +97,7 @@ function WindowSettings({
         </div>
       )}
       <Toggle
-        label="Whitespace"
+        label="Hidden characters"
         enabled={whiteSpace}
         onChange={onChange.bind(null, 'whiteSpace')}
       />
