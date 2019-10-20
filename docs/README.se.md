@@ -39,58 +39,12 @@
   </a>
 </p>
 
-<br></br>
-
-##### Översättningar
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/carbon-app/carbon/new/master/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<br>
 
 ## Introduktion
 
 Du vet [till](https://twitter.com/dan_abramov/status/890191815567175680) [alla](https://twitter.com/reactjs/status/890511993261654017) [kod](https://twitter.com/notquiteleo/status/873483329345028096) [skärmdumpar](https://twitter.com/zeithq/status/805779711154647040) som du ser på Twitter? Även om koden vanligtvis är imponerande såg vi utrymme för förbättringar inom den estetiska avdelningen. Carbon gör det enkelt att skapa och dela vackra bilder av din källkod. Så vad väntar du på? Gå imponera på alla dina följare med din nyfundna design färdigheter.
+
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
@@ -127,13 +81,13 @@ Om du inkluderar en Carbon bild i ett inlägg, källkoden kommer att vara osynli
 
 Om du använder Google Chrome, eller en annan webbläsare som stöder Progressive Web Apps, kan du installera Carbon för användning offline genom att:
 
-1. Besöka [https://carbon.now.sh] (https://carbon.now.sh)
+1. Besöka [https://carbon.now.sh](https://carbon.now.sh)
 2. Klicka på webbläsarens inställningsmeny
 3. Klicka på "Installera kol ..."
 
-1. Besöka [https://carbon.now.sh](https://carbon.now.sh)
-2. Klickande webbläsarens inställningsmeny
-3. Klickande "Installera Carbon..."
+4. Besöka [https://carbon.now.sh](https://carbon.now.sh)
+5. Klickande webbläsarens inställningsmeny
+6. Klickande "Installera Carbon..."
 
 ## Gemenskap
 
