@@ -39,142 +39,94 @@
   </a>
 </p>
 
-<br></br>
+<br>
 
-##### Translations
+## Introduktion
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td>
-        <a href="/docs/README.se.md">Svenska</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/carbon-app/carbon/new/master/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-## Introduction
-
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+Du vet [till](https://twitter.com/dan_abramov/status/890191815567175680) [alla](https://twitter.com/reactjs/status/890511993261654017) [kod](https://twitter.com/notquiteleo/status/873483329345028096) [skärmdumpar](https://twitter.com/zeithq/status/805779711154647040) som du ser på Twitter? Även om koden vanligtvis är imponerande såg vi utrymme för förbättringar inom den estetiska avdelningen. Carbon gör det enkelt att skapa och dela vackra bilder av din källkod. Så vad väntar du på? Gå imponera på alla dina följare med din nyfundna design färdigheter.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
 
-## Features
+## Funktioner
 
-- **Customization**. Customize things like your image's syntax theme, window style, and more
-- **Share quickly**. Save your image or
-  a link with one click
-- **Import from GitHub gist**. Simply append a GitHub gist id to the url
+- **Anpassning**. Anpassa saker som bildens syntaxtema, fönsterstil och mer
+- **Dela snabbt**. Spara din bild eller en länk med ett klick
+- **Importera från GitHub gist**. Lägg bara ett GitHub gist id till url
 
-## Usage
+## Användande
 
-#### Import
+#### Importera
 
-There are a few different ways to import code into Carbon:
+Det finns några olika sätt att importera kod till Carbon:
 
-- Drop a file onto the editor
-- Append a GitHub gist id to the url (e.g. `carbon.now.sh/GIST_ID_HERE`)
-- Paste your code directly
+- Släpp en fil till redaktören
+- Lägg ett GitHub gist id till url: en (t.ex. "carbon.now.sh / GIST_ID_HERE")
+- Klistra in din kod direkt
 
-#### Customization
+#### Anpassning
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.
+När du har fått all din kod i Carbon, kan du anpassa din bild genom att ändra syntaxtema, bakgrundsfärg, fönstertema eller stoppning.
 
-#### Export/Sharing
+#### Exportera/Delning
 
-After you've customized your image you can either Tweet a link to the image, or save it directly.
+När du har anpassat din bild kan du antingen Tweet en länk till bilden eller spara den direkt.
 
-If you use the &apos;Tweet&apos; button, Carbon will automatically make your image accessible. However, if you want to manually tweet your image, please check out [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+Om du använder &apos;Tweet&apos; knappen, Carbon automatiskt din bild tillgänglig. Emellertid, om du vill tweet din bild manuellt, snälla kolla in [hur du gör dina Twitter bilder åtkomlig](https://help.twitter.com/en/using-twitter/picture-descriptions).
 
-If you include a Carbon image in a post, the source code will be invisible for assistive technology, it will not be possible to enlarge it or copy it, etc. Please, think about adding another element with the source code as text, like an [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) below the image.
+Om du inkluderar en Carbon bild i ett inlägg, källkoden kommer att vara osynlig för hjälpmedel, det kommer inte att vara möjligt att förstora den eller kopiera, osv. Snälla, tänk på att lägga till ett annat element med källkoden som text, som ett [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) under bilden.
 
-#### Installing Carbon for Desktop (Offline)
+#### Installera Carbon för skrivbordet (Offline)
 
-If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
+Om du använder Google Chrome, eller en annan webbläsare som stöder Progressive Web Apps, kan du installera Carbon för användning offline genom att:
 
-1. Visiting [https://carbon.now.sh](https://carbon.now.sh)
-2. Clicking your browser's settings menu
-3. Clicking "Install Carbon..."
+1. Besöka [https://carbon.now.sh](https://carbon.now.sh)
+2. Klicka på webbläsarens inställningsmeny
+3. Klicka på "Installera kol ..."
 
-## Community
+4. Besöka [https://carbon.now.sh](https://carbon.now.sh)
+5. Klickande webbläsarens inställningsmeny
+6. Klickande "Installera Carbon..."
 
-Check out these projects our awesome community has created:
+## Gemenskap
 
-##### Editor Plugins
+Kolla in dessa projekt som vår fantastiska gemenskap har skapat:
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
+##### Redigeraren Plugins
 
-##### Tools
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Öppna urvalet i din nuvarande IntelliJ IDEA fil i Carbon genom en kontext meny
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Öppna din nuvarande Atom fil i Carbon med `shift-cmd-A`
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Öppna din nuvarande VS Code fil i Carbon med kommando `carbon`
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Öppna urvalet i din nuvarande Sublime Text 3 fil med en anpassad bunden nyckel
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Öppna urvalet i din aktuella Vim/Neovim med funktionen `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Öppna urvalet i dina nuvarande Emacs med hjälp av interaktiv funktionen `carbon-now-sh`
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Öppna ditt nuvarande val i `carbon.now.sh`
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - A macOS wrapper with extended native features
-- [CodeExpander](https://codeexpander.com) - A smart GitHub gist client with the TextExpander features
-- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Export multiple Carbon code snippets from `Xcode Playground`.
+##### Verktyg
 
-##### Libraries
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Öppna en fil i Carbon eller ladda ner den direkt med `carbon-now`, med ett interaktivt läge, selektiv markering och mer
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - Ett macOS omslag med utökade inbyggda funktioner
+- [CodeExpander](https://codeexpander.com) - En smart GitHub gist klient med TextExpander funktionerna.
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Exportera flera Carbon kodavsnitt från `Xcode Playground`.
 
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
+##### Bibliotek
 
-##### Textbooks
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iterativt manipulera bildestetik i `R` och antingen öppna i Carbon eller ladda ner direkt.
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
+##### Läroböcker
 
-## Authors
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - En datavetenskaplig lärobok av Sarbo Roy.
 
-Carbon is a project by:
+## Författare
+
+Carbon är ett projekt av:
 
 - Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-#### License
+#### Licens
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
@@ -183,13 +135,13 @@ Carbon is a project by:
 
 ---
 
-## Contribute & Support
+## Bidra & Support
 
-Pull requests are welcome! Please see our [contributing guidelines](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
+Pull requests är välkomna! Snälla Se våra [bidrag riktlinjer](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) för mer detaljer.
 
-### Sponsors
+### Sponsorer
 
-Does your company use Carbon? Consider sponsoring the project to fund new features, bug fixes, and more.
+Använder ditt företag Carbon? Överväg att sponsra projektet för att finansiera nya funktioner, bugfixar och mer.
 
 <a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/images/logo.svg" /></a>
 <a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
@@ -200,7 +152,7 @@ Does your company use Carbon? Consider sponsoring the project to fund new featur
 
 ### Backers
 
-Love using Carbon? Consider supporting the project to fund new features and improvements
+Älskar du att använda Carbon? Överväg att stödja projektet för att hitta nya funktioner och förbättringar
 
 <a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
@@ -213,17 +165,17 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 <a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
 
-### Thanks To
+### Tack vare
 
-[ ▲ ZEIT ](https://zeit.co/) for sponsoring Carbon's hosting.
+[ ▲ ZEIT ](https://zeit.co/) för sponsring Carbon's hosting.
 
-### Contributors
+### Medarbetare
 
 ![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
 
-#### All Contributors
+#### Alla Medarbetare
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Tack till alla dessa underbara människor ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
