@@ -34,10 +34,17 @@
   dependencies:
     "@applitools/functional-commons" "^1.5.2"
 
-"@applitools/eyes-common@^3.10.3":
-  version "3.10.3"
-  resolved "https://registry.yarnpkg.com/@applitools/eyes-common/-/eyes-common-3.10.3.tgz#a9d64663d634d7cbcadba584161755aeca20cc9c"
-  integrity sha512-X7p+0nw8uJJaYTE+UCTuFTpngEKJrx115A8p06RsHiGcbQSe56Zy2JG45dGffB6Tr3SwJzmaVQ02cBdzBiT9mQ==
+"@applitools/dom-snapshot@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@applitools/dom-snapshot/-/dom-snapshot-3.0.3.tgz#6745f0065225a329330df7cbf8dd3ff35d90f036"
+  integrity sha512-6kMqK/F/bAYLJbcuu3O0CadAp7JHxNGHLf9gsc2yBtTDPFAVxVS6zVODLxohZZKpqudq0Bd4O65C0Ecn1a93yg==
+  dependencies:
+    "@applitools/functional-commons" "^1.5.2"
+
+"@applitools/eyes-common@^3.11.2":
+  version "3.11.2"
+  resolved "https://registry.yarnpkg.com/@applitools/eyes-common/-/eyes-common-3.11.2.tgz#b649c3a2280d2f8a88cb9c3a4808ea638f5a130c"
+  integrity sha512-8rA0uUHj55HNukthgpYb4u7K4fcBstNh/aw69rIKqeQ2dYJzIb9KNmNHc5rz/5u8ZPOxmpbrAL2dIPIh3BYHFA==
   dependencies:
     cosmiconfig "^5.2.1"
     dateformat "^3.0.3"
@@ -46,28 +53,28 @@
     png-async "^0.9.4"
     stack-trace "^0.0.10"
 
-"@applitools/eyes-cypress@^3.8.6":
-  version "3.8.6"
-  resolved "https://registry.yarnpkg.com/@applitools/eyes-cypress/-/eyes-cypress-3.8.6.tgz#6dc26aa84eb982bd11d6fe9250a754c6daa166fc"
-  integrity sha512-A/8Gd8lePk7vlx4+ztT0GIaBANqfGib7nP9SJNIUIGL7BFILvw+qsoMTu1iPHMSaO7vjEYslJqAaKaSWGKkynA==
+"@applitools/eyes-cypress@^3.8.10":
+  version "3.8.10"
+  resolved "https://registry.yarnpkg.com/@applitools/eyes-cypress/-/eyes-cypress-3.8.10.tgz#9fd42d5c960b8a497d0f9502acc87add3d86b861"
+  integrity sha512-M7L0CqyKLboaknwkH2HeaqfU7tqDiZzWq3hqwvIkA/892f9s+mR+Kd0vfe+GEImoAbDwLtJ5v+e0PG0hoC5VWQ==
   dependencies:
-    "@applitools/dom-snapshot" "^3.0.2"
-    "@applitools/eyes-common" "^3.10.3"
-    "@applitools/eyes-sdk-core" "^5.18.0"
+    "@applitools/dom-snapshot" "^3.0.3"
+    "@applitools/eyes-common" "^3.11.2"
+    "@applitools/eyes-sdk-core" "^5.20.2"
     "@applitools/functional-commons" "^1.5.2"
-    "@applitools/visual-grid-client" "^12.33.2"
+    "@applitools/visual-grid-client" "^12.36.1"
     body-parser "^1.19.0"
     chalk "^2.4.2"
     cors "^2.8.5"
     express "^4.17.1"
     lodash.flatten "^4.4.0"
 
-"@applitools/eyes-sdk-core@^5.18.0", "@applitools/eyes-sdk-core@^5.18.1":
-  version "5.18.1"
-  resolved "https://registry.yarnpkg.com/@applitools/eyes-sdk-core/-/eyes-sdk-core-5.18.1.tgz#b3e4bb7d276505ebe7b0f7355150a578af74b600"
-  integrity sha512-I1lP+9CyML/0tPL31JyB+ooOzi6tM/QMJHcwJrTj12tO4RZVAu5UpwJ6GBtJZCx/YyIEdkiQACMAqaMWkPBagg==
+"@applitools/eyes-sdk-core@^5.20.2":
+  version "5.20.2"
+  resolved "https://registry.yarnpkg.com/@applitools/eyes-sdk-core/-/eyes-sdk-core-5.20.2.tgz#db8bbc261cf60ddedc4a36b729736b20bb4dd56b"
+  integrity sha512-axN5tAsXUW5PcADDwYUxnku0vcHtd1rPm96DXS8Jb1ql0roS1/d2VnFU2SKwqmXip6UaOKKxYNLdzdFPb4OD5w==
   dependencies:
-    "@applitools/eyes-common" "^3.10.3"
+    "@applitools/eyes-common" "^3.11.2"
     axios "^0.19.0"
     es6-promise-pool "^2.5.0"
 
@@ -108,14 +115,14 @@
   dependencies:
     debug "^4.1.0"
 
-"@applitools/visual-grid-client@^12.33.2":
-  version "12.34.1"
-  resolved "https://registry.yarnpkg.com/@applitools/visual-grid-client/-/visual-grid-client-12.34.1.tgz#df537cce665c86d7783be2bd2df039be5a59df5d"
-  integrity sha512-b4POPHZKD9sIBVCod0o7k9Gxv5NfK5T4r0CGHhEhdGea2AZTurHWHk6VWedsl/qLAfqda0KVmD+XxyYQJDA//A==
+"@applitools/visual-grid-client@^12.36.1":
+  version "12.36.6"
+  resolved "https://registry.yarnpkg.com/@applitools/visual-grid-client/-/visual-grid-client-12.36.6.tgz#e1792036bcb5b018ccecd2783d2839435f42c4fa"
+  integrity sha512-sqC00kpZlgA74VVy2uwhLybdLPyQt8N0wTocotoksNNKiRi7Lxe/8pkdHECqAWRlCpqhjET0JjfWasCXvZBnEg==
   dependencies:
     "@applitools/dom-snapshot" "^3.0.2"
-    "@applitools/eyes-common" "^3.10.3"
-    "@applitools/eyes-sdk-core" "^5.18.1"
+    "@applitools/eyes-common" "^3.11.2"
+    "@applitools/eyes-sdk-core" "^5.20.2"
     "@applitools/functional-commons" "^1.5.2"
     "@applitools/http-commons" "^1.3.9"
     "@applitools/isomorphic-fetch" "^3.0.0"
@@ -1574,10 +1581,10 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-all-contributors-cli@^6.9.1:
-  version "6.9.1"
-  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.9.1.tgz#29f0867c6215a1691b25e83c23bc16f30f83f31a"
-  integrity sha512-z0I/u78s1Robx2p57X28gg+ZHgtRe7iABmEw1O/UFRDpqAHvlF3P7rmug0d99nsNIehrOSayO6XQey4bOHe4Iw==
+all-contributors-cli@^6.9.3:
+  version "6.9.3"
+  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.9.3.tgz#84995eac024402107f15e836364a9d5bf39b0d46"
+  integrity sha512-iSJrwddd2gEI08qUW2Q3UR22zgaAAbnur5MrrB3+nHmw1uTwzdy+/dzPZe2xNCEwozBHm2fF/67h3i03sPqAsw==
   dependencies:
     "@babel/runtime" "^7.2.0"
     async "^3.0.1"
@@ -3703,10 +3710,10 @@ eslint-plugin-react-hooks@^1.6.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.6.1.tgz#3c66a5515ea3e0a221ffc5d4e75c971c217b1a4c"
   integrity sha512-wHhmGJyVuijnYIJXZJHDUF2WM+rJYTjulUTqF9k61d3BTk8etydz+M4dXUVH7M76ZRS85rqBTCx0Es/lLsrjnA==
 
-eslint-plugin-react-hooks@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.1.1.tgz#b416390b642113f444ee175b667c3222a045a98e"
-  integrity sha512-AYitPYzwHyKpZKpzMH5sCkld68vP8wn29Lq716h4jk1ll9Gp4BBFoPq/iCjBBT35eXFJvOPjgMlvhIXFB0OhXg==
+eslint-plugin-react-hooks@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.2.0.tgz#078264e9e388da6929ace09d6abe92c85963aff4"
+  integrity sha512-jSlnBjV2cmyIeL555H/FbvuSbQ1AtpHjLMHuPrQnt1eVA6lX8yufdygh7AArI2m8ct7ChHGx2uOaCuxq2MUn6g==
 
 eslint-plugin-react@^7.13.0:
   version "7.14.2"
@@ -3723,10 +3730,10 @@ eslint-plugin-react@^7.13.0:
     prop-types "^15.7.2"
     resolve "^1.10.1"
 
-eslint-plugin-react@^7.15.1:
-  version "7.15.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.15.1.tgz#db5f8ed66c6ba46922518f08e1df9dac52ccaa49"
-  integrity sha512-YotSItgMPwLGlr3df44MGVyXnHkmKcpkHTzpte3QwJtocr3nFqCXCuoxFZeBtnT8RHdj038NlTvam3dcAFrMcA==
+eslint-plugin-react@^7.16.0:
+  version "7.16.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.16.0.tgz#9928e4f3e2122ed3ba6a5b56d0303ba3e41d8c09"
+  integrity sha512-GacBAATewhhptbK3/vTP09CbFrgUJmBSaaRcWdbQLFvUZy9yVcQxigBNHGPU/KE2AyHpzj3AWXpxoMTsIDiHug==
   dependencies:
     array-includes "^3.0.3"
     doctrine "^2.1.0"
@@ -4865,20 +4872,20 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.8.tgz#8de3fed26ce9b43034ef51013c4ad368b6b74ea8"
-  integrity sha512-HFOsgcyrX3qe/rBuqyTt+P4Gxn5P0seJmr215LAZ/vnwK3jWB3r0ck7swbzGRUbufCf9w/lgHPVbF/YXQALgfQ==
+husky@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.9.tgz#a2c3e9829bfd6b4957509a9500d2eef5dbfc8044"
+  integrity sha512-Yolhupm7le2/MqC1VYLk/cNmYxsSsqKkTyBhzQHhPK1jFnC89mmmNVuGtLNabjDI6Aj8UNIr0KpRNuBkiC4+sg==
   dependencies:
     chalk "^2.4.2"
+    ci-info "^2.0.0"
     cosmiconfig "^5.2.1"
     execa "^1.0.0"
     get-stdin "^7.0.0"
-    is-ci "^2.0.0"
     opencollective-postinstall "^2.0.2"
     pkg-dir "^4.2.0"
     please-upgrade-node "^3.2.0"
-    read-pkg "^5.1.1"
+    read-pkg "^5.2.0"
     run-node "^1.0.0"
     slash "^3.0.0"
 
@@ -5116,13 +5123,6 @@ is-ci@1.2.1:
   integrity sha512-s6tfsaQaQi3JNciBH6shVqEDvhGut0SUXr31ag8Pd8BBbVVlcGfWhpPmEOoM6RJ5TFhbypvf5yyRw/VXW1IiWg==
   dependencies:
     ci-info "^1.5.0"
-
-is-ci@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-2.0.0.tgz#6bc6334181810e04b5c22b3d589fdca55026404c"
-  integrity sha512-YfJT7rkpQB0updsdHLGWrvhBJfcfzNNawYDNIyQXJz0IViGf75O8EBPKSdvw2rF+LGCsX4FZ8tcr3b19LcZq4w==
-  dependencies:
-    ci-info "^2.0.0"
 
 is-data-descriptor@^0.1.4:
   version "0.1.4"
@@ -5623,10 +5623,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@^9.4.1:
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-9.4.1.tgz#60c0f85745bd398e6460aa7f5adb3cad3a2b862c"
-  integrity sha512-zFRbo1bAJEVf1m33paTTjDVfy2v3lICCqHfmQSgNoI+lWpi7HPG5y/R2Y7Whdce+FKxlZYs/U1sDSx8+nmQdDA==
+lint-staged@^9.4.2:
+  version "9.4.2"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-9.4.2.tgz#14cb577a9512f520691f8b5aefce6a8f7ead6c04"
+  integrity sha512-OFyGokJSWTn2M6vngnlLXjaHhi8n83VIZZ5/1Z26SULRUWgR3ITWpAEQC9Pnm3MC/EpCxlwts/mQWDHNji2+zA==
   dependencies:
     chalk "^2.4.2"
     commander "^2.20.0"
@@ -6526,10 +6526,10 @@ now-release@^0.0.2:
     clipboardy "^1.2.3"
     normalize-url "^4.3.0"
 
-now@^16.3.0:
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/now/-/now-16.3.0.tgz#4670df5944789b861f76792b06d8aebaa0185b97"
-  integrity sha512-ScqqwSpV0ddpUAx+H3c8W1WwVEC9dskqJ7ZuTiPxtj2iORkSd+21TXQF6PfChSjbVgpnne+Z8qGtKA7BYUrsig==
+now@^16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/now/-/now-16.4.0.tgz#4f852d820925ef25f2eb767f6c07f55378713612"
+  integrity sha512-4k4PzuwPrvAFQToBDr+mWDlICPmSMwCFndFC91NjQix/bqScvmOozM8c8VEHAlPi6y45ee2tCXJhvymX7dCeoQ==
 
 npm-bundled@^1.0.1:
   version "1.0.6"
@@ -7892,7 +7892,7 @@ read-pkg@^2.0.0:
     normalize-package-data "^2.3.2"
     path-type "^2.0.0"
 
-read-pkg@^5.1.1:
+read-pkg@^5.1.1, read-pkg@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-5.2.0.tgz#7bf295438ca5a33e56cd30e053b34ee7250c93cc"
   integrity sha512-Ug69mNOpfvKDAc2Q8DRpMjjzdtrnv9HcSMX+4VsZxD1aZ6ZzrIE7rlzXBtWTyhULSMKg076AW6WR5iZpD0JiOg==
