@@ -600,6 +600,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "pratikbutani",
+      "name": "Pratik Butani",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3306366?v=4",
+      "profile": "http://www.pratikbutani.com",
+      "contributions": [
+        "blog"
+      ]
     }
   ],
   "repoType": "github",
