@@ -458,9 +458,9 @@ function useSelectedLines(props, editorRef) {
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
+  useShowInvisibleLoader()
   const editorRef = React.createRef()
   const onGutterClick = useSelectedLines(props, editorRef)
-  useShowInvisibleLoader()
 
   return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
