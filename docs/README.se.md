@@ -17,15 +17,15 @@
   </a>
 </p>
 
-<p align="center">	
-  <a href="https://opencollective.com/carbon-app">	
-    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
-  </a>	
-  <a href="https://opencollective.com/carbon-app#backers">	
-    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
-  </a>	
-  <a href="https://opencollective.com/carbon-app#sponsors">	
-    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
+<p align="center">
+  <a href="https://opencollective.com/carbon-app">
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#backers">
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#sponsors">
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
   </a>
 </p>
 
@@ -33,7 +33,7 @@
 
 ## Introduktion
 
-Du vet [till](https://twitter.com/dan_abramov/status/890191815567175680) [alla](https://twitter.com/reactjs/status/890511993261654017) [kod](https://twitter.com/notquiteleo/status/873483329345028096) [skärmdumpar](https://twitter.com/zeithq/status/805779711154647040) som du ser på Twitter? Även om koden vanligtvis är imponerande såg vi utrymme för förbättringar inom den estetiska avdelningen. Carbon gör det enkelt att skapa och dela vackra bilder av din källkod. Så vad väntar du på? Gå imponera på alla dina följare med din nyfundna design färdigheter.
+Du vet [alla](https://twitter.com/dan_abramov/status/890191815567175680) [dom](https://twitter.com/reactjs/status/890511993261654017) [där](https://twitter.com/notquiteleo/status/873483329345028096) [kodskärmdumparna](https://twitter.com/zeithq/status/805779711154647040) som du ser på Twitter? Även om koden vanligtvis är imponerande såg vi utrymme för förbättringar inom den estetiska avdelningen. Carbon gör det enkelt att skapa och dela vackra bilder av din källkod. Så vad väntar du på? Gå imponera på alla dina följare med dina nyfunna designfärdigheter.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
@@ -43,7 +43,7 @@ Du vet [till](https://twitter.com/dan_abramov/status/890191815567175680) [alla](
 
 - **Anpassning**. Anpassa saker som bildens syntaxtema, fönsterstil och mer
 - **Dela snabbt**. Spara din bild eller en länk med ett klick
-- **Importera från GitHub gist**. Lägg bara ett GitHub gist id till url
+- **Importera från GitHub gist**. Lägg superlätt till ett GitHub gist id till url:en
 
 ## Användande
 
@@ -51,21 +51,21 @@ Du vet [till](https://twitter.com/dan_abramov/status/890191815567175680) [alla](
 
 Det finns några olika sätt att importera kod till Carbon:
 
-- Släpp en fil till redaktören
-- Lägg ett GitHub gist id till url: en (t.ex. "carbon.now.sh / GIST_ID_HERE")
+- Släpp en fil till editorn
+- Lägg till ett GitHub gist id till url:en (t.ex. "carbon.now.sh / GIST_ID_HERE")
 - Klistra in din kod direkt
 
 #### Anpassning
 
-När du har fått all din kod i Carbon, kan du anpassa din bild genom att ändra syntaxtema, bakgrundsfärg, fönstertema eller stoppning.
+När du har fått all din kod i Carbon, kan du anpassa din bild genom att ändra syntaxtema, bakgrundsfärg, fönstertema eller padding.
 
 #### Exportera/Delning
 
-När du har anpassat din bild kan du antingen Tweet en länk till bilden eller spara den direkt.
+När du har anpassat din bild kan du antingen Tweet:a en länk till bilden eller spara den direkt.
 
-Om du använder &apos;Tweet&apos; knappen, Carbon automatiskt din bild tillgänglig. Emellertid, om du vill tweet din bild manuellt, snälla kolla in [hur du gör dina Twitter bilder åtkomlig](https://help.twitter.com/en/using-twitter/picture-descriptions).
+Om du använder &apos;Tweet&apos;-knappen, kommer Carbon automatiskt göra din bild tillgänglig. Om du däremot vill tweet:a din bild manuellt, kolla in [hur du gör dina Twitterbilder åtkomliga](https://help.twitter.com/en/using-twitter/picture-descriptions).
 
-Om du inkluderar en Carbon bild i ett inlägg, källkoden kommer att vara osynlig för hjälpmedel, det kommer inte att vara möjligt att förstora den eller kopiera, osv. Snälla, tänk på att lägga till ett annat element med källkoden som text, som ett [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) under bilden.
+Om du inkluderar en Carbon bild i ett inlägg, kommer källkoden att vara osynlig för hjälpmedel, det kommer inte att vara möjligt att förstora den eller kopiera, osv. Tänk på att göra källkoden tillgänglig i text, som ett [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) under bilden.
 
 #### Installera Carbon för skrivbordet (Offline)
 
@@ -73,17 +73,13 @@ Om du använder Google Chrome, eller en annan webbläsare som stöder Progressiv
 
 1. Besöka [https://carbon.now.sh](https://carbon.now.sh)
 2. Klicka på webbläsarens inställningsmeny
-3. Klicka på "Installera kol ..."
+3. Klicka på "Installera Carbon..."
 
-4. Besöka [https://carbon.now.sh](https://carbon.now.sh)
-5. Klickande webbläsarens inställningsmeny
-6. Klickande "Installera Carbon..."
+## Community
 
-## Gemenskap
+Kolla in dessa projekt som vår fantastiska community har skapat:
 
-Kolla in dessa projekt som vår fantastiska gemenskap har skapat:
-
-##### Redigeraren Plugins
+##### Editor Plugins
 
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Öppna urvalet i din nuvarande IntelliJ IDEA fil i Carbon genom en kontext meny
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Öppna din nuvarande Atom fil i Carbon med `shift-cmd-A`
@@ -127,7 +123,7 @@ Carbon är ett projekt av:
 
 ## Bidra & Support
 
-Pull requests är välkomna! Snälla Se våra [bidrag riktlinjer](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) för mer detaljer.
+Pull requests är välkomna! Snälla Se våra [bidragsriktlinjer](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) för mer detaljer.
 
 ### Sponsorer
 
@@ -159,11 +155,11 @@ Använder ditt företag Carbon? Överväg att sponsra projektet för att finansi
 
 [ ▲ ZEIT ](https://zeit.co/) för sponsring Carbon's hosting.
 
-### Medarbetare
+### Medskapare
 
 ![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
 
-#### Alla Medarbetare
+#### Alla som bidragit
 
 Tack till alla dessa underbara människor ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
