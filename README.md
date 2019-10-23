@@ -150,6 +150,7 @@ Check out these projects our awesome community has created:
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
 - [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - This Xcode extension enables you to make a code selection and export it to a snippet without any other extra action. Available on [Mac AppStore](https://apps.apple.com/es/app/nef/id1479391704?l=en&mt=12)
 
 ##### Tools
 
