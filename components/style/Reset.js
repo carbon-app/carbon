@@ -170,7 +170,7 @@ export default () => (
 
       *::selection {
         background: rgba(255, 255, 255, 0.99);
-        color: #121212;
+        color: ${COLORS.BLACK};
       }
 
       kbd {
