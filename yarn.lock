@@ -2609,6 +2609,11 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
+cm-show-invisibles@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/cm-show-invisibles/-/cm-show-invisibles-2.0.2.tgz#017e9165ee2fd40b33446718aff97da55d7aeef4"
+  integrity sha512-TBGsnxLRUUjhVwOX7mY2hdrFlr1cAzG7UD2ote8FMi8ChubTbKItubdOpEtz+7emfv/v4xhQI1EBeA3ZzR3CGw==
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"

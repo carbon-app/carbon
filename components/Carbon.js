@@ -33,6 +33,7 @@ function searchLanguage(l) {
 }
 
 function noop() {}
+
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: noop,
@@ -158,7 +159,8 @@ class Carbon extends React.PureComponent {
       },
       readOnly: this.props.readOnly ? 'nocursor' : false,
       // needs to be able to refresh every 16ms to hit 60 frames / second
-      pollInterval: 16
+      pollInterval: 16,
+      showInvisibles: config.hiddenCharacters
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -443,9 +445,14 @@ function useSelectedLines(props, editorRef) {
   }, [])
 }
 
+function useShowInvisibleLoader() {
+  React.useEffect(() => void require('cm-show-invisibles'), [])
+}
+
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
+  useShowInvisibleLoader()
   const editorRef = React.createRef()
   const onGutterClick = useSelectedLines(props, editorRef)
 
