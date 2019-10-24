@@ -29,9 +29,6 @@ function WindowSettings({
   dropShadowBlurRadius,
   dropShadowOffsetY,
   windowControls,
-  lineNumbers,
-  firstLineNumber,
-  hiddenCharacters,
   widthAdjustment,
   watermark,
   onWidthChanging,
@@ -80,28 +77,6 @@ function WindowSettings({
         onChange={onChange.bind(null, 'windowControls')}
       />
       <Toggle
-        label="Line numbers"
-        enabled={lineNumbers}
-        onChange={onChange.bind(null, 'lineNumbers')}
-      />
-      {lineNumbers && (
-        <div className="row settings-row first-line-number-row">
-          <Input
-            label="First line number"
-            type="number"
-            value={firstLineNumber}
-            min={0}
-            onChange={e => onChange('firstLineNumber', Number(e.target.value))}
-            width="50%"
-          />
-        </div>
-      )}
-      <Toggle
-        label="Hidden characters"
-        enabled={hiddenCharacters}
-        onChange={onChange.bind(null, 'hiddenCharacters')}
-      />
-      <Toggle
         label="Auto-adjust width"
         enabled={widthAdjustment}
         onChange={onChange.bind(null, 'widthAdjustment')}
@@ -121,22 +96,21 @@ function WindowSettings({
           .settings-content :global(.settings-row:focus-within) {
             outline: -webkit-focus-ring-color auto 4px;
           }
-
-          .first-line-number-row {
-            padding: 8px 12px 8px 8px;
-          }
         `}
       </style>
     </div>
   )
 }
 
-function TypeSettings({
+function EditorSettings({
   onChange,
   onUpload,
   font,
   size,
   lineHeight,
+  lineNumbers,
+  firstLineNumber,
+  hiddenCharacters,
   onWidthChanging,
   onWidthChanged
 }) {
@@ -165,6 +139,35 @@ function TypeSettings({
         unit="%"
         onChange={onChange.bind(null, 'lineHeight')}
       />
+      <Toggle
+        label="Line numbers"
+        enabled={lineNumbers}
+        onChange={onChange.bind(null, 'lineNumbers')}
+      />
+      {lineNumbers && (
+        <div className="row settings-row first-line-number-row">
+          <Input
+            label="First line number"
+            type="number"
+            value={firstLineNumber}
+            min={0}
+            onChange={e => onChange('firstLineNumber', Number(e.target.value))}
+            width="50%"
+          />
+        </div>
+      )}
+      <Toggle
+        label="Hidden characters"
+        enabled={hiddenCharacters}
+        onChange={onChange.bind(null, 'hiddenCharacters')}
+      />
+      <style jsx>
+        {`
+          .first-line-number-row {
+            padding: 8px 12px 8px 8px;
+          }
+        `}
+      </style>
     </div>
   )
 }
@@ -350,16 +353,13 @@ class Settings extends React.PureComponent {
             dropShadowBlurRadius={this.props.dropShadowBlurRadius}
             dropShadowOffsetY={this.props.dropShadowOffsetY}
             windowControls={this.props.windowControls}
-            lineNumbers={this.props.lineNumbers}
-            firstLineNumber={this.props.firstLineNumber}
-            hiddenCharacters={this.props.hiddenCharacters}
             widthAdjustment={this.props.widthAdjustment}
             watermark={this.props.watermark}
           />
         )
-      case 'Type':
+      case 'Editor':
         return (
-          <TypeSettings
+          <EditorSettings
             onChange={this.handleChange}
             onUpload={this.handleFontUpload}
             onWidthChanging={this.handleWidthChanging}
@@ -367,6 +367,9 @@ class Settings extends React.PureComponent {
             font={this.props.fontFamily}
             size={this.props.fontSize}
             lineHeight={this.props.lineHeight}
+            lineNumbers={this.props.lineNumbers}
+            firstLineNumber={this.props.firstLineNumber}
+            hiddenCharacters={this.props.hiddenCharacters}
           />
         )
       case 'Misc': {
@@ -434,7 +437,7 @@ class Settings extends React.PureComponent {
           <div className="settings-bottom">
             <div className="settings-menu" ref={this.menuRef} tabIndex={-1}>
               <MenuButton name="Window" select={this.selectMenu} selected={selectedMenu} />
-              <MenuButton name="Type" select={this.selectMenu} selected={selectedMenu} />
+              <MenuButton name="Editor" select={this.selectMenu} selected={selectedMenu} />
               <MenuButton name="Misc" select={this.selectMenu} selected={selectedMenu} />
             </div>
             {this.renderContent()}
