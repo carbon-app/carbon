@@ -150,6 +150,7 @@ Check out these projects our awesome community has created:
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
 - [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - This Xcode extension enables you to export a code selection as a Carbon snippet in a single action
 
 ##### Tools
 
@@ -314,4 +315,5 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
