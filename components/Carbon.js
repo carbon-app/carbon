@@ -378,16 +378,6 @@ function useHighlightLoader() {
   }, [])
 }
 
-let showInvisibleLoaded = false
-function useShowInvisibleLoader() {
-  React.useEffect(() => {
-    if (!showInvisibleLoaded) {
-      require('cm-show-invisibles')
-      showInvisibleLoaded = true
-    }
-  }, [])
-}
-
 function selectedLinesReducer(
   { prevLine, selected },
   { type, lineNumber, numLines, selectedLines }
@@ -453,6 +443,10 @@ function useSelectedLines(props, editorRef) {
       dispatch({ type: 'LINE', lineNumber, numLines })
     }
   }, [])
+}
+
+function useShowInvisibleLoader() {
+  React.useEffect(() => void require('cm-show-invisibles'), [])
 }
 
 function CarbonContainer(props, ref) {
