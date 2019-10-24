@@ -158,8 +158,6 @@ class Carbon extends React.PureComponent {
         'Shift-Tab': 'indentLess'
       },
       readOnly: this.props.readOnly ? 'nocursor' : false,
-      // needs to be able to refresh every 16ms to hit 60 frames / second
-      pollInterval: 16,
       showInvisibles: config.hiddenCharacters
     }
     const backgroundImage =
