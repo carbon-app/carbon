@@ -609,6 +609,15 @@
       "contributions": [
         "blog"
       ]
+    },
+    {
+      "login": "baktiaditya",
+      "name": "Bakti Aditya",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2070906?v=4",
+      "profile": "https://github.com/baktiaditya",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
