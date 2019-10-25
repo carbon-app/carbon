@@ -388,23 +388,30 @@ function selectedLinesReducer(
 ) {
   const newState = {}
 
-  if (type === 'GROUP' && prevLine) {
-    for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
-      newState[i] = selected[prevLine]
-    }
-  }
-  if (type === 'MULTILINE') {
-    for (let i = 0; i < selectedLines.length; i++) {
-      newState[selectedLines[i] - 1] = true
-    }
-  } else {
-    for (let i = 0; i < numLines; i++) {
-      if (i != lineNumber) {
-        if (prevLine == null) {
-          newState[i] = false
+  switch (type) {
+    case 'GROUP': {
+      if (prevLine) {
+        for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
+          newState[i] = selected[prevLine]
         }
-      } else {
-        newState[lineNumber] = selected[lineNumber] === true ? false : true
+      }
+      break
+    }
+    case 'MULTILINE': {
+      for (let i = 0; i < selectedLines.length; i++) {
+        newState[selectedLines[i] - 1] = true
+      }
+      break
+    }
+    default: {
+      for (let i = 0; i < numLines; i++) {
+        if (i != lineNumber) {
+          if (prevLine == null) {
+            newState[i] = false
+          }
+        } else {
+          newState[lineNumber] = selected[lineNumber] === true ? false : true
+        }
       }
     }
   }
@@ -441,11 +448,8 @@ function useSelectedLines(props, editorRef) {
 
   return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
     const numLines = editor.display.view.length
-    if (e.shiftKey) {
-      dispatch({ type: 'GROUP', lineNumber, numLines })
-    } else {
-      dispatch({ type: 'LINE', lineNumber, numLines })
-    }
+    const type = e.shiftKey ? 'GROUP' : 'LINE'
+    dispatch({ type, lineNumber, numLines })
   }, [])
 }
 
