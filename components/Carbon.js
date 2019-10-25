@@ -320,7 +320,7 @@ class Carbon extends React.PureComponent {
         </div>
         {!this.props.readOnly && this.state.selectionAt && (
           <SelectionEditor
-            position={this.state.selectionAt}
+            position={{ top: -4, right: 6 }}
             onChange={this.onSelectionChange}
             onClose={this.closeSelectionEditor}
           />

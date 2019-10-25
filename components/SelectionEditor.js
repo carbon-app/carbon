@@ -68,11 +68,10 @@ function SelectionEditor({ position, onChange, onClose }) {
   return (
     <Popout
       hidden={false}
-      pointerLeft="62px"
+      pointerRight="16px"
       style={{
         zIndex: 100,
-        top: position.top,
-        left: position.left
+        ...position
       }}
     >
       <div className="colorizer">
