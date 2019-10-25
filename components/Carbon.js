@@ -371,10 +371,7 @@ function useHighlightLoader() {
   React.useEffect(() => {
     if (!highLightsLoaded) {
       import('../lib/highlight-languages')
-        .then(res => {
-          // console.log(res.default)
-          res.default.map(config => hljs.registerLanguage(config[0], config[1]))
-        })
+        .then(res => res.default.map(config => hljs.registerLanguage(config[0], config[1])))
         .then(() => {
           highLightsLoaded = true
         })
@@ -442,8 +439,12 @@ function useSelectedLines(props, editorRef) {
   }, [state.selected, props.children, props.config, editorRef])
 
   React.useEffect(() => {
-    let selectedLines = props.config.selectedLines || []
-    dispatch({ type: 'MULTILINE', selectedLines })
+    if (props.config.selectedLines) {
+      dispatch({
+        type: 'MULTILINE',
+        selectedLines: props.config.selectedLines
+      })
+    }
   }, [props.config.selectedLines])
 
   return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
@@ -453,14 +454,14 @@ function useSelectedLines(props, editorRef) {
   }, [])
 }
 
-function useShowInvisibleLoader() {
+function useShowInvisiblesLoader() {
   React.useEffect(() => void require('cm-show-invisibles'), [])
 }
 
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
-  useShowInvisibleLoader()
+  useShowInvisiblesLoader()
   const editorRef = React.createRef()
   const onGutterClick = useSelectedLines(props, editorRef)
 
