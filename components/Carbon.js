@@ -137,6 +137,8 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  closeSelectionEditor = () => this.setState({ selectionAt: null })
+
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -317,7 +319,11 @@ class Carbon extends React.PureComponent {
           <div className="twitter-png-fix" />
         </div>
         {!this.props.readOnly && this.state.selectionAt && (
-          <SelectionEditor position={this.state.selectionAt} onChange={this.onSelectionChange} />
+          <SelectionEditor
+            position={this.state.selectionAt}
+            onChange={this.onSelectionChange}
+            onClose={this.closeSelectionEditor}
+          />
         )}
         <style jsx>
           {`
