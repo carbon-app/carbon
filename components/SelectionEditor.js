@@ -3,6 +3,7 @@ import Popout from './Popout'
 import Button from './Button'
 import ColorPicker from './ColorPicker'
 import { COLORS } from '../lib/constants'
+import { useKeyboardListener } from 'actionsack'
 
 function ModifierButton(props) {
   return (
@@ -49,7 +50,8 @@ function reducer(state, action) {
   throw new Error('Invalid action')
 }
 
-function SelectionEditor({ position, onChange }) {
+function SelectionEditor({ position, onChange, onClose }) {
+  useKeyboardListener('Escape', onClose)
   const [open, setOpen] = React.useState(false)
 
   const [state, dispatch] = React.useReducer(reducer, {
