@@ -67,7 +67,7 @@ class ThemeSelect extends React.Component {
 
             .window-theme span {
               display: inline-block;
-              margin-bottom: 8px;
+              margin-bottom: 2px;
             }
 
             .themes {
