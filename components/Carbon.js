@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import dynamic from 'next/dynamic'
 import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -318,13 +319,16 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {!this.props.readOnly && this.state.selectionAt && (
-          <SelectionEditor
-            position={{ top: -4, right: 6 }}
-            onChange={this.onSelectionChange}
-            onClose={this.closeSelectionEditor}
-          />
-        )}
+        {!this.props.readOnly &&
+          this.state.selectionAt &&
+          ReactDOM.createPortal(
+            <SelectionEditor
+              onChange={this.onSelectionChange}
+              onClose={this.closeSelectionEditor}
+            />,
+            // TODO: don't use portal?
+            document.getElementById('style-editor-button')
+          )}
         <style jsx>
           {`
             .section,
