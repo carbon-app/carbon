@@ -102,15 +102,6 @@ class Carbon extends React.PureComponent {
 
   onMouseUp = () => {
     if (this.currentSelection) {
-      // const { editor } = this.props.editorRef.current
-      // const startPos = editor.charCoords(this.currentSelection.from, 'window')
-      // const endPos = editor.charCoords(this.currentSelection.to, 'window')
-
-      // const container = this.props.innerRef.current.getBoundingClientRect()
-
-      // const top = Math.max(startPos.bottom, endPos.bottom) - container.top - 3
-      // const left = (startPos.left + endPos.left) / 2 - container.left - 68
-      // { ...this.currentSelection, top, left }
       this.setState({ selectionAt: this.currentSelection }, () => {
         this.currentSelection = null
       })
