@@ -392,6 +392,7 @@ class Editor extends React.Component {
               applyPreset={this.applyPreset}
               getCarbonImage={this.getCarbonImage}
             />
+            <div id="style-editor-button" />
             <div className="buttons">
               <TweetButton onClick={this.upload} />
               <ExportMenu
