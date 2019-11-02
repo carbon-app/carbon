@@ -129,8 +129,6 @@ class Carbon extends React.PureComponent {
     }
   }
 
-  closeSelectionEditor = () => this.setState({ selectionAt: null })
-
   render() {
     const config = { ...DEFAULT_SETTINGS, ...this.props.config }
 
@@ -313,10 +311,7 @@ class Carbon extends React.PureComponent {
         {!this.props.readOnly &&
           this.state.selectionAt &&
           ReactDOM.createPortal(
-            <SelectionEditor
-              onChange={this.onSelectionChange}
-              onClose={this.closeSelectionEditor}
-            />,
+            <SelectionEditor onChange={this.onSelectionChange} />,
             // TODO: don't use portal?
             document.getElementById('style-editor-button')
           )}

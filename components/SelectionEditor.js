@@ -6,7 +6,7 @@ import ColorPicker from './ColorPicker'
 import ThemeIcon from './svg/Theme'
 import { COLORS } from '../lib/constants'
 
-const styleEditorButtonStyle = { width: 32, maxWidth: 32, height: 32, borderRadius: '50%' }
+const styleEditorButtonStyle = { width: 28, maxWidth: 28, height: 28, borderRadius: '50%' }
 
 function ModifierButton(props) {
   return (
@@ -53,10 +53,11 @@ function reducer(state, action) {
   throw new Error('Invalid action')
 }
 
-function SelectionEditor({ onChange, onClose }) {
-  useKeyboardListener('Escape', onClose)
+function SelectionEditor({ onChange }) {
   const [visible, setVisible] = React.useState(false)
   const [open, setOpen] = React.useState(true)
+
+  useKeyboardListener('Escape', () => setVisible(false))
 
   const [state, dispatch] = React.useReducer(reducer, {
     bold: false,
@@ -77,7 +78,7 @@ function SelectionEditor({ onChange, onClose }) {
         center
         selected={visible}
         style={styleEditorButtonStyle}
-        margin="4px 0 0"
+        margin="6px 0 0"
         onClick={() => setVisible(v => !v)}
       >
         <ThemeIcon />
