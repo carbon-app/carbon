@@ -1,5 +1,4 @@
 import React from 'react'
-import { Head } from 'next'
 import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
 import { useAsyncCallback } from 'actionsack'
 
@@ -271,9 +270,6 @@ export default function() {
   return (
     <StripeProvider stripe={stripe}>
       <Elements>
-        <Head>
-          <script src="https://js.stripe.com/v3/" />
-        </Head>
         <BillingWithStripe />
       </Elements>
     </StripeProvider>
