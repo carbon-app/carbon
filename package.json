@@ -57,10 +57,10 @@
     "tohash": "^1.0.2"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.8.14",
-    "all-contributors-cli": "^6.9.3",
+    "@applitools/eyes-cypress": "^3.8.18",
+    "all-contributors-cli": "^6.10.0",
     "babel-eslint": "^10.0.3",
-    "cypress": "^3.5.0",
+    "cypress": "^3.6.1",
     "eslint": "^6.6.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
