@@ -4,7 +4,6 @@ import { useAsyncCallback } from 'actionsack'
 
 import Editor from './Editor'
 import Toasts from './Toasts'
-import LoginButton from './LoginButton'
 import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
 
@@ -102,18 +101,6 @@ function EditorContainer(props) {
 
   return (
     <>
-      <div className="login-button-container">
-        <LoginButton />
-        <style jsx>
-          {`
-            .login-button-container {
-              position: absolute;
-              top: 1.4rem;
-              right: 1rem;
-            }
-          `}
-        </style>
-      </div>
       <Toasts toasts={toasts} />
       <Editor
         {...props}

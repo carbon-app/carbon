@@ -87,7 +87,7 @@ function LoginButton({ isVisible, toggleVisibility }) {
             height: 100%;
           }
           div :global(.profile-button) {
-            max-width: 142px;
+            max-width: 218px;
             min-height: 40px;
           }
           span {
