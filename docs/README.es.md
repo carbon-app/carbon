@@ -7,23 +7,26 @@
     <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
   </a>
   <a href="#contributors">
-    <img src="https://img.shields.io/badge/all_contributors-53-orange.svg?style=flat-square" alt="All Contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-53-orange.svg" alt="All Contributors" />
   </a>
   <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
-  <a href="https://spectrum.chat/carbon-now">
-    <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
   </a>
 </p>
 
 <p align="center">	
+  <a href="https://opencollective.com/carbon-app">	
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
+  </a>	
   <a href="https://opencollective.com/carbon-app#backers">	
     <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
   </a>	
   <a href="https://opencollective.com/carbon-app#sponsors">	
     <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
-  </a>	
+  </a>
 </p>
 
 <br></br>
@@ -40,7 +43,7 @@
 
 - **Personalización**. Personaliza cosas como el tema de sintaxis de tu imagen, el estilo de la ventana y más.
 - **Comparte rápidamente**. Guarde su imagen o twittee un enlace con un clic.
-- **Importar de GitHub gist**. Simplemente agregue un ID de gitHub gist a la url.
+- **Importar de GitHub gist**. Simplemente agregue un ID de GitHub gist a la url.
 
 ## Uso
 
@@ -58,7 +61,7 @@ Una vez que tenga todo su código en Carbon, puede personalizar su imagen cambia
 
 #### Exportar/Compartir
 
-Después de que hayas personalizado tu fragmento de código, puedes compartirlo en un Tweet haciendo un enlace a la imagen o guardando la imagen directamente.
+Después de que hayas personalizado tu fragmento de código, puedes compartirlo en un Tweet haciendo un enlace a la imagen o guardar la imagen directamente.
 
 Si utilizas el botón de “Tweet”, Carbon hará que su imagen sea accesible automáticamente. Sin embargo, si desea “twittear” manualmente su imagen de Carbon, consulte [cómo publicar imágenes accesibles](https://help.twitter.com/es/using-twitter/picture-descriptions).
 
@@ -86,6 +89,7 @@ Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Abra la selección en su Vim / Neovim actual usando la función `CarbonNowSh ()`.
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Abra la selección en su Emacs actual usando la función interactiva `carbon-now-sh`.
 - [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Abra su selección actual en `carbon.now.sh`.
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Esta extensión de Xcode te permite exportar una selección de código como un fragmento de Carbon en una sola acción.
 
 ##### Herramientas
 
@@ -102,10 +106,6 @@ Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 
 - ["CS 101 - Una introducción al pensamiento computacional"](https://itunes.apple.com/us/book/id1435714196) - Un libro de texto de ciencias de la computación por Sarbo Roy.
 
-## Contribuir
-
-¡Bienvenido! Consulte nuestro [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) para obtener más detalles.
-
 ## Autores
 
 Carbon es un proyecto de:
@@ -114,12 +114,24 @@ Carbon es un proyecto de:
 - Brian Dennis ([@briandennis](https://github.com/briandennis)).
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex)).
 
-## Contribuyentes
+#### Licencia
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## Contribuir y apoyar
+
+¡Los Pull Requests son bienvenidos! Por favor consulte nuestra [guía de contribución](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) para obtener más detalles.
 
 ### Patrocinadores
 
 ¿Tu empresa utiliza Carbon? Cosidera patrocinar el proyecto para financiar nuevas características, correcciones de errores y más.
 
+<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
 <a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/sponsors/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/1/avatar"></a>
 <a href="https://opencollective.com/carbon-app/sponsors/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/2/avatar"></a>
@@ -134,7 +146,12 @@ Carbon es un proyecto de:
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/2/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/3/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/4/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/4/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/5/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/5/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
 
 ### Gracias a
 
