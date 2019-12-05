@@ -237,6 +237,10 @@ export default () => (
         text-transform: capitalize;
       }
 
+      .uppercase {
+        text-transform: uppercase;
+      }
+
       /* include just until we have a keyboard navigation style system */
       [role='button']:focus {
         outline: none;

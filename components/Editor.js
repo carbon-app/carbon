@@ -10,7 +10,9 @@ import ApiContext from './ApiContext'
 import Dropdown from './Dropdown'
 import Settings from './Settings'
 import Toolbar from './Toolbar'
+import Box from './Box'
 import Overlay from './Overlay'
+import AspectRatioButtons from './AspectRatioButtons'
 import BackgroundSelect from './BackgroundSelect'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
@@ -59,6 +61,7 @@ class Editor extends React.Component {
     this.updateSetting = this.updateSetting.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
+    this.updateAspectRatio = this.updateAspectRatio.bind(this)
     this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
     this.getCarbonImage = this.getCarbonImage.bind(this)
     this.onDrop = this.onDrop.bind(this)
@@ -135,14 +138,18 @@ class Editor extends React.Component {
 
     const map = new Map()
     const undoMap = value => {
-      map.forEach((value, node) => (node.innerHTML = value))
+      map.forEach((value, node) => {
+        Object.keys(value).forEach(key => {
+          node[key] = value[key]
+        })
+      })
       return value
     }
 
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
         if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
-          map.set(node, node.innerHTML)
+          map.set(node, { innerHTML: node.innerHTML })
           node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
             node.innerText = node.innerText.replace(t, encodeURIComponent(t))
           })
@@ -150,13 +157,24 @@ class Editor extends React.Component {
       })
     }
 
+    node.querySelectorAll('.slider').forEach(node => {
+      const { parentNode, style } = node
+      const { scrollTop } = parentNode
+
+      map.set(parentNode, { scrollTop })
+      map.set(node, { style })
+
+      node.style = `position: relative; top: -${scrollTop}px`
+      node.parentNode.scrollTop = 0
+    })
+
     const width = node.offsetWidth * exportSize
     const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
 
     const config = {
       style: {
         transform: `scale(${exportSize})`,
-        'transform-origin': 'center',
+        'transform-origin': '0% 0%',
         background: squared ? this.state.backgroundColor : 'none'
       },
       filter: n => {
@@ -284,6 +302,10 @@ class Editor extends React.Component {
     }
   }
 
+  updateAspectRatio(aspectRatio) {
+    this.updateSetting('aspectRatio', aspectRatio)
+  }
+
   updateTheme = theme => this.updateState({ theme })
   updateHighlights = updates =>
     this.setState(({ highlights = {} }) => ({
@@ -353,57 +375,59 @@ class Editor extends React.Component {
 
     return (
       <div className="editor">
-        <Toolbar>
-          <Themes
-            theme={theme}
-            highlights={highlights}
-            update={this.updateTheme}
-            updateHighlights={this.updateHighlights}
-            remove={this.removeTheme}
-            create={this.createTheme}
-            themes={this.props.themes}
-          />
-          <Dropdown
-            title="Language"
-            icon={languageIcon}
-            selected={
-              LANGUAGE_NAME_HASH[language] ||
-              LANGUAGE_MIME_HASH[language] ||
-              LANGUAGE_MODE_HASH[language] ||
-              LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
-            }
-            list={LANGUAGES}
-            onChange={this.updateLanguage}
-          />
-          <div className="toolbar-second-row">
-            <BackgroundSelect
-              onChange={this.updateBackground}
+        <Box marginBottom="1rem">
+          <Toolbar>
+            <Themes
+              theme={theme}
+              highlights={highlights}
+              update={this.updateTheme}
               updateHighlights={this.updateHighlights}
-              mode={backgroundMode}
-              color={backgroundColor}
-              image={backgroundImage}
-              carbonRef={this.carbonNode.current}
+              remove={this.removeTheme}
+              create={this.createTheme}
+              themes={this.props.themes}
             />
-            <Settings
-              {...config}
-              onChange={this.updateSetting}
-              resetDefaultSettings={this.resetDefaultSettings}
-              format={this.format}
-              applyPreset={this.applyPreset}
-              getCarbonImage={this.getCarbonImage}
+            <Dropdown
+              title="Language"
+              icon={languageIcon}
+              selected={
+                LANGUAGE_NAME_HASH[language] ||
+                LANGUAGE_MIME_HASH[language] ||
+                LANGUAGE_MODE_HASH[language] ||
+                LANGUAGE_MODE_HASH[DEFAULT_LANGUAGE]
+              }
+              list={LANGUAGES}
+              onChange={this.updateLanguage}
             />
-            <div id="style-editor-button" />
-            <div className="buttons">
-              <TweetButton onClick={this.upload} />
-              <ExportMenu
-                onChange={this.updateSetting}
-                exportImage={this.exportImage}
-                exportSize={exportSize}
-                backgroundImage={backgroundImage}
+            <div className="toolbar-second-row">
+              <BackgroundSelect
+                onChange={this.updateBackground}
+                updateHighlights={this.updateHighlights}
+                mode={backgroundMode}
+                color={backgroundColor}
+                image={backgroundImage}
+                carbonRef={this.carbonNode.current}
               />
+              <Settings
+                {...config}
+                onChange={this.updateSetting}
+                resetDefaultSettings={this.resetDefaultSettings}
+                format={this.format}
+                applyPreset={this.applyPreset}
+                getCarbonImage={this.getCarbonImage}
+              />
+              <div id="style-editor-button" />
+              <div className="buttons">
+                <TweetButton onClick={this.upload} />
+                <ExportMenu
+                  onChange={this.updateSetting}
+                  exportImage={this.exportImage}
+                  exportSize={exportSize}
+                  backgroundImage={backgroundImage}
+                />
+              </div>
             </div>
-          </div>
-        </Toolbar>
+          </Toolbar>
+        </Box>
 
         <Dropzone accept="image/*, text/*, application/*" onDrop={this.onDrop}>
           {({ canDrop }) => (
@@ -425,6 +449,14 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
+        <Box marginTop="1rem" display="flex" justifyContent="center">
+          <Toolbar>
+            <AspectRatioButtons
+              aspectRatio={this.state.aspectRatio}
+              onChange={this.updateAspectRatio}
+            />
+          </Toolbar>
+        </Box>
         {this.props.snippet && (
           <SnippetToolbar
             snippet={this.props.snippet}
@@ -440,6 +472,7 @@ class Editor extends React.Component {
               border: 3px solid ${COLORS.SECONDARY};
               border-radius: 8px;
               padding: 16px;
+              position: relative;
             }
 
             .buttons {

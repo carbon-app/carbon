@@ -20,6 +20,7 @@ const Button = ({
   flex = 1,
   padding = 0,
   margin = 0,
+  width = 'auto',
   title,
   Component = 'button',
   display,
@@ -41,6 +42,7 @@ const Button = ({
           border: none;
           padding: ${padding};
           margin: ${margin};
+          width: ${width};
           border-radius: ${border ? '3px' : 0};
           user-select: none;
           justify-content: ${center ? 'center' : 'initial'};

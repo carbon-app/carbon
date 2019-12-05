@@ -163,23 +163,27 @@ class Carbon extends React.PureComponent {
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     const content = (
       <div className="container">
-        {config.windowControls ? (
-          <WindowControls
-            theme={config.windowTheme}
-            code={this.props.children}
-            copyable={this.props.copyable}
-            light={light}
-          />
-        ) : null}
-        <CodeMirror
-          ref={this.props.editorRef}
-          className={`CodeMirror__container window-theme__${config.windowTheme}`}
-          value={this.props.children}
-          options={options}
-          onBeforeChange={this.onBeforeChange}
-          onGutterClick={this.props.onGutterClick}
-          onSelection={this.onSelection}
-        />
+        <div className="wrapper">
+          <div className="slider">
+            {config.windowControls ? (
+              <WindowControls
+                theme={config.windowTheme}
+                code={this.props.children}
+                copyable={this.props.copyable}
+                light={light}
+              />
+            ) : null}
+            <CodeMirror
+              ref={this.props.editorRef}
+              className={`CodeMirror__container window-theme__${config.windowTheme}`}
+              value={this.props.children}
+              options={options}
+              onBeforeChange={this.onBeforeChange}
+              onGutterClick={this.props.onGutterClick}
+              onSelection={this.onSelection}
+            />
+          </div>
+        </div>
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
@@ -189,10 +193,30 @@ class Carbon extends React.PureComponent {
         <style jsx>
           {`
             .container {
-              position: relative;
+              ${config.aspectRatio &&
+                `
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              `}
               min-width: ${config.widthAdjustment ? '90px' : '680px'};
               max-width: 1024px;
+            }
+
+            .wrapper {
+              overflow: hidden;
+              overflow-y: scroll;
+              height: 100%;
+            }
+
+            .slider {
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              min-height: 100%;
             }
 
             .container :global(.watermark) {
@@ -221,13 +245,15 @@ class Carbon extends React.PureComponent {
             }
 
             .container .bg {
-              ${this.props.config.backgroundMode === 'image'
-                ? `background: url(${backgroundImage});
+              ${
+                this.props.config.backgroundMode === 'image'
+                  ? `background: url(${backgroundImage});
                     background-size: cover;
                     background-repeat: no-repeat;`
-                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
+                  : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                     background-size: auto;
-                    background-repeat: repeat;`} position: absolute;
+                    background-repeat: repeat;`
+              } position: absolute;
               top: 0px;
               right: 0px;
               bottom: 0px;
@@ -253,9 +279,11 @@ class Carbon extends React.PureComponent {
               position: relative;
               z-index: 1;
               border-radius: 5px;
-              ${config.dropShadow
-                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
-                : ''};
+              ${
+                config.dropShadow
+                  ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
+                  : ''
+              };
             }
 
             .container :global(.CodeMirror__container .CodeMirror) {
@@ -319,13 +347,27 @@ class Carbon extends React.PureComponent {
           {`
             .section,
             .export-container {
+              width: 100%;
               height: 100%;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              overflow: hidden;
             }
+
+            ${config.aspectRatio &&
+              `
+            .export-container::before {
+              content: '';
+              width: 1px;
+              margin-left: -1px;
+              float: left;
+              height: 0;
+              padding-top: ${100 * (1 / config.aspectRatio)}%;
+            }
+
+            .export-container::after {
+              content: '';
+              display: table;
+              clear: both;
+            }
+            `}
 
             /* forces twitter to save images as png — https://github.com/carbon-app/carbon/issues/86 */
             .twitter-png-fix {
