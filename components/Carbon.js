@@ -351,8 +351,6 @@ class Carbon extends React.PureComponent {
               height: 100%;
             }
 
-            ${config.aspectRatio &&
-              `
             .export-container::before {
               content: '';
               width: 1px;
@@ -360,14 +358,14 @@ class Carbon extends React.PureComponent {
               float: left;
               height: 0;
               padding-top: ${100 * (1 / config.aspectRatio)}%;
+              display: ${config.aspectRatio ? 'block' : 'none'};
             }
 
             .export-container::after {
               content: '';
-              display: table;
               clear: both;
+              display: ${config.aspectRatio ? 'table' : 'none'};
             }
-            `}
 
             /* forces twitter to save images as png — https://github.com/carbon-app/carbon/issues/86 */
             .twitter-png-fix {
