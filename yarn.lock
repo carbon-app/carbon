@@ -1370,10 +1370,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@reach/visually-hidden@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@reach/visually-hidden/-/visually-hidden-0.5.0.tgz#f09cf164762b53a6c297f48dfdd67f576d9147f8"
-  integrity sha512-jL/QuqIcKBXKdtY8l/l+rRZrnrxFTqH6YoIVfBp+OXOned5TwuFdmpPdt7WRw+9c/adeLqIDqvFTWQMVKS/5Bw==
+"@reach/visually-hidden@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@reach/visually-hidden/-/visually-hidden-0.6.2.tgz#36744201d0464bcaedc6163b379844612341a1dc"
+  integrity sha512-YI2IMink8kn3vcugOKjFcQgF+GUd1p3kMWtLVxvEr1oj8iOyNASBP4j9ouYR9ZqIEO8SZhk9O+IHdXQhs0csxg==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
