@@ -1,32 +1,110 @@
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png" />
+</p>
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/carbon-app/carbon.svg)](https://greenkeeper.io/)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
+<p align="center">
+  <a href="https://reporanger.com">
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
+  </a>
+  <a href="#contributors">
+    <img src="https://img.shields.io/badge/all_contributors-53-orange.svg" alt="All Contributors" />
+  </a>
+  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a>
+  <!-- 
+  <a href="https://spectrum.chat/carbon-now">
+    <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a> -->
+</p>
+
+<p align="center">	
+  <a href="https://opencollective.com/carbon-app">	
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
+  </a>	
+  <a href="https://opencollective.com/carbon-app#backers">	
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
+  </a>	
+  <a href="https://opencollective.com/carbon-app#sponsors">	
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
+  </a>
+</p>
+
 <br></br>
 
 ##### 翻译
 
-- [Español](/docs/README.es.md)
-- [हिंदी](/docs/README.hi.md)
-- [Deutsch](/docs/README.de.md)
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="/docs/README.es.md">Español</a>
+      </td>
+      <td>
+        <a href="/docs/README.hi.md">हिंदी</a>
+      </td>
+      <td>
+        <a href="/docs/README.de.md">Deutsch</a>
+      </td>
+      <td>
+        <a href="/docs/README.cn.zh.md">简体中文</a>
+      </td>
+      <td>
+        <a href="/docs/README.br.pt.md">Português</a>
+      </td>
+      <td>
+        <a href="/docs/README.ml.md">മലയാളം</a>
+      </td>
+      <td>
+        <a href="/docs/README.tr.md">Türkçe</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/docs/README.kr.md">한국어</a>
+      </td>
+      <td>
+        <a href="/docs/README.ta.md">தமிழ்</a>
+      </td>
+      <td>
+        <a href="/docs/README.fr.md">Français</a>
+      </td>
+      <td>
+        <a href="/docs/README.ja.md">日本語</a>
+      </td>
+      <td>
+        <a href="/docs/README.se.md">Svenska</a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/carbon-app/carbon/new/master/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 ## 简介
 
-你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码图片给人印象深刻，但就审美程度来说还有可改进的地方。Carbon 可以很容易的为你的代码创建漂亮的图片。那么还等什么呢？用这个新学到的美化设计给你的 followers 秀一秀吧。
+你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码令人印象深刻，但从审美角度来说还有提升空间。Carbon 能够轻松地将你的源码生成漂亮的图片并分享。还等什么呢？用这个新发现的美化工具秀给你的 followers 看吧。
+
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
 
 ## 特性
 
-- **GitHub gist 导入**. 只需要在 url 后面加上 github gist id 就可以导入
-- **定制化**. 可定制图片的语法主题，窗口样式等
-- **所见即分享**. 点下鼠标就可以分享到推特上面
-
-## 示例
-
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
+- **定制化**：定制选项包括图片的语法主题、窗口样式等
+- **快速分享**：一键生成图片并分享
+- **从 GitHub gist 导入**：只需要在 url 后面加上 GitHub gist id
 
 ## 使用
 
@@ -34,62 +112,118 @@
 
 有几种不同的方法可以将代码导入到 Carbon：
 
-- 把文件拖到编辑器
-- 在 carbon url 后添加 GitHub gist id(比如 `carbon.now.sh/你的gist id`)
+- 把文件拖放到编辑器中
+- 在 carbon url 后面添加 GitHub gist id （比如 `carbon.now.sh/你的_gist_id`）
 - 直接粘贴代码
 
 #### 定制化
 
-当你把代码导入到 Carbon 后，你可以定制生成的代码图片。可定制的内容有语法主题，背景颜色，窗口主题，或者 padding 距离。
+当你把代码导入到 Carbon 后，你可以定制生成的代码图片。可定制的内容有语法主题、背景颜色、窗口主题、以及者 padding 距离。
 
 #### 导出/分享
 
 当你定制完图片样式后，可以分享到推特上面，或者直接保存。
 
+如果你通过 "Tweet" 按钮分享，Carbon 将自动设置你的图片为公开访问。不过如果你想手动分享图片，可以查看 [如何设置 Twitter 图片公开访问](https://help.twitter.com/en/using-twitter/picture-descriptions)。
+
+如果你在文章中添加 Carbon 图片，注意到图片中的源代码对于无障碍技术来说是不可见的，比如无法放大字号或复制。可以考虑新增一个元素展示文本形式的源代码，比如在图片下方加一个 [详细信息展现元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/details)。
+
+#### 安装 Carbon 桌面客户端（离线）
+
+如果你使用的是 Google Chrome 或别的支持 PWA 技术的浏览器，你可以安装 Carbon 并离线使用：
+
+1. 访问 [https://carbon.now.sh](https://carbon.now.sh)
+2. 点击浏览器的设置按钮
+3. 点击 "安装 Carbon..."
+
 ## 社区
 
-下面是我们社区已经创建的一些优秀的项目：
+浏览社区中的这些优秀项目：
 
 ##### 编辑器插件
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 在 IntelliJ IDEA 中选中当前文件的一段代码到 Carbon 中
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 用`shift-cmd-A`命令在 Carbon 中导入你当前的 Atom 文件
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 用`carbon`命令在 Carbon 中导入你当前的 VS Code 文件
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 在 Sublime Text3 中选中当前文件的一段代码到 Carbon 中
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 用`CarbonNowSh()`函数在 Carbon 中导入你当前的 Vim/Neovim 文件
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - 用交互式函数`carbon-now-sh`在 Carbon 中导入你当前的 Emacs 文件
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 在 IntelliJ IDEA 中通过右键菜单导入选中的代码到 Carbon
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 在 Atom 中通过 `shift-cmd-A` 快捷键导入当前文件到 Carbon 
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 在 VS Code 中通过 `carbon` 命令导入当前文件到 Carbon
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 在 Sublime Text 3 中通过自定义快捷键导入选中的代码到 Carbon
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 在 Vim/Neovim 中通过 `CarbonNowSh()` 函数导入选中的代码到 Carbon
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - 在 Emacs 中通过 `carbon-now-sh` 交互函数导入选中的代码到 Carbon
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - 在 `carbon.now.sh` 中打开选中的代码
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - 这个 Xcode 扩展程序能让你将选中的代码一键导出成 Carbon 片段
 
-##### 命令行工具
+##### 工具
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 在 Carbon 中打开一个文件或者直接使用`carbon-now`下载它，特色是交互式模式，可选高亮等
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 用 `carbon-now` 命令在 Carbon 中打开一个文件或者直接下载它，包含交互式选项、可选高亮等功能
+- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 一个封装并扩展了原生功能的 macOS 程序
+- [CodeExpander](https://codeexpander.com) - 是一个智能并具有像 TextExpander 特性的 GitHub Gist 客户端
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - 从 `Xcode Playground` 导出多个 Carbon 代码片段。
 
-##### Libraries
+##### 库
 
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - 迭代式处理`R`中的图片并在 Carbon 中打开，或者直接下载。
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - 用 `R` 脚本迭代处理图片样式并在 Carbon 中打开或直接下载。
 
 ##### 书籍
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy 写的一本计算机科学书.
 
-## 贡献代码
+## 项目作者
 
-欢迎 PRs！请阅读 [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) 了解更多.
-
-## 感谢
-
-[ ▲ ZEIT ](https://zeit.co/) 赞助了 Carbon 网站的托管
-
-## 作者
-
-Carbon 项目由 TA 们发起
+Carbon 项目由 TA 们发起：
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## 贡献者
+#### License
 
-感谢以下所有的优秀贡献者们 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## 贡献代码
+
+欢迎 PR！请查看 [贡献指南](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) 了解详情。
+
+### 赞助商
+
+你的公司在用 Carbon 吗？考虑一下为此项目的新功能开发、bug 修复等提供赞助。
+
+<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
+<a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
+<a href="https://opencollective.com/carbon-app/sponsors/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/1/avatar"></a>
+<a href="https://opencollective.com/carbon-app/sponsors/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/2/avatar"></a>
+<a href="https://opencollective.com/carbon-app/sponsors/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/3/avatar"></a>
+<a href="https://opencollective.com/carbon-app/sponsors/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/4/avatar"></a>
+
+### 赞助者
+
+喜欢用 Carbon 吗？考虑一下为此项目的新功能开发或改进提供赞助。
+
+<a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/2/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/3/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/4/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/5/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/5/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
+
+### 感谢
+
+[ ▲ ZEIT ](https://zeit.co/) 赞助了 Carbon 的服务托管。
+
+### 贡献者
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### 所有贡献者
+
+感谢所有这些优秀的贡献者们 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
