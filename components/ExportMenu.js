@@ -9,7 +9,7 @@ import Popout, { managePopout } from './Popout'
 
 const toIFrame = url =>
   `<iframe
-  src="${location.origin}/embed${url.replace(/^\//, '')}"
+  src="${location.origin}/embed${url.replace(/^\/\?/, '?')}"
   style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
   sandbox="allow-scripts allow-same-origin">
 </iframe>
