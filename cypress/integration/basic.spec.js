@@ -14,9 +14,8 @@ describe('Basic', () => {
   })
 
   it('Should open editor with the correct text even with bad URI component', () => {
-    cy.visit('/?code=%25')
+    cy.visit('?code=%25')
     editorVisible()
-    cy.get('.export-container').should('be.visible')
 
     cy.contains('.container', '%')
   })
