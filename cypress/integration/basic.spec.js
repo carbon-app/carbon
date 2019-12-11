@@ -17,8 +17,6 @@ describe('Basic', () => {
     cy.visit('/?code=%25')
     editorVisible()
 
-    cy.wait(3000)
-
     cy.contains('.container', '%')
   })
 
