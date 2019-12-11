@@ -45,11 +45,11 @@
     },
     {
       "src": "/embed/",
-      "dest": "/embed.html"
+      "dest": "/embed"
     },
     {
       "src": "/about/",
-      "dest": "/about.html"
+      "dest": "/about"
     },
     { "handle": "filesystem" }
   ],
