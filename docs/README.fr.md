@@ -1,16 +1,49 @@
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png" />
+</p>
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
-[![Greenkeeper badge](https://badges.greenkeeper.io/carbon-app/carbon.svg)](https://greenkeeper.io/)
-[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/carbon-now)
+<p align="center">
+  <a href="https://reporanger.com">
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
+  </a>
+  <a href="#contributors">
+    <img src="https://img.shields.io/badge/all_contributors-53-orange.svg" alt="All Contributors" />
+  </a>
+  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a>
+  <!-- 
+  <a href="https://spectrum.chat/carbon-now">
+    <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
+  </a>
+  <a href="https://greenkeeper.io/">
+    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a> -->
+</p>
+
+<p align="center">	
+  <a href="https://opencollective.com/carbon-app">	
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
+  </a>	
+  <a href="https://opencollective.com/carbon-app#backers">	
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
+  </a>	
+  <a href="https://opencollective.com/carbon-app#sponsors">	
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
+  </a>
+</p>
+
 <br></br>
 
 ## Introduction
 
-Vous connaissez [tous](https://twitter.com/dan_abramov/status/890191815567175680) [ces](https://twitter.com/reactjs/status/890511993261654017) [captures d'écran](https://twitter.com/notquiteleo/status/873483329345028096) [de code](https://twitter.com/zeithq/status/805779711154647040) que vous avez croisé sur Twitter ? Bien que le code seul soit généralement impressionnant, nous avons estimé qu'il était possible d'améliorer la partie esthétique. Carbon facilite la création et le partage de votre code source au travers de superbes images. Alors qu'est-ce que vous attendez ? Impressionnez tous vos abonnés avec vos nouvelles prouesses en matière de conception graphique.
+Vous connaissez [toutes](https://twitter.com/dan_abramov/status/890191815567175680) [ces](https://twitter.com/reactjs/status/890511993261654017) [captures d'écran](https://twitter.com/notquiteleo/status/873483329345028096) [de code](https://twitter.com/zeithq/status/805779711154647040) que vous avez croisées sur Twitter ? Bien que le code seul soit généralement impressionnant, nous avons estimé qu'il était possible d'améliorer la partie esthétique. Carbon facilite la création et le partage de votre code source au travers de superbes images. Alors qu'est-ce que vous attendez ? Impressionnez tous vos abonnés avec vos nouvelles prouesses en matière de conception graphique.
 
 ## Fonctionnalités
 
