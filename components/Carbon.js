@@ -116,8 +116,7 @@ class Carbon extends React.PureComponent {
         `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
         `font-style: ${changes.italics ? 'italic' : 'initial'}`,
         `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
-        changes.color && `color: ${changes.color} !important`,
-        ''
+        changes.color && `color: ${changes.color} !important`
       ]
         .filter(Boolean)
         .join('; ')
