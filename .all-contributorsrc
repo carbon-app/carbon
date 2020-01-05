@@ -618,10 +618,20 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "aquaductape",
+      "name": "Caleb Taylor",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/29286430?v=4",
+      "profile": "https://github.com/aquaductape",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
   "contributorsPerLine": 7,
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "skipCi": true
 }
