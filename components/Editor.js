@@ -218,7 +218,7 @@ class Editor extends React.Component {
 
   updateSetting(key, value) {
     this.updateState({ [key]: value })
-    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key) && key !== 'preset') {
+    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
       this.updateState({ preset: null })
     }
   }
