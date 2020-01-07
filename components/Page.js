@@ -42,7 +42,6 @@ class Page extends React.Component {
             @media (min-width: 1024px) {
               .main {
                 ${COLUMN};
-                min-width: 1080px; /* temporary fix for mobile overflow issue */
               }
             }
           `}
