@@ -449,7 +449,7 @@ class Editor extends React.Component {
             .toolbar-second-row {
               height: 40px;
               display: flex;
-              flex: 1;
+              flex: 1 1 auto;
             }
             .toolbar-second-row > :global(div:not(:last-of-type)) {
               margin-right: 0.5rem;
