@@ -23,7 +23,7 @@ const Toolbar = props => (
           margin-right: 0px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 920px) {
           .toolbar {
             max-width: 100%;
             height: auto;
