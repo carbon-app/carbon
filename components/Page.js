@@ -16,7 +16,7 @@ class Page extends React.Component {
   render() {
     const { children, enableHeroText, flex } = this.props
     return (
-      <main className="main mt4 mb4">
+      <main className="main mb3">
         <Meta />
         <AuthContext>
           <Announcement />
@@ -33,6 +33,7 @@ class Page extends React.Component {
           {`
             .main {
               ${flex ? COLUMN : ''}
+              margin-top: 6rem;
             }
             .login-button-container {
               position: absolute;
