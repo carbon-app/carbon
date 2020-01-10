@@ -31,6 +31,57 @@
 
 <br></br>
 
+##### Traducciones
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="/docs/README.es.md">Español</a>
+      </td>
+      <td>
+        <a href="/docs/README.hi.md">हिंदी</a>
+      </td>
+      <td>
+        <a href="/docs/README.de.md">Deutsch</a>
+      </td>
+      <td>
+        <a href="/docs/README.cn.zh.md">简体中文</a>
+      </td>
+      <td>
+        <a href="/docs/README.br.pt.md">Português</a>
+      </td>
+      <td>
+        <a href="/docs/README.ml.md">മലയാളം</a>
+      </td>
+      <td>
+        <a href="/docs/README.tr.md">Türkçe</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/docs/README.kr.md">한국어</a>
+      </td>
+      <td>
+        <a href="/docs/README.ta.md">தமிழ்</a>
+      </td>
+      <td>
+        <a href="/docs/README.fr.md">Français</a>
+      </td>
+      <td>
+        <a href="/docs/README.ja.md">日本語</a>
+      </td>
+      <td>
+        <a href="/docs/README.se.md">Svenska</a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/carbon-app/carbon/new/master/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
 ## Introducción
 
 ¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [de](https://twitter.com/reactjs/status/890511993261654017) [esas](https://twitter.com/notquiteleo/status/873483329345028096) [capturas de pantalla](https://twitter.com/zeithq/status/805779711154647040) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorarlo en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
@@ -70,7 +121,7 @@ Si tu incluyes una imagen de Carbon en una publicación, el código fuente será
 #### Instalación de Carbon para escritorio (Sin conexión)
 
 Si estás utilizando Google Chrome u otro navegador que soporte aplicaciones web progresivas,
-puedes instalar Carbon para usarlo sin conexión siguiendo estás instrucciones:
+puedes instalar Carbon para usarlo sin conexión siguiendo estas instrucciones:
 
 1. Visitar [https://carbon.now.sh](https://carbon.now.sh).
 2. Abrir el menú de configuración de tu navegador.
@@ -129,7 +180,7 @@ Carbon es un proyecto de:
 
 ### Patrocinadores
 
-¿Tu empresa utiliza Carbon? Cosidera patrocinar el proyecto para financiar nuevas características, correcciones de errores y más.
+¿Tu empresa utiliza Carbon? Considera patrocinar el proyecto para financiar nuevas características, correcciones de errores y más.
 
 <a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
 <a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
