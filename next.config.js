@@ -30,6 +30,16 @@ const config = withOffline({
     FIREBASE_FE_APP_ID: process.env.FIREBASE_FE_APP_ID,
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
+  },
+  // TODO delete this later
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.js$/,
+      include: /node_modules\/graphql-language-service-parser/,
+      use: [options.defaultLoaders.babel]
+    })
+
+    return config
   }
 })
 
