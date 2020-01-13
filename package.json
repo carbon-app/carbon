@@ -28,7 +28,7 @@
     "codemirror-solidity": "^0.2.1",
     "date-fns": "^2.9.0",
     "dom-to-image": "^2.6.0",
-    "downshift": "^3.4.7",
+    "downshift": "^4.0.4",
     "dropperx": "^1.0.1",
     "eitherx": "^1.0.2",
     "escape-goat": "^2.1.1",
