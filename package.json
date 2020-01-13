@@ -22,7 +22,7 @@
     "actionsack": "^0.0.13",
     "axios": "^0.19.1",
     "cm-show-invisibles": "^3.0.1",
-    "codemirror": "^5.49.2",
+    "codemirror": "^5.50.2",
     "codemirror-graphql": "^0.11.6",
     "codemirror-mode-elixir": "^1.1.2",
     "codemirror-solidity": "^0.2.1",
