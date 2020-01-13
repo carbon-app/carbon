@@ -70,7 +70,7 @@ Si tu incluyes una imagen de Carbon en una publicación, el código fuente será
 #### Instalación de Carbon para escritorio (Sin conexión)
 
 Si estás utilizando Google Chrome u otro navegador que soporte aplicaciones web progresivas,
-puedes instalar Carbon para usarlo sin conexión siguiendo estás instrucciones:
+puedes instalar Carbon para usarlo sin conexión siguiendo estas instrucciones:
 
 1. Visitar [https://carbon.now.sh](https://carbon.now.sh).
 2. Abrir el menú de configuración de tu navegador.
@@ -129,7 +129,7 @@ Carbon es un proyecto de:
 
 ### Patrocinadores
 
-¿Tu empresa utiliza Carbon? Cosidera patrocinar el proyecto para financiar nuevas características, correcciones de errores y más.
+¿Tu empresa utiliza Carbon? Considera patrocinar el proyecto para financiar nuevas características, correcciones de errores y más.
 
 <a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
 <a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
