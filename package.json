@@ -20,7 +20,7 @@
     "@next/bundle-analyzer": "^9.1.7",
     "@reach/visually-hidden": "^0.7.2",
     "actionsack": "^0.0.13",
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
     "codemirror": "^5.50.2",
     "codemirror-graphql": "^0.11.6",
