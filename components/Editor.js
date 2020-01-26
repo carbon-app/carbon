@@ -471,6 +471,11 @@ class Editor extends React.Component {
             .toolbar-second-row > :global(div:not(:last-of-type)) {
               margin-right: 0.5rem;
             }
+
+            #style-editor-button {
+              display: flex;
+              align-items: center;
+            }
           `}
         </style>
       </div>
