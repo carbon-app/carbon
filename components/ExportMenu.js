@@ -46,7 +46,7 @@ const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => 
   )
 })
 
-const popoutStyle = { width: '280px', right: 0 }
+const popoutStyle = { width: '350px', right: 0 }
 
 function useSafari() {
   const [isSafari, setSafari] = React.useState(false)
@@ -61,13 +61,26 @@ function useSafari() {
   return isSafari
 }
 
+function useClipboardSupport() {
+  const [isClipboardSupports, setClipboardSupport] = React.useState(false)
+
+  React.useEffect(() => {
+    setClipboardSupport(
+      window.navigator && window.navigator.clipboard && typeof ClipboardItem === 'function'
+    )
+  }, [])
+
+  return isClipboardSupports
+}
+
 function ExportMenu({
   backgroundImage,
   onChange,
   exportSize,
   isVisible,
   toggleVisibility,
-  exportImage: exp
+  exportImage: exp,
+  copyImage
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
@@ -77,6 +90,8 @@ function ExportMenu({
   useKeyboardListener('⌘-⇧-e', () => exportImage())
 
   const disablePNG = isSafari && (tooLarge || !online)
+
+  const clipboardSupported = useClipboardSupport()
 
   const input = React.useRef()
 
@@ -132,14 +147,27 @@ function ExportMenu({
           </div>
         </div>
         <div className="export-row">
+          {/* IDEA: Remove open button if clipboardSupported? */}
           <Button center color={COLORS.PURPLE} onClick={handleExport('open')}>
             Open
           </Button>
           <div className="save-container">
-            <span>Copy embed</span>
+            <span>Copy to clipboard</span>
             <div>
-              <CopyEmbed title="URL" mapper={toURL} margin="0 4px 0 0" />
-              <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 0 0 4px" />
+              <CopyEmbed title="URL" mapper={toURL} margin="0 8px 0 0" />
+              <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 12px 0 0px" />
+              {clipboardSupported && (
+                <Button
+                  center
+                  hoverColor={COLORS.PURPLE}
+                  color={COLORS.DARK_PURPLE}
+                  onClick={copyImage}
+                  id="export-clipboard"
+                  disabled={loading}
+                >
+                  Image
+                </Button>
+              )}
             </div>
           </div>
           <div className="save-container">
