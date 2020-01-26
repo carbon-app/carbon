@@ -182,7 +182,8 @@ class Editor extends React.Component {
     // current font-family used
     const fontFamily = this.state.fontFamily
     try {
-      if (type === 'blob') {
+      // TODO consolidate type/format to only use one param
+      if (type === 'objectURL') {
         if (format === 'svg') {
           return (
             domtoimage
@@ -207,11 +208,11 @@ class Editor extends React.Component {
           )
         }
 
-        if (format === 'clipboard') {
-          return await domtoimage.toBlob(node, config)
-        }
-
         return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+      }
+
+      if (type === 'blob') {
+        return await domtoimage.toBlob(node, config)
       }
 
       // Twitter needs regular dataurls
@@ -233,16 +234,7 @@ class Editor extends React.Component {
 
     const prefix = options.filename || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'blob' }).then(url => {
-      if (format === 'clipboard') {
-        navigator.clipboard.write([
-          // eslint-disable-next-line no-undef
-          new ClipboardItem({
-            'image/png': url
-          })
-        ])
-        return true
-      }
+    return this.getCarbonImage({ format, type: 'objectURL' }).then(url => {
       if (format !== 'open') {
         link.download = `${prefix}.${format}`
       }
@@ -257,7 +249,7 @@ class Editor extends React.Component {
   }
 
   copyImage() {
-    return this.getCarbonImage({ format: 'clipboard', type: 'blob' }).then(blob =>
+    return this.getCarbonImage({ type: 'blob' }).then(blob =>
       navigator.clipboard.write([
         new window.ClipboardItem({
           'image/png': blob
