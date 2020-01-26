@@ -16,7 +16,7 @@ class EmbedIdPage extends React.PureComponent {
     if (parameter) {
       const host = req ? req.headers.host : undefined
       snippet = await api.snippet.get(parameter, { host })
-      if (snippet && snippet.gist_id) {
+      if (snippet /* && snippet.gist_id */) {
         return { snippet }
       }
 
