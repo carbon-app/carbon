@@ -66,7 +66,9 @@ function isClipboardSupported() {
   const [isClipboardSupports, setClipboardSupport] = React.useState(false)
   // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useEffect(() => {
-    setClipboardSupport(window.navigator && window.navigator.clipboard)
+    setClipboardSupport(
+      window.navigator && window.navigator.clipboard && typeof ClipboardItem === 'function'
+    )
   }, [])
 
   return isClipboardSupports
