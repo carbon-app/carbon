@@ -46,7 +46,7 @@ const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => 
   )
 })
 
-const popoutStyle = { width: '280px', right: 0 }
+const popoutStyle = { width: '350px', right: 0 }
 
 function useSafari() {
   const [isSafari, setSafari] = React.useState(false)
@@ -59,6 +59,17 @@ function useSafari() {
   }, [])
 
   return isSafari
+}
+
+function isClipboardSupported() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [isClipboardSupports, setClipboardSupport] = React.useState(false)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useEffect(() => {
+    setClipboardSupport(window.navigator && window.navigator.clipboard)
+  }, [])
+
+  return isClipboardSupports
 }
 
 function ExportMenu({
@@ -77,6 +88,8 @@ function ExportMenu({
   useKeyboardListener('⌘-⇧-e', () => exportImage())
 
   const disablePNG = isSafari && (tooLarge || !online)
+
+  const disableClipboard = !isClipboardSupported()
 
   const input = React.useRef()
 
@@ -160,6 +173,7 @@ function ExportMenu({
               )}
               <Button
                 center
+                margin="0 8px 0 0"
                 hoverColor={COLORS.PURPLE}
                 color={COLORS.DARK_PURPLE}
                 onClick={handleExport('svg')}
@@ -168,6 +182,18 @@ function ExportMenu({
               >
                 SVG
               </Button>
+              {!disableClipboard && (
+                <Button
+                  center
+                  hoverColor={COLORS.PURPLE}
+                  color={COLORS.DARK_PURPLE}
+                  onClick={handleExport('clipboard')}
+                  id="export-clipboard"
+                  disabled={loading}
+                >
+                  Clipboard
+                </Button>
+              )}
             </div>
           </div>
         </div>

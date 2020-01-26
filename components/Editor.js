@@ -204,6 +204,8 @@ class Editor extends React.Component {
               .then(data => new Blob([data], { type: 'image/svg+xml' }))
               .then(data => window.URL.createObjectURL(data))
           )
+        } else if (format === 'clipboard') {
+          return await domtoimage.toBlob(node, config)
         }
 
         return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
@@ -229,6 +231,15 @@ class Editor extends React.Component {
     const prefix = options.filename || 'carbon'
 
     return this.getCarbonImage({ format, type: 'blob' }).then(url => {
+      if (format === 'clipboard') {
+        navigator.clipboard.write([
+          // eslint-disable-next-line no-undef
+          new ClipboardItem({
+            'image/png': url
+          })
+        ])
+        return true
+      }
       if (format !== 'open') {
         link.download = `${prefix}.${format}`
       }
