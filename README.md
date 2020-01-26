@@ -158,6 +158,7 @@ Check out these projects our awesome community has created:
 - [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - A macOS wrapper with extended native features
 - [CodeExpander](https://codeexpander.com) - A smart GitHub gist client with the TextExpander features
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Export multiple Carbon code snippets from `Xcode Playground`.
+- [`@carbonshbot`](https://t.me/carbonshbot) - A Telegram chatbot wich takes in a code snippet or gist URL and generates an Carbon image
 
 ##### Libraries
 
