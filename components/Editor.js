@@ -249,7 +249,7 @@ class Editor extends React.Component {
   }
 
   copyImage() {
-    return this.getCarbonImage({ type: 'blob' }).then(blob =>
+    return this.getCarbonImage({ format: 'png', type: 'blob' }).then(blob =>
       navigator.clipboard.write([
         new window.ClipboardItem({
           'image/png': blob
