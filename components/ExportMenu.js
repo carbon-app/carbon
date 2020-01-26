@@ -61,10 +61,9 @@ function useSafari() {
   return isSafari
 }
 
-function isClipboardSupported() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function useClipboardSupport() {
   const [isClipboardSupports, setClipboardSupport] = React.useState(false)
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   React.useEffect(() => {
     setClipboardSupport(
       window.navigator && window.navigator.clipboard && typeof ClipboardItem === 'function'
@@ -80,7 +79,8 @@ function ExportMenu({
   exportSize,
   isVisible,
   toggleVisibility,
-  exportImage: exp
+  exportImage: exp,
+  copyImage
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
@@ -91,7 +91,7 @@ function ExportMenu({
 
   const disablePNG = isSafari && (tooLarge || !online)
 
-  const disableClipboard = !isClipboardSupported()
+  const clipboardSupported = useClipboardSupport()
 
   const input = React.useRef()
 
@@ -147,14 +147,27 @@ function ExportMenu({
           </div>
         </div>
         <div className="export-row">
+          {/* IDEA: Remove open button if clipboardSupported? */}
           <Button center color={COLORS.PURPLE} onClick={handleExport('open')}>
             Open
           </Button>
           <div className="save-container">
-            <span>Copy embed</span>
+            <span>Copy to clipboard</span>
             <div>
-              <CopyEmbed title="URL" mapper={toURL} margin="0 4px 0 0" />
-              <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 0 0 4px" />
+              <CopyEmbed title="URL" mapper={toURL} margin="0 8px 0 0" />
+              <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 12px 0 0px" />
+              {clipboardSupported && (
+                <Button
+                  center
+                  hoverColor={COLORS.PURPLE}
+                  color={COLORS.DARK_PURPLE}
+                  onClick={copyImage}
+                  id="export-clipboard"
+                  disabled={loading}
+                >
+                  Image
+                </Button>
+              )}
             </div>
           </div>
           <div className="save-container">
@@ -175,7 +188,6 @@ function ExportMenu({
               )}
               <Button
                 center
-                margin="0 8px 0 0"
                 hoverColor={COLORS.PURPLE}
                 color={COLORS.DARK_PURPLE}
                 onClick={handleExport('svg')}
@@ -184,18 +196,6 @@ function ExportMenu({
               >
                 SVG
               </Button>
-              {!disableClipboard && (
-                <Button
-                  center
-                  hoverColor={COLORS.PURPLE}
-                  color={COLORS.DARK_PURPLE}
-                  onClick={handleExport('clipboard')}
-                  id="export-clipboard"
-                  disabled={loading}
-                >
-                  Clipboard
-                </Button>
-              )}
             </div>
           </div>
         </div>

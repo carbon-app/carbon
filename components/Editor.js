@@ -55,6 +55,7 @@ class Editor extends React.Component {
     }
 
     this.exportImage = this.exportImage.bind(this)
+    this.copyImage = this.copyImage.bind(this)
     this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
@@ -204,7 +205,9 @@ class Editor extends React.Component {
               .then(data => new Blob([data], { type: 'image/svg+xml' }))
               .then(data => window.URL.createObjectURL(data))
           )
-        } else if (format === 'clipboard') {
+        }
+
+        if (format === 'clipboard') {
           return await domtoimage.toBlob(node, config)
         }
 
@@ -251,6 +254,16 @@ class Editor extends React.Component {
       link.click()
       link.remove()
     })
+  }
+
+  copyImage() {
+    return this.getCarbonImage({ format: 'clipboard', type: 'blob' }).then(blob =>
+      navigator.clipboard.write([
+        new window.ClipboardItem({
+          'image/png': blob
+        })
+      ])
+    )
   }
 
   resetDefaultSettings() {
@@ -409,6 +422,7 @@ class Editor extends React.Component {
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
+                copyImage={this.copyImage}
                 exportSize={exportSize}
                 backgroundImage={backgroundImage}
               />
