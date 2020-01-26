@@ -158,6 +158,7 @@ Check out these projects our awesome community has created:
 - [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - A macOS wrapper with extended native features
 - [CodeExpander](https://codeexpander.com) - A smart GitHub gist client with the TextExpander features
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Export multiple Carbon code snippets from `Xcode Playground`.
+- [`@carbonshbot`](https://t.me/carbonshbot) - A Telegram chatbot wich takes in a code snippet or gist URL and generates an Carbon image
 
 ##### Libraries
 
@@ -314,6 +315,7 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
   <tr>
     <td align="center"><a href="https://github.com/baktiaditya"><img src="https://avatars0.githubusercontent.com/u/2070906?v=4" width="100px;" alt=""/><br /><sub><b>Bakti Aditya</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=baktiaditya" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/aquaductape"><img src="https://avatars1.githubusercontent.com/u/29286430?v=4" width="100px;" alt=""/><br /><sub><b>Caleb Taylor</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=aquaductape" title="Code">💻</a></td>
+    <td align="center"><a href="http://about.rmunhoz.me"><img src="https://avatars3.githubusercontent.com/u/3948961?v=4" width="100px;" alt=""/><br /><sub><b>Rogério Munhoz</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=rjmunhoz" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/technoknol"><img src="https://avatars0.githubusercontent.com/u/6429418?v=4" width="100px;" alt=""/><br /><sub><b>Technoknol</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=technoknol" title="Code">💻</a></td>
   </tr>
 </table>
