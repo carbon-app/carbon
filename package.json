@@ -79,12 +79,10 @@
   "lint-staged": {
     "*.js": [
       "npm run lint",
-      "prettier --config .prettierrc --write",
-      "git add"
+      "prettier --config .prettierrc --write"
     ],
     ".all-contributorsrc": [
-      "npm run contrib:build",
-      "git add"
+      "npm run contrib:build"
     ]
   },
   "greenkeeper": {
