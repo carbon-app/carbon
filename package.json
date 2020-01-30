@@ -58,20 +58,20 @@
     "tohash": "^1.0.2"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.9.4",
-    "all-contributors-cli": "^6.12.0",
+    "@applitools/eyes-cypress": "^3.9.7",
+    "all-contributors-cli": "^6.13.0",
     "babel-eslint": "^10.0.3",
-    "cypress": "^3.8.2",
+    "cypress": "^3.8.3",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "husky": "^4.0.7",
-    "lint-staged": "^9.5.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
     "now": "^16.7.3",
     "now-release": "^0.0.2",
-    "wait-on": "^3.3.0"
+    "wait-on": "^4.0.0"
   },
   "engines": {
     "node": "12.x"
