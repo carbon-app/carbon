@@ -291,6 +291,13 @@ class Carbon extends React.PureComponent {
             .container :global(.CodeMirror-linenumber) {
               cursor: pointer;
             }
+
+            @media (max-width: 768px) {
+              /* show cursor on mobile */
+              .container :global([contenteditable='true']) {
+                user-select: text;
+              }
+            }
           `}
         </style>
       </div>
