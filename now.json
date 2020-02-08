@@ -20,6 +20,13 @@
       }
     },
     {
+      "src": "^/offsets?/?",
+      "status": 307,
+      "headers": {
+        "Location": "https://projectwren.com/"
+      }
+    },
+    {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
       "headers": {
