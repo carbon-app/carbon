@@ -30,6 +30,10 @@ const Footer = () => (
       <a className="link" href="/privacy">
         privacy
       </a>
+      <a className="link" href="/offsets">
+        offsets
+      </a>
+      <span className="new">New</span>
     </nav>
 
     <div className="mt2 mb2">
@@ -61,6 +65,20 @@ const Footer = () => (
 
         a:last-child {
           margin-right: 0;
+        }
+
+        .new {
+          position: absolute;
+          margin: -4px 0 0 -12px;
+          padding: 1px 3px;
+          color: ${COLORS.SECONDARY};
+          background: ${COLORS.RED};
+          border-radius: 3px;
+          font-size: 8px;
+          font-weight: 600;
+          line-height: 1.3;
+          text-transform: uppercase;
+          user-select: none;
         }
 
         .author-link {
