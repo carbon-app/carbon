@@ -57,7 +57,7 @@
     "react-syntax-highlight": "^15.3.1",
     "serialize-javascript": "^2.1.2",
     "tohash": "^1.0.2",
-    "use-climate-change-reminder": "^0.0.5"
+    "use-climate-change-reminder": "^0.0.6"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.9.7",
