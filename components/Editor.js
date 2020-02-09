@@ -42,6 +42,7 @@ const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
 })
 
 const getConfig = omit(['code'])
+const unsplashPhotographerCredit = /\n\n\/\/ Photo by.+?on Unsplash/
 
 class Editor extends React.Component {
   static contextType = ApiContext
@@ -292,7 +293,9 @@ class Editor extends React.Component {
     if (photographer) {
       this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
-        code: code + `\n\n// Photo by ${photographer.name} on Unsplash`,
+        code:
+          code.replace(unsplashPhotographerCredit, '') +
+          `\n\n// Photo by ${photographer.name} on Unsplash`,
         preset: null
       }))
     } else {
