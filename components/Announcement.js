@@ -35,7 +35,7 @@ function Toast() {
   return (
     <div className="toast mb4">
       <div className="toast-content">
-        <p>Help fight the climate crisis by offsetting your carbon production</p> —
+        <p>Help fight climate change by offsetting your carbon output</p> —
         <a href="/offsets" target="_blank" rel="noreferrer noopener">
           Find out how
         </a>
