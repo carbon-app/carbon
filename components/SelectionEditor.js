@@ -56,9 +56,9 @@ function SelectionEditor({ onChange }) {
   useKeyboardListener('Escape', () => setOpen(false))
 
   const [state, dispatch] = React.useReducer(reducer, {
-    bold: false,
-    italics: false,
-    underline: false,
+    bold: null,
+    italics: null,
+    underline: null,
     color: null
   })
 
