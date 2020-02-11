@@ -64,7 +64,7 @@ const Footer = () => (
           margin: -4px 0 0 -12px;
           padding: 1px 3px;
           color: ${COLORS.SECONDARY};
-          background: ${COLORS.RED};
+          background: #cd3f45; /* COLORS.DARK_RED? */
           border-radius: 3px;
           font-size: 8px;
           font-weight: 600;
