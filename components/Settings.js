@@ -30,6 +30,7 @@ function WindowSettings({
   dropShadowOffsetY,
   windowControls,
   widthAdjustment,
+  width,
   watermark,
   onWidthChanging,
   onWidthChanged
@@ -81,6 +82,15 @@ function WindowSettings({
         enabled={widthAdjustment}
         onChange={onChange.bind(null, 'widthAdjustment')}
       />
+      {!widthAdjustment && (
+        <Slider
+          label="width"
+          value={width}
+          minValue={90}
+          maxValue={1024}
+          onChange={onChange.bind(null, 'width')}
+        />
+      )}
       <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
       <style jsx>
         {`
@@ -354,6 +364,7 @@ class Settings extends React.PureComponent {
             dropShadowOffsetY={this.props.dropShadowOffsetY}
             windowControls={this.props.windowControls}
             widthAdjustment={this.props.widthAdjustment}
+            width={this.props.width}
             watermark={this.props.watermark}
           />
         )
