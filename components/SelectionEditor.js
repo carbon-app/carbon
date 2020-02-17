@@ -1,4 +1,5 @@
 import React from 'react'
+import { useKeyboardListener } from 'actionsack'
 import Popout from './Popout'
 import Button from './Button'
 import ColorPicker from './ColorPicker'
@@ -49,13 +50,15 @@ function reducer(state, action) {
   throw new Error('Invalid action')
 }
 
-function SelectionEditor({ position, onChange }) {
+function SelectionEditor({ onChange }) {
   const [open, setOpen] = React.useState(false)
 
+  useKeyboardListener('Escape', () => setOpen(false))
+
   const [state, dispatch] = React.useReducer(reducer, {
-    bold: false,
-    italics: false,
-    underline: false,
+    bold: null,
+    italics: null,
+    underline: null,
     color: null
   })
 
@@ -64,15 +67,7 @@ function SelectionEditor({ position, onChange }) {
   }, [onChange, state])
 
   return (
-    <Popout
-      hidden={false}
-      pointerLeft="62px"
-      style={{
-        zIndex: 100,
-        top: position.top,
-        left: position.left
-      }}
-    >
+    <div style={{ position: 'relative' }}>
       <div className="colorizer">
         <div className="modifier">
           <ModifierButton selected={state.bold} onClick={() => dispatch({ type: 'BOLD' })}>
@@ -89,7 +84,7 @@ function SelectionEditor({ position, onChange }) {
           </ModifierButton>
           <button className="color-square" onClick={() => setOpen(o => !o)} />
         </div>
-        {open && (
+        <Popout hidden={!open} pointerLeft="16px" style={{ left: 82 }}>
           <div className="color-picker-container">
             <ColorPicker
               color={state.color || COLORS.PRIMARY}
@@ -97,7 +92,7 @@ function SelectionEditor({ position, onChange }) {
               onChange={d => dispatch({ type: 'COLOR', color: d.hex })}
             />
           </div>
-        )}
+        </Popout>
       </div>
       <style jsx>
         {`
@@ -112,7 +107,7 @@ function SelectionEditor({ position, onChange }) {
             font-style: italic;
           }
           .colorizer :global(button) {
-            min-width: 24px;
+            min-width: 20px;
           }
           .color-square {
             cursor: pointer;
@@ -131,7 +126,7 @@ function SelectionEditor({ position, onChange }) {
           }
         `}
       </style>
-    </Popout>
+    </div>
   )
 }
 

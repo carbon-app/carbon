@@ -564,10 +564,92 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "majouji",
+      "name": "Ramy Majouji",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/23482161?v=4",
+      "profile": "https://glossier.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "nemesv",
+      "name": "Viktor Nemes",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/251330?v=4",
+      "profile": "http://stackoverflow.com/users/872395/nemesv",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ericwbailey",
+      "name": "Eric Bailey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/634191?v=4",
+      "profile": "https://ericwbailey.design/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Nazeeefa",
+      "name": "Nazeefa",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6730853?v=4",
+      "profile": "http://rsg-sweden.iscbsc.org",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "pratikbutani",
+      "name": "Pratik Butani",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3306366?v=4",
+      "profile": "https://medium.com/@pratikbutani/carbon-create-and-share-beautiful-images-of-your-source-code-d31dedfe64bd",
+      "contributions": [
+        "blog"
+      ]
+    },
+    {
+      "login": "baktiaditya",
+      "name": "Bakti Aditya",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2070906?v=4",
+      "profile": "https://github.com/baktiaditya",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aquaductape",
+      "name": "Caleb Taylor",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/29286430?v=4",
+      "profile": "https://github.com/aquaductape",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rjmunhoz",
+      "name": "Rogério Munhoz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3948961?v=4",
+      "profile": "http://about.rmunhoz.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "technoknol",
+      "name": "Technoknol",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6429418?v=4",
+      "profile": "https://github.com/technoknol",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
   "repoHost": "https://github.com",
   "contributorsPerLine": 7,
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "skipCi": true
 }

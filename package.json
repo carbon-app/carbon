@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "4.3.0",
+  "version": "4.3.24",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -14,72 +14,77 @@
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "preinstall": "node ./node_modules/use-climate-change-reminder/index.js"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^9.0.7",
-    "@reach/visually-hidden": "^0.1.4",
+    "@next/bundle-analyzer": "^9.2.1",
+    "@reach/visually-hidden": "^0.7.4",
     "actionsack": "^0.0.13",
-    "axios": "^0.19.0",
-    "codemirror": "^5.48.4",
-    "codemirror-graphql": "^0.9.0",
+    "axios": "^0.19.2",
+    "cm-show-invisibles": "^3.0.1",
+    "codemirror": "^5.51.0",
+    "codemirror-graphql": "^0.11.6",
     "codemirror-mode-elixir": "^1.1.2",
-    "codemirror-solidity": "^0.2.1",
-    "date-fns": "^2.4.1",
+    "codemirror-solidity": "^0.2.2",
+    "date-fns": "^2.9.0",
     "dom-to-image": "^2.6.0",
-    "downshift": "^3.3.4",
+    "downshift": "^4.0.8",
     "dropperx": "^1.0.1",
     "eitherx": "^1.0.2",
-    "escape-goat": "^2.1.1",
-    "firebase": "^7.0.0",
-    "graphql": "^14.5.8",
-    "highlight.js": "^9.15.10",
+    "escape-goat": "^3.0.0",
+    "firebase": "^7.7.0",
+    "graphql": "^14.6.0",
+    "highlight.js": "^9.18.0",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
     "match-sorter": "^4.0.2",
     "morphmorph": "^0.1.3",
     "ms": "^2.1.2",
-    "next": "^9.0.7",
-    "next-offline": "^4.0.5",
-    "prettier": "^1.18.2",
-    "react": "^16.10.1",
+    "next": "^9.2.1",
+    "next-offline": "^4.0.6",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
     "react-click-outside": "^3.0.0",
     "react-codemirror2": "^6.0.0",
-    "react-color": "^2.17.3",
-    "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.10.1",
+    "react-color": "^2.18.0",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-dom": "^16.12.0",
     "react-image-crop": "^6.0.16",
-    "react-is": "^16.10.1",
+    "react-is": "^16.12.0",
     "react-spinner": "^0.2.7",
-    "react-stripe-elements": "^5.0.1",
+    "react-stripe-elements": "^6.0.1",
     "react-syntax-highlight": "^15.3.1",
-    "tohash": "^1.0.2"
+    "serialize-javascript": "^2.1.2",
+    "tohash": "^1.0.2",
+    "use-climate-change-reminder": "^0.0.6"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.8.6",
-    "all-contributors-cli": "^6.9.1",
+    "@applitools/eyes-cypress": "^3.9.7",
+    "all-contributors-cli": "^6.13.0",
     "babel-eslint": "^10.0.3",
-    "cypress": "^3.4.1",
-    "eslint": "^6.5.1",
-    "eslint-plugin-import": "^2.18.2",
+    "cypress": "^3.8.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.15.1",
-    "eslint-plugin-react-hooks": "^2.1.1",
-    "husky": "^3.0.8",
-    "lint-staged": "^9.4.1",
-    "now": "^16.3.0",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
+    "now": "^16.7.3",
     "now-release": "^0.0.2",
-    "wait-on": "^3.3.0"
+    "wait-on": "^4.0.0"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "lint-staged": {
     "*.js": [
       "npm run lint",
-      "prettier --config .prettierrc --write",
-      "git add"
+      "prettier --config .prettierrc --write"
     ],
     ".all-contributorsrc": [
-      "npm run contrib:build",
-      "git add"
+      "npm run contrib:build"
     ]
   },
   "greenkeeper": {
@@ -113,5 +118,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/carbon-app"
   }
 }

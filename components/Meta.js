@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { THEMES, THEMES_HASH } from '../lib/constants'
+import { THEMES, THEMES_HASH, COLORS } from '../lib/constants'
 import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
@@ -54,11 +54,11 @@ export const MetaTags = React.memo(() => (
     <meta name="og:title" content={title} />
     <meta name="og:description" content={description} />
     <meta name="og:image" content="/static/brand/banner.png" />
-    <meta name="theme-color" content="#121212" />
+    <meta name="theme-color" content={COLORS.BLACK} />
     <title>{title}</title>
-    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon.png" />
-    <link rel="manifest" href="/static/manifest.json" />
   </Head>
 ))
 

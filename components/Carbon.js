@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import dynamic from 'next/dynamic'
 import hljs from 'highlight.js/lib/highlight'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -36,13 +37,13 @@ function searchLanguage(l) {
 }
 
 function noop() {}
+
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: noop,
     onGutterClick: noop
   }
   state = {}
-  editorRef = React.createRef()
 
   handleLanguageChange = debounce(
     (newCode, language) => {
@@ -104,16 +105,7 @@ class Carbon extends React.PureComponent {
 
   onMouseUp = () => {
     if (this.currentSelection) {
-      const { editor } = this.editorRef.current
-      const startPos = editor.charCoords(this.currentSelection.from, 'window')
-      const endPos = editor.charCoords(this.currentSelection.to, 'window')
-
-      const container = this.props.innerRef.current.getBoundingClientRect()
-
-      const top = Math.max(startPos.bottom, endPos.bottom) - container.top - 3
-      const left = (startPos.left + endPos.left) / 2 - container.left - 68
-
-      this.setState({ selectionAt: { ...this.currentSelection, top, left } }, () => {
+      this.setState({ selectionAt: this.currentSelection }, () => {
         this.currentSelection = null
       })
     } else {
@@ -124,19 +116,21 @@ class Carbon extends React.PureComponent {
   onSelectionChange = changes => {
     if (this.state.selectionAt) {
       const css = [
-        `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
-        `font-style: ${changes.italics ? 'italic' : 'initial'}`,
-        `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
-        changes.color && `color: ${changes.color} !important`,
-        ''
+        changes.bold && `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
+        changes.italics && `font-style: ${changes.italics ? 'italic' : 'initial'}`,
+        changes.underline && `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
+        changes.color && `color: ${changes.color} !important`
       ]
         .filter(Boolean)
         .join('; ')
-      this.editorRef.current.editor.doc.markText(
-        this.state.selectionAt.from,
-        this.state.selectionAt.to,
-        { css }
-      )
+
+      if (css) {
+        this.props.editorRef.current.editor.doc.markText(
+          this.state.selectionAt.from,
+          this.state.selectionAt.to,
+          { css }
+        )
+      }
     }
   }
 
@@ -161,8 +155,7 @@ class Carbon extends React.PureComponent {
         'Shift-Tab': 'indentLess'
       },
       readOnly: this.props.readOnly ? 'nocursor' : false,
-      // needs to be able to refresh every 16ms to hit 60 frames / second
-      pollInterval: 16
+      showInvisibles: config.hiddenCharacters
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -184,7 +177,7 @@ class Carbon extends React.PureComponent {
           />
         ) : null}
         <CodeMirror
-          ref={this.editorRef}
+          ref={this.props.editorRef}
           className={`CodeMirror__container window-theme__${config.windowTheme}`}
           value={this.props.children}
           options={options}
@@ -306,6 +299,13 @@ class Carbon extends React.PureComponent {
             .container :global(.CodeMirror-linenumber) {
               cursor: pointer;
             }
+
+            @media (max-width: 768px) {
+              /* show cursor on mobile */
+              .container :global([contenteditable='true']) {
+                user-select: text;
+              }
+            }
           `}
         </style>
       </div>
@@ -322,9 +322,13 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {!this.props.readOnly && this.state.selectionAt && (
-          <SelectionEditor position={this.state.selectionAt} onChange={this.onSelectionChange} />
-        )}
+        {!this.props.readOnly &&
+          this.state.selectionAt &&
+          ReactDOM.createPortal(
+            <SelectionEditor onChange={this.onSelectionChange} />,
+            // TODO: don't use portal?
+            document.getElementById('style-editor-button')
+          )}
         <style jsx>
           {`
             .section,
@@ -371,10 +375,7 @@ function useHighlightLoader() {
   React.useEffect(() => {
     if (!highLightsLoaded) {
       import('../lib/highlight-languages')
-        .then(res => {
-          // console.log(res.default)
-          res.default.map(config => hljs.registerLanguage(config[0], config[1]))
-        })
+        .then(res => res.default.map(config => hljs.registerLanguage(config[0], config[1])))
         .then(() => {
           highLightsLoaded = true
         })
@@ -382,21 +383,36 @@ function useHighlightLoader() {
   }, [])
 }
 
-function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLines }) {
+function selectedLinesReducer(
+  { prevLine, selected },
+  { type, lineNumber, numLines, selectedLines }
+) {
   const newState = {}
 
-  if (type === 'GROUP' && prevLine) {
-    for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
-      newState[i] = selected[prevLine]
-    }
-  } else {
-    for (let i = 0; i < numLines; i++) {
-      if (i != lineNumber) {
-        if (prevLine == null) {
-          newState[i] = false
+  switch (type) {
+    case 'GROUP': {
+      if (prevLine) {
+        for (let i = Math.min(prevLine, lineNumber); i < Math.max(prevLine, lineNumber) + 1; i++) {
+          newState[i] = selected[prevLine]
         }
-      } else {
-        newState[lineNumber] = selected[lineNumber] === true ? false : true
+      }
+      break
+    }
+    case 'MULTILINE': {
+      for (let i = 0; i < selectedLines.length; i++) {
+        newState[selectedLines[i] - 1] = true
+      }
+      break
+    }
+    default: {
+      for (let i = 0; i < numLines; i++) {
+        if (i != lineNumber) {
+          if (prevLine == null) {
+            newState[i] = false
+          }
+        } else {
+          newState[lineNumber] = selected[lineNumber] === true ? false : true
+        }
       }
     }
   }
@@ -407,42 +423,53 @@ function selectedLinesReducer({ prevLine, selected }, { type, lineNumber, numLin
   }
 }
 
-function useGutterClickHandler(props) {
-  const editorRef = React.useRef(null)
+function useSelectedLines(props, editorRef) {
   const [state, dispatch] = React.useReducer(selectedLinesReducer, {
     prevLine: null,
     selected: {}
   })
 
   React.useEffect(() => {
-    if (editorRef.current) {
-      editorRef.current.display.view.forEach((line, i) => {
-        if (line.text && line.gutter) {
-          line.text.style.opacity = state.selected[i] === false ? 0.5 : 1
-          line.gutter.style.opacity = state.selected[i] === false ? 0.5 : 1
+    if (editorRef.current && Object.keys(state.selected).length > 0) {
+      editorRef.current.editor.display.view.forEach((line, i) => {
+        if (line.text) {
+          line.text.style.opacity = state.selected[i] === true ? 1 : 0.5
+        }
+        if (line.gutter) {
+          line.gutter.style.opacity = state.selected[i] === true ? 1 : 0.5
         }
       })
     }
-  }, [state.selected, props.children, props.config])
+  }, [state.selected, props.children, props.config, editorRef])
+
+  React.useEffect(() => {
+    if (props.config.selectedLines) {
+      dispatch({
+        type: 'MULTILINE',
+        selectedLines: props.config.selectedLines
+      })
+    }
+  }, [props.config.selectedLines])
 
   return React.useCallback(function onGutterClick(editor, lineNumber, gutter, e) {
-    editorRef.current = editor
-
     const numLines = editor.display.view.length
-    if (e.shiftKey) {
-      dispatch({ type: 'GROUP', lineNumber, numLines })
-    } else {
-      dispatch({ type: 'LINE', lineNumber, numLines })
-    }
+    const type = e.shiftKey ? 'GROUP' : 'LINE'
+    dispatch({ type, lineNumber, numLines })
   }, [])
+}
+
+function useShowInvisiblesLoader() {
+  React.useEffect(() => void require('cm-show-invisibles'), [])
 }
 
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
-  const onGutterClick = useGutterClickHandler(props)
+  useShowInvisiblesLoader()
+  const editorRef = React.createRef()
+  const onGutterClick = useSelectedLines(props, editorRef)
 
-  return <Carbon {...props} innerRef={ref} onGutterClick={onGutterClick} />
+  return <Carbon {...props} innerRef={ref} editorRef={editorRef} onGutterClick={onGutterClick} />
 }
 
 export default React.forwardRef(CarbonContainer)

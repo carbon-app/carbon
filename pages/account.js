@@ -1,6 +1,7 @@
 // Theirs
 import React from 'react'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 
 // Ours
 import Button from '../components/Button'
@@ -249,6 +250,9 @@ function Settings() {
 function SettingsPage() {
   return (
     <Page flex={true}>
+      <Head>
+        <script src="https://js.stripe.com/v3/" />
+      </Head>
       <MetaLinks />
       <Settings />
     </Page>

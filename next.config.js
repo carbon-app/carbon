@@ -5,10 +5,6 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: true })
 
 const config = withOffline({
   target: 'serverless',
-  experimental: {
-    modern: true,
-    granularChunks: true
-  },
   dontAutoRegisterSw: true,
   // https://github.com/hanford/next-offline/blob/master/packages/now2-example/next.config.js
   workboxOpts: {
@@ -34,6 +30,15 @@ const config = withOffline({
     FIREBASE_FE_APP_ID: process.env.FIREBASE_FE_APP_ID,
     FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
     STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY
+  },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.js$/,
+      include: /node_modules\/graphql-language-service-parser/,
+      use: [options.defaultLoaders.babel]
+    })
+
+    return config
   }
 })
 

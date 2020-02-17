@@ -20,6 +20,7 @@ module.exports = {
     'no-duplicate-imports': 'error',
     'react/prop-types': 'off',
     'react/display-name': 'off',
+    'react/jsx-no-target-blank': 'error',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
     'jsx-a11y/click-events-have-key-events': 'off',

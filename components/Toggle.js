@@ -17,7 +17,7 @@ class Toggle extends React.PureComponent {
         <input
           type="checkbox"
           checked={this.props.enabled}
-          onClick={this.toggle}
+          onChange={this.toggle}
           aria-checked={this.props.enabled}
         />
         {this.props.enabled ? <Checkmark /> : <div className="checkmark-disabled" />}

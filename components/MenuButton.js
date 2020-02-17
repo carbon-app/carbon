@@ -30,7 +30,7 @@ const MenuButton = React.memo(({ name, select, selected, noArrows }) => {
           }
 
           .menu-button:last-child {
-            ${selected === 'Window' ? '' : 'border-bottom: none;'};
+            ${selected === 'Misc' ? 'border-bottom: none;' : ''};
           }
 
           .arrow-icon {
