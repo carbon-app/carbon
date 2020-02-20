@@ -113,10 +113,11 @@ class Carbon extends React.PureComponent {
   onSelectionChange = changes => {
     if (this.state.selectionAt) {
       const css = [
-        changes.bold && `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
-        changes.italics && `font-style: ${changes.italics ? 'italic' : 'initial'}`,
-        changes.underline && `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
-        changes.color && `color: ${changes.color} !important`
+        changes.bold != null && `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
+        changes.italics != null && `font-style: ${changes.italics ? 'italic' : 'initial'}`,
+        changes.underline != null &&
+          `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
+        changes.color != null && `color: ${changes.color} !important`
       ]
         .filter(Boolean)
         .join('; ')
