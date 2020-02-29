@@ -3112,10 +3112,10 @@ cli-width@^2.0.0:
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
   integrity sha1-/xnt6Kml5XkyQUewwR8PvLq+1jk=
 
-climate-change-reminder@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/climate-change-reminder/-/climate-change-reminder-0.0.6.tgz#f52fa90f3b5790638b1f76b42e948b154bfdb6bb"
-  integrity sha512-lm4xXQ4bKDulhAfYaUeGrXOBD1cOEMeNtNZl9Q0n27oLgE0ruX2jnKlIjmW/QhzoqWGbRRgrBXffR/Xow2ZF4w==
+climate-change-reminder@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/climate-change-reminder/-/climate-change-reminder-0.0.7.tgz#44d08121175e3e57430f172b6ed92ee5a9b37743"
+  integrity sha512-IqUB3s0KYGyS7qdwl264pBLbjv06PKxQd+Hd7e43GObIHcfO+UfgUL/v7ujesWGuqIKFQRvA8qRKdTIzNleWFg==
   dependencies:
     boxen "^4.1.0"
     chalk "^2.4.2"
@@ -10253,12 +10253,12 @@ url@0.11.0, url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-climate-change-reminder@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/use-climate-change-reminder/-/use-climate-change-reminder-0.0.6.tgz#9ed209d19285910f3972da25c36bc39386771479"
-  integrity sha512-mimVln6POL4TMlWcpaNPbwno5iTtQB6Xwu3Kw7TETXpFrXFXS0kiJLDcojeEEM9Hv6Nm1W5hkTaYjN6pneAgFA==
+use-climate-change-reminder@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/use-climate-change-reminder/-/use-climate-change-reminder-0.0.7.tgz#91cf7fc44d68b4bc7fe8f3040ef0c3349d869e14"
+  integrity sha512-bTgYBShrjVRX1AAUciEYKJYTu8ypgZO5Fjh+mBI9fK4AXqm3AAMEzox6vRpzn3YBPU7CMoKXiI0522+51yySXQ==
   dependencies:
-    climate-change-reminder "^0.0.6"
+    climate-change-reminder "^0.0.7"
 
 use-subscription@1.1.1:
   version "1.1.1"
