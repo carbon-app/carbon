@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@next/bundle-analyzer": "^9.2.2",
-    "@reach/visually-hidden": "^0.7.4",
+    "@reach/visually-hidden": "^0.8.2",
     "actionsack": "^0.0.13",
     "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
