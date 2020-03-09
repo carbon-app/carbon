@@ -171,7 +171,7 @@ function ExportMenu({
             </div>
           </div>
           <div className="save-container">
-            <span>Export</span>
+            <span>Download</span>
             <div>
               {!disablePNG && (
                 <Button
