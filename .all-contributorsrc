@@ -654,6 +654,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "nisarhassan12",
+      "name": "Nisar Hassan Naqvi",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/46004116?v=4",
+      "profile": "https://nisar.dev",
+      "contributions": [
+        "doc",
+        "infra"
+      ]
     }
   ],
   "repoType": "github",
