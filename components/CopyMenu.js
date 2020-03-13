@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'next/router'
 import { useCopyTextHandler, useAsyncCallback } from 'actionsack'
+import morph from 'morphmorph'
 
 import { COLORS } from '../lib/constants'
 import Button from './Button'
@@ -16,7 +17,7 @@ const toIFrame = url =>
 `
 
 const toURL = url => `${location.origin}${url}`
-const toEncodedURL = url => encodeURI(toURL(url))
+const toEncodedURL = morph.compose(encodeURI, toURL)
 
 function CopyButton(props) {
   return (

@@ -419,7 +419,6 @@ class Editor extends React.Component {
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
-                copyImage={this.copyImage}
                 exportSize={exportSize}
                 backgroundImage={backgroundImage}
               />
