@@ -57,7 +57,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
   const [copy, { loading }] = useAsyncCallback(copyImage)
 
   return (
-    <div className="export-menu-container" id="export-menu">
+    <div className="copy-menu-container">
       <div className="flex">
         <Button
           center
@@ -77,7 +77,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
         pointerRight="24px"
         style={popoutStyle}
       >
-        <div className="export-row flex">
+        <div className="copy-row flex">
           <span>Copy to clipboard</span>
           {clipboardSupported && (
             <CopyButton id="export-clipboard" onClick={copy} disabled={loading}>
@@ -91,23 +91,23 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
       </Popout>
       <style jsx>
         {`
-          .export-menu-container {
+          .copy-menu-container {
             position: relative;
             color: ${COLORS.SECONDARY};
             flex: 1;
           }
 
-          .export-row {
+          .copy-row {
             flex-direction: column;
             justify-content: space-between;
             border-bottom: 1px solid ${COLORS.SECONDARY};
           }
 
-          .export-row :global(button) {
+          .copy-row :global(button) {
             border-top: 1px solid ${COLORS.SECONDARY};
           }
 
-          .export-row > span {
+          .copy-row > span {
             padding: 8px;
             margin: 0 auto;
           }
