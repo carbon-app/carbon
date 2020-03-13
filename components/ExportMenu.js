@@ -143,11 +143,6 @@ function ExportMenu({
             flex: 1;
           }
 
-          .flex {
-            display: flex;
-            height: 100%;
-          }
-
           .export-row {
             display: flex;
             align-items: center;

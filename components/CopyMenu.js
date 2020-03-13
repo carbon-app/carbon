@@ -97,11 +97,6 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
             flex: 1;
           }
 
-          .flex {
-            display: flex;
-            height: 100%;
-          }
-
           .export-row {
             flex-direction: column;
             justify-content: space-between;

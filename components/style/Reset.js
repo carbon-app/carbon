@@ -233,6 +233,11 @@ export default () => (
         display: flex;
       }
 
+      .flex {
+        display: flex;
+        height: 100%;
+      }
+
       .capitalize {
         text-transform: capitalize;
       }

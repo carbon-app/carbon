@@ -9,7 +9,7 @@ import { useAuth } from './AuthContext'
 function Drawer(props) {
   return (
     <Popout hidden={!props.isVisible} pointerRight="14px" style={{ width: '160px', right: 0 }}>
-      <div className="flex">
+      <div className="flex column">
         <Link href="/snippets">
           <Button large center padding="0.5rem 0" style={{ borderBottom: '1px solid' }}>
             <img src="/static/svg/snippets.svg" alt="Snippets page" width="16px" /> Snippets{' '}
@@ -32,10 +32,8 @@ function Drawer(props) {
       </div>
       <style jsx>
         {`
-          .flex {
-            display: flex;
+          .column {
             flex-direction: column;
-            height: 100%;
           }
           img {
             position: relative;
