@@ -216,7 +216,7 @@ function SnippetsPage() {
             Router.push('/')
           }}
         >
-          <h4>{loading ? 'Loading...' : !snippets.length ? 'Create snippet +' : 'Load more +'}</h4>
+          <h4>{loading ? 'Loading…' : !snippets.length ? 'Create snippet +' : 'Load more +'}</h4>
         </ActionButton>
       )}
       <style jsx>

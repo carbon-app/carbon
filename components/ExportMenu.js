@@ -71,7 +71,7 @@ function ExportMenu({
           data-cy="export-button"
           style={{ width: 92 }}
         >
-          {loading ? 'Exporting...' : 'Export'}
+          {loading ? 'Exporting…' : 'Export'}
         </Button>
       </div>
       <Popout

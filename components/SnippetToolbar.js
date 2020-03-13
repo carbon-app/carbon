@@ -23,7 +23,7 @@ function DeleteButton(props) {
       onClick={onClick}
       style={{ color: COLORS.RED }}
     >
-      {loading ? 'Deleting...' : 'Delete'}
+      {loading ? 'Deleting…' : 'Delete'}
     </ConfirmButton>
   )
 }
@@ -43,7 +43,7 @@ function DuplicateButton(props) {
       color="#37b589"
       onClick={onClick}
     >
-      {loading ? 'Duplicating...' : 'Duplicate'}
+      {loading ? 'Duplicating…' : 'Duplicate'}
     </Button>
   )
 }

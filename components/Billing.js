@@ -119,7 +119,7 @@ function Billing(props) {
                 }}
               />
               <hr />
-              <Input placeholder="Cardholders's name..." name="name" required />
+              <Input placeholder="Cardholders's name…" name="name" required />
             </fieldset>
             <small>
               (By clicking subscribe, you are accepting the{' '}
@@ -135,7 +135,7 @@ function Billing(props) {
               type="submit"
               color="rgba(255, 255, 255, 0.7)"
             >
-              {loading ? 'Sending...' : 'Subscribe'}
+              {loading ? 'Sending…' : 'Subscribe'}
             </Button>
             <div className={`error ${error ? 'visible' : ''}`} role="alert">
               {X}
