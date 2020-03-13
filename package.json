@@ -55,6 +55,7 @@
     "react-spinner": "^0.2.7",
     "react-stripe-elements": "^6.1.0",
     "react-syntax-highlight": "^15.3.1",
+    "serialize-javascript": "^3.0.0",
     "tohash": "^1.0.2",
     "use-climate-change-reminder": "^0.0.7"
   },
