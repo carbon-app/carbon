@@ -43,13 +43,12 @@ function ExportMenu({
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
   const isSafari = useSafari()
+  const input = React.useRef()
 
   const [exportImage, { loading }] = useAsyncCallback(exp)
   useKeyboardListener('⌘-⇧-e', () => exportImage())
 
   const disablePNG = isSafari && (tooLarge || !online)
-
-  const input = React.useRef()
 
   const handleExportSizeChange = selectedSize => () => onChange('exportSize', selectedSize)
 
@@ -78,7 +77,7 @@ function ExportMenu({
       <Popout
         hidden={!isVisible}
         borderColor={COLORS.PURPLE}
-        pointerRight="28px"
+        pointerRight="36px"
         style={popoutStyle}
       >
         <div className="export-row">
@@ -181,7 +180,6 @@ function ExportMenu({
             display: flex;
             flex: 1;
           }
-
           .save-container:first-of-type {
             padding: 12px 12px;
             border-right: 1px solid ${COLORS.PURPLE};
