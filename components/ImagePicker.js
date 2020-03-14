@@ -209,7 +209,7 @@ export default class ImagePicker extends React.Component {
             />
           ) : (
             <form onSubmit={this.handleURLInput}>
-              <Input type="text" title="Background Image" placeholder="Image URL..." align="left" />
+              <Input type="text" title="Background Image" placeholder="Image URL…" align="left" />
               <button type="submit">Upload</button>
             </form>
           )}

@@ -1,21 +1,10 @@
 import React from 'react'
-import { withRouter } from 'next/router'
-import { useCopyTextHandler, useOnline, useKeyboardListener, useAsyncCallback } from 'actionsack'
+import { useOnline, useKeyboardListener, useAsyncCallback } from 'actionsack'
 
 import { COLORS, EXPORT_SIZES } from '../lib/constants'
 import Button from './Button'
 import Input from './Input'
 import Popout, { managePopout } from './Popout'
-
-const toIFrame = url =>
-  `<iframe
-  src="${location.origin}/embed${url.replace(/^\/\?/, '?')}"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
-`
-
-const toURL = url => encodeURI(`${location.origin}${url}`)
 
 const MAX_PAYLOAD_SIZE = 5e6 // bytes
 function verifyPayloadSize(str) {
@@ -28,25 +17,7 @@ function verifyPayloadSize(str) {
   return Buffer.byteLength(str, 'utf8')
 }
 
-const CopyEmbed = withRouter(({ router: { asPath }, mapper, title, margin }) => {
-  const text = React.useMemo(() => mapper(asPath), [mapper, asPath])
-  const { onClick, copied } = useCopyTextHandler(text)
-
-  return (
-    <Button
-      onClick={onClick}
-      center
-      hoverColor={COLORS.PURPLE}
-      color={COLORS.DARK_PURPLE}
-      margin={margin}
-      style={{ minWidth: 48 }}
-    >
-      {copied ? 'Copied!' : title}
-    </Button>
-  )
-})
-
-const popoutStyle = { width: '350px', right: 0 }
+const popoutStyle = { width: '240px', right: 0 }
 
 function useSafari() {
   const [isSafari, setSafari] = React.useState(false)
@@ -61,39 +32,23 @@ function useSafari() {
   return isSafari
 }
 
-function useClipboardSupport() {
-  const [isClipboardSupports, setClipboardSupport] = React.useState(false)
-
-  React.useEffect(() => {
-    setClipboardSupport(
-      window.navigator && window.navigator.clipboard && typeof ClipboardItem === 'function'
-    )
-  }, [])
-
-  return isClipboardSupports
-}
-
 function ExportMenu({
   backgroundImage,
   onChange,
   exportSize,
   isVisible,
   toggleVisibility,
-  exportImage: exp,
-  copyImage
+  exportImage: exp
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
   const isSafari = useSafari()
+  const input = React.useRef()
 
   const [exportImage, { loading }] = useAsyncCallback(exp)
   useKeyboardListener('⌘-⇧-e', () => exportImage())
 
   const disablePNG = isSafari && (tooLarge || !online)
-
-  const clipboardSupported = useClipboardSupport()
-
-  const input = React.useRef()
 
   const handleExportSizeChange = selectedSize => () => onChange('exportSize', selectedSize)
 
@@ -116,13 +71,13 @@ function ExportMenu({
           data-cy="export-button"
           style={{ width: 92 }}
         >
-          {loading ? 'Exporting...' : 'Export'}
+          {loading ? 'Exporting…' : 'Export'}
         </Button>
       </div>
       <Popout
         hidden={!isVisible}
         borderColor={COLORS.PURPLE}
-        pointerRight="28px"
+        pointerRight="36px"
         style={popoutStyle}
       >
         <div className="export-row">
@@ -147,31 +102,11 @@ function ExportMenu({
           </div>
         </div>
         <div className="export-row">
-          {/* IDEA: Remove open button if clipboardSupported? */}
           <Button center color={COLORS.PURPLE} onClick={handleExport('open')}>
             Open
           </Button>
           <div className="save-container">
-            <span>Copy to clipboard</span>
-            <div>
-              <CopyEmbed title="URL" mapper={toURL} margin="0 8px 0 0" />
-              <CopyEmbed title="IFrame" mapper={toIFrame} margin="0 12px 0 0px" />
-              {clipboardSupported && (
-                <Button
-                  center
-                  hoverColor={COLORS.PURPLE}
-                  color={COLORS.DARK_PURPLE}
-                  onClick={copyImage}
-                  id="export-clipboard"
-                  disabled={loading}
-                >
-                  Image
-                </Button>
-              )}
-            </div>
-          </div>
-          <div className="save-container">
-            <span>Export</span>
+            <span>Download</span>
             <div>
               {!disablePNG && (
                 <Button
@@ -208,11 +143,6 @@ function ExportMenu({
             flex: 1;
           }
 
-          .flex {
-            display: flex;
-            height: 100%;
-          }
-
           .export-row {
             display: flex;
             align-items: center;
@@ -245,7 +175,6 @@ function ExportMenu({
             display: flex;
             flex: 1;
           }
-
           .save-container:first-of-type {
             padding: 12px 12px;
             border-right: 1px solid ${COLORS.PURPLE};
