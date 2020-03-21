@@ -307,6 +307,11 @@ class Carbon extends React.PureComponent {
       </div>
     )
 
+    const selectionNode =
+      !this.props.readOnly &&
+      !!this.state.selectionAt &&
+      document.getElementById('style-editor-button')
+
     return (
       <div className="section">
         <div
@@ -318,12 +323,11 @@ class Carbon extends React.PureComponent {
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
           <div className="twitter-png-fix" />
         </div>
-        {!this.props.readOnly &&
-          this.state.selectionAt &&
+        {selectionNode &&
           ReactDOM.createPortal(
             <SelectionEditor onChange={this.onSelectionChange} />,
             // TODO: don't use portal?
-            document.getElementById('style-editor-button')
+            selectionNode
           )}
         <style jsx>
           {`
