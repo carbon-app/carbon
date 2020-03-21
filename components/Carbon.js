@@ -152,7 +152,7 @@ class Carbon extends React.PureComponent {
       extraKeys: {
         'Shift-Tab': 'indentLess'
       },
-      readOnly: this.props.readOnly ? 'nocursor' : false,
+      readOnly: this.props.readOnly,
       showInvisibles: config.hiddenCharacters
     }
     const backgroundImage =
@@ -294,6 +294,10 @@ class Carbon extends React.PureComponent {
 
             .container :global(.CodeMirror-linenumber) {
               cursor: pointer;
+            }
+
+            .container :global(.CodeMirror-cursor) {
+              visibility: ${this.props.readOnly ? 'hidden' : ''};
             }
 
             @media (max-width: 768px) {
