@@ -663,6 +663,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ilyaskarim",
+      "name": "Ilyas Karim",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/42450390?v=4",
+      "profile": "https://www.wapgee.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github",
