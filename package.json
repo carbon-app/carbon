@@ -13,8 +13,8 @@
     "lint": "eslint .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
+    "cy:run": "cypress run --config-file cypress/config.json",
+    "cy:open": "cypress open --config-file cypress/config.json",
     "preinstall": "node ./node_modules/use-climate-change-reminder/index.js || exit 0"
   },
   "dependencies": {
