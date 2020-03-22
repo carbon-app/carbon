@@ -13,8 +13,8 @@
     "lint": "eslint .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
+    "cy:run": "cypress run --config-file cypress/config.json",
+    "cy:open": "cypress open --config-file cypress/config.json",
     "preinstall": "node ./node_modules/use-climate-change-reminder/index.js || exit 0"
   },
   "dependencies": {
@@ -61,15 +61,15 @@
     "use-climate-change-reminder": "^0.0.7"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.9.13",
+    "@applitools/eyes-cypress": "^3.9.18",
     "all-contributors-cli": "^6.14.0",
     "babel-eslint": "^10.1.0",
-    "cypress": "^4.1.0",
+    "cypress": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.18.3",
-    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "now": "^17.0.4",
