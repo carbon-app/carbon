@@ -42,7 +42,7 @@
     "minimist": "^1.2.5",
     "morphmorph": "^0.1.3",
     "ms": "^2.1.2",
-    "next": "^9.2.2",
+    "next": "^9.3.2",
     "next-offline": "^4.0.6",
     "prettier": "^1.19.1",
     "react": "^16.13.0",
