@@ -17,7 +17,7 @@ function verifyPayloadSize(str) {
   return Buffer.byteLength(str, 'utf8')
 }
 
-const popoutStyle = { width: '240px', right: 0 }
+const popoutStyle = { width: '256px', right: 0 }
 
 function useSafari() {
   const [isSafari, setSafari] = React.useState(false)
