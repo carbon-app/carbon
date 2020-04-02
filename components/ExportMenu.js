@@ -67,9 +67,8 @@ function ExportMenu({
           large
           center
           color={COLORS.PURPLE}
-          padding="0"
           onClick={handleExport('png')}
-          data-cy="export-button"
+          data-cy="quick-export-button"
           style={{ minWidth: 92, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
         >
           {loading ? 'Exporting…' : 'Export'}
@@ -82,7 +81,8 @@ function ExportMenu({
           padding="0 8px"
           onClick={toggleVisibility}
           data-cy="export-button"
-          style={{ marginLeft: -1, borderBottomLeftRadius: 0, borderTopLeftRadius: 0 }}
+          margin="0 0 0 -1px"
+          style={{ borderBottomLeftRadius: 0, borderTopLeftRadius: 0 }}
         >
           <ArrowDown color={COLORS.PURPLE} />
         </Button>
