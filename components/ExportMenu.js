@@ -60,7 +60,7 @@ function ExportMenu({
     })
 
   return (
-    <div className="export-menu-container" id="export-menu">
+    <div className="export-menu-container">
       <div className="flex">
         <Button
           border
@@ -74,6 +74,7 @@ function ExportMenu({
           {loading ? 'Exporting…' : 'Export'}
         </Button>
         <Button
+          id="export-menu"
           border
           large
           center
