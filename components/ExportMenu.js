@@ -6,6 +6,8 @@ import Button from './Button'
 import Input from './Input'
 import Popout, { managePopout } from './Popout'
 
+import { Down as ArrowDown } from './svg/Arrows'
+
 const MAX_PAYLOAD_SIZE = 5e6 // bytes
 function verifyPayloadSize(str) {
   if (typeof str !== 'string') return true
@@ -54,7 +56,7 @@ function ExportMenu({
 
   const handleExport = format => () =>
     exportImage(format, {
-      filename: input.current.value
+      filename: input.current && input.current.value
     })
 
   return (
@@ -65,19 +67,30 @@ function ExportMenu({
           large
           center
           color={COLORS.PURPLE}
-          padding="0 16px"
-          selected={isVisible}
-          onClick={toggleVisibility}
+          padding="0"
+          onClick={handleExport('png')}
           data-cy="export-button"
-          style={{ width: 92 }}
+          style={{ minWidth: 92, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
         >
           {loading ? 'Exporting…' : 'Export'}
+        </Button>
+        <Button
+          border
+          large
+          center
+          color={COLORS.PURPLE}
+          padding="0 8px"
+          onClick={toggleVisibility}
+          data-cy="export-button"
+          style={{ marginLeft: -1, borderBottomLeftRadius: 0, borderTopLeftRadius: 0 }}
+        >
+          <ArrowDown color={COLORS.PURPLE} />
         </Button>
       </div>
       <Popout
         hidden={!isVisible}
         borderColor={COLORS.PURPLE}
-        pointerRight="36px"
+        pointerRight="6px"
         style={popoutStyle}
       >
         <div className="export-row">
