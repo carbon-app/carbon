@@ -20,6 +20,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^9.2.2",
     "@reach/visually-hidden": "^0.8.2",
+    "acorn": "^7.1.1",
     "actionsack": "^0.0.13",
     "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
@@ -36,6 +37,7 @@
     "firebase": "^7.9.3",
     "graphql": "^14.6.0",
     "highlight.js": "^9.18.1",
+    "kind-of": "^6.0.3",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
     "match-sorter": "^4.0.2",
