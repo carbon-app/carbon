@@ -672,6 +672,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "njfix6",
+      "name": "Nick Fix",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6845581?v=4",
+      "profile": "http://nickfix.me",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "repoType": "github",
