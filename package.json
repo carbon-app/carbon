@@ -9,7 +9,7 @@
     "start": "next start",
     "test:e2e": "npm run cy:run --",
     "deploy": "now -S carbon-app",
-    "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages,packages}/**/*.js",
+    "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages}/**/*.js",
     "lint": "eslint .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
