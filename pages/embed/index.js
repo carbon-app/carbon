@@ -40,7 +40,7 @@ class Embed extends React.Component {
     code: DEFAULT_CODE,
     mounted: false,
     readOnly: true,
-    key: 0
+    key: 0,
   }
 
   snippet = {}
@@ -54,7 +54,7 @@ class Embed extends React.Component {
         ...queryState,
         copyable: queryState.copy !== false,
         readOnly: queryState.readonly !== false,
-        mounted: true
+        mounted: true,
       },
       this.postMessage
     )
@@ -70,7 +70,7 @@ class Embed extends React.Component {
             // Used by embed provider
             src: window.location.toString(),
             context: 'iframe.resize',
-            height: this.ref.current.offsetHeight
+            height: this.ref.current.offsetHeight,
           }),
           '*'
         ),
@@ -84,7 +84,7 @@ class Embed extends React.Component {
     window.top.postMessage(
       {
         id: this.state.id ? `carbon:${this.state.id}` : 'carbon',
-        code
+        code,
       },
       '*'
     )

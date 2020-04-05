@@ -40,7 +40,7 @@ function ExportMenu({
   exportSize,
   isVisible,
   toggleVisibility,
-  exportImage: exp
+  exportImage: exp,
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
@@ -56,7 +56,7 @@ function ExportMenu({
 
   const handleExport = format => () =>
     exportImage(format, {
-      filename: input.current && input.current.value
+      filename: input.current && input.current.value,
     })
 
   return (

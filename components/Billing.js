@@ -105,17 +105,17 @@ function Billing(props) {
                       fontSmoothing: 'antialiased',
 
                       ':-webkit-autofill': {
-                        color: '#fce883'
+                        color: '#fce883',
                       },
                       '::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
+                        color: 'rgba(255, 255, 255, 0.7)',
+                      },
                     },
                     invalid: {
                       iconColor: COLORS.RED,
-                      color: COLORS.RED
-                    }
-                  }
+                      color: COLORS.RED,
+                    },
+                  },
                 }}
               />
               <hr />
@@ -262,7 +262,7 @@ function Billing(props) {
 
 const BillingWithStripe = injectStripe(Billing)
 
-export default function() {
+export default function () {
   const [stripe, setStripe] = React.useState(null)
   React.useEffect(() => {
     setStripe(window.Stripe(process.env.STRIPE_PUBLIC_KEY))

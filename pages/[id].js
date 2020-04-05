@@ -23,7 +23,7 @@ class IdPage extends React.PureComponent {
       // 404 Not found
       if (res) {
         res.writeHead(302, {
-          Location: '/'
+          Location: '/',
         })
         res.end()
       } else {

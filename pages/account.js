@@ -14,7 +14,7 @@ import { loginGitHub, logout } from '../lib/client'
 import { COLORS } from '../lib/constants'
 
 const Billing = dynamic(() => import('../components/Billing'), {
-  loading: () => <div style={{ minHeight: '360px' }} />
+  loading: () => <div style={{ minHeight: '360px' }} />,
 })
 
 function logoutThunk() {

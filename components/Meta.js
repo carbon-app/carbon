@@ -26,8 +26,9 @@ export const StylesheetLink = ({ theme }) => {
     href = `/static/themes/${theme}.min.css`
   } else {
     const themeDef = THEMES_HASH[theme]
-    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.2/theme/${themeDef &&
-      (themeDef.link || themeDef.id)}.min.css`
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.2/theme/${
+      themeDef && (themeDef.link || themeDef.id)
+    }.min.css`
   }
 
   return <Link href={href} />
@@ -71,8 +72,9 @@ export const MetaLinks = React.memo(() => {
         <Link key={id} href={`/static/themes/${id}.min.css`} />
       ))}
       {CDN_STYLESHEETS.map(themeDef => {
-        const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.2/theme/${themeDef &&
-          (themeDef.link || themeDef.id)}.min.css`
+        const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.2/theme/${
+          themeDef && (themeDef.link || themeDef.id)
+        }.min.css`
         return <Link key={themeDef.id} href={href} />
       })}
     </React.Fragment>

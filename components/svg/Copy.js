@@ -23,7 +23,7 @@ const Copy = ({ size, color }) => {
 }
 
 Copy.defaultProps = {
-  size: 16
+  size: 16,
 }
 
 export default Copy

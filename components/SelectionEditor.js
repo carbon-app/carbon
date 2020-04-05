@@ -25,25 +25,25 @@ function reducer(state, action) {
     case 'BOLD': {
       return {
         ...state,
-        bold: !state.bold
+        bold: !state.bold,
       }
     }
     case 'ITALICS': {
       return {
         ...state,
-        italics: !state.italics
+        italics: !state.italics,
       }
     }
     case 'UNDERLINE': {
       return {
         ...state,
-        underline: !state.underline
+        underline: !state.underline,
       }
     }
     case 'COLOR': {
       return {
         ...state,
-        color: action.color
+        color: action.color,
       }
     }
   }
@@ -59,7 +59,7 @@ function SelectionEditor({ onChange }) {
     bold: null,
     italics: null,
     underline: null,
-    color: null
+    color: null,
   })
 
   React.useEffect(() => {

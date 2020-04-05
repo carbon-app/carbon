@@ -23,7 +23,7 @@ class EmbedIdPage extends React.PureComponent {
       // 404 Not found
       if (res) {
         res.writeHead(302, {
-          Location: '/embed'
+          Location: '/embed',
         })
         res.end()
       } else {

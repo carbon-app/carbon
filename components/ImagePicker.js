@@ -43,7 +43,7 @@ const INITIAL_STATE = {
   imageAspectRatio: null,
   pixelCrop: null,
   photographer: null,
-  dataURL: null
+  dataURL: null,
 }
 
 export default class ImagePicker extends React.Component {
@@ -68,10 +68,10 @@ export default class ImagePicker extends React.Component {
         crop: makeAspectCrop(
           {
             ...state.crop,
-            aspect: nextProps.aspectRatio
+            aspect: nextProps.aspectRatio,
           },
           state.imageAspectRatio
-        )
+        ),
       }
     }
     return null
@@ -91,7 +91,7 @@ export default class ImagePicker extends React.Component {
   onCropChange(crop, pixelCrop) {
     this.setState({
       crop: { ...crop, aspect: this.props.aspectRatio },
-      pixelCrop
+      pixelCrop,
     })
   }
 
@@ -101,12 +101,12 @@ export default class ImagePicker extends React.Component {
       x: 0,
       y: 0,
       width: 100,
-      aspect: this.props.aspectRatio
+      aspect: this.props.aspectRatio,
     }
 
     this.setState({
       imageAspectRatio,
-      crop: makeAspectCrop(initialCrop, imageAspectRatio)
+      crop: makeAspectCrop(initialCrop, imageAspectRatio),
     })
   }
 
@@ -115,7 +115,7 @@ export default class ImagePicker extends React.Component {
       this.props.onChange({
         backgroundImage: url,
         backgroundImageSelection: null,
-        photographer
+        photographer,
       })
     })
   }
@@ -131,7 +131,7 @@ export default class ImagePicker extends React.Component {
         if (err.message.indexOf('Network Error') > -1) {
           this.setState({
             error:
-              'Fetching the image failed. This is probably a CORS-related issue. You can either enable CORS in your browser, or use another image.'
+              'Fetching the image failed. This is probably a CORS-related issue. You can either enable CORS in your browser, or use another image.',
           })
         }
       })
@@ -170,7 +170,7 @@ export default class ImagePicker extends React.Component {
         operator: palette[9],
         meta: palette[10],
         tag: palette[11],
-        comment: palette[12]
+        comment: palette[12],
       })
     }
   }
@@ -179,7 +179,7 @@ export default class ImagePicker extends React.Component {
     this.setState(INITIAL_STATE, () => {
       this.props.onChange({
         backgroundImage: null,
-        backgroundImageSelection: null
+        backgroundImageSelection: null,
       })
     })
   }
