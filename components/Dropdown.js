@@ -9,7 +9,7 @@ import { COLORS } from '../lib/constants'
 class Dropdown extends React.PureComponent {
   state = {
     inputValue: this.props.selected.name,
-    itemsToShow: this.props.list
+    itemsToShow: this.props.list,
   }
 
   onUserAction = changes => {
@@ -66,7 +66,7 @@ class Dropdown extends React.PureComponent {
       itemWrapper,
       icon,
       disableInput,
-      title
+      title,
     } = this.props
     const { itemsToShow, inputValue } = this.state
 
@@ -91,7 +91,7 @@ class Dropdown extends React.PureComponent {
           icon,
           disableInput,
           title,
-          labelId
+          labelId,
         })}
       </Downshift>
     )
@@ -105,7 +105,7 @@ const renderDropdown = ({ color, list, itemWrapper, icon, disableInput, title, l
   getRootProps,
   getToggleButtonProps,
   getInputProps,
-  getItemProps
+  getItemProps,
 }) => {
   return (
     <DropdownContainer {...getRootProps({ refKey: 'innerRef' })}>
@@ -132,7 +132,7 @@ const renderDropdown = ({ color, list, itemWrapper, icon, disableInput, title, l
               {...getItemProps({
                 item,
                 isSelected: selectedItem.name === item.name,
-                isHighlighted: highlightedIndex === index
+                isHighlighted: highlightedIndex === index,
               })}
             >
               {item.name}
@@ -197,7 +197,7 @@ const SelectedItem = ({
   isOpen,
   color,
   hasIcon,
-  disabled
+  disabled,
 }) => {
   const itemColor = color || COLORS.SECONDARY
 

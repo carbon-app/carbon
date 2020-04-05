@@ -11,7 +11,7 @@ import { stringifyRGBA, generateId } from '../../lib/util'
 const colorPickerStyle = {
   backgroundColor: COLORS.BLACK,
   padding: 0,
-  margin: '4px'
+  margin: '4px',
 }
 
 const colorPresets = []
@@ -54,7 +54,7 @@ const ThemeCreate = ({
   create,
   updateHighlights,
   name,
-  onInputChange
+  onInputChange,
 }) => {
   const [preset, updatePreset] = React.useState(theme.id)
   const [highlight, selectHighlight] = React.useState()
@@ -103,7 +103,7 @@ const ThemeCreate = ({
                       backgroundColor: highlights[key],
                       boxShadow: `inset 0px 0px 0px ${highlight === key ? 2 : 1}px ${
                         COLORS.SECONDARY
-                      }`
+                      }`,
                     }}
                   />
                 </div>
@@ -124,7 +124,7 @@ const ThemeCreate = ({
               id: `theme:${generateId()}`,
               name,
               highlights,
-              custom: true
+              custom: true,
             })
           }
         >

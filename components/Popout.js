@@ -8,7 +8,7 @@ import { toggle } from '../lib/util'
 export const managePopout = WrappedComponent => {
   class PopoutManager extends React.Component {
     state = {
-      isVisible: false
+      isVisible: false,
     }
 
     toggleVisibility = () => this.setState(toggle('isVisible'))
@@ -46,7 +46,7 @@ export const managePopout = WrappedComponent => {
 class Popout extends React.PureComponent {
   static defaultProps = {
     borderColor: COLORS.SECONDARY,
-    style: {}
+    style: {},
   }
 
   render() {

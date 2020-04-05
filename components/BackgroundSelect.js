@@ -31,7 +31,7 @@ class BackgroundSelect extends React.PureComponent {
       isVisible,
       toggleVisibility,
       carbonRef,
-      updateHighlights
+      updateHighlights,
     } = this.props
 
     const background = validateColor(color) ? color : DEFAULT_BG_COLOR

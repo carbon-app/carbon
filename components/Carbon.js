@@ -19,14 +19,14 @@ import {
   LANGUAGE_NAME_HASH,
   LANGUAGE_MIME_HASH,
   DEFAULT_SETTINGS,
-  THEMES_HASH
+  THEMES_HASH,
 } from '../lib/constants'
 
 const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
-  loading: () => null
+  loading: () => null,
 })
 const Watermark = dynamic(() => import('./svg/Watermark'), {
-  loading: () => null
+  loading: () => null,
 })
 
 function searchLanguage(l) {
@@ -38,7 +38,7 @@ function noop() {}
 class Carbon extends React.PureComponent {
   static defaultProps = {
     onChange: noop,
-    onGutterClick: noop
+    onGutterClick: noop,
   }
   state = {}
 
@@ -65,7 +65,7 @@ class Carbon extends React.PureComponent {
     ms('300ms'),
     {
       leading: true,
-      trailing: true
+      trailing: true,
     }
   )
 
@@ -90,12 +90,12 @@ class Carbon extends React.PureComponent {
     if (selection.head.line + selection.head.ch > selection.anchor.line + selection.anchor.ch) {
       this.currentSelection = {
         from: selection.anchor,
-        to: selection.head
+        to: selection.head,
       }
     } else {
       this.currentSelection = {
         from: selection.head,
-        to: selection.anchor
+        to: selection.anchor,
       }
     }
   }
@@ -117,7 +117,7 @@ class Carbon extends React.PureComponent {
         changes.italics != null && `font-style: ${changes.italics ? 'italic' : 'initial'}`,
         changes.underline != null &&
           `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
-        changes.color != null && `color: ${changes.color} !important`
+        changes.color != null && `color: ${changes.color} !important`,
       ]
         .filter(Boolean)
         .join('; ')
@@ -150,10 +150,10 @@ class Carbon extends React.PureComponent {
       lineWrapping: true,
       smartIndent: true,
       extraKeys: {
-        'Shift-Tab': 'indentLess'
+        'Shift-Tab': 'indentLess',
       },
       readOnly: this.props.readOnly,
-      showInvisibles: config.hiddenCharacters
+      showInvisibles: config.hiddenCharacters,
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -423,14 +423,14 @@ function selectedLinesReducer(
 
   return {
     selected: { ...selected, ...newState },
-    prevLine: lineNumber
+    prevLine: lineNumber,
   }
 }
 
 function useSelectedLines(props, editorRef) {
   const [state, dispatch] = React.useReducer(selectedLinesReducer, {
     prevLine: null,
-    selected: {}
+    selected: {},
   })
 
   React.useEffect(() => {
@@ -450,7 +450,7 @@ function useSelectedLines(props, editorRef) {
     if (props.config.selectedLines) {
       dispatch({
         type: 'MULTILINE',
-        selectedLines: props.config.selectedLines
+        selectedLines: props.config.selectedLines,
       })
     }
   }, [props.config.selectedLines])

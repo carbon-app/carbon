@@ -31,7 +31,7 @@ import {
   DEFAULT_SETTINGS,
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
-  FONTS
+  FONTS,
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
@@ -39,7 +39,7 @@ import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 const languageIcon = <LanguageIcon />
 
 const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
-  loading: () => null
+  loading: () => null,
 })
 
 const getConfig = omit(['code'])
@@ -53,7 +53,7 @@ class Editor extends React.Component {
     this.state = {
       ...DEFAULT_SETTINGS,
       ...this.props.snippet,
-      loading: true
+      loading: true,
     }
 
     this.exportImage = this.exportImage.bind(this)
@@ -77,7 +77,7 @@ class Editor extends React.Component {
       ...(this.props.snippet ? null : getSettings(localStorage)),
       // and then URL params
       ...queryState,
-      loading: false
+      loading: false,
     }
 
     // Makes sure the slash in 'application/X' is decoded
@@ -107,7 +107,7 @@ class Editor extends React.Component {
 
   onUpdate = debounce(updates => this.props.onUpdate(updates), 750, {
     trailing: true,
-    leading: true
+    leading: true,
   })
   updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
 
@@ -119,7 +119,7 @@ class Editor extends React.Component {
       type,
       squared = this.state.squaredImage,
       exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
-      includeTransparentRow = false
+      includeTransparentRow = false,
     } = { format: 'png' }
   ) {
     // if safari, get image from api
@@ -129,7 +129,7 @@ class Editor extends React.Component {
       // pull from custom theme highlights, or state highlights
       const encodedState = serializeState({
         ...this.state,
-        highlights: { ...themeConfig.highlights, ...this.state.highlights }
+        highlights: { ...themeConfig.highlights, ...this.state.highlights },
       })
       return this.context.image(encodedState)
     }
@@ -160,7 +160,7 @@ class Editor extends React.Component {
       style: {
         transform: `scale(${exportSize})`,
         'transform-origin': 'center',
-        background: squared ? this.state.backgroundColor : 'none'
+        background: squared ? this.state.backgroundColor : 'none',
       },
       filter: n => {
         if (n.className) {
@@ -178,7 +178,7 @@ class Editor extends React.Component {
         return true
       },
       width,
-      height
+      height,
     }
 
     // current font-family used
@@ -254,8 +254,8 @@ class Editor extends React.Component {
     return this.getCarbonImage({ format: 'png', type: 'blob' }).then(blob =>
       navigator.clipboard.write([
         new window.ClipboardItem({
-          'image/png': blob
-        })
+          'image/png': blob,
+        }),
       ])
     )
   }
@@ -277,7 +277,7 @@ class Editor extends React.Component {
         backgroundImage: file.content,
         backgroundImageSelection: null,
         backgroundMode: 'image',
-        preset: null
+        preset: null,
       })
     } else {
       this.updateState({ code: file.content, language: 'auto' })
@@ -297,7 +297,7 @@ class Editor extends React.Component {
         code:
           code.replace(unsplashPhotographerCredit, '') +
           `\n\n// Photo by ${photographer.name} on Unsplash`,
-        preset: null
+        preset: null,
       }))
     } else {
       this.updateState({ ...changes, preset: null })
@@ -309,8 +309,8 @@ class Editor extends React.Component {
     this.setState(({ highlights = {} }) => ({
       highlights: {
         ...highlights,
-        ...updates
-      }
+        ...updates,
+      },
     }))
 
   createTheme = theme => {
@@ -341,7 +341,7 @@ class Editor extends React.Component {
       .then(() =>
         this.props.setToasts({
           type: 'SET',
-          toasts: [{ children: 'Snippet duplicated!', timeout: 3000 }]
+          toasts: [{ children: 'Snippet duplicated!', timeout: 3000 }],
         })
       )
 
@@ -352,7 +352,7 @@ class Editor extends React.Component {
       .then(() =>
         this.props.setToasts({
           type: 'SET',
-          toasts: [{ children: 'Snippet deleted', timeout: 3000 }]
+          toasts: [{ children: 'Snippet deleted', timeout: 3000 }],
         })
       )
 
@@ -364,7 +364,7 @@ class Editor extends React.Component {
       backgroundImage,
       backgroundMode,
       code,
-      exportSize
+      exportSize,
     } = this.state
 
     const config = getConfig(this.state)
@@ -493,7 +493,7 @@ function isImage(file) {
 
 Editor.defaultProps = {
   onUpdate: () => {},
-  onReset: () => {}
+  onReset: () => {},
 }
 
 export default Editor

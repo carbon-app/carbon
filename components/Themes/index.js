@@ -8,7 +8,7 @@ import RemoveIcon from '../svg/Remove'
 import { COLORS } from '../../lib/constants'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
-  loading: () => null
+  loading: () => null,
 })
 
 const ThemeItem = ({ children, item, isSelected, remove }) => (
@@ -52,7 +52,7 @@ const getCustomName = themes =>
 
 class Themes extends React.PureComponent {
   state = {
-    name: ''
+    name: '',
   }
 
   dropdown = React.createRef()
@@ -60,7 +60,7 @@ class Themes extends React.PureComponent {
   static getDerivedStateFromProps(props) {
     if (!props.isVisible) {
       return {
-        name: getCustomName(props.themes)
+        name: getCustomName(props.themes),
       }
     }
     return null
@@ -95,9 +95,9 @@ class Themes extends React.PureComponent {
     const dropdownList = [
       {
         id: 'create',
-        name: 'Create +'
+        name: 'Create +',
       },
-      ...themes
+      ...themes,
     ]
 
     return (

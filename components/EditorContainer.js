@@ -84,7 +84,7 @@ function EditorContainer(props) {
             setSnippet(newSnippet)
             setToasts({
               type: 'ADD',
-              toast: { children: 'Snippet saved!', closable: true }
+              toast: { children: 'Snippet saved!', closable: true },
             })
           }
         })
@@ -92,7 +92,7 @@ function EditorContainer(props) {
         update(snippetId, updates).then(() => {
           setToasts({
             type: 'ADD',
-            toast: { children: 'Snippet saved!', closable: true }
+            toast: { children: 'Snippet saved!', closable: true },
           })
         })
       }

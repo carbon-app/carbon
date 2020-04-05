@@ -11,7 +11,7 @@ const removeButtonStyles = {
   right: '6px',
   width: '11px',
   height: '11px',
-  borderRadius: '999px'
+  borderRadius: '999px',
 }
 
 const Preset = React.memo(({ remove, apply, selected, preset }) => {
@@ -32,7 +32,7 @@ const Preset = React.memo(({ remove, apply, selected, preset }) => {
           backgroundPosition: 'center center',
           backgroundSize: 'contain',
           backgroundImage: `url('${preset.icon}')`,
-          backgroundColor: preset.backgroundColor
+          backgroundColor: preset.backgroundColor,
         }}
       />
       {preset.custom && (
@@ -68,7 +68,7 @@ const arrowButtonStyle = {
   position: 'absolute',
   top: 0,
   right: '16px',
-  height: '100%'
+  height: '100%',
 }
 
 const Presets = React.memo(

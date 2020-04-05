@@ -32,7 +32,7 @@ function WindowSettings({
   widthAdjustment,
   watermark,
   onWidthChanging,
-  onWidthChanged
+  onWidthChanged,
 }) {
   return (
     <div className="settings-content">
@@ -112,7 +112,7 @@ function EditorSettings({
   firstLineNumber,
   hiddenCharacters,
   onWidthChanging,
-  onWidthChanged
+  onWidthChanged,
 }) {
   return (
     <div className="settings-content">
@@ -236,7 +236,7 @@ function MiscSettings({ format, reset, applyPreset, settings }) {
 
 const settingButtonStyle = {
   width: '40px',
-  height: '100%'
+  height: '100%',
 }
 
 class Settings extends React.PureComponent {
@@ -245,7 +245,7 @@ class Settings extends React.PureComponent {
     selectedMenu: 'Window',
     showPresets: true,
     previousSettings: null,
-    widthChanging: false
+    widthChanging: false,
   }
 
   settingsRef = React.createRef()
@@ -254,7 +254,7 @@ class Settings extends React.PureComponent {
   componentDidMount() {
     const storedPresets = getPresets(localStorage) || []
     this.setState(({ presets }) => ({
-      presets: [...storedPresets, ...presets]
+      presets: [...storedPresets, ...presets],
     }))
   }
 
@@ -322,7 +322,7 @@ class Settings extends React.PureComponent {
     newPreset.icon = await this.props.getCarbonImage({
       format: 'png',
       squared: true,
-      exportSize: 1
+      exportSize: 1,
     })
 
     this.props.onChange('preset', newPreset.id)
@@ -330,7 +330,7 @@ class Settings extends React.PureComponent {
     this.setState(
       ({ presets }) => ({
         previousSettings: null,
-        presets: [newPreset, ...presets]
+        presets: [newPreset, ...presets],
       }),
       this.savePresets
     )
@@ -420,7 +420,7 @@ class Settings extends React.PureComponent {
             position: widthChanging ? 'fixed' : 'absolute',
             width: '316px',
             top: widthChanging ? this.settingPosition.top : 'initial',
-            left: widthChanging ? this.settingPosition.left : 'initial'
+            left: widthChanging ? this.settingPosition.left : 'initial',
           }}
         >
           <Presets

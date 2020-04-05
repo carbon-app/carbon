@@ -7,7 +7,7 @@ import { toggle } from '../lib/util'
 class ListSetting extends React.Component {
   static defaultProps = {
     onOpen: () => {},
-    onClose: () => {}
+    onClose: () => {},
   }
 
   state = { isVisible: false }

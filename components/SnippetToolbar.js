@@ -73,7 +73,7 @@ function SnippetToolbar(props) {
         marginBottom: 0,
         flexDirection: 'row-reverse',
         // justifyContent: 'space-between',
-        zIndex: 1
+        zIndex: 1,
       }}
     >
       <DuplicateButton onClick={props.onCreate} />
