@@ -14,7 +14,7 @@ export async function getServerSideProps({ req, res, query }) {
     const host = req ? req.headers.host : undefined
     snippet = await api.snippet.get(parameter, { host })
     if (snippet) {
-      return { props: { snippet } }
+      return { props: { snippet, host } }
     }
 
     // 404 Not found
