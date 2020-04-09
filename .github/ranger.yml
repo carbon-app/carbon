@@ -26,3 +26,10 @@ labels:
 comments:
   - action: delete_comment
     pattern: '^+1$'
+
+commits: 
+  - action: label
+    pattern: 'upgrade dep'
+    labels: 
+      - maintenance
+  
