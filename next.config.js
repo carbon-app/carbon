@@ -9,20 +9,6 @@ const config = withOffline({
   // https://github.com/hanford/next-offline/blob/master/packages/now2-example/next.config.js
   workboxOpts: {
     swDest: 'static/service-worker.js',
-    globDirectory: '.',
-    globPatterns: ['static/**/*'],
-    runtimeCaching: [
-      {
-        urlPattern: /^https?.*/,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'offlineCache',
-          expiration: {
-            maxEntries: 200,
-          },
-        },
-      },
-    ],
   },
   env: {
     FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
