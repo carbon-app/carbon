@@ -142,10 +142,14 @@ class Themes extends React.PureComponent {
             :global(.cm-comment) {
               color: ${highlights.comment} !important;
             }
-            :global(.cm-variable),
-            :global(.cm-variable-2),
-            :global(.cm-variable-3) {
+            :global(.cm-variable) {
               color: ${highlights.variable} !important;
+            }
+            :global(.cm-variable-2) {
+              color: ${highlights.variable2 || highlights.variable} !important;
+            }
+            :global(.cm-variable-3) {
+              color: ${highlights.variable3 || highlights.variable} !important;
             }
             :global(.cm-number) {
               color: ${highlights.number} !important;
