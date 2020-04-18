@@ -3,6 +3,7 @@ import { useAsyncCallback, useOnline } from 'actionsack'
 
 import Button from './Button'
 import Toolbar from './Toolbar'
+import Input from './Input'
 import ConfirmButton from './ConfirmButton'
 import { useAuth } from './AuthContext'
 
@@ -72,12 +73,16 @@ function SnippetToolbar(props) {
         marginTop: 16,
         marginBottom: 0,
         flexDirection: 'row-reverse',
+        alignItems: 'center',
         // justifyContent: 'space-between',
         zIndex: 1,
       }}
     >
       <DuplicateButton onClick={props.onCreate} />
       {sameUser && <DeleteButton onClick={props.onDelete} />}
+      <div style={{ marginRight: 'auto' }}>
+        <Input align="left" placeholder="Snippet name…" fontSize="14px" />
+      </div>
     </Toolbar>
   )
 }
