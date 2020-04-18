@@ -81,7 +81,13 @@ function SnippetToolbar(props) {
       <DuplicateButton onClick={props.onCreate} />
       {sameUser && <DeleteButton onClick={props.onDelete} />}
       <div style={{ marginRight: 'auto' }}>
-        <Input align="left" placeholder="Snippet name…" fontSize="14px" />
+        <Input
+          align="left"
+          placeholder="Snippet name…"
+          fontSize="14px"
+          value={props.name}
+          onChange={e => props.onChange('name', e.target.value)}
+        />
       </div>
     </Toolbar>
   )

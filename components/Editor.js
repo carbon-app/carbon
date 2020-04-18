@@ -451,6 +451,8 @@ class Editor extends React.Component {
             snippet={this.props.snippet}
             onCreate={this.handleSnippetCreate}
             onDelete={this.handleSnippetDelete}
+            name={config.name}
+            onChange={this.updateSetting}
           />
         )}
         <FontFace {...config} />
