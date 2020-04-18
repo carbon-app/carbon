@@ -54,7 +54,14 @@ function useClipboardSupport() {
 function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
   const clipboardSupported = useClipboardSupport()
 
-  const [copy, { loading }] = useAsyncCallback(copyImage)
+  const [showCopied, { loading: copied }] = useAsyncCallback(
+    () => new Promise(res => setTimeout(res, 1000))
+  )
+
+  const [copy, { loading }] = useAsyncCallback(async (...args) => {
+    await copyImage(...args)
+    showCopied()
+  })
 
   return (
     <div className="copy-menu-container">
@@ -81,7 +88,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
           <span>Copy to clipboard</span>
           {clipboardSupported && (
             <CopyButton id="export-clipboard" onClick={copy} disabled={loading}>
-              {loading ? 'Copying…' : 'Image'}
+              {loading ? 'Copying…' : copied ? 'Copied!' : 'Image'}
             </CopyButton>
           )}
           <CopyEmbed title="Medium.com" mapper={toEncodedURL} />
