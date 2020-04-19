@@ -53,17 +53,9 @@ function SnippetToolbar(props) {
   const user = useAuth()
   const online = useOnline()
 
-  if (!online) {
-    return null
-  }
-
-  if (!user) {
-    return null
-  }
-
-  if (!props.snippet) {
-    return null
-  }
+  if (!online) return null
+  if (!user) return null
+  if (!props.snippet) return null
 
   const sameUser = user.uid === props.snippet.userId
 
