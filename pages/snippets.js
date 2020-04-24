@@ -37,7 +37,7 @@ function Snippet(props) {
             {props.code}
           </Carbon>
         </div>
-        <div className="id">{props.title || props.id}</div>
+        <div className="id">{props.name || props.title || props.id}</div>
         <div className="meta">
           Edited {formatDistanceToNow(correctTimestamp(props.updatedAt), { addSuffix: true })}
         </div>
