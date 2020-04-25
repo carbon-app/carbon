@@ -3,7 +3,17 @@ import React from 'react'
 import { COLORS } from '../lib/constants'
 
 const Input = React.forwardRef(
-  ({ color = COLORS.SECONDARY, align = 'right', width = '100%', label, ...props }, ref) => (
+  (
+    {
+      color = COLORS.SECONDARY,
+      align = 'right',
+      width = '100%',
+      fontSize = '12px',
+      label,
+      ...props
+    },
+    ref
+  ) => (
     <React.Fragment>
       {label && <label>{label}</label>}
       <input ref={ref} {...props} />
@@ -11,7 +21,7 @@ const Input = React.forwardRef(
         {`
           input {
             width: ${width};
-            font-size: 12px;
+            font-size: ${fontSize};
             color: ${color};
             background: transparent;
             border: none;
