@@ -75,7 +75,7 @@ function SnippetToolbar(props) {
       <div style={{ marginRight: 'auto' }}>
         <Input
           align="left"
-          placeholder="Snippet name…"
+          placeholder="Add a name…"
           fontSize="14px"
           value={props.name}
           onChange={e => props.onChange('name', e.target.value)}
