@@ -6,6 +6,7 @@ import { withRouter } from 'next/router'
 // Ours
 import ApiContext from '../../components/ApiContext'
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../../components/Meta'
+import Font from '../../components/style/Font'
 import Carbon from '../../components/Carbon'
 import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../../lib/constants'
 import { getRouteState } from '../../lib/routing'
@@ -18,6 +19,7 @@ const Page = props => (
     <MetaTags />
     <StylesheetLink theme={props.theme} />
     <CodeMirrorLink />
+    <Font />
     {props.children}
     <style jsx global>
       {`
