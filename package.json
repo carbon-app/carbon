@@ -36,7 +36,7 @@
     "escape-goat": "^3.0.0",
     "firebase": "^7.14.2",
     "graphql": "^15.0.0",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.0.1",
     "kind-of": "^6.0.3",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
