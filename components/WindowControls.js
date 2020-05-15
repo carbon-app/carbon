@@ -36,9 +36,10 @@ const CopyButton = React.memo(function CopyButton({ text }) {
   )
 })
 
+const WINDOW_THEMES_MAP = { bw: <ControlsBW />, boxy: <ControlsBoxy /> }
 export default ({ theme, copyable, code, light }) => (
   <div className="window-controls">
-    {theme === 'bw' ? <ControlsBW /> : theme === 'boxy' ? <ControlsBoxy /> : <Controls />}
+    {WINDOW_THEMES_MAP[theme] || <Controls />}
     <div className="window-title-container">
       <input aria-label="Image Title" type="text" spellCheck="false" />
     </div>

@@ -3,7 +3,6 @@ import { None, BW, Sharp, Boxy } from './svg/WindowThemes'
 import { COLORS } from '../lib/constants'
 
 const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, boxy: Boxy }
-export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 class ThemeSelect extends React.Component {
   select = theme => {
@@ -13,7 +12,7 @@ class ThemeSelect extends React.Component {
   }
 
   renderThemes() {
-    return WINDOW_THEMES.map(theme => {
+    return Object.keys(WINDOW_THEMES_MAP).map(theme => {
       const Img = WINDOW_THEMES_MAP[theme]
       const checked = this.props.selected === theme
       return (
