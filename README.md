@@ -95,7 +95,7 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](h
 - **Customization**. Customize things like your image's syntax theme, font style, and more
 - **Share quickly**. Save your image or
   a link with one click
-- **Save snippets for later**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
+- **Save snippets**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
 
 ## Usage
 
@@ -123,7 +123,7 @@ To create a saved snippet:
 
 1. Login using the "Sign in/Sign up" button
 2. Edit as you normally woud — your snippet will get saved automatically
-3. Copy the URL from your browser window and send away!
+3. Copy the URL from your browser window and share away!
 
 ##### Embed a snippet
 
@@ -145,9 +145,9 @@ Carbon supports downloading your image as a PNG and SVG. You can also click `Exp
 
 If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
 
-1. Visiting [carbon.now.sh](https://carbon.now.sh)
-2. Clicking your browser's settings menu
-3. Clicking "Install Carbon..."
+1. Visit [carbon.now.sh](https://carbon.now.sh)
+2. Click your browser's settings menu
+3. Click "Install Carbon..."
 
 ## Community
 
