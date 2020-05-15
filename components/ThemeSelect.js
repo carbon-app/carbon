@@ -1,8 +1,8 @@
 import React from 'react'
-import { None, BW, Sharp, Win } from './svg/WindowThemes'
+import { None, BW, Sharp, Boxy } from './svg/WindowThemes'
 import { COLORS } from '../lib/constants'
 
-const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, win: Win }
+const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, boxy: Boxy }
 export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
 
 class ThemeSelect extends React.Component {
@@ -35,8 +35,11 @@ class ThemeSelect extends React.Component {
                 outline: none;
               }
 
-              [aria-checked='true'] :global(svg) {
+              div :global(svg) {
                 border-radius: 3px;
+              }
+
+              [aria-checked='true'] :global(svg) {
                 border: solid 2px ${COLORS.SECONDARY};
               }
 
@@ -74,6 +77,8 @@ class ThemeSelect extends React.Component {
               display: flex;
               flex-direction: row;
               width: 100%;
+              max-width: 200px;
+              overflow-x: scroll;
             }
           `}
         </style>
