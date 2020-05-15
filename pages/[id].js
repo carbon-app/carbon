@@ -6,13 +6,13 @@ import IndexPage from './index'
 import api from '../lib/api'
 
 export async function getServerSideProps({ req, res, query }) {
-  const path = query.id
+  const { id: path, filename } = query
   const parameter = path.length >= 19 && path.indexOf('.') < 0 ? path : null
 
   let snippet
   if (parameter) {
     const host = req ? req.headers.host : undefined
-    snippet = await api.snippet.get(parameter, { host })
+    snippet = await api.snippet.get(parameter, { host, filename })
     if (snippet) {
       return { props: { snippet, host } }
     }
