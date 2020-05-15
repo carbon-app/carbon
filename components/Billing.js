@@ -265,7 +265,7 @@ const BillingWithStripe = injectStripe(Billing)
 export default function () {
   const [stripe, setStripe] = React.useState(null)
   React.useEffect(() => {
-    setStripe(window.Stripe(process.env.STRIPE_PUBLIC_KEY))
+    setStripe(window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY))
   }, [])
   return (
     <StripeProvider stripe={stripe}>
