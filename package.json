@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
