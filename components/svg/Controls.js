@@ -21,17 +21,10 @@ export const ControlsBW = () => (
 )
 
 export const ControlsBoxy = () => (
-  <svg
-    width="58"
-    height="14"
-    viewBox="0 0 58 14"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ margin: '0 8px 0 auto' }}
-  >
+  <svg width="58" height="14" viewBox="0 0 58 14" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M1 7H11" stroke="#878787" strokeLinecap="round" strokeLinejoin="round" />
     <path
-      d="M34 1H24C23.4477 1 23 1.44772 23 2V12C23 12.5523 23.4477 13 24 13H34C34.5523 13 35 12.5523 35 12V2C35 1.44772 34.5523 1 34 1Z"
+      d="M35 1H25C24.4477 1 24 1.44772 24 2V12C24 12.5523 24.4477 13 25 13H35C35.5523 13 36 12.5523 36 12V2C36 1.44772 35.5523 1 35 1Z"
       stroke="#878787"
     />
     <path d="M47 2L57 12" stroke="#878787" strokeLinecap="round" strokeLinejoin="round" />

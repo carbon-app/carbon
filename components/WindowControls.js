@@ -55,7 +55,7 @@ export default ({ theme, copyable, code, light }) => (
           position: relative;
           top: ${theme === 'bw' ? 36 : 34}px;
           margin-left: ${theme === 'bw' ? 16 : 14}px;
-          margin-right: ${theme === 'boxy' ? 8 : 0}px;
+          margin-right: ${theme === 'boxy' ? 16 : 0}px;
           z-index: 2;
           text-align: ${theme === 'boxy' ? 'right' : 'initial'};
         }
