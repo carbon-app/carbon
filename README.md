@@ -15,16 +15,6 @@
   <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
     <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
   </a>
-  <!-- 
-  <a href="https://spectrum.chat/carbon-now">
-    <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
-  </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
-  </a>
-  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
-    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
-  </a> -->
 </p>
 
 <p align="center">	
@@ -102,10 +92,10 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](h
 
 ## Features
 
-- **Customization**. Customize things like your image's syntax theme, window style, and more
+- **Customization**. Customize things like your image's syntax theme, font style, and more
 - **Share quickly**. Save your image or
   a link with one click
-- **Import from GitHub gist**. Simply append a GitHub gist id to the url
+- **Save snippets**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
 
 ## Usage
 
@@ -114,28 +104,50 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](h
 There are a few different ways to import code into Carbon:
 
 - Drop a file onto the editor
-- Append a GitHub gist id to the url (e.g. `carbon.now.sh/GIST_ID_HERE`)
-- Paste your code directly
+- Append a GitHub gist ID to the URL (e.g. [`carbon.now.sh/<gist_id_goes_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+- Or just start typing!
 
 #### Customization
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, or padding.
+Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, padding, shadows, fonts, and more.
 
-#### Export/Sharing
+#### Exporting & Sharing
 
-After you've customized your image you can either Tweet a link to the image, or save it directly.
+After you've customized your image you can share your snippet in a number of ways
 
-If you use the &apos;Tweet&apos; button, Carbon will automatically make your image accessible. However, if you want to manually tweet your image, please check out [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+##### Create a saved snippet
 
-If you include a Carbon image in a post, the source code will be invisible for assistive technology, it will not be possible to enlarge it or copy it, etc. Please, think about adding another element with the source code as text, like an [HTML Details Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) below the image.
+Sharing a saved snippet will automatically unfurl the image on platforms like Twitter and Slack. This lets users see your creation, while also giving them access to the source code via the link. Better yet, if you need to make an update, simply follow the link yourself to edit the snippet directly.
+
+To create a saved snippet:
+
+1. Login using the "Sign in/Sign up" button
+2. Edit as you normally woud — your snippet will get saved automatically
+3. Copy the URL from your browser window and share away!
+
+##### Embed a snippet
+
+This is the recommended method sharing Carbon on your own website or blog. Readers can even copy the code with the click of a button.
+
+You can embed any Carbon snippet in your website directly using the `carbon.now.sh/embed` URL. The "Copy Menu" lets you quickly copy the correct iFrame snippet, or the encoded URL for embedding on platforms like Medium.
+
+Finally, you can also embed saved snippets or GitHub gists using `carbon.now.sh/embed/:id`.
+
+##### Use the Tweet button
+
+The Tweet button will not only share the image on Twitter, but it will also correctly encode the `alt` text to ensure your images are accessible. However, if you want to tweet image yourself, please check out [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+
+##### Download the image directly
+
+Carbon supports downloading your image as a PNG and SVG. You can also click `Export → Open` to open your image directly in the browser. Finally, you can copy the Carbon image directly to your clipboard by going to `Copy → Image`.
 
 #### Installing Carbon for Desktop (Offline)
 
 If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
 
-1. Visiting [https://carbon.now.sh](https://carbon.now.sh)
-2. Clicking your browser's settings menu
-3. Clicking "Install Carbon..."
+1. Visit [carbon.now.sh](https://carbon.now.sh)
+2. Click your browser's settings menu
+3. Click "Install Carbon..."
 
 ## Community
 
@@ -328,4 +340,5 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
