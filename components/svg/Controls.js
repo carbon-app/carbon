@@ -23,10 +23,10 @@ export const ControlsBW = () => (
 export const ControlsWin = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="120" height="30" viewBox="0 0 120 30">
     <g fill="none" fillRule="evenodd" transform="translate(1 1)">
-      <line x1="0.5" y1="15.5" x2="9.5" y2="15.5" stroke="#ffffff" strokeWidth="1" />
-      <rect x="45.5" y="10.5" width="9" height="9" stroke="#ffffff" strokeWidth="1" />
-      <line x1="91.5" y1="10.5" x2="100.5" y2="19.5" stroke="#ffffff" strokeWidth="1" />
-      <line x1="91.5" y1="19.5" x2="100.5" y2="10.5" stroke="#ffffff" strokeWidth="1" />
+      <line x1="0" y1="15" x2="9" y2="15" stroke="#ffffff" strokeWidth="1" />
+      <rect x="27" y="10" width="9" height="9" stroke="#ffffff" strokeWidth="1" />
+      <line x1="54" y1="10" x2="63" y2="19" stroke="#ffffff" strokeWidth="1" />
+      <line x1="54" y1="19" x2="63" y2="10" stroke="#ffffff" strokeWidth="1" />
     </g>
   </svg>
 )
