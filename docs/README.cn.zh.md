@@ -15,16 +15,6 @@
   <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
     <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
   </a>
-  <!-- 
-  <a href="https://spectrum.chat/carbon-now">
-    <img src="https://withspectrum.github.io/badge/badge.svg" alt="Join the community on Spectrum" />
-  </a>
-  <a href="https://greenkeeper.io/">
-    <img src="https://badges.greenkeeper.io/carbon-app/carbon.svg" alt="Greenkeeper badge" />
-  </a>
-  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
-    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
-  </a> -->
 </p>
 
 <p align="center">	
@@ -143,7 +133,7 @@
 ##### 编辑器插件
 
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 在 IntelliJ IDEA 中通过右键菜单导入选中的代码到 Carbon
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 在 Atom 中通过 `shift-cmd-A` 快捷键导入当前文件到 Carbon 
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 在 Atom 中通过 `shift-cmd-A` 快捷键导入当前文件到 Carbon
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 在 VS Code 中通过 `carbon` 命令导入当前文件到 Carbon
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 在 Sublime Text 3 中通过自定义快捷键导入选中的代码到 Carbon
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 在 Vim/Neovim 中通过 `CarbonNowSh()` 函数导入选中的代码到 Carbon
@@ -326,4 +316,5 @@ Carbon 项目由 TA 们发起：
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

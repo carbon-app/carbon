@@ -1,6 +1,6 @@
 {
   "name": "carbon",
-  "version": "4.6.1",
+  "version": "4.7.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -44,7 +44,7 @@
     "minimist": "^1.2.5",
     "morphmorph": "^0.1.3",
     "ms": "^2.1.2",
-    "next": "^9.3.6",
+    "next": "^9.4.0",
     "next-offline": "^5.0.2",
     "react": "^16.13.1",
     "react-click-outside": "^3.0.0",
