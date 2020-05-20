@@ -37,7 +37,7 @@ function reducer(state, action) {
     case 'UNDERLINE': {
       return {
         ...state,
-        underline: !state.underline,
+        underline: Number(state.underline + 1) % 3,
       }
     }
     case 'COLOR': {

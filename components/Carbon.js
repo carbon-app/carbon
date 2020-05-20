@@ -34,6 +34,15 @@ function searchLanguage(l) {
 }
 
 function noop() {}
+function getUnderline(underline) {
+  switch (underline) {
+    case 1:
+      return 'underline'
+    case 2:
+      return `${COLORS.RED} wavy underline; text-decoration-skip-ink: none`
+  }
+  return 'initial'
+}
 
 class Carbon extends React.PureComponent {
   static defaultProps = {
@@ -115,8 +124,7 @@ class Carbon extends React.PureComponent {
       const css = [
         changes.bold != null && `font-weight: ${changes.bold ? 'bold' : 'initial'}`,
         changes.italics != null && `font-style: ${changes.italics ? 'italic' : 'initial'}`,
-        changes.underline != null &&
-          `text-decoration: ${changes.underline ? 'underline' : 'initial'}`,
+        changes.underline != null && `text-decoration: ${getUnderline(changes.underline)}`,
         changes.color != null && `color: ${changes.color} !important`,
       ]
         .filter(Boolean)
