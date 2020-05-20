@@ -11,7 +11,7 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import MenuButton from './MenuButton'
-import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
+import { COLORS, DEFAULT_PRESETS, DEFAULT_SETTINGS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 
@@ -287,7 +287,7 @@ class Settings extends React.PureComponent {
   }
 
   getSettingsFromProps = () =>
-    omitBy(this.props, (v, k) => typeof v === 'function' || k === 'preset')
+    omitBy(this.props, (v, k) => !Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, k))
 
   applyPreset = preset => {
     const previousSettings = this.getSettingsFromProps()
