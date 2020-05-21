@@ -1,5 +1,4 @@
 import React from 'react'
-// import Spinner from 'react-spinner'
 import Spinner from './Spinner'
 
 export default function SpinnerWrapper(props) {
