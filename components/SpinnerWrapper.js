@@ -1,8 +1,9 @@
 import React from 'react'
-import Spinner from 'react-spinner'
+// import Spinner from 'react-spinner'
+import Spinner from './Spinner'
 
 export default function SpinnerWrapper(props) {
-  if (props.loading) {
+  if (!props.loading) {
     return (
       <div>
         <Spinner />
