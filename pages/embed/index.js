@@ -8,85 +8,9 @@ import ApiContext from '../../components/ApiContext'
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../../components/Meta'
 import Font from '../../components/style/Font'
 import Carbon from '../../components/Carbon'
+import GlobalHighlights from '../../components/Themes/GlobalHighlights'
 import { DEFAULT_CODE, DEFAULT_SETTINGS, THEMES_HASH } from '../../lib/constants'
 import { getRouteState } from '../../lib/routing'
-
-function ApplyHighlights({ highlights }) {
-  /**
-   * TODO create shared global component and import in components/Theme
-   *      https://github.com/carbon-app/carbon/issues/1018
-   */
-  return (
-    <style jsx global>
-      {`
-        :global(.CodeMirror__container .CodeMirror) {
-          color: ${highlights.text} !important;
-          background-color: ${highlights.background} !important;
-        }
-
-        :global(.cm-string),
-        :global(.cm-string-2) {
-          color: ${highlights.string} !important;
-        }
-        :global(.cm-comment) {
-          color: ${highlights.comment} !important;
-        }
-        :global(.cm-variable) {
-          color: ${highlights.variable} !important;
-        }
-        :global(.cm-variable-2) {
-          color: ${highlights.variable2 || highlights.variable} !important;
-        }
-        :global(.cm-variable-3) {
-          color: ${highlights.variable3 || highlights.variable} !important;
-        }
-        :global(.cm-number) {
-          color: ${highlights.number} !important;
-        }
-        :global(.cm-keyword) {
-          color: ${highlights.keyword} !important;
-        }
-        :global(.cm-property) {
-          color: ${highlights.property} !important;
-        }
-        :global(.cm-def) {
-          color: ${highlights.definition} !important;
-        }
-        :global(.cm-meta) {
-          color: ${highlights.meta} !important;
-        }
-        :global(.cm-operator) {
-          color: ${highlights.operator} !important;
-        }
-        :global(.cm-attribute) {
-          color: ${highlights.attribute} !important;
-        }
-
-        :global(.cm-s-dracula .CodeMirror-cursor) {
-          border-left: solid 2px #159588 !important;
-        }
-
-        :global(.cm-s-solarized) {
-          box-shadow: none !important;
-        }
-
-        :global(.cm-s-solarized.cm-s-light) {
-          text-shadow: #eee8d5 0 1px !important;
-        }
-
-        :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumber),
-        :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumbers) {
-          background-color: #fdf6e3 !important;
-        }
-
-        :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumber),
-        :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumbers) {
-          background-color: #002b36 !important;
-        }
-      `}
-    </style>
-  )
-}
 
 const Page = props => (
   <React.Fragment>
@@ -99,7 +23,7 @@ const Page = props => (
     <Font />
     {props.children}
     {props.theme === 'a11y-dark' && (
-      <ApplyHighlights highlights={THEMES_HASH[props.theme].highlights} />
+      <GlobalHighlights highlights={THEMES_HASH[props.theme].highlights} />
     )}
     <style jsx global>
       {`
