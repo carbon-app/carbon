@@ -8,7 +8,8 @@ import ApiContext from '../../components/ApiContext'
 import { StylesheetLink, CodeMirrorLink, MetaTags } from '../../components/Meta'
 import Font from '../../components/style/Font'
 import Carbon from '../../components/Carbon'
-import { DEFAULT_CODE, DEFAULT_SETTINGS } from '../../lib/constants'
+import GlobalHighlights from '../../components/Themes/GlobalHighlights'
+import { DEFAULT_CODE, DEFAULT_SETTINGS, THEMES_HASH } from '../../lib/constants'
 import { getRouteState } from '../../lib/routing'
 
 const Page = props => (
@@ -21,6 +22,9 @@ const Page = props => (
     <CodeMirrorLink />
     <Font />
     {props.children}
+    {props.theme === 'a11y-dark' && (
+      <GlobalHighlights highlights={THEMES_HASH[props.theme].highlights} />
+    )}
     <style jsx global>
       {`
         html,

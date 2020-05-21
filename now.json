@@ -22,7 +22,7 @@
       "src": "^/offsets?/?",
       "status": 307,
       "headers": {
-        "Location": "https://projectwren.com/"
+        "Location": "https://projectwren.com/?utm_source=carbon"
       }
     },
     {
