@@ -39,6 +39,10 @@ function getUnderline(underline) {
     case 1:
       return 'underline'
     case 2:
+      /**
+       * Chrome will only round to the nearest wave, causing visual inconsistencies
+       * https://stackoverflow.com/questions/57559588/how-to-make-the-wavy-underline-extend-cover-all-the-characters-in-chrome
+       */
       return `${COLORS.RED} wavy underline; text-decoration-skip-ink: none`
   }
   return 'initial'
