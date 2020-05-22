@@ -69,7 +69,7 @@ PRlara açığız! Lütfen [CONTRIBUTING.md](https://github.com/carbon-app/carbo
 
 ## Teşekkürler
 
-[ ▲ ZEIT ](https://zeit.co/) Carbon'un hostingine sponsor oldukları için
+[ ▲ Vercel ](https://vercel.com/) Carbon'un hostingine sponsor oldukları için
 
 ## Yaratıcılar
 

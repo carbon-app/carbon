@@ -94,7 +94,7 @@ PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](https://github.com/c
 
 ## Agradecimentos
 
-[ ▲ ZEIT ](https://zeit.co/) por patrocinar a hospedagem do Carbon.
+[ ▲ Vercel ](https://vercel.com/) por patrocinar a hospedagem do Carbon.
 
 ## Autores
 

@@ -153,7 +153,7 @@ Använder ditt företag Carbon? Överväg att sponsra projektet för att finansi
 
 ### Tack vare
 
-[ ▲ ZEIT ](https://zeit.co/) för sponsring Carbon's hosting.
+[ ▲ Vercel ](https://vercel.com/) för sponsring Carbon's hosting.
 
 ### Medskapare
 

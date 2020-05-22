@@ -155,7 +155,7 @@ Carbon es un proyecto de:
 
 ### Gracias a
 
-[ ▲ ZEIT ](https://zeit.co/) por patrocinar el alojamiento de Carbon.
+[ ▲ Vercel ](https://vercel.com/) por patrocinar el alojamiento de Carbon.
 
 ### Contribuyentes
 

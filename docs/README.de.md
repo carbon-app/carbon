@@ -70,7 +70,7 @@ Pull Requests sind willkommen! Bitte lese hierzu unsere [CONTRIBUTING.md](https:
 
 ## Danke an
 
-[ ▲ ZEIT ](https://zeit.co/) für das Sponsoring von Carbon’s Hosting.
+[ ▲ Vercel ](https://vercel.com/) für das Sponsoring von Carbon’s Hosting.
 
 ## Autoren
 
