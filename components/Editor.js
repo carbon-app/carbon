@@ -58,7 +58,6 @@ class Editor extends React.Component {
 
     this.exportImage = this.exportImage.bind(this)
     this.copyImage = this.copyImage.bind(this)
-    this.upload = this.upload.bind(this)
     this.updateSetting = this.updateSetting.bind(this)
     this.updateLanguage = this.updateLanguage.bind(this)
     this.updateBackground = this.updateBackground.bind(this)
@@ -109,6 +108,7 @@ class Editor extends React.Component {
     trailing: true,
     leading: true,
   })
+
   updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
@@ -224,11 +224,10 @@ class Editor extends React.Component {
     }
   }
 
-  updateSetting(key, value) {
-    this.updateState({ [key]: value })
-    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
-      this.updateState({ preset: null })
-    }
+  tweet = () => {
+    this.getCarbonImage({ format: 'png', includeTransparentRow: true }).then(
+      this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
+    )
   }
 
   exportImage(format = 'png', options = {}) {
@@ -260,19 +259,20 @@ class Editor extends React.Component {
     )
   }
 
+  updateSetting(key, value) {
+    this.updateState({ [key]: value })
+    if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
+      this.updateState({ preset: null })
+    }
+  }
+
   resetDefaultSettings() {
     this.updateState(DEFAULT_SETTINGS)
     this.props.onReset()
   }
 
-  upload() {
-    this.getCarbonImage({ format: 'png', includeTransparentRow: true }).then(
-      this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
-    )
-  }
-
   onDrop([file]) {
-    if (isImage(file)) {
+    if (file.type.split('/')[0] === 'image') {
       this.updateState({
         backgroundImage: file.content,
         backgroundImageSelection: null,
@@ -415,7 +415,7 @@ class Editor extends React.Component {
             <div id="style-editor-button" />
             <div className="buttons">
               <CopyMenu copyImage={this.copyImage} />
-              <TweetButton onClick={this.upload} />
+              <TweetButton onClick={this.tweet} />
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
@@ -487,10 +487,6 @@ class Editor extends React.Component {
       </div>
     )
   }
-}
-
-function isImage(file) {
-  return file.type.split('/')[0] === 'image'
 }
 
 Editor.defaultProps = {
