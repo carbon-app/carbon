@@ -14,6 +14,7 @@ function ModifierButton(props) {
       margin="0 8px 0 0"
       style={{ borderBottom: `1px solid ${props.selected ? 'white' : 'transparent'}` }}
       onClick={props.onClick}
+      color={props.color}
     >
       {props.children}
     </Button>
@@ -79,6 +80,7 @@ function SelectionEditor({ onChange }) {
           <ModifierButton
             selected={state.underline}
             onClick={() => dispatch({ type: 'UNDERLINE' })}
+            color={state.underline === 2 ? COLORS.RED : undefined}
           >
             <u>U</u>
           </ModifierButton>
