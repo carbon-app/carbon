@@ -359,7 +359,11 @@ class Carbon extends React.PureComponent {
 
             /* forces twitter to save images as png — https://github.com/carbon-app/carbon/issues/86 */
             .twitter-png-fix {
-              height: 1px;
+              /* TODO, remove?
+               * Twitter is currently converting everything to JPEGs anyways. Removing this
+               * would simplify the width/height calculations, as well as the includeTransparentRow option
+               */
+              height: 0px;
               width: 100%;
               background: rgba(0, 0, 0, 0.01);
             }
