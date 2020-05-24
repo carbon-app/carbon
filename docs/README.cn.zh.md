@@ -205,7 +205,7 @@ Carbon 项目由 TA 们发起：
 
 ### 感谢
 
-[ ▲ ZEIT ](https://zeit.co/) 赞助了 Carbon 的服务托管。
+[ ▲ Vercel ](https://vercel.com/) 赞助了 Carbon 的服务托管。
 
 ### 贡献者
 

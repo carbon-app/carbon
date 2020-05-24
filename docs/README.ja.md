@@ -93,7 +93,7 @@ PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/carb
 
 ## Thanks To
 
-[ ▲ ZEIT ](https://zeit.co/)は Carbon のホスティングを支援してくれています。
+[ ▲ Vercel ](https://vercel.com/)は Carbon のホスティングを支援してくれています。
 
 ## Authors
 

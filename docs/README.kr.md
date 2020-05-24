@@ -71,7 +71,7 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, paddin
 
 ## Thanks To
 
-[ ▲ ZEIT ](https://zeit.co/)가 Carbon 호스팅을 지원해주고 있습니다..
+[ ▲ Vercel ](https://vercel.com/)가 Carbon 호스팅을 지원해주고 있습니다..
 
 ## Authors
 

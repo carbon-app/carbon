@@ -226,7 +226,7 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 
 ### Thanks To
 
-[ ▲ ZEIT ](https://zeit.co/) for sponsoring Carbon's hosting.
+[ ▲ Vercel ](https://vercel.com/) for sponsoring Carbon's hosting.
 
 ### Contributors
 

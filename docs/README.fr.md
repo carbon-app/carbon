@@ -99,7 +99,7 @@ Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](https://gith
 
 ## Merci à
 
-[ ▲ ZEIT ](https://zeit.co/) pour sponsoriser l'hébergement de Carbon.
+[ ▲ Vercel ](https://vercel.com/) pour sponsoriser l'hébergement de Carbon.
 
 ## Auteurs
 
