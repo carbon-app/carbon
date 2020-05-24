@@ -36,7 +36,11 @@ function WindowSettings({
 }) {
   return (
     <div className="settings-content">
-      <ThemeSelect selected={windowTheme || 'none'} onChange={onChange.bind(null, 'windowTheme')} />
+      <ThemeSelect
+        selected={windowTheme || 'none'}
+        windowControls={windowControls}
+        onChange={onChange}
+      />
       <div className="row">
         <Slider
           label="Padding (vert)"
@@ -71,11 +75,6 @@ function WindowSettings({
           />
         </div>
       )}
-      <Toggle
-        label="Window controls"
-        enabled={windowControls}
-        onChange={onChange.bind(null, 'windowControls')}
-      />
       <Toggle
         label="Auto-adjust width"
         enabled={widthAdjustment}

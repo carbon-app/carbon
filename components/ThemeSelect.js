@@ -1,4 +1,5 @@
 import React from 'react'
+import Toggle from './Toggle'
 import { None, BW, Sharp, Boxy } from './svg/WindowThemes'
 import { COLORS } from '../lib/constants'
 
@@ -7,7 +8,7 @@ const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, boxy: Boxy }
 class ThemeSelect extends React.Component {
   select = theme => {
     if (this.props.selected !== theme) {
-      this.props.onChange(theme)
+      this.props.onChange('windowTheme', theme)
     }
   }
 
@@ -54,34 +55,37 @@ class ThemeSelect extends React.Component {
 
   render() {
     return (
-      <div className="window-theme">
-        <span className="label" id="window-theme-label">
-          Theme
-        </span>
-        <div className="themes" role="radiogroup" aria-labelledby="window-theme-label">
-          {this.renderThemes()}
+      <>
+        <div className="window-theme">
+          <Toggle
+            label="Window controls"
+            enabled={this.props.windowControls}
+            onChange={v => this.props.onChange('windowControls', v)}
+          />
+          {this.props.windowControls && (
+            <div className="themes" role="radiogroup" aria-labelledby="window-theme-label">
+              {this.renderThemes()}
+            </div>
+          )}
+          <style jsx>
+            {`
+              .window-theme span {
+                display: inline-block;
+                margin-bottom: 2px;
+              }
+
+              .themes {
+                padding: 4px 8px 8px;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                max-width: 200px;
+                overflow-x: scroll;
+              }
+            `}
+          </style>
         </div>
-        <style jsx>
-          {`
-            .window-theme {
-              padding: 8px;
-            }
-
-            .window-theme span {
-              display: inline-block;
-              margin-bottom: 2px;
-            }
-
-            .themes {
-              display: flex;
-              flex-direction: row;
-              width: 100%;
-              max-width: 200px;
-              overflow-x: scroll;
-            }
-          `}
-        </style>
-      </div>
+      </>
     )
   }
 }
