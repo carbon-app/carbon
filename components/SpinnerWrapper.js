@@ -51,11 +51,11 @@ export function Spinner({ size = 24 }) {
 export default function SpinnerWrapper(props) {
   if (props.loading) {
     return (
-      <div className="wrapper">
+      <div>
         <Spinner />
         <style jsx>
           {`
-            .wrapper {
+            div {
               width: 876px;
               height: 240px;
             }
