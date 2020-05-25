@@ -100,11 +100,6 @@
           "graphql",
           "react-image-crop"
         ]
-      },
-      "integrations": {
-        "packages": [
-          "packages/gatsby-remark-embed-carbon/package.json"
-        ]
       }
     }
   },
