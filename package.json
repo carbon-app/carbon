@@ -1,7 +1,6 @@
 {
   "name": "carbon",
   "version": "4.7.7",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "next",
