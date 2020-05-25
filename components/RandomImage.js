@@ -1,7 +1,7 @@
 import React from 'react'
-import Spinner from 'react-spinner'
 import { useAsyncCallback } from 'actionsack'
 
+import { Spinner } from './SpinnerWrapper'
 import { useAPI } from './ApiContext'
 import PhotoCredit from './PhotoCredit'
 
