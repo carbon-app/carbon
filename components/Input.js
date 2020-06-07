@@ -9,6 +9,9 @@ const Input = React.forwardRef(
       <input ref={ref} {...props} />
       <style jsx>
         {`
+          label {
+            width: 50%;
+          }
           input {
             width: ${width};
             font-size: 12px;

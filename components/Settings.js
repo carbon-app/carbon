@@ -11,9 +11,11 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import MenuButton from './MenuButton'
-import { COLORS, DEFAULT_PRESETS } from '../lib/constants'
+import { COLORS, DEFAULT_PRESETS, DEFAULT_SETTINGS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
+
+const { minWidth, maxWidth } = DEFAULT_SETTINGS
 
 function KeyboardShortcut({ trigger, handle }) {
   useKeyboardListener(trigger, handle)
@@ -83,17 +85,25 @@ function WindowSettings({
         onChange={onChange.bind(null, 'widthAdjustment')}
       />
       {!widthAdjustment && (
-        <Slider
-          label="width"
-          value={width}
-          minValue={90}
-          maxValue={1024}
-          onChange={onChange.bind(null, 'width')}
-        />
+        <div className="row settings-row width-row">
+          <Input
+            label="width"
+            type="number"
+            value={width}
+            min={minWidth}
+            max={maxWidth}
+            onChange={e => onChange('width', e.target.value)}
+            width="50%"
+          />
+        </div>
       )}
       <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
       <style jsx>
         {`
+          .width-row {
+            padding: 8px 12px 8px 8px;
+          }
+
           .row > :global(div:first-child) {
             border-right: 1px solid ${COLORS.SECONDARY};
           }

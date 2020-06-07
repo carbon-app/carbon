@@ -437,6 +437,7 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
+                updateSetting={this.updateSetting}
                 loading={this.state.loading}
                 theme={theme}
               >

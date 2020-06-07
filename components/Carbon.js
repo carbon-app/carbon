@@ -6,6 +6,7 @@ import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
+import WidthHandler from './WidthHandler'
 
 hljs.registerLanguage('javascript', javascript)
 
@@ -182,6 +183,27 @@ class Carbon extends React.PureComponent {
           onGutterClick={this.props.onGutterClick}
           onSelection={this.onSelection}
         />
+        {!config.widthAdjustment && (
+          <>
+            <WidthHandler
+              leftRight={'left'}
+              top={config.paddingVertical}
+              bottom={config.paddingVertical}
+              updateSetting={this.props.updateSetting}
+              width={config.width}
+              paddingHorizontal={config.paddingHorizontal}
+            />
+            <WidthHandler
+              leftRight={'right'}
+              top={config.paddingVertical}
+              bottom={config.paddingVertical}
+              updateSetting={this.props.updateSetting}
+              width={config.width}
+              paddingHorizontal={config.paddingHorizontal}
+            />
+          </>
+        )}
+
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
@@ -194,7 +216,7 @@ class Carbon extends React.PureComponent {
               position: relative;
               min-width: ${config.widthAdjustment ? '90px' : 'auto'};
               max-width: ${config.widthAdjustment ? '1024px' : 'none'};
-              ${config.widthAdjustment ? '' : `width: ${config.width};`}
+              ${config.widthAdjustment ? '' : `width: ${config.width}px;`}
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
             }
 
@@ -224,13 +246,16 @@ class Carbon extends React.PureComponent {
             }
 
             .container .bg {
-              ${this.props.config.backgroundMode === 'image'
-                ? `background: url(${backgroundImage});
+              ${
+                this.props.config.backgroundMode === 'image'
+                  ? `background: url(${backgroundImage});
                     background-size: cover;
                     background-repeat: no-repeat;`
-                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
+                  : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                     background-size: auto;
-                    background-repeat: repeat;`} position: absolute;
+                    background-repeat: repeat;`
+              }
+              position: absolute;
               top: 0px;
               right: 0px;
               bottom: 0px;
@@ -256,9 +281,11 @@ class Carbon extends React.PureComponent {
               position: relative;
               z-index: 1;
               border-radius: 5px;
-              ${config.dropShadow
-                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
-                : ''};
+              ${
+                config.dropShadow
+                  ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
+                  : ''
+              };
             }
 
             .container :global(.CodeMirror__container .CodeMirror) {
