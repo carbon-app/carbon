@@ -196,25 +196,19 @@ class Carbon extends React.PureComponent {
           onGutterClick={this.props.onGutterClick}
           onSelection={this.onSelection}
         />
-        <WidthHandler
-          leftOrRight={'left'}
-          innerRef={this.props.innerRef}
-          updateSetting={this.props.updateSetting}
-          config={config}
-        />
-        <WidthHandler
-          leftOrRight={'right'}
-          innerRef={this.props.innerRef}
-          updateSetting={this.props.updateSetting}
-          config={config}
-        />
-
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">
           <div className="white eliminateOnRender" />
           <div className="alpha eliminateOnRender" />
           <div className="bg" />
         </div>
+
+        <WidthHandler
+          leftOrRight={'right'}
+          innerRef={this.props.innerRef}
+          updateSetting={this.props.updateSetting}
+          config={config}
+        />
         <style jsx>
           {`
             .container {

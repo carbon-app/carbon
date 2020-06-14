@@ -1,10 +1,10 @@
 import React from 'react'
-import { DEFAULT_SETTINGS } from '../lib/constants'
+import { DEFAULT_SETTINGS, COLORS } from '../lib/constants'
 
 const { minWidth, maxWidth } = DEFAULT_SETTINGS
 
 const WidthHandler = props => {
-  const { leftOrRight, updateSetting, innerRef, config } = props
+  const { updateSetting, innerRef, config } = props
   const { paddingHorizontal, widthAdjustment } = config
 
   const onMouseDown = e => {
@@ -15,7 +15,7 @@ const WidthHandler = props => {
         updateSetting('widthAdjustment', false)
         updateSetting('width', width)
       }
-      const delta = leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
+      const delta = e.pageX - startX // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
       const calculated = width + delta * 2
       const newWidth =
         calculated < minWidth ? minWidth : calculated > maxWidth ? maxWidth : calculated
@@ -39,12 +39,11 @@ const WidthHandler = props => {
           .handler {
             z-index: 2;
             position: absolute;
-            background-color: #57b5f9;
+            background-color: ${COLORS.BLUE};
             top: ${paddingHorizontal};
             bottom: ${paddingHorizontal};
-            ${leftOrRight === 'left' ? 'left: ' + paddingHorizontal : ''};
-            ${leftOrRight === 'right' ? 'right: ' + paddingHorizontal : ''};
-            width: 10px;
+            right: ${paddingHorizontal};
+            width: 8px;
             cursor: ew-resize;
             opacity: 0;
           }
