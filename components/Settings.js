@@ -86,7 +86,7 @@ function WindowSettings({
       {!widthAdjustment && (
         <div className="row settings-row width-row">
           <Input
-            label="width"
+            label="Width"
             type="number"
             value={width}
             min={minWidth}
@@ -100,6 +100,7 @@ function WindowSettings({
       <style jsx>
         {`
           .width-row {
+            justify-content: space-between;
             padding: 8px 12px 8px 8px;
           }
 
