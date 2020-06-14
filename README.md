@@ -122,7 +122,7 @@ Sharing a saved snippet will automatically unfurl the image on platforms like Tw
 To create a saved snippet:
 
 1. Login using the "Sign in/Sign up" button
-2. Edit as you normally woud — your snippet will get saved automatically
+2. Edit as you normally would — your snippet will get saved automatically
 3. Copy the URL from your browser window and share away!
 
 ##### Embed a snippet
@@ -338,4 +338,5 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
