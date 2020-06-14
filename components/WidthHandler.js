@@ -3,6 +3,16 @@ import { DEFAULT_SETTINGS, COLORS } from '../lib/constants'
 
 const { minWidth, maxWidth } = DEFAULT_SETTINGS
 
+function clamp(value, min, max) {
+  if (value < min) {
+    return min
+  }
+  if (value > max) {
+    return max
+  }
+  return value
+}
+
 const WidthHandler = props => {
   const { onChange, innerRef, paddingHorizontal } = props
 
@@ -15,8 +25,7 @@ const WidthHandler = props => {
 
       const delta = e.pageX - startX.current // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
       const calculated = width.current + delta * window.devicePixelRatio
-      const newWidth =
-        calculated < minWidth ? minWidth : calculated > maxWidth ? maxWidth : calculated
+      const newWidth = clamp(calculated, minWidth, maxWidth)
 
       onChange(newWidth)
     }
