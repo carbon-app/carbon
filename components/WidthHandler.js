@@ -7,33 +7,47 @@ const WidthHandler = props => {
   const { updateSetting, innerRef, config } = props
   const { paddingHorizontal, widthAdjustment } = config
 
-  const onMouseDown = e => {
-    const startX = e.pageX
-    const width = innerRef.current.clientWidth
-    const onMouseMove = e => {
+  const startX = React.useRef(null)
+  const width = React.useRef(null)
+
+  React.useEffect(() => {
+    function handleMouseMove(e) {
+      if (!startX.current) return
+
       if (widthAdjustment) {
         updateSetting('widthAdjustment', false)
         updateSetting('width', width)
       }
-      const delta = e.pageX - startX // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
-      const calculated = width + delta * 2
+
+      const delta = e.pageX - startX.current // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
+      const calculated = width.current + delta * window.devicePixelRatio
       const newWidth =
         calculated < minWidth ? minWidth : calculated > maxWidth ? maxWidth : calculated
 
       updateSetting('width', newWidth)
     }
 
-    const onMouseUp = () => {
-      window.removeEventListener('mouseup', onMouseUp)
-      window.removeEventListener('mousemove', onMouseMove)
-    }
-    window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('mouseup', onMouseUp)
-  }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [innerRef, updateSetting, widthAdjustment])
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div className="handler" onMouseDown={onMouseDown}>
+    // eslint-disable-next-line
+    <div
+      className="handler"
+      onMouseDown={e => {
+        startX.current = e.pageX
+        width.current = innerRef.current.clientWidth
+      }}
+      onMouseUp={() => {
+        startX.current = null
+      }}
+      role="separator"
+      aria-orientation="vertical"
+      aria-valuemin={minWidth}
+      aria-valuemax={maxWidth}
+      aria-valuenow={width}
+    >
       <style jsx>
         {`
           .handler {
