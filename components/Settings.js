@@ -11,11 +11,9 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import MenuButton from './MenuButton'
-import { COLORS, DEFAULT_PRESETS, DEFAULT_SETTINGS } from '../lib/constants'
+import { COLORS, DEFAULT_PRESETS, DEFAULT_SETTINGS, DEFAULT_WIDTHS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
-
-const { minWidth, maxWidth } = DEFAULT_SETTINGS
 
 function KeyboardShortcut({ trigger, handle }) {
   useKeyboardListener(trigger, handle)
@@ -89,8 +87,8 @@ function WindowSettings({
             label="Width"
             type="number"
             value={width}
-            min={minWidth}
-            max={maxWidth}
+            min={DEFAULT_WIDTHS.minWidth}
+            max={DEFAULT_WIDTHS.maxWidth}
             onChange={e => onChange('width', e.target.value)}
             width="50%"
           />

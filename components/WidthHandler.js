@@ -1,7 +1,7 @@
 import React from 'react'
-import { DEFAULT_SETTINGS, COLORS } from '../lib/constants'
+import { DEFAULT_WIDTHS, COLORS } from '../lib/constants'
 
-const { minWidth, maxWidth } = DEFAULT_SETTINGS
+const { minWidth, maxWidth } = DEFAULT_WIDTHS
 
 function clamp(value, min, max) {
   if (value < min) {
