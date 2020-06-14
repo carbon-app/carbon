@@ -17,14 +17,14 @@ export default function WidthHandler(props) {
   const { onChange, innerRef, paddingHorizontal } = props
 
   const startX = React.useRef(null)
-  const width = React.useRef(null)
+  const startWidth = React.useRef(null)
 
   React.useEffect(() => {
     function handleMouseMove(e) {
       if (!startX.current) return
 
       const delta = e.pageX - startX.current // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
-      const calculated = width.current + delta * window.devicePixelRatio
+      const calculated = startWidth.current + delta * window.devicePixelRatio
       const newWidth = clamp(calculated, minWidth, maxWidth)
 
       onChange(newWidth)
@@ -40,7 +40,7 @@ export default function WidthHandler(props) {
       className="handler"
       onMouseDown={e => {
         startX.current = e.pageX
-        width.current = innerRef.current.clientWidth
+        startWidth.current = innerRef.current.clientWidth
       }}
       onMouseUp={() => {
         startX.current = null
@@ -49,7 +49,6 @@ export default function WidthHandler(props) {
       aria-orientation="vertical"
       aria-valuemin={minWidth}
       aria-valuemax={maxWidth}
-      aria-valuenow={width}
     >
       <style jsx>
         {`
