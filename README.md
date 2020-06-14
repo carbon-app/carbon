@@ -122,7 +122,7 @@ Sharing a saved snippet will automatically unfurl the image on platforms like Tw
 To create a saved snippet:
 
 1. Login using the "Sign in/Sign up" button
-2. Edit as you normally woud — your snippet will get saved automatically
+2. Edit as you normally would — your snippet will get saved automatically
 3. Copy the URL from your browser window and share away!
 
 ##### Embed a snippet
@@ -333,6 +333,7 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
   <tr>
     <td align="center"><a href="http://nickfix.me"><img src="https://avatars2.githubusercontent.com/u/6845581?v=4" width="100px;" alt=""/><br /><sub><b>Nick Fix</b></sub></a><br /><a href="#ideas-njfix6" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://noti.st/melsumner"><img src="https://avatars0.githubusercontent.com/u/4587451?v=4" width="100px;" alt=""/><br /><sub><b>Melanie Sumner</b></sub></a><br /><a href="#ideas-MelSumner" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://aluc.io/"><img src="https://avatars2.githubusercontent.com/u/15520015?v=4" width="100px;" alt=""/><br /><sub><b>aluc</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=b6pzeusbc54tvhw5jgpyw8pwz2x6gs" title="Code">💻</a></td>
   </tr>
 </table>
 

@@ -11,7 +11,7 @@ import Popout, { managePopout } from './Popout'
 import Button from './Button'
 import Presets from './Presets'
 import MenuButton from './MenuButton'
-import { COLORS, DEFAULT_PRESETS, DEFAULT_SETTINGS } from '../lib/constants'
+import { COLORS, DEFAULT_PRESETS, DEFAULT_SETTINGS, DEFAULT_WIDTHS } from '../lib/constants'
 import { toggle, getPresets, savePresets, generateId, fileToJSON } from '../lib/util'
 import SettingsIcon from './svg/Settings'
 
@@ -30,6 +30,7 @@ function WindowSettings({
   dropShadowOffsetY,
   windowControls,
   widthAdjustment,
+  width,
   watermark,
   onWidthChanging,
   onWidthChanged,
@@ -80,9 +81,27 @@ function WindowSettings({
         enabled={widthAdjustment}
         onChange={onChange.bind(null, 'widthAdjustment')}
       />
+      {!widthAdjustment && (
+        <div className="row settings-row width-row">
+          <Input
+            label="Width"
+            type="number"
+            value={width}
+            min={DEFAULT_WIDTHS.minWidth}
+            max={DEFAULT_WIDTHS.maxWidth}
+            onChange={e => onChange('width', e.target.value)}
+            width="50%"
+          />
+        </div>
+      )}
       <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
       <style jsx>
         {`
+          .width-row {
+            justify-content: space-between;
+            padding: 8px 12px 8px 8px;
+          }
+
           .row > :global(div:first-child) {
             border-right: 1px solid ${COLORS.SECONDARY};
           }
@@ -353,6 +372,7 @@ class Settings extends React.PureComponent {
             dropShadowOffsetY={this.props.dropShadowOffsetY}
             windowControls={this.props.windowControls}
             widthAdjustment={this.props.widthAdjustment}
+            width={this.props.width}
             watermark={this.props.watermark}
           />
         )

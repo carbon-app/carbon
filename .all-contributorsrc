@@ -690,6 +690,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "b6pzeusbc54tvhw5jgpyw8pwz2x6gs",
+      "name": "aluc",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15520015?v=4",
+      "profile": "https://aluc.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
