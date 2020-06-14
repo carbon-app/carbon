@@ -35,11 +35,15 @@ function WindowSettings({
   width,
   watermark,
   onWidthChanging,
-  onWidthChanged
+  onWidthChanged,
 }) {
   return (
     <div className="settings-content">
-      <ThemeSelect selected={windowTheme || 'none'} onChange={onChange.bind(null, 'windowTheme')} />
+      <ThemeSelect
+        selected={windowTheme || 'none'}
+        windowControls={windowControls}
+        onChange={onChange}
+      />
       <div className="row">
         <Slider
           label="Padding (vert)"
@@ -74,11 +78,6 @@ function WindowSettings({
           />
         </div>
       )}
-      <Toggle
-        label="Window controls"
-        enabled={windowControls}
-        onChange={onChange.bind(null, 'windowControls')}
-      />
       <Toggle
         label="Auto-adjust width"
         enabled={widthAdjustment}
@@ -132,7 +131,7 @@ function EditorSettings({
   firstLineNumber,
   hiddenCharacters,
   onWidthChanging,
-  onWidthChanged
+  onWidthChanged,
 }) {
   return (
     <div className="settings-content">
@@ -256,7 +255,7 @@ function MiscSettings({ format, reset, applyPreset, settings }) {
 
 const settingButtonStyle = {
   width: '40px',
-  height: '100%'
+  height: '100%',
 }
 
 class Settings extends React.PureComponent {
@@ -265,7 +264,7 @@ class Settings extends React.PureComponent {
     selectedMenu: 'Window',
     showPresets: true,
     previousSettings: null,
-    widthChanging: false
+    widthChanging: false,
   }
 
   settingsRef = React.createRef()
@@ -274,7 +273,7 @@ class Settings extends React.PureComponent {
   componentDidMount() {
     const storedPresets = getPresets(localStorage) || []
     this.setState(({ presets }) => ({
-      presets: [...storedPresets, ...presets]
+      presets: [...storedPresets, ...presets],
     }))
   }
 
@@ -307,7 +306,7 @@ class Settings extends React.PureComponent {
   }
 
   getSettingsFromProps = () =>
-    omitBy(this.props, (v, k) => typeof v === 'function' || k === 'preset')
+    omitBy(this.props, (v, k) => !Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, k))
 
   applyPreset = preset => {
     const previousSettings = this.getSettingsFromProps()
@@ -342,7 +341,7 @@ class Settings extends React.PureComponent {
     newPreset.icon = await this.props.getCarbonImage({
       format: 'png',
       squared: true,
-      exportSize: 1
+      exportSize: 1,
     })
 
     this.props.onChange('preset', newPreset.id)
@@ -350,7 +349,7 @@ class Settings extends React.PureComponent {
     this.setState(
       ({ presets }) => ({
         previousSettings: null,
-        presets: [newPreset, ...presets]
+        presets: [newPreset, ...presets],
       }),
       this.savePresets
     )
@@ -441,7 +440,7 @@ class Settings extends React.PureComponent {
             position: widthChanging ? 'fixed' : 'absolute',
             width: '316px',
             top: widthChanging ? this.settingPosition.top : 'initial',
-            left: widthChanging ? this.settingPosition.left : 'initial'
+            left: widthChanging ? this.settingPosition.left : 'initial',
           }}
         >
           <Presets

@@ -61,6 +61,17 @@ export default () => (
         font-style: normal;
       }
 
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+        src: url('//cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2')
+            format('woff2'),
+          url('//cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff')
+            format('woff2');
+      }
+
       /* latin */
       @font-face {
         font-family: 'IBM Plex Mono';

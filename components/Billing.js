@@ -105,21 +105,21 @@ function Billing(props) {
                       fontSmoothing: 'antialiased',
 
                       ':-webkit-autofill': {
-                        color: '#fce883'
+                        color: '#fce883',
                       },
                       '::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
+                        color: 'rgba(255, 255, 255, 0.7)',
+                      },
                     },
                     invalid: {
                       iconColor: COLORS.RED,
-                      color: COLORS.RED
-                    }
-                  }
+                      color: COLORS.RED,
+                    },
+                  },
                 }}
               />
               <hr />
-              <Input placeholder="Cardholders's name..." name="name" required />
+              <Input placeholder="Cardholders's name…" name="name" required />
             </fieldset>
             <small>
               (By clicking subscribe, you are accepting the{' '}
@@ -135,7 +135,7 @@ function Billing(props) {
               type="submit"
               color="rgba(255, 255, 255, 0.7)"
             >
-              {loading ? 'Sending...' : 'Subscribe'}
+              {loading ? 'Sending…' : 'Subscribe'}
             </Button>
             <div className={`error ${error ? 'visible' : ''}`} role="alert">
               {X}
@@ -262,10 +262,10 @@ function Billing(props) {
 
 const BillingWithStripe = injectStripe(Billing)
 
-export default function() {
+export default function () {
   const [stripe, setStripe] = React.useState(null)
   React.useEffect(() => {
-    setStripe(window.Stripe(process.env.STRIPE_PUBLIC_KEY))
+    setStripe(window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY))
   }, [])
   return (
     <StripeProvider stripe={stripe}>

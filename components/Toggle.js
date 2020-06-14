@@ -5,7 +5,7 @@ import { COLORS } from '../lib/constants'
 
 class Toggle extends React.PureComponent {
   static defaultProps = {
-    className: ''
+    className: '',
   }
 
   toggle = () => this.props.onChange(!this.props.enabled)

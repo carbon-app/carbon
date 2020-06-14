@@ -1,19 +1,19 @@
 import React from 'react'
-import { None, BW, Sharp } from './svg/WindowThemes'
+import Toggle from './Toggle'
+import { None, BW, Sharp, Boxy } from './svg/WindowThemes'
 import { COLORS } from '../lib/constants'
 
-const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW }
-export const WINDOW_THEMES = Object.keys(WINDOW_THEMES_MAP)
+const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, boxy: Boxy }
 
 class ThemeSelect extends React.Component {
   select = theme => {
     if (this.props.selected !== theme) {
-      this.props.onChange(theme)
+      this.props.onChange('windowTheme', theme)
     }
   }
 
   renderThemes() {
-    return WINDOW_THEMES.map(theme => {
+    return Object.keys(WINDOW_THEMES_MAP).map(theme => {
       const Img = WINDOW_THEMES_MAP[theme]
       const checked = this.props.selected === theme
       return (
@@ -35,8 +35,11 @@ class ThemeSelect extends React.Component {
                 outline: none;
               }
 
-              [aria-checked='true'] :global(svg) {
+              div :global(svg) {
                 border-radius: 3px;
+              }
+
+              [aria-checked='true'] :global(svg) {
                 border: solid 2px ${COLORS.SECONDARY};
               }
 
@@ -52,32 +55,37 @@ class ThemeSelect extends React.Component {
 
   render() {
     return (
-      <div className="window-theme">
-        <span className="label" id="window-theme-label">
-          Theme
-        </span>
-        <div className="themes" role="radiogroup" aria-labelledby="window-theme-label">
-          {this.renderThemes()}
+      <>
+        <div className="window-theme">
+          <Toggle
+            label="Window controls"
+            enabled={this.props.windowControls}
+            onChange={v => this.props.onChange('windowControls', v)}
+          />
+          {this.props.windowControls && (
+            <div className="themes" role="radiogroup" aria-labelledby="window-theme-label">
+              {this.renderThemes()}
+            </div>
+          )}
+          <style jsx>
+            {`
+              .window-theme span {
+                display: inline-block;
+                margin-bottom: 2px;
+              }
+
+              .themes {
+                padding: 4px 8px 8px;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                max-width: 200px;
+                overflow-x: scroll;
+              }
+            `}
+          </style>
         </div>
-        <style jsx>
-          {`
-            .window-theme {
-              padding: 8px;
-            }
-
-            .window-theme span {
-              display: inline-block;
-              margin-bottom: 2px;
-            }
-
-            .themes {
-              display: flex;
-              flex-direction: row;
-              width: 100%;
-            }
-          `}
-        </style>
-      </div>
+      </>
     )
   }
 }

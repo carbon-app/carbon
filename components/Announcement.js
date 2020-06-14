@@ -3,13 +3,14 @@ import React from 'react'
 // Feature flag
 const ACTIVE = true
 
-const key = 'CARBON_CTA_3'
+const key = 'CARBON_CTA_4'
 
 function Toast() {
   const [open, setState] = React.useState(false)
 
   React.useEffect(() => {
     window.localStorage.removeItem('CARBON_CTA_2')
+    window.localStorage.removeItem('CARBON_CTA_3')
     if (!window.localStorage.getItem(key)) {
       setState(true)
     }
@@ -35,9 +36,9 @@ function Toast() {
   return (
     <div className="toast mb4">
       <div className="toast-content">
-        <p>Help fight climate change by offsetting your carbon output</p> —
-        <a href="/offsets" target="_blank" rel="noreferrer noopener">
-          Find out how
+        <p>Black Lives Matter.</p>
+        <a href="https://www.joincampaignzero.org" target="_blank" rel="noreferrer noopener">
+          Help end police violence in America &rarr;
         </a>
         <button className="close-toast" onClick={close}>
           &times;
@@ -74,7 +75,7 @@ function Toast() {
 
           a {
             text-decoration: underline;
-            margin-left: 12px;
+            margin-left: 8px;
           }
 
           .close-toast {
@@ -91,7 +92,6 @@ function Toast() {
 
           p {
             margin: 0;
-            margin-right: 12px;
           }
         `}
       </style>

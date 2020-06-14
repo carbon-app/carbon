@@ -8,16 +8,14 @@ import { useAsyncCallback } from 'actionsack'
 import Button from '../components/Button'
 import LoginButton from '../components/LoginButton'
 import ConfirmButton from '../components/ConfirmButton'
+import { MetaLinks } from '../components/Meta'
+import Carbon from '../components/Carbon'
+import Page from '../components/Page'
+
 import { useAuth } from '../components/AuthContext'
 import { useAPI } from '../components/ApiContext'
 
-import { MetaLinks } from '../components/Meta'
-import Carbon from '../components/Carbon'
-
 import { COLORS, DEFAULT_SETTINGS } from '../lib/constants'
-
-// Ours
-import Page from '../components/Page'
 
 function correctTimestamp(n) {
   if (n < 9e12) {
@@ -37,7 +35,7 @@ function Snippet(props) {
             {props.code}
           </Carbon>
         </div>
-        <div className="id">{props.title || props.id}</div>
+        <div className="id">{props.name || props.title || props.id}</div>
         <div className="meta">
           Edited {formatDistanceToNow(correctTimestamp(props.updatedAt), { addSuffix: true })}
         </div>
@@ -216,7 +214,7 @@ function SnippetsPage() {
             Router.push('/')
           }}
         >
-          <h4>{loading ? 'Loading...' : !snippets.length ? 'Create snippet +' : 'Load more +'}</h4>
+          <h4>{loading ? 'Loading…' : !snippets.length ? 'Create snippet +' : 'Load more +'}</h4>
         </ActionButton>
       )}
       <style jsx>

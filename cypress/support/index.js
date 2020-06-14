@@ -16,7 +16,12 @@
 /* global cy */
 
 export const editorVisible = () => cy.get('.editor').should('be.visible')
-import '@applitools/eyes-cypress/commands'
+/*
+ * TODO uncomment when Cannot find module 'css-tree' from
+ * '/home/runner/work/carbon/carbon/node_modules/@applitools/dom-snapshot/src/browser/cssom'
+ * error is fixed
+ */
+// import '@applitools/eyes-cypress/commands'
 // Import commands.js using ES2015 syntax:
 import './commands'
 

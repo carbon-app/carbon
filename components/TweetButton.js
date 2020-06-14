@@ -29,7 +29,7 @@ function TweetButton(props) {
       onClick={onClick}
       color={COLORS.BLUE}
     >
-      {loading ? 'Loading...' : 'Tweet'}
+      {loading ? 'Loading…' : 'Tweet'}
     </Button>
   )
 }

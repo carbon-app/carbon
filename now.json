@@ -1,5 +1,4 @@
 {
-  "name": "carbon",
   "alias": "carbon.now.sh",
   "version": 2,
   "public": true,
@@ -23,7 +22,7 @@
       "src": "^/offsets?/?",
       "status": 307,
       "headers": {
-        "Location": "https://projectwren.com/"
+        "Location": "https://projectwren.com/?utm_source=carbon"
       }
     },
     {
@@ -60,16 +59,6 @@
     },
     { "handle": "filesystem" }
   ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production",
-      "FIREBASE_PROJECT_ID": "@carbon-firebase-project-id",
-      "FIREBASE_MESSAGING_SENDER_ID": "@carbon-firebase-messaging-sender-id",
-      "FIREBASE_FE_APP_ID": "@carbon-firebase-fe-app-id",
-      "FIREBASE_API_KEY": "@carbon-firebase-api-key",
-      "STRIPE_PUBLIC_KEY": "@carbon-stripe-public-key"
-    }
-  },
   "github": {
     "autoAlias": false,
     "silent": true

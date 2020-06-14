@@ -23,6 +23,9 @@ labels:
 
       Please see https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 👌. 
 
-comments:
-  - action: delete_comment
-    pattern: '^+1$'
+commits: 
+  - action: label
+    pattern: 'upgrade dep'
+    labels: 
+      - maintenance
+  

@@ -14,7 +14,7 @@ import { loginGitHub, logout } from '../lib/client'
 import { COLORS } from '../lib/constants'
 
 const Billing = dynamic(() => import('../components/Billing'), {
-  loading: () => <div style={{ minHeight: '360px' }} />
+  loading: () => <div style={{ minHeight: '360px' }} />,
 })
 
 function logoutThunk() {
@@ -191,7 +191,7 @@ function Settings() {
           <MenuButton name="Billing" select={selectMenu} selected={selected}></MenuButton>
 
           {/* <MenuButton name="API Keys" select={selectMenu} selected={selected} /> */}
-          <MenuButton name="Sign Out" select={logoutThunk} selected={selected} noArrows />
+          {user && <MenuButton name="Sign Out" select={logoutThunk} selected={selected} noArrows />}
         </div>
         <div className="content">
           {selected === 'Plan' && <Plan selectBilling={selectMenu('Billing')} />}

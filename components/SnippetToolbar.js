@@ -3,6 +3,7 @@ import { useAsyncCallback, useOnline } from 'actionsack'
 
 import Button from './Button'
 import Toolbar from './Toolbar'
+import Input from './Input'
 import ConfirmButton from './ConfirmButton'
 import { useAuth } from './AuthContext'
 
@@ -23,7 +24,7 @@ function DeleteButton(props) {
       onClick={onClick}
       style={{ color: COLORS.RED }}
     >
-      {loading ? 'Deleting...' : 'Delete'}
+      {loading ? 'Deleting…' : 'Delete'}
     </ConfirmButton>
   )
 }
@@ -43,7 +44,7 @@ function DuplicateButton(props) {
       color="#37b589"
       onClick={onClick}
     >
-      {loading ? 'Duplicating...' : 'Duplicate'}
+      {loading ? 'Duplicating…' : 'Duplicate'}
     </Button>
   )
 }
@@ -52,17 +53,9 @@ function SnippetToolbar(props) {
   const user = useAuth()
   const online = useOnline()
 
-  if (!online) {
-    return null
-  }
-
-  if (!user) {
-    return null
-  }
-
-  if (!props.snippet) {
-    return null
-  }
+  if (!online) return null
+  if (!user) return null
+  if (!props.snippet) return null
 
   const sameUser = user.uid === props.snippet.userId
 
@@ -72,12 +65,22 @@ function SnippetToolbar(props) {
         marginTop: 16,
         marginBottom: 0,
         flexDirection: 'row-reverse',
+        alignItems: 'center',
         // justifyContent: 'space-between',
-        zIndex: 1
+        zIndex: 1,
       }}
     >
       <DuplicateButton onClick={props.onCreate} />
       {sameUser && <DeleteButton onClick={props.onDelete} />}
+      <div style={{ marginRight: 'auto' }}>
+        <Input
+          align="left"
+          placeholder="Add a name…"
+          fontSize="14px"
+          value={props.name}
+          onChange={e => props.onChange('name', e.target.value)}
+        />
+      </div>
     </Toolbar>
   )
 }

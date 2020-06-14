@@ -25,7 +25,7 @@ const Footer = () => (
       <a className="link" href="/offsets">
         offsets
       </a>
-      <span className="new">New</span>
+      {/* <span className="new">New</span> */}
     </nav>
 
     <div className="mt2 mb2">

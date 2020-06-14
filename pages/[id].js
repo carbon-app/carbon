@@ -2,41 +2,35 @@ import React from 'react'
 import Router from 'next/router'
 
 import IndexPage from './index'
-import ApiContext from '../components/ApiContext'
 
 import api from '../lib/api'
 
-class IdPage extends React.PureComponent {
-  static contextType = ApiContext
-  static async getInitialProps({ req, res, query }) {
-    const path = query.id
-    const parameter = path.length >= 19 && path.indexOf('.') < 0 ? path : null
+export async function getServerSideProps({ req, res, query }) {
+  const { id: path, filename } = query
+  const parameter = path.length >= 19 && path.indexOf('.') < 0 ? path : null
 
-    let snippet
-    if (parameter) {
-      const host = req ? req.headers.host : undefined
-      snippet = await api.snippet.get(parameter, { host })
-      if (snippet) {
-        return { snippet }
-      }
-
-      // 404 Not found
-      if (res) {
-        res.writeHead(302, {
-          Location: '/'
-        })
-        res.end()
-      } else {
-        Router.push('/')
-      }
+  let snippet
+  if (parameter) {
+    const host = req ? req.headers.host : undefined
+    snippet = await api.snippet.get(parameter, { host, filename })
+    if (snippet) {
+      return { props: { snippet, host } }
     }
 
-    return {}
+    // 404 Not found
+    if (res) {
+      res.writeHead(302, {
+        Location: '/',
+      })
+      res.end()
+    } else {
+      Router.push('/')
+    }
   }
 
-  render() {
-    return <IndexPage {...this.props} />
-  }
+  return { props: {} }
 }
 
-export default IdPage
+export default React.memo(function IdPage(props) {
+  return <IndexPage {...props} />
+})

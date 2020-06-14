@@ -1,16 +1,16 @@
 import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head />
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }

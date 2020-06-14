@@ -1,6 +1,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
+import GlobalHighlights from './GlobalHighlights'
 import Dropdown from '../Dropdown'
 import { managePopout } from '../Popout'
 import ThemeIcon from '../svg/Theme'
@@ -8,7 +9,7 @@ import RemoveIcon from '../svg/Remove'
 import { COLORS } from '../../lib/constants'
 
 const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
-  loading: () => null
+  loading: () => null,
 })
 
 const ThemeItem = ({ children, item, isSelected, remove }) => (
@@ -52,7 +53,7 @@ const getCustomName = themes =>
 
 class Themes extends React.PureComponent {
   state = {
-    name: ''
+    name: '',
   }
 
   dropdown = React.createRef()
@@ -60,7 +61,7 @@ class Themes extends React.PureComponent {
   static getDerivedStateFromProps(props) {
     if (!props.isVisible) {
       return {
-        name: getCustomName(props.themes)
+        name: getCustomName(props.themes),
       }
     }
     return null
@@ -95,9 +96,9 @@ class Themes extends React.PureComponent {
     const dropdownList = [
       {
         id: 'create',
-        name: 'Create +'
+        name: 'Create +',
       },
-      ...themes
+      ...themes,
     ]
 
     return (
@@ -124,71 +125,11 @@ class Themes extends React.PureComponent {
             onInputChange={e => this.setState({ name: e.target.value })}
           />
         )}
+        <GlobalHighlights highlights={highlights} />
         <style jsx>
           {`
             .themes {
               position: relative;
-            }
-
-            :global(.CodeMirror__container .CodeMirror) {
-              color: ${highlights.text} !important;
-              background-color: ${highlights.background} !important;
-            }
-
-            :global(.cm-string),
-            :global(.cm-string-2) {
-              color: ${highlights.string} !important;
-            }
-            :global(.cm-comment) {
-              color: ${highlights.comment} !important;
-            }
-            :global(.cm-variable),
-            :global(.cm-variable-2),
-            :global(.cm-variable-3) {
-              color: ${highlights.variable} !important;
-            }
-            :global(.cm-number) {
-              color: ${highlights.number} !important;
-            }
-            :global(.cm-keyword) {
-              color: ${highlights.keyword} !important;
-            }
-            :global(.cm-property) {
-              color: ${highlights.property} !important;
-            }
-            :global(.cm-def) {
-              color: ${highlights.definition} !important;
-            }
-            :global(.cm-meta) {
-              color: ${highlights.meta} !important;
-            }
-            :global(.cm-operator) {
-              color: ${highlights.operator} !important;
-            }
-            :global(.cm-attribute) {
-              color: ${highlights.attribute} !important;
-            }
-
-            :global(.cm-s-dracula .CodeMirror-cursor) {
-              border-left: solid 2px #159588 !important;
-            }
-
-            :global(.cm-s-solarized) {
-              box-shadow: none !important;
-            }
-
-            :global(.cm-s-solarized.cm-s-light) {
-              text-shadow: #eee8d5 0 1px !important;
-            }
-
-            :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumber),
-            :global(.cm-s-solarized.cm-s-light .CodeMirror-linenumbers) {
-              background-color: #fdf6e3 !important;
-            }
-
-            :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumber),
-            :global(.cm-s-solarized.cm-s-dark .CodeMirror-linenumbers) {
-              background-color: #002b36 !important;
             }
           `}
         </style>

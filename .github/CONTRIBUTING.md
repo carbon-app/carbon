@@ -1,4 +1,4 @@
-## Contributing
+# Contributing
 
 If you have discovered a bug or have a feature suggestion, feel free to create an issue on GitHub.
 
@@ -8,7 +8,7 @@ If you'd like to make some changes yourself, see the following:
 2. Make sure yarn is globally installed (`npm install -g yarn`)
 3. Run `yarn` to download required packages.
 4. Build and start the application: `yarn dev`
-5. If you contributed something new, run `yarn contrib:add <your GitHub username>` to add yourself [below](#contributors)
+5. If you contributed something new, run `yarn contrib:add <your GitHub username>` to add yourself [to the contributors list](/README.md#contributors)
 6. Finally, submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/) with your changes!
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind are welcome!
@@ -21,8 +21,4 @@ Alternatively, you can also open this repository in Gitpod, an online IDE for Gi
 
 ### Adding themes/languages
 
-We're happy to accept any PRs adding new themes and languages to Carbon! Currently there are a few ways to do so:
-
-1. If the [theme](https://codemirror.net/demo/theme.html) or [language](https://codemirror.net/mode/index.html) is supported in Codemirror, all you have to do is add a [constant](https://github.com/carbon-app/carbon/blob/master/lib/constants.js) for it.
-
-2. If it's not supported, you can add a Codemirror compliant [custom theme](https://github.com/carbon-app/carbon/tree/master/static/themes) or [custom mode](https://github.com/carbon-app/carbon/tree/master/lib/custom/modes) to implement it and add a constant like above.
+We are not currently accepting new themes or languages into Carbon, except for in extenuating circumstances. Instead, we want to continue to provide ways for users to add their own themes and presets. Please feel free to still open an issue or PR for consideration, but know that there is a chance it will get closed without addition.
