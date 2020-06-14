@@ -13,7 +13,7 @@ function clamp(value, min, max) {
   return value
 }
 
-const WidthHandler = props => {
+export default function WidthHandler(props) {
   const { onChange, innerRef, paddingHorizontal } = props
 
   const startX = React.useRef(null)
@@ -72,5 +72,3 @@ const WidthHandler = props => {
     </div>
   )
 }
-
-export default WidthHandler
