@@ -11,6 +11,7 @@ hljs.registerLanguage('javascript', javascript)
 
 import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
+import WidthHandler from './WidthHandler'
 
 import {
   COLORS,
@@ -201,12 +202,19 @@ class Carbon extends React.PureComponent {
           <div className="alpha eliminateOnRender" />
           <div className="bg" />
         </div>
+
+        <WidthHandler
+          innerRef={this.props.innerRef}
+          onChange={this.props.updateWidth}
+          paddingHorizontal={config.paddingHorizontal}
+        />
         <style jsx>
           {`
             .container {
               position: relative;
-              min-width: ${config.widthAdjustment ? '90px' : '680px'};
-              max-width: 1024px;
+              min-width: ${config.widthAdjustment ? '90px' : 'auto'};
+              max-width: ${config.widthAdjustment ? '1024px' : 'none'};
+              ${config.widthAdjustment ? '' : `width: ${config.width}px;`}
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
             }
 
@@ -236,13 +244,16 @@ class Carbon extends React.PureComponent {
             }
 
             .container .bg {
-              ${this.props.config.backgroundMode === 'image'
-                ? `background: url(${backgroundImage});
+              ${
+                this.props.config.backgroundMode === 'image'
+                  ? `background: url(${backgroundImage});
                     background-size: cover;
                     background-repeat: no-repeat;`
-                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
+                  : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                     background-size: auto;
-                    background-repeat: repeat;`} position: absolute;
+                    background-repeat: repeat;`
+              }
+              position: absolute;
               top: 0px;
               right: 0px;
               bottom: 0px;
@@ -268,9 +279,11 @@ class Carbon extends React.PureComponent {
               position: relative;
               z-index: 1;
               border-radius: 5px;
-              ${config.dropShadow
-                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
-                : ''};
+              ${
+                config.dropShadow
+                  ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
+                  : ''
+              };
             }
 
             .container :global(.CodeMirror__container .CodeMirror) {
