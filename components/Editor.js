@@ -112,6 +112,7 @@ class Editor extends React.Component {
   updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
+  updateWidth = width => this.setState({ widthAdjustment: false, width })
 
   async getCarbonImage(
     {
@@ -438,6 +439,7 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
+                updateWidth={this.updateWidth}
                 loading={this.state.loading}
                 theme={theme}
               >
