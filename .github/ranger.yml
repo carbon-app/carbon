@@ -19,9 +19,9 @@ labels:
     action: close
     delay: 14 days
     comment: |
-      This issue has been marked "$LABEL" and will be closed in $DELAY. As of Carbon `4.0.0`, the Carbon core team is no longer implementing new themes or languages, except for in extenuating circumstances. You can create your own theme in the "Themes" dropdown. 
+      This issue has been marked "$LABEL". As of Carbon `4.0.0`, the Carbon core team is no longer implementing new themes or languages, except for in extenuating circumstances. You can create your own theme in the "Themes" dropdown. 
       
-      This issue will remain open for $DELAY for reconsideration. 
+      This issue will remain open for $DELAY for further consideration. 
 
 commits: 
   - action: label
