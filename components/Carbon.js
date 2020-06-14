@@ -183,26 +183,18 @@ class Carbon extends React.PureComponent {
           onGutterClick={this.props.onGutterClick}
           onSelection={this.onSelection}
         />
-        {!config.widthAdjustment && (
-          <>
-            <WidthHandler
-              leftRight={'left'}
-              top={config.paddingVertical}
-              bottom={config.paddingVertical}
-              updateSetting={this.props.updateSetting}
-              width={config.width}
-              paddingHorizontal={config.paddingHorizontal}
-            />
-            <WidthHandler
-              leftRight={'right'}
-              top={config.paddingVertical}
-              bottom={config.paddingVertical}
-              updateSetting={this.props.updateSetting}
-              width={config.width}
-              paddingHorizontal={config.paddingHorizontal}
-            />
-          </>
-        )}
+        <WidthHandler
+          leftOrRight={'left'}
+          innerRef={this.props.innerRef}
+          updateSetting={this.props.updateSetting}
+          config={config}
+        />
+        <WidthHandler
+          leftOrRight={'right'}
+          innerRef={this.props.innerRef}
+          updateSetting={this.props.updateSetting}
+          config={config}
+        />
 
         {config.watermark && <Watermark light={light} />}
         <div className="container-bg">

@@ -4,12 +4,18 @@ import { DEFAULT_SETTINGS } from '../lib/constants'
 const { minWidth, maxWidth } = DEFAULT_SETTINGS
 
 const WidthHandler = props => {
-  const { top, bottom, updateSetting, width, paddingHorizontal, leftRight } = props
+  const { leftOrRight, updateSetting, innerRef, config } = props
+  const { paddingHorizontal, widthAdjustment } = config
 
   const onMouseDown = e => {
     const startX = e.pageX
+    const width = innerRef.current.clientWidth
     const onMouseMove = e => {
-      const delta = leftRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
+      if (widthAdjustment) {
+        updateSetting('widthAdjustment', false)
+        updateSetting('width', width)
+      }
+      const delta = leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
       const calculated = width + delta * 2
       const newWidth =
         calculated < minWidth ? minWidth : calculated > maxWidth ? maxWidth : calculated
@@ -33,11 +39,11 @@ const WidthHandler = props => {
           .handler {
             z-index: 2;
             position: absolute;
-            background-color: red;
-            top: ${top};
-            bottom: ${bottom};
-            ${leftRight === 'left' ? 'left: ' + paddingHorizontal : ''};
-            ${leftRight === 'right' ? 'right: ' + paddingHorizontal : ''};
+            background-color: #57b5f9;
+            top: ${paddingHorizontal};
+            bottom: ${paddingHorizontal};
+            ${leftOrRight === 'left' ? 'left: ' + paddingHorizontal : ''};
+            ${leftOrRight === 'right' ? 'right: ' + paddingHorizontal : ''};
             width: 10px;
             cursor: ew-resize;
             opacity: 0;
