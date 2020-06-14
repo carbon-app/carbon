@@ -4,8 +4,7 @@ import { DEFAULT_SETTINGS, COLORS } from '../lib/constants'
 const { minWidth, maxWidth } = DEFAULT_SETTINGS
 
 const WidthHandler = props => {
-  const { updateSetting, innerRef, config } = props
-  const { paddingHorizontal, widthAdjustment } = config
+  const { onChange, innerRef, paddingHorizontal } = props
 
   const startX = React.useRef(null)
   const width = React.useRef(null)
@@ -14,22 +13,17 @@ const WidthHandler = props => {
     function handleMouseMove(e) {
       if (!startX.current) return
 
-      if (widthAdjustment) {
-        updateSetting('widthAdjustment', false)
-        updateSetting('width', width)
-      }
-
       const delta = e.pageX - startX.current // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
       const calculated = width.current + delta * window.devicePixelRatio
       const newWidth =
         calculated < minWidth ? minWidth : calculated > maxWidth ? maxWidth : calculated
 
-      updateSetting('width', newWidth)
+      onChange(newWidth)
     }
 
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [innerRef, updateSetting, widthAdjustment])
+  }, [innerRef, onChange])
 
   return (
     // eslint-disable-next-line

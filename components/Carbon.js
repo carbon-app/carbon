@@ -6,12 +6,12 @@ import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
 import { Controlled as CodeMirror } from 'react-codemirror2'
-import WidthHandler from './WidthHandler'
 
 hljs.registerLanguage('javascript', javascript)
 
 import SpinnerWrapper from './SpinnerWrapper'
 import WindowControls from './WindowControls'
+import WidthHandler from './WidthHandler'
 
 import {
   COLORS,
@@ -204,10 +204,9 @@ class Carbon extends React.PureComponent {
         </div>
 
         <WidthHandler
-          leftOrRight={'right'}
           innerRef={this.props.innerRef}
-          updateSetting={this.props.updateSetting}
-          config={config}
+          onChange={this.props.updateWidth}
+          paddingHorizontal={config.paddingHorizontal}
         />
         <style jsx>
           {`
