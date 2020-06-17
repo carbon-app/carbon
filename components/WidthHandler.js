@@ -34,6 +34,14 @@ export default function WidthHandler(props) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [innerRef, onChange])
 
+  React.useEffect(() => {
+    function handleMouseUp() {
+      startX.current = null
+    }
+    window.addEventListener('mouseup', handleMouseUp)
+    return () => window.removeEventListener('mouseup', handleMouseUp)
+  }, [])
+
   return (
     // eslint-disable-next-line
     <div
@@ -41,9 +49,6 @@ export default function WidthHandler(props) {
       onMouseDown={e => {
         startX.current = e.pageX
         startWidth.current = innerRef.current.clientWidth
-      }}
-      onMouseUp={() => {
-        startX.current = null
       }}
       role="separator"
       aria-orientation="vertical"
