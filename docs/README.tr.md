@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
 <br></br>
 
 ## Giriş
@@ -65,7 +65,7 @@ Topluluğun yarattığı muhteşem projelere göz atın:
 
 ## Katkıda Bulunun
 
-PRlara açığız! Lütfen [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) linkine bakın.
+PRlara açığız! Lütfen [CONTRIBUTING.md](/.github/CONTRIBUTING.md) linkine bakın.
 
 ## Teşekkürler
 
@@ -188,4 +188,5 @@ Bu muhteşem insanlara teşekkürler ([emoji key](https://github.com/kentcdodds/
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

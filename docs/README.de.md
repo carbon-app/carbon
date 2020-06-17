@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
 [![Greenkeeper badge](https://badges.greenkeeper.io/carbon-app/carbon.svg)](https://greenkeeper.io/)
 <br></br>
 
@@ -66,7 +66,7 @@ Schau dir auch diese Projekte näher an, die unsere tolle Community hervorgebrac
 
 ## Mitwirken
 
-Pull Requests sind willkommen! Bitte lese hierzu unsere [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) für mehr Details.
+Pull Requests sind willkommen! Bitte lese hierzu unsere [CONTRIBUTING.md](/.github/CONTRIBUTING.md) für mehr Details.
 
 ## Danke an
 
@@ -189,4 +189,5 @@ Ein Danke geht an all diese wunderbaren Menschen ([emoji key](https://github.com
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
 <br></br>
 
 ## प्रस्तावना
@@ -65,7 +65,7 @@
 
 ## Contribute
 
-PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) देखें।
+PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](/.github/CONTRIBUTING.md) देखें।
 
 ## धन्यवाद
 
@@ -188,4 +188,5 @@ PRs का स्वागत है! अधिक जानकारी के 
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

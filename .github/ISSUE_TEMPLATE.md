@@ -2,7 +2,7 @@
 Is your issue for a new theme or language? As of Carbon `3.0.0`, the core Carbon team is no
 longer implementing new themes or languages ourselves, but we are happy to accept PRs to add new ones.
 
-Please see https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 😄
+Please see https://github.com/carbon-app/carbon/blob/main/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 😄
 -->
 <!-- Attach a screenshot where applicable -->
 

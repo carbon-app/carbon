@@ -9,7 +9,7 @@
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-53-orange.svg" alt="All Contributors" />
   </a>
-  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+  <a href="/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
   <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
@@ -75,7 +75,7 @@
         <a href="/docs/README.se.md">Svenska</a>
       </td>
       <td align="center">
-        <a href="https://github.com/carbon-app/carbon/new/master/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
+        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
       <td></td>
     </tr>
@@ -196,7 +196,7 @@ Carbon is a project by:
 
 ## Contribute & Support
 
-Pull requests are welcome! Please see our [contributing guidelines](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) for more details.
+Pull requests are welcome! Please see our [contributing guidelines](/.github/CONTRIBUTING.md) for more details.
 
 ### Sponsors
 
@@ -341,4 +341,5 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

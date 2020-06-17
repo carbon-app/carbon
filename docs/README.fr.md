@@ -9,7 +9,7 @@
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-53-orange.svg" alt="All Contributors" />
   </a>
-  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+  <a href="/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
   <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
@@ -95,7 +95,7 @@ Découvrez les projets créés par notre fantastique communauté :
 
 ## Contribuer
 
-Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) pour plus de détails.
+Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](/.github/CONTRIBUTING.md) pour plus de détails.
 
 ## Merci à
 
@@ -218,4 +218,5 @@ Merci à toutes ces personnes merveilleuses ([emoji key](https://github.com/kent
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

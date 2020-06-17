@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
 <br></br>
 
 ## முன்னுரை
@@ -69,7 +69,7 @@
 
 ## பங்களிக்க
 
-PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md) பார்க்கவும்.
+PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](/.github/CONTRIBUTING.md) பார்க்கவும்.
 
 ## நன்றி
 
@@ -194,4 +194,5 @@ PR வரவேற்கிறோம்! மேலும் தகவலுக�
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

@@ -9,7 +9,7 @@
   <a href="https://github.com/prettier/prettier">
     <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier" />
   </a>
-  <a href="https://github.com/carbon-app/carbon/blob/master/LICENSE">
+  <a href="/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
   <a href="https://greenkeeper.io/">
@@ -89,7 +89,7 @@ Google Chrome などの PWA をサポートしているブラウザを使用し�
 
 ## Contribute
 
-PR を歓迎しています。詳細は[CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md)をご覧ください。
+PR を歓迎しています。詳細は[CONTRIBUTING.md](/.github/CONTRIBUTING.md)をご覧ください。
 
 ## Thanks To
 
@@ -212,4 +212,5 @@ Carbon は次の人々によるプロジェクトです:
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

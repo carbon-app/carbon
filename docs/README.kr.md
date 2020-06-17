@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-63-orange.svg?style=flat-square)](#contributors-)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](https://github.com/carbon-app/carbon/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
 <br></br>
 
 ## Introduction
@@ -67,7 +67,7 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, paddin
 
 ## Contribute
 
-풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](https://github.com/carbon-app/carbon/blob/master/.github/CONTRIBUTING.md)를 참조해주세요.
+풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](/.github/CONTRIBUTING.md)를 참조해주세요.
 
 ## Thanks To
 
@@ -190,4 +190,5 @@ Carbon is a project by
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
