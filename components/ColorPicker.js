@@ -9,34 +9,22 @@ const pickerStyle = {
   margin: '0 auto 1px',
 }
 
-class ColorPicker extends React.PureComponent {
-  constructor(props) {
-    super(props)
-    this.state = {
-      color: props.color,
-    }
-  }
+export default function ColorPicker(props) {
+  const [color, setColor] = React.useState(props.color)
+  const { onChange = () => {}, presets, style, disableAlpha } = props
 
-  handleColorChange = color => {
-    this.setState({ color })
-  }
-
-  render() {
-    const { color } = this.state
-    const { onChange = () => {}, presets, style, disableAlpha } = this.props
-
-    return (
-      <React.Fragment>
-        <SketchPicker
-          styles={{ picker: style || pickerStyle }}
-          onChange={this.handleColorChange}
-          color={color}
-          onChangeComplete={onChange}
-          presetColors={presets}
-          disableAlpha={disableAlpha}
-        />
-        <style jsx>
-          {`
+  return (
+    <React.Fragment>
+      <SketchPicker
+        styles={{ picker: style || pickerStyle }}
+        onChange={setColor}
+        color={color}
+        onChangeComplete={onChange}
+        presetColors={presets}
+        disableAlpha={disableAlpha}
+      />
+      <style jsx>
+        {`
             /* react-color overrides */
             :global(.sketch-picker > div:nth-child(3) > div > div > span) {
               color: ${COLORS.SECONDARY} !important
@@ -51,15 +39,11 @@ class ColorPicker extends React.PureComponent {
               color: #fff !important
             }
 
-            /* prettier-ignore */
             :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
-          background: #fff
-        }
+              background: #fff
+            }
           `}
-        </style>
-      </React.Fragment>
-    )
-  }
+      </style>
+    </React.Fragment>
+  )
 }
-
-export default ColorPicker
