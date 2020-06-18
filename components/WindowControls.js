@@ -75,6 +75,7 @@ export default ({ theme, copyable, code, light }) => (
           outline: none;
           border: none;
           text-align: center;
+          ${theme === 'boxy' ? 'max-width: calc(100% - 58px);' : ''}
           font-size: 14px;
           color: ${light ? COLORS.BLACK : COLORS.SECONDARY};
         }
