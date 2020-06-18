@@ -71,6 +71,7 @@ export default ({ theme, copyable, code, light }) => (
 
         input {
           width: 250px;
+          max-width: calc(100% - ${theme === 'boxy' ? 110 : 140}px);
           background: none;
           outline: none;
           border: none;
