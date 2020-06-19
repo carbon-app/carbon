@@ -75,8 +75,9 @@ export default ({ theme, copyable, code, light }) => (
           outline: none;
           border: none;
           text-align: center;
-          /* 140px is an arbitrary value, but is roughly equal to:
-           *  2 * (window theme width + window theme outside margin)
+          /**
+           * 140px is an arbitrary value, but it's roughly equal to:
+           * 2 * (window theme width + window theme outside margin)
            */
           max-width: calc(100% - 140px);
           font-size: 14px;
