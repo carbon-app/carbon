@@ -75,7 +75,10 @@ export default ({ theme, copyable, code, light }) => (
           outline: none;
           border: none;
           text-align: center;
-          ${theme === 'boxy' ? 'max-width: calc(100% - 58px);' : ''}
+          /* 140px is an arbitrary value, but is roughly equal to:
+           *  2 * (window theme width + window theme outside margin)
+           */
+          max-width: calc(100% - 140px);
           font-size: 14px;
           color: ${light ? COLORS.BLACK : COLORS.SECONDARY};
         }
