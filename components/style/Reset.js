@@ -208,27 +208,6 @@ export default () => (
         background: none;
       }
 
-      .react-spinner {
-        z-index: 999;
-        position: relative;
-        width: 32px;
-        height: 32px;
-        top: 50%;
-        left: 50%;
-      }
-      .react-spinner_bar {
-        -webkit-animation: react-spinner_spin 1.2s linear infinite;
-        -moz-animation: react-spinner_spin 1.2s linear infinite;
-        animation: react-spinner_spin 1.2s linear infinite;
-        border-radius: 5px;
-        background-color: #fff;
-        position: absolute;
-        width: 20%;
-        height: 7.8%;
-        top: -3.9%;
-        left: -10%;
-      }
-
       .row {
         display: flex;
       }
@@ -245,31 +224,6 @@ export default () => (
       /* include just until we have a keyboard navigation style system */
       [role='button']:focus {
         outline: none;
-      }
-
-      @keyframes react-spinner_spin {
-        0% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0.15;
-        }
-      }
-      @-moz-keyframes react-spinner_spin {
-        0% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0.15;
-        }
-      }
-      @-webkit-keyframes react-spinner_spin {
-        0% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0.15;
-        }
       }
     `}
   </style>

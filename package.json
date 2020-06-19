@@ -54,7 +54,6 @@
     "react-dom": "^16.13.1",
     "react-image-crop": "^6.0.16",
     "react-is": "^16.13.1",
-    "react-spinner": "^0.2.7",
     "react-stripe-elements": "^6.1.2",
     "react-syntax-highlight": "^15.3.1",
     "serialize-javascript": "^3.0.0",
