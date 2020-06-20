@@ -22,12 +22,11 @@ If applicable, add screenshots to help explain your problem.
 **Info (please complete the following information):**
 
 - OS [e.g. macOS, Linux, Windows, iOS]:
-- Browser [e.g. chrome, safari]:
--
+- Browser [e.g. Chrome, Safari, Firefox]:
 
 <details>
   <summary>Code Snippet (If Applicable)</summary>
   <pre>
-  <!-- Paste an example code snippet as plain text here for failure cases -->
+  <!-- Paste an example Carbon URL which recreates the issue you are facing, if possible -->
   </pre>
 </details>

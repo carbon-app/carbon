@@ -1,21 +1,16 @@
-<!--
-Is your issue for a new theme or language? As of Carbon `3.0.0`, the core Carbon team is no
-longer implementing new themes or languages ourselves, but we are happy to accept PRs to add new ones.
+<!-- Add details here -->
 
-Please see https://github.com/carbon-app/carbon/blob/main/.github/CONTRIBUTING.md#adding-themeslanguages for notes on how to do so 😄
--->
 <!-- Attach a screenshot where applicable -->
 
 ### Expected Behavior
 
-### Actual Behavior
+If applicable, add screenshots to help explain your problem, or include Carbon links that recreate
+your issue.
 
-<details>
-  <summary>Browser: </summary>
-  <!-- Enter your Browser information here -->
-</details>
+### Info
 
-<details>
-  <summary>Code Snippet (If Applicable)</summary>
-  <!-- Paste an example code snippet as plain text here for failure cases -->
-</details>
+Please complete the following information:
+
+OS [e.g. macOS, Linux, Windows, iOS]:
+
+Browser [e.g. Chrome, Safari, Firefox]:
