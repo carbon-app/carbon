@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useCopyTextHandler, useAsyncCallback } from 'actionsack'
 import morph from 'morphmorph'
 
@@ -30,12 +30,13 @@ function CopyButton(props) {
   )
 }
 
-const CopyEmbed = withRouter(({ router: { asPath }, mapper, title }) => {
+function CopyEmbed({ mapper, title }) {
+  const { asPath } = useRouter()
   const text = React.useMemo(() => mapper(asPath), [mapper, asPath])
   const { onClick, copied } = useCopyTextHandler(text)
 
   return <CopyButton onClick={onClick}>{copied ? 'Copied!' : title}</CopyButton>
-})
+}
 
 const popoutStyle = { width: '140px', right: 0 }
 
