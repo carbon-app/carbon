@@ -1,12 +1,10 @@
 <!---
-  Provide a general summary of your changes in the Title above
-  Expand on it in the description below (if applicable)
+Provide a general summary of your changes in the Title above
 
-  Attach a screenshot when applicable
+Expand on it in the description below (if applicable)
+Attach a screenshot (if applicable)
 -->
 
-<!---
-- [ ] Add integration tests (when applicable)
+- [ ] Integration tests (if applicable)
 
-Closes <issue number>
--->
+Closes #
