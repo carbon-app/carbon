@@ -48,19 +48,6 @@ const INITIAL_STATE = {
 
 export default class ImagePicker extends React.Component {
   static contextType = ApiContext
-  constructor(props) {
-    super(props)
-    this.state = INITIAL_STATE
-    this.selectMode = this.selectMode.bind(this)
-    this.handleURLInput = this.handleURLInput.bind(this)
-    this.uploadImage = this.uploadImage.bind(this)
-    this.selectImage = this.selectImage.bind(this)
-    this.removeImage = this.removeImage.bind(this)
-    this.onImageLoaded = this.onImageLoaded.bind(this)
-    this.onCropChange = this.onCropChange.bind(this)
-    this.onDragEnd = this.onDragEnd.bind(this)
-  }
-
   static getDerivedStateFromProps(nextProps, state) {
     if (state.crop) {
       // update crop for editor container aspect-ratio change
@@ -77,25 +64,25 @@ export default class ImagePicker extends React.Component {
     return null
   }
 
-  selectMode(mode) {
-    this.setState({ mode })
-  }
+  state = INITIAL_STATE
 
-  async onDragEnd() {
+  selectMode = mode => this.setState({ mode })
+
+  onDragEnd = async () => {
     if (this.state.pixelCrop) {
       const croppedImg = await getCroppedImg(this.state.dataURL, this.state.pixelCrop)
       this.props.onChange({ backgroundImageSelection: croppedImg })
     }
   }
 
-  onCropChange(crop, pixelCrop) {
+  onCropChange = (crop, pixelCrop) => {
     this.setState({
       crop: { ...crop, aspect: this.props.aspectRatio },
       pixelCrop,
     })
   }
 
-  onImageLoaded(image) {
+  onImageLoaded = image => {
     const imageAspectRatio = image.width / image.height
     const initialCrop = {
       x: 0,
@@ -120,7 +107,7 @@ export default class ImagePicker extends React.Component {
     })
   }
 
-  handleURLInput(e) {
+  handleURLInput = e => {
     e.preventDefault()
     const url = e.target[0].value
     return this.context
@@ -137,12 +124,12 @@ export default class ImagePicker extends React.Component {
       })
   }
 
-  async uploadImage(e) {
+  uploadImage = async e => {
     const dataURL = await fileToDataURL(e.target.files[0])
     return this.handleImageChange(dataURL, dataURL)
   }
 
-  async selectImage(image) {
+  selectImage = async image => {
     // TODO use React suspense for loading this asset
     const { dataURL } = await this.context.downloadThumbnailImage(image)
 
@@ -175,7 +162,7 @@ export default class ImagePicker extends React.Component {
     }
   }
 
-  removeImage() {
+  removeImage = () => {
     this.setState(INITIAL_STATE, () => {
       this.props.onChange({
         backgroundImage: null,
