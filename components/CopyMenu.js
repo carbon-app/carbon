@@ -8,10 +8,12 @@ import Button from './Button'
 import Popout, { managePopout } from './Popout'
 import CopySVG from './svg/Copy'
 
-const toIFrame = url =>
+const toIFrame = (url, width, height) =>
   `<iframe
   src="${location.origin}/embed${url.replace(/^\/\?/, '?')}"
-  style="transform:scale(0.7); width:1024px; height:473px; border:0; overflow:hidden;"
+  style="width: ${width || 1024}px; height: ${
+    height || 473
+  }px; border:0; transform: scale(1); overflow:hidden;"
   sandbox="allow-scripts allow-same-origin">
 </iframe>
 `
@@ -52,7 +54,7 @@ function useClipboardSupport() {
   return isClipboardSupports
 }
 
-function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
+function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
   const clipboardSupported = useClipboardSupport()
 
   const [showCopied, { loading: copied }] = useAsyncCallback(
@@ -93,7 +95,10 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage }) {
             </CopyButton>
           )}
           <CopyEmbed title="Medium.com" mapper={toEncodedURL} />
-          <CopyEmbed title="IFrame" mapper={toIFrame} />
+          <CopyEmbed
+            title="IFrame"
+            mapper={url => toIFrame(url, carbonRef.clientWidth, carbonRef.clientHeight)}
+          />
           <CopyEmbed title="Plain URL" mapper={toURL} />
         </div>
       </Popout>
