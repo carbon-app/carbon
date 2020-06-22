@@ -48,22 +48,10 @@ const unsplashPhotographerCredit = /\n\n\/\/ Photo by.+?on Unsplash/
 class Editor extends React.Component {
   static contextType = ApiContext
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      ...DEFAULT_SETTINGS,
-      ...this.props.snippet,
-      loading: true,
-    }
-
-    this.exportImage = this.exportImage.bind(this)
-    this.copyImage = this.copyImage.bind(this)
-    this.updateSetting = this.updateSetting.bind(this)
-    this.updateLanguage = this.updateLanguage.bind(this)
-    this.updateBackground = this.updateBackground.bind(this)
-    this.resetDefaultSettings = this.resetDefaultSettings.bind(this)
-    this.getCarbonImage = this.getCarbonImage.bind(this)
-    this.onDrop = this.onDrop.bind(this)
+  state = {
+    ...DEFAULT_SETTINGS,
+    ...this.props.snippet,
+    loading: true,
   }
 
   async componentDidMount() {
@@ -114,7 +102,7 @@ class Editor extends React.Component {
   updateCode = code => this.updateState({ code })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
 
-  async getCarbonImage(
+  getCarbonImage = async (
     {
       format,
       type,
@@ -122,7 +110,7 @@ class Editor extends React.Component {
       exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
       includeTransparentRow = false,
     } = { format: 'png' }
-  ) {
+  ) => {
     // if safari, get image from api
     const isPNG = format !== 'svg'
     if (this.context.image && this.isSafari && isPNG) {
@@ -231,7 +219,7 @@ class Editor extends React.Component {
     )
   }
 
-  exportImage(format = 'png', options = {}) {
+  exportImage = (format = 'png', options = {}) => {
     const link = document.createElement('a')
 
     const prefix = options.filename || 'carbon'
@@ -250,29 +238,28 @@ class Editor extends React.Component {
     })
   }
 
-  copyImage() {
-    return this.getCarbonImage({ format: 'png', type: 'blob' }).then(blob =>
+  copyImage = () =>
+    this.getCarbonImage({ format: 'png', type: 'blob' }).then(blob =>
       navigator.clipboard.write([
         new window.ClipboardItem({
           'image/png': blob,
         }),
       ])
     )
-  }
 
-  updateSetting(key, value) {
+  updateSetting = (key, value) => {
     this.updateState({ [key]: value })
     if (Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, key)) {
       this.updateState({ preset: null })
     }
   }
 
-  resetDefaultSettings() {
+  resetDefaultSettings = () => {
     this.updateState(DEFAULT_SETTINGS)
     this.props.onReset()
   }
 
-  onDrop([file]) {
+  onDrop = ([file]) => {
     if (file.type.split('/')[0] === 'image') {
       this.updateState({
         backgroundImage: file.content,
@@ -285,13 +272,13 @@ class Editor extends React.Component {
     }
   }
 
-  updateLanguage(language) {
+  updateLanguage = language => {
     if (language) {
       this.updateSetting('language', language.mime || language.mode)
     }
   }
 
-  updateBackground({ photographer, ...changes } = {}) {
+  updateBackground = ({ photographer, ...changes } = {}) => {
     if (photographer) {
       this.updateState(({ code = DEFAULT_CODE }) => ({
         ...changes,
