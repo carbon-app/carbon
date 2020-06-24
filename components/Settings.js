@@ -293,6 +293,13 @@ class Settings extends React.PureComponent {
     this.setState({ previousSettings: null })
   }
 
+  handleOpenAndFocus = () => {
+    this.props.toggleVisibility()
+    if (!this.props.isVisible) {
+      this.menuRef.current.focus()
+    }
+  }
+
   handleReset = () => {
     this.props.resetDefaultSettings()
     this.setState({ previousSettings: null })
@@ -413,15 +420,8 @@ class Settings extends React.PureComponent {
 
     return (
       <div className="settings-container" ref={this.settingsRef}>
-        <KeyboardShortcut
-          trigger="⌘-/"
-          handle={() => {
-            toggleVisibility()
-            if (!isVisible) {
-              this.menuRef.current.focus()
-            }
-          }}
-        />
+        <KeyboardShortcut trigger="⌘-/" handle={this.handleOpenAndFocus} />
+        <KeyboardShortcut trigger="⇧-⌘-\" handle={this.handleReset} />
         <Button
           title="Settings Menu"
           border

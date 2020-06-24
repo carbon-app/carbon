@@ -20,6 +20,15 @@ describe('Basic', () => {
     cy.contains('.container', '%')
   })
 
+  it('Should clear editor state with Shift+Cmd+\\', () => {
+    cy.visit('/?bg=red')
+
+    cy.get('body').trigger('keydown', { key: '\\', metaKey: true, shiftKey: true })
+
+    cy.location().its('pathname').should('eq', '/')
+    cy.get('.container-bg .bg').should('have.css', 'background-color', 'rgb(171, 184, 195)')
+  })
+
   it("Should contain id's for CLI integrations to use", () => {
     cy.get('#export-container').should('have.length', 1)
     cy.get('.export-container').should('have.length', 1)
