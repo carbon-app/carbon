@@ -86,13 +86,19 @@ export default () => (
             <tr>
               <td>Open settings menu</td>
               <td>
-                <kbd>⌘-/</kbd>
+                <kbd>⌘ /</kbd>
               </td>
             </tr>
             <tr>
               <td>Export as PNG</td>
               <td>
-                <kbd>⌘-Shift-E</kbd>
+                <kbd>⇧ ⌘ E</kbd>
+              </td>
+            </tr>
+            <tr>
+              <td>Reset settings</td>
+              <td>
+                <kbd>⇧ ⌘ \</kbd>
               </td>
             </tr>
           </tbody>
@@ -153,6 +159,7 @@ export default () => (
 
         kbd {
           margin-left: var(--x3);
+          letter-spacing: 0.1em;
         }
       `}
     </style>
