@@ -38,7 +38,7 @@ export const CodeMirrorLink = () => (
   <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.2/codemirror.min.css" />
 )
 
-const title = 'Carbon'
+const title = 'Carbon - Beautiful source code images'
 const description =
   'Carbon is the easiest way to create and share beautiful images of your source code.'
 export const MetaTags = React.memo(() => (
