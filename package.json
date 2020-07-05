@@ -23,7 +23,7 @@
     "actionsack": "^0.0.13",
     "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
-    "codemirror": "^5.55.0",
+    "codemirror": "^5.53.2",
     "codemirror-graphql": "^0.12.0",
     "codemirror-mode-elixir": "^1.1.2",
     "codemirror-solidity": "^0.2.2",
@@ -49,7 +49,7 @@
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-click-outside": "^3.0.0",
-    "react-codemirror2": "^7.2.1",
+    "react-codemirror2": "^7.1.0",
     "react-color": "^2.18.1",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
@@ -89,19 +89,6 @@
     ".all-contributorsrc": [
       "npm run contrib:build"
     ]
-  },
-  "greenkeeper": {
-    "groups": {
-      "app": {
-        "packages": [
-          "package.json"
-        ],
-        "ignore": [
-          "graphql",
-          "react-image-crop"
-        ]
-      }
-    }
   },
   "description": "Create and share beautiful images of your source code",
   "repository": {
