@@ -90,19 +90,6 @@
       "npm run contrib:build"
     ]
   },
-  "greenkeeper": {
-    "groups": {
-      "app": {
-        "packages": [
-          "package.json"
-        ],
-        "ignore": [
-          "graphql",
-          "react-image-crop"
-        ]
-      }
-    }
-  },
   "description": "Create and share beautiful images of your source code",
   "repository": {
     "type": "git",
