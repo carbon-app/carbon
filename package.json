@@ -24,7 +24,7 @@
     "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
     "codemirror": "^5.53.2",
-    "codemirror-graphql": "^0.11.6",
+    "codemirror-graphql": "^0.12.0",
     "codemirror-mode-elixir": "^1.1.2",
     "codemirror-solidity": "^0.2.2",
     "date-fns": "^2.14.0",
