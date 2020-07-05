@@ -1,6 +1,7 @@
 node_modules
 .env*
 .next
+dist
 out
 cypress/videos
 cypress/screenshots
