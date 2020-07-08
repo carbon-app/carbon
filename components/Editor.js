@@ -222,7 +222,7 @@ class Editor extends React.Component {
   exportImage = (format = 'png', options = {}) => {
     const link = document.createElement('a')
 
-    const prefix = options.filename || 'carbon'
+    const prefix = options.filename || this.state.name || 'carbon'
 
     return this.getCarbonImage({ format, type: 'objectURL' }).then(url => {
       if (format !== 'open') {
