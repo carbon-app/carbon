@@ -38,6 +38,7 @@
     "graphql": "^15.2.0",
     "highlight.js": "^10.1.1",
     "kind-of": "^6.0.3",
+    "lodash": "^4.17.19",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
     "match-sorter": "^4.1.0",
