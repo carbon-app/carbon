@@ -2562,6 +2562,11 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
+antlr4@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/antlr4/-/antlr4-4.7.0.tgz#297f956ddc06f83397fc0990ecf2e0cf20bfbbee"
+  integrity sha1-KX+VbdwG+DOX/AmQ7PLgzyC/u+4=
+
 any-observable@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/any-observable/-/any-observable-0.3.0.tgz#af933475e5806a67d0d7df090dd5e8bef65d119b"
@@ -4178,6 +4183,22 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
+cypher-codemirror@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/cypher-codemirror/-/cypher-codemirror-1.1.6.tgz#cd306c38c9922e8328b992bc779ba10b0bf48931"
+  integrity sha512-f4sRbFXh3ElWxQm4TUX8stcbRDA2iVabdpu8VvWoR6o/vauC1xx2VBE0u/qY2uCysy1uphRBuvjCC883ruT3ng==
+  dependencies:
+    cypher-editor-support "1.1.6"
+
+cypher-editor-support@1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/cypher-editor-support/-/cypher-editor-support-1.1.6.tgz#a9bad1e9c67a91d8bcd7066e0498130de43ed84a"
+  integrity sha512-cmhPMcNTVARXK2jiljcqoD6u6qMlplFWkMrKxuIOnWtAYooWqh63P7tOrfdN3nydPS+dAplsM+B9z5GOv1Kqdw==
+  dependencies:
+    antlr4 "4.7.0"
+    fuzzaldrin "2.1.0"
+    lodash "4.17.15"
+
 cypress@^4.9.0:
   version "4.9.0"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-4.9.0.tgz#c188a3864ddf841c0fdc81a9e4eff5cf539cd1c1"
@@ -5569,6 +5590,11 @@ functional-red-black-tree@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
+
+fuzzaldrin@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fuzzaldrin/-/fuzzaldrin-2.1.0.tgz#90204c3e2fdaa6941bb28d16645d418063a90e9b"
+  integrity sha1-kCBMPi/appQbso0WZF1BgGOpDps=
 
 gauge@~2.7.3:
   version "2.7.4"
