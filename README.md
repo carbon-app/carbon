@@ -74,6 +74,9 @@
       <td>
         <a href="/docs/README.se.md">Svenska</a>
       </td>
+      <td>
+        <a href="/docs/README.pl.md">Polski</a>
+      </td>
       <td align="center">
         <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
