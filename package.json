@@ -21,7 +21,6 @@
     "@reach/visually-hidden": "^0.10.4",
     "acorn": "^7.3.1",
     "actionsack": "^0.0.13",
-    "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
     "codemirror": "^5.53.2",
     "codemirror-graphql": "^0.12.0",
@@ -59,6 +58,7 @@
     "react-mailchimp-subscribe": "^2.1.0",
     "react-stripe-elements": "^6.1.2",
     "react-syntax-highlight": "^15.3.1",
+    "redaxios": "^0.3.0",
     "serialize-javascript": "^3.0.0",
     "tohash": "^1.0.2",
     "use-climate-change-reminder": "^0.0.7"
