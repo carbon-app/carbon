@@ -10,7 +10,8 @@
     {
       "src": "/static/brand/icon.png",
       "type": "image/png",
-      "sizes": "448x448"
+      "sizes": "448x448",
+      "purpose": "any maskable"
     },
     {
       "src": "/static/brand/desktop.png",
