@@ -3,15 +3,6 @@
   "version": 2,
   "public": true,
   "builds": [{ "src": "package.json", "use": "@now/next" }],
-  "routes": [
-    {
-      "src": "^/service-worker.js$",
-      "dest": "/_next/static/service-worker.js",
-      "headers": {
-        "Service-Worker-Allowed": "/"
-      }
-    }
-  ],
   "github": {
     "autoAlias": false,
     "silent": true

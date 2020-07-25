@@ -1,7 +1,6 @@
 // Theirs
 import React from 'react'
 import { withRouter } from 'next/router'
-import { register, unregister } from 'next-offline/runtime'
 import Either from 'eitherx'
 
 // Ours
@@ -11,10 +10,10 @@ import { MetaLinks } from '../components/Meta'
 
 class Index extends React.Component {
   componentDidMount() {
-    register()
+    window.workbox.register()
   }
   componentWillUnmount() {
-    unregister()
+    window.workbox.unregister()
   }
 
   shouldComponentUpdate = () => false
