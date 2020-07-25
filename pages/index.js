@@ -13,7 +13,11 @@ class Index extends React.Component {
     window.workbox.register()
   }
   componentWillUnmount() {
-    window.workbox.unregister()
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        registration.unregister()
+      })
+    }
   }
 
   shouldComponentUpdate = () => false
