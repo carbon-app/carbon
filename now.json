@@ -11,16 +11,6 @@
         "Service-Worker-Allowed": "/"
       }
     },
-    {
-      "src": "^/(.*)/?",
-      "continue": true,
-      "headers": {
-        "X-XSS-Protection": "1; mode=block",
-        "X-Content-Type-Options": "nosniff",
-        "Referrer-Policy": "no-referrer-when-downgrade",
-        "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
-      }
-    },
     { "handle": "filesystem" }
   ],
   "github": {
