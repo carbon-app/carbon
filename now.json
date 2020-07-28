@@ -12,13 +12,6 @@
       }
     },
     {
-      "src": "/",
-      "continue": true,
-      "headers": {
-        "X-Frame-Options": "SAMEORIGIN"
-      }
-    },
-    {
       "src": "^/(.*)/?",
       "continue": true,
       "headers": {
