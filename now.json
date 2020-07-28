@@ -5,27 +5,6 @@
   "builds": [{ "src": "package.json", "use": "@now/next" }],
   "routes": [
     {
-      "src": "^/privacy/?",
-      "status": 307,
-      "headers": {
-        "Location": "https://www.notion.so/PRIVACY-POLICY-e9847a7777714eb08ba15a7a8eaee937"
-      }
-    },
-    {
-      "src": "^/terms/?",
-      "status": 307,
-      "headers": {
-        "Location": "https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583"
-      }
-    },
-    {
-      "src": "^/offsets?/?",
-      "status": 307,
-      "headers": {
-        "Location": "https://projectwren.com/join/carbon?utm_source=carbon"
-      }
-    },
-    {
       "src": "^/service-worker.js$",
       "dest": "/_next/static/service-worker.js",
       "headers": {
@@ -48,14 +27,6 @@
         "Referrer-Policy": "no-referrer-when-downgrade",
         "Feature-Policy": "geolocation 'self'; microphone 'self'; camera 'self'"
       }
-    },
-    {
-      "src": "/embed/",
-      "dest": "/embed"
-    },
-    {
-      "src": "/about/",
-      "dest": "/about"
     },
     { "handle": "filesystem" }
   ],

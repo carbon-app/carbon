@@ -20,5 +20,24 @@ module.exports = withBundleAnalyzer(
 
       return config
     },
+    redirects() {
+      return [
+        {
+          source: '/privacy',
+          destination: 'https://www.notion.so/PRIVACY-POLICY-e9847a7777714eb08ba15a7a8eaee937',
+          permanent: false,
+        },
+        {
+          source: '/terms',
+          destination: 'https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583',
+          permanent: false,
+        },
+        {
+          source: '/offsets',
+          destination: 'https://projectwren.com/?utm_source=carbon',
+          permanent: false,
+        },
+      ]
+    },
   })
 )
