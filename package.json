@@ -34,7 +34,7 @@
     "eitherx": "^1.0.2",
     "email-validator": "^2.0.4",
     "escape-goat": "^3.0.0",
-    "firebase": "^7.15.5",
+    "firebase": "^7.17.1",
     "graphql": "^15.2.0",
     "highlight.js": "^10.1.1",
     "kind-of": "^6.0.3",
