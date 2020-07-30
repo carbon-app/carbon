@@ -70,6 +70,7 @@ function ExportMenu({
           onClick={handleExport('png')}
           data-cy="quick-export-button"
           style={{ minWidth: 92, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
+          title="Quick export"
         >
           {loading ? 'Exporting…' : 'Export'}
         </Button>
@@ -84,6 +85,7 @@ function ExportMenu({
           data-cy="export-button"
           margin="0 0 0 -1px"
           style={{ borderBottomLeftRadius: 0, borderTopLeftRadius: 0 }}
+          title="Export menu dropdown"
         >
           <ArrowDown color={COLORS.PURPLE} />
         </Button>

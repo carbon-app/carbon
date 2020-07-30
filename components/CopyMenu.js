@@ -77,6 +77,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
           margin="0 8px 0 0"
           onClick={toggleVisibility}
           color={COLORS.SECONDARY}
+          title="Copy menu"
         >
           <CopySVG size={16} color={COLORS.SECONDARY} />
         </Button>
