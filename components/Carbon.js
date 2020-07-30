@@ -154,6 +154,7 @@ class Carbon extends React.PureComponent {
     )
 
     const options = {
+      screenReaderLabel: 'Code editor',
       lineNumbers: config.lineNumbers,
       firstLineNumber: config.firstLineNumber,
       mode: languageMode || 'plaintext',
