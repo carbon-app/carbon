@@ -13,6 +13,17 @@ describe('security', () => {
 
     expect(stub).not.to.be.called
   })
+  it('security headers', () => {
+    cy.request('/').should(response => {
+      expect(response.headers).to.include({
+        'x-frame-options': 'SAMEORIGIN',
+        'x-xss-protection': '1; mode=block',
+        'x-content-type-options': 'nosniff',
+        'referrer-policy': 'no-referrer-when-downgrade',
+        'feature-policy': "geolocation 'self'; microphone 'self'; camera 'self'",
+      })
+    })
+  })
   it('/offsets -> Project Wren', () => {
     cy.visit(`/offsets`)
     cy.url().should('eq', 'https://projectwren.com/?utm_source=carbon')
