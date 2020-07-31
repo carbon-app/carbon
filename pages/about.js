@@ -107,7 +107,7 @@ export default () => (
       <div>
         <h2>I want to make this better.</h2>
         <p>
-          <a className="link" href="https://github.com/carbon-app/carbon#contribute">
+          <a className="link" href="https://github.com/carbon-app/carbon#contribute--support">
             Contributors welcome!
           </a>
         </p>
