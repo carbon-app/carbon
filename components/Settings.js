@@ -257,6 +257,10 @@ const settingButtonStyle = {
   height: '100%',
 }
 
+const invalidSetting = (v, k) =>
+  // Allow highlights in presets and config exports
+  !(Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, k) || k === 'highlights')
+
 class Settings extends React.PureComponent {
   state = {
     presets: DEFAULT_PRESETS,
@@ -311,8 +315,7 @@ class Settings extends React.PureComponent {
     this.props.toggleVisibility()
   }
 
-  getSettingsFromProps = () =>
-    omitBy(this.props, (v, k) => !Object.prototype.hasOwnProperty.call(DEFAULT_SETTINGS, k))
+  getSettingsFromProps = () => omitBy(this.props, invalidSetting)
 
   applyPreset = preset => {
     const previousSettings = this.getSettingsFromProps()
