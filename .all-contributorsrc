@@ -3,17 +3,19 @@
   "projectOwner": "carbon-app",
   "files": [
     "README.md",
-    "docs/README.de.md",
-    "docs/README.es.md",
-    "docs/README.hi.md",
     "docs/README.br.pt.md",
     "docs/README.cn.zh.md",
-    "docs/README.ml.md",
-    "docs/README.tr.md",
-    "docs/README.kr.md",
-    "docs/README.ta.md",
+    "docs/README.de.md",
+    "docs/README.es.md",
     "docs/README.fr.md",
-    "docs/README.ja.md"
+    "docs/README.hi.md",
+    "docs/README.ja.md",
+    "docs/README.kr.md",
+    "docs/README.ml.md",
+    "docs/README.pl.md",
+    "docs/README.se.md",
+    "docs/README.ta.md",
+    "docs/README.tr.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -734,6 +736,15 @@
       "profile": "https://dev.to/mbiesiad",
       "contributions": [
         "translation"
+      ]
+    },
+    {
+      "login": "rubjo",
+      "name": "rubjo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/42270947?v=4",
+      "profile": "https://github.com/rubjo",
+      "contributions": [
+        "design"
       ]
     }
   ],
