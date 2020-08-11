@@ -735,6 +735,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "qw-in",
+      "name": "Quinn Blenkinsop",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/19194187?v=4",
+      "profile": "https://github.com/qw-in",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
