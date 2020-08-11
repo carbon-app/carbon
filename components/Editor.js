@@ -136,7 +136,7 @@ class Editor extends React.Component {
         if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
           map.set(node, node.innerHTML)
           node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
-            node.innerText = node.innerText.replace(t, encodeURIComponent(t))
+            node.innerHTML = node.innerHTML.replace(t, encodeURIComponent(t))
           })
         }
       })
