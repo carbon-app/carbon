@@ -19,7 +19,9 @@ const toIFrame = (url, width, height) =>
 `
 
 const toURL = url => `${location.origin}${url}`
-const toEncodedURL = morph.compose(encodeURI, toURL)
+// Medium does not handle asterisks correctly - https://github.com/carbon-app/carbon/issues/1067
+const replaceAsterisks = string => string.replace(/\*/g, '%2A')
+const toEncodedURL = morph.compose(encodeURI, replaceAsterisks, toURL)
 
 function CopyButton(props) {
   return (
