@@ -64,20 +64,20 @@
     "use-climate-change-reminder": "^0.0.7"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.12.1",
-    "all-contributors-cli": "^6.16.1",
+    "@applitools/eyes-cypress": "^3.13.2",
+    "all-contributors-cli": "^6.17.0",
     "babel-eslint": "^10.1.0",
-    "cypress": "^4.9.0",
-    "eslint": "^7.3.1",
+    "cypress": "^4.12.1",
+    "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.5",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "now": "^19.1.1",
+    "now": "^19.2.0",
     "now-release": "^0.0.2",
-    "wait-on": "^5.0.1"
+    "wait-on": "^5.2.0"
   },
   "engines": {
     "node": "12.x"
