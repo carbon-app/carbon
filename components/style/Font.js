@@ -76,7 +76,6 @@ export default () => (
       @font-face {
         font-family: 'IBM Plex Mono';
         font-display: swap;
-        font-style: italic;
         font-weight: 500;
         src: local('IBM Plex Mono Medium Italic'), local('IBMPlexMono-MediumItalic'),
           url(https://fonts.gstatic.com/s/ibmplexmono/v2/-F6sfjptAgt5VM-kVkqdyU8n1ioSJlR1gMoQPttozw.woff2)
