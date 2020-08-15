@@ -1,6 +1,5 @@
 // Theirs
 import React from 'react'
-import domtoimage from 'dom-to-image'
 import Dropzone from 'dropperx'
 import debounce from 'lodash.debounce'
 import dynamic from 'next/dynamic'
@@ -35,6 +34,7 @@ import {
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
+import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
 
