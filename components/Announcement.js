@@ -60,12 +60,13 @@ function Toast() {
             color: #fff;
             border: 1px solid #fff;
             border-radius: 2px;
-            margin-top: calc(var(--x4) * -1);
+            margin-top: -4.6rem;
             animation-name: slide;
             animation-duration: 600ms;
-            max-width: 100vw;
             margin-left: auto;
             margin-right: auto;
+            /* fix this to only set max width when necessary (mobile) */
+            max-width: 63vw;
           }
 
           .toast-content {
@@ -92,6 +93,12 @@ function Toast() {
 
           p {
             margin: 0;
+          }
+
+          @media (max-width: 840px) {
+            .toast {
+              display: none;
+            }
           }
         `}
       </style>
