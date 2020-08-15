@@ -34,7 +34,7 @@ function Toast() {
   }
 
   return (
-    <div className="toast mb4">
+    <div className="toast">
       <div className="toast-content">
         <p>Black Lives Matter.</p>
         <a href="https://www.joincampaignzero.org" target="_blank" rel="noreferrer noopener">
@@ -56,7 +56,7 @@ function Toast() {
           }
 
           .toast {
-            margin: -4.6rem auto 0;
+            margin: -4.6rem auto var(--x4);
             padding: 8px 16px;
             color: #fff;
             border: 1px solid #fff;
