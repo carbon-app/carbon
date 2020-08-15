@@ -21,7 +21,7 @@ class Index extends React.Component {
 
   render() {
     return (
-      <Page enableHeroText={true}>
+      <Page enableHeroText={true} flex={true}>
         <MetaLinks />
         <Either>
           <EditorContainer router={this.props.router} snippet={this.props.snippet} />
