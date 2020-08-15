@@ -1,6 +1,10 @@
 ---
 name: Bug report
-about: Create a bug report to help us improve Carbon
+about: Create a report to help fix something about Carbon
+title: ''
+labels: bug
+assignees: ''
+
 ---
 
 **Describe the bug**
