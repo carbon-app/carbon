@@ -12,11 +12,11 @@ describe('Gist', () => {
     cy.get('#downshift-input-JavaScript').should('have.value', 'JavaScript')
   })
 
-  const pages = ['/', '/embed/']
+  const pages = ['/', '/embed/', '/82d742f4efad9757cc826d20f2a5e5af']
 
   pages.forEach(page => {
     test(`${page} should not contain a query string in the url`, () => {
-      cy.visit('/82d742f4efad9757cc826d20f2a5e5af')
+      cy.visit(page)
 
       cy.url().should('not.contain', '?')
     })
