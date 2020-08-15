@@ -126,11 +126,6 @@ class Editor extends React.Component {
     const node = this.carbonNode.current
 
     const map = new Map()
-    const undoMap = value => {
-      map.forEach((value, node) => (node.innerHTML = value))
-      return value
-    }
-
     if (isPNG) {
       node.querySelectorAll('span[role="presentation"]').forEach(node => {
         if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
@@ -176,27 +171,25 @@ class Editor extends React.Component {
       // TODO consolidate type/format to only use one param
       if (type === 'objectURL') {
         if (format === 'svg') {
-          return (
-            domtoimage
-              .toSvg(node, config)
-              .then(dataUrl =>
-                dataUrl
-                  .replace(/&nbsp;/g, '&#160;')
-                  // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
-                  .replace(/%23/g, '#')
-                  .replace(/%0A/g, '\n')
-                  // remove other fonts which are not used
-                  .replace(
-                    new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
-                    ''
-                  )
-              )
-              // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
-              .then(dataUrl => dataUrl.replace(/&(?!#?[a-z0-9]+;)/g, '&amp;'))
-              .then(uri => uri.slice(uri.indexOf(',') + 1))
-              .then(data => new Blob([data], { type: 'image/svg+xml' }))
-              .then(data => window.URL.createObjectURL(data))
-          )
+          return domtoimage
+            .toSvg(node, config)
+            .then(dataUrl =>
+              dataUrl
+                .replace(/&nbsp;/g, '&#160;')
+                // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
+                .replace(/%23/g, '#')
+                .replace(/%0A/g, '\n')
+                // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
+                .replace(/&(?!#?[a-z0-9]+;)/g, '&amp;')
+                // remove other fonts which are not used
+                .replace(
+                  new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+                  ''
+                )
+            )
+            .then(uri => uri.slice(uri.indexOf(',') + 1))
+            .then(data => new Blob([data], { type: 'image/svg+xml' }))
+            .then(data => window.URL.createObjectURL(data))
         }
 
         return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
@@ -209,7 +202,7 @@ class Editor extends React.Component {
       // Twitter needs regular dataurls
       return await domtoimage.toPng(node, config)
     } finally {
-      undoMap()
+      map.forEach((value, node) => (node.innerHTML = value))
     }
   }
 
