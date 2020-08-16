@@ -46,7 +46,6 @@ class Embed extends React.Component {
     code: DEFAULT_CODE,
     mounted: false,
     readOnly: true,
-    key: 0,
   }
 
   snippet = {}
