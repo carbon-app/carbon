@@ -29,9 +29,7 @@ describe('background color', () => {
     const darkRed = '#D0021B'
     const darkRedTile = `[title="${darkRed}"]`
     openPicker()
-    cy.get(picker)
-      .find(darkRedTile)
-      .click()
+    cy.get(picker).find(darkRedTile).click()
     closePicker()
 
     // changing background color triggers url change
@@ -52,13 +50,10 @@ describe('background color', () => {
     editorVisible()
 
     const pink = 'ff00ff'
-    openPicker()
-      .find(`input[value="FF0000"]`)
-      .clear()
-      .type(`${pink}{enter}`)
+    openPicker().find(`input[value="FF0000"]`).clear().type(`${pink}{enter}`)
     closePicker()
 
-    cy.url().should('contain', `?bg=rgba(${encodeURIComponent('255,0,255,1')}`)
+    cy.url().should(url => expect(decodeURIComponent(url)).to.contain(`?bg=rgba(255,0,255,1)`))
     cy.get('.container-bg .bg').should('have.css', 'background-color', 'rgb(255, 0, 255)')
   })
 })
