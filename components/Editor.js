@@ -1,6 +1,5 @@
 // Theirs
 import React from 'react'
-import domtoimage from 'dom-to-image'
 import Dropzone from 'dropperx'
 import debounce from 'lodash.debounce'
 import dynamic from 'next/dynamic'
@@ -35,6 +34,7 @@ import {
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
+import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
 
@@ -125,17 +125,17 @@ class Editor extends React.Component {
 
     const node = this.carbonNode.current
 
-    const map = new Map()
-    if (isPNG) {
-      node.querySelectorAll('span[role="presentation"]').forEach(node => {
-        if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
-          map.set(node, node.innerHTML)
-          node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
-            node.innerHTML = node.innerHTML.replace(t, encodeURIComponent(t))
-          })
-        }
-      })
-    }
+    // const map = new Map()
+    // if (isPNG) {
+    //   node.querySelectorAll('span[role="presentation"]').forEach(node => {
+    //     if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
+    //       map.set(node, node.innerHTML)
+    //       node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
+    //         node.innerHTML = node.innerHTML.replace(t, encodeURIComponent(t))
+    //       })
+    //     }
+    //   })
+    // }
 
     const width = node.offsetWidth * exportSize
     const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
@@ -202,7 +202,7 @@ class Editor extends React.Component {
       // Twitter needs regular dataurls
       return await domtoimage.toPng(node, config)
     } finally {
-      map.forEach((value, node) => (node.innerHTML = value))
+      // map.forEach((value, node) => (node.innerHTML = value))
     }
   }
 
