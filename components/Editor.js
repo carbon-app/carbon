@@ -108,7 +108,6 @@ class Editor extends React.Component {
       type,
       squared = this.state.squaredImage,
       exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
-      includeTransparentRow = false,
     } = { format: 'png' }
   ) => {
     // if safari, get image from api
@@ -154,9 +153,6 @@ class Editor extends React.Component {
           }
           if (className.includes('CodeMirror-cursors')) {
             return false
-          }
-          if (className.includes('twitter-png-fix')) {
-            return includeTransparentRow
           }
         }
         return true
@@ -207,7 +203,7 @@ class Editor extends React.Component {
   }
 
   tweet = () => {
-    this.getCarbonImage({ format: 'png', includeTransparentRow: true }).then(
+    this.getCarbonImage({ format: 'png' }).then(
       this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
     )
   }

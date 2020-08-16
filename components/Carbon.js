@@ -351,7 +351,6 @@ class Carbon extends React.PureComponent {
           onMouseUp={this.onMouseUp}
         >
           <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
-          <div className="twitter-png-fix" />
         </div>
         {selectionNode &&
           ReactDOM.createPortal(
@@ -369,17 +368,6 @@ class Carbon extends React.PureComponent {
               justify-content: center;
               align-items: center;
               overflow: hidden;
-            }
-
-            /* forces twitter to save images as png — https://github.com/carbon-app/carbon/issues/86 */
-            .twitter-png-fix {
-              /* TODO, remove?
-               * Twitter is currently converting everything to JPEGs anyways. Removing this
-               * would simplify the width/height calculations, as well as the includeTransparentRow option
-               */
-              height: 0px;
-              width: 100%;
-              background: rgba(0, 0, 0, 0.01);
             }
           `}
         </style>

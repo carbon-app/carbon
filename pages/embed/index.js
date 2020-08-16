@@ -112,8 +112,7 @@ class Embed extends React.Component {
         </div>
         <style jsx global>
           {`
-            .eliminateOnRender,
-            .twitter-png-fix {
+            .eliminateOnRender {
               display: none;
             }
           `}
