@@ -27,6 +27,10 @@ commits:
     pattern: 'upgrade dep'
     labels:
       - maintenance
+  - action: label
+    user: 'allcontributors[bot]'
+    labels:
+      - 'squash when passing'
 
 sponsor_labels:
   - sponsor
