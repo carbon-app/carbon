@@ -27,3 +27,6 @@ commits:
     pattern: 'upgrade dep'
     labels:
       - maintenance
+
+sponsor_labels:
+  - sponsor
