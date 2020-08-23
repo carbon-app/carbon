@@ -1,4 +1,4 @@
-extends: reporanger/superpowers
+_extends: reporanger/superpowers
 
 labels:
   dependencies: merge
