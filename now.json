@@ -10,8 +10,7 @@
       "headers": {
         "Service-Worker-Allowed": "/"
       }
-    },
-    { "handle": "filesystem" }
+    }
   ],
   "github": {
     "autoAlias": false,
