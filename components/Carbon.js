@@ -21,6 +21,7 @@ import {
   LANGUAGE_MIME_HASH,
   DEFAULT_SETTINGS,
   THEMES_HASH,
+  KEY_MAPS,
 } from '../lib/constants'
 
 const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
@@ -168,6 +169,7 @@ class Carbon extends React.PureComponent {
       },
       readOnly: this.props.readOnly,
       showInvisibles: config.hiddenCharacters,
+      keyMap: this.props.keyMap || KEY_MAPS[1].name,
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -483,11 +485,18 @@ function useSelectedLines(props, editorRef) {
 function useShowInvisiblesLoader() {
   React.useEffect(() => void require('cm-show-invisibles'), [])
 }
-
+function useKeyMapsLoader() {
+  React.useEffect(() => {
+    KEY_MAPS.map(keymap => {
+      require(`codemirror/keymap/${keymap.name}`)
+    })
+  }, [])
+}
 function CarbonContainer(props, ref) {
   useModeLoader()
   useHighlightLoader()
   useShowInvisiblesLoader()
+  useKeyMapsLoader()
   const editorRef = React.createRef()
   const onGutterClick = useSelectedLines(props, editorRef)
 

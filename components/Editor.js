@@ -31,6 +31,7 @@ import {
   DEFAULT_LANGUAGE,
   DEFAULT_THEME,
   FONTS,
+  KEY_MAPS,
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
 import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
@@ -64,9 +65,10 @@ class Editor extends React.Component {
       ...(this.props.snippet ? null : getSettings(localStorage)),
       // and then URL params
       ...queryState,
+      keyMap: KEY_MAPS[1].name,
       loading: false,
     }
-
+    console.log(newState)
     // Makes sure the slash in 'application/X' is decoded
     if (newState.language) {
       newState.language = unescapeHtml(newState.language)
@@ -266,6 +268,12 @@ class Editor extends React.Component {
       this.updateSetting('language', language.mime || language.mode)
     }
   }
+  updateKeyMap = keyMap => {
+    console.log(keyMap)
+    if (keyMap) {
+      this.updateSetting('keyMap', keyMap.name)
+    }
+  }
 
   updateBackground = ({ photographer, ...changes } = {}) => {
     if (photographer) {
@@ -342,6 +350,7 @@ class Editor extends React.Component {
       backgroundMode,
       code,
       exportSize,
+      keyMap,
     } = this.state
 
     const config = getConfig(this.state)
@@ -371,6 +380,13 @@ class Editor extends React.Component {
             }
             list={LANGUAGES}
             onChange={this.updateLanguage}
+          />
+          <Dropdown
+            icon="#"
+            title="Keymap"
+            list={KEY_MAPS}
+            selected={KEY_MAPS[KEY_MAPS.findIndex(value => value.name === keyMap)] || KEY_MAPS[1]}
+            onChange={this.updateKeyMap}
           />
           <div className="toolbar-second-row">
             <BackgroundSelect
@@ -418,6 +434,7 @@ class Editor extends React.Component {
                 updateWidth={this.updateWidth}
                 loading={this.state.loading}
                 theme={theme}
+                keyMap={keyMap}
               >
                 {code != null ? code : DEFAULT_CODE}
               </Carbon>
