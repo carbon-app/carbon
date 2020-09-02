@@ -68,7 +68,6 @@ class Editor extends React.Component {
       keyMap: KEY_MAPS[1].name,
       loading: false,
     }
-    console.log(newState)
     // Makes sure the slash in 'application/X' is decoded
     if (newState.language) {
       newState.language = unescapeHtml(newState.language)
@@ -269,7 +268,6 @@ class Editor extends React.Component {
     }
   }
   updateKeyMap = keyMap => {
-    console.log(keyMap)
     if (keyMap) {
       this.updateSetting('keyMap', keyMap.name)
     }
