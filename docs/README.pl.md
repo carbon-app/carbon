@@ -167,7 +167,6 @@ Sprawdź te projekty, które stworzyła nasza niesamowita społeczność:
 ##### Narzędzia
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Otwórz plik w Carbon lub pobierz go bezpośrednio za pomocą `carbon-now`, zawierającego tryb interaktywny, selektywne podświetlanie i nie tylko
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - Wrapper macOS z rozszerzonymi funkcjami natywnymi
 - [CodeExpander](https://codeexpander.com) - Inteligentny klient GitHub z funkcjami TextExpander
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Eksportuj wiele fragmentów kodu Carbon z `Xcode Playground`.
 - [`@carbonshbot`](https://t.me/carbonshbot) - Chatbot Telegrama, który pobiera fragment kodu lub główny adres URL i generuje obraz Carbon

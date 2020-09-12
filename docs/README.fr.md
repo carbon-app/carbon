@@ -83,7 +83,6 @@ Découvrez les projets créés par notre fantastique communauté :
 ##### Outils
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Ouvrez un fichier dans Carbon ou téléchargez-le directement en utilisant `carbon-now`, comportant un mode interactif, une mise en évidence sélective et plus encore
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - Un wrapper macOS avec des fonctionnalités natives étendues
 
 ##### Bibliothèques
 
@@ -224,4 +223,5 @@ Merci à toutes ces personnes merveilleuses ([emoji key](https://github.com/kent
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

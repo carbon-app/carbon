@@ -72,7 +72,6 @@ Google Chrome などの PWA をサポートしているブラウザを使用し�
 ##### Tools
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - `carbon-now`を使い、Carbon でファイルを開いたり、直接ダウンロードする。インタラクティブモードや、シンタックスハイライト機能など
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 拡張ネイティブ機能を備えた macOS ラッパー
 - [CodeExpander](https://codeexpander.com) - TextExpander 機能を備えたスマートな GitHub Gist クライアント
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - `Xcode Playground`から複数の Carbon のコードスニペットをエクスポート
 
@@ -215,4 +214,5 @@ Carbon は次の人々によるプロジェクトです:
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->

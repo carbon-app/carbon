@@ -92,7 +92,6 @@ Kolla in dessa projekt som vår fantastiska community har skapat:
 ##### Verktyg
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Öppna en fil i Carbon eller ladda ner den direkt med `carbon-now`, med ett interaktivt läge, selektiv markering och mer
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - Ett macOS omslag med utökade inbyggda funktioner
 - [CodeExpander](https://codeexpander.com) - En smart GitHub gist klient med TextExpander funktionerna.
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Exportera flera Carbon kodavsnitt från `Xcode Playground`.
 

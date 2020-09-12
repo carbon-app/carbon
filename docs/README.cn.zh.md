@@ -144,7 +144,6 @@
 ##### 工具
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 用 `carbon-now` 命令在 Carbon 中打开一个文件或者直接下载它，包含交互式选项、可选高亮等功能
-- [Carbonize](https://itunes.apple.com/us/app/carbonize/id1451177988) - 一个封装并扩展了原生功能的 macOS 程序
 - [CodeExpander](https://codeexpander.com) - 是一个智能并具有像 TextExpander 特性的 GitHub Gist 客户端
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - 从 `Xcode Playground` 导出多个 Carbon 代码片段。
 
@@ -326,4 +325,5 @@ Carbon 项目由 TA 们发起：
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
