@@ -19,7 +19,6 @@
   "dependencies": {
     "@next/bundle-analyzer": "^9.5.0",
     "@reach/visually-hidden": "^0.10.4",
-    "acorn": "^7.3.1",
     "actionsack": "^0.0.13",
     "axios": "^0.19.2",
     "cm-show-invisibles": "^3.0.1",
