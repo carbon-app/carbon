@@ -129,7 +129,7 @@ To create a saved snippet:
 
 ##### Embed a snippet
 
-This is the recommended method sharing Carbon on your own website or blog. Readers can even copy the code with the click of a button.
+This is the recommended method for sharing Carbon on your own website or blog. Readers can even copy the code with the click of a button.
 
 You can embed any Carbon snippet in your website directly using the `carbon.now.sh/embed` URL. The "Copy Menu" lets you quickly copy the correct iFrame snippet, or the encoded URL for embedding on platforms like Medium.
 
