@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => (
+const Logo = () => (
   <svg
     role="img"
     aria-label="Carbon Logo"
@@ -14,3 +14,4 @@ export default () => (
     </g>
   </svg>
 )
+export default Logo
