@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../components/Page'
 
-export default () => (
+const About = () => (
   <Page>
     <div className="about">
       <div className="mb4">
@@ -165,3 +165,4 @@ export default () => (
     </style>
   </Page>
 )
+export default About
