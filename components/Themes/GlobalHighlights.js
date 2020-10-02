@@ -50,6 +50,9 @@ export default function GlobalHighlights({ highlights }) {
         :global(.cm-tag) {
           color: ${highlights.tag} !important;
         }
+        :global(.cm-builtin) {
+          color: ${highlights.builtin} !important;
+        }
 
         :global(.cm-s-dracula .CodeMirror-cursor) {
           border-left: solid 2px #159588 !important;
