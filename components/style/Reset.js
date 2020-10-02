@@ -1,7 +1,7 @@
 import React from 'react'
 import { COLORS } from '../../lib/constants'
 
-export default () => (
+const Reset = () => (
   <style jsx global>
     {`
       /* http://meyerweb.com/eric/tools/css/reset/
@@ -228,3 +228,4 @@ export default () => (
     `}
   </style>
 )
+export default Reset
