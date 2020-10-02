@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => (
+const Typography = () => (
   <style jsx global>
     {`
       /* https://github.com/jxnblk/type-system
@@ -113,3 +113,4 @@ export default () => (
     `}
   </style>
 )
+export default Typography
