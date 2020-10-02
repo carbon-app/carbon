@@ -5,7 +5,7 @@
  */
 import React from 'react'
 
-export default () => (
+const Font = () => (
   <style jsx global>
     {`
       @font-face {
@@ -126,3 +126,4 @@ export default () => (
     `}
   </style>
 )
+export default Font
