@@ -264,7 +264,7 @@ function Billing(props) {
 
 const BillingWithStripe = injectStripe(Billing)
 
-export default function ExportedBilling() {
+export default function BillingPage() {
   const [stripe, setStripe] = React.useState(null)
   React.useEffect(() => {
     setStripe(window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY))
