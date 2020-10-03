@@ -74,7 +74,7 @@ puedes instalar Carbon para usarlo sin conexión siguiendo estas instrucciones:
 
 1. Visitar [https://carbon.now.sh](https://carbon.now.sh).
 2. Abrir el menú de configuración de tu navegador.
-3. Hacer click en "Instalar Carbon".
+3. Hacer clic en "Instalar Carbon".
 
 ## Comunidad
 
