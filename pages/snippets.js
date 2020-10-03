@@ -242,10 +242,11 @@ function SnippetsPage() {
   )
 }
 
-const Snippets = () => (
-  <Page enableHeroText={true} flex={true}>
-    <MetaLinks />
-    <SnippetsPage />
-  </Page>
-)
-export default Snippets
+export default function Snippets() {
+  return (
+    <Page enableHeroText={true} flex={true}>
+      <MetaLinks />
+      <SnippetsPage />
+    </Page>
+  )
+}

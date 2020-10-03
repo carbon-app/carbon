@@ -1,9 +1,10 @@
 import React from 'react'
 import { COLORS } from '../../lib/constants'
 
-const Reset = () => (
-  <style jsx global>
-    {`
+export default function Reset() {
+  return (
+    <style jsx global>
+      {`
       /* http://meyerweb.com/eric/tools/css/reset/
     v2.0 | 20110126
     License: none (public domain)
@@ -226,6 +227,6 @@ const Reset = () => (
         outline: none;
       }
     `}
-  </style>
-)
-export default Reset
+    </style>
+  )
+}
