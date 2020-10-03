@@ -29,7 +29,7 @@
   </a>
 </p>
 
-<br>
+<br></br>
 
 ## Introduktion
 
@@ -52,7 +52,7 @@ Du vet [alla](https://twitter.com/dan_abramov/status/890191815567175680) [dom](h
 Det finns några olika sätt att importera kod till Carbon:
 
 - Släpp en fil till editorn
-- Lägg till ett GitHub gist id till url:en (t.ex. "carbon.now.sh / GIST_ID_HERE")
+- Lägg till ett GitHub gist id till url:en (t.ex. [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 - Klistra in din kod direkt
 
 #### Anpassning
@@ -128,7 +128,7 @@ Pull requests är välkomna! Snälla Se våra [bidragsriktlinjer](/.github/CONTR
 
 Använder ditt företag Carbon? Överväg att sponsra projektet för att finansiera nya funktioner, bugfixar och mer.
 
-<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/images/logo.svg" /></a>
+<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
 <a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/sponsors/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/1/avatar"></a>
 <a href="https://opencollective.com/carbon-app/sponsors/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/2/avatar"></a>
@@ -153,6 +153,8 @@ Använder ditt företag Carbon? Överväg att sponsra projektet för att finansi
 ### Tack vare
 
 [ ▲ Vercel ](https://vercel.com/) för sponsring Carbon's hosting.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
 ### Medskapare
 

@@ -35,15 +35,15 @@
 
 Sabe [todos](https://twitter.com/dan_abramov/status/890191815567175680) [aqueles](https://twitter.com/reactjs/status/890511993261654017) [prints](https://twitter.com/notquiteleo/status/873483329345028096) [de código](https://twitter.com/zeithq/status/805779711154647040) que você vê no Twitter? Apesar do código geralmente ser impressionante, nós vimos que a parte estética podia ser melhorada. Carbon facilita bastante criar e compartilhar imagens muito boas do seu código fonte. Então o que você está esperando? Vai lá impressionar todos os seus seguidores com esse design foda que você conseguiu aqui!
 
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
+
 ## Funcionalidades
 
 - **Importar de um gist do GitHub**. É só colocar o id de um gist do GitHub no fim da url;
 - **Customização**. Personalize coisas como o tema usado no editor de acordo com a sintaxe da linguagem, o estilo de janela e mais;
 - **Compartilhe rapidamente**. Salve sua imagem ou tweet o link com a imagem em um clique.
-
-## Exemplo
-
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Uso
 
@@ -52,7 +52,7 @@ Sabe [todos](https://twitter.com/dan_abramov/status/890191815567175680) [aqueles
 Existem alguns jeitos diferentes de importar código fonte para o Carbon:
 
 - Arraste um arquivo para o editor;
-- Cole o id de um gist do GitHub no fim da url (e.g. `carbon.now.sh/ID_DO_GIST_AQUI`);
+- Cole o id de um gist do GitHub no fim da url (e.g. [`carbon.now.sh/<id_do_gist_aqui>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8));
 - Copie e cole o trecho de código diretamente no editor.
 
 #### Customização
@@ -88,14 +88,6 @@ Confira os projetos top da nossa comunidade:
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - um livro didático de ciência da computação escrito por Sarbo Roy.
 
-## Contribua
-
-PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](/.github/CONTRIBUTING.md) para mais detalhes.
-
-## Agradecimentos
-
-[ ▲ Vercel ](https://vercel.com/) por patrocinar a hospedagem do Carbon.
-
 ## Autores
 
 Carbon é um projeto feito pela
@@ -104,7 +96,30 @@ Carbon é um projeto feito pela
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contribuidores
+#### Licença
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## Contribua
+
+PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](/.github/CONTRIBUTING.md) para mais detalhes.
+
+### Agradecimentos
+
+[ ▲ Vercel ](https://vercel.com/) por patrocinar a hospedagem do Carbon.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
+### Contribuidores
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### Todos os contribuidores
 
 Agradecemos imensamente a todas essas pessoas maravilhosas pela grande ajuda ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

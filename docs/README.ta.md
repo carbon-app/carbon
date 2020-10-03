@@ -1,9 +1,34 @@
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png" />
+</p>
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-78-orange.svg)](#contributors-)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
+<p align="center">
+  <a href="https://reporanger.com">
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
+  </a>
+  <a href="#contributors">
+    <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
+  </a>
+  <a href="/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://opencollective.com/carbon-app">
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#backers">
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#sponsors">
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+</p>
+
 <br></br>
 
 ## முன்னுரை
@@ -12,15 +37,15 @@
 
 [கார்பன்](https://carbon.now.sh) திட்டத்தைப் பற்றி மேலும் அறியவும் அல்லது மேலும் அறியவும் [வெளியிட்டது](https://.io/case-studies/carbon/) படிக்க.
 
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
+
 ## அம்சங்கள்
 
 - **GitHub gist** இருந்து இறக்குமதி. வெறுமனே ஒரு GitHub குறியீட்டு அடையாள URL
 - **தன்விருப்ப** சேர்க்க. உங்கள் படத்தை தொடரியல் தீம், சாளர பாணி மற்றும் இன்னும் தனிப்பயனாக்கலாம்
 - **வேகமாக பகிர்**. உங்கள் கோப்பு, அல்லது ஒரு கிளிக்கில் ட்வீட் ஒரு இணைப்பை சேமிக்க
-
-## எடுத்துக்காட்டு
-
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## பயன்பாடு
 
@@ -30,7 +55,7 @@
 
 - ஆசிரியர் மீது ஒரு கோப்பை இங்கு இழுக்கவும்
 
-- சேர்க்கவும் **GitHub gist** ஐடி இணைய முகவரிக்குு (எடுத்துக்காட்டு: `carbon.now.sh/GIST_ID_HERE`)
+- சேர்க்கவும் **GitHub gist** ஐடி இணைய முகவரிக்குு (எடுத்துக்காட்டு: [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 
 - உங்கள் குறியீட்டை நேரடியாக ஒட்டுக
 
@@ -67,25 +92,38 @@
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - சர்போ ராய் ஒரு கணினி அறிவியல் பாடநூல்.
 
-## பங்களிக்க
-
-PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](/.github/CONTRIBUTING.md) பார்க்கவும்.
-
-## நன்றி
-
-[ ▲ Vercel ](https://vercel.com/) கார்பன் ஹோஸ்டிங் ஸ்பான்சர்..
-
 ## ஆசிரியர்கள்
 
 கார்பன் ஒரு திட்டம்
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
-
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
-
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## பங்களிப்பாளர்கள்
+#### உரிமம்
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## பங்களிக்க
+
+PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](/.github/CONTRIBUTING.md) பார்க்கவும்.
+
+### நன்றி
+
+[ ▲ Vercel ](https://vercel.com/) கார்பன் ஹோஸ்டிங் ஸ்பான்சர்..
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
+### பங்களிப்பாளர்கள்
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### All contributors
 
 இந்த அற்புதமான மக்களுக்கு நன்றி ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
