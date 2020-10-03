@@ -1,24 +1,49 @@
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png" />
+</p>
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-78-orange.svg)](#contributors-)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
+<p align="center">
+  <a href="https://reporanger.com">
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
+  </a>
+  <a href="#contributors">
+    <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
+  </a>
+  <a href="/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://opencollective.com/carbon-app">
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#backers">
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#sponsors">
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+</p>
+
 <br></br>
 
 ## प्रस्तावना
 
 आप ट्विटर पर देखे गए [उन](https://twitter.com/reactjs/status/890511993261654017) [सभी](https://twitter.com/dan_abramov/status/890191815567175680) [कोड](https://twitter.com/notquiteleo/status/873483329345028096) [स्क्रीनशॉट](https://twitter.com/zeithq/status/805779711154647040) को जानते हैं? हालांकि कोड आमतौर पर प्रभावशाली है, हमने सौंदर्य विभाग में सुधार के लिए जगह देखी। कार्बन आपके स्रोत कोड की सुंदर छवियों को बनाना और साझा करना आसान बनाता है। तो आप किसका इंतज़ार कर रहे हैं? अपने सभी अनुयायियों को अपने नए डिजाइन कौशल के साथ प्रभावित करें।
 
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
+
 ## विशेषताएं
 
 - **GitHub gist से आयात करें**. बस यूआरएल में एक GitHub gist आईडी संलग्न करें
 - **अनुकूलन**. थीम, विंडो शैली आदि जैसी चीजों को कस्टमाइज़ करें
 - **जल्दी से साझा करें**. अपनी छवि को सहेजें या एक क्लिक के साथ एक लिंक ट्वीट करें
-
-## उदाहरण
-
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## प्रयोग
 
@@ -27,7 +52,7 @@
 कार्बन में कोड import करने के कुछ अलग तरीके हैं:
 
 - एक फ़ाइल को editor पर छोड़ दें
-- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- यूआरएल में एक गिटहब गिस्ट आईडी संलग्न करें (e.g. [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 - अपना कोड सीधे paste
 
 #### अनुकूलन
@@ -63,14 +88,6 @@
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - सरबो रॉय द्वारा एक कंप्यूटर विज्ञान पाठ्यपुस्तक।
 
-## Contribute
-
-PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](/.github/CONTRIBUTING.md) देखें।
-
-## धन्यवाद
-
-[ ▲ Vercel ](https://vercel.com/) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
-
 ## लेखक
 
 कार्बन द्वारा एक परियोजना है
@@ -79,7 +96,30 @@ PRs का स्वागत है! अधिक जानकारी के 
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## योगदानकर्ता
+#### License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## Contribute
+
+PRs का स्वागत है! अधिक जानकारी के लिए कृपया हमारे [CONTRIBUTING.md](/.github/CONTRIBUTING.md) देखें।
+
+### धन्यवाद
+
+[ ▲ Vercel ](https://vercel.com/) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
+### योगदानकर्ता
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### All contributors
 
 इन सभी अद्भुत लोगों के लिए धन्यवाद ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

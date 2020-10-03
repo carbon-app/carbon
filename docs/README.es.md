@@ -52,7 +52,7 @@
 Hay formas diferentes de importar código en Carbon:
 
 - Coloca un archivo en el editor.
-- Agrega un ID de GitHub gist a la URL (por ejemplo, `carbon.now.sh/GIST_ID_HERE`).
+- Agrega un ID de GitHub gist a la URL (por ejemplo, [`carbon.now.sh/<gist_id_aquí>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8)).
 - Pega tu código directamente.
 
 #### Personalización
@@ -155,6 +155,8 @@ Carbon es un proyecto de:
 ### Gracias a
 
 [ ▲ Vercel ](https://vercel.com/) por patrocinar el alojamiento de Carbon.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
 ### Contribuyentes
 

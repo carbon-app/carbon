@@ -31,57 +31,6 @@
 
 <br></br>
 
-##### Tłumaczenia
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td>
-        <a href="/docs/README.se.md">Svenska</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
 ## Wprowadzenie
 
 Znasz [wszystkie](https://twitter.com/dan_abramov/status/890191815567175680) [te](https://twitter.com/reactjs/status/890511993261654017) [zrzuty ekranu](https://twitter.com/zeithq/status/805779711154647040) [z kodu](https://twitter.com/notquiteleo/status/873483329345028096) które widzisz na Twitterze? Chociaż kod zazwyczaj robi wrażenie, widzieliśmy miejsce na ulepszenia w dziale estetyki. Carbon ułatwia tworzenie i udostępnianie pięknych obrazów kodu źródłowego. Więc na co czekasz? Zaimponuj wszystkim swoim obserwatorom swoją nowo odkrytą umiejętnością projektowania.
@@ -226,6 +175,8 @@ Uwielbiasz używać Carbon? Rozważ wsparcie projektu w celu sfinansowania nowyc
 ### Podziękowania dla
 
 [ ▲ Vercel ](https://vercel.com/) za sponsorowanie hostingu dla Carbon.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
 ### Współtwórcy
 

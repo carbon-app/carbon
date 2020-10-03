@@ -1,24 +1,49 @@
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png"></p>
+<p align="center">
+  <img width="100%" src="https://user-images.githubusercontent.com/10369094/31211729-591d059c-a950-11e7-86af-fa5ea3d7dbac.png" />
+</p>
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-78-orange.svg)](#contributors-)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-[![MIT License](https://img.shields.io/github/license/carbon-app/carbon.svg)](/LICENSE)
+<p align="center">
+  <a href="https://reporanger.com">
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
+  </a>
+  <a href="#contributors">
+    <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
+  </a>
+  <a href="/LICENSE">
+    <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
+  </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://opencollective.com/carbon-app">
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#backers">
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#sponsors">
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+</p>
+
 <br></br>
 
 ## Introduction
 
 트위터에서 공유되고 있는 [수](https://twitter.com/dan_abramov/status/890191815567175680) [많은](https://twitter.com/reactjs/status/890511993261654017) [코드](https://twitter.com/notquiteleo/status/873483329345028096) [스크린샷](https://twitter.com/zeithq/status/805779711154647040)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 도와줍니다. 무엇을 망설이시나요? 당신의 디자인 감각으로 팔로워들을 감동시켜보세요
 
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
+
 ## Features
 
 - **GitHub gist에서 가져오기**. 간단하게 github gist id를 url 에 입력하면 됩니다.
 - **커스터마이징**. syntax theme, window style 등 많은 것들을 커스터마이징할 수 있습니다.
 - **빠르게 공유하기**. 클릭 한 번으로 이미지를 저장하거나 Tweet에 공유할 수 있습니다.
-
-## Example
-
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Usage
 
@@ -27,7 +52,7 @@
 Carbon에 코드를 적용시키는데는 몇 가지 방법이 있습니다:
 
 - 파일 불러오기
-- url에 GitHub gist id 붙여넣기 (예시. `carbon.now.sh/GIST_ID_HERE`)
+- url에 GitHub gist id 붙여넣기 (예시. [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 - 코드 복사해서 직접 붙여넣기
 
 #### Customization
@@ -65,14 +90,6 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, paddin
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy가 출판한 컴퓨터 사이언스 교과서.
 
-## Contribute
-
-풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](/.github/CONTRIBUTING.md)를 참조해주세요.
-
-## Thanks To
-
-[ ▲ Vercel ](https://vercel.com/)가 Carbon 호스팅을 지원해주고 있습니다..
-
 ## Authors
 
 Carbon is a project by
@@ -81,7 +98,30 @@ Carbon is a project by
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contributors
+#### License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## Contribute
+
+풀리퀘스트는 환영합니다! 더 자세한 내용은 [CONTRIBUTING.md](/.github/CONTRIBUTING.md)를 참조해주세요.
+
+### Thanks To
+
+[ ▲ Vercel ](https://vercel.com/)가 Carbon 호스팅을 지원해주고 있습니다..
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
+### Contributors
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### All contributors
 
 아래의 모든 멋진 분들께 감사 드립니다 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

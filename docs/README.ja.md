@@ -3,31 +3,47 @@
 </p>
 
 <p align="center">
+  <a href="https://reporanger.com">
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
+  </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
-  </a>
-  <a href="https://github.com/prettier/prettier">
-    <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier" />
   </a>
   <a href="/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
   </a>
+  <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_shield">
+    <img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=shield" alt="FOSSA Status" />
+  </a>
 </p>
+
+<p align="center">
+  <a href="https://opencollective.com/carbon-app">
+    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#backers">
+    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
+  </a>
+  <a href="https://opencollective.com/carbon-app#sponsors">
+    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
+  </a>
+</p>
+
 <br></br>
 
 ## Introduction
 
 Twitter で[いつも](https://twitter.com/dan_abramov/status/890191815567175680)[見るような](https://twitter.com/reactjs/status/890511993261654017)[こうしたコード](https://twitter.com/notquiteleo/status/873483329345028096)の[スクリーンショット](https://twitter.com/zeithq/status/805779711154647040)をご存知ですか？こうしたコードはたいていは印象的ですが、美しさの点では改善の余地があります。Carbon を使えば、ソースコードの美しいスクリーンショットを簡単に作成し、共有することができます。今すぐ、この新しいデザインの力を使ってフォロワーを感動させましょう。
 
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
+
 ## Features
 
 - **カスタマイズ**. シンタックステーマやウィンドウスタイルなどをカスタマイズ
 - **すばやくシェア**. ワンクリックで画像を保存したり、リンクをツイート
 - **GitHub gist からのインポート**. URL に GitHub gist id を付け加える
-
-## Example
-
-<p><img width=80% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Usage
 
@@ -36,7 +52,7 @@ Twitter で[いつも](https://twitter.com/dan_abramov/status/890191815567175680
 Carbon にインポートするには何通りかの方法があります:
 
 - エディターにファイルをドロップする
-- URL に GitHub gist id を付け加える (e.g. `carbon.now.sh/GIST_ID_HERE`)
+- URL に GitHub gist id を付け加える (e.g. [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 - コードを直接ペーストする
 
 #### Customization
@@ -83,14 +99,6 @@ Google Chrome などの PWA をサポートしているブラウザを使用し�
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy によるコンピューターサイエンスのテキストブック
 
-## Contribute
-
-PR を歓迎しています。詳細は[CONTRIBUTING.md](/.github/CONTRIBUTING.md)をご覧ください。
-
-## Thanks To
-
-[ ▲ Vercel ](https://vercel.com/)は Carbon のホスティングを支援してくれています。
-
 ## Authors
 
 Carbon は次の人々によるプロジェクトです:
@@ -99,7 +107,30 @@ Carbon は次の人々によるプロジェクトです:
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contributors
+#### License
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## Contribute
+
+PR を歓迎しています。詳細は[CONTRIBUTING.md](/.github/CONTRIBUTING.md)をご覧ください。
+
+### Thanks To
+
+[ ▲ Vercel ](https://vercel.com/)は Carbon のホスティングを支援してくれています。
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
+### Contributors
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### All contributors
 
 これらのすべての素晴らしい人々に感謝を ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

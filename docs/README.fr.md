@@ -35,15 +35,15 @@
 
 Vous connaissez [toutes](https://twitter.com/dan_abramov/status/890191815567175680) [ces](https://twitter.com/reactjs/status/890511993261654017) [captures d'écran](https://twitter.com/notquiteleo/status/873483329345028096) [de code](https://twitter.com/zeithq/status/805779711154647040) que vous avez croisées sur Twitter ? Bien que le code seul soit généralement impressionnant, nous avons estimé qu'il était possible d'améliorer la partie esthétique. Carbon facilite la création et le partage de votre code source au travers de superbes images. Alors qu'est-ce que vous attendez ? Impressionnez tous vos abonnés avec vos nouvelles prouesses en matière de conception graphique.
 
+<p align="center">
+  <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
+</p>
+
 ## Fonctionnalités
 
 - **Import depuis GitHub gist**. Ajoutez simplement un ID de gist GitHub à l'URL
 - **Personnalisation**. Personnalisez des éléments tels que le thème de la syntaxe de votre image, le style de la fenêtre, etc.
 - **Partage rapide**. Enregistrez votre image ou tweetez un lien en un clic
-
-## Exemple
-
-<p align="center"><img width=100% src="https://user-images.githubusercontent.com/10369094/30791512-cb001438-a167-11e7-952b-f0f0e5c4499e.png"></p>
 
 ## Usage
 
@@ -52,7 +52,7 @@ Vous connaissez [toutes](https://twitter.com/dan_abramov/status/8901918155671756
 Il existe différentes manières d'importer du code dans Carbon :
 
 - Déposer un fichier dans l'éditeur
-- Ajouter un identifiant de GitHub gist à l'URL (ex. `carbon.now.sh/ICI_LE_GIST_ID`)
+- Ajouter un identifiant de GitHub gist à l'URL (ex. [`carbon.now.sh/<ici_le_gist_id>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 - Collez votre code directement
 
 #### Personnalisation
@@ -92,14 +92,6 @@ Découvrez les projets créés par notre fantastique communauté :
 
 - ["CS 101 - Une ntroduction à la pensée informatique"](https://itunes.apple.com/us/book/id1435714196) - un manuel d'informatique de Sarbo Roy.
 
-## Contribuer
-
-Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](/.github/CONTRIBUTING.md) pour plus de détails.
-
-## Merci à
-
-[ ▲ Vercel ](https://vercel.com/) pour sponsoriser l'hébergement de Carbon.
-
 ## Auteurs
 
 Carbon est un projet de
@@ -108,7 +100,30 @@ Carbon est un projet de
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-## Contributeurs
+#### Licence
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
+
+<br />
+<br />
+
+---
+
+## Contribuer
+
+Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](/.github/CONTRIBUTING.md) pour plus de détails.
+
+### Merci à
+
+[ ▲ Vercel ](https://vercel.com/) pour sponsoriser l'hébergement de Carbon.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
+### Contributeurs
+
+![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
+
+#### Tous les contributeurs
 
 Merci à toutes ces personnes merveilleuses ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

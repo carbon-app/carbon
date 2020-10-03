@@ -31,57 +31,6 @@
 
 <br></br>
 
-##### 翻译
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td>
-        <a href="/docs/README.se.md">Svenska</a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
 ## 简介
 
 你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码令人印象深刻，但从审美角度来说还有提升空间。Carbon 能够轻松地将你的源码生成漂亮的图片并分享。还等什么呢？用这个新发现的美化工具秀给你的 followers 看吧。
@@ -103,7 +52,7 @@
 有几种不同的方法可以将代码导入到 Carbon：
 
 - 把文件拖放到编辑器中
-- 在 carbon url 后面添加 GitHub gist id （比如 `carbon.now.sh/你的_gist_id`）
+- 在 carbon url 后面添加 GitHub gist id （比如 [`carbon.now.sh/<你的_gist_id>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8)）
 - 直接粘贴代码
 
 #### 定制化
@@ -163,7 +112,7 @@ Carbon 项目由 TA 们发起：
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-#### License
+#### 许可
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
@@ -206,11 +155,13 @@ Carbon 项目由 TA 们发起：
 
 [ ▲ Vercel ](https://vercel.com/) 赞助了 Carbon 的服务托管。
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+
 ### 贡献者
 
 ![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
 
-#### 所有贡献者
+#### All contributors
 
 感谢所有这些优秀的贡献者们 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
