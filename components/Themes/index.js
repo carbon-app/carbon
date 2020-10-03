@@ -25,7 +25,7 @@ const ThemeItem = ({ children, item, isSelected, remove }) => (
           remove(item.id)
         }}
       >
-        <RemoveIcon color={COLORS.SECONDARY} />
+        <RemoveIcon color={COLORS.SECONDARY} style={{ transform: 'scale(1.6)' }} />
       </div>
     )}
     <style jsx>
