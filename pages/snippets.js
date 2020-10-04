@@ -25,7 +25,12 @@ function correctTimestamp(n) {
 }
 
 function Snippet(props) {
-  const config = { ...DEFAULT_SETTINGS, ...props, fontSize: '2px', windowControls: false }
+  const config = {
+    ...DEFAULT_SETTINGS,
+    ...props,
+    fontSize: '2px',
+    windowControls: false,
+  }
 
   return (
     <div className="snippet">
@@ -237,9 +242,11 @@ function SnippetsPage() {
   )
 }
 
-export default () => (
-  <Page enableHeroText={true} flex={true}>
-    <MetaLinks />
-    <SnippetsPage />
-  </Page>
-)
+export default function Snippets() {
+  return (
+    <Page enableHeroText={true} flex={true}>
+      <MetaLinks />
+      <SnippetsPage />
+    </Page>
+  )
+}

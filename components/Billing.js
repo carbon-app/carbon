@@ -144,125 +144,127 @@ function Billing(props) {
           </form>
         </div>
       )}
-      <style jsx>{`
-        .checkout {
-          position: relative;
+      <style jsx>
+        {`
+          .checkout {
+            position: relative;
 
-          font-size: 16px;
-          font-weight: 500;
-          border-radius: 4px;
-          padding: 1rem 1.5rem;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 4px;
+            padding: 1rem 1.5rem;
 
-          color: white;
-          background-color: black;
-        }
+            color: white;
+            background-color: black;
+          }
 
-        a {
-          text-decoration: underline;
-        }
+          a {
+            text-decoration: underline;
+          }
 
-        p {
-          margin: 0 0 8px;
-          font-size: 12px;
-          font-weight: normal;
-        }
+          p {
+            margin: 0 0 8px;
+            font-size: 12px;
+            font-weight: normal;
+          }
 
-        small {
-          font-size: 10px;
-        }
+          small {
+            font-size: 10px;
+          }
 
-        h4 {
-          font-size: 32px;
-          margin: 0 0 2rem;
-        }
+          h4 {
+            font-size: 32px;
+            margin: 0 0 2rem;
+          }
 
-        .tag {
-          display: block;
-          font-weight: lighter;
-          color: rgba(255, 255, 255, 0.8);
-          font-size: 16px;
-          margin-top: 0.25rem;
-        }
+          .tag {
+            display: block;
+            font-weight: lighter;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            margin-top: 0.25rem;
+          }
 
-        hr {
-          border: 0;
-          height: 1px;
-          margin: 0.5rem 0 1rem;
-          background: ${COLORS.SECONDARY};
-        }
+          hr {
+            border: 0;
+            height: 1px;
+            margin: 0.5rem 0 1rem;
+            background: ${COLORS.SECONDARY};
+          }
 
-        fieldset {
-          width: 100%;
-          margin: 0 0 2.5rem;
-          padding: 0.5rem 0.5rem 0.75rem;
-          border: 1px solid ${COLORS.SECONDARY};
-          border-radius: 4px;
-        }
+          fieldset {
+            width: 100%;
+            margin: 0 0 2.5rem;
+            padding: 0.5rem 0.5rem 0.75rem;
+            border: 1px solid ${COLORS.SECONDARY};
+            border-radius: 4px;
+          }
 
-        fieldset :global(input) {
-          text-align: left;
-          font-size: 16px;
-          color: ${COLORS.BLUE};
-        }
+          fieldset :global(input) {
+            text-align: left;
+            font-size: 16px;
+            color: ${COLORS.BLUE};
+          }
 
-        fieldset :global(input::placeholder) {
-          opacity: 1;
-          color: rgba(255, 255, 255, 0.7);
-        }
+          fieldset :global(input::placeholder) {
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.7);
+          }
 
-        fieldset :global(.StripeElement) {
-          width: 100%;
-          padding: 12px 16px 12px 0;
-        }
+          fieldset :global(.StripeElement) {
+            width: 100%;
+            padding: 12px 16px 12px 0;
+          }
 
-        form:valid :global(button) {
-          color: ${COLORS.BLUE};
-          box-shadow: inset 0px 0px 0px 1px ${COLORS.BLUE};
-        }
+          form:valid :global(button) {
+            color: ${COLORS.BLUE};
+            box-shadow: inset 0px 0px 0px 1px ${COLORS.BLUE};
+          }
 
-        .error {
-          display: inline-flex;
-          justify-content: flex-start;
-          align-items: center;
-          position: relative;
-          top: +3px;
-          opacity: 0;
-          margin-left: 1rem;
-          font-size: 12px;
-          transform: translateY(20px);
-          transition-property: opacity, transform;
-          transition-duration: 0.35s;
-          transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
+          .error {
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            top: +3px;
+            opacity: 0;
+            margin-left: 1rem;
+            font-size: 12px;
+            transform: translateY(20px);
+            transition-property: opacity, transform;
+            transition-duration: 0.35s;
+            transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+          }
 
-        .error.visible {
-          opacity: 1;
-          transform: none;
-        }
+          .error.visible {
+            opacity: 1;
+            transform: none;
+          }
 
-        .error svg {
-          margin-top: -1px;
-        }
+          .error svg {
+            margin-top: -1px;
+          }
 
-        .error .message {
-          margin-left: 8px;
-          font-size: inherit;
-          color: ${COLORS.RED};
-        }
+          .error .message {
+            margin-left: 8px;
+            font-size: inherit;
+            color: ${COLORS.RED};
+          }
 
-        .success {
-          font-size: 16px;
-          line-height: 1.5;
-          margin: 0 0 2rem;
-        }
-      `}</style>
+          .success {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 0 2rem;
+          }
+        `}
+      </style>
     </div>
   )
 }
 
 const BillingWithStripe = injectStripe(Billing)
 
-export default () => {
+export default function BillingPage() {
   const [stripe, setStripe] = React.useState(null)
   React.useEffect(() => {
     setStripe(window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY))
