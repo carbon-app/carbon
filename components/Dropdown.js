@@ -1,6 +1,6 @@
 import React from 'react'
 import Downshift from 'downshift'
-import matchSorter from 'match-sorter'
+import { matchSorter } from 'match-sorter'
 import VisuallyHidden from '@reach/visually-hidden'
 import { Down as ArrowDown } from './svg/Arrows'
 import CheckMark from './svg/Checkmark'
