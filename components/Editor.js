@@ -160,6 +160,7 @@ class Editor extends React.Component {
         )
         .then(uri => uri.slice(uri.indexOf(',') + 1))
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
+        .then(blob => window.URL.createObjectURL(blob))
     }
 
     // if safari, get image from api
@@ -174,7 +175,7 @@ class Editor extends React.Component {
     }
 
     if (type === 'blob') {
-      return domtoimage.toBlob(node, config)
+      return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
     }
 
     // Twitter needs regular dataurls
@@ -192,20 +193,18 @@ class Editor extends React.Component {
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'blob' })
-      .then(data => window.URL.createObjectURL(data))
-      .then(url => {
-        if (format !== 'open') {
-          link.download = `${prefix}.${format}`
-        }
-        if (this.isFirefox) {
-          link.target = '_blank'
-        }
-        link.href = url
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
-      })
+    return this.getCarbonImage({ format, type: 'blob' }).then(url => {
+      if (format !== 'open') {
+        link.download = `${prefix}.${format}`
+      }
+      if (this.isFirefox) {
+        link.target = '_blank'
+      }
+      link.href = url
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+    })
   }
 
   copyImage = () =>
