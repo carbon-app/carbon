@@ -5,6 +5,8 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
+const CODEMIRROR_VERSION = '5.58.2'
+
 const HIGHLIGHTS_ONLY = ['shades-of-purple', 'vscode', 'a11y-dark']
 const LOCAL_STYLESHEETS = ['one-light', 'one-dark', 'verminal', 'night-owl', 'nord', 'synthwave-84']
 const CDN_STYLESHEETS = THEMES.filter(
@@ -26,7 +28,7 @@ export const StylesheetLink = ({ theme }) => {
     href = `/static/themes/${theme}.min.css`
   } else {
     const themeDef = THEMES_HASH[theme]
-    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/${
+    href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/${CODEMIRROR_VERSION}/theme/${
       themeDef && (themeDef.link || themeDef.id)
     }.min.css`
   }
@@ -35,7 +37,9 @@ export const StylesheetLink = ({ theme }) => {
 }
 
 export const CodeMirrorLink = () => (
-  <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/codemirror.min.css" />
+  <Link
+    href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/${CODEMIRROR_VERSION}/codemirror.min.css`}
+  />
 )
 
 const title = 'Carbon'
@@ -66,13 +70,15 @@ export const MetaTags = React.memo(() => (
 export const MetaLinks = React.memo(() => {
   return (
     <React.Fragment>
-      <Link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/seti.min.css" />
+      <Link
+        href={`//cdnjs.cloudflare.com/ajax/libs/codemirror/${CODEMIRROR_VERSION}/theme/seti.min.css`}
+      />
       <CodeMirrorLink />
       {LOCAL_STYLESHEETS.map(id => (
         <Link key={id} href={`/static/themes/${id}.min.css`} />
       ))}
       {CDN_STYLESHEETS.map(themeDef => {
-        const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.2/theme/${
+        const href = `//cdnjs.cloudflare.com/ajax/libs/codemirror/${CODEMIRROR_VERSION}/theme/${
           themeDef && (themeDef.link || themeDef.id)
         }.min.css`
         return <Link key={themeDef.id} href={href} />
