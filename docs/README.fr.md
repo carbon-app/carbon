@@ -61,7 +61,7 @@ Une fois que tout votre code est saisi dans Carbon, vous pouvez personnaliser vo
 
 #### Export / Partage
 
-Une fois que vous avez personnalisé votre image, vous pouvez soit twetté let lien vers l’image, soit l'enregistrer directement.
+Une fois que vous avez personnalisé votre image, vous pouvez soit twetter le lien vers l’image, soit l'enregistrer directement.
 
 Si vous utilisez le bouton &apos;Tweet&apos;, Carbon rendra automatiquement votre image accessible aux utilisateurs malvoyants. Toutefois, si vous souhaitez tweeter manuellement votre image carbone, veuillez vérifier [comment rendre les images accessibles aux utilisateurs malvoyants de Twitter](https://help.twitter.com/fr/using-twitter/picture-descriptions).
 
@@ -82,7 +82,7 @@ Découvrez les projets créés par notre fantastique communauté :
 
 ##### Outils
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Ouvrez un fichier dans Carbon ou téléchargez-le directement en utilisant `carbon-now`, comportant un mode interactif, une mise en évidence sélective et plus encore
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Ouvrez un fichier dans Carbon ou téléchargez-le directement en utilisant `carbon-now`, comportant un mode interactif, une mise en évidence sélective et plus encore.
 
 ##### Bibliothèques
 
@@ -90,7 +90,7 @@ Découvrez les projets créés par notre fantastique communauté :
 
 ##### Manuels
 
-- ["CS 101 - Une ntroduction à la pensée informatique"](https://itunes.apple.com/us/book/id1435714196) - un manuel d'informatique de Sarbo Roy.
+- ["CS 101 - Une introduction à la pensée informatique"](https://itunes.apple.com/us/book/id1435714196) - un manuel d'informatique de Sarbo Roy.
 
 ## Auteurs
 
