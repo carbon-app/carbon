@@ -54,7 +54,8 @@ module.exports = withBundleAnalyzer(
         },
         {
           source: '/offsets',
-          destination: 'https://projectwren.com/?utm_source=carbon',
+          destination:
+            'https://wren.link/join/carbon?utm_campaign=share&utm_medium=profile_referral_link',
           permanent: false,
         },
       ]
