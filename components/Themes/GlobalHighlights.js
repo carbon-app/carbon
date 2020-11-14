@@ -58,6 +58,10 @@ export default function GlobalHighlights({ highlights }) {
           border-left: solid 2px #159588 !important;
         }
 
+        :global(.cm-s-vscode .CodeMirror-cursor) {
+          border-left: solid 2px #bebebe !important;
+        }
+
         :global(.cm-s-solarized) {
           box-shadow: none !important;
         }
