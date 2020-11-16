@@ -31,7 +31,7 @@
 
 <br></br>
 
-##### Translations
+##### 翻譯
 
 <table>
   <tbody>
@@ -90,105 +90,88 @@
   </tbody>
 </table>
 
-## Introduction
+## 簡介
 
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+你見過 Twitter 上面的 [這](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [程式碼](https://twitter.com/notquiteleo/status/873483329345028096) [圖片](https://twitter.com/zeithq/status/805779711154647040) 嗎? 雖然這些程式碼令人印象深刻，但從美觀程度來說還有提升空間。Carbon 能夠輕鬆地將你的原始碼生成漂亮的圖片並分享。還等什麼呢？用這個新發現的美化工具秀給你的 followers 看吧。
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
 
-## Features
+## 特色
 
-- **Customization**. Customize things like your image's syntax theme, font style, and more
-- **Share quickly**. Save your image or
-  a link with one click
-- **Save snippets**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
+- **訂製化**：訂製選項包括圖片的語法主題、字體樣式等
+- **快速分享**：一鍵生成圖片或網址並分享
+- **儲存記錄**：建立帳號來儲存程式碼片段，已分享的程式碼會自動展開至 Twitter 和 Slack
 
-## Usage
+## 使用
 
-#### Import
+#### 　
 
-There are a few different ways to import code into Carbon:
+有幾種不同的方法可以將程式碼輸入到 Carbon：
 
-- Drop a file onto the editor
-- Append a GitHub gist ID to the URL (e.g. [`carbon.now.sh/<gist_id_goes_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
-- Or just start typing!
+- 把檔案拖曳到編輯器中
+- 在 carbon url 後面加上 GitHub gist id （例如 [`carbon.now.sh/你的_gist_id`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8)）
+- 直接貼上程式碼！
 
-#### Customization
+#### 訂製化
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, padding, shadows, fonts, and more.
+當你把程式碼輸入到 Carbon 後，你可以調整程式碼圖片。訂製選項包括語法主題、背景顏色、視窗主題、padding、陰影、字體等等。
 
-#### Exporting & Sharing
+#### 輸出 & 分享
 
-After you've customized your image you can share your snippet in a number of ways
+當你調整完圖片樣式後，可以透過以下方式分享。
 
-##### Create a saved snippet
+#### 儲存程式碼片段
 
-Sharing a saved snippet will automatically unfurl the image on platforms like Twitter and Slack. This lets users see your creation, while also giving them access to the source code via the link. Better yet, if you need to make an update, simply follow the link yourself to edit the snippet directly.
+分享一個儲存的程式碼片段可以自動在 Twitter 和 Slack 等平台上展開圖片。這種方式可以讓使用者在看圖片的同時，也能夠點開網址取得你的程式碼。
 
-To create a saved snippet:
+如果你通過 "Tweet" 按鈕分享，Carbon 將自動設置你的圖片為公開訪問。不過如果你想手動分享圖片，可以查看 [如何設置 Twitter 圖片公開訪問](https://help.twitter.com/en/using-twitter/picture-descriptions)。
 
-1. Login using the "Sign in/Sign up" button
-2. Edit as you normally would — your snippet will get saved automatically
-3. Copy the URL from your browser window and share away!
+如果你在文章中添加 Carbon 圖片，注意到圖片中的原始碼對於無障礙技術來說是不可見的，比如無法放大字號或複製。可以考慮新增一個元素展示文本形式的原始碼，比如在圖片下方加一個 [詳細訊息展現元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/details)。
 
-##### Embed a snippet
+#### 安裝 Carbon 桌面客戶端（離線）
 
-This is the recommended method for sharing Carbon on your own website or blog. Readers can even copy the code with the click of a button.
+如果你使用的是 Google Chrome 或別的支持 PWA 技術的瀏覽器，你可以安裝 Carbon 並離線使用：
 
-You can embed any Carbon snippet in your website directly using the `carbon.now.sh/embed` URL. The "Copy Menu" lets you quickly copy the correct iFrame snippet, or the encoded URL for embedding on platforms like Medium.
+1. 訪問 [https://carbon.now.sh](https://carbon.now.sh)
+2. 點擊瀏覽器的設置按鈕
+3. 點擊 "安裝 Carbon..."
 
-Finally, you can also embed saved snippets or GitHub gists using `carbon.now.sh/embed/:id`.
+## 社群
 
-##### Use the Tweet button
+瀏覽社群中的這些優秀專案：
 
-The Tweet button will not only share the image on Twitter, but it will also correctly encode the `alt` text to ensure your images are accessible. However, if you want to tweet image yourself, please check out [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+##### 編輯器擴充功能
 
-##### Download the image directly
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - 在 IntelliJ IDEA 中透過右鍵選單輸入選中的程式碼到 Carbon
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - 在 Atom 中透過 `shift-cmd-A` 快捷鍵輸入當前檔案到 Carbon
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - 在 VS Code 中透過 `carbon` 命令輸入當前檔案到 Carbon
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - 在 Sublime Text 3 中透過自訂快捷鍵輸入選中的程式碼到 Carbon
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - 在 Vim/Neovim 中透過 `CarbonNowSh()` 函數輸入選中的程式碼到 Carbon
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - 在 Emacs 中透過 `carbon-now-sh` 交互函數輸入選中的程式碼到 Carbon
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - 在 `carbon.now.sh` 中打開選中的程式碼
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - 這個 Xcode 外掛程式能讓你將選中的程式碼一鍵輸出成 Carbon 片段
 
-Carbon supports downloading your image as a PNG and SVG. You can also click `Export → Open` to open your image directly in the browser. Finally, you can copy the Carbon image directly to your clipboard by going to `Copy → Image`.
+##### 工具
 
-#### Installing Carbon for Desktop (Offline)
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 用 `carbon-now` 命令在 Carbon 中打開一個檔案或者直接下載它，包含互動式選項、可選高亮等功能
+- [CodeExpander](https://codeexpander.com) - 是一個智慧並具有像 TextExpander 特性的 GitHub Gist 客戶端
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - 從 `Xcode Playground` 輸出多個 Carbon 程式碼片段。
 
-If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
+##### 工具
 
-1. Visit [carbon.now.sh](https://carbon.now.sh)
-2. Click your browser's settings menu
-3. Click "Install Carbon..."
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - 用 `R` 腳本疊代處理圖片樣式並在 Carbon 中打開或直接下載。
 
-## Community
+##### 引用
 
-Check out these projects our awesome community has created:
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - Sarbo Roy 寫的一本電腦科學書.
 
-##### Editor Plugins
+## 專案作者
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
-- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - This Xcode extension enables you to export a code selection as a Carbon snippet in a single action
+Carbon 專案由 TA 們發起：
 
-##### Tools
-
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
-- [CodeExpander](https://codeexpander.com) - A smart GitHub gist client with the TextExpander features
-- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Export multiple Carbon code snippets from `Xcode Playground`.
-- [`@carbonshbot`](https://t.me/carbonshbot) - A Telegram chatbot wich takes in a code snippet or gist URL and generates an Carbon image
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
-
-##### Citations
-
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
-
-## Authors
-
-Carbon is a project by:
-
-- Mike Fix ([@mfix22](https://twitter.com/fixitup2))
+- Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
@@ -201,13 +184,13 @@ Carbon is a project by:
 
 ---
 
-## Contribute & Support
+## 貢獻程式碼
 
-Pull requests are welcome! Please see our [contributing guidelines](/.github/CONTRIBUTING.md) for more details.
+歡迎 PR！請查看 [貢獻指南](/.github/CONTRIBUTING.md) 了解詳情。
 
-### Sponsors
+### 贊助商
 
-Does your company use Carbon? Consider sponsoring the project to fund new features, bug fixes, and more.
+你的公司在用 Carbon 嗎？考慮一下為此專案的新功能開發、bug 修復等提供贊助。
 
 <a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
 <a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
@@ -216,9 +199,9 @@ Does your company use Carbon? Consider sponsoring the project to fund new featur
 <a href="https://opencollective.com/carbon-app/sponsors/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/3/avatar"></a>
 <a href="https://opencollective.com/carbon-app/sponsors/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/4/avatar"></a>
 
-### Backers
+### 贊助者
 
-Love using Carbon? Consider supporting the project to fund new features and improvements
+喜歡用 Carbon 嗎？考慮一下為此專案的新功能開發或改進提供贊助。
 
 <a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
@@ -231,19 +214,17 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 <a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
 
-### Thanks To
+### 感謝
 
-[ ▲ Vercel ](https://vercel.com/) for sponsoring Carbon's hosting.
+[ ▲ Vercel ](https://vercel.com/) 贊助了 Carbon 的服務託管。
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
-
-### Contributors
+### 貢獻者
 
 ![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
 
-#### All Contributors
+#### 所有貢獻者
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+感謝所有這些優秀的貢獻者們 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -351,11 +332,10 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
   <tr>
     <td align="center"><a href="https://github.com/qw-in"><img src="https://avatars0.githubusercontent.com/u/19194187?v=4" width="100px;" alt=""/><br /><sub><b>Quinn Blenkinsop</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=qw-in" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/seagalputra"><img src="https://avatars0.githubusercontent.com/u/15377132?v=4" width="100px;" alt=""/><br /><sub><b>Dwiferdio Seagal Putra</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=seagalputra" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ashwoodall"><img src="https://avatars3.githubusercontent.com/u/14588617?v=4" width="100px;" alt=""/><br /><sub><b>Ashley Woodall Clark</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=ashwoodall" title="Code">💻</a></td>
-    <td align="center"><a href="https://tim.wienk.name/"><img src="https://avatars0.githubusercontent.com/u/150598?v=4" width="100px;" alt=""/><br /><sub><b>Tim Wienk</b></sub></a><br /><a href="#translation-timwienk" title="Translation">🌍</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
