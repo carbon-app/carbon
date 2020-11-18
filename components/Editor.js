@@ -211,13 +211,15 @@ class Editor extends React.Component {
   }
 
   copyImage = () =>
-    this.getCarbonImage({ format: 'png', type: 'blob' }).then(blob =>
-      navigator.clipboard.write([
-        new window.ClipboardItem({
-          'image/png': blob,
-        }),
-      ])
-    )
+    this.getCarbonImage({ format: 'png', type: 'blob' })
+      .then(blob =>
+        navigator.clipboard.write([
+          new window.ClipboardItem({
+            'image/png': blob,
+          }),
+        ])
+      )
+      .catch(console.error)
 
   updateSetting = (key, value) => {
     this.updateState({ [key]: value })
