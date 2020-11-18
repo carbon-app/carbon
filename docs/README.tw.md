@@ -31,65 +31,6 @@
 
 <br></br>
 
-##### 翻譯
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-      <td>
-        <a href="/docs/README.tw.md">臺灣</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td>
-        <a href="/docs/README.se.md">Svenska</a>
-      </td>
-      <td>
-        <a href="/docs/README.pl.md">Polski</a>
-      </td>
-      <td align="center">
-        <a href="/docs/README.nl.md">Nederlands</a>
-      </td>
-      <td>
-        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
 ## 簡介
 
 你見過 Twitter 上面的 [這](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [程式碼](https://twitter.com/notquiteleo/status/873483329345028096) [圖片](https://twitter.com/zeithq/status/805779711154647040) 嗎? 雖然這些程式碼令人印象深刻，但從美觀程度來說還有提升空間。Carbon 能夠輕鬆地將你的原始碼生成漂亮的圖片並分享。還等什麼呢？用這個新發現的美化工具秀給你的 followers 看吧。
