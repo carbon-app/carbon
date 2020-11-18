@@ -170,6 +170,7 @@ class Editor extends React.Component {
         ...this.state,
         highlights: { ...themeConfig.highlights, ...this.state.highlights },
       })
+      // TODO consider returning blob responseType from axios
       return this.context
         .image(encodedState)
         .then(dataURL => (type === 'blob' ? dataURLtoBlob(dataURL) : dataURL))
