@@ -215,7 +215,7 @@ class Editor extends React.Component {
       .then(blob =>
         navigator.clipboard.write([
           new window.ClipboardItem({
-            'image/png': blob,
+            [blob.type]: blob,
           }),
         ])
       )
