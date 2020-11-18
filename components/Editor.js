@@ -174,8 +174,12 @@ class Editor extends React.Component {
       return this.context.image(encodedState)
     }
 
-    if (type === 'blob') {
+    if (type === 'objectURL') {
       return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+    }
+
+    if (type === 'blob') {
+      return domtoimage.toBlob(node, config)
     }
 
     // Twitter needs regular dataurls
@@ -193,7 +197,7 @@ class Editor extends React.Component {
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'blob' }).then(url => {
+    return this.getCarbonImage({ format, type: 'objectURL' }).then(url => {
       if (format !== 'open') {
         link.download = `${prefix}.${format}`
       }
