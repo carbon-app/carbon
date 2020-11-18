@@ -33,7 +33,7 @@ import {
   FONTS,
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
+import { getSettings, unescapeHtml, formatCode, omit, dataURLtoBlob } from '../lib/util'
 import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
@@ -144,8 +144,8 @@ class Editor extends React.Component {
     if (format === 'svg') {
       return domtoimage
         .toSvg(node, config)
-        .then(dataUrl =>
-          dataUrl
+        .then(dataURL =>
+          dataURL
             .replace(/&nbsp;/g, '&#160;')
             // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
             .replace(/%23/g, '#')
@@ -160,7 +160,6 @@ class Editor extends React.Component {
         )
         .then(uri => uri.slice(uri.indexOf(',') + 1))
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
-        .then(blob => window.URL.createObjectURL(blob))
     }
 
     // if safari, get image from api
@@ -171,18 +170,16 @@ class Editor extends React.Component {
         ...this.state,
         highlights: { ...themeConfig.highlights, ...this.state.highlights },
       })
-      return this.context.image(encodedState)
-    }
-
-    if (type === 'objectURL') {
-      return domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
+      return this.context
+        .image(encodedState)
+        .then(dataURL => (type === 'blob' ? dataURLtoBlob(dataURL) : dataURL))
     }
 
     if (type === 'blob') {
       return domtoimage.toBlob(node, config)
     }
 
-    // Twitter needs regular dataurls
+    // Twitter needs regular dataURLs
     return domtoimage.toPng(node, config)
   }
 
@@ -197,18 +194,20 @@ class Editor extends React.Component {
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'objectURL' }).then(url => {
-      if (format !== 'open') {
-        link.download = `${prefix}.${format}`
-      }
-      if (this.isFirefox) {
-        link.target = '_blank'
-      }
-      link.href = url
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
-    })
+    return this.getCarbonImage({ format, type: 'blob' })
+      .then(blob => window.URL.createObjectURL(blob))
+      .then(url => {
+        if (format !== 'open') {
+          link.download = `${prefix}.${format}`
+        }
+        if (this.isFirefox) {
+          link.target = '_blank'
+        }
+        link.href = url
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      })
   }
 
   copyImage = () =>
