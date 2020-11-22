@@ -78,7 +78,7 @@
     "wait-on": "^5.2.0"
   },
   "engines": {
-    "node": "12.x"
+    "node": ">=12"
   },
   "lint-staged": {
     "*.js": [
