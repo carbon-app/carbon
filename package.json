@@ -1,7 +1,19 @@
 {
   "name": "carbon",
+  "description": "Create and share beautiful images of your source code",
   "version": "4.7.25",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carbon-app/carbon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/carbon-app/carbon/issues"
+  },
+  "homepage": "https://carbon.now.sh",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -77,9 +89,6 @@
     "now-release": "^0.0.2",
     "wait-on": "^5.2.0"
   },
-  "engines": {
-    "node": ">=12"
-  },
   "lint-staged": {
     "*.js": [
       "npm run lint",
@@ -89,15 +98,6 @@
       "npm run contrib:build"
     ]
   },
-  "description": "Create and share beautiful images of your source code",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/carbon-app/carbon.git"
-  },
-  "bugs": {
-    "url": "https://github.com/carbon-app/carbon/issues"
-  },
-  "homepage": "https://carbon.now.sh",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
