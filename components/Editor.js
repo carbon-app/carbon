@@ -33,7 +33,7 @@ import {
   FONTS,
 } from '../lib/constants'
 import { serializeState, getRouteState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
+import { getSettings, unescapeHtml, formatCode, omit, dataURLtoBlob } from '../lib/util'
 import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
@@ -110,31 +110,7 @@ class Editor extends React.Component {
       exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
     } = { format: 'png' }
   ) => {
-    // if safari, get image from api
-    const isPNG = format !== 'svg'
-    if (this.context.image && this.isSafari && isPNG) {
-      const themeConfig = this.getTheme()
-      // pull from custom theme highlights, or state highlights
-      const encodedState = serializeState({
-        ...this.state,
-        highlights: { ...themeConfig.highlights, ...this.state.highlights },
-      })
-      return this.context.image(encodedState)
-    }
-
     const node = this.carbonNode.current
-
-    // const map = new Map()
-    // if (isPNG) {
-    //   node.querySelectorAll('span[role="presentation"]').forEach(node => {
-    //     if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
-    //       map.set(node, node.innerHTML)
-    //       node.innerText.match(/%[A-Fa-f0-9]{2}/g).forEach(t => {
-    //         node.innerHTML = node.innerHTML.replace(t, encodeURIComponent(t))
-    //       })
-    //     }
-    //   })
-    // }
 
     const width = node.offsetWidth * exportSize
     const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
@@ -163,43 +139,49 @@ class Editor extends React.Component {
 
     // current font-family used
     const fontFamily = this.state.fontFamily
-    try {
-      // TODO consolidate type/format to only use one param
-      if (type === 'objectURL') {
-        if (format === 'svg') {
-          return domtoimage
-            .toSvg(node, config)
-            .then(dataUrl =>
-              dataUrl
-                .replace(/&nbsp;/g, '&#160;')
-                // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
-                .replace(/%23/g, '#')
-                .replace(/%0A/g, '\n')
-                // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
-                .replace(/&(?!#?[a-z0-9]+;)/g, '&amp;')
-                // remove other fonts which are not used
-                .replace(
-                  new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
-                  ''
-                )
+
+    // TODO consolidate type/format to only use one param
+    if (format === 'svg') {
+      return domtoimage
+        .toSvg(node, config)
+        .then(dataURL =>
+          dataURL
+            .replace(/&nbsp;/g, '&#160;')
+            // https://github.com/tsayen/dom-to-image/blob/fae625bce0970b3a039671ea7f338d05ecb3d0e8/src/dom-to-image.js#L551
+            .replace(/%23/g, '#')
+            .replace(/%0A/g, '\n')
+            // https://stackoverflow.com/questions/7604436/xmlparseentityref-no-name-warnings-while-loading-xml-into-a-php-file
+            .replace(/&(?!#?[a-z0-9]+;)/g, '&amp;')
+            // remove other fonts which are not used
+            .replace(
+              new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+              ''
             )
-            .then(uri => uri.slice(uri.indexOf(',') + 1))
-            .then(data => new Blob([data], { type: 'image/svg+xml' }))
-            .then(data => window.URL.createObjectURL(data))
-        }
-
-        return await domtoimage.toBlob(node, config).then(blob => window.URL.createObjectURL(blob))
-      }
-
-      if (type === 'blob') {
-        return await domtoimage.toBlob(node, config)
-      }
-
-      // Twitter needs regular dataurls
-      return await domtoimage.toPng(node, config)
-    } finally {
-      // map.forEach((value, node) => (node.innerHTML = value))
+        )
+        .then(uri => uri.slice(uri.indexOf(',') + 1))
+        .then(data => new Blob([data], { type: 'image/svg+xml' }))
     }
+
+    // if safari, get image from api
+    if (this.context.image && this.isSafari) {
+      const themeConfig = this.getTheme()
+      // pull from custom theme highlights, or state highlights
+      const encodedState = serializeState({
+        ...this.state,
+        highlights: { ...themeConfig.highlights, ...this.state.highlights },
+      })
+      // TODO consider returning blob responseType from axios
+      return this.context
+        .image(encodedState)
+        .then(dataURL => (type === 'blob' ? dataURLtoBlob(dataURL) : dataURL))
+    }
+
+    if (type === 'blob') {
+      return domtoimage.toBlob(node, config)
+    }
+
+    // Twitter needs regular dataURLs
+    return domtoimage.toPng(node, config)
   }
 
   tweet = () => {
@@ -213,28 +195,32 @@ class Editor extends React.Component {
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'objectURL' }).then(url => {
-      if (format !== 'open') {
-        link.download = `${prefix}.${format}`
-      }
-      if (this.isFirefox) {
-        link.target = '_blank'
-      }
-      link.href = url
-      document.body.appendChild(link)
-      link.click()
-      link.remove()
-    })
+    return this.getCarbonImage({ format, type: 'blob' })
+      .then(blob => window.URL.createObjectURL(blob))
+      .then(url => {
+        if (format !== 'open') {
+          link.download = `${prefix}.${format}`
+        }
+        if (this.isFirefox) {
+          link.target = '_blank'
+        }
+        link.href = url
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      })
   }
 
   copyImage = () =>
-    this.getCarbonImage({ format: 'png', type: 'blob' }).then(blob =>
-      navigator.clipboard.write([
-        new window.ClipboardItem({
-          'image/png': blob,
-        }),
-      ])
-    )
+    this.getCarbonImage({ format: 'png', type: 'blob' })
+      .then(blob =>
+        navigator.clipboard.write([
+          new window.ClipboardItem({
+            [blob.type]: blob,
+          }),
+        ])
+      )
+      .catch(console.error)
 
   updateSetting = (key, value) => {
     this.updateState({ [key]: value })
