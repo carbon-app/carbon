@@ -63,7 +63,7 @@ export const MetaTags = React.memo(() => (
     <title>{title} | Create and share beautiful images of your source code</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/static/brand/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/static/brand/desktop.png" />
   </Head>
 ))
 
