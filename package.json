@@ -29,7 +29,7 @@
     "preinstall": "node ./node_modules/use-climate-change-reminder/index.js || exit 0"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^10.0.0",
+    "@next/bundle-analyzer": "^10.0.3",
     "@reach/visually-hidden": "^0.11.1",
     "actionsack": "^0.0.13",
     "axios": "^0.21.0",
@@ -74,18 +74,18 @@
     "yargs-parser": "^20.2.4"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.15.3",
+    "@applitools/eyes-cypress": "^3.16.1",
     "all-contributors-cli": "^6.19.0",
     "babel-eslint": "^10.1.0",
-    "cypress": "^5.5.0",
-    "eslint": "^7.12.0",
+    "cypress": "^6.0.1",
+    "eslint": "^7.14.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.0",
-    "now": "^20.1.2",
+    "lint-staged": "^10.5.2",
+    "now": "^21.0.1",
     "now-release": "^0.0.2",
     "wait-on": "^5.2.0"
   },
