@@ -33,7 +33,7 @@
 
 ## Introductie
 
-Ken je [al](https://twitter.com/dan_abramov/status/890191815567175680) [die](https://twitter.com/reactjs/status/890511993261654017) [code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) die je ziet op Twitter? Hoewel de code meestal indrukwekkend is, zagen we ruimte voor verbetering op esthetisch gebied. Carbon maakt het makkelijk om mooie afbeeldingen van je broncode te maken en te delen. Dus, waar wacht je nog op? Maak indruk op al je volgers met je nieuwe ontwerpvaardigheden.
+Ken je [al die](https://twitter.com/dan_abramov/status/890191815567175680) [code](https://twitter.com/reactjs/status/890511993261654017) [screenshots](https://twitter.com/notquiteleo/status/873483329345028096) die je ziet op Twitter? Hoewel de code meestal indrukwekkend is, zagen we ruimte voor verbetering op esthetisch gebied. Carbon maakt het makkelijk om mooie afbeeldingen van je broncode te maken en te delen. Dus, waar wacht je nog op? Maak indruk op al je volgers met je nieuwe ontwerpvaardigheden.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">

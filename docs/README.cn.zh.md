@@ -33,7 +33,7 @@
 
 ## 简介
 
-你见过推特上面的 [这](https://twitter.com/dan_abramov/status/890191815567175680) [些](https://twitter.com/reactjs/status/890511993261654017) [代码](https://twitter.com/notquiteleo/status/873483329345028096) [图片](https://twitter.com/zeithq/status/805779711154647040) 吗? 虽然这些代码令人印象深刻，但从审美角度来说还有提升空间。Carbon 能够轻松地将你的源码生成漂亮的图片并分享。还等什么呢？用这个新发现的美化工具秀给你的 followers 看吧。
+你见过推特上面的 [这些](https://twitter.com/dan_abramov/status/890191815567175680) [代码](https://twitter.com/reactjs/status/890511993261654017) [图片](https://twitter.com/notquiteleo/status/873483329345028096) 吗? 虽然这些代码令人印象深刻，但从审美角度来说还有提升空间。Carbon 能够轻松地将你的源码生成漂亮的图片并分享。还等什么呢？用这个新发现的美化工具秀给你的 followers 看吧。
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">

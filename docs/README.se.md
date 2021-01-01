@@ -33,7 +33,7 @@
 
 ## Introduktion
 
-Du vet [alla](https://twitter.com/dan_abramov/status/890191815567175680) [dom](https://twitter.com/reactjs/status/890511993261654017) [där](https://twitter.com/notquiteleo/status/873483329345028096) [kodskärmdumparna](https://twitter.com/zeithq/status/805779711154647040) som du ser på Twitter? Även om koden vanligtvis är imponerande såg vi utrymme för förbättringar inom den estetiska avdelningen. Carbon gör det enkelt att skapa och dela vackra bilder av din källkod. Så vad väntar du på? Gå imponera på alla dina följare med dina nyfunna designfärdigheter.
+Du vet [alla dom](https://twitter.com/dan_abramov/status/890191815567175680) [där](https://twitter.com/reactjs/status/890511993261654017) [kodskärmdumparna](https://twitter.com/notquiteleo/status/873483329345028096) som du ser på Twitter? Även om koden vanligtvis är imponerande såg vi utrymme för förbättringar inom den estetiska avdelningen. Carbon gör det enkelt att skapa och dela vackra bilder av din källkod. Så vad väntar du på? Gå imponera på alla dina följare med dina nyfunna designfärdigheter.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">

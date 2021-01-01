@@ -33,7 +33,7 @@
 
 ## Introdução
 
-Sabe [todos](https://twitter.com/dan_abramov/status/890191815567175680) [aqueles](https://twitter.com/reactjs/status/890511993261654017) [prints](https://twitter.com/notquiteleo/status/873483329345028096) [de código](https://twitter.com/zeithq/status/805779711154647040) que você vê no Twitter? Apesar do código geralmente ser impressionante, nós vimos que a parte estética podia ser melhorada. Carbon facilita bastante criar e compartilhar imagens muito boas do seu código fonte. Então o que você está esperando? Vai lá impressionar todos os seus seguidores com esse design foda que você conseguiu aqui!
+Sabe [todos aqueles](https://twitter.com/dan_abramov/status/890191815567175680) [prints](https://twitter.com/reactjs/status/890511993261654017) [de código](https://twitter.com/notquiteleo/status/873483329345028096) que você vê no Twitter? Apesar do código geralmente ser impressionante, nós vimos que a parte estética podia ser melhorada. Carbon facilita bastante criar e compartilhar imagens muito boas do seu código fonte. Então o que você está esperando? Vai lá impressionar todos os seus seguidores com esse design foda que você conseguiu aqui!
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">

@@ -92,7 +92,7 @@
 
 ## Introduction
 
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of](https://twitter.com/reactjs/status/890511993261654017) [those code](https://twitter.com/notquiteleo/status/873483329345028096) [screenshots](https://twitter.com/zeithq/status/805779711154647040) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of those](https://twitter.com/reactjs/status/890511993261654017) [code screenshots](https://twitter.com/notquiteleo/status/873483329345028096) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
