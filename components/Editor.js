@@ -180,7 +180,7 @@ class Editor extends React.Component {
       return domtoimage.toBlob(node, config)
     }
 
-    // Twitter needs regular dataURLs
+    // Twitter and imgur needs regular dataURLs
     return domtoimage.toPng(node, config)
   }
 
@@ -190,14 +190,22 @@ class Editor extends React.Component {
     )
   }
 
+  imgur = (options = {}) => {
+    const prefix = options.filename || this.state.name || 'carbon'
+
+    return this.getCarbonImage({ format: 'png' })
+        .then(img => this.context.imgur(img.split('data:image/png;base64,')[1], prefix))
+        .then(({ link }) => window.open(link, "_blank"))
+  }
+
   exportImage = (format = 'png', options = {}) => {
     const link = document.createElement('a')
 
     const prefix = options.filename || this.state.name || 'carbon'
-
+        
     return this.getCarbonImage({ format, type: 'blob' })
       .then(blob => window.URL.createObjectURL(blob))
-      .then(url => {
+      .then(url => {  
         if (format !== 'open') {
           link.download = `${prefix}.${format}`
         }
@@ -207,7 +215,7 @@ class Editor extends React.Component {
         link.href = url
         document.body.appendChild(link)
         link.click()
-        link.remove()
+        link.remove()     
       })
   }
 
@@ -382,6 +390,7 @@ class Editor extends React.Component {
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
+                exportImgur={this.imgur}
                 exportSize={exportSize}
                 backgroundImage={backgroundImage}
               />
