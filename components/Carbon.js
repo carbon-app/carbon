@@ -245,15 +245,13 @@ class Carbon extends React.PureComponent {
             }
 
             .container .bg {
-              ${
-                this.props.config.backgroundMode === 'image'
-                  ? `background: url(${backgroundImage});
+              ${this.props.config.backgroundMode === 'image'
+                ? `background: url(${backgroundImage});
                     background-size: cover;
                     background-repeat: no-repeat;`
-                  : `background: ${this.props.config.backgroundColor || config.backgroundColor};
+                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                     background-size: auto;
-                    background-repeat: repeat;`
-              }
+                    background-repeat: repeat;`}
               position: absolute;
               top: 0px;
               right: 0px;
@@ -280,11 +278,9 @@ class Carbon extends React.PureComponent {
               position: relative;
               z-index: 1;
               border-radius: 5px;
-              ${
-                config.dropShadow
-                  ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
-                  : ''
-              };
+              ${config.dropShadow
+                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
+                : ''};
             }
 
             .container :global(.CodeMirror__container .CodeMirror) {

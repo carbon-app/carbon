@@ -41,7 +41,6 @@ function ExportMenu({
   isVisible,
   toggleVisibility,
   exportImage: exp,
-  exportImgur
 }) {
   const tooLarge = React.useMemo(() => !verifyPayloadSize(backgroundImage), [backgroundImage])
   const online = useOnline()
@@ -118,18 +117,6 @@ function ExportMenu({
             ))}
           </div>
         </div>
-        
-        <div className="export-row no-padding">
-          <Button 
-            center 
-            padding="8px 0 8px 0"
-            color={COLORS.PURPLE} 
-            onClick={exportImgur}
-          >
-            Export to imgur
-          </Button>
-        </div>
-
         <div className="export-row">
           <Button center color={COLORS.PURPLE} onClick={handleExport('open')}>
             Open
@@ -184,14 +171,6 @@ function ExportMenu({
           }
           .export-row:last-child {
             border-bottom: none;
-            padding: 0;
-          }
-
-          .margin-y {
-            margin: 0px 8px;
-          }
-
-          .no-padding {
             padding: 0;
           }
 
