@@ -100,6 +100,18 @@ export default function About() {
                 </td>
               </tr>
               <tr>
+                <td>Export as SVG</td>
+                <td>
+                  <kbd>⇧ ⌘ S</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td>Copy image to clipboard</td>
+                <td>
+                  <kbd>⇧ ⌘ C</kbd>
+                </td>
+              </tr>
+              <tr>
                 <td>Reset settings</td>
                 <td>
                   <kbd>⇧ ⌘ \</kbd>

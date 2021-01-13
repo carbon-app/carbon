@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { useCopyTextHandler, useAsyncCallback } from 'actionsack'
+import { useCopyTextHandler, useAsyncCallback, useKeyboardListener } from 'actionsack'
 import morph from 'morphmorph'
 
 import { COLORS } from '../lib/constants'
@@ -64,8 +64,15 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
   )
 
   const [copy, { loading }] = useAsyncCallback(async (...args) => {
-    await copyImage(...args)
-    showCopied()
+    if (clipboardSupported) {
+      await copyImage(...args)
+      showCopied()
+    }
+  })
+
+  useKeyboardListener('⌘-⇧-c', e => {
+    e.preventDefault()
+    copy(e)
   })
 
   return (
