@@ -34,6 +34,13 @@ function useSafari() {
   return isSafari
 }
 
+function preventDefault(fn) {
+  return e => {
+    e.preventDefault()
+    return fn(e)
+  }
+}
+
 function ExportMenu({
   backgroundImage,
   onChange,
@@ -48,7 +55,6 @@ function ExportMenu({
   const input = React.useRef()
 
   const [exportImage, { loading }] = useAsyncCallback(exp)
-  useKeyboardListener('⌘-⇧-e', () => exportImage())
 
   const disablePNG = isSafari && (tooLarge || !online)
 
@@ -58,6 +64,9 @@ function ExportMenu({
     exportImage(format, {
       filename: input.current && input.current.value,
     })
+
+  useKeyboardListener('⌘-⇧-e', preventDefault(handleExport('png')))
+  useKeyboardListener('⌘-⇧-s', preventDefault(handleExport('svg')))
 
   return (
     <div className="export-menu-container">
