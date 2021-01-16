@@ -14,7 +14,7 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
   const online = useOnlineListener()
 
   const [onClickTweet, { loading: tweeting }] = useAsyncCallback(tweet)
-  const [uploadToImgur, { loading: imguring }] = useAsyncCallback(imgur)
+  const [onClickImgur, { loading: imguring }] = useAsyncCallback(imgur)
 
   if (!api || !api.tweet) {
     return null
@@ -57,7 +57,7 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
       </div>
       <Popout hidden={!isVisible} borderColor={COLORS.BLUE} pointerRight="7px" style={popoutStyle}>
         <div className="share-row flex">
-          <Button padding="8px" color={COLORS.BLUE} onClick={uploadToImgur}>
+          <Button padding="8px" color={COLORS.BLUE} onClick={onClickImgur}>
             {imguring ? 'Uploading...' : 'Upload to Imgur'}
           </Button>
         </div>
