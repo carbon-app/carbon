@@ -66,11 +66,9 @@
     "react-image-crop": "^6.0.16",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-stripe-elements": "^6.1.2",
-    "react-syntax-highlight": "^15.3.1",
     "serialize-javascript": "^5.0.1",
     "tohash": "^1.0.2",
-    "use-climate-change-reminder": "^0.0.7",
-    "yargs-parser": "^20.2.4"
+    "use-climate-change-reminder": "^0.0.7"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.18.4",
