@@ -6,18 +6,11 @@ import Button from './Button'
 import { COLORS } from '../lib/constants'
 
 function ImgurButton({ onClick }) {
-  const [showUploaded, { loading: uploaded }] = useAsyncCallback(
-    () => new Promise(res => setTimeout(res, 1000))
-  )
-
-  const [uploadToImgur, { loading }] = useAsyncCallback(async (...args) => {
-    await onClick(...args)
-    showUploaded()
-  })
+  const [uploadToImgur, { loading }] = useAsyncCallback(onClick)
 
   return (
     <Button padding="8px" color={COLORS.BLUE} onClick={uploadToImgur}>
-      {loading ? 'Uploading...' : uploaded ? 'Uploaded!' : 'Upload to imgur'}
+      {loading ? 'Uploading...' : 'Upload to Imgur'}
     </Button>
   )
 }
