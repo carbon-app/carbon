@@ -388,7 +388,6 @@ class Editor extends React.Component {
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
-                exportImgur={this.imgur}
                 exportSize={exportSize}
                 backgroundImage={backgroundImage}
               />
