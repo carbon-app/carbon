@@ -190,8 +190,8 @@ class Editor extends React.Component {
     )
   }
 
-  imgur = (options = {}) => {
-    const prefix = options.filename || this.state.name || 'carbon'
+  imgur = () => {
+    const prefix = this.state.name || 'carbon'
 
     this.getCarbonImage({ format: 'png' }).then(data => this.context.imgur(data, prefix))
   }
