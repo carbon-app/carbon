@@ -180,7 +180,7 @@ class Editor extends React.Component {
       return domtoimage.toBlob(node, config)
     }
 
-    // Twitter and imgur needs regular dataURLs
+    // Twitter and Imgur needs regular dataURLs
     return domtoimage.toPng(node, config)
   }
 
@@ -193,9 +193,7 @@ class Editor extends React.Component {
   imgur = (options = {}) => {
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format: 'png' })
-      .then(img => this.context.imgur(img.split('data:image/png;base64,')[1], prefix))
-      .then(({ link }) => window.open(link, '_blank'))
+    this.getCarbonImage({ format: 'png' }).then(data => this.context.imgur(data, prefix))
   }
 
   exportImage = (format = 'png', options = {}) => {
