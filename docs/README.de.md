@@ -115,11 +115,7 @@ Pull Requests sind willkommen! Bitte lese hierzu unsere [CONTRIBUTING.md](/.gith
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Mitwirkende
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### Alle Mitwirkende
+### Alle Mitwirkende
 
 Ein Danke geht an all diese wunderbaren Menschen ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

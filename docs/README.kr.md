@@ -117,11 +117,7 @@ Carbon is a project by
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Contributors
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### All contributors
+### All contributors
 
 아래의 모든 멋진 분들께 감사 드립니다 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

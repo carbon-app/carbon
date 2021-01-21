@@ -159,10 +159,6 @@ Carbon 项目由 TA 们发起：
 
 ### 贡献者
 
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### All contributors
-
 感谢所有这些优秀的贡献者们 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->

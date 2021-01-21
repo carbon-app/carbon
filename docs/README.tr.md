@@ -117,10 +117,6 @@ PRlara açığız! Lütfen [CONTRIBUTING.md](/.github/CONTRIBUTING.md) linkine b
 
 ### Katkıda Bulunanlar
 
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### All contributors
-
 Bu muhteşem insanlara teşekkürler ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->

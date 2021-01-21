@@ -178,11 +178,7 @@ Uwielbiasz używać Carbon? Rozważ wsparcie projektu w celu sfinansowania nowyc
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Współtwórcy
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### Wszyscy współtwórcy
+### Wszyscy współtwórcy
 
 Podziękowania dla wszystkich tych wspaniałych ludzi ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

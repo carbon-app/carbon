@@ -126,11 +126,7 @@ PR を歓迎しています。詳細は[CONTRIBUTING.md](/.github/CONTRIBUTING.m
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Contributors
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### All contributors
+### All contributors
 
 これらのすべての素晴らしい人々に感謝を ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 

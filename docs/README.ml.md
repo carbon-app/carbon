@@ -117,10 +117,6 @@ PR കൾ സ്വാഗതം ചെയ്യുന്നു! കൂടുത�
 
 ### സംഭാവന നൽകിയവർ
 
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### All contributors
-
 നന്ദി ഈ വിസ്മയകരമായ എല്ലാ ആളുകൾക്കും ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->

@@ -159,11 +159,7 @@ Carbon 專案由 TA 們發起：
 
 [ ▲ Vercel ](https://vercel.com/) 贊助了 Carbon 的服務託管。
 
-### 貢獻者
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### 所有貢獻者
+### 所有貢獻者
 
 感謝所有這些優秀的貢獻者們 ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
