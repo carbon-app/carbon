@@ -45,7 +45,7 @@ function CopyEmbed({ mapper, title }) {
 const popoutStyle = { width: '140px', right: 0 }
 
 function useClipboardSupport() {
-  const [isClipboardSupports, setClipboardSupport] = React.useState(false)
+  const [isClipboardSupported, setClipboardSupport] = React.useState(false)
 
   React.useEffect(() => {
     setClipboardSupport(
@@ -53,7 +53,7 @@ function useClipboardSupport() {
     )
   }, [])
 
-  return isClipboardSupports
+  return isClipboardSupported
 }
 
 function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
