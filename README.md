@@ -217,8 +217,6 @@ Pull requests are welcome! Please see our [contributing guidelines](/.github/CON
 <a href="https://opencollective.com/carbon-app/backers/5/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/5/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
 
 ### Thanks To
 
