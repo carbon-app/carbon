@@ -71,10 +71,10 @@
     "use-climate-change-reminder": "^0.0.7"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.18.4",
+    "@applitools/eyes-cypress": "^3.18.5",
     "all-contributors-cli": "^6.19.0",
     "babel-eslint": "^10.1.0",
-    "cypress": "^6.2.1",
+    "cypress": "^6.3.0",
     "eslint": "^7.18.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
