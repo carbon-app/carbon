@@ -99,9 +99,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/carbon-app"
   }
 }

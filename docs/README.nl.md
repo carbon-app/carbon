@@ -17,18 +17,6 @@
   </a>
 </p>
 
-<p align="center">
-  <a href="https://opencollective.com/carbon-app">
-    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />
-  </a>
-  <a href="https://opencollective.com/carbon-app#backers">
-    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />
-  </a>
-  <a href="https://opencollective.com/carbon-app#sponsors">
-    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />
-  </a>
-</p>
-
 <br></br>
 
 ## Introductie
