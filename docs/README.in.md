@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://reporanger.com">
-    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
@@ -19,76 +19,172 @@
 
 <br></br>
 
-## முன்னுரை
+##### Translations
 
-ட்விட்டர் மற்றும் நீங்கள் [பார்க்க குறியீடுகள்](https://twitter.com/dan_abramov/status/890191815567175680) [அனைத்து திரைக்காட்சிகளும்](https://twitter.com/reactjs/status/890511993261654017) [நீங்கள் தெரிந்து](https://twitter.com/notquiteleo/status/873483329345028096)? கோட் பொதுவாக கவர்ச்சிகரமானது, ஆனால் அழகியல் துறை முன்னேற்றத்திற்கான அறை உள்ளது. கார்பன் உங்கள் மூல குறியீட்டின் அழகிய படங்களை உருவாக்க மற்றும் பகிர்ந்து கொள்ள எளிதாக்குகிறது. நீ ஏன் காத்திருக்கிறாய்? புதிதாக வடிவமைக்கப்பட்ட வடிவமைப்புகளுடன் உங்களைப் பின்தொடர்பவர்கள் அனைவரையும் கவர்ந்திழுக்கலாம்.
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="/docs/README.es.md">Español</a>
+      </td>
+      <td>
+        <a href="/docs/README.hi.md">हिंदी</a>
+      </td>
+      <td>
+        <a href="/docs/README.de.md">Deutsch</a>
+      </td>
+      <td>
+        <a href="/docs/README.cn.zh.md">简体中文</a>
+      </td>
+      <td>
+        <a href="/docs/README.br.pt.md">Português</a>
+      </td>
+      <td>
+        <a href="/docs/README.ml.md">മലയാളം</a>
+      </td>
+      <td>
+        <a href="/docs/README.tr.md">Türkçe</a>
+      </td>
+      <td>
+        <a href="/docs/README.kr.md">한국어</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="/docs/README.ta.md">தமிழ்</a>
+      </td>
+      <td>
+        <a href="/docs/README.fr.md">Français</a>
+      </td>
+      <td>
+        <a href="/docs/README.ja.md">日本語</a>
+      </td>
+      <td>
+        <a href="/docs/README.se.md">Svenska</a>
+      </td>
+      <td>
+        <a href="/docs/README.pl.md">Polski</a>
+      </td>
+      <td align="center">
+        <a href="/docs/README.nl.md">Nederlands</a>
+      </td>
+      <td>
+        <a href="/docs/README.tw.md">臺灣</a>
+      </td>
+      <td>
+        <a href="/docs/README.in.md">Indonesia</a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-[கார்பன்](https://carbon.now.sh) திட்டத்தைப் பற்றி மேலும் அறியவும் அல்லது மேலும் அறியவும் [வெளியிட்டது](https://.io/case-studies/carbon/) படிக்க.
+## Perkenalan
+
+Tahukah Anda [semua](https://twitter.com/dan_abramov/status/890191815567175680) [dari hasil](https://twitter.com/reactjs/status/890511993261654017) [tangkapan layar kode sumber](https://twitter.com/notquiteleo/status/873483329345028096) yang nda lihat di twitter? Meskipun kodenya biasanya mengesankan, kami melihat ruang untuk peningkatan dalam nilai estetika. Carbon memudahkan Anda untuk membuat dan berbagi kode sumber Anda menjadi gambar yang indah. Jadi tunggu apalagi? Buat semua pengikut Anda terkesan dengan keterampilan desain baru Anda.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
 
-## அம்சங்கள்
+## Fitur
 
-- **GitHub gist** இருந்து இறக்குமதி. வெறுமனே ஒரு GitHub குறியீட்டு அடையாள URL
-- **தன்விருப்ப** சேர்க்க. உங்கள் படத்தை தொடரியல் தீம், சாளர பாணி மற்றும் இன்னும் தனிப்பயனாக்கலாம்
-- **வேகமாக பகிர்**. உங்கள் கோப்பு, அல்லது ஒரு கிளிக்கில் ட்வீட் ஒரு இணைப்பை சேமிக்க
+- **Personalisasi**. Sesuaikan berbagai hal untuk gambar Anda seperti tema sintaksis, font, dan lainnya
+- **Bagikan dengan cepat**. Simpan atau bagikan gambar Anda dengan satu kali klik
+- **Simpan Potongan**. Buat akun untuk menyimpan potongan untuk nanti. Potongan akan dibagikan secara otomatis di Twitter dan Slack.
 
-## பயன்பாடு
+## Penggunaan
 
-#### இறக்குமதி
+#### Impor
 
-கார்பனுக்கு குறியீட்டை இறக்குமதி செய்ய சில வழிகள் உள்ளன:
+Ada beberapa cara berbeda untuk mengimpor kode ke Carbon:
 
-- ஆசிரியர் மீது ஒரு கோப்பை இங்கு இழுக்கவும்
+- Menyeret file ke dalam editor
+- Menambahkan GitHub gist ID ke URL (misalnya. [`carbon.now.sh/<gist_id_disimpan_disini>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+- Atau mulailah dengan mengetik!
 
-- சேர்க்கவும் **GitHub gist** ஐடி இணைய முகவரிக்குு (எடுத்துக்காட்டு: [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+#### Kostumisasi
 
-- உங்கள் குறியீட்டை நேரடியாக ஒட்டுக
+Setelah anda telah memiliki semua kode di Carbon, Anda dapat menyesuaikan gambar Anda dengan mengubah tema sintaks, warna latar belakang, tema jendela, padding, bayangan, font, dan banyak lagi.
 
-#### கைமுறையாக்கத்திற்கான
+#### Mengekspor & Berbagi
 
-உங்கள் குறியீடு அனைத்தையும் உள்வாங்கிக், நீங்கள் தீம், பின்னணி நிறம், திணிப்பு மற்றும் தீம் மாறும் தொடரியல் முடியும், அல்லது சாளரத்தை உங்கள் படத்தை தனிப்பயனாக்கப்படலாம்.
+Setelah Anda menyesuaikan gambar Anda, Anda dapat membagikannya dengan berbagai cara.
 
-#### ஏற்றுமதி / பகிர்வு
+##### Buat potongan kode untuk disimpan
 
-நீங்கள் உங்கள் படத்தை தனிப்பயனாக்கியுள்ளீர்கள் பிறகு, நீங்கள் ஒரு படத்தை ஒரு இணைப்பை ட்வீட் முடியும், அல்லது நீங்கள் நேரடியாகவும் சேமிக்கலாம்.
+Saat membagikan potongan kode yang disimpan, gambar akan secara otomatis membagikan di platform seperti Twitter dan Slack. Dengan cara ini pengguna lain dapat melihat kreasi Anda, sekaligus memberi mereka akses ke kode sumber melalui tautan tersebut. Lebih baik lagi, jika Anda ingin membuat penyesuaian, Anda dapat langsung mengikuti tautan untuk mengedit potongan kode Anda.
 
-## சமூக
+Cara membuat potongan kode yang disimpan:
 
-எங்கள் அற்புதமான சமூகம் உருவாக்கிய திட்டங்கள் பாருங்கள்:
+1. Masuk menggunakan tombol "Sign in/Sign up"
+2. Edit seperti biasa - potongan kode Anda akan disimpan secara otomatis
+3. Salin URL dari jendela browser Anda dan bagikan!
 
-##### ஆசிரியர் கூடுதல்
+##### Sematkan potongan kode
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - உங்கள் நடப்பு IntelliJ IDEA கோப்பில் கார்பனில் ஒரு தேர்ந்தெடுக்கப்பட்ட மெனுவில் தேர்ந்தெடுக்கப்பட்ட பிரிவைத் திறக்கவும்
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - உங்கள் நடப்பு Atom கோப்பை கார்பன் `shift-cmd-A` உடன் திறக்கவும்
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - `carbon` கட்டளையுடன் உங்கள் தற்போதைய VSCode கோப்பை கார்பனில் திறக்கவும்
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - தனிபயன் கட்டப்பட்ட விசைடன் உங்கள் தற்போதைய Sublime text 3 கோப்பில் தேர்வைத் திறக்கவும்
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - உங்கள் தற்போதைய Vim / Neovim செயல்பாடு மூலம் தேர்வு திறக்க `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - ஊடாடும் செயல்பாடு பயன்படுத்தி உங்கள் தற்போதைய Emacs தேர்வு திறக்க `carbon-now-sh`
+Ini adalah cara yang disarankan untuk menggunakan Carbon di situs web atau blog Anda sendiri. Pengunjung bahkan dapat menyalin kode dengan menekan sebuah tombol.
 
-##### CLI ஆனது
+Anda dapat memasukkan langsung potongan kode apa pun ke situs web Carbon Anda dengan URL `carbon.now.sh/embed`. Dari menu "Copy Menu" Anda dapat dengan mudah menyalin seluruh kode iFrame, atau hanya alamat untuk penyisipan pada platform seperti Medium.
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - கார்பனில் ஒரு கோப்பைத் திறக்கவும் அல்லது அதை நேரடியாகப் பயன்படுத்தி பதிவிறக்கவும் `carbon-now`, featuring an inஒரு ஊடாடும் முறை, தேர்ந்தெடுக்கப்பட்ட சிறப்பம்சங்கள் மற்றும் பலவற்றைக் கொண்டுள்ளது
+Terakhir, Anda juga dapat memasukkan potongan kode atau GitHub gists menggunakan `carbon.now.sh/embed/:id`.
 
-##### நூலகங்கள்
+##### Menggunakan tombol Tweet
 
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - வெளிப்படையாக `R` இல் பட அழகியல் கையாள மற்றும் கார்பன் திறந்த அல்லது நேரடியாக பதிவிறக்க.
+Tombol Tweet tidak hanya memastikan bahwa gambar Anda dibagikan di Twitter, tetapi juga menambahkan gambar yang benar dengan menambahkan kode `alt` untuk memastikan gambar Anda dapat diakses. Jika Anda lebih suka men-tweet gambar itu sendiri, lihat dulu [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
 
-##### பாடப்புத்தகங்கள்
+##### Unduh gambar secara langsung
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - சர்போ ராய் ஒரு கணினி அறிவியல் பாடநூல்.
+Carbon mendukung pengunduhan gambar Anda sebagai PNG dan SVG. Anda juga bisa mengklik `Export → Open` untuk membuka gambar Anda langsung di browser. Terakhir, Anda dapat menyalin gambar dari Carbon langsung ke papan klip Anda dengan masuk ke `Copy → Image`.
 
-## ஆசிரியர்கள்
+#### Memasang Carbon untuk Desktop (Offline)
 
-கார்பன் ஒரு திட்டம்
+Jika Anda menggunakan browser Google Chrome, atau browser lain yang mendukung Aplikasi Web Progresif, Anda dapat memasang Carbon untuk digunakan secara offline dengan:
 
-- Mike Fix ([@mfix22](https://github.com/mfix22))
+1. Kunjungi [carbon.now.sh](https://carbon.now.sh)
+2. Klik menu pengaturan browser Anda
+3. Klik "Install Carbon..."
+
+## Komunitas
+
+Lihat proyek berikut yang dibuat oleh komunitas hebat kami:
+
+##### Plugin Editor
+
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Buka kode yang dipilih dalam file IntelliJ IDEA Anda saat ini di Carbon dari menu konteks
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Buka file Atom Anda saat ini di Carbon dengan `shift-cmd-A`
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Buka file VS Code Anda saat ini di Carbon dengan perintah `carbon`
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Buka kode yang dipilih di file Sublime Text 3 Anda saat ini dengan kunci yang ditetapkan sendiri
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Buka kode yang dipilih di Vim / Neovim Anda saat ini dengan fungsi `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Buka pilihan di Emacs Anda saat ini menggunakan fungsi interaktif `carbon-now-sh`
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Buka pilihan Anda saat ini di `carbon.now.sh`
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Ekstensi Xcode ini memungkinkan Anda mengekspor kode yang dipilih sebagai potongan Carbon dengan satu tindakan
+
+##### Alat lainnya
+
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Buka file di Carbon atau unduh langsung menggunakan `carbon-now`, menampilkan mode interaktif, penyorotan selektif, dan lainnya
+- [CodeExpander](https://codeexpander.com) - adalah fitur pinter dari GitHub gist client dengan TextExpander
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Ekspor beberapa potongan kode Carbon dari `Xcode Playground`.
+- [`@carbonshbot`](https://t.me/carbonshbot) - Chatbot Telegram yang dapat mengambil potongan kode atau URL inti dan menghasilkan gambar Carbon
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Memanipulasi tampilan gambar secara berulang dalam `R` dan membuka di Carbon atau untuk mendownload secara langsung.
+
+##### Kutipan
+
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
+
+## Penulis
+
+Carbon adalah proyek dari:
+
+- Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-#### உரிமம்
+#### Lisensi
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
@@ -97,19 +193,32 @@
 
 ---
 
-## பங்களிக்க
+## Kontribusi & Dukungan
 
-PR வரவேற்கிறோம்! மேலும் தகவலுக்கு எங்கள் [CONTRIUTING.md](/.github/CONTRIBUTING.md) பார்க்கவும்.
+Untuk tata cara melakukan PR (Pull Request, cara berkontibusi ke dalam repositori) kita mengacu pada [panduan kontribusi](/.github/CONTRIBUTING.md) untuk lebih jelasnya.
 
-### நன்றி
+### Sponsor & Pendukung
 
-[ ▲ Vercel ](https://vercel.com/) கார்பன் ஹோஸ்டிங் ஸ்பான்சர்..
+<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="160px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
+
+<a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/2/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/3/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/4/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/5/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/5/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
+<a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
+
+### Terima Kasih banyak untuk
+
+[ ▲ Vercel ](https://vercel.com/) telah mensponsori hosting Carbon's.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### பங்களிப்பாளர்கள்
+### Semua Kontributor
 
-இந்த அற்புதமான மக்களுக்கு நன்றி ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Terima kasih untuk semua orang yang sangat luar biasa ini ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
