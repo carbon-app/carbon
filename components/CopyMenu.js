@@ -23,6 +23,79 @@ const toURL = url => `${location.origin}${url}`
 const replaceAsterisks = string => string.replace(/\*/g, '%2A')
 const toEncodedURL = morph.compose(encodeURI, replaceAsterisks, toURL)
 
+function getTokenColors(config) {
+  const colors = {}
+  for (let token of document.querySelectorAll(`[class^=cm-]`)) {
+    let className = token.className
+    if (!colors[className]) {
+      colors[className] = getComputedStyle(token).color
+    }
+  }
+  if (config.lineNumbers) {
+    let cmLineNumber = document.querySelector(`.CodeMirror-linenumber`)
+    colors['cm-linenumber'] = getComputedStyle(cmLineNumber).color
+  }
+  return colors
+}
+
+function setLineCodeDiv(outerDiv, colors) {
+  for (let cmLine of document.querySelectorAll(`.CodeMirror-line`)) {
+    let lineCodeDiv = document.createElement('div')
+    let span = cmLine.firstChild
+    lineCodeDiv.innerHTML = span.innerHTML.replace(
+      /class="(cm-.+?)"( style="(.+?)")?/gm,
+      function (match, p1, p2, p3) {
+        return `style="color: ${colors[p1]};` + (p3 ? ` ${p3}` : '') + `"`
+      }
+    )
+    outerDiv.append(lineCodeDiv)
+  }
+}
+
+function addLineNumberSpan(outerDiv, colors, config) {
+  const maxLineNumber = parseInt(config.firstLineNumber) + outerDiv.childNodes.length
+  const maxLength = String(maxLineNumber).length
+  outerDiv.childNodes.forEach((innerDiv, index) => {
+    let lineNumberSpan = document.createElement('span')
+    let lineNumberString = String(parseInt(config.firstLineNumber) + index)
+    lineNumberSpan.innerText =
+      `\u00a0`.repeat(maxLength - lineNumberString.length) + lineNumberString + `\u00a0`
+    lineNumberSpan.style.color = colors['cm-linenumber']
+    innerDiv.prepend(lineNumberSpan)
+  })
+}
+
+function replaceSpace(outerDiv) {
+  outerDiv.innerHTML = outerDiv.innerHTML.replace(/ ( +|&nbsp;)/gm, function (match) {
+    return match.includes('&nbsp;') ? '&nbsp;&nbsp;' : '&nbsp;'.repeat(match.length)
+  })
+}
+
+function setDivHTML(outerDiv, config, colors) {
+  setLineCodeDiv(outerDiv, colors)
+  if (config.lineNumbers) {
+    addLineNumberSpan(outerDiv, colors, config)
+  }
+  replaceSpace(outerDiv)
+}
+
+function setDivStyle(outerDiv, config, highlights) {
+  outerDiv.style.color = highlights.text
+  outerDiv.style.backgroundColor = highlights.background
+  outerDiv.style.fontFamily = `${config.fontFamily}, Consolas, 'Courier New', monospace`
+  outerDiv.style.fontSize = config.fontSize
+  outerDiv.style.lineHeight = (parseFloat(config.lineHeight) / 100) * parseFloat(config.fontSize)
+  outerDiv.style.whiteSpace = 'pre'
+}
+
+const toHTML = (config, highlights) => {
+  const outerDiv = document.createElement('div')
+  const colors = getTokenColors(config)
+  setDivHTML(outerDiv, config, colors)
+  setDivStyle(outerDiv, config, highlights)
+  return outerDiv.outerHTML
+}
+
 function CopyButton(props) {
   return (
     <Button
@@ -37,7 +110,8 @@ function CopyButton(props) {
 function CopyEmbed({ mapper, title }) {
   const { asPath } = useRouter()
   const text = React.useMemo(() => mapper(asPath), [mapper, asPath])
-  const { onClick, copied } = useCopyTextHandler(text)
+  const options = title === 'HTML' ? { format: 'text/html' } : {}
+  const { onClick, copied } = useCopyTextHandler(text, { options: options })
 
   return <CopyButton onClick={onClick}>{copied ? 'Copied!' : title}</CopyButton>
 }
@@ -56,7 +130,7 @@ function useClipboardSupport() {
   return isClipboardSupported
 }
 
-function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
+function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef, config, highlights }) {
   const clipboardSupported = useClipboardSupport()
 
   const [showCopied, { loading: copied }] = useAsyncCallback(
@@ -110,6 +184,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
             mapper={url => toIFrame(url, carbonRef.clientWidth, carbonRef.clientHeight)}
           />
           <CopyEmbed title="Plain URL" mapper={toURL} />
+          <CopyEmbed title="HTML" mapper={() => toHTML(config, highlights)} />
         </div>
       </Popout>
       <style jsx>

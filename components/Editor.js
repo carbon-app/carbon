@@ -377,7 +377,12 @@ class Editor extends React.Component {
             />
             <div id="style-editor-button" />
             <div className="buttons">
-              <CopyMenu copyImage={this.copyImage} carbonRef={this.carbonNode.current} />
+              <CopyMenu
+                copyImage={this.copyImage}
+                carbonRef={this.carbonNode.current}
+                config={config}
+                highlights={theme.highlights}
+              />
               <TweetButton onClick={this.tweet} />
               <ExportMenu
                 onChange={this.updateSetting}
