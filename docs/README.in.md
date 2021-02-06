@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://reporanger.com">
-    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
@@ -19,108 +19,170 @@
 
 <br></br>
 
-## Introductie
+##### Translations
 
-Ken je [al die](https://twitter.com/dan_abramov/status/890191815567175680) [code](https://twitter.com/reactjs/status/890511993261654017) [screenshots](https://twitter.com/notquiteleo/status/873483329345028096) die je ziet op Twitter? Hoewel de code meestal indrukwekkend is, zagen we ruimte voor verbetering op esthetisch gebied. Carbon maakt het makkelijk om mooie afbeeldingen van je broncode te maken en te delen. Dus, waar wacht je nog op? Maak indruk op al je volgers met je nieuwe ontwerpvaardigheden.
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <a href="/docs/README.es.md">Español</a>
+      </td>
+      <td>
+        <a href="/docs/README.hi.md">हिंदी</a>
+      </td>
+      <td>
+        <a href="/docs/README.de.md">Deutsch</a>
+      </td>
+      <td>
+        <a href="/docs/README.cn.zh.md">简体中文</a>
+      </td>
+      <td>
+        <a href="/docs/README.br.pt.md">Português</a>
+      </td>
+      <td>
+        <a href="/docs/README.ml.md">മലയാളം</a>
+      </td>
+      <td>
+        <a href="/docs/README.tr.md">Türkçe</a>
+      </td>
+      <td>
+        <a href="/docs/README.kr.md">한국어</a>
+      </td>
+       <td>
+        <a href="/docs/README.ta.md">தமிழ்</a>
+      </td>
+    </tr>
+    <tr>     
+      <td>
+        <a href="/docs/README.fr.md">Français</a>
+      </td>
+      <td>
+        <a href="/docs/README.ja.md">日本語</a>
+      </td>
+      <td>
+        <a href="/docs/README.se.md">Svenska</a>
+      </td>
+      <td>
+        <a href="/docs/README.pl.md">Polski</a>
+      </td>
+      <td align="center">
+        <a href="/docs/README.nl.md">Nederlands</a>
+      </td>
+      <td>
+        <a href="/docs/README.tw.md">臺灣</a>
+      </td>
+      <td>
+        <a href="/docs/README.in.md">Indonesia</a>
+      </td>
+       <td>
+        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Perkenalan
+
+Tahukah Anda [semua](https://twitter.com/dan_abramov/status/890191815567175680) [dari hasil](https://twitter.com/reactjs/status/890511993261654017) [tangkapan layar kode sumber](https://twitter.com/notquiteleo/status/873483329345028096) yang nda lihat di twitter? Meskipun kodenya biasanya mengesankan, kami melihat ruang untuk peningkatan dalam nilai estetika. Carbon memudahkan Anda untuk membuat dan berbagi kode sumber Anda menjadi gambar yang indah. Jadi tunggu apalagi? Buat semua pengikut Anda terkesan dengan keterampilan desain baru Anda.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
 
-## Kenmerken
+## Fitur
 
-- **Personalisatie**. Pas dingen voor je afbeelding aan, zoals syntax-thema, lettertype en meer
-- **Snel delen**. Sla je afbeelding of een link op met één klik
-- **Bewaar snippets**. Maak een account om fragmenten/snippets te bewaren voor later. Gedeelde snippets worden automatisch uitgevouwen op Twitter en Slack.
+- **Personalisasi**. Sesuaikan berbagai hal untuk gambar Anda seperti tema sintaksis, font, dan lainnya
+- **Bagikan dengan cepat**. Simpan atau bagikan gambar Anda dengan satu kali klik
+- **Simpan Potongan**. Buat akun untuk menyimpan potongan untuk nanti. Potongan akan dibagikan secara otomatis di Twitter dan Slack.
 
-## Gebruik
+## Penggunaan
 
-#### Importeren
+#### Impor
 
-Er zijn een aantal verschillende manieren om code te importeren in Carbon:
+Ada beberapa cara berbeda untuk mengimpor kode ke Carbon:
 
-- Sleep een bestand naar de editor
-- Voeg een GitHub-gist-ID toe aan het webadres (bijv. [`carbon.now.sh/<gist_id_hier>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
-- Of begin gewoon te typen!
+- Menyeret file ke dalam editor
+- Menambahkan GitHub gist ID ke URL (misalnya. [`carbon.now.sh/<gist_id_disimpan_disini>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+- Atau mulailah dengan mengetik!
 
-#### Personalisatie
+#### Kostumisasi
 
-Wanneer je al je code in Carbon hebt staan, kun je de afbeelding aanpassen door het veranderen van het syntax-thema, de achtergrondkleur, het vensterthema, de padding, de schaduwen, het lettertype en meer.
+Setelah anda telah memiliki semua kode di Carbon, Anda dapat menyesuaikan gambar Anda dengan mengubah tema sintaks, warna latar belakang, tema jendela, padding, bayangan, font, dan banyak lagi.
 
-#### Exporteren & delen
+#### Mengekspor & Berbagi
 
-Nadat je de afbeelding hebt aangepast, kun je deze op een aantal verschillende manieren delen
+Setelah Anda menyesuaikan gambar Anda, Anda dapat membagikannya dengan berbagai cara.
 
-##### Maak een bewaarde snippet
+##### Buat potongan kode untuk disimpan
 
-Bij het delen van een bewaarde snippet zal de afbeelding automatisch uitvouwen op platformen als Twitter en Slack. Op deze manier kunnen gebruikers je creatie zien, terwijl ze ook toegang hebben tot de broncode via de link. Beter nog, als je een aanpassing wil maken, kun je zelf de link volgen om je snippet meteen te bewerken.
+Saat membagikan potongan kode yang disimpan, gambar akan secara otomatis membagikan di platform seperti Twitter dan Slack. Dengan cara ini pengguna lain dapat melihat kreasi Anda, sekaligus memberi mereka akses ke kode sumber melalui tautan tersebut. Lebih baik lagi, jika Anda ingin membuat penyesuaian, Anda dapat langsung mengikuti tautan untuk mengedit potongan kode Anda.
 
-Om een bewaarde snippet te maken:
+Cara membuat potongan kode yang disimpan:
 
-1. Log in met de "Sign in/Sign up"-knop
-2. Bewerk zoals je dat normaal doet — je snippet wordt automatisch opgeslagen
-3. Kopieer het adres van je browservenster en delen maar!
+1. Masuk menggunakan tombol "Sign in/Sign up"
+2. Edit seperti biasa - potongan kode Anda akan disimpan secara otomatis
+3. Salin URL dari jendela browser Anda dan bagikan!
 
-##### Een snippet invoegen
+##### Sematkan potongan kode
 
-Dit is de aangeraden manier om Carbon te gebruiken op je eigen website of blog. Bezoekers kunnen zelfs de code kopiëren met de druk op een knop.
+Ini adalah cara yang disarankan untuk menggunakan Carbon di situs web atau blog Anda sendiri. Pengunjung bahkan dapat menyalin kode dengan menekan sebuah tombol.
 
-Je kunt elke Carbon-snippet rechtstreeks invoegen op je webiste met het `carbon.now.sh/embed`-adres. Vanuit het kopieermenu kun je gemakkelijk de volledige iFrame-code kopiëren, of juist alleen het adres voor invoegen op platformen als Medium.
+Anda dapat memasukkan langsung potongan kode apa pun ke situs web Carbon Anda dengan URL `carbon.now.sh/embed`. Dari menu "Copy Menu" Anda dapat dengan mudah menyalin seluruh kode iFrame, atau hanya alamat untuk penyisipan pada platform seperti Medium.
 
-Ten slotte kun je ook bewaarde snippets of GitHub-gists invoegen met `carbon.now/embed/:id`.
+Terakhir, Anda juga dapat memasukkan potongan kode atau GitHub gists menggunakan `carbon.now.sh/embed/:id`.
 
-##### Gebruik de Tweet-knop
+##### Menggunakan tombol Tweet
 
-De Tweet-knop zorgt er niet alleen voor dat je afbeelding op Twitter wordt gedeeld, het voegt ook de juiste `alt`-tekst toe om ervoor te zorgen dat je afbeeldingen toegankelijk zijn. Tweet je toch liever de afbeelding zelf, bekijk dan eerst [hoe je afbeeldingen op Twitter beter toegankelijk maakt](https://help.twitter.com/nl/using-twitter/picture-descriptions).
+Tombol Tweet tidak hanya memastikan bahwa gambar Anda dibagikan di Twitter, tetapi juga menambahkan gambar yang benar dengan menambahkan kode `alt` untuk memastikan gambar Anda dapat diakses. Jika Anda lebih suka men-tweet gambar itu sendiri, lihat dulu [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
 
-##### Rechtstreeks de afbeelding downloaden
+##### Unduh gambar secara langsung
 
-Carbon ondersteunt het downloaden van je afbeelding als PNG en SVG. Je kunt ook ook op `Export → Open` klikken om de afbeelding direct in je browser te openen. Daarnaast kun je een Carbon-afbeelding meteen naar je klembord kopiëren met de `Image`-optie in het kopieermenu.
+Carbon mendukung pengunduhan gambar Anda sebagai PNG dan SVG. Anda juga bisa mengklik `Export → Open` untuk membuka gambar Anda langsung di browser. Terakhir, Anda dapat menyalin gambar dari Carbon langsung ke papan klip Anda dengan masuk ke `Copy → Image`.
 
-#### Carbon voor Desktop installeren (offline)
+#### Memasang Carbon untuk Desktop (Offline)
 
-Als je Google Chrome gebruikt, of een andere browser met ondersteuning voor Progressive Web Apps, dan kun je Carbon installeren om offline te gebruiken door:
+Jika Anda menggunakan browser Google Chrome, atau browser lain yang mendukung Aplikasi Web Progresif, Anda dapat memasang Carbon untuk digunakan secara offline dengan:
 
-1. Bezoek [carbon.now.sh](https://carbon.now.sh)
-2. Open het instellingen-menu van je browser
-3. Klik op "Carbon installeren..."
+1. Kunjungi [carbon.now.sh](https://carbon.now.sh)
+2. Klik menu pengaturan browser Anda
+3. Klik "Install Carbon..."
 
-## Community
+## Komunitas
 
-Bekijk eens deze projecten die door onze geweldige community zijn gemaakt:
+Lihat proyek berikut yang dibuat oleh komunitas hebat kami:
 
-##### Editor Plugins
+##### Plugin Editor
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open de geselecteerde code in je huidige IntelliJ IDEA-bestand in Carbon vanuit het contextmenu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open je huidige Atom-bestand in Carbon met `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open je huidige VS Code-bestand in Carbon met het commando `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open de geselecteerde code in je huidige Sublime Text 3-bestand met een zelf toegewezen toets
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open de geselecteerde code in je huidige Vim/Neovim met de functie `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open de geselecteerde code in je huidige Emacs met de interactieve functie `carbon-now-sh`
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open de geselecteerde code in `carbon.now.sh`
-- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Met deze Xcode-extensie kun je de geselecteerde code exporteren als een Carbon-snippet met een enkele actie
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Buka kode yang dipilih dalam file IntelliJ IDEA Anda saat ini di Carbon dari menu konteks
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Buka file Atom Anda saat ini di Carbon dengan `shift-cmd-A`
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Buka file VS Code Anda saat ini di Carbon dengan perintah `carbon`
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Buka kode yang dipilih di file Sublime Text 3 Anda saat ini dengan kunci yang ditetapkan sendiri
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Buka kode yang dipilih di Vim / Neovim Anda saat ini dengan fungsi `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Buka pilihan di Emacs Anda saat ini menggunakan fungsi interaktif `carbon-now-sh`
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Buka pilihan Anda saat ini di `carbon.now.sh`
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Ekstensi Xcode ini memungkinkan Anda mengekspor kode yang dipilih sebagai potongan Carbon dengan satu tindakan
 
-##### Hulpmiddelen
+##### Alat lainnya
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open een bestand in Carbon of download het rechtstreeks met `carbon-now`, met ondersteuning voor een interactieve modus, selectieve highlighting en meer
-- [CodeExpander](https://codeexpander.com) - Een slimme GitHub-gist-client met de features van TextExpander
-- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Exporteer meerdere Carbon-code-snippets van `Xcode Playground`.
-- [`@carbonshbot`](https://t.me/carbonshbot) - Een Telegram-chatbot die op basis van een code-snippet of gist-URL een Carbon-afbeelding maakt
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratief manipuleren van het uiterlijk van afbeeldingen in `R` om vervolgens te openen in Carbon of om rechtstreekts te downloaden.
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Buka file di Carbon atau unduh langsung menggunakan `carbon-now`, menampilkan mode interaktif, penyorotan selektif, dan lainnya
+- [CodeExpander](https://codeexpander.com) - adalah fitur pinter dari GitHub gist client dengan TextExpander
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Ekspor beberapa potongan kode Carbon dari `Xcode Playground`.
+- [`@carbonshbot`](https://t.me/carbonshbot) - Chatbot Telegram yang dapat mengambil potongan kode atau URL inti dan menghasilkan gambar Carbon
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Memanipulasi tampilan gambar secara berulang dalam `R` dan membuka di Carbon atau untuk mendownload secara langsung.
 
-##### Boeken
+##### Kutipan
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - een informatica-boek door Sarbo Roy.
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
 
-## Auteurs
+## Penulis
 
-Carbon is een project van:
+Carbon adalah proyek dari:
 
 - Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-#### Licentie
+#### Lisensi
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
@@ -129,24 +191,13 @@ Carbon is een project van:
 
 ---
 
-## Meewerken & ondersteuning
+## Kontribusi & Dukungan
 
-Pull requests zijn welkom! Bekijk onze [richtlijnen voor bijdrages](/.github/CONTRIBUTING.md) voor meer details.
+Untuk tata cara melakukan PR (Pull Request, cara berkontibusi ke dalam repositori) kita mengacu pada [panduan kontribusi](/.github/CONTRIBUTING.md) untuk lebih jelasnya.
 
-### Sponsors
+### Sponsor & Pendukung
 
-Gebruikt jouw bedrijf Carbon? Overweeg dan eens het project te sponsoren voor het financieren van nieuwe features, bugfixes en meer.
-
-<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="280px" src="https://fossa.com/wp-content/themes/rs_theme/assets/images/logo.svg" /></a>
-<a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/1/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/2/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/3/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/4/avatar"></a>
-
-### Donateurs
-
-Gebruik je Carbon graag? Denk dan eens aan het ondersteunen van het project voor het financieren van nieuwe features en verbeteringen
+<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="160px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
 
 <a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
@@ -157,15 +208,15 @@ Gebruik je Carbon graag? Denk dan eens aan het ondersteunen van het project voor
 <a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
 
-### Dank aan
+### Terima Kasih banyak untuk
 
-[ ▲ Vercel ](https://vercel.com/) voor het sponsoren van Carbon's hosting.
+[ ▲ Vercel ](https://vercel.com/) telah mensponsori hosting Carbon's.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Iedereen die heeft meegewerkt
+### Semua Kontributor
 
-Dank gaat naar al deze geweldige mensen ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Terima kasih untuk semua orang yang sangat luar biasa ini ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
