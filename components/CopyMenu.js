@@ -84,7 +84,8 @@ function setDivStyle(outerDiv, config, highlights) {
   outerDiv.style.backgroundColor = highlights.background
   outerDiv.style.fontFamily = `${config.fontFamily}, Consolas, 'Courier New', monospace`
   outerDiv.style.fontSize = config.fontSize
-  outerDiv.style.lineHeight = (parseFloat(config.lineHeight) / 100) * parseFloat(config.fontSize)
+  const lineHeight = (parseFloat(config.lineHeight) / 100) * parseFloat(config.fontSize)
+  outerDiv.style.lineHeight = parseInt(lineHeight+0.5) + 'px'
   outerDiv.style.whiteSpace = 'pre'
 }
 
