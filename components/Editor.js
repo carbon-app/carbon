@@ -13,9 +13,9 @@ import Overlay from './Overlay'
 import BackgroundSelect from './BackgroundSelect'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
+import ShareMenu from './ShareMenu'
 import CopyMenu from './CopyMenu'
 import Themes from './Themes'
-import TweetButton from './TweetButton'
 import FontFace from './FontFace'
 import LanguageIcon from './svg/Language'
 import {
@@ -180,7 +180,7 @@ class Editor extends React.Component {
       return domtoimage.toBlob(node, config)
     }
 
-    // Twitter needs regular dataURLs
+    // Twitter and Imgur needs regular dataURLs
     return domtoimage.toPng(node, config)
   }
 
@@ -188,6 +188,12 @@ class Editor extends React.Component {
     this.getCarbonImage({ format: 'png' }).then(
       this.context.tweet.bind(null, this.state.code || DEFAULT_CODE)
     )
+  }
+
+  imgur = () => {
+    const prefix = this.state.name || 'carbon'
+
+    return this.getCarbonImage({ format: 'png' }).then(data => this.context.imgur(data, prefix))
   }
 
   exportImage = (format = 'png', options = {}) => {
@@ -378,7 +384,7 @@ class Editor extends React.Component {
             <div id="style-editor-button" />
             <div className="buttons">
               <CopyMenu copyImage={this.copyImage} carbonRef={this.carbonNode.current} />
-              <TweetButton onClick={this.tweet} />
+              <ShareMenu tweet={this.tweet} imgur={this.imgur} />
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
