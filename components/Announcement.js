@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Feature flag
-const ACTIVE = true
+const ACTIVE = false
 
 const key = 'CARBON_CTA_4'
 

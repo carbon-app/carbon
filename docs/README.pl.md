@@ -17,18 +17,6 @@
   </a>
 </p>
 
-<p align="center">	
-  <a href="https://opencollective.com/carbon-app">	
-    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
-  </a>	
-  <a href="https://opencollective.com/carbon-app#backers">	
-    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
-  </a>	
-  <a href="https://opencollective.com/carbon-app#sponsors">	
-    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
-  </a>
-</p>
-
 <br></br>
 
 ## Wprowadzenie
@@ -169,8 +157,6 @@ Uwielbiasz używać Carbon? Rozważ wsparcie projektu w celu sfinansowania nowyc
 <a href="https://opencollective.com/carbon-app/backers/5/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/5/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
 
 ### Podziękowania dla
 
@@ -178,11 +164,7 @@ Uwielbiasz używać Carbon? Rozważ wsparcie projektu w celu sfinansowania nowyc
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Współtwórcy
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### Wszyscy współtwórcy
+### Wszyscy współtwórcy
 
 Podziękowania dla wszystkich tych wspaniałych ludzi ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
@@ -296,6 +278,7 @@ Podziękowania dla wszystkich tych wspaniałych ludzi ([emoji key](https://githu
     <td align="center"><a href="https://tim.wienk.name/"><img src="https://avatars0.githubusercontent.com/u/150598?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tim Wienk</b></sub></a><br /><a href="#translation-timwienk" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/JeremyShih"><img src="https://avatars3.githubusercontent.com/u/7455516?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeremy Shih</b></sub></a><br /><a href="#translation-JeremyShih" title="Translation">🌍</a></td>
     <td align="center"><a href="http://georgemccarron.com/"><img src="https://avatars2.githubusercontent.com/u/9155723?v=4?s=100" width="100px;" alt=""/><br /><sub><b>George McCarron</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=george1410" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/artmxra7"><img src="https://avatars.githubusercontent.com/u/23070604?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erwin Rahayu</b></sub></a><br /><a href="#translation-artmxra7" title="Translation">🌍</a> <a href="https://github.com/carbon-app/carbon/commits?author=artmxra7" title="Documentation">📖</a></td>
   </tr>
 </table>
 

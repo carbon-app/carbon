@@ -16,9 +16,6 @@ const Footer = () => (
           about
         </a>
       </Link>
-      <a className="link" href="https://github.com/carbon-app/carbon/issues/new">
-        feedback
-      </a>
       <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>

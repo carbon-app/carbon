@@ -31,7 +31,3 @@ commits:
     user: 'allcontributors[bot]'
     labels:
       - 'squash when passing'
-
-sponsor_labels:
-  - sponsor
-  - priority:high

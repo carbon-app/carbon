@@ -17,18 +17,6 @@
   </a>
 </p>
 
-<p align="center">	
-  <a href="https://opencollective.com/carbon-app">	
-    <img src="https://opencollective.com/carbon-app/tiers/badge.svg?label=Financial%20Contributors&color=297eff" alt="Open Collective sponsors" />	
-  </a>	
-  <a href="https://opencollective.com/carbon-app#backers">	
-    <img src="https://opencollective.com/carbon-app/tiers/backers/badge.svg?label=Backers&color=297eff" alt="Open Collective backers" />	
-  </a>	
-  <a href="https://opencollective.com/carbon-app#sponsors">	
-    <img src="https://opencollective.com/carbon-app/tiers/sponsors/badge.svg?label=Sponsors&color=297eff" alt="Open Collective sponsors" />	
-  </a>
-</p>
-
 <br></br>
 
 ##### Translations
@@ -60,11 +48,11 @@
       <td>
         <a href="/docs/README.kr.md">한국어</a>
       </td>
-    </tr>
-    <tr>
       <td>
         <a href="/docs/README.ta.md">தமிழ்</a>
       </td>
+    </tr>
+    <tr>      
       <td>
         <a href="/docs/README.fr.md">Français</a>
       </td>
@@ -84,6 +72,9 @@
         <a href="/docs/README.tw.md">臺灣</a>
       </td>
       <td>
+        <a href="/docs/README.in.md">Indonesia</a>
+      </td>
+       <td>
         <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
     </tr>
@@ -205,20 +196,9 @@ Carbon is a project by:
 
 Pull requests are welcome! Please see our [contributing guidelines](/.github/CONTRIBUTING.md) for more details.
 
-### Sponsors
+### Sponsors & Backers
 
-Does your company use Carbon? Consider sponsoring the project to fund new features, bug fixes, and more.
-
-<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="180px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
-<a href="https://opencollective.com/carbon-app/sponsors/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/0/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/1/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/2/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/3/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/3/avatar"></a>
-<a href="https://opencollective.com/carbon-app/sponsors/4/website" target="_blank"><img src="https://opencollective.com/carbon-app/sponsors/4/avatar"></a>
-
-### Backers
-
-Love using Carbon? Consider supporting the project to fund new features and improvements
+<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="160px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
 
 <a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
@@ -228,8 +208,6 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 <a href="https://opencollective.com/carbon-app/backers/5/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/5/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/8/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/8/avatar"></a>
-<a href="https://opencollective.com/carbon-app/backers/9/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/9/avatar"></a>
 
 ### Thanks To
 
@@ -237,11 +215,7 @@ Love using Carbon? Consider supporting the project to fund new features and impr
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
-### Contributors
-
-![Contributors image](https://opencollective.com/carbon-app/contributors.svg?width=1024)
-
-#### All Contributors
+### All Contributors
 
 Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
@@ -355,6 +329,7 @@ Thanks goes out to all these wonderful people ([emoji key](https://github.com/ke
     <td align="center"><a href="https://tim.wienk.name/"><img src="https://avatars0.githubusercontent.com/u/150598?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tim Wienk</b></sub></a><br /><a href="#translation-timwienk" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/JeremyShih"><img src="https://avatars3.githubusercontent.com/u/7455516?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeremy Shih</b></sub></a><br /><a href="#translation-JeremyShih" title="Translation">🌍</a></td>
     <td align="center"><a href="http://georgemccarron.com/"><img src="https://avatars2.githubusercontent.com/u/9155723?v=4?s=100" width="100px;" alt=""/><br /><sub><b>George McCarron</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=george1410" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/artmxra7"><img src="https://avatars.githubusercontent.com/u/23070604?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Erwin Rahayu</b></sub></a><br /><a href="#translation-artmxra7" title="Translation">🌍</a> <a href="https://github.com/carbon-app/carbon/commits?author=artmxra7" title="Documentation">📖</a></td>
   </tr>
 </table>
 

@@ -78,14 +78,14 @@ class Editor extends React.Component {
 
     this.setState(newState)
 
-    this.isSafari =
-      window.navigator &&
-      window.navigator.userAgent.indexOf('Safari') !== -1 &&
-      window.navigator.userAgent.indexOf('Chrome') === -1
-    this.isFirefox =
-      window.navigator &&
-      window.navigator.userAgent.indexOf('Firefox') !== -1 &&
-      window.navigator.userAgent.indexOf('Chrome') === -1
+    if (window.navigator) {
+      this.isSafari =
+        window.navigator.userAgent.indexOf('Safari') !== -1 &&
+        window.navigator.userAgent.indexOf('Chrome') === -1
+      this.isFirefox =
+        window.navigator.userAgent.indexOf('Firefox') !== -1 &&
+        window.navigator.userAgent.indexOf('Chrome') === -1
+    }
   }
 
   carbonNode = React.createRef()

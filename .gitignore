@@ -11,5 +11,5 @@ packaged
 coverage
 public/service-worker.js
 private-key.json
-
 .now
+*.log

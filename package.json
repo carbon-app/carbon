@@ -1,7 +1,7 @@
 {
   "name": "carbon",
   "description": "Create and share beautiful images of your source code",
-  "version": "4.7.28",
+  "version": "4.7.29",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -66,17 +66,15 @@
     "react-image-crop": "^6.0.16",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-stripe-elements": "^6.1.2",
-    "react-syntax-highlight": "^15.3.1",
     "serialize-javascript": "^5.0.1",
     "tohash": "^1.0.2",
-    "use-climate-change-reminder": "^0.0.7",
-    "yargs-parser": "^20.2.4"
+    "use-climate-change-reminder": "^0.0.7"
   },
   "devDependencies": {
-    "@applitools/eyes-cypress": "^3.18.4",
+    "@applitools/eyes-cypress": "^3.18.5",
     "all-contributors-cli": "^6.19.0",
     "babel-eslint": "^10.1.0",
-    "cypress": "^6.2.1",
+    "cypress": "^6.3.0",
     "eslint": "^7.18.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -101,9 +99,5 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/carbon-app"
   }
 }
