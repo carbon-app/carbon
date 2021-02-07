@@ -32,7 +32,6 @@
     "@next/bundle-analyzer": "^10.0.5",
     "@reach/visually-hidden": "^0.12.0",
     "actionsack": "^0.0.13",
-    "axios": "^0.21.1",
     "cm-show-invisibles": "^3.1.0",
     "codemirror": "5.58.3",
     "codemirror-graphql": "^0.12.4",
@@ -66,6 +65,7 @@
     "react-image-crop": "^6.0.16",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-stripe-elements": "^6.1.2",
+    "redaxios": "^0.4.1",
     "serialize-javascript": "^5.0.1",
     "tohash": "^1.0.2",
     "use-climate-change-reminder": "^0.0.7"
