@@ -190,11 +190,10 @@ class Editor extends React.Component {
     )
   }
 
-  imgur = async () => {
+  imgur = () => {
     const prefix = this.state.name || 'carbon'
 
-    const data = await this.getCarbonImage({ format: 'png' })
-    await this.context.imgur(data, prefix)
+    return this.getCarbonImage({ format: 'png' }).then(data => this.context.imgur(data, prefix))
   }
 
   exportImage = (format = 'png', options = {}) => {
