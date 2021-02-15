@@ -38,17 +38,20 @@ function getTokenColors(config) {
   return colors
 }
 
-function setLineCodeDiv(outerDiv, colors) {
+function setLineCodeP(outerDiv, config, highlights, colors) {
   for (let cmLine of document.querySelectorAll(`.CodeMirror-line`)) {
-    let lineCodeDiv = document.createElement('div')
+    let lineCodeP = document.createElement('p')
     let span = cmLine.firstChild
-    lineCodeDiv.innerHTML = span.innerHTML.replace(
+    lineCodeP.innerHTML = span.innerHTML.replace(
       /class="(cm-.+?)"( style="(.+?)")?/gm,
       function (match, p1, p2, p3) {
         return `style="color: ${colors[p1]};` + (p3 ? ` ${p3}` : '') + `"`
       }
     )
-    outerDiv.append(lineCodeDiv)
+    lineCodeP.style.margin = "0px"
+    lineCodeP.style.border = `${config.paddingHorizontal} solid ${config.backgroundColor}`
+    lineCodeP.style.backgroundColor = highlights.background
+    outerDiv.append(lineCodeP)
   }
 }
 
@@ -65,35 +68,52 @@ function addLineNumberSpan(outerDiv, colors, config) {
   })
 }
 
+function addWindowControl(outerDiv, config, highlights) {
+  let svg = document.createElement('p')
+  svg.style.border = `${config.paddingHorizontal} solid ${config.backgroundColor}`
+  svg.style.backgroundColor = highlights.background
+  svg.innerText = `🟠🟡🟢`
+  outerDiv.prepend(svg)
+}
+
 function replaceSpace(outerDiv) {
   outerDiv.innerHTML = outerDiv.innerHTML.replace(/ ( +|&nbsp;)/gm, function (match) {
     return match.includes('&nbsp;') ? '&nbsp;&nbsp;' : '&nbsp;'.repeat(match.length)
   })
 }
 
-function setDivHTML(outerDiv, config, colors) {
-  setLineCodeDiv(outerDiv, colors)
+function setDivHTML(outerDiv, config, highlights, colors) {
+  setLineCodeP(outerDiv, config, highlights, colors)
   if (config.lineNumbers) {
-    addLineNumberSpan(outerDiv, colors, config)
+    addLineNumberSpan(outerDiv, config, colors)
   }
+  addWindowControl(outerDiv, config, highlights)
   replaceSpace(outerDiv)
 }
 
-function setDivStyle(outerDiv, config, highlights) {
-  outerDiv.style.color = highlights.text
-  outerDiv.style.backgroundColor = highlights.background
-  outerDiv.style.fontFamily = `${config.fontFamily}, Consolas, 'Courier New', monospace`
+function getPlatform() {
+  const userAgent = window.navigator.userAgent
+  const isWindows = userAgent.indexOf('Windows') >= 0
+  const isMacintosh = userAgent.indexOf('Macintosh') >= 0
+  const isLinux = userAgent.indexOf('Linux') >= 0
+  return { isWindows, isMacintosh, isLinux }
+}
+
+function setDivStyle(outerDiv, config) {
+  const DEFAULT_WINDOWS_FONT_FAMILY = 'Consolas, \'Courier New\', monospace'
+  const DEFAULT_MAC_FONT_FAMILY = 'Menlo, Monaco, \'Courier New\', monospace'
+  const DEFAULT_LINUX_FONT_FAMILY = '\'Droid Sans Mono\', \'monospace\', monospace, \'Droid Sans Fallback\''
+  const platform = getPlatform()
+  const fontFamily = platform.isMacintosh ? DEFAULT_MAC_FONT_FAMILY : (platform.isLinux ? DEFAULT_LINUX_FONT_FAMILY : DEFAULT_WINDOWS_FONT_FAMILY)
+  outerDiv.style.fontFamily = `${config.fontFamily}, ${fontFamily}`
   outerDiv.style.fontSize = config.fontSize
-  const lineHeight = (parseFloat(config.lineHeight) / 100) * parseFloat(config.fontSize)
-  outerDiv.style.lineHeight = parseInt(lineHeight+0.5) + 'px'
-  outerDiv.style.whiteSpace = 'pre'
 }
 
 const toHTML = (config, highlights) => {
   const outerDiv = document.createElement('div')
   const colors = getTokenColors(config)
-  setDivHTML(outerDiv, config, colors)
-  setDivStyle(outerDiv, config, highlights)
+  setDivHTML(outerDiv, config, highlights, colors)
+  setDivStyle(outerDiv, config)
   return outerDiv.outerHTML
 }
 
