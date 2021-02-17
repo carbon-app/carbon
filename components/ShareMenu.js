@@ -7,7 +7,7 @@ import Button from './Button'
 import Popout, { managePopout } from './Popout'
 import { Down as ArrowDown } from './svg/Arrows'
 
-const popoutStyle = { width: '120px', right: 8 }
+const popoutStyle = { width: '144px', right: 8 }
 
 function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
   const api = useAPI()
@@ -58,7 +58,7 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
       <Popout hidden={!isVisible} borderColor={COLORS.BLUE} pointerRight="7px" style={popoutStyle}>
         <div className="share-row flex">
           <Button padding="8px" color={COLORS.BLUE} onClick={onClickImgur}>
-            {imguring ? 'Uploading...' : 'Upload to Imgur'}
+            {imguring ? 'Uploading...' : 'Upload to Imgur (beta)'}
           </Button>
         </div>
       </Popout>
