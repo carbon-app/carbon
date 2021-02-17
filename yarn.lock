@@ -109,6 +109,7 @@
     "@applitools/isomorphic-fetch" "3.0.0"
     "@applitools/screenshoter" "2.1.1"
     "@applitools/snippets" "2.1.0"
+    axios "0.21.1"
     chalk "3.0.0"
     cosmiconfig "6.0.0"
     dateformat "3.0.3"
@@ -5192,11 +5193,6 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
-
-follow-redirects@^1.10.0:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
-  integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -10506,6 +10502,7 @@ wait-on@^5.2.1:
   resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-5.2.1.tgz#05b66fcb4d7f5da01537f03e7cf96e8836422996"
   integrity sha512-H2F986kNWMU9hKlI9l/ppO6tN8ZSJd35yBljMLa1/vjzWP++Qh6aXyt77/u7ySJFZQqBtQxnvm/xgG48AObXcw==
   dependencies:
+    axios "^0.21.1"
     joi "^17.3.0"
     lodash "^4.17.20"
     minimist "^1.2.5"
