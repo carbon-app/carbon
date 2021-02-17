@@ -804,6 +804,15 @@
         "translation",
         "doc"
       ]
+    },
+    {
+      "login": "mlucap",
+      "name": "Luca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36577976?v=4",
+      "profile": "https://github.com/mlucap",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
