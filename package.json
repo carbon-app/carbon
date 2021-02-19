@@ -1,7 +1,7 @@
 {
-  "name": "carbon",
+  "name": "3xz",
   "description": "Create and share beautiful images of your source code",
-  "version": "4.7.30",
+  "version": "1.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -99,5 +99,14 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "keywords": [
+    "3xz"
+  ],
+  "author": "Arghya Ghosh"
 }
