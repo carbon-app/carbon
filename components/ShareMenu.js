@@ -40,7 +40,7 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
           {tweeting ? 'Loading…' : 'Tweet'}
         </Button>
         <Button
-          id="export-menu"
+          id="share-menu"
           border
           large
           center
@@ -48,9 +48,9 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
           padding="0 8px"
           margin="0 8px 0 -1px"
           onClick={toggleVisibility}
-          data-cy="export-button"
+          data-cy="share-button"
           style={{ borderBottomLeftRadius: 0, borderTopLeftRadius: 0 }}
-          title="Export menu dropdown"
+          title="Share menu dropdown"
         >
           <ArrowDown color={COLORS.BLUE} />
         </Button>
