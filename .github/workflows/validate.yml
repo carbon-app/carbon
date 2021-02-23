@@ -6,16 +6,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12.x
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
       - name: npm install, lint, build, and test
         run: |
-          npm install
-          npm run lint
-          npm run build
+          yarn
+          npm run lint --if-present
+          npm run build --if-present
           npm start & npx wait-on http://localhost:3000 && npm run cy:run -- --config baseUrl=http://localhost:3000
           # --record --key 26c0b9eb-40f9-4ca6-b91d-a39f03652011
         env:
