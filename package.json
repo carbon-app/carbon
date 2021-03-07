@@ -65,7 +65,6 @@
     "react-dom": "^17.0.1",
     "react-image-crop": "^6.0.16",
     "react-mailchimp-subscribe": "^2.1.0",
-    "react-stripe-elements": "^6.1.2",
     "serialize-javascript": "^5.0.1",
     "tohash": "^1.0.2",
     "use-climate-change-reminder": "^0.0.7"

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
 import { useAsyncCallback } from 'actionsack'
 
 import Button from './Button'
@@ -24,22 +23,11 @@ const X = (
   </svg>
 )
 
-function Billing(props) {
+export default function Billing() {
   const user = useAuth()
 
-  const [submit, { error, loading, data: success }] = useAsyncCallback(async e => {
-    e.preventDefault()
-
-    const name = e.target.name.value.trim()
-
-    const res = await props.stripe.createToken({ name })
-
-    if (res.error) {
-      throw res.error.message
-    }
-
-    return {}
-  })
+  const [submit, { error, loading }] = useAsyncCallback(() => true)
+  const success = true
 
   if (!user) {
     return (
@@ -70,10 +58,9 @@ function Billing(props) {
           <p className="success">
             However, Carbon Diamond is not quite ready yet.
             <br />
-            Your card has <u>not</u> been charged or saved today.
+            {/* Your card has <u>not</u> been charged or saved today. */}
             <br />
-            We greatly appreciate your support, and will contact you when these premium features
-            launch!
+            We greatly appreciate your support, and will let you know when premium features launch!
           </p>
           <p className="success">
             — the Carbon Team{' '}
@@ -92,32 +79,7 @@ function Billing(props) {
           <p>Please enter a credit or debit card:</p>
           <form onSubmit={submit}>
             <fieldset>
-              <CardElement
-                {...{
-                  iconStyle: 'solid',
-                  style: {
-                    base: {
-                      iconColor: COLORS.BLUE,
-                      color: COLORS.BLUE,
-                      fontWeight: 500,
-                      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-                      fontSize: '16px',
-                      fontSmoothing: 'antialiased',
-
-                      ':-webkit-autofill': {
-                        color: '#fce883',
-                      },
-                      '::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)',
-                      },
-                    },
-                    invalid: {
-                      iconColor: COLORS.RED,
-                      color: COLORS.RED,
-                    },
-                  },
-                }}
-              />
+              {/** Insert Stripe element here */}
               <hr />
               <Input placeholder="Cardholders's name…" name="name" required />
             </fieldset>
@@ -259,21 +221,5 @@ function Billing(props) {
         `}
       </style>
     </div>
-  )
-}
-
-const BillingWithStripe = injectStripe(Billing)
-
-export default function BillingPage() {
-  const [stripe, setStripe] = React.useState(null)
-  React.useEffect(() => {
-    setStripe(window.Stripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY))
-  }, [])
-  return (
-    <StripeProvider stripe={stripe}>
-      <Elements>
-        <BillingWithStripe />
-      </Elements>
-    </StripeProvider>
   )
 }

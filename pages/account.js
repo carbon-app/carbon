@@ -1,13 +1,11 @@
 // Theirs
 import React from 'react'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 // Ours
 import Button from '../components/Button'
 import Page from '../components/Page'
 import MenuButton from '../components/MenuButton'
-import { MetaLinks } from '../components/Meta'
 import { useAuth } from '../components/AuthContext'
 
 import { loginGitHub, logout } from '../lib/client'
@@ -250,10 +248,6 @@ function Settings() {
 function SettingsPage() {
   return (
     <Page flex={true}>
-      <Head>
-        <script src="https://js.stripe.com/v3/" />
-      </Head>
-      <MetaLinks />
       <Settings />
     </Page>
   )
