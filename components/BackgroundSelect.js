@@ -5,7 +5,7 @@ import ColorPicker from './ColorPicker'
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
 import { COLORS, DEFAULT_BG_COLOR } from '../lib/constants'
-import { stringifyRGBA } from '../lib/util'
+import { stringifyColor } from '../lib/util'
 
 function validateColor(str) {
   if (/#\d{3,6}|rgba{0,1}\(.*?\)/gi.test(str) || /\w+/gi.test(str)) {
@@ -20,7 +20,7 @@ class BackgroundSelect extends React.PureComponent {
     }
   }
 
-  handlePickColor = ({ rgb }) => this.props.onChange({ backgroundColor: stringifyRGBA(rgb) })
+  handlePickColor = color => this.props.onChange({ backgroundColor: stringifyColor(color) })
 
   render() {
     const {

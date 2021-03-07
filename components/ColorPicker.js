@@ -2,6 +2,7 @@ import React from 'react'
 import SketchPicker from 'react-color/lib/Sketch'
 
 import { COLORS } from '../lib/constants'
+import { stringifyColor } from '../lib/util'
 
 const pickerStyle = {
   backgroundColor: COLORS.BLACK,
@@ -18,7 +19,7 @@ export default function ColorPicker(props) {
       <SketchPicker
         styles={{ picker: style || pickerStyle }}
         onChange={setColor}
-        color={color}
+        color={typeof color === 'string' ? color : stringifyColor(color)}
         onChangeComplete={onChange}
         presetColors={presets}
         disableAlpha={disableAlpha}
