@@ -25,24 +25,27 @@ export default function ColorPicker(props) {
       />
       <style jsx>
         {`
-            /* react-color overrides */
-            :global(.sketch-picker > div:nth-child(3) > div > div > span) {
-              color: ${COLORS.SECONDARY} !important
-            }
+          /* react-color overrides */
+          :global(.sketch-picker > div:nth-child(3) > div > div > input) {
+            width: 100% !important;
+            box-shadow: none;
+            outline: none;
+            border-radius: 2px;
+            background: ${COLORS.DARK_GRAY};
+            color: #fff !important;
+          }
 
-            :global(.sketch-picker > div:nth-child(3) > div > div > input) {
-              width: 100% !important
-              box-shadow: none
-              outline: none
-              border-radius: 2px
-              background: ${COLORS.DARK_GRAY}
-              color: #fff !important
-            }
+          :global(.sketch-picker
+              > div:nth-child(2)
+              > div:nth-child(1)
+              > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
+            background: #fff;
+          }
 
-            :global(.sketch-picker > div:nth-child(2) > div:nth-child(1) > div:nth-child(2), .sketch-picker > div:nth-child(2) > div:nth-child(2)) {
-              background: #fff
-            }
-          `}
+          :global(.sketch-picker label) {
+            color: ${COLORS.SECONDARY} !important;
+          }
+        `}
       </style>
     </React.Fragment>
   )
