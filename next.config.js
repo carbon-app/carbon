@@ -55,7 +55,7 @@ module.exports = withBundleAnalyzer(
         {
           source: '/offsets',
           destination:
-            'https://wren.link/join/carbon?utm_campaign=share&utm_medium=profile_referral_link',
+            'https://www.wren.co/join/carbon?utm_campaign=share&utm_medium=profile_referral_link',
           permanent: false,
         },
       ]
