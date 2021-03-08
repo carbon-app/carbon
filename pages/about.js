@@ -1,22 +1,52 @@
-import { React, useState, useEffect } from 'react'
+import React from 'react'
 import Page from '../components/Page'
 
-export default function About() {
-  const [contributors, setContributors] = useState([])
+function Contributors() {
+  const [contributors, setContributors] = React.useState([])
 
-  useEffect(() => {
-    const fetchContributors = async () => {
-      const response = await fetch(
-        'https://api.github.com/repos/carbon-app/carbon/contributors?per_page=100'
+  React.useEffect(() => {
+    fetch('https://api.github.com/repos/carbon-app/carbon/contributors?per_page=100')
+      .then(response => response.json())
+      .then(contributors =>
+        setContributors(contributors.filter(contributor => !contributor.login.endsWith('[bot]')))
       )
-      const contributors = await response.json()
-
-      setContributors(contributors.filter(contributor => !contributor.login.endsWith('[bot]')))
-    }
-
-    fetchContributors()
   }, [])
 
+  return (
+    <div className="contributors-wrapper">
+      {contributors.map(contributor => (
+        <a key={contributor.id} href={contributor.html_url} target="_blank" rel="noreferrer">
+          <img alt={contributor.login} className="contributor" src={contributor.avatar_url} />
+        </a>
+      ))}
+      <style jsx>
+        {`
+          .contributors-wrapper {
+            margin-bottom: 50px;
+          }
+
+          .contributor {
+            border-radius: 50%;
+            border: 2px solid white;
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            transition: all 300ms ease;
+            margin-bottom: 8px;
+            opacity: 0.7;
+          }
+
+          .contributor:hover {
+            opacity: 1;
+            transition: all 0.4s ease;
+          }
+        `}
+      </style>
+    </div>
+  )
+}
+
+export default function About() {
   return (
     <Page>
       <div className="about">
@@ -144,13 +174,7 @@ export default function About() {
             </a>
           </p>
           <br />
-          <div className="contributors-wrapper">
-            {contributors.map(contributor => (
-              <a key={contributor.id} href={contributor.html_url} target="_blank" rel="noreferrer">
-                <img alt={contributor.login} className="contributor" src={contributor.avatar_url} />
-              </a>
-            ))}
-          </div>
+          <Contributors />
         </div>
       </div>
       <style jsx>
@@ -200,29 +224,6 @@ export default function About() {
           kbd {
             margin-left: var(--x3);
             letter-spacing: 0.1em;
-          }
-
-          .contributors-wrapper {
-            justify-content: left;
-            align-items: left;
-            text-align: left;
-            margin-bottom: 50px;
-          }
-
-          .contributor {
-            border-radius: 50%;
-            border: 2px solid white;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            margin-right: 10px;
-            transition: all 0.4s ease;
-            margin-bottom: 5px;
-          }
-
-          .contributor:hover {
-            opacity: 0.5;
-            transition: all 0.4s ease;
           }
         `}
       </style>
