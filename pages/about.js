@@ -1,7 +1,22 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 import Page from '../components/Page'
 
 export default function About() {
+  const [contributors, setContributors] = useState([])
+
+  useEffect(() => {
+    const fetchContributors = async () => {
+      const response = await fetch(
+        'https://api.github.com/repos/carbon-app/carbon/contributors?per_page=500'
+      )
+      const contributors = await response.json()
+
+      setContributors(contributors.filter(contributor => !contributor.login.includes('[bot]')))
+    }
+
+    fetchContributors()
+  }, [])
+
   return (
     <Page>
       <div className="about">
@@ -120,13 +135,22 @@ export default function About() {
             </tbody>
           </table>
         </div>
-        <div>
-          <h2>I want to make this better.</h2>
+
+        <div className="mb4">
+          <h2>Contributors</h2>
           <p>
             <a className="link" href="https://github.com/carbon-app/carbon#contribute--support">
-              Contributors welcome!
+              Contributors welcome to Carbon on Github.
             </a>
           </p>
+          <br />
+          <div className="contributors-wrapper">
+            {contributors.map(contributor => (
+              <a key={contributor.id} href={contributor.html_url} target="_blank" rel="noreferrer">
+                <img alt={contributor.login} className="contributor" src={contributor.avatar_url} />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
       <style jsx>
@@ -176,6 +200,29 @@ export default function About() {
           kbd {
             margin-left: var(--x3);
             letter-spacing: 0.1em;
+          }
+
+          .contributors-wrapper {
+            justify-content: left;
+            align-items: left;
+            text-align: left;
+            margin-bottom: 50px;
+          }
+
+          .contributor {
+            border-radius: 50%;
+            border: 2px solid white;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.4s ease;
+            margin-bottom: 5px;
+          }
+
+          .contributor:hover {
+            opacity: 0.5;
+            transition: all 0.4s ease;
           }
         `}
       </style>
