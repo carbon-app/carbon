@@ -29,12 +29,10 @@ function Contributors() {
             margin-right: 12px;
             transition: all 300ms ease;
             margin-bottom: 8px;
-            opacity: 0.7;
           }
 
           .contributor:hover {
-            opacity: 1;
-            transition: all 0.4s ease;
+            opacity: 0.8;
           }
         `}
       </style>
