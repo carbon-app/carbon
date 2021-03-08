@@ -19,6 +19,9 @@ const Footer = () => (
       <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>
+      <a className="link" href="/contributors">
+        contributors
+      </a>
       <a className="link" href="/terms">
         terms
       </a>
