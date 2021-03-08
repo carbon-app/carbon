@@ -16,6 +16,8 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
   const [onClickTweet, { loading: tweeting }] = useAsyncCallback(tweet)
   const [onClickImgur, { loading: imguring }] = useAsyncCallback(imgur)
 
+  const share_as_tweet = "https://twitter.com/intent/tweet?text=Check out carbon.now.sh [@carbon_app] - create and share beautiful code snippets!"
+
   if (!api || !api.tweet) {
     return null
   }
@@ -60,6 +62,14 @@ function ShareMenu({ isVisible, toggleVisibility, tweet, imgur }) {
           <Button padding="8px" color={COLORS.BLUE} onClick={onClickImgur}>
             {imguring ? 'Uploading...' : 'Upload to Imgur (beta)'}
           </Button>
+        </div>
+
+        <div className="share-row flex">
+          <a href={share_as_tweet} target="_blank" rel="noreferrer">
+          <Button padding="8px" color={COLORS.BLUE}>
+            Share to Twitter (beta)
+          </Button>
+          </a>
         </div>
       </Popout>
       <style jsx>
