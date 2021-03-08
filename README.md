@@ -74,7 +74,10 @@
       <td>
         <a href="/docs/README.in.md">Indonesia</a>
       </td>
-       <td>
+      <td>
+        <a href="/docs/README.ua.md">Українська</a>
+      </td>
+      <td>
         <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
     </tr>
