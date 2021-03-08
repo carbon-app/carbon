@@ -7,11 +7,11 @@ export default function About() {
   useEffect(() => {
     const fetchContributors = async () => {
       const response = await fetch(
-        'https://api.github.com/repos/carbon-app/carbon/contributors?per_page=500'
+        'https://api.github.com/repos/carbon-app/carbon/contributors?per_page=100'
       )
       const contributors = await response.json()
 
-      setContributors(contributors.filter(contributor => !contributor.login.includes('[bot]')))
+      setContributors(contributors.filter(contributor => !contributor.login.endsWith('[bot]')))
     }
 
     fetchContributors()
@@ -137,10 +137,10 @@ export default function About() {
         </div>
 
         <div className="mb4">
-          <h2>Contributors</h2>
+          <h2>I want to make this better.</h2>
           <p>
             <a className="link" href="https://github.com/carbon-app/carbon#contribute--support">
-              Contributors welcome to Carbon on Github.
+              Contributors welcome!
             </a>
           </p>
           <br />
