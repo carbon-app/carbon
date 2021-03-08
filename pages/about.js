@@ -13,7 +13,7 @@ function Contributors() {
   }, [])
 
   return (
-    <div className="contributors-wrapper">
+    <div>
       {contributors.map(contributor => (
         <a key={contributor.id} href={contributor.html_url} target="_blank" rel="noreferrer">
           <img alt={contributor.login} className="contributor" src={contributor.avatar_url} />
@@ -21,10 +21,6 @@ function Contributors() {
       ))}
       <style jsx>
         {`
-          .contributors-wrapper {
-            margin-bottom: 50px;
-          }
-
           .contributor {
             border-radius: 50%;
             border: 2px solid white;
@@ -165,8 +161,7 @@ export default function About() {
             </tbody>
           </table>
         </div>
-
-        <div className="mb4">
+        <div>
           <h2>I want to make this better.</h2>
           <p>
             <a className="link" href="https://github.com/carbon-app/carbon#contribute--support">
