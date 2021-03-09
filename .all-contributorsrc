@@ -18,7 +18,8 @@
     "docs/README.ta.md",
     "docs/README.tr.md",
     "docs/README.tw.md",
-    "docs/README.in.md"
+    "docs/README.in.md",
+    "docs/README.ua.md",
   ],
   "imageSize": 100,
   "commit": false,
