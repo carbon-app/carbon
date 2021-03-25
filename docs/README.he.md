@@ -49,7 +49,7 @@
 
 <ul dir="rtl">
   <li>שחררו קובץ מעל העורך</li>
-  <li>הוסיפו GitHub gist ID לכתובת (לדוגמה <code><a href="https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8">carbon.now.sh/&lt;gist_id_goes_here&gt;</code></a>)
+  <li>הוסיפו GitHub gist ID לכתובת (לדוגמה <code dir="ltr"><a href="https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8">carbon.now.sh/&lt;gist_id_goes_here&gt;</code></a>)
   <li>או פשוט תתחילו לכתוב!</li>
 </li>
 </ul>
@@ -86,14 +86,12 @@
 
 <p dir="rtl">כפתור הציוץ ישתף את התמונה בטוויטר, אך גם יקודד את הטקסט של ה<code>alt</code> בצורה נכונה על מנת להבטיח שהתמונות שלכם נגישות. עם זאת, אם אתם רוצים לצייץ את התמונה בעצמכם, בבקשה תבדקו <a href="https://help.twitter.com/en/using-twitter/picture-descriptions">איך להפוך את תמונות הטוויטר שלכם לנגישות</a>.</p>
 
-##### Download the image directly
 <h5 dir="rtl">הורדת התמונה ישירות</h5>
 
 <p dir="rtl">Carbon תומך בהורדת התמונות שלכם כPNG וכSVG. אתם גם יכולים ללחוץ על <code>Export → Open</code> כדי לפתוח את התמונה שלכם ישירות בדפדפן. לסיום, אתם יכולים להעתיק את תמונת הCarbon ישירות ללוח ההעתקה שלכם בעזרת לחיצה על <code>Copy → Image</code>.</p>
 
 <h4 dir="rtl">התקנת Carbon לשולחן העבודה (לא מקוון)</h4>
 
-If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
 <p dir="rtl">אם אתם משתמשים בגוגל כרום, או דפדפן אחר שתומך בProgressive Web Apps, אתם יכולים להתקין את Carbon לשימוש במצב לא מקוון כך:</p>
 
 <ol dir="rtl">
