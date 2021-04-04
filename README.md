@@ -51,11 +51,11 @@
       <td>
         <a href="/docs/README.ta.md">தமிழ்</a>
       </td>
-    </tr>
-    <tr>      
       <td>
         <a href="/docs/README.fr.md">Français</a>
       </td>
+    </tr>
+    <tr>      
       <td>
         <a href="/docs/README.ja.md">日本語</a>
       </td>
@@ -80,8 +80,6 @@
       <td>
         <a href="/docs/README.it.md">Italiano</a>
       </td>
-    </tr>
-    <tr>
       <td>
         <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
