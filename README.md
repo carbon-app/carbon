@@ -39,6 +39,8 @@
       <td>
         <a href="/docs/README.br.pt.md">Português</a>
       </td>
+    </tr>
+    <tr>
       <td>
         <a href="/docs/README.ml.md">മലയാളം</a>
       </td>
@@ -65,12 +67,14 @@
       <td>
         <a href="/docs/README.pl.md">Polski</a>
       </td>
-      <td align="center">
+      <td>
         <a href="/docs/README.nl.md">Nederlands</a>
       </td>
       <td>
         <a href="/docs/README.tw.md">臺灣</a>
       </td>
+    </tr>
+    <tr>
       <td>
         <a href="/docs/README.in.md">Indonesia</a>
       </td>
