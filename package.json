@@ -85,6 +85,9 @@
     "now-release": "^0.0.2",
     "wait-on": "^5.2.1"
   },
+  "resolutions": {
+    "sharp": "^0.28.0"
+  },
   "lint-staged": {
     "*.js": [
       "npm run lint",
