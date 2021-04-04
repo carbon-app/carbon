@@ -834,6 +834,24 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "LorenzoLancia",
+      "name": "Lorenzo Lancia",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44911690?v=4",
+      "profile": "https://github.com/LorenzoLancia",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Guy-Adler",
+      "name": "Guy Adler",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44903310?v=4",
+      "profile": "https://github.com/Guy-Adler",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
