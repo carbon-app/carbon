@@ -81,6 +81,9 @@
         <a href="/docs/README.it.md">Italiano</a>
       </td>
       <td>
+        <a href="/docs/README.he.md" dir="rtl">עברית</a>
+      </td>
+      <td>
         <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
     </tr>
