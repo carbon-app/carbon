@@ -22,7 +22,6 @@ import {
   DEFAULT_SETTINGS,
   THEMES_HASH,
 } from '../lib/constants'
-import '../lib/custom/autoCloseBrackets'
 
 const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
   loading: () => null,
@@ -378,6 +377,9 @@ let modesLoaded = false
 function useModeLoader() {
   React.useEffect(() => {
     if (!modesLoaded) {
+      // Load Codemirror add-ons
+      require('../lib/custom/autoCloseBrackets')
+      // Load Codemirror modes
       LANGUAGES.filter(
         language => language.mode && language.mode !== 'auto' && language.mode !== 'text'
       ).forEach(language => {
