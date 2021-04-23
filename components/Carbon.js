@@ -22,6 +22,7 @@ import {
   DEFAULT_SETTINGS,
   THEMES_HASH,
 } from '../lib/constants'
+import '../lib/custom/autoCloseBrackets'
 
 const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
   loading: () => null,
@@ -168,6 +169,7 @@ class Carbon extends React.PureComponent {
       },
       readOnly: this.props.readOnly,
       showInvisibles: config.hiddenCharacters,
+      autoCloseBrackets: true,
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
