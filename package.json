@@ -48,8 +48,6 @@
     "firebase": "^8.2.3",
     "graphql": "^15.4.0",
     "highlight.js": "^10.5.0",
-    "kind-of": "^6.0.3",
-    "lodash": "^4.17.20",
     "lodash.debounce": "^4.0.8",
     "lodash.omitby": "^4.6.0",
     "match-sorter": "^6.1.0",
@@ -65,7 +63,6 @@
     "react-dom": "^17.0.1",
     "react-image-crop": "^6.0.16",
     "react-mailchimp-subscribe": "^2.1.0",
-    "serialize-javascript": "^5.0.1",
     "tohash": "^1.0.2",
     "use-climate-change-reminder": "^0.0.7"
   },
@@ -86,7 +83,10 @@
     "wait-on": "^5.2.1"
   },
   "resolutions": {
-    "sharp": "^0.28.0"
+    "kind-of": "^6.0.3",
+    "lodash": "^4.17.2",
+    "serialize-javascript": "^5.0.1",
+    "sharp": "^0.28.1"
   },
   "lint-staged": {
     "*.js": [
