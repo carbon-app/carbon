@@ -83,7 +83,7 @@
 
 ## Perkenalan
 
-Tahukah Anda [semua](https://twitter.com/dan_abramov/status/890191815567175680) [dari hasil](https://twitter.com/reactjs/status/890511993261654017) [tangkapan layar kode sumber](https://twitter.com/notquiteleo/status/873483329345028096) yang nda lihat di twitter? Meskipun kodenya biasanya mengesankan, kami melihat ruang untuk peningkatan dalam nilai estetika. Carbon memudahkan Anda untuk membuat dan berbagi kode sumber Anda menjadi gambar yang indah. Jadi tunggu apalagi? Buat semua pengikut Anda terkesan dengan keterampilan desain baru Anda.
+Tahukah Anda [semua](https://twitter.com/dan_abramov/status/890191815567175680) [dari hasil](https://twitter.com/reactjs/status/890511993261654017) [tangkapan layar kode sumber](https://twitter.com/notquiteleo/status/873483329345028096) yang Anda lihat di twitter? Meskipun kodenya biasanya mengesankan, kami melihat ruang untuk peningkatan dalam nilai estetika. Carbon memudahkan Anda untuk membuat dan berbagi kode sumber Anda menjadi gambar yang indah. Jadi tunggu apalagi? Buat semua pengikut Anda terkesan dengan keterampilan desain baru Anda.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
