@@ -28,7 +28,7 @@ describe('security', () => {
     cy.visit(`/offsets`)
     cy.url().should(
       'eq',
-      'https://www.wren.co/join/carbon?utm_campaign=share&utm_medium=profile_referral_link'
+      'https://www.wren.co/join/carbon?utm_medium=profile_referral_link&utm_campaign=share'
     )
   })
   it('/privacy -> Privacy policy', () => {
