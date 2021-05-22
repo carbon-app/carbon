@@ -2,7 +2,10 @@
   "alias": "carbon.now.sh",
   "version": 2,
   "public": true,
-  "builds": [{ "src": "package.json", "use": "@now/next" }],
+  "builds": [
+    { "src": "package.json", "use": "@now/next" },
+    { "src": "api/image/index.js", "use": "@now/node", "config": { "maxLambdaSize": "40mb" } }
+  ],
   "routes": [
     {
       "src": "^/service-worker.js$",
@@ -10,7 +13,18 @@
       "headers": {
         "Service-Worker-Allowed": "/"
       }
-    }
+    },
+    {
+      "src": "/api/oembed",
+      "dest": "api/oembed.js",
+      "headers": { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*" }
+    },
+    {
+      "src": "/api/image/?(?<id>[^/]*)",
+      "dest": "api/image/index.js?id=$id",
+      "methods": ["POST", "GET"]
+    },
+    { "src": "/api/.*", "status": 404 }
   ],
   "github": {
     "autoAlias": false,
