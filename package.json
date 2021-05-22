@@ -34,7 +34,7 @@
     "actionsack": "^0.0.14",
     "axios": "^0.21.1",
     "cm-show-invisibles": "^3.1.0",
-    "codemirror": "5.61.0",
+    "codemirror": "5.61.1",
     "codemirror-graphql": "^1.0.1",
     "codemirror-mode-elixir": "^1.1.2",
     "codemirror-solidity": "^0.2.3",
