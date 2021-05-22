@@ -16,7 +16,6 @@ const ThemeCreate = dynamic(() => import('./ThemeCreate'), {
 const ThemeItem = ({ children, item, isSelected, remove }) => (
   <div className="theme-item">
     {children}
-    {/* TODO only show if isSelected */}
     {item.referral && (
       <div style={{ margin: `0 ${isSelected ? 8 : 0}px 0 8px` }}>
         <ReferralLink href={item.referral}>Purchase</ReferralLink>
