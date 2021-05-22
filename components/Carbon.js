@@ -168,6 +168,7 @@ class Carbon extends React.PureComponent {
       },
       readOnly: this.props.readOnly,
       showInvisibles: config.hiddenCharacters,
+      autoCloseBrackets: true,
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -376,6 +377,9 @@ let modesLoaded = false
 function useModeLoader() {
   React.useEffect(() => {
     if (!modesLoaded) {
+      // Load Codemirror add-ons
+      require('../lib/custom/autoCloseBrackets')
+      // Load Codemirror modes
       LANGUAGES.filter(
         language => language.mode && language.mode !== 'auto' && language.mode !== 'text'
       ).forEach(language => {
