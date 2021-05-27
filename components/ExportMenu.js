@@ -8,6 +8,12 @@ import Popout, { managePopout } from './Popout'
 
 import { Down as ArrowDown } from './svg/Arrows'
 
+  //Random ID string generates
+  const RandomString = () => {
+    let str = require("crypto").randomBytes(8).toString("hex");
+    return str;
+  };
+
 const MAX_PAYLOAD_SIZE = 5e6 // bytes
 function verifyPayloadSize(str) {
   if (typeof str !== 'string') return true
@@ -59,10 +65,11 @@ function ExportMenu({
   const disablePNG = isSafari && (tooLarge || !online)
 
   const handleExportSizeChange = selectedSize => () => onChange('exportSize', selectedSize)
-
+// Because i face carbon.png already exists then please add this functionality to generate random strings 
+ // you can use template literal `CreatedbyCarbonApp${RandomString()}`
   const handleExport = format => () =>
     exportImage(format, {
-      filename: input.current && input.current.value,
+        filename.length>5?(input.current && input.current.value):RandomString()
     })
 
   useKeyboardListener('⌘-⇧-e', preventDefault(handleExport('png')))
