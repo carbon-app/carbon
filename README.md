@@ -71,7 +71,7 @@
         <a href="/docs/README.nl.md">Nederlands</a>
       </td>
       <td>
-        <a href="/docs/README.tw.md">臺灣</a>
+        <a href="/docs/README.tw.zh.md">正體中文</a>
       </td>
     </tr>
     <tr>
