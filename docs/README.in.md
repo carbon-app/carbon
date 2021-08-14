@@ -83,7 +83,7 @@
 
 ## Perkenalan
 
-Tahukah Anda [semua](https://twitter.com/dan_abramov/status/890191815567175680) [dari hasil](https://twitter.com/reactjs/status/890511993261654017) [tangkapan layar kode sumber](https://twitter.com/notquiteleo/status/873483329345028096) yang Anda lihat di twitter? Meskipun kodenya biasanya mengesankan, kami melihat ruang untuk peningkatan dalam nilai estetika. Carbon memudahkan Anda untuk membuat dan berbagi kode sumber Anda menjadi gambar yang indah. Jadi tunggu apalagi? Buat semua pengikut Anda terkesan dengan keterampilan desain baru Anda.
+Tahukah Anda [dari](https://twitter.com/dan_abramov/status/890191815567175680) [semua hasil](https://twitter.com/reactjs/status/890511993261654017) [tangkapan layar kode sumber](https://twitter.com/notquiteleo/status/873483329345028096) yang Anda lihat di twitter? Meskipun kodenya biasanya mengesankan, kami melihat peluang untuk peningkatan dalam nilai estetika. Carbon memudahkan Anda untuk membuat dan berbagi kode sumber Anda menjadi sebuah gambar yang indah. Jadi tunggu apalagi? Buat semua pengikut Anda terkesan dengan keterampilan desain baru Anda.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
@@ -91,9 +91,9 @@ Tahukah Anda [semua](https://twitter.com/dan_abramov/status/890191815567175680) 
 
 ## Fitur
 
-- **Personalisasi**. Sesuaikan berbagai hal untuk gambar Anda seperti tema sintaksis, font, dan lainnya
-- **Bagikan dengan cepat**. Simpan atau bagikan gambar Anda dengan satu kali klik
-- **Simpan Potongan**. Buat akun untuk menyimpan potongan untuk nanti. Potongan akan dibagikan secara otomatis di Twitter dan Slack.
+- **Personalisasi**. Anda dapat menyesuaikan berbagai hal untuk gambar yang Anda buat, contohnya seperti tema sintaksis, font, dan lainnya
+- **Bagikan dengan cepat**. Anda dapat menyimpan atau membagikan gambar yang Anda buat dengan satu kali klik
+- **Simpan Potongan**. Anda dapat membuat akun untuk menyimpan potongan kode yang dapat digunakan nanti. Potongan akan dibagikan secara otomatis di Twitter dan Slack.
 
 ## Penggunaan
 
@@ -103,21 +103,21 @@ Ada beberapa cara berbeda untuk mengimpor kode ke Carbon:
 
 - Menyeret file ke dalam editor
 - Menambahkan GitHub gist ID ke URL (misalnya. [`carbon.now.sh/<gist_id_disimpan_disini>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
-- Atau mulailah dengan mengetik!
+- Atau Anda dapat memulai dengan mengetik kode secara langsung!
 
 #### Kostumisasi
 
-Setelah anda telah memiliki semua kode di Carbon, Anda dapat menyesuaikan gambar Anda dengan mengubah tema sintaks, warna latar belakang, tema jendela, padding, bayangan, font, dan banyak lagi.
+Setelah Anda telah menaruh semua kode di Carbon, Anda dapat menyesuaikan gambar Anda dengan mengubah tema sintaks, warna latar belakang, tema jendela, padding, bayangan, font, dan masih banyak lagi.
 
-#### Mengekspor & Berbagi
+#### Mengekspor Dan Berbagi
 
 Setelah Anda menyesuaikan gambar Anda, Anda dapat membagikannya dengan berbagai cara.
 
 ##### Buat potongan kode untuk disimpan
 
-Saat membagikan potongan kode yang disimpan, gambar akan secara otomatis membagikan di platform seperti Twitter dan Slack. Dengan cara ini pengguna lain dapat melihat kreasi Anda, sekaligus memberi mereka akses ke kode sumber melalui tautan tersebut. Lebih baik lagi, jika Anda ingin membuat penyesuaian, Anda dapat langsung mengikuti tautan untuk mengedit potongan kode Anda.
+Saat membagikan potongan kode yang disimpan, gambar akan secara otomatis membagikan di platform seperti Twitter dan Slack. Dengan cara ini pengguna lain dapat melihat kreasi Anda, sekaligus memberi mereka akses ke kode sumber melalui tautan tersebut. Lebih baik lagi jika Anda ingin membuat penyesuaian, Anda dapat langsung mengikuti tautan untuk mengedit potongan kode Anda.
 
-Cara membuat potongan kode yang disimpan:
+Cara membuat potongan kode yang dapat disimpan:
 
 1. Masuk menggunakan tombol "Sign in/Sign up"
 2. Edit seperti biasa - potongan kode Anda akan disimpan secara otomatis
@@ -127,17 +127,17 @@ Cara membuat potongan kode yang disimpan:
 
 Ini adalah cara yang disarankan untuk menggunakan Carbon di situs web atau blog Anda sendiri. Pengunjung bahkan dapat menyalin kode dengan menekan sebuah tombol.
 
-Anda dapat memasukkan langsung potongan kode apa pun ke situs web Carbon Anda dengan URL `carbon.now.sh/embed`. Dari menu "Copy Menu" Anda dapat dengan mudah menyalin seluruh kode iFrame, atau hanya alamat untuk penyisipan pada platform seperti Medium.
+Anda dapat memasukkan secara langsung potongan kode apapun ke situs web Carbon Anda dengan URL `carbon.now.sh/embed`. Dari menu "Copy Menu" Anda dapat dengan mudah menyalin seluruh kode iFrame, atau hanya alamat untuk disisipkan pada platform seperti Medium.
 
 Terakhir, Anda juga dapat memasukkan potongan kode atau GitHub gists menggunakan `carbon.now.sh/embed/:id`.
 
 ##### Menggunakan tombol Tweet
 
-Tombol Tweet tidak hanya memastikan bahwa gambar Anda dibagikan di Twitter, tetapi juga menambahkan gambar yang benar dengan menambahkan kode `alt` untuk memastikan gambar Anda dapat diakses. Jika Anda lebih suka men-tweet gambar itu sendiri, lihat dulu [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+Tombol Tweet tidak hanya memastikan bahwa gambar Anda dibagikan di Twitter, tetapi juga menambahkan gambar yang benar dengan menambahkan kode `alt` untuk memastikan gambar Anda dapat diakses. Jika Anda lebih suka men-tweet gambar itu sendiri, lihat terlebih dulu [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
 
 ##### Unduh gambar secara langsung
 
-Carbon mendukung pengunduhan gambar Anda sebagai PNG dan SVG. Anda juga bisa mengklik `Export → Open` untuk membuka gambar Anda langsung di browser. Terakhir, Anda dapat menyalin gambar dari Carbon langsung ke papan klip Anda dengan masuk ke `Copy → Image`.
+Carbon mendukung format gambar PNG dan SVG. Anda juga bisa mengklik `Export → Open` untuk membuka gambar Anda langsung di browser. Terakhir, Anda dapat menyalin gambar dari Carbon langsung ke papan klip Anda dengan masuk ke `Copy → Image`.
 
 #### Memasang Carbon untuk Desktop (Offline)
 
@@ -149,7 +149,7 @@ Jika Anda menggunakan browser Google Chrome, atau browser lain yang mendukung Ap
 
 ## Komunitas
 
-Lihat proyek berikut yang dibuat oleh komunitas hebat kami:
+Lihat proyek berikut yang dibuat oleh komunitas kami yang hebat:
 
 ##### Plugin Editor
 
@@ -165,7 +165,7 @@ Lihat proyek berikut yang dibuat oleh komunitas hebat kami:
 ##### Alat lainnya
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Buka file di Carbon atau unduh langsung menggunakan `carbon-now`, menampilkan mode interaktif, penyorotan selektif, dan lainnya
-- [CodeExpander](https://codeexpander.com) - adalah fitur pinter dari GitHub gist client dengan TextExpander
+- [CodeExpander](https://codeexpander.com) - adalah fitur pintar dari GitHub gist client dengan TextExpander
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Ekspor beberapa potongan kode Carbon dari `Xcode Playground`.
 - [`@carbonshbot`](https://t.me/carbonshbot) - Chatbot Telegram yang dapat mengambil potongan kode atau URL inti dan menghasilkan gambar Carbon
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - Memanipulasi tampilan gambar secara berulang dalam `R` dan membuka di Carbon atau untuk mendownload secara langsung.
@@ -191,11 +191,11 @@ Carbon adalah proyek dari:
 
 ---
 
-## Kontribusi & Dukungan
+## Kontribusi Dan Dukungan
 
 Untuk tata cara melakukan PR (Pull Request, cara berkontibusi ke dalam repositori) kita mengacu pada [panduan kontribusi](/.github/CONTRIBUTING.md) untuk lebih jelasnya.
 
-### Sponsor & Pendukung
+### Sponsor Dan Pendukung
 
 <a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="160px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
 
