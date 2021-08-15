@@ -17,16 +17,12 @@ module.exports = withBundleAnalyzer(
         include: /node_modules\/graphql-language-service-parser/,
         use: [options.defaultLoaders.babel],
       })
-      config.module.rules.push({
-        test: /\.html$/,
-        include: /node_modules/,
-        loader: 'ignore-loader'
-      })
-      config.module.rules.push({
-        test: /\.css$/,
-        include: /node_modules/,
-        loader: 'ignore-loader'
-      })
+      config.plugins.push(
+        new options.webpack.IgnorePlugin({ resourceRegExp: /\.html$/, contextRegExp: /node_modules/ })
+      )
+      config.plugins.push(
+        new options.webpack.IgnorePlugin({ resourceRegExp: /\.css$/, contextRegExp: /node_modules/ })
+      )
 
       return config
     },

@@ -9,7 +9,7 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
   plugins: ['import', 'react', 'jsx-a11y', 'react-hooks'],
   rules: {
-    'import/no-unresolved': 'error',
+    'import/no-unresolved': 'warn',
     'no-duplicate-imports': 'error',
     'react/prop-types': 'off',
     'react/display-name': 'off',
