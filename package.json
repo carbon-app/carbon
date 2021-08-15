@@ -42,7 +42,7 @@
     "dom-to-image": "^2.6.0",
     "downshift": "^6.1.3",
     "dropperx": "^1.0.1",
-    "eitherx": "^1.0.2",
+    "eitherx": "^1.0.3",
     "email-validator": "^2.0.4",
     "escape-goat": "^3.0.0",
     "firebase": "^8.6.2",

@@ -3816,10 +3816,10 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-eitherx@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/eitherx/-/eitherx-1.0.2.tgz#f4659f3621e2b60787afa31e7d0467587ef890f2"
-  integrity sha512-A3S4t6mtsEJZMNIwjYvZiaGf5rxY0ITViHW9hULTAtcYlQyckznxq9q6wEGJu3GGFLftO89yq2Lx1qzg00VJkw==
+eitherx@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/eitherx/-/eitherx-1.0.3.tgz#58de6ff60a10acb2d8eb0e64d7c734103e7f07e5"
+  integrity sha512-Isb0MWqCUjRmVAFG3atCaBs2625+NeJjYYOPfxM+Jq94e9PKoKQmgxp+i7tFH5Xe02hbCUFuli8bQpdf79ukUQ==
 
 ejs@^2.6.1:
   version "2.6.2"
