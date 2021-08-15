@@ -17,6 +17,16 @@ module.exports = withBundleAnalyzer(
         include: /node_modules\/graphql-language-service-parser/,
         use: [options.defaultLoaders.babel],
       })
+      config.module.rules.push({
+        test: /\.html$/,
+        include: /node_modules/,
+        loader: 'ignore-loader'
+      })
+      config.module.rules.push({
+        test: /\.css$/,
+        include: /node_modules/,
+        loader: 'ignore-loader'
+      })
 
       return config
     },
