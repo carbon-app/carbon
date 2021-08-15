@@ -7,13 +7,6 @@ module.exports = {
     jest: true
   },
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
-  parserOptions: {
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true
-    },
-    sourceType: 'module'
-  },
   plugins: ['import', 'react', 'jsx-a11y', 'react-hooks'],
   rules: {
     'import/no-unresolved': 'error',
