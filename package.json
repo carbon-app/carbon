@@ -26,7 +26,7 @@
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run --config-file cypress/config.json",
     "cy:open": "cypress open --config-file cypress/config.json",
-    "preinstall": "node ./node_modules/use-climate-change-reminder/index.js || exit 0"
+    "preinstall": "node ./node_modules/use-climate-change-reminder/index.js 2> /dev/null || exit 0"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.0",
