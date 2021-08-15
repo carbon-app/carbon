@@ -22,6 +22,7 @@ const HighlightPicker = ({ title, onChange, color }) => (
       <span className="capitalize">{title}</span>
     </div>
     <ColorPicker
+      key={title}
       color={color}
       onChange={onChange}
       presets={colorPresets}
