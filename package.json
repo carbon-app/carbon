@@ -44,7 +44,7 @@
     "dropperx": "^1.0.1",
     "eitherx": "^1.0.3",
     "email-validator": "^2.0.4",
-    "escape-goat": "^3.0.0",
+    "escape-goat": "^4.0.0",
     "firebase": "^8.9.1",
     "graphql": "^15.5.1",
     "highlight.js": "^10.7.2",
