@@ -3,8 +3,17 @@
   "version": 2,
   "public": true,
   "builds": [
-    { "src": "package.json", "use": "@now/next" },
-    { "src": "api/image/index.js", "use": "@now/node", "config": { "maxLambdaSize": "40mb" } }
+    {
+      "src": "package.json",
+      "use": "@now/next"
+    },
+    {
+      "src": "api/image/index.js",
+      "use": "@now/node",
+      "config": {
+        "maxLambdaSize": "40mb"
+      }
+    }
   ],
   "routes": [
     {
@@ -17,14 +26,23 @@
     {
       "src": "/api/oembed",
       "dest": "api/oembed.js",
-      "headers": { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "*" }
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*"
+      }
     },
     {
       "src": "/api/image/?(?<id>[^/]*)",
       "dest": "api/image/index.js?id=$id",
-      "methods": ["POST", "GET"]
+      "methods": [
+        "POST",
+        "GET"
+      ]
     },
-    { "src": "/api/.*", "status": 404 }
+    {
+      "src": "/api(/.*)?$",
+      "status": 404
+    }
   ],
   "github": {
     "autoAlias": false,
