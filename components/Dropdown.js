@@ -58,16 +58,8 @@ class Dropdown extends React.PureComponent {
   userInputtedValue = ''
 
   render() {
-    const {
-      innerRef,
-      color,
-      selected,
-      onChange,
-      itemWrapper,
-      icon,
-      disableInput,
-      title,
-    } = this.props
+    const { innerRef, color, selected, onChange, itemWrapper, icon, disableInput, title } =
+      this.props
     const { itemsToShow, inputValue } = this.state
 
     const labelId = title ? `${title.toLowerCase()}-dropdown` : undefined
@@ -98,51 +90,53 @@ class Dropdown extends React.PureComponent {
   }
 }
 
-const renderDropdown = ({ color, list, itemWrapper, icon, disableInput, title, labelId }) => ({
-  isOpen,
-  highlightedIndex,
-  selectedItem,
-  getRootProps,
-  getToggleButtonProps,
-  getInputProps,
-  getItemProps,
-}) => {
-  return (
-    <DropdownContainer {...getRootProps({ refKey: 'innerRef' })}>
-      {title && <VisuallyHidden id={labelId}>{title}</VisuallyHidden>}
-      <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
-      <SelectedItem
-        getToggleButtonProps={getToggleButtonProps}
-        getInputProps={getInputProps}
-        isOpen={isOpen}
-        color={color}
-        hasIcon={!!icon}
-        disabled={disableInput}
-      >
-        {selectedItem.name}
-      </SelectedItem>
-      {isOpen ? (
-        <ListItems color={color}>
-          {list.map((item, index) => (
-            <ListItem
-              key={index}
-              color={color}
-              item={item}
-              itemWrapper={itemWrapper}
-              {...getItemProps({
-                item,
-                isSelected: selectedItem.name === item.name,
-                isHighlighted: highlightedIndex === index,
-              })}
-            >
-              {item.name}
-            </ListItem>
-          ))}
-        </ListItems>
-      ) : null}
-    </DropdownContainer>
-  )
-}
+const renderDropdown =
+  ({ color, list, itemWrapper, icon, disableInput, title, labelId }) =>
+  ({
+    isOpen,
+    highlightedIndex,
+    selectedItem,
+    getRootProps,
+    getToggleButtonProps,
+    getInputProps,
+    getItemProps,
+  }) => {
+    return (
+      <DropdownContainer {...getRootProps({ refKey: 'innerRef' })}>
+        {title && <VisuallyHidden id={labelId}>{title}</VisuallyHidden>}
+        <DropdownIcon isOpen={isOpen}>{icon}</DropdownIcon>
+        <SelectedItem
+          getToggleButtonProps={getToggleButtonProps}
+          getInputProps={getInputProps}
+          isOpen={isOpen}
+          color={color}
+          hasIcon={!!icon}
+          disabled={disableInput}
+        >
+          {selectedItem.name}
+        </SelectedItem>
+        {isOpen ? (
+          <ListItems color={color}>
+            {list.map((item, index) => (
+              <ListItem
+                key={index}
+                color={color}
+                item={item}
+                itemWrapper={itemWrapper}
+                {...getItemProps({
+                  item,
+                  isSelected: selectedItem.name === item.name,
+                  isHighlighted: highlightedIndex === index,
+                })}
+              >
+                {item.name}
+              </ListItem>
+            ))}
+          </ListItems>
+        ) : null}
+      </DropdownContainer>
+    )
+  }
 
 const DropdownContainer = ({ children, innerRef, ...rest }) => {
   return (

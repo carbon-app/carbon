@@ -5,7 +5,7 @@ function userTiming({ category, status, value }) {
     window.gtag('event', status, {
       event_category: 'Performance',
       event_label: category,
-      value
+      value,
     })
   } catch (err) {
     // pass
@@ -20,7 +20,7 @@ export function usePerformanceMeasurement() {
           userTiming({
             category: 'paint',
             status: entry.name,
-            value: entry.startTime
+            value: entry.startTime,
           })
         })
         const navigationTiming = window.performance.getEntriesByType('navigation')
@@ -30,7 +30,7 @@ export function usePerformanceMeasurement() {
           userTiming({
             category: 'paint',
             status: 'time to first byte',
-            value: navigationTiming.responseEnd - navigationTiming.requestStart
+            value: navigationTiming.responseEnd - navigationTiming.requestStart,
           })
         }
 
@@ -45,7 +45,7 @@ export function usePerformanceMeasurement() {
         userTiming({
           category: 'javascript',
           status: 'script count',
-          value: javascriptFiles.length
+          value: javascriptFiles.length,
         })
 
         /*
@@ -55,7 +55,7 @@ export function usePerformanceMeasurement() {
         userTiming({
           category: 'javascript',
           status: 'script size',
-          value: javascriptFiles.reduce((sum, script) => script.encodedBodySize + sum, 0)
+          value: javascriptFiles.reduce((sum, script) => script.encodedBodySize + sum, 0),
         })
       }
     } catch (error) {
