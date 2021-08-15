@@ -11,24 +11,26 @@ module.exports = withBundleAnalyzer(
     workboxOpts: {
       swDest: 'static/service-worker.js',
     },
+    webpack5: false,
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.js$/,
         include: /node_modules\/graphql-language-service-parser/,
         use: [options.defaultLoaders.babel],
       })
-      config.plugins.push(
-        new options.webpack.IgnorePlugin({
-          resourceRegExp: /\.html$/,
-          contextRegExp: /node_modules/,
-        })
-      )
-      config.plugins.push(
-        new options.webpack.IgnorePlugin({
-          resourceRegExp: /\.css$/,
-          contextRegExp: /node_modules\/codemirror\/mode/,
-        })
-      )
+      // Enable w/ Webpack 5
+      // config.plugins.push(
+      //   new options.webpack.IgnorePlugin({
+      //     resourceRegExp: /\.html$/,
+      //     contextRegExp: /node_modules/,
+      //   })
+      // )
+      // config.plugins.push(
+      //   new options.webpack.IgnorePlugin({
+      //     resourceRegExp: /\.css$/,
+      //     contextRegExp: /node_modules\/codemirror\/mode/,
+      //   })
+      // )
 
       return config
     },
