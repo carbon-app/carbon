@@ -84,6 +84,8 @@
   },
   "resolutions": {
     "@grpc/grpc-js": "^1.3.7",
+    "acorn": "^7.1.1",
+    "glob-parent": "^5.1.2",
     "kind-of": "^6.0.3",
     "lodash": "^4.17.2",
     "serialize-javascript": "^6.0.0",
