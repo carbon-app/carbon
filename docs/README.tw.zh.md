@@ -21,7 +21,7 @@
 
 ## 簡介
 
-你見過 Twitter 上面的 [這 些](https://twitter.com/dan_abramov/status/890191815567175680) [程式碼](https://twitter.com/reactjs/status/890511993261654017) [圖片](https://twitter.com/notquiteleo/status/873483329345028096) 嗎? 雖然這些程式碼令人印象深刻，但從美觀程度來說還有提升空間。Carbon 能夠輕鬆地將你的原始碼生成漂亮的圖片並分享。還等什麼呢？用這個新發現的美化工具秀給你的 followers 看吧。
+你見過 Twitter 上面的 [這些](https://twitter.com/dan_abramov/status/890191815567175680) [程式碼](https://twitter.com/reactjs/status/890511993261654017) [圖片](https://twitter.com/notquiteleo/status/873483329345028096) 嗎? 雖然這些程式碼令人印象深刻，但從美觀程度來說還有提升空間。Carbon 能夠輕鬆地將你的原始碼產生漂亮的圖片並分享。還等什麼呢？用這個新發現的美化工具秀給你的 followers 看吧。
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
@@ -29,35 +29,51 @@
 
 ## 特色
 
-- **訂製化**：訂製選項包括圖片的語法主題、字體樣式等
-- **快速分享**：一鍵生成圖片或網址並分享
+- **客製化**：訂製選項包括圖片的語法主題、字體樣式等
+- **快速分享**：一鍵產生圖片或網址並分享
 - **儲存記錄**：建立帳號來儲存程式碼片段，已分享的程式碼會自動展開至 Twitter 和 Slack
 
 ## 使用
 
-#### 　
+#### 匯入
 
-有幾種不同的方法可以將程式碼輸入到 Carbon：
+有幾種不同的方法可以將程式碼匯入到 Carbon：
 
 - 把檔案拖曳到編輯器中
 - 在 carbon url 後面加上 GitHub gist id （例如 [`carbon.now.sh/你的_gist_id`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8)）
-- 直接貼上程式碼！
+- 或是直接貼上程式碼！
 
-#### 訂製化
+#### 客製化
 
-當你把程式碼輸入到 Carbon 後，你可以調整程式碼圖片。訂製選項包括語法主題、背景顏色、視窗主題、padding、陰影、字體等等。
+當你把程式碼輸入到 Carbon 後，你可以調整程式碼圖片。客製選項包括語法主題、背景顏色、視窗主題、邊距、陰影、字體等等。
 
-#### 輸出 & 分享
+#### 匯出 & 分享
 
 當你調整完圖片樣式後，可以透過以下方式分享。
 
-#### 儲存程式碼片段
+##### 儲存程式碼片段
 
-分享一個儲存的程式碼片段可以自動在 Twitter 和 Slack 等平台上展開圖片。這種方式可以讓使用者在看圖片的同時，也能夠點開網址取得你的程式碼。
+這種方式可以透過連結直接將程式碼片段分享到 Twitter 跟 Slack 這類平台。這種方式可以讓使用者在看圖片的同時，也能夠點開網址取得你的程式碼。而且如果你需要更新程式碼的話，直接在同一個網址更新程式碼就可以了！
 
-如果你通過 "Tweet" 按鈕分享，Carbon 將自動設置你的圖片為公開訪問。不過如果你想手動分享圖片，可以查看 [如何設置 Twitter 圖片公開訪問](https://help.twitter.com/en/using-twitter/picture-descriptions)。
+如何儲存程式碼片段？
 
-如果你在文章中添加 Carbon 圖片，注意到圖片中的原始碼對於無障礙技術來說是不可見的，比如無法放大字號或複製。可以考慮新增一個元素展示文本形式的原始碼，比如在圖片下方加一個 [詳細訊息展現元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/details)。
+1. 先登入 Carbon
+2. 照你平常的方式編輯程式碼就可以了，系統會自動儲存程式碼片段
+3. 複製瀏覽器上的網址並且分享出去
+
+##### 嵌入程式碼片段
+
+如果你想要分享程式碼片段在你自己的網站或部落格，這是一個最推薦的方式。讀者可以使用複製按鈕直接複製你的程式碼片段。
+
+你只要透過 `carbon.now.sh/embed/:id` 這個網址，就可以直接讓你的程式碼片段嵌入到網站裡了。
+
+##### 使用 Tweet 按鈕分享
+
+"Tweet" 按鈕不只會將你的程式碼片段變成圖片分享至 Twitter，也會設定正確的 `alt` 屬性以確保你的圖片是符合無障礙環境，Carbon 將自動將你的圖片讀取權限設定為公開。不過如果你想手動分享圖片，也可以看看 [如何將你的圖片設定成無障礙環境](https://help.twitter.com/en/using-twitter/picture-descriptions)。
+
+##### 直接下載圖片
+
+Carbon 也支援直接將程式碼片段下載為 PNG 或是 SVG 檔。你可以點選 `Export → Open` 直接在瀏覽器打開你的程式碼片段圖片。你也可以使用 `Copy → Image` 直接將圖片複製到你的剪貼簿裡面。
 
 #### 安裝 Carbon 桌面客戶端（離線）
 
@@ -268,6 +284,7 @@ Carbon 專案由 TA 們發起：
     <td align="center"><a href="https://github.com/LorenzoLancia"><img src="https://avatars.githubusercontent.com/u/44911690?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lorenzo Lancia</b></sub></a><br /><a href="#translation-LorenzoLancia" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/Guy-Adler"><img src="https://avatars.githubusercontent.com/u/44903310?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Guy Adler</b></sub></a><br /><a href="#translation-Guy-Adler" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/danBamikiya"><img src="https://avatars.githubusercontent.com/u/58262528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dan Bamikiya</b></sub></a><br /><a href="#ideas-danBamikiya" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/kewang"><img src="https://avatars.githubusercontent.com/u/795839?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kewang</b></sub></a><br /><a href="#translation-kewang" title="Translation">🌍</a></td>
   </tr>
 </table>
 
