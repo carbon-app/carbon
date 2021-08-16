@@ -11,14 +11,13 @@ module.exports = withBundleAnalyzer(
     workboxOpts: {
       swDest: 'static/service-worker.js',
     },
-    webpack5: false,
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.js$/,
         include: /node_modules\/graphql-language-service-parser/,
         use: [options.defaultLoaders.babel],
       })
-      // Enable w/ Webpack 5
+      // Enable w/ Next.js 11
       // config.plugins.push(
       //   new options.webpack.IgnorePlugin({
       //     resourceRegExp: /\.html$/,
