@@ -161,6 +161,16 @@ If you are using Google Chrome, or another browser that supports Progressive Web
 2. Click your browser's settings menu
 3. Click "Install Carbon..."
 
+#### Run Carbon App localy
+
+If you want to run the Carbon App localy, just following the steps:
+
+1. Clone the code from the repo.
+
+2. Run `docker-compose up`.
+
+3. Browse **http://127.0.0.1:3000** by using your browser.
+
 ## Community
 
 Check out these projects our awesome community has created:
