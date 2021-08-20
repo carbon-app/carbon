@@ -4,7 +4,7 @@ ADD . /carbon
 
 WORKDIR /carbon
 
-RUN cd /carbon && yarn install && npm run-script build
+RUN yarn install && npm run-script build
 
 ENTRYPOINT ["npm", "run-script", "start"]
 
