@@ -16,7 +16,7 @@ labels:
     comment: ⚠️ This has been marked to be closed in $DELAY.
   'theme/language':
     action: close
-    delay: 14 days
+    delay: 3 days
     comment: |
       This issue has been marked "$LABEL". As of Carbon `4.0.0`, the Carbon core team is no longer implementing new themes or languages, except for in extenuating circumstances. You can create your own theme in the "Themes" dropdown. 
 
