@@ -61,6 +61,15 @@ export default function Font() {
               format('woff2');
         }
 
+        @font-face {
+          font-family: 'Cascadia Code';
+          font-display: swap;
+          font-style: normal;
+          font-weight: 400;
+          src: local('Cascadia Code'),
+            url('https://fonts.cdnfonts.com/s/29131/Cascadia.woff') format('woff');
+        }
+
         /* latin */
         @font-face {
           font-family: 'IBM Plex Mono';
