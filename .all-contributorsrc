@@ -870,6 +870,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "jeremynguyencs",
+      "name": "Jeremy Nguyen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43259194?v=4",
+      "profile": "https://github.com/jeremynguyencs",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
