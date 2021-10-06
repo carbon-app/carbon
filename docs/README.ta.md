@@ -232,6 +232,9 @@ PR வரவேற்கிறோம்! மேலும் தகவலுக�
     <td align="center"><a href="https://github.com/danBamikiya"><img src="https://avatars.githubusercontent.com/u/58262528?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dan Bamikiya</b></sub></a><br /><a href="#ideas-danBamikiya" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/kewang"><img src="https://avatars.githubusercontent.com/u/795839?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kewang</b></sub></a><br /><a href="#translation-kewang" title="Translation">🌍</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://rizda.win/"><img src="https://avatars.githubusercontent.com/u/13027142?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rizda Dwi Prasetya</b></sub></a><br /><a href="#content-rizdaprasetya" title="Content">🖋</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
