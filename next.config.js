@@ -36,6 +36,13 @@ module.exports = withBundleAnalyzer(
     headers() {
       return [
         {
+          source: '/api/oembed',
+          headers: [
+            { key: 'Access-Control-Allow-Origin', value: '*' },
+            { key: 'Access-Control-Allow-Headers', value: '*' },
+          ],
+        },
+        {
           source: '/',
           headers: [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
         },

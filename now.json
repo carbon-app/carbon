@@ -24,14 +24,6 @@
       }
     },
     {
-      "src": "/api/oembed",
-      "dest": "api/oembed.js",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*"
-      }
-    },
-    {
       "src": "/api/image/?(?<id>[^/]*)",
       "dest": "api/image/index.js?id=$id",
       "methods": [

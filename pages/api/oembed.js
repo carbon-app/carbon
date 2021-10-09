@@ -2,7 +2,6 @@
  * See oEmbed standard here: https://oembed.com/
  */
 const url = require('url')
-const { send } = require('micro')
 
 const toIFrame = (url, width, height) =>
   `<iframe
@@ -46,13 +45,13 @@ module.exports = (req, res) => {
         }`,
         width,
         height
-      )
+      ),
     }
 
-    return send(res, 200, obj)
+    return res.status(200).json(obj)
   } catch (e) {
     // eslint-disable-next-line
     console.error(e)
-    return send(res, 500, e.message)
+    return res.status(500).send(e.message)
   }
 }
