@@ -1,6 +1,5 @@
 /* global domtoimage */
 const qs = require('querystring')
-const { json, send } = require('micro')
 const chrome = require('chrome-aws-lambda')
 const puppeteer = require('puppeteer-core')
 
@@ -8,6 +7,14 @@ const puppeteer = require('puppeteer-core')
 const DOM_TO_IMAGE_URL = 'https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js'
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '6mb',
+    },
+  },
+}
 
 module.exports = async (req, res) => {
   // TODO proper auth
@@ -19,11 +26,11 @@ module.exports = async (req, res) => {
         req.headers['user-agent'].indexOf('Slackbot') < 0 &&
         req.headers['user-agent'].indexOf('Slack-ImgProxy') < 0)
     ) {
-      return send(res, 401, 'Unauthorized')
+      return res.status(401).send('Unauthorized')
     }
   } else {
     if (!req.headers.origin && !req.headers.authorization) {
-      return send(res, 401, 'Unauthorized')
+      return res.status(401).send('Unauthorized')
     }
   }
 
@@ -43,8 +50,7 @@ module.exports = async (req, res) => {
   })
 
   try {
-    const { state, id, ...params } =
-      req.method === 'GET' ? req.query : await json(req, { limit: '6mb' })
+    const { state, id, ...params } = req.method === 'GET' ? req.query : req.body
 
     const page = await browser.newPage()
 
@@ -103,14 +109,13 @@ module.exports = async (req, res) => {
 
     if (req.method === 'GET') {
       res.setHeader('Content-Type', 'image/png')
-      const data = new Buffer(dataUrl.split(',')[1], 'base64')
-      return send(res, 200, data)
+      return res.status(200).send(new Buffer(dataUrl.split(',')[1], 'base64'))
     }
-    return send(res, 200, dataUrl)
+    return res.status(200).send(dataUrl)
   } catch (e) {
     // eslint-disable-next-line
     console.error(e)
-    return send(res, 500)
+    return res.status(500).send()
   } finally {
     await browser.close()
   }
