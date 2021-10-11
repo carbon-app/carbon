@@ -76,16 +76,9 @@ export default function About() {
           <ul className="mt0 mb3">
             <li>Drop a file into the editor</li>
             <li>
-              Append a GitHub gist id to the url (e.g.{' '}
-              <a
-                className="link"
-                href="https://gist.github.com/mfix22/3208813b324d82a9ebd197e4b1c3bae8"
-              >
-                original gist url
-              </a>{' '}
-              ➔{' '}
+              Append a GitHub gist id to the url (
               <a className="link" href="/3208813b324d82a9ebd197e4b1c3bae8">
-                carbon url result
+                example
               </a>
               )
             </li>
