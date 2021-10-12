@@ -1,5 +1,4 @@
 /* global domtoimage */
-const qs = require('querystring')
 const c = require('chrome-aws-lambda')
 const p = require('puppeteer-core')
 
@@ -62,7 +61,7 @@ module.exports = async (req, res) => {
 
     const page = await b.newPage()
 
-    const queryString = state ? `state=${state}` : qs.stringify(params)
+    const queryString = state ? `state=${state}` : new URLSearchParams(params).toString()
 
     await page.goto(`https://${host}/${id ? id : `?${queryString}`}`)
     await page.addScriptTag({ url: DOM_TO_IMAGE_URL })
