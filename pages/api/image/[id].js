@@ -1,12 +1,18 @@
 /* global domtoimage */
 const qs = require('querystring')
-const chrome = require('chrome-aws-lambda')
-const puppeteer = require('puppeteer-core')
+const c = require('chrome-aws-lambda')
+const p = require('puppeteer-core')
 
 // TODO expose local version of dom-to-image
 const DOM_TO_IMAGE_URL = 'https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js'
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
+
+const EXPORT_SIZES_HASH = {
+  '1x': '1',
+  '2x': '2',
+  '4x': '4',
+}
 
 export const config = {
   api: {
@@ -17,42 +23,44 @@ export const config = {
 }
 
 module.exports = async (req, res) => {
+  const get = req.method === 'GET'
+  const { headers: h } = req
   // TODO proper auth
-  if (req.method === 'GET') {
+  if (get) {
     if (
       req.referer ||
-      (req.headers['user-agent'].indexOf('Twitterbot') < 0 &&
+      (h['user-agent'].indexOf('Twitterbot') < 0 &&
         // Slack does not honor robots.txt: https://api.slack.com/robots
-        req.headers['user-agent'].indexOf('Slackbot') < 0 &&
-        req.headers['user-agent'].indexOf('Slack-ImgProxy') < 0)
+        h['user-agent'].indexOf('Slackbot') < 0 &&
+        h['user-agent'].indexOf('Slack-ImgProxy') < 0)
     ) {
       return res.status(401).send('Unauthorized')
     }
   } else {
-    if (!req.headers.origin && !req.headers.authorization) {
+    if (!h.origin && !h.authorization) {
       return res.status(401).send('Unauthorized')
     }
   }
 
-  const host = (req.headers && req.headers.host) || 'carbon.now.sh'
+  const host = (h && h.host) || 'carbon.now.sh'
 
   try {
-    await chrome.font(`https://${host}/static/fonts/NotoSansSC-Regular.otf`)
-    await chrome.font(NOTO_COLOR_EMOJI_URL)
+    await c.font(`https://${host}/static/fonts/NotoSansSC-Regular.otf`)
+    await c.font(NOTO_COLOR_EMOJI_URL)
   } catch (e) {
     console.error(e)
   }
 
-  const browser = await puppeteer.launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: chrome.headless,
+  const b = await p.launch({
+    args: c.args,
+    executablePath: await c.executablePath,
+    headless: c.headless,
   })
 
   try {
-    const { state, id, ...params } = req.method === 'GET' ? req.query : req.body
+    const { state, id, ...params } = get ? req.query : req.body
 
-    const page = await browser.newPage()
+    const page = await b.newPage()
 
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
@@ -65,12 +73,6 @@ module.exports = async (req, res) => {
 
     const dataUrl = await page.evaluate((target = document) => {
       const query = new URLSearchParams(document.location.search)
-
-      const EXPORT_SIZES_HASH = {
-        '1x': '1',
-        '2x': '2',
-        '4x': '4',
-      }
 
       const exportSize = EXPORT_SIZES_HASH[query.get('es')] || '2'
 
@@ -107,16 +109,14 @@ module.exports = async (req, res) => {
       return domtoimage.toPng(target, config)
     }, targetElement)
 
-    if (req.method === 'GET') {
+    if (get) {
       res.setHeader('Content-Type', 'image/png')
-      return res.status(200).send(new Buffer(dataUrl.split(',')[1], 'base64'))
+      return res.status(200).send(Buffer.from(dataUrl.split(',')[1], 'base64'))
     }
     return res.status(200).send(dataUrl)
   } catch (e) {
-    // eslint-disable-next-line
-    console.error(e)
     return res.status(500).send()
   } finally {
-    await browser.close()
+    await b.close()
   }
 }
