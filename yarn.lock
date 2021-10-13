@@ -2031,10 +2031,10 @@ acorn@^6.0.1, acorn@^7.1.0, acorn@^7.1.1, acorn@^7.4.0, acorn@^7.4.1, acorn@^8.0
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-actionsack@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/actionsack/-/actionsack-0.0.14.tgz#d18b47520e60bebc33fbbdbb269368bf77ba3a95"
-  integrity sha512-zU3Ciei2DNYQS1omEq/hJlYmlUrsxeP6jgr7ej4TrErPDMmimSGboOeTdJW8cbqH5LckpcE9kYhUilP5Vow7xw==
+actionsack@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/actionsack/-/actionsack-0.0.15.tgz#1eb0ec33e22535a50522cb3c357c695ff92c35df"
+  integrity sha512-oSrDF3Cpb7G9uM52E0jPn5yM2iVyVwlUOdeUNih5EYZ6W0YJTLACZW27nmYRlYQo75N7pgxNYEx+DfvY1SNM2A==
   dependencies:
     copy-to-clipboard "^3.3.1"
     react-click-outside "^3.0.1"

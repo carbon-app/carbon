@@ -31,7 +31,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^11.1.0",
     "@reach/visually-hidden": "^0.16.0",
-    "actionsack": "^0.0.14",
+    "actionsack": "^0.0.15",
     "axios": "^0.21.4",
     "cm-show-invisibles": "^3.1.0",
     "codemirror": "5.61.1",

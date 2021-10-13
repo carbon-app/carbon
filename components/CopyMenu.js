@@ -37,7 +37,7 @@ function CopyButton(props) {
 function CopyEmbed({ mapper, title }) {
   const { asPath } = useRouter()
   const text = React.useMemo(() => mapper(asPath), [mapper, asPath])
-  const { onClick, copied } = useCopyTextHandler(text, { interval: 1000 })
+  const { onClick, copied } = useCopyTextHandler(text)
 
   return <CopyButton onClick={onClick}>{copied ? 'Copied!' : title}</CopyButton>
 }
