@@ -1,7 +1,7 @@
 {
   "name": "carbon",
   "description": "Create and share beautiful images of your source code",
-  "version": "4.8.4",
+  "version": "4.8.5",
   "license": "MIT",
   "repository": {
     "type": "git",
