@@ -5,11 +5,11 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@now/next"
+      "use": "@vercel/next"
     },
     {
       "src": "api/image/index.js",
-      "use": "@now/node",
+      "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "40mb"
       }

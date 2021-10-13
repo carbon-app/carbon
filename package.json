@@ -19,7 +19,7 @@
     "build": "next build",
     "start": "next start",
     "test:e2e": "npm run cy:run --",
-    "deploy": "now -S carbon-app",
+    "deploy": "vercel -S carbon-app",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages}/**/*.js",
     "lint": "eslint .",
     "contrib:add": "all-contributors add",
@@ -78,8 +78,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.8",
     "lint-staged": "^11.1.2",
-    "now": "^21.0.1",
     "now-release": "^0.0.2",
+    "vercel": "^23.1.2",
     "wait-on": "^6.0.0"
   },
   "resolutions": {
