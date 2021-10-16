@@ -8,8 +8,9 @@ module.exports = withBundleAnalyzer(
     target: 'serverless',
     pwa: {
       disable: process.env.NODE_ENV !== 'production',
-      register: false,
       dest: 'public',
+      register: false,
+      skipWaiting: false,
     },
     webpack: (config, options) => {
       config.module.rules.push({
