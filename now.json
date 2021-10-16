@@ -17,13 +17,6 @@
   ],
   "routes": [
     {
-      "src": "^/service-worker.js$",
-      "dest": "/_next/static/service-worker.js",
-      "headers": {
-        "Service-Worker-Allowed": "/"
-      }
-    },
-    {
       "src": "/api/image/?(?<id>[^/]*)",
       "dest": "api/image/index.js?id=$id",
       "methods": [

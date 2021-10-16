@@ -1,15 +1,16 @@
 const bundleAnalyzer = require('@next/bundle-analyzer')
-const withOffline = require('next-offline')
+const withOffline = require('next-pwa')
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' })
 
 module.exports = withBundleAnalyzer(
   withOffline({
     target: 'serverless',
-    dontAutoRegisterSw: true,
-    // https://github.com/hanford/next-offline/blob/master/packages/now2-example/next.config.js
-    workboxOpts: {
-      swDest: 'static/service-worker.js',
+    pwa: {
+      disable: process.env.NODE_ENV !== 'production',
+      dest: 'public',
+      register: false,
+      skipWaiting: false,
     },
     webpack: (config, options) => {
       config.module.rules.push({
