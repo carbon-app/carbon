@@ -4,8 +4,6 @@ const { json, send } = require('micro')
 const chrome = require('chrome-aws-lambda')
 const puppeteer = require('puppeteer-core')
 
-const { EXPORT_SIZES_HASH } = require('../../lib/constants')
-
 // TODO expose local version of dom-to-image
 const DOM_TO_IMAGE_URL = 'https://unpkg.com/dom-to-image@2.6.0/dist/dom-to-image.min.js'
 const NOTO_COLOR_EMOJI_URL =
@@ -62,9 +60,13 @@ module.exports = async (req, res) => {
     const dataUrl = await page.evaluate((target = document) => {
       const query = new URLSearchParams(document.location.search)
 
-      const exportSize = EXPORT_SIZES_HASH[query.get('es')]
-        ? EXPORT_SIZES_HASH[query.get('es')].value
-        : 2
+      const EXPORT_SIZES_HASH = {
+        '1x': '1',
+        '2x': '2',
+        '4x': '4',
+      }
+
+      const exportSize = EXPORT_SIZES_HASH[query.get('es')] || '2'
 
       target.querySelectorAll('span[role="presentation"]').forEach(node => {
         if (node.innerText && node.innerText.match(/%[A-Fa-f0-9]{2}/)) {
