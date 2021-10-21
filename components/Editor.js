@@ -32,8 +32,8 @@ import {
   DEFAULT_THEME,
   FONTS,
 } from '../lib/constants'
-import { serializeState, getRouteState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit, dataURLtoBlob } from '../lib/util'
+import { getRouteState } from '../lib/routing'
+import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
@@ -79,9 +79,6 @@ class Editor extends React.Component {
     this.setState(newState)
 
     if (window.navigator) {
-      this.isSafari =
-        window.navigator.userAgent.indexOf('Safari') !== -1 &&
-        window.navigator.userAgent.indexOf('Chrome') === -1
       this.isFirefox =
         window.navigator.userAgent.indexOf('Firefox') !== -1 &&
         window.navigator.userAgent.indexOf('Chrome') === -1
@@ -160,20 +157,6 @@ class Editor extends React.Component {
         )
         .then(uri => uri.slice(uri.indexOf(',') + 1))
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
-    }
-
-    // if safari, get image from api
-    if (this.context.image && this.isSafari) {
-      const themeConfig = this.getTheme()
-      // pull from custom theme highlights, or state highlights
-      const encodedState = serializeState({
-        ...this.state,
-        highlights: { ...themeConfig.highlights, ...this.state.highlights },
-      })
-      // TODO consider returning blob responseType from axios
-      return this.context
-        .image(encodedState)
-        .then(dataURL => (type === 'blob' ? dataURLtoBlob(dataURL) : dataURL))
     }
 
     if (type === 'blob') {
@@ -389,7 +372,6 @@ class Editor extends React.Component {
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
                 exportSize={exportSize}
-                backgroundImage={backgroundImage}
               />
             </div>
           </div>
