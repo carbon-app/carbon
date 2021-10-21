@@ -10,7 +10,9 @@ import { MetaLinks } from '../components/Meta'
 
 class Index extends React.Component {
   componentDidMount() {
-    window.workbox.register()
+    if (window.workbox && window.workbox.register) {
+      window.workbox.register()
+    }
   }
   componentWillUnmount() {
     if ('serviceWorker' in navigator) {
