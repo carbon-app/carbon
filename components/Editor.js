@@ -134,9 +134,6 @@ class Editor extends React.Component {
       height,
     }
 
-    // current font-family used
-    const fontFamily = this.state.fontFamily
-
     // TODO consolidate type/format to only use one param
     if (format === 'svg') {
       return domtoimage
@@ -151,7 +148,11 @@ class Editor extends React.Component {
             .replace(/&(?!#?[a-z0-9]+;)/g, '&amp;')
             // remove other fonts which are not used
             .replace(
-              new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+              // current font-family used
+              new RegExp(
+                '@font-face\\s+{\\s+font-family: (?!"*' + this.state.fontFamily + ').*?}',
+                'g'
+              ),
               ''
             )
         )
