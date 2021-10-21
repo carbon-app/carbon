@@ -77,12 +77,6 @@ class Editor extends React.Component {
     }
 
     this.setState(newState)
-
-    if (window.navigator) {
-      this.isFirefox =
-        window.navigator.userAgent.indexOf('Firefox') !== -1 &&
-        window.navigator.userAgent.indexOf('Chrome') === -1
-    }
   }
 
   carbonNode = React.createRef()
@@ -191,7 +185,11 @@ class Editor extends React.Component {
         if (format !== 'open') {
           link.download = `${prefix}.${format}`
         }
-        if (this.isFirefox) {
+        if (
+          // isFirefox
+          window.navigator.userAgent.indexOf('Firefox') !== -1 &&
+          window.navigator.userAgent.indexOf('Chrome') === -1
+        ) {
           link.target = '_blank'
         }
         link.href = url
