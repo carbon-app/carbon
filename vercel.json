@@ -6,6 +6,13 @@
     {
       "src": "package.json",
       "use": "@vercel/next"
+    },
+    {
+      "src": "api/image/index.js",
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "40mb"
+      }
     }
   ],
   "github": {
