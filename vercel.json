@@ -8,7 +8,7 @@
       "use": "@vercel/next"
     },
     {
-      "src": "api/image/index.js",
+      "src": "api/image/[id].js",
       "use": "@vercel/node",
       "config": {
         "maxLambdaSize": "40mb"
