@@ -2,33 +2,6 @@
   "alias": "carbon.now.sh",
   "version": 2,
   "public": true,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    },
-    {
-      "src": "api/image/index.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "40mb"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/image/?(?<id>[^/]*)",
-      "dest": "api/image/index.js?id=$id",
-      "methods": [
-        "POST",
-        "GET"
-      ]
-    },
-    {
-      "src": "/api(/.*)?$",
-      "status": 404
-    }
-  ],
   "github": {
     "autoAlias": false,
     "silent": true
