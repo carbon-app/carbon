@@ -67,7 +67,10 @@ export default function Font() {
           font-style: normal;
           font-weight: 400;
           src: local('Cascadia Code'),
-            url('https://fonts.cdnfonts.com/s/29131/Cascadia.woff') format('woff');
+            url('//cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/files/cascadia-code-latin-ext-400-normal.woff2')
+              format('woff2'),
+            url('//cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/files/cascadia-code-latin-ext-400-normal.woff')
+              format('woff');
         }
 
         /* latin */
