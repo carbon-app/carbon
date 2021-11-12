@@ -279,6 +279,7 @@ PR вітаються! Будь ласка, перегляньте наші [р�
   </tr>
   <tr>
     <td align="center"><a href="https://rizda.win/"><img src="https://avatars.githubusercontent.com/u/13027142?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rizda Dwi Prasetya</b></sub></a><br /><a href="#content-rizdaprasetya" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/OpeAbidemi"><img src="https://avatars.githubusercontent.com/u/58413594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ope Abidemi Harry</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=OpeAbidemi" title="Code">💻</a></td>
   </tr>
 </table>
 
