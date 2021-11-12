@@ -96,7 +96,6 @@ class Editor extends React.Component {
   getCarbonImage = async (
     {
       format,
-      type,
       squared = this.state.squaredImage,
       exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
     } = { format: 'png' }
@@ -154,7 +153,7 @@ class Editor extends React.Component {
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
     }
 
-    if (type === 'blob') {
+    if (format === 'blob') {
       return domtoimage.toBlob(node, config)
     }
 
@@ -179,7 +178,7 @@ class Editor extends React.Component {
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'blob' })
+    return this.getCarbonImage({ format })
       .then(blob => window.URL.createObjectURL(blob))
       .then(url => {
         if (format !== 'open') {
@@ -200,7 +199,7 @@ class Editor extends React.Component {
   }
 
   copyImage = () =>
-    this.getCarbonImage({ format: 'png', type: 'blob' })
+    this.getCarbonImage({ format: 'blob' })
       .then(blob =>
         navigator.clipboard.write([
           new window.ClipboardItem({
