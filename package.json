@@ -95,6 +95,9 @@
     "*.js": [
       "npm run lint",
       "prettier --config .prettierrc --write"
+    ],
+    ".all-contributorsrc": [
+      "npm run contrib:build"
     ]
   },
   "husky": {
