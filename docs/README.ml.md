@@ -231,6 +231,7 @@ PR കൾ സ്വാഗതം ചെയ്യുന്നു! കൂടുത�
   <tr>
     <td align="center"><a href="https://rizda.win/"><img src="https://avatars.githubusercontent.com/u/13027142?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rizda Dwi Prasetya</b></sub></a><br /><a href="#content-rizdaprasetya" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/AbreuY"><img src="https://avatars.githubusercontent.com/u/5095949?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AbreuY</b></sub></a><br /><a href="#translation-AbreuY" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://www.rizkytegar.com/"><img src="https://avatars.githubusercontent.com/u/55475891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>>_Rizky.dev</b></sub></a><br /><a href="#translation-rizkytegar" title="Translation">🌍</a></td>
   </tr>
 </table>
 
