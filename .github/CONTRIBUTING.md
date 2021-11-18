@@ -22,3 +22,9 @@ Alternatively, you can also open this repository in Gitpod, an online IDE for Gi
 ### Adding themes/languages
 
 We are not currently accepting new themes or languages into Carbon, except for in extenuating circumstances. Instead, we want to continue to provide ways for users to add their own themes and presets. Please feel free to still open an issue or PR for consideration, but know that there is a chance it will get closed without addition.
+
+<br />
+
+## Stats
+![Alt](https://repobeats.axiom.co/api/embed/471ed135120d0b6c3ec17fa4e8aa371c9173bd87.svg "Repobeats analytics image")
+
