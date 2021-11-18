@@ -61,6 +61,9 @@ module.exports = withBundleAnalyzer(
         },
       ]
     },
+    rewrites() {
+      return [{ source: '/api/image', destination: '/api/image/index' }]
+    },
     redirects() {
       return [
         {
