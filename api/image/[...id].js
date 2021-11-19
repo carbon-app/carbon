@@ -43,8 +43,12 @@ module.exports = async (req, res) => {
   })
 
   try {
-    const { state, id, ...params } =
-      req.method === 'GET' ? req.query : await json(req, { limit: '6mb' })
+    const {
+      state,
+      id: _id,
+      ...params
+    } = req.method === 'GET' ? req.query : await json(req, { limit: '6mb' })
+    const id = _id && _id !== 'index' ? _id : undefined
 
     const page = await browser.newPage()
 
