@@ -1,0 +1,10 @@
+{
+  "alias": "carbon.now.sh",
+  "version": 2,
+  "public": true,
+  "github": {
+    "autoAlias": false,
+    "silent": true
+  },
+  "rewrites": [{ "source": "/api/image", "destination": "/api/image/index" }]
+}

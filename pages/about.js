@@ -77,7 +77,7 @@ export default function About() {
             <li>Drop a file into the editor</li>
             <li>
               Append a GitHub gist id to the url (
-              <a className="link" href="/0db00e81d5416c339181e59481c74b59">
+              <a className="link" href="/3208813b324d82a9ebd197e4b1c3bae8">
                 example
               </a>
               )

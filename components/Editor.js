@@ -32,8 +32,8 @@ import {
   DEFAULT_THEME,
   FONTS,
 } from '../lib/constants'
-import { serializeState, getRouteState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit, dataURLtoBlob } from '../lib/util'
+import { getRouteState } from '../lib/routing'
+import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
@@ -77,15 +77,6 @@ class Editor extends React.Component {
     }
 
     this.setState(newState)
-
-    if (window.navigator) {
-      this.isSafari =
-        window.navigator.userAgent.indexOf('Safari') !== -1 &&
-        window.navigator.userAgent.indexOf('Chrome') === -1
-      this.isFirefox =
-        window.navigator.userAgent.indexOf('Firefox') !== -1 &&
-        window.navigator.userAgent.indexOf('Chrome') === -1
-    }
   }
 
   carbonNode = React.createRef()
@@ -137,9 +128,6 @@ class Editor extends React.Component {
       height,
     }
 
-    // current font-family used
-    const fontFamily = this.state.fontFamily
-
     // TODO consolidate type/format to only use one param
     if (format === 'svg') {
       return domtoimage
@@ -154,26 +142,16 @@ class Editor extends React.Component {
             .replace(/&(?!#?[a-z0-9]+;)/g, '&amp;')
             // remove other fonts which are not used
             .replace(
-              new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+              // current font-family used
+              new RegExp(
+                '@font-face\\s+{\\s+font-family: (?!"*' + this.state.fontFamily + ').*?}',
+                'g'
+              ),
               ''
             )
         )
         .then(uri => uri.slice(uri.indexOf(',') + 1))
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
-    }
-
-    // if safari, get image from api
-    if (this.context.image && this.isSafari) {
-      const themeConfig = this.getTheme()
-      // pull from custom theme highlights, or state highlights
-      const encodedState = serializeState({
-        ...this.state,
-        highlights: { ...themeConfig.highlights, ...this.state.highlights },
-      })
-      // TODO consider returning blob responseType from axios
-      return this.context
-        .image(encodedState)
-        .then(dataURL => (type === 'blob' ? dataURLtoBlob(dataURL) : dataURL))
     }
 
     if (type === 'blob') {
@@ -207,7 +185,11 @@ class Editor extends React.Component {
         if (format !== 'open') {
           link.download = `${prefix}.${format}`
         }
-        if (this.isFirefox) {
+        if (
+          // isFirefox
+          window.navigator.userAgent.indexOf('Firefox') !== -1 &&
+          window.navigator.userAgent.indexOf('Chrome') === -1
+        ) {
           link.target = '_blank'
         }
         link.href = url
@@ -389,7 +371,6 @@ class Editor extends React.Component {
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
                 exportSize={exportSize}
-                backgroundImage={backgroundImage}
               />
             </div>
           </div>

@@ -76,7 +76,7 @@ export default function Font() {
           font-display: swap;
           font-weight: 500;
           src: local('IBM Plex Mono Regular'), local('IBMPlexMono-Regular'),
-            url(//fonts.gstatic.com/s/ibmplexmono/v6/-F63fjptAgt5VM-kVkqdyU8n1i8q131nj-o.woff2)
+            url(//cdn.jsdelivr.net/gh/ibm/plex@latest/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-Regular.woff2)
               format('woff2');
         }
 
