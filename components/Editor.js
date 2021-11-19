@@ -178,7 +178,7 @@ class Editor extends React.Component {
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format })
+    return this.getCarbonImage({ format: 'blob' })
       .then(blob => window.URL.createObjectURL(blob))
       .then(url => {
         if (format !== 'open') {
@@ -199,7 +199,7 @@ class Editor extends React.Component {
   }
 
   copyImage = () =>
-    this.getCarbonImage({ format: 'blob' })
+    this.getCarbonImage({ format: 'png' })
       .then(blob =>
         navigator.clipboard.write([
           new window.ClipboardItem({
