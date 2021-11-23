@@ -879,6 +879,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "AbreuY",
+      "name": "AbreuY",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5095949?v=4",
+      "profile": "https://github.com/AbreuY",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
