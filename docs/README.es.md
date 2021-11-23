@@ -21,7 +21,7 @@
 
 ## Introducción
 
-¿Conoces [todas de](https://twitter.com/dan_abramov/status/890191815567175680) [esas](https://twitter.com/reactjs/status/890511993261654017) [capturas de pantalla](https://twitter.com/notquiteleo/status/873483329345028096) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorarlo en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
+¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [esas](https://twitter.com/reactjs/status/890511993261654017) [capturas de pantalla](https://twitter.com/notquiteleo/status/873483329345028096) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorarlo en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
