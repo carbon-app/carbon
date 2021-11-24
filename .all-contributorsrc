@@ -897,6 +897,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "OpeAbidemi",
+      "name": "Abidemi Harry",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58413594?v=4",
+      "profile": "https://github.com/OpeAbidemi",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
