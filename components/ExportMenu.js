@@ -25,11 +25,9 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
   const handleExportSizeChange = selectedSize => () => onChange('exportSize', selectedSize)
 
   const handleExport = format => () =>
-    exportImage(format, {
-      filename: input.current && input.current.value,
-    })
+    exportImage(format, { filename: input.current && input.current.value })
 
-  useKeyboardListener('⌘-⇧-e', preventDefault(handleExport('png')))
+  useKeyboardListener('⌘-⇧-e', preventDefault(handleExport('blob')))
   useKeyboardListener('⌘-⇧-s', preventDefault(handleExport('svg')))
 
   return (
@@ -40,7 +38,7 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
           large
           center
           color={COLORS.PURPLE}
-          onClick={handleExport('png')}
+          onClick={handleExport('blob')}
           data-cy="quick-export-button"
           style={{ minWidth: 92, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
           title="Quick export"
@@ -91,7 +89,13 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
           </div>
         </div>
         <div className="export-row">
-          <Button center color={COLORS.PURPLE} onClick={handleExport('open')}>
+          <Button
+            center
+            color={COLORS.PURPLE}
+            onClick={() =>
+              exportImage('blob', { filename: input.current && input.current.value, open: true })
+            }
+          >
             Open
           </Button>
           <div className="save-container">
@@ -102,7 +106,7 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
                 margin="0 8px 0 0"
                 hoverColor={COLORS.PURPLE}
                 color={COLORS.DARK_PURPLE}
-                onClick={handleExport('png')}
+                onClick={handleExport('blob')}
                 id="export-png"
                 disabled={loading}
               >
