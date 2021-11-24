@@ -10,13 +10,6 @@ export default function Font() {
     <style jsx global>
       {`
         @font-face {
-          font-family: 'Iosevka';
-          font-display: swap;
-          src: url('//cdn.jsdelivr.net/npm/@typopro/web-iosevka@3.7.5/TypoPRO-iosevka-term-bold.woff')
-            format('woff');
-        }
-
-        @font-face {
           font-family: 'Monoid';
           font-display: swap;
           src: url('//cdn.jsdelivr.net/npm/@typopro/web-monoid@3.7.5/TypoPRO-Monoid-Regular.woff')
