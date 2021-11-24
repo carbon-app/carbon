@@ -21,13 +21,11 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
   const input = React.useRef()
 
   const [exportImage, { loading }] = useAsyncCallback(exp)
+  const filename = input.current && input.current.value
 
   const handleExportSizeChange = selectedSize => () => onChange('exportSize', selectedSize)
 
-  const handleExport = format => () =>
-    exportImage(format, {
-      filename: input.current && input.current.value,
-    })
+  const handleExport = format => () => exportImage(format, { filename })
 
   useKeyboardListener('⌘-⇧-e', preventDefault(handleExport('blob')))
   useKeyboardListener('⌘-⇧-s', preventDefault(handleExport('svg')))
@@ -91,7 +89,11 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
           </div>
         </div>
         <div className="export-row">
-          <Button center color={COLORS.PURPLE} onClick={() => handleExport('blob', { open: true })}>
+          <Button
+            center
+            color={COLORS.PURPLE}
+            onClick={() => exportImage('blob', { filename, open: true })}
+          >
             Open
           </Button>
           <div className="save-container">
