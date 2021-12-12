@@ -9,7 +9,7 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 
 hljs.registerLanguage('javascript', javascript)
 
-import SpinnerWrapper from './SpinnerWrapper'
+import { Spinner } from './Spinner'
 import WindowControls from './WindowControls'
 import WidthHandler from './WidthHandler'
 
@@ -179,37 +179,64 @@ class Carbon extends React.PureComponent {
     const light = themeConfig && themeConfig.light
 
     /* eslint-disable jsx-a11y/no-static-element-interactions */
-    const content = (
-      <div className="container">
-        {config.windowControls ? (
-          <WindowControls
-            theme={config.windowTheme}
-            code={this.props.children}
-            copyable={this.props.copyable}
-            light={light}
-          />
-        ) : null}
-        <CodeMirror
-          ref={this.props.editorRef}
-          className={`CodeMirror__container window-theme__${config.windowTheme}`}
-          value={this.props.children}
-          options={options}
-          onBeforeChange={this.onBeforeChange}
-          onGutterClick={this.props.onGutterClick}
-          onSelection={this.onSelection}
-        />
-        {config.watermark && <Watermark light={light} />}
-        <div className="container-bg">
-          <div className="white eliminateOnRender" />
-          <div className="alpha eliminateOnRender" />
-          <div className="bg" />
-        </div>
+    const selectionNode =
+      !this.props.readOnly &&
+      !!this.state.selectionAt &&
+      document.getElementById('style-editor-button')
 
-        <WidthHandler
-          innerRef={this.props.innerRef}
-          onChange={this.props.updateWidth}
-          paddingHorizontal={config.paddingHorizontal}
-        />
+    return (
+      <div className="section">
+        <div
+          ref={this.props.innerRef}
+          id="export-container"
+          className="export-container"
+          onMouseUp={this.onMouseUp}
+        >
+          {this.props.loading ? (
+            // TODO investigate removing these hard-coded values
+            <div style={{ width: 876, height: 240 }}>
+              <Spinner />
+            </div>
+          ) : (
+            <div className="container">
+              {config.windowControls ? (
+                <WindowControls
+                  theme={config.windowTheme}
+                  code={this.props.children}
+                  copyable={this.props.copyable}
+                  light={light}
+                />
+              ) : null}
+              <CodeMirror
+                ref={this.props.editorRef}
+                className={`CodeMirror__container window-theme__${config.windowTheme}`}
+                value={this.props.children}
+                options={options}
+                onBeforeChange={this.onBeforeChange}
+                onGutterClick={this.props.onGutterClick}
+                onSelection={this.onSelection}
+              />
+              {config.watermark && <Watermark light={light} />}
+              <div className="container-bg">
+                <div className="white eliminateOnRender" />
+                <div className="alpha eliminateOnRender" />
+                <div className="bg" />
+              </div>
+
+              <WidthHandler
+                innerRef={this.props.innerRef}
+                onChange={this.props.updateWidth}
+                paddingHorizontal={config.paddingHorizontal}
+              />
+            </div>
+          )}
+        </div>
+        {selectionNode &&
+          ReactDOM.createPortal(
+            <SelectionEditor onChange={this.onSelectionChange} />,
+            // TODO: don't use portal?
+            selectionNode
+          )}
         <style jsx>
           {`
             .container {
@@ -329,34 +356,7 @@ class Carbon extends React.PureComponent {
                 user-select: text;
               }
             }
-          `}
-        </style>
-      </div>
-    )
 
-    const selectionNode =
-      !this.props.readOnly &&
-      !!this.state.selectionAt &&
-      document.getElementById('style-editor-button')
-
-    return (
-      <div className="section">
-        <div
-          ref={this.props.innerRef}
-          id="export-container"
-          className="export-container"
-          onMouseUp={this.onMouseUp}
-        >
-          <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
-        </div>
-        {selectionNode &&
-          ReactDOM.createPortal(
-            <SelectionEditor onChange={this.onSelectionChange} />,
-            // TODO: don't use portal?
-            selectionNode
-          )}
-        <style jsx>
-          {`
             .section,
             .export-container {
               height: 100%;
