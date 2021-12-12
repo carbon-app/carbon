@@ -83,13 +83,13 @@
     "wait-on": "^6.0.0"
   },
   "resolutions": {
-    "@grpc/grpc-js": "^1.3.7",
-    "acorn": "^7.1.1",
-    "glob-parent": "^5.1.2",
+    "@grpc/grpc-js": "^1.4.4",
+    "acorn": "^8.6.0",
+    "glob-parent": "^6.0.2",
     "kind-of": "^6.0.3",
     "lodash": "^4.17.2",
     "serialize-javascript": "^6.0.0",
-    "sharp": "^0.28.3"
+    "sharp": "^0.29.3"
   },
   "lint-staged": {
     "*.js": [
