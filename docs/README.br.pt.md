@@ -235,6 +235,7 @@ Agradecemos imensamente a todas essas pessoas maravilhosas pela grande ajuda ([e
     <td align="center"><a href="https://github.com/OpeAbidemi"><img src="https://avatars.githubusercontent.com/u/58413594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abidemi Harry</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=OpeAbidemi" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/mcognetta"><img src="https://avatars.githubusercontent.com/u/6856636?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco</b></sub></a><br /><a href="#translation-mcognetta" title="Translation">🌍</a></td>
     <td align="center"><a href="https://www.rizkytegar.com/"><img src="https://avatars.githubusercontent.com/u/55475891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rizky Tegar</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=rizkytegar" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/samrobbins85"><img src="https://avatars.githubusercontent.com/u/29740136?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sam Robbins</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=samrobbins85" title="Documentation">📖</a></td>
   </tr>
 </table>
 
