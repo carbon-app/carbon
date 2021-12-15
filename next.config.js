@@ -5,7 +5,6 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'tr
 
 module.exports = withBundleAnalyzer(
   withOffline({
-    target: 'serverless',
     pwa: {
       disable: process.env.NODE_ENV !== 'production',
       dest: 'public',
@@ -59,6 +58,9 @@ module.exports = withBundleAnalyzer(
           ],
         },
       ]
+    },
+    rewrites() {
+      return [{ source: '/api/image', destination: '/api/image/index' }]
     },
     redirects() {
       return [
