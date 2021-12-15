@@ -5,6 +5,5 @@
   "github": {
     "autoAlias": false,
     "silent": true
-  },
-  "rewrites": [{ "source": "/api/image", "destination": "/api/image/index" }]
+  }
 }
