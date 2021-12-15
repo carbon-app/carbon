@@ -3,8 +3,7 @@ module.exports = {
   parserOptions: {
     requireConfigFile: false,
     babelOptions: {
-      presets: ['@babel/preset-react'],
-      plugins: ['@babel/plugin-proposal-class-properties'],
+      presets: ['next/babel'],
     },
   },
   env: {

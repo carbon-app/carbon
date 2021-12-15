@@ -69,10 +69,7 @@
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.23.4",
-    "@babel/core": "^7.16.5",
     "@babel/eslint-parser": "^7.16.5",
-    "@babel/plugin-proposal-class-properties": "^7.16.5",
-    "@babel/preset-react": "^7.16.5",
     "all-contributors-cli": "^6.20.0",
     "babel-eslint": "^10.1.0",
     "cypress": "^9.1.1",
