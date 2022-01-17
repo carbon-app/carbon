@@ -284,6 +284,7 @@ Grazie a tutte queste persone meravigliose ([emoji key](https://github.com/kentc
     <td align="center"><a href="https://github.com/AbreuY"><img src="https://avatars.githubusercontent.com/u/5095949?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AbreuY</b></sub></a><br /><a href="#translation-AbreuY" title="Translation">🌍</a></td>
     <td align="center"><a href="https://www.rizkytegar.com/"><img src="https://avatars.githubusercontent.com/u/55475891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>>_Rizky.dev</b></sub></a><br /><a href="#translation-rizkytegar" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/OpeAbidemi"><img src="https://avatars.githubusercontent.com/u/58413594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abidemi Harry</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=OpeAbidemi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ZiuChen"><img src="https://avatars.githubusercontent.com/u/64892985?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ZiuChen</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=ZiuChen" title="Documentation">📖</a></td>
   </tr>
 </table>
 

@@ -83,6 +83,9 @@
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - 用 `carbon-now` 命令在 Carbon 中打开一个文件或者直接下载它，包含交互式选项、可选高亮等功能
 - [CodeExpander](https://codeexpander.com) - 是一个智能并具有像 TextExpander 特性的 GitHub Gist 客户端
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - 从 `Xcode Playground` 导出多个 Carbon 代码片段。
+- [`@carbonshbot`](https://t.me/carbonshbot) - 一个 Telegram 聊天机器人，它接收代码片段或 gist URL 并生成 Carbon 图像。
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - 在 R 语言中迭代地生成图像，并在 Carbon 中打开或直接下载。
+- [Carbon for Slack](https://github.com/faisalsayed10/carbon-slack) - 在 Slack 中直接使用 Carbon。只需调用 `/carbon` 命令。
 
 ##### 库
 
@@ -273,6 +276,7 @@ Carbon 项目由 TA 们发起：
     <td align="center"><a href="https://github.com/AbreuY"><img src="https://avatars.githubusercontent.com/u/5095949?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AbreuY</b></sub></a><br /><a href="#translation-AbreuY" title="Translation">🌍</a></td>
     <td align="center"><a href="https://www.rizkytegar.com/"><img src="https://avatars.githubusercontent.com/u/55475891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>>_Rizky.dev</b></sub></a><br /><a href="#translation-rizkytegar" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/OpeAbidemi"><img src="https://avatars.githubusercontent.com/u/58413594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abidemi Harry</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=OpeAbidemi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ZiuChen"><img src="https://avatars.githubusercontent.com/u/64892985?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ZiuChen</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=ZiuChen" title="Documentation">📖</a></td>
   </tr>
 </table>
 
