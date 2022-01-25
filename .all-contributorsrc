@@ -906,6 +906,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mcognetta",
+      "name": "Marco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6856636?v=4",
+      "profile": "http://mcognetta.github.io",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
