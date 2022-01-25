@@ -12,7 +12,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended', 'next'],
   plugins: ['import', 'react', 'jsx-a11y', 'react-hooks'],
   rules: {
     'import/no-unresolved': 'error',
