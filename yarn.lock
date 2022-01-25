@@ -3375,9 +3375,9 @@ codemirror-mode-elixir@^1.1.2:
   integrity sha512-1oIuRVHyUhLv0Za9sEIsI7urAj06EohwO/yVj10bg7aHnimHQ964Wk3uuoPH0Yn8L38EkOd+SwULYpDiCQtoTA==
 
 codemirror-solidity@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/codemirror-solidity/-/codemirror-solidity-0.2.3.tgz#5a9b34fac8303b9c2c37816c4b838edc93699aab"
-  integrity sha512-4/HBC9kf/REiQ4SqDmQ2ni6q5AAE23CXipKcO0TqCNtaLUqbGbbpW4ZCNCaIXQsz6uSVJZo0jNH0rg/Ku45tFA==
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/codemirror-solidity/-/codemirror-solidity-0.2.5.tgz#d2ae56e80e57947b193b9bb9e0a1d63b7020a50f"
+  integrity sha512-h0EQ/tYBskFdZLFmm0jhBIh0oispPTYlNvU5V3Qlib2LU28cR8xb/4Wk97KrfTR5omoii0m9v9mTOq9pmQRwiA==
   dependencies:
     codemirror "^5.56.0"
 
@@ -3387,9 +3387,9 @@ codemirror@5.64.0:
   integrity sha512-fqr6CtDQdJ6iNMbD8NX2gH2G876nNDk+TO1rrYkgWnqQdO3O1Xa9tK6q+psqhJJgE5SpbaDcgdfLmukoUVE8pg==
 
 codemirror@^5.56.0:
-  version "5.58.2"
-  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.58.2.tgz#ed54a1796de1498688bea1cdd4e9eeb187565d1b"
-  integrity sha512-K/hOh24cCwRutd1Mk3uLtjWzNISOkm4fvXiMO7LucCrqbh6aJDdtqUziim3MZUI6wOY0rvY1SlL1Ork01uMy6w==
+  version "5.65.1"
+  resolved "https://registry.yarnpkg.com/codemirror/-/codemirror-5.65.1.tgz#5988a812c974c467f964bcc1a00c944e373de502"
+  integrity sha512-s6aac+DD+4O2u1aBmdxhB7yz2XU7tG3snOyQ05Kxifahz7hoxnfxIRHxiCSEv3TUC38dIVH8G+lZH9UWSfGQxA==
 
 color-convert@^1.9.0:
   version "1.9.3"
