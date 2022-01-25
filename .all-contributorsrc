@@ -906,6 +906,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mcognetta",
+      "name": "Marco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6856636?v=4",
+      "profile": "https://github.com/mcognetta",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "rizkytegar",
+      "name": "Rizky Tegar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/55475891?v=4",
+      "profile": "https://www.rizkytegar.com/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "samrobbins85",
+      "name": "Sam Robbins",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29740136?v=4",
+      "profile": "https://github.com/samrobbins85",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "repoType": "github",

@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
   </a>
   <a href="#contributors">
-    <img src="https://img.shields.io/badge/all_contributors-78-orange.svg" alt="All Contributors" />
+    <img src="https://img.shields.io/badge/all_contributors-160-orange.svg" alt="All Contributors" />
   </a>
   <a href="/LICENSE">
     <img src="https://img.shields.io/github/license/carbon-app/carbon.svg" alt="MIT License" />
@@ -21,7 +21,7 @@
 
 ## Introduction
 
-트위터에서 공유되고 있는 [수 많은](https://twitter.com/dan_abramov/status/890191815567175680) [코드](https://twitter.com/reactjs/status/890511993261654017) [스크린샷](https://twitter.com/notquiteleo/status/873483329345028096)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 도와줍니다. 무엇을 망설이시나요? 당신의 디자인 감각으로 팔로워들을 감동시켜보세요
+트위터에서 공유되고 있는 [수많은](https://twitter.com/dan_abramov/status/890191815567175680) [코드](https://twitter.com/reactjs/status/890511993261654017) [스크린샷](https://twitter.com/notquiteleo/status/873483329345028096)들을 알고 계신가요? 코드들은 대체로 훌륭하지만, 미적인 부분에서 조금 개선할 점이 보입니다. Carbon은 당신의 소스코드를 손쉽게 아름다운 이미지로 만들고, 공유할 수 있게 도와줍니다. 무엇을 망설이시나요? 당신의 디자인 감각으로 팔로워들을 감동시켜보세요
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
@@ -40,12 +40,12 @@
 Carbon에 코드를 적용시키는데는 몇 가지 방법이 있습니다:
 
 - 파일 불러오기
-- url에 GitHub gist id 붙여넣기 (예시. [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+- url에 GitHub gist id 붙여넣기 (예시: [`carbon.now.sh/<gist_id_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
 - 코드 복사해서 직접 붙여넣기
 
 #### Customization
 
-Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, padding 등 이미지에 들어갈 옵션들을 커스터마이징 할 수 있습니다.
+Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, padding 등 이미지에 들어갈 옵션들을 커스터마이징할 수 있습니다.
 
 #### Export/Sharing
 
@@ -64,7 +64,7 @@ Carbon에 코드를 넣었다면, syntax theme, 배경 색, window theme, paddin
   커스텀 키를 사용해 Sublime Text 3 파일의 선택 영역을 Carbon에서 엽니다.
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) -
   `CarbonNowSh()` 함수를 사용해 현재 보고 있는 Vim/Neovim 선택 영역을 엽니다.
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - ineractive 함수인 `carbon-now-sh`를 사용해 현재 보고있는 Emacs 선택 영역을 엽니다.
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - interactive 함수인 `carbon-now-sh`를 사용해 현재 보고있는 Emacs 선택 영역을 엽니다.
 
 ##### CLIs
 
@@ -101,7 +101,7 @@ Carbon is a project by
 
 ### Thanks To
 
-[ ▲ Vercel ](https://vercel.com/)가 Carbon 호스팅을 지원해주고 있습니다..
+[ ▲ Vercel ](https://vercel.com/)가 Carbon 호스팅을 지원해주고 있습니다.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
@@ -235,6 +235,9 @@ Carbon is a project by
     <td align="center"><a href="https://github.com/AbreuY"><img src="https://avatars.githubusercontent.com/u/5095949?v=4?s=100" width="100px;" alt=""/><br /><sub><b>AbreuY</b></sub></a><br /><a href="#translation-AbreuY" title="Translation">🌍</a></td>
     <td align="center"><a href="https://www.rizkytegar.com/"><img src="https://avatars.githubusercontent.com/u/55475891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>>_Rizky.dev</b></sub></a><br /><a href="#translation-rizkytegar" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/OpeAbidemi"><img src="https://avatars.githubusercontent.com/u/58413594?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abidemi Harry</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=OpeAbidemi" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/mcognetta"><img src="https://avatars.githubusercontent.com/u/6856636?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco</b></sub></a><br /><a href="#translation-mcognetta" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://www.rizkytegar.com/"><img src="https://avatars.githubusercontent.com/u/55475891?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rizky Tegar</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=rizkytegar" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/samrobbins85"><img src="https://avatars.githubusercontent.com/u/29740136?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sam Robbins</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=samrobbins85" title="Documentation">📖</a></td>
   </tr>
 </table>
 

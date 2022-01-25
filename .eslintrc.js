@@ -1,10 +1,16 @@
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['next/babel'],
+    },
+  },
   env: {
     browser: true,
     es6: true,
     node: true,
-    jest: true
+    jest: true,
   },
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended'],
   plugins: ['import', 'react', 'jsx-a11y', 'react-hooks'],
@@ -19,11 +25,11 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
-    'no-console': ['error', { allow: ['error'] }]
+    'no-console': ['error', { allow: ['error'] }],
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
 }
