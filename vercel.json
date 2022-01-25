@@ -3,7 +3,6 @@
   "version": 2,
   "public": true,
   "github": {
-    "autoAlias": false,
-    "silent": true
+    "autoAlias": false
   }
 }
