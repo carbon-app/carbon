@@ -1,11 +1,4 @@
 module.exports = {
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    requireConfigFile: false,
-    babelOptions: {
-      presets: ['next/babel'],
-    },
-  },
   env: {
     browser: true,
     es6: true,
@@ -13,7 +6,6 @@ module.exports = {
     jest: true,
   },
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended', 'next'],
-  plugins: ['import', 'react', 'jsx-a11y', 'react-hooks'],
   rules: {
     'import/no-unresolved': 'error',
     'no-duplicate-imports': 'error',
@@ -26,10 +18,5 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'no-console': ['error', { allow: ['error'] }],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 }
