@@ -895,7 +895,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/55475891?v=4",
       "profile": "https://www.rizkytegar.com/",
       "contributions": [
-        "translation"
+        "translation",
+        "doc"
       ]
     },
     {
@@ -914,15 +915,6 @@
       "profile": "https://github.com/mcognetta",
       "contributions": [
         "translation"
-      ]
-    },
-    {
-      "login": "rizkytegar",
-      "name": "Rizky Tegar",
-      "avatar_url": "https://avatars.githubusercontent.com/u/55475891?v=4",
-      "profile": "https://www.rizkytegar.com/",
-      "contributions": [
-        "doc"
       ]
     },
     {
