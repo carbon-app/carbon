@@ -21,7 +21,7 @@
     "test:e2e": "npm run cy:run --",
     "deploy": "vercel -S carbon-app",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages}/**/*.js",
-    "lint": "next lint",
+    "lint": "next lint .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run --config-file cypress/config.json",
@@ -69,8 +69,6 @@
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.23.6",
-    "@babel/core": "^7.16.12",
-    "@babel/eslint-parser": "^7.16.5",
     "all-contributors-cli": "^6.20.0",
     "cypress": "^9.3.1",
     "eslint": "^8.7.0",
