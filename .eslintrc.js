@@ -5,7 +5,12 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jsx-a11y/recommended', 'next'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/rgsecommended',
+    'plugin:jsx-a11y/recommended',
+    'next',
+  ],
   rules: {
     'import/no-unresolved': 'error',
     'no-duplicate-imports': 'error',
