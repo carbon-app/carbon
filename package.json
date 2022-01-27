@@ -21,7 +21,7 @@
     "test:e2e": "npm run cy:run --",
     "deploy": "vercel -S carbon-app",
     "prettier": "prettier --config .prettierrc --write {.,components,lib,pages}/*.js {components,lib,pages}/**/*.js",
-    "lint": "next lint .",
+    "lint": "next lint --dir .",
     "contrib:add": "all-contributors add",
     "contrib:build": "all-contributors generate",
     "cy:run": "cypress run --config-file cypress/config.json",

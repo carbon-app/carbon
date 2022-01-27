@@ -1,5 +1,5 @@
 module.exports = {
-  env: { es6: true },
+  env: { es6: true, jest: true },
   extends: ['eslint:recommended', 'plugin:jsx-a11y/recommended', 'next'],
   rules: {
     'import/no-unresolved': 'error',
