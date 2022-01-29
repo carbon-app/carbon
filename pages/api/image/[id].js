@@ -16,7 +16,7 @@ export const config = {
   },
 }
 
-export default async (req, res) => {
+export default async function id(req, res) {
   // TODO proper auth
   if (req.method === 'GET') {
     if (
