@@ -54,7 +54,7 @@
     "morphmorph": "^0.1.3",
     "ms": "^2.1.3",
     "next": "^12.0.9",
-    "next-pwa": "^3.1.0",
+    "next-pwa": "^5.4.4",
     "prettier": "^2.5.1",
     "puppeteer-core": "^9.0.0",
     "react": "^17.0.2",
