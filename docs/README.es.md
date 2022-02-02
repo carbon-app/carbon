@@ -83,7 +83,7 @@ Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abra un archivo en Carbon o descárguelo directamente usando `carbon-now`, que presenta un modo interactivo, resaltado selectivo y más.
 - [CodeExpander](https://codeexpander.com) - Un cliente inteligente GitHub gist con las características TextExpander.
-- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Exporte múltiples fragmentos de código de carbono desde `Xcode Playground`.
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Exporte múltiples fragmentos de código de Carbon desde `Xcode Playground`.
 
 ##### Librerías
 
