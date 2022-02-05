@@ -925,6 +925,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "alceil",
+      "name": "alceil",
+      "avatar_url": "https://avatars.githubusercontent.com/u/47685349?v=4",
+      "profile": "https://github.com/alceil",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github",
