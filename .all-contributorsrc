@@ -925,6 +925,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "kant",
+      "name": "Darío Hereñú",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32717?v=4",
+      "profile": "https://github.com/kant",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
