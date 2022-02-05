@@ -202,7 +202,7 @@ function SnippetsPage() {
 
   return (
     <div className="container">
-      {snippets.map(snippet => (
+      {snippets.filter(Boolean).map(snippet => (
         <Snippet
           key={snippet.id}
           {...snippet}
