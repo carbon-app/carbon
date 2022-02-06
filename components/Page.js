@@ -40,9 +40,16 @@ class Page extends React.Component {
               top: 1.4rem;
               right: 1rem;
             }
+            .page {
+              max-width: 100%;
+              padding: 0 1rem;
+            }
             @media (min-width: 1024px) {
               .main {
                 ${COLUMN};
+              }
+              .page {
+                padding: 0;
               }
             }
           `}
