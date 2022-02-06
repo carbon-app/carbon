@@ -365,7 +365,7 @@ class Editor extends React.Component {
               <CopyMenu copyImage={this.copyImage} carbonRef={this.carbonNode.current} />
             </div>
             <div id="style-editor-button" />
-            <div className="buttons">
+            <div className="share-buttons">
               <ShareMenu tweet={this.tweet} imgur={this.imgur} />
               <ExportMenu
                 onChange={this.updateSetting}
@@ -416,7 +416,7 @@ class Editor extends React.Component {
               padding: 16px;
             }
 
-            .buttons,
+            .share-buttons,
             .setting-buttons {
               display: flex;
               margin-left: auto;
