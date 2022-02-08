@@ -110,7 +110,7 @@ PR を歓迎しています。詳細は[CONTRIBUTING.md](/.github/CONTRIBUTING.m
 
 ### Thanks To
 
-[ ▲ Vercel ](https://vercel.com/)は Carbon のホスティングを支援してくれています。
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss)は Carbon のホスティングを支援してくれています。
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

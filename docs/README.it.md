@@ -33,7 +33,6 @@ Avete presente [tutti](https://twitter.com/dan_abramov/status/890191815567175680
 - **Condividi rapidamente**. Salva la tua immagine o un link con un clic
 - **Salvare i frammenti**. Crea un account per salvare i frammenti per dopo. Quelli condivisi vengono automaticamente dispiegati su Twitter e Slack.
 
-
 ## Uso
 
 #### Importazione
@@ -89,7 +88,6 @@ Se state usando Google Chrome, o un altro browser che supporta Progressive Web A
 ## Comunità
 
 Guarda questi progetti che la nostra fantastica comunità ha creato:
-
 
 ##### Plugin per l'editor
 
@@ -150,7 +148,7 @@ Le richieste di pull sono benvenute! Vedi le nostre [linee guida per i contribut
 
 ### Grazie a
 
-[ ▲ Vercel ](https://vercel.com/) per aver sponsorizzato l'hosting di Carbon.
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) per aver sponsorizzato l'hosting di Carbon.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

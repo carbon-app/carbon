@@ -99,7 +99,7 @@ PRs são bem vindos! Por favor leia nosso [CONTRIBUTING.md](/.github/CONTRIBUTIN
 
 ### Agradecimentos
 
-[ ▲ Vercel ](https://vercel.com/) por patrocinar a hospedagem do Carbon.
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) por patrocinar a hospedagem do Carbon.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

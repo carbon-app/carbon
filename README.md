@@ -214,6 +214,8 @@ Pull requests are welcome! Please see our [contributing guidelines](/.github/CON
 
 <a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="160px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
 
+[![Powered by Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com?utm_source=[team-name]&utm_campaign=oss)
+
 <a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/2/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/2/avatar"></a>
@@ -225,9 +227,7 @@ Pull requests are welcome! Please see our [contributing guidelines](/.github/CON
 
 ### Thanks To
 
-[ ▲ Vercel ](https://vercel.com/) for sponsoring Carbon's hosting.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
+[▲ Vercel](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) for sponsoring Carbon's hosting.
 
 ### All Contributors
 

@@ -99,7 +99,7 @@ PR കൾ സ്വാഗതം ചെയ്യുന്നു! കൂടുത�
 
 ### നന്ദി
 
-[ ▲ Vercel ](https://vercel.com/) കാർബൺ ഹോസ്റ്റുചെയ്യുന്നതിനുള്ള സ്പോൺസർ.
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) കാർബൺ ഹോസ്റ്റുചെയ്യുന്നതിനുള്ള സ്പോൺസർ.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

@@ -103,7 +103,7 @@ Les PRs sont les bienvenues ! Veuillez lire notre [CONTRIBUTING.md](/.github/CON
 
 ### Merci à
 
-[ ▲ Vercel ](https://vercel.com/) pour sponsoriser l'hébergement de Carbon.
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) pour sponsoriser l'hébergement de Carbon.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

@@ -159,7 +159,7 @@ Gebruik je Carbon graag? Denk dan eens aan het ondersteunen van het project voor
 
 ### Dank aan
 
-[ ▲ Vercel ](https://vercel.com/) voor het sponsoren van Carbon's hosting.
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) voor het sponsoren van Carbon's hosting.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

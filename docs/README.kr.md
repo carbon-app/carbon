@@ -101,7 +101,7 @@ Carbon is a project by
 
 ### Thanks To
 
-[ ▲ Vercel ](https://vercel.com/)가 Carbon 호스팅을 지원해주고 있습니다.
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss)가 Carbon 호스팅을 지원해주고 있습니다.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

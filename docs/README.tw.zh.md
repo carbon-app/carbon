@@ -159,7 +159,7 @@ Carbon 專案由 TA 們發起：
 
 ### 感謝
 
-[ ▲ Vercel ](https://vercel.com/) 贊助了 Carbon 的服務託管。
+[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) 贊助了 Carbon 的服務託管。
 
 ### 所有貢獻者
 
