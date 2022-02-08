@@ -295,6 +295,9 @@ Carbon 專案由 TA 們發起：
     <td align="center"><a href="https://github.com/samrobbins85"><img src="https://avatars.githubusercontent.com/u/29740136?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sam Robbins</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=samrobbins85" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/alceil"><img src="https://avatars.githubusercontent.com/u/47685349?v=4?s=100" width="100px;" alt=""/><br /><sub><b>alceil</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=alceil" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/hatsu38"><img src="https://avatars.githubusercontent.com/u/16137809?v=4?s=100" width="100px;" alt=""/><br /><sub><b>hatsu</b></sub></a><br /><a href="https://github.com/carbon-app/carbon/commits?author=hatsu38" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
