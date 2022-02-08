@@ -69,6 +69,7 @@ class Popout extends React.PureComponent {
               border-radius: 3px;
               margin-top: 10px;
               font-size: 12px;
+              z-index: 1;
             }
           `}
         </style>

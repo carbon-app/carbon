@@ -118,6 +118,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
             position: relative;
             color: ${COLORS.SECONDARY};
             flex: 1;
+            max-width: 40px;
           }
 
           .copy-row {

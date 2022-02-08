@@ -55,7 +55,11 @@ function ExportMenu({ onChange, exportSize, isVisible, toggleVisibility, exportI
           onClick={toggleVisibility}
           data-cy="export-button"
           margin="0 0 0 -1px"
-          style={{ borderBottomLeftRadius: 0, borderTopLeftRadius: 0 }}
+          style={{
+            borderBottomLeftRadius: 0,
+            borderTopLeftRadius: 0,
+            maxWidth: '26px',
+          }}
           title="Export menu dropdown"
         >
           <ArrowDown color={COLORS.PURPLE} />

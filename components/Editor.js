@@ -345,25 +345,27 @@ class Editor extends React.Component {
             onChange={this.updateLanguage}
           />
           <div className="toolbar-second-row">
-            <BackgroundSelect
-              onChange={this.updateBackground}
-              updateHighlights={this.updateHighlights}
-              mode={backgroundMode}
-              color={backgroundColor}
-              image={backgroundImage}
-              carbonRef={this.carbonNode.current}
-            />
-            <Settings
-              {...config}
-              onChange={this.updateSetting}
-              resetDefaultSettings={this.resetDefaultSettings}
-              format={this.format}
-              applyPreset={this.applyPreset}
-              getCarbonImage={this.getCarbonImage}
-            />
-            <div id="style-editor-button" />
-            <div className="buttons">
+            <div className="setting-buttons">
+              <BackgroundSelect
+                onChange={this.updateBackground}
+                updateHighlights={this.updateHighlights}
+                mode={backgroundMode}
+                color={backgroundColor}
+                image={backgroundImage}
+                carbonRef={this.carbonNode.current}
+              />
+              <Settings
+                {...config}
+                onChange={this.updateSetting}
+                resetDefaultSettings={this.resetDefaultSettings}
+                format={this.format}
+                applyPreset={this.applyPreset}
+                getCarbonImage={this.getCarbonImage}
+              />
               <CopyMenu copyImage={this.copyImage} carbonRef={this.carbonNode.current} />
+            </div>
+            <div id="style-editor-button" />
+            <div className="share-buttons">
               <ShareMenu tweet={this.tweet} imgur={this.imgur} />
               <ExportMenu
                 onChange={this.updateSetting}
@@ -414,22 +416,31 @@ class Editor extends React.Component {
               padding: 16px;
             }
 
-            .buttons {
+            .share-buttons,
+            .setting-buttons {
               display: flex;
               margin-left: auto;
+              height: 40px;
             }
             .toolbar-second-row {
-              height: 40px;
               display: flex;
               flex: 1 1 auto;
             }
-            .toolbar-second-row > :global(div:not(:last-of-type)) {
+            .setting-buttons > :global(div) {
               margin-right: 0.5rem;
             }
 
             #style-editor-button {
               display: flex;
               align-items: center;
+            }
+            @media (max-width: 768px) {
+              .toolbar-second-row {
+                display: block;
+              }
+              #style-editor-button {
+                margin-top: 0.5rem;
+              }
             }
           `}
         </style>
