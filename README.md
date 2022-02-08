@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://reporanger.com">
-    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-160-orange.svg" alt="All Contributors" />
@@ -57,7 +57,7 @@
         <a href="/docs/README.fr.md">Français</a>
       </td>
     </tr>
-    <tr>      
+    <tr>
       <td>
         <a href="/docs/README.ja.md">日本語</a>
       </td>
@@ -212,7 +212,7 @@ Pull requests are welcome! Please see our [contributing guidelines](/.github/CON
 
 ### Sponsors & Backers
 
-<a href="https://fossa.com" target="_blank"><img width="160px" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
+[![Fossa](https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg)](https://fossa.com)
 
 [![Powered by Vercel](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com?utm_source=[team-name]&utm_campaign=oss)
 
