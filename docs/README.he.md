@@ -19,19 +19,15 @@
 
 <br></br>
 
-
 <h2 dir="rtl">פתיחה</h2>
-
 
 <p dir="rtl">
   מכירים את <a href="https://twitter.com/dan_abramov/status/890191815567175680">כל</a> <a href="https://twitter.com/reactjs/status/890511993261654017">צילומי המסך</a> <a href="https://twitter.com/notquiteleo/status/873483329345028096">של קוד</a> שרואים בטוויטר? למרות שבדרך כלל הקוד מרשים, אנחנו ראינו מקום לשיפור במחלקת האסתטיקה. Carbon הופך יצירת ושיתוף תמונות מדהימות של קוד המקור שלכם לפשוט. אז למה אתם מחכים? החלו להרשים את כל העוקבים שלכם בעזרת כישרון העיצוב החדש שלכם.
 </p>
 
-
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
-
 
 <h2 dir="rtl">תכונות</h2>
 
@@ -167,8 +163,9 @@
 
 <h3 dir="rtl">נותני חסות ותומכים</h2>
 
-<a href="https://fossa.com" style="margin-right: 2rem;" target="_blank"><img width="160px" align="right" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
+<a href="https://fossa.com" target="_blank"><img width="160px" align="right" src="https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg" /></a>
 <br />
+
 <p dir="rtl">
 <a href="https://opencollective.com/carbon-app/backers/0/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/0/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/1/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/1/avatar"></a>
