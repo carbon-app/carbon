@@ -99,7 +99,7 @@ PRs का स्वागत है! अधिक जानकारी के 
 
 ### धन्यवाद
 
-[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
+[ ▲ Vercel ](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) कार्बन की होस्टिंग को प्रायोजित करने के लिए।
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

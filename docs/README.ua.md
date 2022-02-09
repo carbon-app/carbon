@@ -148,7 +148,7 @@ PR вітаються! Будь ласка, перегляньте наші [р�
 
 ### Дякуємо
 
-[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) за спонсорство хостингу Carbon.
+[ ▲ Vercel ](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) за спонсорство хостингу Carbon.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

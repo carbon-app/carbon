@@ -210,7 +210,7 @@ Untuk tata cara melakukan PR (Pull Request, cara berkontibusi ke dalam repositor
 
 ### Terima Kasih banyak untuk
 
-[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) telah mensponsori hosting Carbon's.
+[ ▲ Vercel ](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) telah mensponsori hosting Carbon's.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 

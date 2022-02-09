@@ -99,7 +99,7 @@ Pull Requests sind willkommen! Bitte lese hierzu unsere [CONTRIBUTING.md](/.gith
 
 ### Danke an
 
-[ ▲ Vercel ](https://vercel.com?utm_source=[team-name]&utm_campaign=oss) für das Sponsoring von Carbon’s Hosting.
+[ ▲ Vercel ](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) für das Sponsoring von Carbon’s Hosting.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcarbon-app%2Fcarbon&project-name=carbon&repo-name=carbon)
 
