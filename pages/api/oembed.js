@@ -20,8 +20,7 @@ module.exports = (req, res) => {
   try {
     embedUrl = decodeURIComponent(embedUrl)
   } catch (e) {
-    // eslint-disable-next-line
-    console.log(e)
+    console.error(e)
     /* URL is already decoded */
   }
 
@@ -50,7 +49,6 @@ module.exports = (req, res) => {
 
     return res.status(200).json(obj)
   } catch (e) {
-    // eslint-disable-next-line
     console.error(e)
     return res.status(500).send(e.message)
   }

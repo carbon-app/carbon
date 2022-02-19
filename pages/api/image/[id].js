@@ -117,7 +117,6 @@ export default async function id(req, res) {
     }
     return res.status(200).send(dataUrl)
   } catch (e) {
-    // eslint-disable-next-line
     console.error(e)
     return res.status(500).end()
   } finally {
