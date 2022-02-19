@@ -17,6 +17,30 @@ describe('/api', () => {
       })
     })
   })
+  describe('/unsplash/download', () => {
+    it('Should return the correct URL', () => {
+      cy.request('/api/unsplash/download/RCAhiGJsUUE').then(res => {
+        expect(res.body).to.have.property(
+          'url',
+          'https://images.unsplash.com/photo-1533134486753-c833f0ed4866?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb'
+        )
+      })
+    })
+  })
+  describe('/unsplash/random', () => {
+    it('Should return an array of image URLs', () => {
+      cy.request('/api/unsplash/random').then(res => {
+        expect(res.body).to.be.an('array')
+      })
+    })
+  })
+  describe('/unsplash/random', () => {
+    it('Should return an array of image URLs', () => {
+      cy.request('/api/unsplash/random').then(res => {
+        expect(res.body).to.be.an('array')
+      })
+    })
+  })
   describe('/oembed', () => {
     it('Should return correct json response', () => {
       cy.request('/api/oembed?url=https://carbon.now.sh').then(res => {
