@@ -68,7 +68,6 @@ module.exports = (req, res) => {
   return downloadImage(req.query.id)
     .then(url => res.status(200).send(url))
     .catch(e => {
-      // eslint-disable-next-line
       console.error(e)
       return res.status(500).send()
     })

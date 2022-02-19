@@ -2,6 +2,12 @@
   "alias": "carbon.now.sh",
   "version": 2,
   "public": true,
+  "env": {
+    "NODE_ENV": "production",
+    "UNSPLASH_SECRET_KEY": "@unsplash_secret_key",
+    "UNSPLASH_ACCESS_KEY": "@unsplash_access_key",
+    "UNSPLASH_CALLBACK_URL": "@unsplash_callback_url"
+  },
   "github": {
     "autoAlias": false
   },

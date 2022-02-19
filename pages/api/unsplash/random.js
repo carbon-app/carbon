@@ -31,7 +31,6 @@ module.exports = (req, res) =>
   getRandomImages()
     .then(imgs => res.status(200).json(imgs))
     .catch(e => {
-      // eslint-disable-next-line
       console.error(e)
       return res.status(500).send()
     })
