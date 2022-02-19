@@ -355,6 +355,9 @@ class Carbon extends React.PureComponent {
               .container :global([contenteditable='true']) {
                 user-select: text;
               }
+              .container {
+                max-width: 480px;
+              }
             }
 
             .section,
@@ -365,6 +368,7 @@ class Carbon extends React.PureComponent {
               justify-content: center;
               align-items: center;
               overflow: hidden;
+              max-width: 100%;
             }
           `}
         </style>
