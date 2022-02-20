@@ -2761,7 +2761,7 @@ body-parser@1.19.0:
     raw-body "2.4.0"
     type-is "~1.6.17"
 
-boxen@^4.1.0, boxen@^4.2.0:
+boxen@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-4.2.0.tgz#e411b62357d6d6d36587c8ac3d5d974daa070e64"
   integrity sha512-eB4uT9RGzg2odpER62bBwSLvUeGC+WbRjjyyFhGsKnc8wp/m0+hQsMUvUe3H2V0D5vw0nBdO1hCJoZo5mKeuIQ==
@@ -2990,17 +2990,6 @@ cli-width@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.2.0.tgz#ff19ede8a9a5e579324147b0c11f0fbcbabed639"
   integrity sha1-/xnt6Kml5XkyQUewwR8PvLq+1jk=
-
-climate-change-reminder@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/climate-change-reminder/-/climate-change-reminder-0.0.7.tgz#44d08121175e3e57430f172b6ed92ee5a9b37743"
-  integrity sha512-IqUB3s0KYGyS7qdwl264pBLbjv06PKxQd+Hd7e43GObIHcfO+UfgUL/v7ujesWGuqIKFQRvA8qRKdTIzNleWFg==
-  dependencies:
-    boxen "^4.1.0"
-    chalk "^2.4.2"
-    once "^1.4.0"
-    rexrex "^1.3.0"
-    terminal-link "^2.0.0"
 
 clipboardy@^1.2.3:
   version "1.2.3"
@@ -7296,11 +7285,6 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rexrex@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/rexrex/-/rexrex-1.3.0.tgz#430b3574c784300512cb9a123f4ac8284ca4aba6"
-  integrity sha512-qDrL9XaErX2+bzxdysIeDcJsH4dD8KVhj8cwPjruKpnrK5TVA5nJHk4nWZTh+yInX/kZwv19ea/6qINiyZPrFg==
-
 rimraf@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
@@ -7930,14 +7914,6 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-supports-hyperlinks@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/supports-hyperlinks/-/supports-hyperlinks-2.1.0.tgz#f663df252af5f37c5d49bbd7eeefa9e0b9e59e47"
-  integrity sha512-zoE5/e+dnEijk6ASB6/qrK+oYdm2do1hjoLWrqUC/8WEIW1gbxFcKuBof7sW8ArN6e+AYvsE8HBGiVRWL/F5CA==
-  dependencies:
-    has-flag "^4.0.0"
-    supports-color "^7.0.0"
-
 supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
@@ -8022,14 +7998,6 @@ term-size@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/term-size/-/term-size-2.2.0.tgz#1f16adedfe9bdc18800e1776821734086fcc6753"
   integrity sha512-a6sumDlzyHVJWb8+YofY4TW112G6p2FCPEAFk+59gIYHv3XHRhm9ltVQ9kli4hNWeQBwSpe8cRN25x0ROunMOw==
-
-terminal-link@^2.0.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/terminal-link/-/terminal-link-2.1.1.tgz#14a64a27ab3c0df933ea546fba55f2d078edc994"
-  integrity sha512-un0FmiRUQNr5PJqy9kP7c40F5BOfpGlYTrxonDChEZB7pzZxRNp/bt+ymiy9/npwXya9KH99nJ/GXFIiUkYGFQ==
-  dependencies:
-    ansi-escapes "^4.2.1"
-    supports-hyperlinks "^2.0.0"
 
 terser-webpack-plugin@^5.2.5:
   version "5.3.1"
@@ -8457,13 +8425,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-climate-change-reminder@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/use-climate-change-reminder/-/use-climate-change-reminder-0.0.7.tgz#91cf7fc44d68b4bc7fe8f3040ef0c3349d869e14"
-  integrity sha512-bTgYBShrjVRX1AAUciEYKJYTu8ypgZO5Fjh+mBI9fK4AXqm3AAMEzox6vRpzn3YBPU7CMoKXiI0522+51yySXQ==
-  dependencies:
-    climate-change-reminder "^0.0.7"
 
 use-subscription@1.5.1:
   version "1.5.1"
