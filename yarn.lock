@@ -3462,7 +3462,7 @@ dayjs@^1.10.4:
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.4.tgz#8e544a9b8683f61783f570980a8a80eaf54ab1e2"
   integrity sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw==
 
-debug@2.6.9, debug@^2.1.3, debug@^2.6.9:
+debug@2.6.9, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -5679,13 +5679,6 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsonp@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/jsonp/-/jsonp-0.2.1.tgz#a65b4fa0f10bda719a05441ea7b94c55f3e15bae"
-  integrity sha1-pltPoPEL2nGaBUQep7lMVfPhW64=
-  dependencies:
-    debug "^2.1.3"
-
 jsonpointer@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-5.0.0.tgz#f802669a524ec4805fa7389eadbc9921d5dc8072"
@@ -7033,15 +7026,6 @@ react-is@^17.0.2:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-mailchimp-subscribe@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/react-mailchimp-subscribe/-/react-mailchimp-subscribe-2.1.3.tgz#2f195f20b98c9be9608fac95d1f4f5bcb2d81929"
-  integrity sha512-ZRuPZMnX/9pHQLnAQavsgB5xIF+gNqjNCCq1vvTs23cn+93W2oOp17qjg3LpDBEt1HJi6IHXMwpKXn0taY8FHw==
-  dependencies:
-    jsonp "^0.2.1"
-    prop-types "^15.5.10"
-    to-querystring "^1.0.4"
-
 react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
@@ -8062,11 +8046,6 @@ to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
-
-to-querystring@^1.0.4:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/to-querystring/-/to-querystring-1.1.0.tgz#31efbcebb332bcb2522de36129b4234179399fbd"
-  integrity sha512-nlYTDlLrE9+JJlEcoqEvOytgReSG4z8+hdHeSO8+WF4VLzF7sY5KFyIGvCEWJc0bROdMJsyhOnbPEb5R2LOI8A==
 
 to-readable-stream@^1.0.0:
   version "1.0.0"
