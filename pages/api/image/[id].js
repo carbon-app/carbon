@@ -37,7 +37,6 @@ export default async function id(req, res) {
   const host = (req.headers && req.headers.host) || 'carbon.now.sh'
 
   try {
-    await chrome.font(`https://${host}/static/fonts/NotoSansSC-Regular.otf`)
     await chrome.font(NOTO_COLOR_EMOJI_URL)
   } catch (e) {
     console.error(e)
