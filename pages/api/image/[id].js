@@ -44,7 +44,7 @@ export default async function id(req, res) {
   }
 
   const browser = await puppeteer.launch({
-    args: chrome.args,
+    args: [...chrome.args, '--hide-scrollbars'],
     defaultViewport: chrome.defaultViewport,
     executablePath: await chrome.executablePath,
     headless: chrome.headless,
