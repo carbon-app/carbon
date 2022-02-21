@@ -7,8 +7,7 @@
   },
   "functions": {
     "pages/api/image/**/*.js": {
-      "maxDuration": 10,
-      "includeFiles": "lib/**"
+      "maxDuration": 10
     },
     "pages/api/snippets/**/*.js": {
       "maxDuration": 5
