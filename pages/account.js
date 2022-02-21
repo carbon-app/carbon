@@ -80,7 +80,7 @@ function Plan({ selectBilling }) {
           </tr>
           <tr>
             <td>Embed saved snippets</td>
-            <td></td>
+            <td>✔</td>
             <td>✔</td>
           </tr>
           <tr>
