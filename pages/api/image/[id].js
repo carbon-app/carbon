@@ -1,13 +1,9 @@
 /* global domtoimage */
-import path from 'path'
 import qs from 'querystring'
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 
-const x = path.resolve(process.cwd(), '../../../lib/dom-to-image')
-// eslint-disable-next-line no-console
-console.log('!!!', x)
-const DOM_TO_IMAGE_PATH = require.resolve(x)
+const DOM_TO_IMAGE_PATH = require.resolve('../../../lib/dom-to-image')
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
