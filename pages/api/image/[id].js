@@ -3,8 +3,6 @@ import qs from 'querystring'
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 
-import domToImage from '../../../lib/dom-to-image'
-
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
@@ -59,7 +57,7 @@ export default async function id(req, res) {
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
     await page.goto(`https://${host}/${id ? id : `?${queryString}`}`)
-    await page.evaluate(() => domToImage)
+    await page.evaluate(() => import('../../../lib/dom-to-image'))
 
     await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
 
