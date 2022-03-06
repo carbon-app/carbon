@@ -3,6 +3,7 @@ import qs from 'querystring'
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 
+const DOM_TO_IMAGE_PATH = require.resolve('../../../lib/dom-to-image')
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
@@ -57,7 +58,7 @@ export default async function id(req, res) {
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
     await page.goto(`https://${host}/${id ? id : `?${queryString}`}`)
-    await page.evaluate(() => import('../../../lib/dom-to-image'))
+    await page.addScriptTag({ path: DOM_TO_IMAGE_PATH })
 
     await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
 
