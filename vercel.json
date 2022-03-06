@@ -7,7 +7,8 @@
   },
   "functions": {
     "pages/api/image/**/*.js": {
-      "maxDuration": 10
+      "maxDuration": 10,
+      "includeFiles": "lib/dom-to-image.js"
     },
     "pages/api/snippets/**/*.js": {
       "maxDuration": 5
