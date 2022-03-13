@@ -93,6 +93,16 @@ class Editor extends React.Component {
   updateCode = code => this.updateState({ code })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
 
+  calculateExportImageBaseWidth = offsetWidth => {
+    if (this.state.widthAdjustment) return offsetWidth
+
+    const settingWidth = parseInt(this.state.width)
+    const isOverWidth = offsetWidth < settingWidth
+    if (!isOverWidth) return offsetWidth
+
+    return settingWidth + parseInt(this.state.paddingHorizontal)
+  }
+
   getCarbonImage = async (
     {
       format,
@@ -101,9 +111,9 @@ class Editor extends React.Component {
     } = { format: 'png' }
   ) => {
     const node = this.carbonNode.current
-
-    const width = node.offsetWidth * exportSize
-    const height = squared ? node.offsetWidth * exportSize : node.offsetHeight * exportSize
+    const imageBaseWidth = this.calculateExportImageBaseWidth(node.offsetWidth)
+    const width = imageBaseWidth * exportSize
+    const height = squared ? imageBaseWidth * exportSize : node.offsetHeight * exportSize
 
     const config = {
       style: {
