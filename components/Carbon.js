@@ -245,6 +245,9 @@ class Carbon extends React.PureComponent {
               max-width: ${config.widthAdjustment ? '1024px' : 'none'};
               ${config.widthAdjustment ? '' : `width: ${config.width}px;`}
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
+              overflow: scroll;
+              margin: 0 auto;
+              scroll-snap-align: center;
             }
 
             .container :global(.watermark) {
@@ -355,9 +358,6 @@ class Carbon extends React.PureComponent {
               .container :global([contenteditable='true']) {
                 user-select: text;
               }
-              .container {
-                max-width: 480px;
-              }
             }
 
             .section,
@@ -367,8 +367,9 @@ class Carbon extends React.PureComponent {
               flex-direction: column;
               justify-content: center;
               align-items: center;
-              overflow: hidden;
+              overflow: scroll;
               max-width: 100%;
+              scroll-snap-type: x mandatory;
             }
           `}
         </style>
