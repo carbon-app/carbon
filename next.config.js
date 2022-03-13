@@ -66,12 +66,14 @@ module.exports = withBundleAnalyzer(
       return [
         {
           source: '/privacy',
-          destination: 'https://www.notion.so/PRIVACY-POLICY-e9847a7777714eb08ba15a7a8eaee937',
+          destination:
+            'https://carbon-app.notion.site/PRIVACY-POLICY-65f08f57a8a14f91931d778f9a471a7d',
           permanent: false,
         },
         {
           source: '/terms',
-          destination: 'https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583',
+          destination:
+            'https://carbon-app.notion.site/TERMS-OF-USE-d159661077fe4ef2974e6108b36aeece',
           permanent: false,
         },
         {

@@ -33,10 +33,16 @@ describe('security', () => {
   })
   it('/privacy -> Privacy policy', () => {
     cy.visit(`/privacy`)
-    cy.url().should('eq', 'https://www.notion.so/PRIVACY-POLICY-e9847a7777714eb08ba15a7a8eaee937')
+    cy.url().should(
+      'eq',
+      'https://carbon-app.notion.site/PRIVACY-POLICY-65f08f57a8a14f91931d778f9a471a7d'
+    )
   })
   it('/terms -> Terms', () => {
     cy.visit(`/terms`)
-    cy.url().should('eq', 'https://www.notion.so/TERMS-OF-USE-ff2ce22a7e9848c89c6be46b44297583')
+    cy.url().should(
+      'eq',
+      'https://carbon-app.notion.site/TERMS-OF-USE-d159661077fe4ef2974e6108b36aeece'
+    )
   })
 })
