@@ -419,8 +419,10 @@ class Editor extends React.Component {
             .share-buttons,
             .setting-buttons {
               display: flex;
-              margin-left: auto;
               height: 40px;
+            }
+            .share-buttons {
+              margin-left: auto;
             }
             .toolbar-second-row {
               display: flex;
