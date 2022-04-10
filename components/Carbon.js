@@ -200,8 +200,8 @@ class Carbon extends React.PureComponent {
           ) : (
             <div className="container">
               <div className="side-card">
-                <h2>FluentAssertions Exceptions</h2>
-                <p>O FluentAssertions tem métodos pra checar Exceptions também. Dá pra checar que uma exception foi lançada ou que não foi lançada por uma chamada. <br /> <br /> Os métodos te ajudam a checar mensagens, parâmetros e outros detalhes de forma mais fácil.</p>
+                <h2 className="title">FluentAssertions Exceptions</h2>
+                <textarea className="body">Some description text</textarea>
               </div>
             <div>
               {config.windowControls ? (
@@ -262,7 +262,7 @@ class Carbon extends React.PureComponent {
               line-height: normal;
             }
 
-            div.side-card > h2 {
+            div.side-card > .title {
               font-weight: 900;
               font-size: 28px;
               margin: 0;
@@ -270,12 +270,21 @@ class Carbon extends React.PureComponent {
               margin-bottom: 10px;
             }
 
-            div.side-card > p {
+            div.side-card > .body {
               margin: 0;
               margin-left: 16px;
+              background: none;
+              resize: none;
+              overflow: hidden;
+              outline: none;
+              box-shadow: none;
+              border: none;
               font-size: 20px;
               line-height: 22px;
               font-weight: 500;
+              height: 100%;
+              width: ${320 - 26}px;
+              font-family: Lato, sans-serif;
             }
 
             .container {
