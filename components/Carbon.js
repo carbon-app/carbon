@@ -199,6 +199,11 @@ class Carbon extends React.PureComponent {
             </div>
           ) : (
             <div className="container">
+              <div className="side-card">
+                <h2>FluentAssertions Exceptions</h2>
+                <p>O FluentAssertions tem métodos pra checar Exceptions também. Dá pra checar que uma exception foi lançada ou que não foi lançada por uma chamada. <br /> <br /> Os métodos te ajudam a checar mensagens, parâmetros e outros detalhes de forma mais fácil.</p>
+              </div>
+            <div>
               {config.windowControls ? (
                 <WindowControls
                   theme={config.windowTheme}
@@ -229,6 +234,7 @@ class Carbon extends React.PureComponent {
                 paddingHorizontal={config.paddingHorizontal}
               />
             </div>
+          </div>
           )}
         </div>
         {selectionNode &&
@@ -239,12 +245,46 @@ class Carbon extends React.PureComponent {
           )}
         <style jsx>
           {`
+            div.side-card {
+              position: relative;
+              background-color: rgba(255,255,255,0.7);
+              width: auto;
+              z-index: 1;
+              margin-right: -5px;
+              border-radius: 5px 0 0 5px;
+              padding: 5px;
+              padding-top: 24px;
+              padding-right: 10px;
+              color: black;
+              font-family: Lato, sans-serif;
+              max-width: 320px;
+              max-height: 100%;
+              line-height: normal;
+            }
+
+            div.side-card > h2 {
+              font-weight: 900;
+              font-size: 28px;
+              margin: 0;
+              margin-left: 16px;
+              margin-bottom: 10px;
+            }
+
+            div.side-card > p {
+              margin: 0;
+              margin-left: 16px;
+              font-size: 20px;
+              line-height: 22px;
+              font-weight: 500;
+            }
+
             .container {
               position: relative;
               min-width: ${config.widthAdjustment ? '90px' : 'auto'};
               max-width: ${config.widthAdjustment ? '1024px' : 'none'};
               ${config.widthAdjustment ? '' : `width: ${config.width}px;`}
               padding: ${config.paddingVertical} ${config.paddingHorizontal};
+              display: flex;
             }
 
             .container :global(.watermark) {
