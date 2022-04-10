@@ -34,6 +34,7 @@ function WindowSettings({
   watermark,
   onWidthChanging,
   onWidthChanged,
+  sideCard,
 }) {
   return (
     <div className="settings-content">
@@ -94,6 +95,11 @@ function WindowSettings({
           />
         </div>
       )}
+      <Toggle
+        label="Enable side-card"
+        enabled={sideCard}
+        onChange={onChange.bind(null, 'sideCard')}
+      />
       <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
       <style jsx>
         {`
@@ -384,6 +390,7 @@ class Settings extends React.PureComponent {
             widthAdjustment={this.props.widthAdjustment}
             width={this.props.width}
             watermark={this.props.watermark}
+            sideCard={this.props.sideCard}
           />
         )
       case 'Editor':

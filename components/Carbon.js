@@ -260,6 +260,7 @@ class Carbon extends React.PureComponent {
               max-width: 320px;
               max-height: 100%;
               line-height: normal;
+              ${this.props.config.sideCard !== true ? 'display: none' : ''}
             }
 
             div.side-card > .title {
