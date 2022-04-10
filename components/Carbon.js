@@ -200,8 +200,8 @@ class Carbon extends React.PureComponent {
           ) : (
             <div className="container">
               <div className="side-card">
-                <h2 className="title">FluentAssertions Exceptions</h2>
-                <textarea className="body">Some description text</textarea>
+                <textarea className="title" defaultValue={"Nice title"}></textarea>
+                <textarea className="body" defaultValue={"Some description text"}></textarea>
               </div>
             <div>
               {config.windowControls ? (
@@ -264,11 +264,19 @@ class Carbon extends React.PureComponent {
             }
 
             div.side-card > .title {
-              font-weight: 900;
-              font-size: 28px;
               margin: 0;
               margin-left: 16px;
               margin-bottom: 10px;
+              background: none;
+              resize: none;
+              overflow: hidden;
+              outline: none;
+              box-shadow: none;
+              border: none;
+              font-weight: 900;
+              font-size: 28px;
+              width: ${320 - 26}px;
+              font-family: Lato, sans-serif;
             }
 
             div.side-card > .body {
