@@ -1,12 +1,12 @@
 /* global cy */
-import { editorVisible } from '../support'
+import { editorVisible, sideCardNotVisible, sideCardVisibile } from '../support'
 describe('Side-card', () => {
   it('Should be closed by default', () => {
     cy.visit('/')
     
     editorVisible()
 
-    cy.get('.side-card').should('not.be.visible')
+    sideCardNotVisible()
   })
 
   it('Should be closed when url indicates to', () => {
@@ -14,7 +14,7 @@ describe('Side-card', () => {
     
     editorVisible()
 
-    cy.get('.side-card').should('not.be.visible')
+    sideCardNotVisible()
   })
 
   it('Should be opened with default texts when url indicates to', () => {
@@ -22,11 +22,10 @@ describe('Side-card', () => {
     
     editorVisible()
 
-    cy.get('.side-card')
-      .should('be.visible')
+    sideCardVisibile()
       .contains('Nice title')
     
-    cy.get('.side-card')
+    sideCardVisibile()
       .contains('Some description text')
   })
 })
