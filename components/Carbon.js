@@ -124,6 +124,9 @@ class Carbon extends React.PureComponent {
     }
   }
 
+  onSideCardTitleChange = e => this.props.onSideCardChange({sideCardTitle: e.target.value})
+  onSideCardBodyChange = e => this.props.onSideCardChange({sideCardBody: e.target.value})
+
   onSelectionChange = changes => {
     if (this.state.selectionAt) {
       const css = [
@@ -200,8 +203,8 @@ class Carbon extends React.PureComponent {
           ) : (
             <div className="container">
               <div className="side-card">
-                <textarea className="title" defaultValue={"Nice title"}></textarea>
-                <textarea className="body" defaultValue={"Some description text"}></textarea>
+                <textarea className="title" defaultValue={this.props.config.sideCardTitle ?? 'Nice title'} onChange={this.onSideCardTitleChange}></textarea>
+                <textarea className="body" defaultValue={this.props.config.sideCardBody ??"Some description text"} onChange={this.onSideCardBodyChange}></textarea>
               </div>
             <div>
               {config.windowControls ? (

@@ -28,4 +28,16 @@ describe('Side-card', () => {
     sideCardVisibile()
       .contains('Some description text')
   })
+
+  it('Should accept values from url', () => {
+    cy.visit('/?sc=true&scT=New%2520Title&scB=New%2520Body')
+    
+    editorVisible()
+
+    sideCardVisibile().within(() => {
+      cy.get('.title').contains('New Title')
+      cy.get('.body').contains('New Body')
+    })
+    
+  })
 })

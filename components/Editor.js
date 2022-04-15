@@ -92,6 +92,7 @@ class Editor extends React.Component {
 
   updateCode = code => this.updateState({ code })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
+  updateSideCard = sideCardProps => this.updateState(sideCardProps)
 
   getCarbonImage = async (
     {
@@ -388,6 +389,7 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
+                onSideCardChange={this.updateSideCard}
                 updateWidth={this.updateWidth}
                 loading={this.state.loading}
                 theme={theme}
