@@ -204,7 +204,7 @@ class Carbon extends React.PureComponent {
             <div className="container">
               <div className="side-card">
                 <textarea className="title" defaultValue={this.props.config.sideCardTitle ?? 'Nice title'} onChange={this.onSideCardTitleChange}></textarea>
-                <textarea className="body" defaultValue={this.props.config.sideCardBody ??"Some description text"} onChange={this.onSideCardBodyChange}></textarea>
+                <textarea className="body" defaultValue={this.props.config.sideCardBody ?? 'Some description text'} onChange={this.onSideCardBodyChange}></textarea>
               </div>
             <div>
               {config.windowControls ? (
