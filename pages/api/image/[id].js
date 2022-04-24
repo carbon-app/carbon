@@ -1,4 +1,3 @@
-/* global domtoimage */
 import qs from 'querystring'
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
@@ -108,7 +107,7 @@ export default async function id(req, res) {
         height,
       }
 
-      return domtoimage.toPng(target, config)
+      return global.domtoimage.toPng(target, config)
     }, targetElement)
 
     if (req.method === 'GET') {
