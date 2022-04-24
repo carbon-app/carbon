@@ -7,6 +7,9 @@ const DOM_TO_IMAGE_PATH = new URL('../../../lib/dom-to-image', import.meta.url)
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
+// eslint-disable-next-line no-console
+console.log(DOM_TO_IMAGE_PATH, DOM_TO_IMAGE_PATH.toString())
+
 export const config = {
   api: {
     bodyParser: {
@@ -58,7 +61,7 @@ export default async function id(req, res) {
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
     await page.goto(`https://${host}/${id ? id : `?${queryString}`}`)
-    await page.addScriptTag({ path: DOM_TO_IMAGE_PATH })
+    await page.addScriptTag({ path: DOM_TO_IMAGE_PATH.toString() })
 
     await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
 
