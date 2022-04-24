@@ -5,7 +5,6 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'tr
 
 module.exports = withBundleAnalyzer(
   withOffline({
-    experimental: { nftTracing: true },
     pwa: {
       disable: process.env.NODE_ENV !== 'production',
       dest: 'public',
