@@ -9,7 +9,7 @@ const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
 // eslint-disable-next-line no-console
-console.log(DOM_TO_IMAGE_PATH)
+console.log(DOM_TO_IMAGE_PATH, new URL('../../../lib/dom-to-image', import.meta.url).pathname)
 
 export const config = {
   api: {
