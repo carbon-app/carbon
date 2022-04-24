@@ -1,18 +1,14 @@
 /* global domtoimage */
-import fs from 'fs'
 import qs from 'querystring'
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 
-const DOM_TO_IMAGE_CONTENT = fs.readFileSync(
-  new URL('../../../lib/dom-to-image', import.meta.url),
-  'utf-8'
-)
+const DOM_TO_IMAGE_URL = new URL('../../../lib/dom-to-image', import.meta.url)
 const NOTO_COLOR_EMOJI_URL =
   'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
 
 // eslint-disable-next-line no-console
-console.log(DOM_TO_IMAGE_CONTENT)
+console.log(DOM_TO_IMAGE_URL)
 
 export const config = {
   api: {
@@ -65,7 +61,7 @@ export default async function id(req, res) {
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
     await page.goto(`https://${host}/${id ? id : `?${queryString}`}`)
-    await page.addScriptTag({ content: DOM_TO_IMAGE_CONTENT })
+    await page.addScriptTag({ url: DOM_TO_IMAGE_URL })
 
     await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
 
