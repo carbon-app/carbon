@@ -34,8 +34,6 @@ export default async function id(req, res) {
     }
   }
 
-  const host = (req.headers && req.headers.host) || 'carbon.now.sh'
-
   try {
     await chrome.font(NOTO_COLOR_EMOJI_URL)
   } catch (e) {
@@ -58,7 +56,7 @@ export default async function id(req, res) {
 
     const queryString = state ? `state=${state}` : qs.stringify(params)
 
-    await page.goto(`https://${host}/${id ? id : `?${queryString}`}`)
+    await page.goto(`https://carbon.now.sh/${id ? id : `?${queryString}`}`)
     await page.addScriptTag({ url: DOM_TO_IMAGE_URL })
 
     await page.waitForSelector('.export-container', { visible: true, timeout: 9500 })
