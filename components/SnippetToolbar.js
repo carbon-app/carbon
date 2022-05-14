@@ -99,12 +99,12 @@ function SnippetToolbar({
   return (
     <Toolbar
       style={{
+        position: 'relative',
+        zIndex: 1,
         marginTop: 16,
         marginBottom: 0,
         flexDirection: 'row-reverse',
         alignItems: 'center',
-        zIndex: 1,
-        position: 'relative',
       }}
     >
       <div className="flex">
@@ -150,7 +150,7 @@ function SnippetToolbar({
           onChange={e => props.onChange('name', e.target.value)}
         />
       </div>
-      <Popout hidden={!isVisible} borderColor={COLORS.GREEN} pointerRight="7px" style={popoutStyle}>
+      <Popout hidden={!isVisible} borderColor={COLORS.GREEN} pointerRight="6px" style={popoutStyle}>
         <div className="menu flex">
           <DuplicateButton onClick={props.onCreate} />
           {sameUser && <DeleteButton onClick={props.onDelete} />}
