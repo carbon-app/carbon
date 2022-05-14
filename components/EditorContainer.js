@@ -25,6 +25,9 @@ function onReset() {
 
 function toastsReducer(curr, action) {
   switch (action.type) {
+    case 'ADD': {
+      return curr.concat(action.toast)
+    }
     case 'SET': {
       return action.toasts
     }
@@ -49,6 +52,7 @@ function EditorContainer(props) {
 
   // XXX use context
   const [snippet, setSnippet] = React.useState(props.snippet || null)
+  // TODO update this reducer to only take one action
   const [toasts, setToasts] = React.useReducer(toastsReducer, [])
 
   const snippetId = snippet && snippet.id
