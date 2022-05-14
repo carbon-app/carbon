@@ -28,10 +28,10 @@
     "cy:open": "cypress open --config-file cypress/config.json"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^12.0.7",
-    "@reach/visually-hidden": "^0.16.0",
+    "@next/bundle-analyzer": "latest",
+    "@reach/visually-hidden": "^0.17.0",
     "actionsack": "^0.0.15",
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
     "chrome-aws-lambda": "^8.0.2",
     "cm-show-invisibles": "^3.1.0",
     "codemirror": "5.65.1",
@@ -81,14 +81,14 @@
     "wait-on": "^6.0.0"
   },
   "resolutions": {
-    "@grpc/grpc-js": "^1.5.3",
-    "acorn": "^8.7.0",
+    "@grpc/grpc-js": "^1.6.7",
+    "acorn": "^8.7.1",
     "glob-parent": "^6.0.2",
     "kind-of": "^6.0.3",
     "lodash": "^4.17.2",
     "node-fetch": "^2.6.7",
     "serialize-javascript": "^6.0.0",
-    "sharp": "^0.29.3"
+    "sharp": "^0.30.4"
   },
   "lint-staged": {
     "*.js": [
