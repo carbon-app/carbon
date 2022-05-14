@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAsyncCallback, useOnline } from 'actionsack'
+import { useAsyncCallback, useOnline, useKeyboardListener } from 'actionsack'
 
 import Button from './Button'
 import Toolbar from './Toolbar'
@@ -47,6 +47,29 @@ function DuplicateButton(props) {
       onClick={onClick}
     >
       {loading ? 'Duplicating…' : 'Duplicate'}
+    </Button>
+  )
+}
+
+function SaveButton({ loading, onClick }) {
+  useKeyboardListener('⌥-s', e => {
+    e.preventDefault()
+    onClick()
+  })
+
+  return (
+    <Button
+      border
+      large
+      center
+      color={COLORS.GREEN}
+      onClick={onClick}
+      data-cy="save-button"
+      style={{ minWidth: 84, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
+      title="Save"
+      disabled={loading}
+    >
+      {loading ? 'Saving…' : 'Save'}
     </Button>
   )
 }
@@ -108,21 +131,8 @@ function SnippetToolbar({
       }}
     >
       <div className="flex">
+        <SaveButton loading={loading} onClick={saveSnippet} />
         <Button
-          border
-          large
-          center
-          color={COLORS.GREEN}
-          onClick={saveSnippet}
-          data-cy="save-button"
-          style={{ minWidth: 84, borderBottomRightRadius: 0, borderTopRightRadius: 0 }}
-          title="Save"
-          disabled={loading}
-        >
-          {loading ? 'Saving…' : 'Save'}
-        </Button>
-        <Button
-          id="save-menu"
           title="Save menu dropdown"
           border
           large

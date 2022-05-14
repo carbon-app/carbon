@@ -145,6 +145,12 @@ export default function About() {
                 </td>
               </tr>
               <tr>
+                <td>Save snippet</td>
+                <td>
+                  <kbd>⌥ S</kbd>
+                </td>
+              </tr>
+              <tr>
                 <td>Copy image to clipboard</td>
                 <td>
                   <kbd>⇧ ⌘ C</kbd>
