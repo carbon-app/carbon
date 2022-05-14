@@ -397,15 +397,16 @@ class Editor extends React.Component {
             </Overlay>
           )}
         </Dropzone>
-        {this.props.snippet && (
-          <SnippetToolbar
-            snippet={this.props.snippet}
-            onCreate={this.handleSnippetCreate}
-            onDelete={this.handleSnippetDelete}
-            name={config.name}
-            onChange={this.updateSetting}
-          />
-        )}
+        <SnippetToolbar
+          state={this.state}
+          snippet={this.props.snippet}
+          onCreate={this.handleSnippetCreate}
+          onDelete={this.handleSnippetDelete}
+          name={config.name}
+          onChange={this.updateSetting}
+          setSnippet={this.props.setSnippet}
+          setToasts={this.props.setToasts}
+        />
         <FontFace {...config} />
         <style jsx>
           {`
