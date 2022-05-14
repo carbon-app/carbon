@@ -290,9 +290,17 @@ class Editor extends React.Component {
       .then(() =>
         this.props.setToasts({
           type: 'SET',
-          toasts: [{ children: 'Snippet duplicated!', timeout: 3000 }],
+          toasts: [{ children: 'Snippet created', timeout: 3000 }],
         })
       )
+
+  handleSnippetUpdate = () =>
+    this.context.snippet.update(this.props.snippet.id, this.state).then(() =>
+      this.props.setToasts({
+        type: 'SET',
+        toast: { children: 'Snippet saved', timeout: 3000 },
+      })
+    )
 
   handleSnippetDelete = () =>
     this.context.snippet
@@ -402,10 +410,9 @@ class Editor extends React.Component {
           snippet={this.props.snippet}
           onCreate={this.handleSnippetCreate}
           onDelete={this.handleSnippetDelete}
+          onUpdate={this.handleSnippetUpdate}
           name={config.name}
           onChange={this.updateSetting}
-          setSnippet={this.props.setSnippet}
-          setToasts={this.props.setToasts}
         />
         <FontFace {...config} />
         <style jsx>

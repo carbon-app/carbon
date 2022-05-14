@@ -25,12 +25,6 @@ function onReset() {
 
 function toastsReducer(curr, action) {
   switch (action.type) {
-    case 'ADD': {
-      if (!curr.find(t => t.children === action.toast.children)) {
-        return curr.concat(action.toast)
-      }
-      return curr
-    }
     case 'SET': {
       return action.toasts
     }
