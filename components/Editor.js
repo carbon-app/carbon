@@ -253,7 +253,7 @@ class Editor extends React.Component {
     }
   }
 
-  updateTheme = theme => this.updateState({ theme })
+  updateTheme = theme => this.updateState({ theme, highlights: null })
   updateHighlights = updates =>
     this.setState(({ highlights = {} }) => ({
       highlights: {
