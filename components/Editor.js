@@ -42,7 +42,7 @@ const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
   loading: () => null,
 })
 
-const getConfig = omit(['code'])
+const getConfig = omit(['code', 'titleBar'])
 const unsplashPhotographerCredit = /\n\n\/\/ Photo by.+?on Unsplash/
 
 class Editor extends React.Component {
@@ -91,6 +91,7 @@ class Editor extends React.Component {
   updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
 
   updateCode = code => this.updateState({ code })
+  updateTitleBar = titleBar => this.updateState({ titleBar })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
 
   getCarbonImage = async (
@@ -322,6 +323,7 @@ class Editor extends React.Component {
       backgroundMode,
       code,
       exportSize,
+      titleBar,
     } = this.state
 
     const config = getConfig(this.state)
@@ -399,6 +401,8 @@ class Editor extends React.Component {
                 updateWidth={this.updateWidth}
                 loading={this.state.loading}
                 theme={theme}
+                titleBar={titleBar}
+                onTitleBarChange={this.updateTitleBar}
               >
                 {code != null ? code : DEFAULT_CODE}
               </Carbon>
