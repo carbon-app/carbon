@@ -5,7 +5,7 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
-const CODEMIRROR_VERSION = '5.65.3'
+const CODEMIRROR_VERSION = '5.65.5'
 
 export const HIGHLIGHTS_ONLY = ['shades-of-purple', 'vscode', 'a11y-dark']
 const LOCAL_STYLESHEETS = ['one-light', 'one-dark', 'verminal', 'night-owl', 'nord', 'synthwave-84']
