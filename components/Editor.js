@@ -411,6 +411,7 @@ class Editor extends React.Component {
                     onChange={this.updateWidth}
                     onChangeComplete={this.sync}
                     paddingHorizontal={config.paddingHorizontal}
+                    paddingVertical={config.paddingVertical}
                   />
                 }
               >
