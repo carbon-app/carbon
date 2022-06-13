@@ -93,6 +93,7 @@ class Editor extends React.Component {
   updateCode = code => this.updateState({ code })
   updateTitleBar = titleBar => this.updateState({ titleBar })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
+  confirmWidth = () => this.onUpdate(this.state)
 
   getCarbonImage = async (
     {
@@ -399,6 +400,7 @@ class Editor extends React.Component {
                 config={this.state}
                 onChange={this.updateCode}
                 updateWidth={this.updateWidth}
+                confirmWidth={this.confirmWidth}
                 loading={this.state.loading}
                 theme={theme}
                 titleBar={titleBar}

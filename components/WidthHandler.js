@@ -13,9 +13,7 @@ function clamp(value, min, max) {
   return value
 }
 
-export default function WidthHandler(props) {
-  const { onChange, innerRef, paddingHorizontal } = props
-
+export default function WidthHandler({ onChange, onConfirm, innerRef, paddingHorizontal }) {
   const startX = React.useRef(null)
   const startWidth = React.useRef(null)
 
@@ -34,6 +32,15 @@ export default function WidthHandler(props) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [innerRef, onChange])
 
+  React.useEffect(() => {
+    function handleMouseUp() {
+      startX.current = null
+      onConfirm()
+    }
+    window.addEventListener('mouseup', handleMouseUp)
+    return () => window.removeEventListener('mouseup', handleMouseUp)
+  }, [onConfirm])
+
   return (
     // eslint-disable-next-line
     <div
@@ -41,9 +48,6 @@ export default function WidthHandler(props) {
       onMouseDown={e => {
         startX.current = e.pageX
         startWidth.current = innerRef.current.clientWidth
-      }}
-      onMouseUp={() => {
-        startX.current = null
       }}
       role="separator"
       aria-orientation="vertical"
