@@ -13,7 +13,7 @@ function clamp(value, min, max) {
   return value
 }
 
-export default function WidthHandler({
+function WidthHandler({
   innerRef,
   onChange,
   onChangeComplete,
@@ -81,3 +81,5 @@ export default function WidthHandler({
     </div>
   )
 }
+
+export default React.memo(WidthHandler)
