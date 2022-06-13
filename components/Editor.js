@@ -89,12 +89,13 @@ class Editor extends React.Component {
     leading: true,
   })
 
-  updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
+  sync = () => this.onUpdate(this.state)
+
+  updateState = updates => this.setState(updates, this.sync)
 
   updateCode = code => this.updateState({ code })
   updateTitleBar = titleBar => this.updateState({ titleBar })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
-  confirmWidth = () => this.onUpdate(this.state)
 
   getCarbonImage = async (
     {
@@ -408,7 +409,7 @@ class Editor extends React.Component {
                   <WidthHandler
                     innerRef={this.carbonNode}
                     onChange={this.updateWidth}
-                    onConfirm={this.confirmWidth}
+                    onChangeComplete={this.sync}
                     paddingHorizontal={config.paddingHorizontal}
                   />
                 }
