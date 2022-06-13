@@ -17,6 +17,7 @@ import ShareMenu from './ShareMenu'
 import CopyMenu from './CopyMenu'
 import Themes from './Themes'
 import FontFace from './FontFace'
+import WidthHandler from './WidthHandler'
 import LanguageIcon from './svg/Language'
 import {
   LANGUAGES,
@@ -399,12 +400,18 @@ class Editor extends React.Component {
                 ref={this.carbonNode}
                 config={this.state}
                 onChange={this.updateCode}
-                updateWidth={this.updateWidth}
-                confirmWidth={this.confirmWidth}
                 loading={this.state.loading}
                 theme={theme}
                 titleBar={titleBar}
                 onTitleBarChange={this.updateTitleBar}
+                widthHandler={
+                  <WidthHandler
+                    innerRef={this.carbonNode}
+                    onChange={this.updateWidth}
+                    onConfirm={this.confirmWidth}
+                    paddingHorizontal={config.paddingHorizontal}
+                  />
+                }
               >
                 {code != null ? code : DEFAULT_CODE}
               </Carbon>

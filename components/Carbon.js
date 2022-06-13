@@ -11,7 +11,6 @@ hljs.registerLanguage('javascript', javascript)
 
 import { Spinner } from './Spinner'
 import WindowControls from './WindowControls'
-import WidthHandler from './WidthHandler'
 
 import {
   COLORS,
@@ -224,14 +223,7 @@ class Carbon extends React.PureComponent {
                 <div className="alpha eliminateOnRender" />
                 <div className="bg" />
               </div>
-
-              {/* TODO pass in this child as a prop to Carbon */}
-              <WidthHandler
-                innerRef={this.props.innerRef}
-                onChange={this.props.updateWidth}
-                onConfirm={this.props.confirmWidth}
-                paddingHorizontal={config.paddingHorizontal}
-              />
+              {this.props.widthHandler}
             </div>
           )}
         </div>
