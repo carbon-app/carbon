@@ -225,7 +225,7 @@ class Carbon extends React.PureComponent {
                 <div className="bg" />
               </div>
 
-              {/* TODO define innerRef in Editor, and pass in this child as a prop to Carbon */}
+              {/* TODO pass in this child as a prop to Carbon */}
               <WidthHandler
                 innerRef={this.props.innerRef}
                 onChange={this.props.updateWidth}
