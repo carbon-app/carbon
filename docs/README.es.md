@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://reporanger.com">
-    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />  
+    <img src="https://img.shields.io/badge/maintained%20with-Ranger-1f93f3.svg" alt="maintained with Ranger" />
   </a>
   <a href="#contributors">
     <img src="https://img.shields.io/badge/all_contributors-160-orange.svg" alt="All Contributors" />
@@ -21,7 +21,7 @@
 
 ## Introducción
 
-¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [esas](https://twitter.com/reactjs/status/890511993261654017) [capturas de pantalla](https://twitter.com/notquiteleo/status/873483329345028096) que ves en Twitter? Aunque el código es generalmente impresionante, vimos la posibilidad de mejorarlo en el departamento de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. ¿Entonces, qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
+¿Conoces [todas](https://twitter.com/dan_abramov/status/890191815567175680) [esas](https://twitter.com/reactjs/status/890511993261654017) [capturas de pantalla](https://twitter.com/notquiteleo/status/873483329345028096) que ves en Twitter? Aunque el código es generalmente impresionante, vimos una oportunidad de mejora en el área de estética. Carbon hace que sea fácil crear y compartir bellas imágenes de su código. Entonces, ¿qué esperas? Ve a impresionar a todos tus seguidores con tu nueva destreza de diseño.
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
@@ -29,9 +29,9 @@
 
 ## Características
 
-- **Personalización**. Personaliza cosas como el tema de sintaxis de tu imagen, el estilo de la ventana y más.
-- **Comparte rápidamente**. Guarde su imagen o twittee un enlace con un clic.
-- **Importar de GitHub gist**. Simplemente agregue un ID de GitHub gist a la url.
+- **Personalización**. Personaliza cosas como el tema de sintaxis de tu imagen, estilo de fuente y más.
+- **Comparte rápidamente**. Guarda tu imagen o enlace con un solo clic.
+- **Guarda tus fragmentos de código**. Crea una cuenta para guardar tus fragmentos de código para más adelante. Los fragmentos de código que compartas en Twitter y Slack se mostrarán automáticamente.
 
 ## Uso
 
@@ -45,15 +45,37 @@ Hay formas diferentes de importar código en Carbon:
 
 #### Personalización
 
-Una vez que tenga todo su código en Carbon, puede personalizar su imagen cambiando el tema de sintaxis, el color de fondo, el tema de la ventana o el relleno.
+Una vez que tenga todo su código en Carbon, puedes personalizar tu imagen cambiando el tema de sintaxis, el color de fondo, el tema de la ventana, relleno, sombras, fuentes y más.
 
 #### Exportar/Compartir
 
 Después de que hayas personalizado tu fragmento de código, puedes compartirlo en un Tweet haciendo un enlace a la imagen o guardar la imagen directamente.
 
-Si utilizas el botón de “Tweet”, Carbon hará que su imagen sea accesible automáticamente. Sin embargo, si desea “twittear” manualmente su imagen de Carbon, consulte [cómo publicar imágenes accesibles](https://help.twitter.com/es/using-twitter/picture-descriptions).
 
-Si tu incluyes una imagen de Carbon en una publicación, el código fuente será invisible para tecnologías de asistencia, no será posible ampliarlo, copiarlo, etc. Por favor, piense en agregar otro elemento de texto junto con el código fuente, como el [elemento HTML details](https://developer.mozilla.org/es/docs/Web/HTML/Elemento/details) debajo de la imagen.
+##### Genera fragmentos de código para guardar
+
+Cuando compartes un fragmento de código guardado, la imagen se mostrará automáticamente en plataformas como Twitter y Slack. De esta manera, otros usuarios pueden ver tu creación, además de darles acceso al código fuente a través del enlace. Mejor aún, si deseas hacer algún ajuste, puedes entrar directamente al enlace para editar el fragmento de código.
+
+Para crear un fragmento de código que puedas guardar:
+
+1. Inicia sesión usando el botón de "Sign In/Sign Up".
+2. Edita tu fragmento de código como normalmente lo harías, este se guardará automáticamente.
+3. ¡Copia la URL de tu navegador y compártela!
+
+##### Embeber un fragmento de código
+
+Este es el método recomendado para compartir Carbon en tu propio sitio web o blog. Los lectores incluso pueden copiar el código con hacer clic en un botón.
+
+Tu puedes insertar cualquier fragmento de código de Carbon directamente en tu sitio web usando la URL `carbon.now.sh/embed`. El "Menú de copiado" te permite copiar rápidamente el fragmento de iFrame correcto o la URL codificada para ser usada en plataformas como Medium.
+
+Finalmente, también puedes insertar tus fragmentos de código guardados o GitHub gists usando `carbon.now.sh/embed/:id`.
+
+##### Usa el botón de Tweet
+
+El botón de Tweet no solo compartirá la imagen en Twitter, también codificará correctamente el texto alternativo (propiedad `alt`) para asegurar que tus imágenes son accesibles. Sin embargo, si deseas publicar la imagen en Twitter por tu cuenta, te recomendamos consultar [cómo publicar imágenes accesibles](https://help.twitter.com/es/using-twitter/picture-descriptions).
+
+##### Descarga la imagen directamente
+Carbon permite descargar tus imágenes en formato PNG y SVG. También puedes hacer clic en `Export → Open` para abrir tu imagen directamente en el navegador. Por último, puedes copiar directamente la imagen en el portapapeles haciendo click en `Copy → Image`.
 
 #### Instalación de Carbon para escritorio (Sin conexión)
 
@@ -62,7 +84,7 @@ puedes instalar Carbon para usarlo sin conexión siguiendo estas instrucciones:
 
 1. Visitar [https://carbon.now.sh](https://carbon.now.sh).
 2. Abrir el menú de configuración de tu navegador.
-3. Hacer clic en "Instalar Carbon".
+3. Hacer clic en "Instalar Carbon...".
 
 ## Comunidad
 
@@ -81,15 +103,14 @@ Echa un vistazo a estos proyectos que nuestra increíble comunidad ha creado:
 
 ##### Herramientas
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abra un archivo en Carbon o descárguelo directamente usando `carbon-now`, que presenta un modo interactivo, resaltado selectivo y más.
-- [CodeExpander](https://codeexpander.com) - Un cliente inteligente GitHub gist con las características TextExpander.
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Abre un archivo en Carbon o descárguelo directamente usando `carbon-now`, con modo interactivo, resaltado selectivo y más.
+- [CodeExpander](https://codeexpander.com) - Un cliente inteligente GitHub gist con las características de TextExpander.
 - [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Exporte múltiples fragmentos de código de Carbon desde `Xcode Playground`.
+- [`@carbonshbot`](https://t.me/carbonshbot) - Un chatbot de Telegram que puede tomar fragmentos de código o URLs de GitHub gist y generar una imagen de Carbon.
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Permite manipular de forma iterativa la estética de la imagen en `R`, abrirla en Carbon o descargarla directamente.
+- [Carbon for Slack](https://github.com/faisalsayed10/carbon-slack) - Usa Carbon directamente en Slack. Simplemente ejecute el comando `/carbon`.
 
-##### Librerías
-
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iterativamente manipule la estética de la imagen en `R` y abra en Carbon o descargue directamente.
-
-##### Libros de texto
+##### Citas
 
 - ["CS 101 - Una introducción al pensamiento computacional"](https://itunes.apple.com/us/book/id1435714196) - Un libro de texto de ciencias de la computación por Sarbo Roy.
 
