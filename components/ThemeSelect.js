@@ -1,9 +1,9 @@
 import React from 'react'
 import Toggle from './Toggle'
-import { None, BW, Sharp, Boxy } from './svg/WindowThemes'
+import { None, BW, Sharp, Boxy, XP } from './svg/WindowThemes'
 import { COLORS } from '../lib/constants'
 
-const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, boxy: Boxy }
+const WINDOW_THEMES_MAP = { none: None, sharp: Sharp, bw: BW, boxy: Boxy, xp: XP }
 
 class ThemeSelect extends React.Component {
   select = theme => {

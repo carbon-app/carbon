@@ -343,6 +343,10 @@ class Carbon extends React.PureComponent {
               border: 2px solid ${COLORS.SECONDARY};
             }
 
+            .container :global(.window-theme__xp > .CodeMirror) {
+              border: 4px solid RGB(48, 88, 162);
+            }
+
             .container :global(.window-controls + .CodeMirror__container > .CodeMirror) {
               padding-top: 48px;
             }

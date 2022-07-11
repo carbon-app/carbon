@@ -2,7 +2,7 @@ import React from 'react'
 import { useCopyTextHandler } from 'actionsack'
 
 import { COLORS } from '../lib/constants'
-import { Controls, ControlsBW, ControlsBoxy } from './svg/Controls'
+import { Controls, ControlsBW, ControlsBoxy, ControlsXP, ConstrolsXP } from './svg/Controls'
 import CopySVG from './svg/Copy'
 import CheckMark from './svg/Checkmark'
 
@@ -36,7 +36,7 @@ const CopyButton = React.memo(function CopyButton({ text }) {
   )
 })
 
-const WINDOW_THEMES_MAP = { bw: <ControlsBW />, boxy: <ControlsBoxy /> }
+const WINDOW_THEMES_MAP = { bw: <ControlsBW />, boxy: <ControlsBoxy />, xp: <ConstrolsXP/> }
 
 export function TitleBar({ light, value, onChange }) {
   return (
@@ -79,6 +79,17 @@ export function TitleBar({ light, value, onChange }) {
   )
 }
 
+function CSSInjector(theme){
+  // [top, margin-left]
+  if (theme == 'bw'){
+    return [36, 16]
+  } else if (theme == 'xp') {
+    return [26, 0]
+  } else {
+    return [34, 14]
+  }
+} 
+
 export default function WindowControls({
   theme,
   copyable,
@@ -101,11 +112,13 @@ export default function WindowControls({
           .window-controls {
             margin-top: -24px;
             position: relative;
-            top: ${theme === 'bw' ? 36 : 34}px;
-            margin-left: ${theme === 'bw' ? 16 : 14}px;
+            top: ${CSSInjector(theme)[0]}px;
+            margin-left: ${CSSInjector(theme)[1]}px;
             margin-right: ${theme === 'boxy' ? 16 : 0}px;
             z-index: 2;
-            text-align: ${theme === 'boxy' ? 'right' : 'initial'};
+            text-align: ${theme === 'boxy' || theme == 'xp' ? 'right' : 'initial'};
+            padding-top: ${theme == 'xp' ? 5 : 0}px;
+            background-color: ${theme === 'xp' ? 'RGB(48, 88, 162)' : 'None'};
           }
 
           .copy-button {
