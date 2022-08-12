@@ -19,190 +19,109 @@
 
 <br></br>
 
-##### Translations
+## Введение
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td>
-        <a href="/docs/README.se.md">Svenska</a>
-      </td>
-      <td>
-        <a href="/docs/README.pl.md">Polski</a>
-      </td>
-      <td>
-        <a href="/docs/README.nl.md">Nederlands</a>
-      </td>
-      <td>
-        <a href="/docs/README.tw.zh.md">正體中文</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.in.md">Indonesia</a>
-      </td>
-      <td>
-        <a href="/docs/README.ua.md">Українська</a>
-      </td>
-      <td>
-        <a href="/docs/README.it.md">Italiano</a>
-      </td>
-      <td>
-        <a href="/docs/README.he.md" dir="rtl">עברית</a>
-      </td>
-      <td>
-        <a href="/docs/README.ru.md">Русский</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-## Introduction
-
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of those](https://twitter.com/reactjs/status/890511993261654017) [code screenshots](https://twitter.com/notquiteleo/status/873483329345028096) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+Вы знаете [все](https://twitter.com/dan_abramov/status/890191815567175680) [эти красивые](https://twitter.com/reactjs/status/890511993261654017) [изображения кода](https://twitter.com/notquiteleo/status/873483329345028096) в Twitter? Хотя код и так обычно впечатляет, мы увидели возможность улучшить его в эстетическом плане. Carbon позволяет легко создавать красивые изображения кода и делиться ими. Чего же вы ждете? Удивите всех подписчиков своим новым дизайнерским мастерством!
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
 
-## Features
+## Особенности
 
-- **Customization**. Customize things like your image's syntax theme, font style, and more
-- **Share quickly**. Save your image or
-  a link with one click
-- **Save snippets**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
+- **Настройка**. Настройте такие вещи, как тема синтаксиса вашего изображения, шрифт и прочее
+- **Быстрый обмен**. Сохраните ваше изображение или поделитель ссылкой в один клик
+- **Сохранение фрагментов**. Создайте аккаунт, чтобы сохранить фрагменты кода. Сохраненными фрагментами можно сразу поделиться в Twitter и Slack.
 
-## Usage
+## Использование
 
-#### Import
+#### Импортирование
 
-There are a few different ways to import code into Carbon:
+Есть несколько способов импортировать код в Carbon:
 
-- Drop a file onto the editor
-- Append a GitHub gist ID to the URL (e.g. [`carbon.now.sh/<gist_id_goes_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
-- Or just start typing!
+- Перетащите файл в редактор
+- Добавьте GitHub gist ID в URL (например [`carbon.now.sh/<место_для_gist>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+- Просто начните печатать! (Или вставьте код из буфера обмена)
 
-#### Customization
+#### Настройка
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, padding, shadows, fonts, and more.
+Как только вы поместили код в Carbon, вы можете кастомизировать изображение меняя тему синтаксиса, фоновый цвет, тему окна, отступы, тени, шрифты и многое другое.
 
-#### Exporting & Sharing
+#### Экспортирование и обмен
 
-After you've customized your image you can share your snippet in a number of ways
+После настройки изображения, вы можете поделиться фрагментом несколькими способами
 
-##### Create a saved snippet
+##### Создайте сохраненный фрагмент
 
-Sharing a saved snippet will automatically unfurl the image on platforms like Twitter and Slack. This lets users see your creation, while also giving them access to the source code via the link. Better yet, if you need to make an update, simply follow the link yourself to edit the snippet directly.
+Если вы хотите поделиться сохраненным фрагментом, то изображение автоматически можно запостить в Twitter, Slack и др. Это позволит пользователям не только увидеть ваше творение, но также даст им доступ к исходному коду по ссылке. А еще, если вам нужно обновить код, просто перейдите по этой же ссылке, чтобы отредактировать фрагмент напрямую.
 
-To create a saved snippet:
+Чтобы создать и сохранить фрагмент кода:
 
-1. Login using the "Sign in/Sign up" button
-2. Edit as you normally would — your snippet will get saved automatically
-3. Copy the URL from your browser window and share away!
+1. Зайдите через в аккаунт через кнопки "Sign in/Sign up"
+2. Редактируйте как обычно — ваш код сохранится автоматически
+3. Скопируйте URL из браузера и поделитесь ссылкой!
 
-##### Embed a snippet
+##### Создание встроенного фрагмента
 
-This is the recommended method for sharing Carbon on your own website or blog. Readers can even copy the code with the click of a button.
+Это рекомендуемый способ поделиться фрагментом Carbon на вашем сайте или блоге. Читатели также смогут скопировать код нажатием кнопки.
 
-You can embed any Carbon snippet in your website directly using the `carbon.now.sh/embed` URL. The "Copy Menu" lets you quickly copy the correct iFrame snippet, or the encoded URL for embedding on platforms like Medium.
+Вы можете встроить любой фрагмент кода Carbon на вашем сайте напрямую, используя ссылки `carbon.now.sh/embed`. "Copy Menu" позволит быстро скопировать правильный код iFrame или закодированную ссылку для размещения на таких платформах как Medium.
 
-Finally, you can also embed saved snippets or GitHub gists using `carbon.now.sh/embed/:id`.
+И наконец, вы также можете встраивать сохраненные фрагменты или GitHub gist'ы с помощью `carbon.now.sh/embed/:id`.
 
-##### Use the Tweet button
+##### Использование кнопки Tweet
 
-The Tweet button will not only share the image on Twitter, but it will also correctly encode the `alt` text to ensure your images are accessible. However, if you want to tweet image yourself, please check out [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+Кнопка Tweet не толко поделится изображением в Twitter, но также корректно закодирует все `alt`-тексты чтобы удостовериться, что ваши изображения доступны. Тем не менее, если вы хотите твиттнуть изображение вручную, то рекомендуем изучить [как сделать ваши изображения Twitter доступными](https://help.twitter.com/ru/using-twitter/picture-descriptions).
 
-##### Download the image directly
+##### Скачать изображение напрямую
 
-Carbon supports downloading your image as a PNG and SVG. You can also click `Export → Open` to open your image directly in the browser. Finally, you can copy the Carbon image directly to your clipboard by going to `Copy → Image`.
+Carbon позволяет сохранять изображения в форматах PNG и SVG. Вы можете также нажать `Export → Open` чтобы открыть ваше изображение из браузера. Наконец, вы можете скопировать готовое изображение фрагмента в буфер обмена используя `Copy → Image`.
 
-#### Installing Carbon for Desktop (Offline)
+#### Установка Carbon на ПК (для использования оффлайн)
 
-If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
+Если вы используете Google Chrome или любой другой браузер, который поддерживает Progressive Web Apps, вы можете установить Carbon на компьютер, чтобы использовать его без Интернета:
 
-1. Visit [carbon.now.sh](https://carbon.now.sh)
-2. Click your browser's settings menu
-3. Click "Install Carbon..."
+1. Зайдите на [carbon.now.sh](https://carbon.now.sh)
+2. Нажмите на кнопку настроек у вашего браузера
+3. Выберите "Установить Carbon..." (или "Install Carbon...")
 
-## Community
+## Сообщество
 
-Check out these projects our awesome community has created:
+Оцените эти проекты от нашего крутого сообщества:
 
-##### Editor Plugins
+##### Плагины для редакторов
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
-- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - This Xcode extension enables you to export a code selection as a Carbon snippet in a single action
+- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Откройте выделение в текущем файле в IntelliJ IDEA в Carbon через контекстное меню
+- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Откройте текущий файл в Atom в Carbon с помощью `shift-cmd-A`
+- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Откройте текущий файл VS Code в Carbon с помощью команды `carbon`
+- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Откройте выделение в текущем файле в Sublime Text 3 через кастомный связанный ключ
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Откройте выделение в ткущем файле в Vim/Neovim используя функцию `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Откройте выделение в ткущем файле в Emacs используя интерактивную функцию `carbon-now-sh`
+- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Откройте выделенный текст с помощью `carbon.now.sh`
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Это расширение для Xcode позволяет экспортировать выделенный текст как фрагмент в Carbon в одно действие
 
-##### Tools
+##### Инструменты
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
-- [CodeExpander](https://codeexpander.com) - A smart GitHub gist client with the TextExpander features
-- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Export multiple Carbon code snippets from `Xcode Playground`.
-- [`@carbonshbot`](https://t.me/carbonshbot) - A Telegram chatbot wich takes in a code snippet or gist URL and generates an Carbon image
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
-- [Carbon for Slack](https://github.com/faisalsayed10/carbon-slack) - Use Carbon directly in Slack. Just invoke the `/carbon` command.
+- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Откройте файл в CArbon или скачайте его напрямую используя `carbon-now` с выборочным выделением, интерактивным режимом и многим другим
+- [CodeExpander](https://codeexpander.com) - Смарт-клиент для работы с GitHub gist'ами с функциями TextExpander
+- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Экспортируйте несколько фрагментов кода в Carbon из `Xcode Playground`
+- [`@carbonshbot`](https://t.me/carbonshbot) - Telegram чат-бот, который превращает код или gist URL в изображение Carbon 
+- [R `carbonate`](https://yonicd.github.io/carbonate/) - Интерактивно меняйте стиль изображения на `R` и также открывайте его в Carbon или скачивайте напрямую
+- [Carbon for Slack](https://github.com/faisalsayed10/carbon-slack) - Используйте Carbon в Slack. Просто вызовите команду `/carbon`.
 
-##### Citations
+##### Цитирования
 
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
+- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) -  Книга по компьютерным наукам от Сарбо Роя.
 
-## Authors
+## Авторы
 
-Carbon is a project by:
+Carbon существует благодаря:
 
 - Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-#### License
+#### Лицензия
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
@@ -211,11 +130,11 @@ Carbon is a project by:
 
 ---
 
-## Contribute & Support
+## Дополняйте и поддерживайте
 
-Pull requests are welcome! Please see our [contributing guidelines](/.github/CONTRIBUTING.md) for more details.
+Пул реквесты приветствуются! Пожалуйста, изучите [правила](/.github/CONTRIBUTING.md) для более подробной информации.
 
-### Sponsors & Backers
+### Спонсоры
 
 [![Fossa](https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg)](https://fossa.com)
 
@@ -230,13 +149,13 @@ Pull requests are welcome! Please see our [contributing guidelines](/.github/CON
 <a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
 
-### Thanks To
+### Благодарности
 
-[▲ Vercel](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) for sponsoring Carbon's hosting.
+[▲ Vercel](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) за поддержку хостинга Carbon.
 
-### All Contributors
+### Все авторы
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Выражаем благодарности всем этим замечательным людям ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
