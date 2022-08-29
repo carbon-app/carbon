@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import firebase, { logout, loginGitHub } from '../lib/client'
+import { getApps } from 'firebase/app'
+import { logout, loginGitHub } from '../lib/client'
 
 import Button from './Button'
 import Popout, { managePopout } from './Popout'
@@ -48,7 +49,7 @@ function Drawer(props) {
 function LoginButton({ isVisible, toggleVisibility }) {
   const user = useAuth()
 
-  if (!firebase) {
+  if (getApps().length === 0) {
     return null
   }
 
