@@ -55,11 +55,11 @@
 
 நீங்கள் உங்கள் படத்தை தனிப்பயனாக்கியுள்ளீர்கள் பிறகு, நீங்கள் ஒரு படத்தை ஒரு இணைப்பை ட்வீட் முடியும், அல்லது நீங்கள் நேரடியாகவும் சேமிக்கலாம்.
 
-## சமூக
+## சமூகம்
 
 எங்கள் அற்புதமான சமூகம் உருவாக்கிய திட்டங்கள் பாருங்கள்:
 
-##### ஆசிரியர் கூடுதல்
+##### எழுதி செருகுநிரல்கள்
 
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - உங்கள் நடப்பு IntelliJ IDEA கோப்பில் கார்பனில் ஒரு தேர்ந்தெடுக்கப்பட்ட மெனுவில் தேர்ந்தெடுக்கப்பட்ட பிரிவைத் திறக்கவும்
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - உங்கள் நடப்பு Atom கோப்பை கார்பன் `shift-cmd-A` உடன் திறக்கவும்
@@ -68,11 +68,11 @@
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - உங்கள் தற்போதைய Vim / Neovim செயல்பாடு மூலம் தேர்வு திறக்க `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - ஊடாடும் செயல்பாடு பயன்படுத்தி உங்கள் தற்போதைய Emacs தேர்வு திறக்க `carbon-now-sh`
 
-##### CLI ஆனது
+##### கருவிகள்
 
 - [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - கார்பனில் ஒரு கோப்பைத் திறக்கவும் அல்லது அதை நேரடியாகப் பயன்படுத்தி பதிவிறக்கவும் `carbon-now`, featuring an inஒரு ஊடாடும் முறை, தேர்ந்தெடுக்கப்பட்ட சிறப்பம்சங்கள் மற்றும் பலவற்றைக் கொண்டுள்ளது
 
-##### நூலகங்கள்
+##### கட்டமைப்புகள்
 
 - [R `carbonate`](https://yonicd.github.io/carbonate/) - வெளிப்படையாக `R` இல் பட அழகியல் கையாள மற்றும் கார்பன் திறந்த அல்லது நேரடியாக பதிவிறக்க.
 
@@ -80,9 +80,9 @@
 
 - ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - சர்போ ராய் ஒரு கணினி அறிவியல் பாடநூல்.
 
-## ஆசிரியர்கள்
+## உரிமையாளர்கள்
 
-கார்பன் ஒரு திட்டம்
+கார்பன் மென்பொருள்
 
 - Mike Fix ([@mfix22](https://github.com/mfix22))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
