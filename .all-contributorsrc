@@ -925,6 +925,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "sanjarbek-ismatov",
+      "name": "Sanjarbek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/65501439?v=4",
+      "profile": "https://github.com/sanjarbek-ismatov",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
