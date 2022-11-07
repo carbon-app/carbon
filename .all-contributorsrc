@@ -925,6 +925,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "korzck",
+      "name": "korzck",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87325587?v=4",
+      "profile": "https://github.com/korzck",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "repoType": "github",
