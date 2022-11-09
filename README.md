@@ -90,6 +90,9 @@
       <td>
         <a href="/docs/README.ru.md">Русский</a>
       </td>
+      <td>
+        <a href="/docs/README.ar.md">العربية</a>
+      </td>
     </tr>
     <tr>
       <td>
