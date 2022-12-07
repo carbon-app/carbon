@@ -3,6 +3,8 @@
   "projectOwner": "carbon-app",
   "files": [
     "README.md",
+    "docs/README.ar.md",
+    "docs/README.bn.md",
     "docs/README.br.pt.md",
     "docs/README.cn.zh.md",
     "docs/README.de.md",
@@ -17,11 +19,13 @@
     "docs/README.ml.md",
     "docs/README.nl.md",
     "docs/README.pl.md",
+    "docs/README.ru.md",
     "docs/README.se.md",
     "docs/README.ta.md",
     "docs/README.tr.md",
     "docs/README.tw.zh.md",
-    "docs/README.ua.md"
+    "docs/README.ua.md",
+    "docs/README.uz.md"
   ],
   "imageSize": 100,
   "commit": false,
