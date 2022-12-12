@@ -112,20 +112,19 @@ You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of th
 
 ## Tính năng
 
-- **Customization**. Customize things like your image's syntax theme, font style, and more
-- **Share quickly**. Save your image or
-  a link with one click
-- **Save snippets**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
+- **Tinh chỉnh**. Tinh chỉnh tuỳ theo sở thích của bạn như chủ đề cú pháp, phông chữ và nhiều thứ khác
+- **Chia sẻ nhanh chóng**. Lưu lại ảnh hoặc lấy link chỉ với một click
+- **Lưu lại đoạn code**. Tạo tài khoản để lưu lại đoạn code đó cho sau này. Các đoạn code được chia sẻ sẽ tự động mở ra trên Twitter hoặc Slack.
 
 ## Sử dụng
 
 #### Import
 
-There are a few different ways to import code into Carbon:
+Có nhiều cách khác nhau để import code vào Carbon:
 
-- Drop a file onto the editor
+- Kéo file vào trình soạn thảo
 - Append a GitHub gist ID to the URL (e.g. [`carbon.now.sh/<gist_id_goes_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
-- Or just start typing!
+- Hoặc tự gõ!
 
 #### Tinh chỉnh
 
@@ -133,7 +132,7 @@ Once you've got all of your code into Carbon, you can customize your image by ch
 
 #### Export & Chia sẻ
 
-After you've customized your image you can share your snippet in a number of ways
+Sau khi bạn đã tinh chỉnh hình ảnh xong, bạn có thể chia sẻ đoạn code theo vài cách sau
 
 ##### Tạo đoạn code đã lưu
 
@@ -165,15 +164,15 @@ Carbon supports downloading your image as a PNG and SVG. You can also click `Exp
 
 If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
 
-1. Visit [carbon.now.sh](https://carbon.now.sh)
-2. Click your browser's settings menu
-3. Click "Install Carbon..."
+1. Vào [carbon.now.sh](https://carbon.now.sh)
+2. Nhấn vào menu cài đặt trên trình duyệt
+3. Nhấn "Cài đặt Carbon..."
 
 ## Cộng đồng
 
 Check out these projects our awesome community has created:
 
-##### Editor Plugins
+##### Plugin trình soạn thảo
 
 - [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
