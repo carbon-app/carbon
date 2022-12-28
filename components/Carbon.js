@@ -277,7 +277,7 @@ class Carbon extends React.PureComponent {
               left: 0px;
             }
 
-            .container .bg {
+            .container .bg, :global(.CodeMirror__container .CodeMirror::before) {
               ${this.props.config.backgroundMode === 'image'
                 ? `background: url(${backgroundImage});
                     background-size: cover;
@@ -356,8 +356,16 @@ class Carbon extends React.PureComponent {
             }
 
             :global(.CodeMirror__container .CodeMirror) {
-              backdrop-filter: blur(${config.blur});
+              position: relative;
               background-color: ${themeConfig.highlights.background}${Math.floor(config.opacity * 255).toString(16).length == 2 ? Math.floor(config.opacity * 255).toString(16) : '00'} !important;
+            }
+
+            :global(.CodeMirror__container .CodeMirror::before) {
+              content: '';
+	            filter: blur(${config.blur});
+              width: ${config.width}px;
+              top: -${config.paddingVertical};
+              left: -${config.paddingHorizontal};
             }
 
             @media (max-width: 768px) {
