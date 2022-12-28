@@ -302,7 +302,7 @@ class Carbon extends React.PureComponent {
             }
 
             .container :global(.CodeMirror-gutters) {
-              background-color: unset;
+              background-color: unset !important;
               border-right: none;
             }
 
@@ -353,6 +353,11 @@ class Carbon extends React.PureComponent {
 
             .container :global(.CodeMirror-cursor) {
               visibility: ${this.props.readOnly ? 'hidden' : ''};
+            }
+
+            :global(.CodeMirror__container .CodeMirror) {
+              backdrop-filter: blur(${config.blur});
+              background-color: ${themeConfig.highlights.background}${Math.floor(config.opacity * 255).toString(16).length == 2 ? Math.floor(config.opacity * 255).toString(16) : '00'} !important;
             }
 
             @media (max-width: 768px) {
