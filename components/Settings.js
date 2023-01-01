@@ -72,6 +72,7 @@ function WindowSettings({
         <Slider 
           label="Blur"
           value={blur}
+          maxValue={50}
           onChange={onChange.bind(null, 'blur')}
         />
       </div>

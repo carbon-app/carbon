@@ -362,10 +362,13 @@ class Carbon extends React.PureComponent {
 
             :global(.CodeMirror__container .CodeMirror::before) {
               content: '';
+              position: absolute;
+              z-index: -1;
 	            filter: blur(${config.blur});
-              width: ${config.width}px;
               top: -${config.paddingVertical};
+              bottom: -${config.paddingVertical};
               left: -${config.paddingHorizontal};
+              right: -${config.paddingHorizontal};
             }
 
             @media (max-width: 768px) {
