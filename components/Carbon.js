@@ -184,6 +184,8 @@ class Carbon extends React.PureComponent {
       !!this.state.selectionAt &&
       document.getElementById('style-editor-button')
 
+    const codeLanguage = searchLanguage(languageMode).name
+
     return (
       <div className="section">
         <div
@@ -206,6 +208,9 @@ class Carbon extends React.PureComponent {
                   theme={config.windowTheme}
                   code={this.props.children}
                   copyable={this.props.copyable}
+                  displayingCodeLanguage={config.displayingCodeLanguage}
+                  fontFamily={config.fontFamily}
+                  codeLanguage={codeLanguage}
                   light={light}
                 />
               ) : null}

@@ -25,6 +25,7 @@ function WindowSettings({
   windowTheme,
   paddingHorizontal,
   paddingVertical,
+  displayingCodeLanguage,
   dropShadow,
   dropShadowBlurRadius,
   dropShadowOffsetY,
@@ -95,6 +96,11 @@ function WindowSettings({
         </div>
       )}
       <Toggle label="Watermark" enabled={watermark} onChange={onChange.bind(null, 'watermark')} />
+      <Toggle
+        label="Display Language"
+        enabled={displayingCodeLanguage}
+        onChange={onChange.bind(null, 'displayingCodeLanguage')}
+      />
       <style jsx>
         {`
           .width-row {
@@ -377,6 +383,7 @@ class Settings extends React.PureComponent {
             windowTheme={this.props.windowTheme}
             paddingHorizontal={this.props.paddingHorizontal}
             paddingVertical={this.props.paddingVertical}
+            displayingCodeLanguage={this.props.displayingCodeLanguage}
             dropShadow={this.props.dropShadow}
             dropShadowBlurRadius={this.props.dropShadowBlurRadius}
             dropShadowOffsetY={this.props.dropShadowOffsetY}

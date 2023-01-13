@@ -86,10 +86,14 @@ export default function WindowControls({
   light,
   titleBar,
   onTitleBarChange,
+  displayingCodeLanguage,
+  codeLanguage,
+  fontFamily,
 }) {
   return (
     <div className="window-controls">
       {WINDOW_THEMES_MAP[theme] || <Controls />}
+      {displayingCodeLanguage && <span className="code-title">{codeLanguage}</span>}
       <TitleBar value={titleBar} onChange={onTitleBarChange} light={light} />
       {copyable && (
         <div className="copy-button">
@@ -113,6 +117,14 @@ export default function WindowControls({
             position: absolute;
             top: 0px;
             right: 16px;
+          }
+
+          .code-title {
+            font-size: 14px;
+            margin-left: 24px;
+            font-family: ${fontFamily};
+            position: absolute;
+            top: 2px;
           }
         `}
       </style>
