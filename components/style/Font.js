@@ -133,7 +133,7 @@ export default function Font() {
         @font-face {
           font-family: 'Martian Mono';
           font-display: swap;
-          src: url(//cdn.jsdelivr.net/gh/evilmartians/mono@1.0.0/fonts/webfonts/MartianMono-Regular.woff2)
+          src: url(//cdn.jsdelivr.net/gh/evilmartians/mono@latest/fonts/webfonts/MartianMono-Regular.woff2)
             format('woff2');
         }
       `}
