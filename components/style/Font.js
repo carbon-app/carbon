@@ -129,6 +129,13 @@ export default function Font() {
             url(https://fonts.gstatic.com/s/spacemono/v2/i7dPIFZifjKcF5UAWdDRYEF8RQ.woff2)
               format('woff2');
         }
+
+        @font-face {
+          font-family: 'Martian Mono';
+          font-display: swap;
+          src: url(//cdn.jsdelivr.net/gh/evilmartians/mono@1.0.0/fonts/webfonts/MartianMono-Regular.woff2)
+            format('woff2');
+        }
       `}
     </style>
   )
