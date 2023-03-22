@@ -25,6 +25,8 @@ function WindowSettings({
   windowTheme,
   paddingHorizontal,
   paddingVertical,
+  opacity,
+  blur,
   dropShadow,
   dropShadowBlurRadius,
   dropShadowOffsetY,
@@ -55,6 +57,23 @@ function WindowSettings({
           onChange={onChange.bind(null, 'paddingHorizontal')}
           onMouseDown={onWidthChanging}
           onMouseUp={onWidthChanged}
+        />
+      </div>
+      <div className="row">
+      <Slider 
+          label="Opacity"
+          value={opacity}
+          minValue={0}
+          maxValue={1}
+          step={0.1}
+          unit=""
+          onChange={onChange.bind(null, 'opacity')}
+        />
+        <Slider 
+          label="Blur"
+          value={blur}
+          maxValue={50}
+          onChange={onChange.bind(null, 'blur')}
         />
       </div>
       <Toggle
@@ -377,6 +396,8 @@ class Settings extends React.PureComponent {
             windowTheme={this.props.windowTheme}
             paddingHorizontal={this.props.paddingHorizontal}
             paddingVertical={this.props.paddingVertical}
+            opacity={this.props.opacity}
+            blur={this.props.blur}
             dropShadow={this.props.dropShadow}
             dropShadowBlurRadius={this.props.dropShadowBlurRadius}
             dropShadowOffsetY={this.props.dropShadowOffsetY}
