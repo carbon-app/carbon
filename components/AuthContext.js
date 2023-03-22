@@ -1,5 +1,6 @@
 import React from 'react'
-import firebase from '../lib/client'
+import { getApps} from "firebase/app";
+import { getAuth,onAuthStateChanged} from 'firebase/auth';
 // IDEA: just read from firebase store at request time?
 import { client } from '../lib/api'
 
@@ -13,9 +14,12 @@ function AuthContext(props) {
   const [user, setState] = React.useState(null)
 
   React.useEffect(() => {
-    if (firebase) {
-      firebase.auth().onAuthStateChanged(newUser => setState(newUser))
+
+    if(getApps().length > 0)
+    {
+    onAuthStateChanged(getAuth() , newUser => setState(newUser))
     }
+    
   }, [])
 
   React.useEffect(() => {
