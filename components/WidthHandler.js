@@ -28,7 +28,7 @@ export default function WidthHandler({
       if (!startX.current) return
 
       const delta = e.pageX - startX.current // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
-      const calculated = startWidth.current + delta * window.devicePixelRatio
+      const calculated = startWidth.current + delta * window.devicePixelRatio * 2
       const newWidth = clamp(calculated, minWidth, maxWidth)
 
       onChange(newWidth)
