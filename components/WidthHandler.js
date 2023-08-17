@@ -28,7 +28,7 @@ export default function WidthHandler({
       if (!startX.current) return
 
       const delta = e.pageX - startX.current // leftOrRight === 'left' ? startX - e.pageX : (startX - e.pageX) * -1
-      const calculated = startWidth.current + delta * window.devicePixelRatio * 2
+      const calculated = startWidth.current + delta * window.devicePixelRatio * (e.shiftKey ? 1 : 2)
       const newWidth = clamp(calculated, minWidth, maxWidth)
 
       onChange(newWidth)
@@ -56,6 +56,7 @@ export default function WidthHandler({
         startWidth.current = innerRef.current.clientWidth
       }}
       role="separator"
+      title="Shift + drag for 1px adjustments"
       aria-orientation="vertical"
       aria-valuemin={minWidth}
       aria-valuemax={maxWidth}
