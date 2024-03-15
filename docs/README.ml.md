@@ -240,6 +240,7 @@ PR കൾ സ്വാഗതം ചെയ്യുന്നു! കൂടുത�
   <tr>
     <td align="center"><a href="https://github.com/Amirosagan"><img src="https://avatars.githubusercontent.com/u/53624184?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Amir Elsagan</b></sub></a><br /><a href="#translation-Amirosagan" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/korzck"><img src="https://avatars.githubusercontent.com/u/87325587?v=4?s=100" width="100px;" alt=""/><br /><sub><b>korzck</b></sub></a><br /><a href="#translation-korzck" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/sakibulalam"><img src="https://avatars.githubusercontent.com/u/4949223?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sakibul Alam</b></sub></a><br /><a href="#translation-sakibulalam" title="Translation">🌍</a></td>
   </tr>
 </table>
 
