@@ -3,6 +3,8 @@
   "projectOwner": "carbon-app",
   "files": [
     "README.md",
+    "docs/README.ar.md",
+    "docs/README.bn.md",
     "docs/README.br.pt.md",
     "docs/README.cn.zh.md",
     "docs/README.de.md",
@@ -17,11 +19,13 @@
     "docs/README.ml.md",
     "docs/README.nl.md",
     "docs/README.pl.md",
+    "docs/README.ru.md",
     "docs/README.se.md",
     "docs/README.ta.md",
     "docs/README.tr.md",
     "docs/README.tw.zh.md",
-    "docs/README.ua.md"
+    "docs/README.ua.md",
+    "docs/README.uz.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -931,6 +935,33 @@
       "name": "Praveen Kumar Purushothaman",
       "avatar_url": "https://avatars.githubusercontent.com/u/1830380?v=4",
       "profile": "https://github.com/praveenscience",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "Amirosagan",
+      "name": "Amir Elsagan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53624184?v=4",
+      "profile": "https://github.com/Amirosagan",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "korzck",
+      "name": "korzck",
+      "avatar_url": "https://avatars.githubusercontent.com/u/87325587?v=4",
+      "profile": "https://github.com/korzck",
+      "contributions": [
+        "translation"
+      ]
+    },
+    {
+      "login": "sakibulalam",
+      "name": "Sakibul Alam",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4949223?v=4",
+      "profile": "https://github.com/sakibulalam",
       "contributions": [
         "translation"
       ]

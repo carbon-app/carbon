@@ -95,8 +95,8 @@ Carbon позволяет сохранять изображения в форм�
 - [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Откройте текущий файл в Atom в Carbon с помощью `shift-cmd-A`
 - [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Откройте текущий файл VS Code в Carbon с помощью команды `carbon`
 - [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Откройте выделение в текущем файле в Sublime Text 3 через кастомный связанный ключ
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Откройте выделение в ткущем файле в Vim/Neovim используя функцию `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Откройте выделение в ткущем файле в Emacs используя интерактивную функцию `carbon-now-sh`
+- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Откройте выделение в текущем файле в Vim/Neovim используя функцию `CarbonNowSh()`
+- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Откройте выделение в текущем файле в Emacs используя интерактивную функцию `carbon-now-sh`
 - [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Откройте выделенный текст с помощью `carbon.now.sh`
 - [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Это расширение для Xcode позволяет экспортировать выделенный текст как фрагмент в Carbon в одно действие
 
