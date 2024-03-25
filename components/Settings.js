@@ -23,6 +23,7 @@ function KeyboardShortcut({ trigger, handle }) {
 function WindowSettings({
   onChange,
   windowTheme,
+  borderRadius,
   paddingHorizontal,
   paddingVertical,
   dropShadow,
@@ -42,6 +43,14 @@ function WindowSettings({
         windowControls={windowControls}
         onChange={onChange}
       />
+        <Slider
+          label="Corner Radius"
+          value={borderRadius}
+          minValue={0}
+          maxValue={25}
+          onChange={onChange.bind(null, 'borderRadius')}
+        />
+
       <div className="row">
         <Slider
           label="Padding (vert)"
@@ -375,6 +384,7 @@ class Settings extends React.PureComponent {
             onWidthChanging={this.handleWidthChanging}
             onWidthChanged={this.handleWidthChanged}
             windowTheme={this.props.windowTheme}
+            borderRadius={this.props.borderRadius}
             paddingHorizontal={this.props.paddingHorizontal}
             paddingVertical={this.props.paddingVertical}
             dropShadow={this.props.dropShadow}
