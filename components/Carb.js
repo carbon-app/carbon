@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState, useDeferredValue } from 'react'
 import ReactDOM from 'react-dom'
 import { Controlled as CodeMirror } from 'react-codemirror2'
 import { Spinner } from './Spinner'
 import WindowControls from './WindowControls'
 import hljs from 'highlight.js/lib/core'
-import debounce from 'lodash.debounce'
 import dynamic from 'next/dynamic'
 import WidthHandler from './WidthHandler'
-import ms from 'ms'
 
 import {
   COLORS,
@@ -54,33 +52,6 @@ const Carbon = (
 ) => {
   const [currentSelection, setCurrentSelection] = useState(null)
   const [selectionAt, setSelectionAt] = useState(null)
-
-  const handleLanguageChange = debounce(
-    (newCode, language) => {
-      if (language === 'auto') {
-        // try to set the language
-        const detectedLanguage = hljs.highlightAuto(newCode).language
-        const languageMode = searchLanguage(detectedLanguage)
-
-        if (languageMode) {
-          return languageMode.mime || languageMode.mode
-        }
-      }
-
-      const languageMode = searchLanguage(language)
-
-      if (languageMode) {
-        return languageMode.mime || languageMode.mode
-      }
-
-      return language
-    },
-    ms('300ms'),
-    {
-      leading: true,
-      trailing: true,
-    }
-  )
 
   const onBeforeChange = (editor, meta, code) => {
     if (!props.readOnly) {
@@ -140,10 +111,32 @@ const Carbon = (
 
   const config = { ...DEFAULT_SETTINGS, ...props.config }
 
-  const languageMode = handleLanguageChange(
-    props.children,
-    config.language && config.language.toLowerCase()
-  )
+
+  const defferedNewCode = useDeferredValue(props.children);
+
+  const languageMode = useMemo(() => {
+    const language = config.language && config.language.toLowerCase();
+
+    if (language === 'auto') {
+      // try to set the language
+      const detectedLanguage = hljs.highlightAuto(defferedNewCode).language
+      const languageMode = searchLanguage(detectedLanguage)
+
+      if (languageMode) {
+        return languageMode.mime || languageMode.mode
+      }
+    }
+
+    const languageMode = searchLanguage(language)
+
+    if (languageMode) {
+      return languageMode.mime || languageMode.mode
+    }
+
+    return language
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defferedNewCode]);
+
 
   const options = {
     screenReaderLabel: 'Code editor',
