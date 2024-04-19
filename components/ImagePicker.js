@@ -142,7 +142,7 @@ export default class ImagePicker extends React.Component {
       const palette = image.palette.map(c => c.hex)
       /*
        * Contributors, please feel free to adjust this algorithm to create the most
-       * readible or aesthetically pleasing syntax highlighting.
+       * readable or aesthetically pleasing syntax highlighting.
        */
       this.props.updateHighlights({
         background: palette[0],
