@@ -19,199 +19,106 @@
 
 <br></br>
 
-##### Translations
+##  آشنایی اولیه
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="/docs/README.es.md">Español</a>
-      </td>
-      <td>
-        <a href="/docs/README.hi.md">हिंदी</a>
-      </td>
-      <td>
-        <a href="/docs/README.de.md">Deutsch</a>
-      </td>
-      <td>
-        <a href="/docs/README.cn.zh.md">简体中文</a>
-      </td>
-      <td>
-        <a href="/docs/README.br.pt.md">Português</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.ml.md">മലയാളം</a>
-      </td>
-      <td>
-        <a href="/docs/README.tr.md">Türkçe</a>
-      </td>
-      <td>
-        <a href="/docs/README.kr.md">한국어</a>
-      </td>
-      <td>
-        <a href="/docs/README.ta.md">தமிழ்</a>
-      </td>
-      <td>
-        <a href="/docs/README.fr.md">Français</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.ja.md">日本語</a>
-      </td>
-      <td>
-        <a href="/docs/README.se.md">Svenska</a>
-      </td>
-      <td>
-        <a href="/docs/README.pl.md">Polski</a>
-      </td>
-      <td>
-        <a href="/docs/README.nl.md">Nederlands</a>
-      </td>
-      <td>
-        <a href="/docs/README.tw.zh.md">正體中文</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.in.md">Indonesia</a>
-      </td>
-      <td>
-        <a href="/docs/README.ua.md">Українська</a>
-      </td>
-      <td>
-        <a href="/docs/README.it.md">Italiano</a>
-      </td>
-      <td>
-        <a href="/docs/README.he.md" dir="rtl">עברית</a>
-      </td>
-      <td>
-        <a href="/docs/README.ru.md">Русский</a>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <a href="/docs/README.ar.md">العربية</a>
-      </td>
-      <td>
-        <a href="/docs/README.bn.md">বাংলা</a>
-      </td>
-      <td>
-        <a href="/docs/README.fa.md">فارسی</a>
-      </td>
-      <td>
-        <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-## Introduction
-
-You know [all](https://twitter.com/dan_abramov/status/890191815567175680) [of those](https://twitter.com/reactjs/status/890511993261654017) [code screenshots](https://twitter.com/notquiteleo/status/873483329345028096) you see on Twitter? Though the code's usually impressive, we saw room for improvement in the aesthetic department. Carbon makes it easy to create and share beautiful images of your source code. So what are you waiting for? Go impress all of your followers with your newfound design prowess.
+احتمالا تا الان [کلی از این](https://twitter.com/dan_abramov/status/890191815567175680) [اسکرین شات](https://twitter.com/reactjs/status/890511993261654017) [های کد ها](https://twitter.com/notquiteleo/status/873483329345028096) را در توئیتر و اینطرف و آنطرف دیده اید. ولی بنظر ما هنوز جای بهبود در زیبایی این تصاویر بود، پس این شما و این کربن! کربن یک ابزار حرفه ای برای ساختن و اشتراک تصاویر چشم نواز از کد شماست. پس منتظر چه هستید؟ همین حالا کد تان را به زیبا ترین شکل ممکن آماده کنید!
 
 <p align="center">
   <img width="100%" alt="Carbon example" src="https://user-images.githubusercontent.com/8397708/63456416-b27d1a80-c403-11e9-9572-105b089be885.png">
 </p>
 
-## Features
+## امکانات
 
-- **Customization**. Customize things like your image's syntax theme, font style, and more
-- **Share quickly**. Save your image or
-  a link with one click
-- **Save snippets**. Create an account to save snippets for later. Shared snippets are automatically unfurled on Twitter and Slack.
+- **شخصی سازی**. امکان شخصی سازی تقریبا همه چیز، از استایل رنگ بندی گرفته تا فونت و خیلی بیشتر!
+- **اشتراک سریع**. با یک کلیک تصویرتان را دانلود و یا اشتراک گذاری کنید.
+- **ذخیره کد های کوچک**. با ساخت یک حساب کاربری، قطعه کد های شما ذخیره و در صورت نیاز میتوانید بطور مستقیم آنها را در توئیتر و اسلک به اشتراک بگذارید.
 
-## Usage
+## نحوه استفاده
 
-#### Import
+#### وارد کردن کد به کربن
 
-There are a few different ways to import code into Carbon:
+راه های مختلفی برای واردن کردن کد شما به کربن وجود دارد:
 
-- Drop a file onto the editor
-- Append a GitHub gist ID to the URL (e.g. [`carbon.now.sh/<gist_id_goes_here>`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
-- Or just start typing!
+- فایل کدتان را داخل ادیتور بیندازید(Drag and Drop)
+- یک gist ID از گیتهاب را در آدرس صفحه بیندازید (برای مثال: [`<carbon.now.sh/<gist_id`](https://carbon.now.sh/3208813b324d82a9ebd197e4b1c3bae8))
+- یا شروع به تایپ کردن کد تان در ادیتور کنید!
 
-#### Customization
+#### شخصی سازی
 
-Once you've got all of your code into Carbon, you can customize your image by changing the syntax theme, background color, window theme, padding, shadows, fonts, and more.
+بعد از اینکه تمام کدتان را وارد کربن کردید، میتوانید با تغییر قالب رنگی سینتکس ها، رنگ پس زمینه، عنوان صفحه، فاصله ها، سایه ها، فونت ها و دیگر موارد به شخصی سازی تصویرتان بپردازید!
 
-#### Exporting & Sharing
+#### دانلود و اشتراک گذاری
 
-After you've customized your image you can share your snippet in a number of ways
+بعد از اینکه شخصی سازی تصویرتان هم به اتمام رسید و به نتیجه مدنظرتان رسیدید، میتوانید قطعه کدتان را به روش های مختلفی به اشتراک بگذارید:
 
-##### Create a saved snippet
+##### ساخت یک قطعه کد ذخیره شده
 
-Sharing a saved snippet will automatically unfurl the image on platforms like Twitter and Slack. This lets users see your creation, while also giving them access to the source code via the link. Better yet, if you need to make an update, simply follow the link yourself to edit the snippet directly.
+ااشتراک گذاری یک قطعه کد ذخیره شده بطور خودکار تصویر را در پلتفرم هایی مثل توئیتر و اسلک منتشر خواهد کرد. در نتیجه، کاربران میتوانند قطعه کد شما را ببینند و علاوه بر آن، با کلیک روی لینک به کد نیز دسترسی پیدا کنند. همچنین در این روش، میتوانید با مراجعه به همان لینک نسبت به ادیت کدتان و موارد مربوط به آن نیز اقدام کنید!
+برای ساخت یک قطعه کد ذخیره شده:
 
-To create a saved snippet:
+1. با استفاده از دکمه "Sign in/Sign up" وارد شوید
+2. مطابق معمول به ادیت کد مورد نظرتان بپردازید
+3. آدرس بالای صفحه(URL) را کپی کرده و به اشتراک بگذارید!
 
-1. Login using the "Sign in/Sign up" button
-2. Edit as you normally would — your snippet will get saved automatically
-3. Copy the URL from your browser window and share away!
+##### امبد(Embed) کردن قطعه کد
 
-##### Embed a snippet
+این راه پیشنهادی ما برای قرار دادن کربن در وبسایت و یا بلاگ شماست. در این روش مخاطبان میتوانند کد را با تنها یک کلیک کپی کنند.
+شما میتوانید با استفاده از `carbon.now.sh/embed` هر قطعه کدی را در وبسایتتان به نمایش بگذارید. منوی کپی(Copy Menu) به شما اجازه میدهد به سرعت iFrame صحیح برای قطعه کد و یا آدرس encode شده برای embed کردن روی پلتفرم هایی مانند Medium را بدست آورید.
 
-This is the recommended method for sharing Carbon on your own website or blog. Readers can even copy the code with the click of a button.
+همچنین شما میتوانید قطعه کد های ذخیره شده و یا gist های گیتهاب را هم با استفاده از `carbon.now.sh/embed/:id` امبد(Embed) کنید.
 
-You can embed any Carbon snippet in your website directly using the `carbon.now.sh/embed` URL. The "Copy Menu" lets you quickly copy the correct iFrame snippet, or the encoded URL for embedding on platforms like Medium.
+##### از دکمه توئیت(Tweet) استفاده کنید!
 
-Finally, you can also embed saved snippets or GitHub gists using `carbon.now.sh/embed/:id`.
+دکمه توئیت نه تنها تصویر مورد نظر شما را در توئیتر به اشتراک میگذارد، بلکه توضیحات تصویر(alt text) صحیح را هم به آن اضافه میکند تا مطمئن شود که همه میتوانند تصویر را به درستی بخوانند! با این حال در صورتی که میخواهید خودتان تصاویر را توئیت کنید، لطفا [راهنمای خوانا سازی تصاویر برای توئیتر](https://help.twitter.com/en/using-twitter/picture-descriptions) را مطالعه کنید.
 
-##### Use the Tweet button
+##### دانلود مستقیم تصویر
 
-The Tweet button will not only share the image on Twitter, but it will also correctly encode the `alt` text to ensure your images are accessible. However, if you want to tweet image yourself, please check out [how to make your Twitter images accessible](https://help.twitter.com/en/using-twitter/picture-descriptions).
+ابزار کربن دانلود مستقیم تصویر ساخته شده را به دو فرمت PNG and SVG را پشتیبانی میکند. همچنین میتوانید با کلیک روی `Export → Open` تصویر خروجی را بطور مستقیم در مرورگر باز کنید. در پایان، با رفتن به `Copy → Image` میتوانید تصویر را مستقیم در کلیپ بورد خود کپی کنید.
 
-##### Download the image directly
+#### نصب کربن برای لپتاپ و یا کامپیوتر برای استفاده آفلاین
 
-Carbon supports downloading your image as a PNG and SVG. You can also click `Export → Open` to open your image directly in the browser. Finally, you can copy the Carbon image directly to your clipboard by going to `Copy → Image`.
+در صورتی که از مرورگر کروم(Google Chrome) و یا هر مرورگر دیگری که از وب اپ های پیشرو(PWA) ها پشتیبانی میکند استفاده میکنید، میتوانید با طی مراحل زیر کربن را برای استفاده آفلاین و بدون اینترنت در مروگر خود نصب کنید:
+1. به [carbon.now.sh](https://carbon.now.sh) بروید
+2. روی دکمه منوی تنظیمات مرورگر خود(Browser's settings menu) کلیک کنید
+3. روی "Install Carbon..." کلیک کنید
 
-#### Installing Carbon for Desktop (Offline)
+## کامیونیتی
 
-If you are using Google Chrome, or another browser that supports Progressive Web Apps, you can install Carbon for use offline by:
+سری به این پروژه های فوق العاده که کامیونیتی ما ساخته بزنید:
 
-1. Visit [carbon.now.sh](https://carbon.now.sh)
-2. Click your browser's settings menu
-3. Click "Install Carbon..."
+##### پلاگین های ادیتور ها
 
-## Community
+- [افزونه IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - کد انتخاب شده در فایل فعلی باز شده در IntelliJ IDEA را در کربن با استفاده از یک Context menu باز کنید
+- [افزونه Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - فایل Atom فعلی تان را در کربن با استفاده از کلید ترکیبی `shift-cmd-A` باز کنید
+- [افزونه VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - با استفاده از کامند `carbon` فایل فعلی تان را در کربن باز کنید
+- [افزونه Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - کد انتخاب شده در فایل باز شده تان در Sublime Text 3 را با استفاده از یک کلید ترکیبی کاستوم در کربن باز کنید
+- [افزونه Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - کد انتخاب شده در فایل باز شده تان در Vim/Neovim را با فانکشن `CarbonNowSh()` در کربن باز کنید
+- [افزونه Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - کد انتخاب شده فعلی در Emacs را با فانکشن interactive `carbon-now-sh` در کربن باز کنید
+- [افزونه Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - کد انتخاب شده فعلی تان را در `carbon.now.sh` باز کنید
+- [افزونه Xcode `nef`](https://github.com/bow-swift/nef-plugin) - این افزونه Xcode به شما اجازه میدهد کد انتخاب شده را بصورت مستقیم به عنوان یک قطعه کد در کربن خروجی بگیرید
 
-Check out these projects our awesome community has created:
+##### ابزار ها
 
-##### Editor Plugins
+- [ابزار خط فرمان(CLI) `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - با استفاده از `carbon-now`, یک فایل را در کربن باز و یا دانلود کنید. این ابزار تعاملی به شما امکاناتی مثل هایلایت کردن انتخابی و دیگر موارد را خواهد داد
+- [ابزار CodeExpander](https://codeexpander.com) - یک کلاینت هوشمند gist های گیتهاب، با قابلیت های TextExpander
+- [ابزار `nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - چندین قطعه کد کربن را از  `Xcode Playground` خروجی بگیرید
+- [ربات تلگرامی `@carbonshbot`](https://t.me/carbonshbot) -یک ربات تلگرام که قطعه کد و یا آدرس gist را از شما گرفته، و یک تصویر کربن را برای شما می سازد
+- [ابزار زبان R `carbonate`](https://yonicd.github.io/carbonate/) - بصورت تعاملی ویژگی های تصویر را در `R` ویرایش کرده، در کربن باز کنید و یا مستقیما دانلود کنید
+- [کربن برای اسلک](https://github.com/faisalsayed10/carbon-slack) - کربن را بطور مستقیم در اسلک استفاده کنید! کافیست از کامند `/carbon` استفاده کنید
 
-- [IntelliJ IDEA `carbon-now-sh`](https://plugins.jetbrains.com/plugin/10469-carbon-now-sh) - Open up the selection in your current IntelliJ IDEA file in Carbon through a context menu
-- [Atom `carbon-now-sh`](https://atom.io/packages/carbon-now-sh) - Open up your current Atom file in Carbon with `shift-cmd-A`
-- [VS Code `carbon-now-sh`](https://marketplace.visualstudio.com/items?itemName=ericadamski.carbon-now-sh) - Open up your current VS Code file in Carbon with command `carbon`
-- [Sublime Text 3 `carbon-now-sh`](https://github.com/molnarmark/carbonSublime) - Open up the selection in your current Sublime Text 3 file with a custom bound key
-- [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Open up the selection in your current Vim/Neovim using function `CarbonNowSh()`
-- [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Open up the selection in your current Emacs using interactive function `carbon-now-sh`
-- [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Open up your current selection in `carbon.now.sh`
-- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - This Xcode extension enables you to export a code selection as a Carbon snippet in a single action
+##### ارجاعات
 
-##### Tools
+- [ کتاب "CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - یک کتاب علوم کامپیوتر نوشته شده توسط Satrbo Roy.
 
-- [CLI `carbon-now-cli`](https://github.com/mixn/carbon-now-cli) - Open a file in Carbon or download it directly using `carbon-now`, featuring an interactive mode, selective highlighting and more
-- [CodeExpander](https://codeexpander.com) - A smart GitHub gist client with the TextExpander features
-- [`nef`](https://github.com/bow-swift/nef#-exporting-carbon-code-snippets) - Export multiple Carbon code snippets from `Xcode Playground`.
-- [`@carbonshbot`](https://t.me/carbonshbot) - A Telegram chatbot which takes in a code snippet or gist URL and generates an Carbon image
-- [R `carbonate`](https://yonicd.github.io/carbonate/) - Iteratively manipulate image aesthetics in `R` and either open in Carbon or download directly.
-- [Carbon for Slack](https://github.com/faisalsayed10/carbon-slack) - Use Carbon directly in Slack. Just invoke the `/carbon` command.
+## نویسندگان
 
-##### Citations
-
-- ["CS 101 - An Introduction to Computational Thinking"](https://itunes.apple.com/us/book/id1435714196) - a computer science textbook by Sarbo Roy.
-
-## Authors
-
-Carbon is a project by:
+کربن توسط این افراد خفن ساخته شده است:
 
 - Mike Fix ([@mfix22](https://twitter.com/fixitup2))
 - Brian Dennis ([@briandennis](https://github.com/briandennis))
 - Jake Dexheimer ([@jakedex](https://github.com/jakedex))
 
-#### License
+#### لایسنس
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcarbon-app%2Fcarbon?ref=badge_large)
 
@@ -220,11 +127,11 @@ Carbon is a project by:
 
 ---
 
-## Contribute & Support
+## پشتیبانی و مشارکت در این پروژه
 
-Pull requests are welcome! Please see our [contributing guidelines](/.github/CONTRIBUTING.md) for more details.
+ما از Pull requests ها استقبال میکنیم! لطفا [قوانین و شرایط مشارکت و کانتریبیوت کردن](/.github/CONTRIBUTING.md) را برای جزئیات بیشتر بخوانید.
 
-### Sponsors & Backers
+### اسپانسر ها و حامیان
 
 [![Fossa](https://assets-global.website-files.com/5f4d9ea2592c16056cb0f7a5/5f4d9ea2592c16d9a2b0f7da_logo-FOSSA-night-blue.svg)](https://fossa.com)
 
@@ -239,13 +146,13 @@ Pull requests are welcome! Please see our [contributing guidelines](/.github/CON
 <a href="https://opencollective.com/carbon-app/backers/6/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/6/avatar"></a>
 <a href="https://opencollective.com/carbon-app/backers/7/website" target="_blank"><img src="https://opencollective.com/carbon-app/backers/7/avatar"></a>
 
-### Thanks To
+### با تشکر از
 
-[▲ Vercel](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) for sponsoring Carbon's hosting.
+[▲ Vercel](https://vercel.com?utm_source=carbon-app&utm_campaign=oss) برای اسپانسر هاستینگ کربن شدن.
 
-### All Contributors
+### تمام مشارکت کنندگان
 
-Thanks goes out to all these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+یک دمت گرم، به همه این افراد فوق العاده که در پروژه کربن مشارکت داشته اند ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
