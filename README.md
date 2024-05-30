@@ -99,6 +99,9 @@
         <a href="/docs/README.bn.md">বাংলা</a>
       </td>
       <td>
+        <a href="/docs/README.fa.md">فارسی</a>
+      </td>
+      <td>
         <a href="https://github.com/carbon-app/carbon/new/main/docs?filename=docs/README.%3Cnew%20language%3E.md">Add +</a>
       </td>
     </tr>
