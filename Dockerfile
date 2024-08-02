@@ -7,9 +7,6 @@ WORKDIR /app
 # Copy package.json and yarn.lock to the working directory
 COPY package.json yarn.lock ./
 
-# Install Yarn globally
-RUN npm install -g yarn
-
 # Install application dependencies using Yarn
 RUN yarn
 
@@ -20,4 +17,4 @@ COPY . .
 CMD ["yarn", "dev"]
 
 # Expose the port on which the application will run
-# EXPOSE 3000
+EXPOSE 3000
