@@ -31,7 +31,7 @@ Avete presente [tutti](https://twitter.com/dan_abramov/status/890191815567175680
 
 - **Personalizzazione**. Personalizza cose come il tema della sintassi della tua immagine, lo stile del carattere e altro ancora
 - **Condividi rapidamente**. Salva la tua immagine o un link con un clic
-- **Salvare i frammenti**. Crea un account per salvare i frammenti per dopo. Quelli condivisi vengono automaticamente dispiegati su Twitter e Slack.
+- **Salva i frammenti**. Crea un account per salvare i frammenti per dopo. Quelli condivisi vengono automaticamente pubblicati su Twitter e Slack.
 
 ## Uso
 
@@ -49,7 +49,7 @@ Una volta che avrete tutto il vostro codice in Carbon, potete personalizzare la 
 
 #### Esportazione e condivisione
 
-Dopo aver personalizzato la tua immagine puoi condividere il tuo frammento in diversi modi
+Dopo aver personalizzato l'immagine, puoi condividere il frammento in diversi modi
 
 ##### Creare un frammento salvato
 
@@ -98,7 +98,7 @@ Guarda questi progetti che la nostra fantastica comunità ha creato:
 - [Vim `carbon-now-sh`](https://github.com/kristijanhusak/vim-carbon-now-sh) - Aprite la selezione nel vostro Vim/Neovim corrente usando la funzione `CarbonNowSh()`
 - [Emacs `carbon-now-sh`](https://github.com/veelenga/carbon-now-sh.el) - Aprite la selezione nel vostro Emacs attuale usando la funzione interattiva `carbon-now-sh`
 - [Xcode `carbon-now-sh`](https://github.com/StevenMagdy/CarboNow4Xcode) - Aprire la selezione corrente in `carbon.now.sh`
-- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Questa estensione Xcode permette di esportare una selezione di codice come frammento di Carbon in una sola azione
+- [Xcode `nef`](https://github.com/bow-swift/nef-plugin) - Questa estensione Xcode consente di esportare una selezione di codice come frammento di Carbon in un solo passaggio
 
 ##### Strumenti
 
