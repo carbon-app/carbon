@@ -6,7 +6,7 @@ import ListSetting from '../ListSetting'
 import Popout from '../Popout'
 import ColorPicker from '../ColorPicker'
 import { HIGHLIGHT_KEYS, COLORS } from '../../lib/constants'
-import { stringifyRGBA, generateId } from '../../lib/util'
+import { stringifyColor, generateId } from '../../lib/util'
 
 const colorPickerStyle = {
   backgroundColor: COLORS.BLACK,
@@ -22,6 +22,7 @@ const HighlightPicker = ({ title, onChange, color }) => (
       <span className="capitalize">{title}</span>
     </div>
     <ColorPicker
+      key={title}
       color={color}
       onChange={onChange}
       presets={colorPresets}
@@ -135,7 +136,7 @@ const ThemeCreate = ({
         <HighlightPicker
           title={highlight}
           color={highlights[highlight]}
-          onChange={({ rgb }) => updateHighlights({ [highlight]: stringifyRGBA(rgb) })}
+          onChange={color => updateHighlights({ [highlight]: stringifyColor(color) })}
         />
       )}
       <style jsx>

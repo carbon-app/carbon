@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { useCopyTextHandler, useAsyncCallback } from 'actionsack'
+import { useCopyTextHandler, useAsyncCallback, useKeyboardListener } from 'actionsack'
 import morph from 'morphmorph'
 
 import { COLORS } from '../lib/constants'
@@ -45,7 +45,7 @@ function CopyEmbed({ mapper, title }) {
 const popoutStyle = { width: '140px', right: 0 }
 
 function useClipboardSupport() {
-  const [isClipboardSupports, setClipboardSupport] = React.useState(false)
+  const [isClipboardSupported, setClipboardSupport] = React.useState(false)
 
   React.useEffect(() => {
     setClipboardSupport(
@@ -53,7 +53,7 @@ function useClipboardSupport() {
     )
   }, [])
 
-  return isClipboardSupports
+  return isClipboardSupported
 }
 
 function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
@@ -64,8 +64,15 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
   )
 
   const [copy, { loading }] = useAsyncCallback(async (...args) => {
-    await copyImage(...args)
-    showCopied()
+    if (clipboardSupported) {
+      await copyImage(...args)
+      showCopied()
+    }
+  })
+
+  useKeyboardListener('⌘-⇧-c', e => {
+    e.preventDefault()
+    copy(e)
   })
 
   return (
@@ -111,6 +118,7 @@ function CopyMenu({ isVisible, toggleVisibility, copyImage, carbonRef }) {
             position: relative;
             color: ${COLORS.SECONDARY};
             flex: 1;
+            max-width: 40px;
           }
 
           .copy-row {

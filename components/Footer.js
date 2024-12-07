@@ -1,12 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 
 import { COLORS } from '../lib/constants'
-
-const EmailSubscribe = dynamic(() => import('./EmailSubscribe'), {
-  loading: () => null,
-})
 
 const Footer = () => (
   <footer role="contentinfo" className="mt3">
@@ -16,9 +11,6 @@ const Footer = () => (
           about
         </a>
       </Link>
-      <a className="link" href="https://github.com/carbon-app/carbon/issues/new">
-        feedback
-      </a>
       <a className="link" href="https://github.com/carbon-app/carbon">
         source
       </a>
@@ -28,7 +20,6 @@ const Footer = () => (
       <a className="link" href="/privacy">
         privacy
       </a>
-      <EmailSubscribe />
       <a className="link" href="/offsets">
         offsets
       </a>

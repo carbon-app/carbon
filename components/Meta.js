@@ -5,9 +5,9 @@ import Reset from './style/Reset'
 import Font from './style/Font'
 import Typography from './style/Typography'
 
-const CODEMIRROR_VERSION = '5.58.2'
+const CODEMIRROR_VERSION = '5.65.5'
 
-const HIGHLIGHTS_ONLY = ['shades-of-purple', 'vscode', 'a11y-dark']
+export const HIGHLIGHTS_ONLY = ['shades-of-purple', 'vscode', 'a11y-dark']
 const LOCAL_STYLESHEETS = ['one-light', 'one-dark', 'verminal', 'night-owl', 'nord', 'synthwave-84']
 const CDN_STYLESHEETS = THEMES.filter(
   t => LOCAL_STYLESHEETS.indexOf(t.id) < 0 && HIGHLIGHTS_ONLY.indexOf(t.id) < 0
@@ -60,6 +60,7 @@ export const MetaTags = React.memo(() => (
     <meta name="og:description" content={description} />
     <meta name="og:image" content="/static/brand/banner.png" />
     <meta name="theme-color" content={COLORS.BLACK} />
+    <meta name="apple-mobile-web-app-status-bar-style" content={COLORS.BLACK} />
     <title>{title} | Create and share beautiful images of your source code</title>
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="manifest" href="/manifest.json" />

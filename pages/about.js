@@ -1,6 +1,45 @@
 import React from 'react'
 import Page from '../components/Page'
 
+function Contributors() {
+  const [contributors, setContributors] = React.useState([])
+
+  React.useEffect(() => {
+    fetch('https://api.github.com/repos/carbon-app/carbon/contributors?per_page=100')
+      .then(response => response.json())
+      .then(contributors =>
+        setContributors(contributors.filter(contributor => !contributor.login.endsWith('[bot]')))
+      )
+  }, [])
+
+  return (
+    <div>
+      {contributors.map(contributor => (
+        <a key={contributor.id} href={contributor.html_url} target="_blank" rel="noreferrer">
+          <img alt={contributor.login} className="contributor" src={contributor.avatar_url} />
+        </a>
+      ))}
+      <style jsx>
+        {`
+          .contributor {
+            border-radius: 50%;
+            border: 2px solid white;
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            transition: all 300ms ease;
+            margin-bottom: 8px;
+          }
+
+          .contributor:hover {
+            opacity: 0.8;
+          }
+        `}
+      </style>
+    </div>
+  )
+}
+
 export default function About() {
   return (
     <Page>
@@ -38,7 +77,7 @@ export default function About() {
             <li>Drop a file into the editor</li>
             <li>
               Append a GitHub gist id to the url (
-              <a className="link" href="/0db00e81d5416c339181e59481c74b59">
+              <a className="link" href="/3208813b324d82a9ebd197e4b1c3bae8">
                 example
               </a>
               )
@@ -100,6 +139,24 @@ export default function About() {
                 </td>
               </tr>
               <tr>
+                <td>Export as SVG</td>
+                <td>
+                  <kbd>⇧ ⌘ S</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td>Save snippet</td>
+                <td>
+                  <kbd>⌥ S</kbd>
+                </td>
+              </tr>
+              <tr>
+                <td>Copy image to clipboard</td>
+                <td>
+                  <kbd>⇧ ⌘ C</kbd>
+                </td>
+              </tr>
+              <tr>
                 <td>Reset settings</td>
                 <td>
                   <kbd>⇧ ⌘ \</kbd>
@@ -115,6 +172,8 @@ export default function About() {
               Contributors welcome!
             </a>
           </p>
+          <br />
+          <Contributors />
         </div>
       </div>
       <style jsx>

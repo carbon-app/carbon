@@ -1,5 +1,5 @@
-open_collective: carbon-app/contribute
-github: # Replace with up to 4 GitHub Sponsors-enabled usernames e.g., [user1, user2]
+github: [carbon-app, mfix22] # Replace with up to 4 GitHub Sponsors-enabled usernames e.g., [user1, user2]
+open_collective: # carbon-app/contribute
 patreon: # Replace with a single Patreon username
 ko_fi: # Replace with a single Ko-fi username
 tidelift: # Replace with a single Tidelift platform-name/package-name e.g., npm/babel

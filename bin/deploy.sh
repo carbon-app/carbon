@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
-now switch carbon-app
+vercel switch carbon-app
 
-NOW_URL=$(now)
+VERCEL_URL=$(vercel)
 
-yarn cy:run --config baseUrl="$NOW_URL"
+yarn cy:run --config baseUrl="$VERCEL_URL"
 
-echo "$NOW_URL"| tee /dev/tty | pbcopy
+echo "$VERCEL_URL"| tee /dev/tty | pbcopy
 
 read -p "Deploy to production (y/N)?" -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  now alias "$NOW_URL" carbon.now.sh
+  vercel alias "$VERCEL_URL" carbon.now.sh
 fi

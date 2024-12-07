@@ -1,11 +1,9 @@
 // Theirs
 import React from 'react'
 import Router from 'next/router'
-import { useAsyncCallback } from 'actionsack'
 
 import Editor from './Editor'
 import Toasts from './Toasts'
-import { useAPI } from './ApiContext'
 import { useAuth } from './AuthContext'
 
 import { THEMES } from '../lib/constants'
@@ -28,10 +26,7 @@ function onReset() {
 function toastsReducer(curr, action) {
   switch (action.type) {
     case 'ADD': {
-      if (!curr.find(t => t.children === action.toast.children)) {
-        return curr.concat(action.toast)
-      }
-      return curr
+      return curr.concat(action.toast)
     }
     case 'SET': {
       return action.toasts
@@ -42,9 +37,7 @@ function toastsReducer(curr, action) {
 
 function EditorContainer(props) {
   const [themes, updateThemes] = React.useState(THEMES)
-  const api = useAPI()
   const user = useAuth()
-  const [update, { loading }] = useAsyncCallback(api.snippet.update)
 
   React.useEffect(() => {
     const storedThemes = getThemes(localStorage) || []
@@ -59,6 +52,7 @@ function EditorContainer(props) {
 
   // XXX use context
   const [snippet, setSnippet] = React.useState(props.snippet || null)
+  // TODO update this reducer to only take one action
   const [toasts, setToasts] = React.useReducer(toastsReducer, [])
 
   const snippetId = snippet && snippet.id
@@ -71,34 +65,11 @@ function EditorContainer(props) {
   }, [snippetId, props.router])
 
   function onEditorUpdate(state) {
-    if (loading) {
+    if (user) {
       return
     }
-
-    if (!user) {
-      updateRouteState(props.router, state)
-      saveSettings(state)
-    } else {
-      const updates = state
-      if (!snippet) {
-        update(snippetId, updates).then(newSnippet => {
-          if (newSnippet && newSnippet.id) {
-            setSnippet(newSnippet)
-            setToasts({
-              type: 'ADD',
-              toast: { children: 'Snippet saved!', closable: true },
-            })
-          }
-        })
-      } else if (snippet.userId === user.uid) {
-        update(snippetId, updates).then(() => {
-          setToasts({
-            type: 'ADD',
-            toast: { children: 'Snippet saved!', closable: true },
-          })
-        })
-      }
-    }
+    updateRouteState(props.router, state)
+    saveSettings(state)
   }
 
   return (

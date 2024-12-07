@@ -15,12 +15,8 @@ const Toolbar = props => (
           font-size: 14px;
         }
 
-        .toolbar > :global(div) {
+        .toolbar > :global(div:not(:last-child)) {
           margin-right: 8px;
-        }
-
-        .toolbar > :global(div):last-child {
-          margin-right: 0px;
         }
 
         @media (max-width: 920px) {

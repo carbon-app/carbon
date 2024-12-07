@@ -1,14 +1,24 @@
 import React from 'react'
 import ListSetting from './ListSetting'
+import ReferralLink from './ReferralLink'
 import { FONTS } from '../lib/constants'
 import { fileToDataURL as blobToUrl } from '../lib/util'
 
 const EXTENSIONS = ['.otf', '.ttf', '.woff']
 
-const Font = ({ id, name }) => (
-  <span style={id === 'upload' ? { textAlign: 'center', width: '100%' } : { fontFamily: id }}>
-    {name}
-  </span>
+const Font = ({ id, name, link }) => (
+  <React.Fragment>
+    <span style={id === 'upload' ? { textAlign: 'center', width: '100%' } : { fontFamily: id }}>
+      {name}
+    </span>
+    {link && (
+      <ReferralLink href={link}>
+        <span style={id === 'upload' ? { textAlign: 'center', width: '100%' } : { fontFamily: id }}>
+          Purchase
+        </span>
+      </ReferralLink>
+    )}
+  </React.Fragment>
 )
 
 function FontSelect(props) {

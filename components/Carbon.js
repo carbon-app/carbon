@@ -9,7 +9,7 @@ import { Controlled as CodeMirror } from 'react-codemirror2'
 
 hljs.registerLanguage('javascript', javascript)
 
-import SpinnerWrapper from './SpinnerWrapper'
+import { Spinner } from './Spinner'
 import WindowControls from './WindowControls'
 import WidthHandler from './WidthHandler'
 
@@ -168,6 +168,7 @@ class Carbon extends React.PureComponent {
       },
       readOnly: this.props.readOnly,
       showInvisibles: config.hiddenCharacters,
+      autoCloseBrackets: true,
     }
     const backgroundImage =
       (this.props.config.backgroundImage && this.props.config.backgroundImageSelection) ||
@@ -178,37 +179,69 @@ class Carbon extends React.PureComponent {
     const light = themeConfig && themeConfig.light
 
     /* eslint-disable jsx-a11y/no-static-element-interactions */
-    const content = (
-      <div className="container">
-        {config.windowControls ? (
-          <WindowControls
-            theme={config.windowTheme}
-            code={this.props.children}
-            copyable={this.props.copyable}
-            light={light}
-          />
-        ) : null}
-        <CodeMirror
-          ref={this.props.editorRef}
-          className={`CodeMirror__container window-theme__${config.windowTheme}`}
-          value={this.props.children}
-          options={options}
-          onBeforeChange={this.onBeforeChange}
-          onGutterClick={this.props.onGutterClick}
-          onSelection={this.onSelection}
-        />
-        {config.watermark && <Watermark light={light} />}
-        <div className="container-bg">
-          <div className="white eliminateOnRender" />
-          <div className="alpha eliminateOnRender" />
-          <div className="bg" />
-        </div>
+    const selectionNode =
+      !this.props.readOnly &&
+      !!this.state.selectionAt &&
+      document.getElementById('style-editor-button')
 
-        <WidthHandler
-          innerRef={this.props.innerRef}
-          onChange={this.props.updateWidth}
-          paddingHorizontal={config.paddingHorizontal}
-        />
+    return (
+      <div className="section">
+        <div
+          ref={this.props.innerRef}
+          id="export-container"
+          className="export-container"
+          onMouseUp={this.onMouseUp}
+        >
+          {this.props.loading ? (
+            // TODO investigate removing these hard-coded values
+            <div style={{ width: 876, height: 240 }}>
+              <Spinner />
+            </div>
+          ) : (
+            <div className="container">
+              {config.windowControls ? (
+                <WindowControls
+                  titleBar={this.props.titleBar}
+                  onTitleBarChange={this.props.onTitleBarChange}
+                  theme={config.windowTheme}
+                  code={this.props.children}
+                  copyable={this.props.copyable}
+                  light={light}
+                />
+              ) : null}
+              <CodeMirror
+                ref={this.props.editorRef}
+                className={`CodeMirror__container window-theme__${config.windowTheme}`}
+                value={this.props.children}
+                options={options}
+                onBeforeChange={this.onBeforeChange}
+                onGutterClick={this.props.onGutterClick}
+                onSelection={this.onSelection}
+              />
+              {config.watermark && <Watermark light={light} />}
+              <div className="container-bg">
+                <div className="white eliminateOnRender" />
+                <div className="alpha eliminateOnRender" />
+                <div className="bg" />
+              </div>
+
+              {/* TODO pass in this child as a prop to Carbon */}
+              <WidthHandler
+                innerRef={this.props.innerRef}
+                onChange={this.props.updateWidth}
+                onChangeComplete={this.props.updateWidthConfirm}
+                paddingHorizontal={config.paddingHorizontal}
+                paddingVertical={config.paddingVertical}
+              />
+            </div>
+          )}
+        </div>
+        {selectionNode &&
+          ReactDOM.createPortal(
+            <SelectionEditor onChange={this.onSelectionChange} />,
+            // TODO: don't use portal?
+            selectionNode
+          )}
         <style jsx>
           {`
             .container {
@@ -245,15 +278,13 @@ class Carbon extends React.PureComponent {
             }
 
             .container .bg {
-              ${
-                this.props.config.backgroundMode === 'image'
-                  ? `background: url(${backgroundImage});
+              ${this.props.config.backgroundMode === 'image'
+                ? `background: url(${backgroundImage});
                     background-size: cover;
                     background-repeat: no-repeat;`
-                  : `background: ${this.props.config.backgroundColor || config.backgroundColor};
+                : `background: ${this.props.config.backgroundColor || config.backgroundColor};
                     background-size: auto;
-                    background-repeat: repeat;`
-              }
+                    background-repeat: repeat;`}
               position: absolute;
               top: 0px;
               right: 0px;
@@ -280,11 +311,9 @@ class Carbon extends React.PureComponent {
               position: relative;
               z-index: 1;
               border-radius: 5px;
-              ${
-                config.dropShadow
-                  ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
-                  : ''
-              };
+              ${config.dropShadow
+                ? `box-shadow: 0 ${config.dropShadowOffsetY} ${config.dropShadowBlurRadius} rgba(0, 0, 0, 0.55)`
+                : ''};
             }
 
             .container :global(.CodeMirror__container .CodeMirror) {
@@ -331,35 +360,11 @@ class Carbon extends React.PureComponent {
               .container :global([contenteditable='true']) {
                 user-select: text;
               }
+              .container {
+                max-width: 480px;
+              }
             }
-          `}
-        </style>
-      </div>
-    )
 
-    const selectionNode =
-      !this.props.readOnly &&
-      !!this.state.selectionAt &&
-      document.getElementById('style-editor-button')
-
-    return (
-      <div className="section">
-        <div
-          ref={this.props.innerRef}
-          id="export-container"
-          className="export-container"
-          onMouseUp={this.onMouseUp}
-        >
-          <SpinnerWrapper loading={this.props.loading}>{content}</SpinnerWrapper>
-        </div>
-        {selectionNode &&
-          ReactDOM.createPortal(
-            <SelectionEditor onChange={this.onSelectionChange} />,
-            // TODO: don't use portal?
-            selectionNode
-          )}
-        <style jsx>
-          {`
             .section,
             .export-container {
               height: 100%;
@@ -368,6 +373,7 @@ class Carbon extends React.PureComponent {
               justify-content: center;
               align-items: center;
               overflow: hidden;
+              max-width: 100%;
             }
           `}
         </style>
@@ -380,6 +386,9 @@ let modesLoaded = false
 function useModeLoader() {
   React.useEffect(() => {
     if (!modesLoaded) {
+      // Load Codemirror add-ons
+      require('../lib/custom/autoCloseBrackets')
+      // Load Codemirror modes
       LANGUAGES.filter(
         language => language.mode && language.mode !== 'auto' && language.mode !== 'text'
       ).forEach(language => {

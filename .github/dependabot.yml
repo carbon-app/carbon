@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Configuration for npm
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    allow:
+      dependency-type: 'development'
+    # labels:
+    #   - 'dependencies'
+    # ignore:
+    # https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/configuration-options-for-dependency-update

@@ -94,11 +94,11 @@ function ToastContainer(props) {
   return (
     <div className="toast">
       {props.toasts
-        .slice()
-        .reverse()
-        .map(toast => (
-          <Toast key={toast.children} {...toast} />
-        ))}
+        ? props.toasts
+            .slice()
+            .reverse()
+            .map(toast => <Toast key={toast.children} {...toast} />)
+        : null}
       <style jsx>
         {`
           .toast {

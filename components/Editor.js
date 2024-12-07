@@ -13,9 +13,9 @@ import Overlay from './Overlay'
 import BackgroundSelect from './BackgroundSelect'
 import Carbon from './Carbon'
 import ExportMenu from './ExportMenu'
+import ShareMenu from './ShareMenu'
 import CopyMenu from './CopyMenu'
 import Themes from './Themes'
-import TweetButton from './TweetButton'
 import FontFace from './FontFace'
 import LanguageIcon from './svg/Language'
 import {
@@ -32,8 +32,8 @@ import {
   DEFAULT_THEME,
   FONTS,
 } from '../lib/constants'
-import { serializeState, getRouteState } from '../lib/routing'
-import { getSettings, unescapeHtml, formatCode, omit, dataURLtoBlob } from '../lib/util'
+import { getRouteState } from '../lib/routing'
+import { getSettings, unescapeHtml, formatCode, omit } from '../lib/util'
 import domtoimage from '../lib/dom-to-image'
 
 const languageIcon = <LanguageIcon />
@@ -42,7 +42,7 @@ const SnippetToolbar = dynamic(() => import('./SnippetToolbar'), {
   loading: () => null,
 })
 
-const getConfig = omit(['code'])
+const getConfig = omit(['code', 'titleBar'])
 const unsplashPhotographerCredit = /\n\n\/\/ Photo by.+?on Unsplash/
 
 class Editor extends React.Component {
@@ -77,15 +77,6 @@ class Editor extends React.Component {
     }
 
     this.setState(newState)
-
-    this.isSafari =
-      window.navigator &&
-      window.navigator.userAgent.indexOf('Safari') !== -1 &&
-      window.navigator.userAgent.indexOf('Chrome') === -1
-    this.isFirefox =
-      window.navigator &&
-      window.navigator.userAgent.indexOf('Firefox') !== -1 &&
-      window.navigator.userAgent.indexOf('Chrome') === -1
   }
 
   carbonNode = React.createRef()
@@ -97,15 +88,17 @@ class Editor extends React.Component {
     leading: true,
   })
 
-  updateState = updates => this.setState(updates, () => this.onUpdate(this.state))
+  sync = () => this.onUpdate(this.state)
+
+  updateState = updates => this.setState(updates, this.sync)
 
   updateCode = code => this.updateState({ code })
+  updateTitleBar = titleBar => this.updateState({ titleBar })
   updateWidth = width => this.setState({ widthAdjustment: false, width })
 
   getCarbonImage = async (
     {
       format,
-      type,
       squared = this.state.squaredImage,
       exportSize = (EXPORT_SIZES_HASH[this.state.exportSize] || DEFAULT_EXPORT_SIZE).value,
     } = { format: 'png' }
@@ -118,8 +111,10 @@ class Editor extends React.Component {
     const config = {
       style: {
         transform: `scale(${exportSize})`,
-        'transform-origin': 'center',
+        transformOrigin: 'top left',
         background: squared ? this.state.backgroundColor : 'none',
+        alignItems: 'start',
+        justifyContent: 'start',
       },
       filter: n => {
         if (n.className) {
@@ -137,10 +132,6 @@ class Editor extends React.Component {
       height,
     }
 
-    // current font-family used
-    const fontFamily = this.state.fontFamily
-
-    // TODO consolidate type/format to only use one param
     if (format === 'svg') {
       return domtoimage
         .toSvg(node, config)
@@ -154,7 +145,11 @@ class Editor extends React.Component {
             .replace(/&(?!#?[a-z0-9]+;)/g, '&amp;')
             // remove other fonts which are not used
             .replace(
-              new RegExp('@font-face\\s+{\\s+font-family: (?!"*' + fontFamily + ').*?}', 'g'),
+              // current font-family used
+              new RegExp(
+                '@font-face\\s+{\\s+font-family: (?!"*' + this.state.fontFamily + ').*?}',
+                'g'
+              ),
               ''
             )
         )
@@ -162,25 +157,11 @@ class Editor extends React.Component {
         .then(data => new Blob([data], { type: 'image/svg+xml' }))
     }
 
-    // if safari, get image from api
-    if (this.context.image && this.isSafari) {
-      const themeConfig = this.getTheme()
-      // pull from custom theme highlights, or state highlights
-      const encodedState = serializeState({
-        ...this.state,
-        highlights: { ...themeConfig.highlights, ...this.state.highlights },
-      })
-      // TODO consider returning blob responseType from axios
-      return this.context
-        .image(encodedState)
-        .then(dataURL => (type === 'blob' ? dataURLtoBlob(dataURL) : dataURL))
-    }
-
-    if (type === 'blob') {
+    if (format === 'blob') {
       return domtoimage.toBlob(node, config)
     }
 
-    // Twitter needs regular dataURLs
+    // Twitter and Imgur needs regular dataURLs
     return domtoimage.toPng(node, config)
   }
 
@@ -190,18 +171,28 @@ class Editor extends React.Component {
     )
   }
 
-  exportImage = (format = 'png', options = {}) => {
+  imgur = () => {
+    const prefix = this.state.name || 'carbon'
+
+    return this.getCarbonImage({ format: 'png' }).then(data => this.context.imgur(data, prefix))
+  }
+
+  exportImage = (format = 'blob', options = {}) => {
     const link = document.createElement('a')
 
     const prefix = options.filename || this.state.name || 'carbon'
 
-    return this.getCarbonImage({ format, type: 'blob' })
+    return this.getCarbonImage({ format })
       .then(blob => window.URL.createObjectURL(blob))
       .then(url => {
-        if (format !== 'open') {
-          link.download = `${prefix}.${format}`
+        if (!options.open) {
+          link.download = `${prefix}.${format === 'svg' ? 'svg' : 'png'}`
         }
-        if (this.isFirefox) {
+        if (
+          // isFirefox
+          window.navigator.userAgent.indexOf('Firefox') !== -1 &&
+          window.navigator.userAgent.indexOf('Chrome') === -1
+        ) {
           link.target = '_blank'
         }
         link.href = url
@@ -212,7 +203,7 @@ class Editor extends React.Component {
   }
 
   copyImage = () =>
-    this.getCarbonImage({ format: 'png', type: 'blob' })
+    this.getCarbonImage({ format: 'blob' })
       .then(blob =>
         navigator.clipboard.write([
           new window.ClipboardItem({
@@ -267,7 +258,7 @@ class Editor extends React.Component {
     }
   }
 
-  updateTheme = theme => this.updateState({ theme })
+  updateTheme = theme => this.updateState({ theme, highlights: null })
   updateHighlights = updates =>
     this.setState(({ highlights = {} }) => ({
       highlights: {
@@ -304,9 +295,17 @@ class Editor extends React.Component {
       .then(() =>
         this.props.setToasts({
           type: 'SET',
-          toasts: [{ children: 'Snippet duplicated!', timeout: 3000 }],
+          toasts: [{ children: 'Snippet created', timeout: 3000 }],
         })
       )
+
+  handleSnippetUpdate = () =>
+    this.context.snippet.update(this.props.snippet.id, this.state).then(() =>
+      this.props.setToasts({
+        type: 'SET',
+        toasts: [{ children: 'Snippet saved', timeout: 3000 }],
+      })
+    )
 
   handleSnippetDelete = () =>
     this.context.snippet
@@ -328,6 +327,7 @@ class Editor extends React.Component {
       backgroundMode,
       code,
       exportSize,
+      titleBar,
     } = this.state
 
     const config = getConfig(this.state)
@@ -359,31 +359,32 @@ class Editor extends React.Component {
             onChange={this.updateLanguage}
           />
           <div className="toolbar-second-row">
-            <BackgroundSelect
-              onChange={this.updateBackground}
-              updateHighlights={this.updateHighlights}
-              mode={backgroundMode}
-              color={backgroundColor}
-              image={backgroundImage}
-              carbonRef={this.carbonNode.current}
-            />
-            <Settings
-              {...config}
-              onChange={this.updateSetting}
-              resetDefaultSettings={this.resetDefaultSettings}
-              format={this.format}
-              applyPreset={this.applyPreset}
-              getCarbonImage={this.getCarbonImage}
-            />
-            <div id="style-editor-button" />
-            <div className="buttons">
+            <div className="setting-buttons">
+              <BackgroundSelect
+                onChange={this.updateBackground}
+                updateHighlights={this.updateHighlights}
+                mode={backgroundMode}
+                color={backgroundColor}
+                image={backgroundImage}
+                carbonRef={this.carbonNode.current}
+              />
+              <Settings
+                {...config}
+                onChange={this.updateSetting}
+                resetDefaultSettings={this.resetDefaultSettings}
+                format={this.format}
+                applyPreset={this.applyPreset}
+                getCarbonImage={this.getCarbonImage}
+              />
               <CopyMenu copyImage={this.copyImage} carbonRef={this.carbonNode.current} />
-              <TweetButton onClick={this.tweet} />
+            </div>
+            <div id="style-editor-button" />
+            <div className="share-buttons">
+              <ShareMenu tweet={this.tweet} imgur={this.imgur} />
               <ExportMenu
                 onChange={this.updateSetting}
                 exportImage={this.exportImage}
                 exportSize={exportSize}
-                backgroundImage={backgroundImage}
               />
             </div>
           </div>
@@ -402,23 +403,26 @@ class Editor extends React.Component {
                 config={this.state}
                 onChange={this.updateCode}
                 updateWidth={this.updateWidth}
+                updateWidthConfirm={this.sync}
                 loading={this.state.loading}
                 theme={theme}
+                titleBar={titleBar}
+                onTitleBarChange={this.updateTitleBar}
               >
                 {code != null ? code : DEFAULT_CODE}
               </Carbon>
             </Overlay>
           )}
         </Dropzone>
-        {this.props.snippet && (
-          <SnippetToolbar
-            snippet={this.props.snippet}
-            onCreate={this.handleSnippetCreate}
-            onDelete={this.handleSnippetDelete}
-            name={config.name}
-            onChange={this.updateSetting}
-          />
-        )}
+        <SnippetToolbar
+          state={this.state}
+          snippet={this.props.snippet}
+          onCreate={this.handleSnippetCreate}
+          onDelete={this.handleSnippetDelete}
+          onUpdate={this.handleSnippetUpdate}
+          name={config.name}
+          onChange={this.updateSetting}
+        />
         <FontFace {...config} />
         <style jsx>
           {`
@@ -429,22 +433,33 @@ class Editor extends React.Component {
               padding: 16px;
             }
 
-            .buttons {
+            .share-buttons,
+            .setting-buttons {
               display: flex;
+              height: 40px;
+            }
+            .share-buttons {
               margin-left: auto;
             }
             .toolbar-second-row {
-              height: 40px;
               display: flex;
               flex: 1 1 auto;
             }
-            .toolbar-second-row > :global(div:not(:last-of-type)) {
+            .setting-buttons > :global(div) {
               margin-right: 0.5rem;
             }
 
             #style-editor-button {
               display: flex;
               align-items: center;
+            }
+            @media (max-width: 768px) {
+              .toolbar-second-row {
+                display: block;
+              }
+              #style-editor-button {
+                margin-top: 0.5rem;
+              }
             }
           `}
         </style>
