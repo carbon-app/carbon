@@ -44,7 +44,7 @@
     "eitherx": "^1.0.3",
     "email-validator": "^2.0.4",
     "escape-goat": "^4.0.0",
-    "firebase": "^8.9.1",
+    "firebase": "^10.9.0",
     "graphql": "^16.8.1",
     "highlight.js": "^10.7.2",
     "lodash.debounce": "^4.0.8",
