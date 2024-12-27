@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Fix"
+  given-names: "Michael"
+title: "Carbon"
+version: 4.9.10
+date-released: 2022-06-13
+url: "https://github.com/carbon-app/carbon"
