@@ -175,6 +175,20 @@ If you are using Google Chrome, or another browser that supports Progressive Web
 2. Click your browser's settings menu
 3. Click "Install Carbon..."
 
+#### Running Carbon with Docker
+
+If you prefer to run Carbon using Docker, follow these steps:
+
+1. Build the Docker Image
+  ```sh
+  docker build -t carbon .
+  ```
+2. Run the Docker Container
+  ```sh
+  docker run -p 3000:3000 carbon
+  ```
+3. Open your web browser and go to http://localhost:3000.
+
 ## Community
 
 Check out these projects our awesome community has created:

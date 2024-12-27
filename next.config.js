@@ -12,11 +12,6 @@ module.exports = withBundleAnalyzer(
       skipWaiting: false,
     },
     webpack: (config, options) => {
-      config.module.rules.push({
-        test: /\.js$/,
-        include: /node_modules\/graphql-language-service-parser/,
-        use: [options.defaultLoaders.babel],
-      })
       config.plugins.push(
         new options.webpack.IgnorePlugin({
           resourceRegExp: /\.html$/,
