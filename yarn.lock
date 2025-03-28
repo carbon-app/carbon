@@ -7788,9 +7788,9 @@ symbol-tree@^3.2.4:
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
 tar-fs@^2.0.0, tar-fs@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.1.tgz#489a15ab85f1f0befabb370b7de4f9eb5cbe8784"
-  integrity sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng==
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.2.tgz#425f154f3404cb16cb8ff6e671d45ab2ed9596c5"
+  integrity sha512-EsaAXwxmx8UB7FRKqeozqEPop69DXcmYwTQwXvyAPF352HJsPdkVhvTaDPYqfNgruveJIJy3TA2l+2zj8LJIJA==
   dependencies:
     chownr "^1.1.1"
     mkdirp-classic "^0.5.2"
