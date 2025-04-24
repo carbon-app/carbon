@@ -14,3 +14,5 @@ private-key.json
 .now
 .vercel
 *.log
+public/sw.js
+public/workbox-*.js

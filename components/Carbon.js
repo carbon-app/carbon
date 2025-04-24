@@ -5,7 +5,6 @@ import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
-import { Controlled as CodeMirror } from 'react-codemirror2'
 
 hljs.registerLanguage('javascript', javascript)
 
@@ -22,6 +21,7 @@ import {
   DEFAULT_SETTINGS,
   THEMES_HASH,
 } from '../lib/constants'
+import CodeMirrorWrapper from './CodeMirrorWrapper'
 
 const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
   loading: () => null,
@@ -29,6 +29,9 @@ const SelectionEditor = dynamic(() => import('./SelectionEditor'), {
 const Watermark = dynamic(() => import('./svg/Watermark'), {
   loading: () => null,
 })
+
+
+
 
 function searchLanguage(l) {
   return LANGUAGE_NAME_HASH[l] || LANGUAGE_MODE_HASH[l] || LANGUAGE_MIME_HASH[l]
@@ -209,7 +212,7 @@ class Carbon extends React.PureComponent {
                   light={light}
                 />
               ) : null}
-              <CodeMirror
+              <CodeMirrorWrapper
                 ref={this.props.editorRef}
                 className={`CodeMirror__container window-theme__${config.windowTheme}`}
                 value={this.props.children}
