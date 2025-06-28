@@ -5,7 +5,11 @@ import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
-import { Controlled as CodeMirror } from 'react-codemirror2'
+
+const CodeMirror = dynamic(
+  () => import('react-codemirror2').then(mod => mod.Controlled),
+  { ssr: false }
+);
 
 hljs.registerLanguage('javascript', javascript)
 
@@ -209,15 +213,15 @@ class Carbon extends React.PureComponent {
                   light={light}
                 />
               ) : null}
-              <CodeMirror
-                ref={this.props.editorRef}
-                className={`CodeMirror__container window-theme__${config.windowTheme}`}
-                value={this.props.children}
-                options={options}
-                onBeforeChange={this.onBeforeChange}
-                onGutterClick={this.props.onGutterClick}
-                onSelection={this.onSelection}
-              />
+                <CodeMirror
+                  ref={this.props.editorRef}
+                  className={`CodeMirror__container window-theme__${config.windowTheme}`}
+                  value={this.props.children}
+                  options={options}
+                  onBeforeChange={this.onBeforeChange}
+                  onGutterClick={this.props.onGutterClick}
+                  onSelection={this.onSelection}
+                />
               {config.watermark && <Watermark light={light} />}
               <div className="container-bg">
                 <div className="white eliminateOnRender" />
