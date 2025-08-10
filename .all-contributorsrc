@@ -31,6 +31,16 @@
   "commit": false,
   "contributors": [
     {
+      "login": "kylef",
+      "name": "Kyle Fuller",
+      "avatar_url": "https://avatars.githubusercontent.com/u/154501825?v=4",
+      "profile": "https://github.com/ayushedith",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
       "login": "briandennis",
       "name": "briandennis",
       "avatar_url": "https://avatars0.githubusercontent.com/u/10078572?v=4",
