@@ -33,6 +33,20 @@ const Footer = () => (
       </a>{' '}
       ¬
     </div>
+    <div className="mt2 mb2">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://vercel.com?utm_source=carbon-app&utm_campaign=oss"
+      >
+        <img
+          alt="Vercel logo"
+          width="120"
+          height="25"
+          src="/static/svg/powered-by-vercel.svg"
+        />
+      </a>
+    </div>
     <style jsx>
       {`
         footer {
