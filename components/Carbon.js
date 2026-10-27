@@ -5,7 +5,16 @@ import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
-import { Controlled as CodeMirror } from 'react-codemirror2'
+
+// react-codemirror2 treats `typeof navigator === 'undefined'` as "running on the server".
+// Node 21+ defines a global `navigator`, so on the server it would load CodeMirror, which
+// crashes with "document is not defined". This flag forces its server mode. It must be set
+// before react-codemirror2 loads, so that module is required below instead of imported
+// (imports are hoisted above this code).
+if (typeof window === 'undefined') {
+  global.PREVENT_CODEMIRROR_RENDER = true
+}
+const { Controlled: CodeMirror } = require('react-codemirror2')
 
 hljs.registerLanguage('javascript', javascript)
 
