@@ -5,6 +5,7 @@ import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import debounce from 'lodash.debounce'
 import ms from 'ms'
+import '../lib/prevent-ssr-codemirror'
 import { Controlled as CodeMirror } from 'react-codemirror2'
 
 hljs.registerLanguage('javascript', javascript)
