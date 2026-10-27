@@ -58,20 +58,19 @@ function EditorContainer(props) {
   const snippetId = snippet && snippet.id
   React.useEffect(() => {
     const snippetPath = '/' + (snippetId || '')
-    if (snippetPath === props.router.asPath) {
+    // Compare paths only: query params (e.g. ?bg=...) don't mean the snippet changed.
+    if (snippetPath === props.router.asPath.split('?')[0]) {
       return
     }
-    
+
     // Reloads only if the snipped.id is different from before. Otherwise returns from above.
+    // `href` must match `as`, or Next.js rejects the navigation.
     props.router.push(
+      snippetId ? { pathname: '/[id]', query: { id: snippetId } } : { pathname: '/' },
+      snippetPath,
       {
-        pathname: '/[id]',
-        query: { id: snippetId },
-      }, 
-      snippetPath, 
-      { 
         shallow: true,
-        scroll: false 
+        scroll: false,
       }
     )
   }, [snippetId, props.router])
