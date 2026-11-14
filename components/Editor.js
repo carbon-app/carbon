@@ -202,16 +202,20 @@ class Editor extends React.Component {
       })
   }
 
-  copyImage = () =>
-    this.getCarbonImage({ format: 'blob' })
-      .then(blob =>
-        navigator.clipboard.write([
-          new window.ClipboardItem({
-            [blob.type]: blob,
-          }),
-        ])
-      )
-      .catch(console.error)
+  copyImage = async () => {
+    try {
+      const blob = this.getCarbonImage({ format: 'blob' })
+      let item
+      try {
+        item = new window.ClipboardItem({ 'image/png': blob })
+      } catch {
+        item = new window.ClipboardItem({ 'image/png': await blob })
+      }
+      await Promise.all([navigator.clipboard.write([item]), blob])
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   updateSetting = (key, value) => {
     this.updateState({ [key]: value })
